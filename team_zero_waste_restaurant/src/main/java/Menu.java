@@ -4,9 +4,8 @@ import java.util.List;
 public class Menu {
     public static void main(String[] args) {
         List<Dish> menu = new ArrayList<>();
-        while (true) {
             printProgramMenu();
-        }
+
     }
 
     private static void printProgramMenu() {
