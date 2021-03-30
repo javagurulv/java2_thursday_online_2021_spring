@@ -60,4 +60,14 @@ class Offer {
     public int hashCode() {
         return Objects.hash(offerType, propertyCategory, description, price);
     }
+
+    @Override
+    public String toString() {
+        return "Offer{" +
+                "offerType='" + offerType + '\'' +
+                ", propertyCategory='" + propertyCategory + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
