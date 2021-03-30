@@ -50,9 +50,9 @@ public class Dish {
     @Override
     public String toString() {
         return "Dish{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", weight=" + weight +
+                "name ='" + name + '\'' +
+                ", description ='" + description + '\'' +
+                ", weight =" + weight +
                 '}';
     }
 }
