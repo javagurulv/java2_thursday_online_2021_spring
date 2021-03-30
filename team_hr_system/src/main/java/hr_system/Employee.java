@@ -1,3 +1,5 @@
+package hr_system;
+
 import java.util.Objects;
 
 public class Employee {
@@ -41,7 +43,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "hr_system.Employee{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
