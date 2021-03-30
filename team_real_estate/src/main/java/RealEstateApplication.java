@@ -32,7 +32,7 @@ class RealEstateApplication {
 
                     users.add(new User(username, password));
                     System.out.println("Enter email address : ");
-                    users.get(users.size() - 1).setEmail(scanner.toString());
+                    users.get(users.size() - 1).setEmail(scanner.nextLine());
                     users.get(users.size() - 1).setId(users.size() + 1);
 
                     System.out.println("Account created");
