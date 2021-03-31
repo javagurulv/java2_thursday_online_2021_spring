@@ -1,10 +1,24 @@
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+
 public class Product {
+
     private String name;
     private int quantity;
     private Date expiryDate;
+
+    public Product() { }
+
+    public Product(String name, int quantity, Date expiryDate) {
+
+        this.name = name;
+        this.quantity = quantity;
+        this.expiryDate = expiryDate;
+
+    }
 
     public String getName() {
         return name;
@@ -48,11 +62,8 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", quantity=" + quantity +
-                ", expiryDate=" + expiryDate +
-                '}';
+        return "Product : " + name + ", quantity : " + quantity +
+                ", expiryDate : " + expiryDate ;
     }
 
 }
