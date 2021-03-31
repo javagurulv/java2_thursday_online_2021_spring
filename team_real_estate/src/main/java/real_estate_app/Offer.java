@@ -1,6 +1,8 @@
+package real_estate_app;
+
 import java.util.Objects;
 
-class Offer {
+public class Offer {
     String offerType;
     String propertyCategory;
     String description;
@@ -67,7 +69,6 @@ class Offer {
                 "offerType='" + offerType + '\'' +
                 ", propertyCategory='" + propertyCategory + '\'' +
                 ", description='" + description + '\'' +
-                ", price=" + price +
-                '}';
+                ", price=" + price +" $"+ '}';
     }
 }

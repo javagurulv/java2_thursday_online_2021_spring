@@ -1,6 +1,8 @@
+package real_estate_app;
+
 import java.util.Objects;
 
-class User {
+public class User {
     private String username;
     private String password;
     private String email;
@@ -61,7 +63,7 @@ class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "real_estate_app.User{" +
                 "username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", id=" + id +
