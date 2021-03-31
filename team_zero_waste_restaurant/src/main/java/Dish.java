@@ -1,7 +1,10 @@
+import java.util.Objects;
+
 public class Dish {
     private String name;
     private String description;
-    private int weight;
+    private double weight;
+    private double price;
 
     public String getName() {
         return name;
@@ -19,20 +22,20 @@ public class Dish {
         this.description = description;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    @Override
-    public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + description.hashCode();
-        result = 31 * result + weight;
-        return result;
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
@@ -45,6 +48,11 @@ public class Dish {
         if (weight != dish.weight) return false;
         if (!name.equals(dish.name)) return false;
         return description.equals(dish.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, weight, price);
     }
 
     @Override
