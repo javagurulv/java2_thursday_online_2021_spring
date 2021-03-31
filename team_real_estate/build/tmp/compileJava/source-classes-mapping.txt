@@ -1,0 +1,22 @@
+real_estate_app/Offer.java
+ real_estate_app.Offer
+console_ui/CreateOfferUIAction.java
+ console_ui.CreateOfferUIAction
+console_ui/ViewAllOffersUIAction.java
+ console_ui.ViewAllOffersUIAction
+real_estate_app/Database.java
+ real_estate_app.Database
+real_estate_app/DatabaseImpl.java
+ real_estate_app.DatabaseImpl
+real_estate_app/ConsoleUI.java
+ real_estate_app.ConsoleUI
+real_estate_app/RealEstateApplication.java
+ real_estate_app.RealEstateApplication
+console_ui/CreateAccountUIAction.java
+ console_ui.CreateAccountUIAction
+console_ui/ConsoleApp.java
+ console_ui.ConsoleApp
+real_estate_app/User.java
+ real_estate_app.User
+console_ui/LogInUIAction.java
+ console_ui.LogInUIAction
