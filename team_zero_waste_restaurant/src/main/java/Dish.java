@@ -6,6 +6,20 @@ public class Dish {
     private double weight;
     private double price;
 
+    public Dish() {
+    }
+
+    public Dish(String name) {
+        this.name = name;
+    }
+
+    public Dish(String name, String description, double weight, double price) {
+        this.name = name;
+        this.description = description;
+        this.weight = weight;
+        this.price = price;
+    }
+
     public String getName() {
         return name;
     }
