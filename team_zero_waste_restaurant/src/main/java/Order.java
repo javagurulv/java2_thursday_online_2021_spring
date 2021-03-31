@@ -8,6 +8,14 @@ public class Order {
     private Date orderDate;
     private List<Dish> orderedDishes;
 
+    public Order() { }
+
+    public Order(String clientName, Date orderDate, List<Dish> orderedDishes) {
+        this.clientName = clientName;
+        this.orderDate = orderDate;
+        this.orderedDishes = orderedDishes;
+    }
+
     public String getClientName() {
         return clientName;
     }
