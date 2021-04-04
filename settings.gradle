@@ -6,7 +6,8 @@ include 'teacher:lesson_2_single_responsibility_principle:step_3_srp_level_packa
 include 'teacher:lesson_2_single_responsibility_principle:step_4_srp_level_application_layer'
 
 
-include 'team_abc'
 include 'team_zero_waste_restaurant'
 include 'team_real_estate'
 include 'team_hr_system'
+include 'team_front_of_engineers_hardcore'
+

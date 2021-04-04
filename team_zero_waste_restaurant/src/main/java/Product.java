@@ -1,5 +1,4 @@
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
@@ -8,14 +7,16 @@ public class Product {
 
     private String name;
     private int quantity;
+    private double price;
     private Date expiryDate;
 
     public Product() { }
 
-    public Product(String name, int quantity, Date expiryDate) {
+    public Product(String name, int quantity, double price, Date expiryDate) {
 
         this.name = name;
         this.quantity = quantity;
+        this.price = price;
         this.expiryDate = expiryDate;
 
     }
@@ -36,6 +37,14 @@ public class Product {
         this.quantity = quantity;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public Date getExpiryDate() {
         return expiryDate;
     }
@@ -48,21 +57,19 @@ public class Product {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Product product = (Product) o;
-
-        return quantity == product.quantity && name.equals(product.name) && expiryDate.equals(product.expiryDate);
+        return quantity == product.quantity && Double.compare(product.price, price) == 0 && Objects.equals(name, product.name) && Objects.equals(expiryDate, product.expiryDate);
     }
 
     @Override
     public int hashCode() {
         int hash;
-        return hash = 8 * Objects.hash(name, quantity, expiryDate) + 15;
+        return hash = 8 * Objects.hash(name, quantity, price, expiryDate) + 15;
     }
 
     @Override
     public String toString() {
-        return "Product : " + name + ", quantity : " + quantity +
+        return "Product : " + name + ", quantity : " + quantity + ", price : " + price +
                 ", expiryDate : " + expiryDate ;
     }
 
