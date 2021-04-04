@@ -1,4 +1,7 @@
-package real_estate_app;
+package database;
+
+import domain.Offer;
+import domain.User;
 
 import java.util.List;
 
