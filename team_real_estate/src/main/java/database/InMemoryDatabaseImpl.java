@@ -1,9 +1,12 @@
-package real_estate_app;
+package database;
+
+import domain.Offer;
+import domain.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DatabaseImpl implements Database {
+public class InMemoryDatabaseImpl implements Database {
 
     private static final List<User> users = new ArrayList<>();
     private static final List<Offer> offers = new ArrayList<>();

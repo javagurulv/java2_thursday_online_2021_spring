@@ -1,4 +1,4 @@
-package real_estate_app;
+package domain;
 
 import java.util.Objects;
 

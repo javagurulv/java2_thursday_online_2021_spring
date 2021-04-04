@@ -1,4 +1,4 @@
-package real_estate_app;
+package domain;
 
 import java.util.Objects;
 
@@ -63,7 +63,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "real_estate_app.User{" +
+        return "domain.User{" +
                 "username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", id=" + id +
