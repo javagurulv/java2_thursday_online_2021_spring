@@ -1,27 +1,29 @@
+package domain;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 public class Order {
 
-    private String clientName;
+    private Client client;
     private Date orderDate;
     private List<Dish> orderedDishes;
 
     public Order() { }
 
-    public Order(String clientName, Date orderDate, List<Dish> orderedDishes) {
-        this.clientName = clientName;
+    public Order(Client client, Date orderDate, List<Dish> orderedDishes) {
+        this.client = client;
         this.orderDate = orderDate;
         this.orderedDishes = orderedDishes;
     }
 
-    public String getClientName() {
-        return clientName;
+    public Client getClientName() {
+        return client;
     }
 
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Date getOrderDate() {
@@ -42,8 +44,8 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
-                "clientName='" + clientName + '\'' +
+        return "domain.Order{" +
+                "clientName='" + client + '\'' +
                 ", orderDate=" + orderDate +
                 ", orderedDishes=" + orderedDishes +
                 '}';
@@ -54,12 +56,12 @@ public class Order {
         if (this == o) return true;
         if (!(o instanceof Order)) return false;
         Order order = (Order) o;
-        return clientName.equals(order.clientName) &&
+        return client.equals(order.client) &&
                 orderDate.equals(order.orderDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(clientName, orderDate);
+        return Objects.hash(client, orderDate);
     }
 }
