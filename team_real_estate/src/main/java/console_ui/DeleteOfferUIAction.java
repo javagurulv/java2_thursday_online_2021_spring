@@ -1,10 +1,10 @@
 package console_ui;
 
-import services.CreateOfferService;
+import services.DeleteOfferService;
+
 import java.util.Scanner;
 
-class CreateOfferUIAction implements ConsoleUI {
-
+public class DeleteOfferUIAction implements ConsoleUI{
 
     @Override
     public void execute() {
@@ -18,7 +18,7 @@ class CreateOfferUIAction implements ConsoleUI {
         System.out.println("Enter price : ");
         int price = scanner.nextInt();
 
-        new CreateOfferService().execute(offerType,propertyCategory,description,price);
-        scanner.close();
+        new DeleteOfferService().execute(offerType,propertyCategory,description,price);
+
     }
 }
