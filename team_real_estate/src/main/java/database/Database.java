@@ -11,4 +11,6 @@ public interface Database {
     void logIn(User user);
     void createOffer(Offer offer);
     List<Offer> viewAllOffers();
+    void deleteOffer(Offer offer);
+    void deleteAccount(User user);
 }

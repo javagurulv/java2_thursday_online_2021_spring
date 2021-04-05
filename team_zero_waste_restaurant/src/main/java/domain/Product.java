@@ -1,3 +1,4 @@
+package domain;
 
 import java.util.Date;
 import java.util.Objects;
@@ -69,7 +70,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product : " + name + ", quantity : " + quantity + ", price : " + price +
+        return "domain.Product : " + name + ", quantity : " + quantity + ", price : " + price +
                 ", expiryDate : " + expiryDate ;
     }
 
