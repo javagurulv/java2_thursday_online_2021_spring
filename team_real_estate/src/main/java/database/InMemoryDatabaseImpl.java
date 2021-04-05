@@ -38,4 +38,16 @@ public class InMemoryDatabaseImpl implements Database {
     public List<Offer> viewAllOffers() {
         return offers;
     }
+
+    @Override
+    public void deleteOffer(Offer offer) {
+        offers.remove(offer);
+        System.out.println("Offer removed");
+    }
+
+    @Override
+    public void deleteAccount(User user) {
+        users.remove(user);
+    }
+
 }
