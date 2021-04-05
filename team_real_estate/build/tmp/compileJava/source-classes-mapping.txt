@@ -26,15 +26,15 @@ database/InMemoryDatabaseImpl.java
  database.InMemoryDatabaseImpl
 services/ViewAllOffersService.java
  services.ViewAllOffersService
-RealEstateApplication.java
- RealEstateApplication
+services/DeleteOfferService.java
+ services.DeleteOfferService
 services/CreateAccountService.java
  services.CreateAccountService
 console_ui/DeleteAccountUIAction.java
  console_ui.DeleteAccountUIAction
 services/DeleteAccountService.java
  services.DeleteAccountService
-services/DeleteOfferService.java
- services.DeleteOfferService
+RealEstateApplication.java
+ RealEstateApplication
 console_ui/ConsoleApp.java
  console_ui.ConsoleApp
