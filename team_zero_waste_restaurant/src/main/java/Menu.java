@@ -3,6 +3,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import domain.Dish;
+
 public class Menu {
     public static void main(String[] args) {
         List<Dish> menu = new ArrayList<>();
