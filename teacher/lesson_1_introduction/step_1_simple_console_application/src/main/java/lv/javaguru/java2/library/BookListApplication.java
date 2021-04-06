@@ -12,8 +12,8 @@ public class BookListApplication {
 		while (true) {
 			System.out.println("Program menu:");
 			System.out.println("1. Add book to list");
-			System.out.println("2. Delete lot from list");
-			System.out.println("3. Show all lots in the list");
+			System.out.println("2. Delete book from list");
+			System.out.println("3. Show all books in the list");
 			System.out.println("4. Exit");
 
 			System.out.println("");
