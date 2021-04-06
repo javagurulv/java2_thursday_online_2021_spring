@@ -33,13 +33,26 @@ public class AddDishUIAction implements UIAction {
         String dishComposition = scanner.nextLine();
 
         System.out.println("Enter dish weight: ");
-        double dishWeight = scanner.nextDouble();
+        double dishWeight = 0;
+        dishWeight = doubleValueValidation(scanner, dishWeight);
 
         System.out.println("Enter dish price: ");
-        double dishPrice = scanner.nextDouble();
+        double dishPrice = 0;
+        dishPrice = doubleValueValidation(scanner, dishPrice);
 
         addDishService.execute(dishName, dishDescription, dishType, dishComposition, dishWeight, dishPrice);
         System.out.println("New dish was added to the list.");
+    }
+
+    private double doubleValueValidation(Scanner scanner, double value) {
+        while (value <= 0)
+            try {
+                value = scanner.nextDouble();
+            } catch (Exception e) {
+                System.out.println("Enter a valid Double value: ");
+                scanner.next();
+            }
+        return value;
     }
 
 }

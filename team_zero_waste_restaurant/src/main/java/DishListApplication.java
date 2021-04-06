@@ -45,7 +45,20 @@ public class DishListApplication {
     private static int getMenuNumberFromUser() {
         System.out.println("Enter menu item number to execute:");
         Scanner scanner = new Scanner(System.in);
-        return Integer.parseInt(scanner.nextLine());
+        int inputValuePlaceholder = 0;
+        return validateUserInput(scanner, inputValuePlaceholder);
+        //return Integer.parseInt(scanner.nextLine())
+    }
+
+    private static int validateUserInput(Scanner scanner, int inputValue ){
+        while (inputValue <= 0)
+        try {
+            inputValue = scanner.nextInt();
+        } catch (Exception e) {
+            System.out.println("Enter a valid Integer value : ");
+            scanner.next();
+        }
+        return inputValue;
     }
 
     private static void executeSelectedMenuItem(int selectedMenu) {
