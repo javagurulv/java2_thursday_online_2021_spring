@@ -10,6 +10,10 @@ public interface Database {
 
     void deleteByName(String name);
 
-    List<Dish> getAllDishes();
+    void getDishByType(String dishType);
+
+    void getAllDishes();
+
+
 
 }

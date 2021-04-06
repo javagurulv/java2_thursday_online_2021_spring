@@ -8,8 +8,8 @@ public class RemoveDishUIAction implements UIAction {
 
     private RemoveDishService removeDishService;
 
-    public RemoveDishUIAction(RemoveDishService removeBookService) {
-        this.removeDishService = removeBookService;
+    public RemoveDishUIAction(RemoveDishService removeDishService) {
+        this.removeDishService = removeDishService;
     }
 
     @Override
@@ -18,7 +18,7 @@ public class RemoveDishUIAction implements UIAction {
         System.out.println("Enter dish name to remove: ");
         String dishName = scanner.nextLine();
         removeDishService.execute(dishName);
-        System.out.println("Your book was removed from list.");
+        System.out.println("Your dish was removed from list.");
     }
 
 }

@@ -14,13 +14,13 @@ public class DishListApplication {
 
     private static AddDishService addDishService = new AddDishService(database);
     private static RemoveDishService removeDishService = new RemoveDishService(database);
-//    private static GetAllDishesService getAllDishesService = new GetAllDishesService(database);
-//    private static GetDishesByTypeService getDishesByTypeService = new GetDishesByTypeService(database);
+    private static GetAllDishesService getAllDishesService = new GetAllDishesService(database);
+    private static GetDishesByTypeService getDishesByTypeService = new GetDishesByTypeService(database);
 
     private static UIAction addDishUIAction = new AddDishUIAction(addDishService);
     private static UIAction removeDishUIAction = new RemoveDishUIAction(removeDishService);
-//    private static UIAction getAllDishesUIAction = new GetAllDishesUIAction(getAllDishesService);
-//    private static UIAction getDishesByTypeUIAction = new GetDishesByTypeUIAction(getDishesByTypeService);
+    private static UIAction getAllDishesUIAction = new GetAllDishesUIAction(getAllDishesService);
+    private static UIAction getDishesByTypeUIAction = new GetDishesByTypeUIAction(getDishesByTypeService);
     private static UIAction exitUIAction = new ExitUIAction();
 
     public static void main(String[] args) {
@@ -58,14 +58,14 @@ public class DishListApplication {
                 removeDishUIAction.execute();
                 break;
             }
-//            case 3: {
-//                getAllDishesUIAction.execute();
-//                break;
-//            }
-//            case 4: {
-//                getDishesByTypeUIAction.execute();
-//                break;
-//            }
+            case 3: {
+                getAllDishesUIAction.execute();
+                break;
+            }
+            case 4: {
+                getDishesByTypeUIAction.execute();
+                break;
+            }
             case 5: {
                 exitUIAction.execute();
                 break;

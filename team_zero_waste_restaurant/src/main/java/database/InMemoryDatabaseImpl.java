@@ -3,7 +3,9 @@ package database;
 import domain.Dish;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InMemoryDatabaseImpl implements Database {
 
@@ -24,8 +26,33 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public List<Dish> getAllDishes() {
-        return dishes;
+    public void getAllDishes() {
+        for (int i = 0; i < dishes.size(); i++) {
+            printDishWithFields(dishes, i);
+        }
     }
 
+    @Override
+    public void getDishByType(String dishType) {
+        List<Dish> sortedList = new ArrayList<>();
+        for (Dish dish : dishes) {
+            if (dish.getType().equals(dishType)) {
+                sortedList.add(dish);
+            } else {
+                System.out.println("This dish type not found.");
+            }
+        }
+        for (int i = 0; i < sortedList.size(); i++) {
+            printDishWithFields(sortedList, i);
+        }
+    }
+
+    private void printDishWithFields(List<Dish> sortedList, int i) {
+        System.out.println((i + 1) + ". " + sortedList.get(i).getName() + ", " + sortedList.get(i).getDescription() +
+                ", " + sortedList.get(i).getDishComposition() + ", " + sortedList.get(i).getType() + ", price - " +
+                sortedList.get(i).getPrice() + " \u0024, weight - " + sortedList.get(i).getWeight() + " grams.");
+    }
 }
+
+
+
