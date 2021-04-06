@@ -13,11 +13,8 @@ public class AddEmployeeService {
 
     }
 
-    public void execute (String firstNameEmployee, String secondNameEmployee, int ageEmployee) {
-
-        Employee employee = new Employee (firstNameEmployee, secondNameEmployee, ageEmployee);
-
+    public void execute(String firstNameEmployee, String secondNameEmployee, int ageEmployee) {
+        Employee employee = new Employee(firstNameEmployee, secondNameEmployee, ageEmployee);
         database.saveEmployee(employee);
-
     }
 }

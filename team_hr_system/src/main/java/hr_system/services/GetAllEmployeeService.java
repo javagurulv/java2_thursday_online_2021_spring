@@ -17,7 +17,7 @@ public class GetAllEmployeeService {
 
     public List<Employee> execute () {
 
-        return database.getAllEmployee();
+        return database.getAllEmployees();
 
     }
 }

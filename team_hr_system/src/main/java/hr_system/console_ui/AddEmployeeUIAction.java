@@ -18,17 +18,17 @@ public class AddEmployeeUIAction implements UIAction{
     public void execute() {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Для того чтобы добавить сотрудника введите подные данные!");
-        System.out.println("введите Имя: ");
+        System.out.println("Input the following employee data");
+        System.out.println("Employee name: ");
         String firstName = scanner.nextLine();
-        System.out.println("введите Фамилию: ");
+        System.out.println("Employee last name: ");
         String secondName = scanner.nextLine();
-        System.out.println("введите Возврост: ");
+        System.out.println("Age: ");
         int age = scanner.nextInt();
 
         database.saveEmployee(new Employee(firstName, secondName, age));
 
-        System.out.println("Сотрудник добпвлен!" + "\n" + "|" + database.getAllEmployee().toString() + "|" + "\n");
+        System.out.println("Employee added successfully!" + "\n" + "|" + database.getAllEmployees().toString() + "|" + "\n");
 
     }
 

@@ -15,14 +15,14 @@ public class GetAllEmployeeUIAction implements UIAction{
     @Override
     public void execute() {
 
-        System.out.println("Список всех сотрудников!" + "\n");
-        database.getAllEmployee().forEach(System.out::println);
+        System.out.println("All employees list!" + "\n");
+        database.getAllEmployees().forEach(System.out::println);
         System.out.println();
 
     }
 
     @Override
     public String toString() {
-        return "Get All Employee";
+        return "Get All Employees";
     }
 }

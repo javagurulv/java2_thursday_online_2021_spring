@@ -29,7 +29,7 @@ public class DatabaseImpl implements Database{
     }
 
     @Override
-    public List<Employee> getAllEmployee() {
+    public List<Employee> getAllEmployees() {
 
         return employeeList;
 
