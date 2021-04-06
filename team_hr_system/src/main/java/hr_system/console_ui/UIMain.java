@@ -2,7 +2,9 @@ package hr_system.console_ui;
 
 import hr_system.database.Database;
 import hr_system.database.DatabaseImpl;
-
+import hr_system.services.AddEmployeeService;
+import hr_system.services.DeleteEmployeeService;
+import hr_system.services.GetAllEmployeeService;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -16,9 +18,9 @@ public class UIMain {
         Database database = new DatabaseImpl();
 
         menuNumberToActionMap = new HashMap<>();
-        menuNumberToActionMap.put(1, new AddEmployeeUIAction(database));
-        menuNumberToActionMap.put(2, new DeleteEmployeeUIAction(database));
-        menuNumberToActionMap.put(3, new GetAllEmployeeUIAction(database));
+        menuNumberToActionMap.put(1, new AddEmployeeUIAction(new AddEmployeeService(database)));
+        menuNumberToActionMap.put(2, new DeleteEmployeeUIAction(new DeleteEmployeeService(database)));
+        menuNumberToActionMap.put(3, new GetAllEmployeeUIAction(new GetAllEmployeeService(database)));
 
     }
 

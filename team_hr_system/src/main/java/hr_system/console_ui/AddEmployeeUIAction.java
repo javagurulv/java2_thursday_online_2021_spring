@@ -1,16 +1,15 @@
 package hr_system.console_ui;
 
-import hr_system.bean.Employee;
-import hr_system.database.Database;
+import hr_system.services.AddEmployeeService;
 import java.util.Scanner;
 
 public class AddEmployeeUIAction implements UIAction{
 
-    private Database database;
+    private AddEmployeeService addEmployeeService;
 
-    public AddEmployeeUIAction(Database database) {
+    public AddEmployeeUIAction(AddEmployeeService addEmployeeService) {
 
-        this.database = database;
+        this.addEmployeeService = addEmployeeService;
 
     }
 
@@ -26,9 +25,10 @@ public class AddEmployeeUIAction implements UIAction{
         System.out.println("Age: ");
         int age = scanner.nextInt();
 
-        database.saveEmployee(new Employee(firstName, secondName, age));
+        addEmployeeService.execute(firstName, secondName, age);
 
-        System.out.println("Employee added successfully!" + "\n" + "|" + database.getAllEmployees().toString() + "|" + "\n");
+        System.out.println("Employee added successfully!" + "\n" +
+                "|" + firstName + " " + secondName +  " - " + age + "|" + "\n");
 
     }
 
