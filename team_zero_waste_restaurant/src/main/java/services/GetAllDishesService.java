@@ -1,7 +1,18 @@
 package services;
 
+import database.Database;
+
 public class GetAllDishesService {
 
-    // TO DO
+    private Database database;
+
+
+    public GetAllDishesService(Database database) {
+        this.database = database;
+    }
+
+    public void execute() {
+        database.getAllDishes();
+    }
 
 }

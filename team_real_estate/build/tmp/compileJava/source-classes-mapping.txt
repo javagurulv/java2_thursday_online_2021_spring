@@ -1,40 +1,40 @@
-domain/User.java
- domain.User
-domain/Offer.java
- domain.Offer
-console_ui/ViewAllOffersUIAction.java
- console_ui.ViewAllOffersUIAction
-console_ui/ExitUIAction.java
- console_ui.ExitUIAction
-console_ui/CreateAccountUIAction.java
- console_ui.CreateAccountUIAction
-console_ui/ConsoleUI.java
- console_ui.ConsoleUI
-console_ui/LogInUIAction.java
- console_ui.LogInUIAction
-console_ui/DeleteOfferUIAction.java
- console_ui.DeleteOfferUIAction
-console_ui/CreateOfferUIAction.java
- console_ui.CreateOfferUIAction
-services/CreateOfferService.java
- services.CreateOfferService
 services/LogInService.java
  services.LogInService
+domain/Offer.java
+ domain.Offer
+RealEstateApplication.java
+ RealEstateApplication
+console_ui/DeleteAccountUIAction.java
+ console_ui.DeleteAccountUIAction
+console_ui/ExitUIAction.java
+ console_ui.ExitUIAction
+services/DeleteOfferService.java
+ services.DeleteOfferService
+console_ui/CreateAccountUIAction.java
+ console_ui.CreateAccountUIAction
+console_ui/ConsoleApp.java
+ console_ui.ConsoleApp
+console_ui/LogInUIAction.java
+ console_ui.LogInUIAction
+console_ui/ConsoleUI.java
+ console_ui.ConsoleUI
+console_ui/DeleteOfferUIAction.java
+ console_ui.DeleteOfferUIAction
+services/CreateOfferService.java
+ services.CreateOfferService
 database/Database.java
  database.Database
 database/InMemoryDatabaseImpl.java
  database.InMemoryDatabaseImpl
 services/ViewAllOffersService.java
  services.ViewAllOffersService
-services/DeleteOfferService.java
- services.DeleteOfferService
+console_ui/CreateOfferUIAction.java
+ console_ui.CreateOfferUIAction
+console_ui/ViewAllOffersUIAction.java
+ console_ui.ViewAllOffersUIAction
 services/CreateAccountService.java
  services.CreateAccountService
-console_ui/DeleteAccountUIAction.java
- console_ui.DeleteAccountUIAction
 services/DeleteAccountService.java
  services.DeleteAccountService
-RealEstateApplication.java
- RealEstateApplication
-console_ui/ConsoleApp.java
- console_ui.ConsoleApp
+domain/User.java
+ domain.User

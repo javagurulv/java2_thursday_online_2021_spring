@@ -1,38 +1,38 @@
-console_ui/RemoveDishUIAction.java
- console_ui.RemoveDishUIAction
+console_ui/UIAction.java
+ console_ui.UIAction
+Menu.java
+ Menu
 domain/Order.java
  domain.Order
 domain/Product.java
  domain.Product
-services/GetAllDishesService.java
- services.GetAllDishesService
+domain/Dish.java
+ domain.Dish
 domain/Client.java
  domain.Client
-Menu.java
- Menu
 console_ui/ExitUIAction.java
  console_ui.ExitUIAction
-console_ui/GetAllDishesUIAction.java
- console_ui.GetAllDishesUIAction
-services/AddDishService.java
- services.AddDishService
-services/RemoveDishService.java
- services.RemoveDishService
-console_ui/AddDishUIAction.java
- console_ui.AddDishUIAction
+ClientOrderApplication.java
+ ClientOrderApplication
+console_ui/RemoveDishUIAction.java
+ console_ui.RemoveDishUIAction
 console_ui/GetDishesByTypeUIAction.java
  console_ui.GetDishesByTypeUIAction
 database/Database.java
  database.Database
-database/InMemoryDatabaseImpl.java
- database.InMemoryDatabaseImpl
-ClientOrderApplication.java
- ClientOrderApplication
-DishListApplication.java
- DishListApplication
-console_ui/UIAction.java
- console_ui.UIAction
-domain/Dish.java
- domain.Dish
+console_ui/AddDishUIAction.java
+ console_ui.AddDishUIAction
+services/RemoveDishService.java
+ services.RemoveDishService
 services/GetDishesByTypeService.java
  services.GetDishesByTypeService
+services/AddDishService.java
+ services.AddDishService
+console_ui/GetAllDishesUIAction.java
+ console_ui.GetAllDishesUIAction
+services/GetAllDishesService.java
+ services.GetAllDishesService
+database/InMemoryDatabaseImpl.java
+ database.InMemoryDatabaseImpl
+DishListApplication.java
+ DishListApplication
