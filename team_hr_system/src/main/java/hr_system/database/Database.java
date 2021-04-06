@@ -10,6 +10,6 @@ public interface Database {
 
     void deleteEmployee(Long id);
 
-    List <Employee> getAllEmployee() ;
+    List <Employee> getAllEmployees() ;
 
 }

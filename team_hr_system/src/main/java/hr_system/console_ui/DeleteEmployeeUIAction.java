@@ -17,10 +17,10 @@ public class DeleteEmployeeUIAction implements UIAction{
     public void execute() {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Для удаления сотрудника введите ID!");
-        System.out.println("введите ID: ");
+        System.out.println("Enter employee ID!");
+        System.out.println("enter ID: ");
         database.deleteEmployee(scanner.nextLong());
-        System.out.println("Сотрудник удален!");
+        System.out.println("Employee removed!");
 
     }
 
