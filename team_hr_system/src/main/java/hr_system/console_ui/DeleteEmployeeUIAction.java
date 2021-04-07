@@ -1,15 +1,15 @@
 package hr_system.console_ui;
 
-import hr_system.database.Database;
+import hr_system.services.DeleteEmployeeService;
 import java.util.Scanner;
 
 public class DeleteEmployeeUIAction implements UIAction{
 
-    private Database database;
+    private DeleteEmployeeService deleteEmployeeService;
 
-    public DeleteEmployeeUIAction(Database database) {
+    public DeleteEmployeeUIAction(DeleteEmployeeService deleteEmployeeService) {
 
-        this.database = database;
+        this.deleteEmployeeService = deleteEmployeeService;
 
     }
 
@@ -19,7 +19,9 @@ public class DeleteEmployeeUIAction implements UIAction{
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter employee ID!");
         System.out.println("enter ID: ");
-        database.deleteEmployee(scanner.nextLong());
+
+        deleteEmployeeService.execute(scanner.nextLong());
+
         System.out.println("Employee removed!");
 
     }

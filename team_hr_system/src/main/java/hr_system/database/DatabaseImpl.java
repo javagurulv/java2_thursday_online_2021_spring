@@ -19,13 +19,18 @@ public class DatabaseImpl implements Database{
 
     }
 
-    @Override
+   /* @Override
     public void deleteEmployee(Long id) {
 
         employeeList.stream().filter(employee -> employee.getId().equals(id))
                 .findFirst().
                 ifPresent(employeeList::remove);
 
+    }*/
+
+    @Override
+    public void deleteEmployee(Long id) {
+        employeeList.removeIf(e -> e.getId().equals(id));
     }
 
     @Override

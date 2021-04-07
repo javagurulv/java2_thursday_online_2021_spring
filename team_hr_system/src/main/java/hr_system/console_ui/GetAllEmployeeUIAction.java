@@ -1,14 +1,14 @@
 package hr_system.console_ui;
 
-import hr_system.database.Database;
+import hr_system.services.GetAllEmployeeService;
 
 public class GetAllEmployeeUIAction implements UIAction{
 
-    private Database database;
+    private GetAllEmployeeService getAllEmployeeService;
 
-    public GetAllEmployeeUIAction(Database database) {
+    public GetAllEmployeeUIAction(GetAllEmployeeService getAllEmployeeService) {
 
-        this.database = database;
+        this.getAllEmployeeService = getAllEmployeeService;
 
     }
 
@@ -16,7 +16,9 @@ public class GetAllEmployeeUIAction implements UIAction{
     public void execute() {
 
         System.out.println("All employees list!" + "\n");
-        database.getAllEmployees().forEach(System.out::println);
+
+        getAllEmployeeService.execute().forEach(System.out::println);
+
         System.out.println();
 
     }
