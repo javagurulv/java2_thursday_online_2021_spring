@@ -26,25 +26,21 @@ public class AddDishUIAction implements UIAction {
         String dishType = enterDishType();
         double dishWeight = enterDishWeight();
         double dishPrice = enterDishPrice();
+
         List<Product> productList = null;
+        productList = traceThrowableError(productList);
+
+        addDishService.execute(dishName, dishDescription, dishType, dishWeight, dishPrice, productList);
+        System.out.println("New dish was added to the list.");
+    }
+
+    private List<Product> traceThrowableError(List<Product> productList) {
         try {
             productList = enterProductList();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        addDishService.execute(dishName, dishDescription, dishType, dishWeight, dishPrice, productList);
-        System.out.println("New dish was added to the list.");
-    }
-
-    private static double doubleValueValidation(Scanner scanner, double value) {
-        while (value <= 0)
-            try {
-                value = scanner.nextDouble();
-            } catch (Exception e) {
-                System.out.println("Enter a valid Double value: ");
-                scanner.next();
-            }
-        return value;
+        return productList;
     }
 
     private static String enterDishName() {
@@ -81,7 +77,7 @@ public class AddDishUIAction implements UIAction {
                 System.out.println("Enter product price: ");
                 double price = Double.parseDouble(scanner.nextLine());
                 System.out.println("Enter product expiry date in the format - date, month, year: ");
-                DateFormat format = new SimpleDateFormat("d, MMMM, yyyy", Locale.GERMANY);
+                DateFormat format = new SimpleDateFormat("dd, MM, yyyy", Locale.GERMANY);
                 Date expiryDate = format.parse(scanner.nextLine());
                 Product product1 = new Product(name, quantity, price, expiryDate);
                 productList.add(product1);
@@ -111,6 +107,17 @@ public class AddDishUIAction implements UIAction {
         double dishPrice = 0;
         dishPrice = doubleValueValidation(scanner, dishPrice);
         return dishPrice;
+    }
+
+    private static double doubleValueValidation(Scanner scanner, double value) {
+        while (value <= 0)
+            try {
+                value = scanner.nextDouble();
+            } catch (Exception e) {
+                System.out.println("Enter a valid Double value: ");
+                scanner.next();
+            }
+        return value;
     }
 
 }

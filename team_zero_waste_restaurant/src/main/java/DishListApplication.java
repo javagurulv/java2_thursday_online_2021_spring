@@ -47,7 +47,6 @@ public class DishListApplication {
         Scanner scanner = new Scanner(System.in);
         int inputValuePlaceholder = 0;
         return validateUserInput(scanner, inputValuePlaceholder);
-        //return Integer.parseInt(scanner.nextLine())
     }
 
     private static int validateUserInput(Scanner scanner, int inputValue ){
