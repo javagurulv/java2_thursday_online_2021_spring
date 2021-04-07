@@ -48,9 +48,12 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     private void printDishWithFields(List<Dish> sortedList, int i) {
-        System.out.println((i + 1) + ". " + sortedList.get(i).getName() + ", " + sortedList.get(i).getDescription() +
-                ", " + sortedList.get(i).getDishComposition() + ", " + sortedList.get(i).getType() + ", price - " +
-                sortedList.get(i).getPrice() + " \u0024, weight - " + sortedList.get(i).getWeight() + " grams.");
+        System.out.println((i + 1) + ". " + sortedList.get(i).getName() +
+                ", " + sortedList.get(i).getDescription() +
+                //", " + sortedList.get(i).getProductList() +
+                ", " + sortedList.get(i).getType() +
+                ", price - " + sortedList.get(i).getPrice() + " \u0024, " +
+                "weight - " + sortedList.get(i).getWeight() + " grams.");
     }
 }
 

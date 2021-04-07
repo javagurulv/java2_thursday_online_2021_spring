@@ -14,9 +14,9 @@ public class AddDishService {
         this.database = database;
     }
 
-    public void execute(String dishName, String dishDescription, String dishType, String dishComposition,
-                        double dishWeight, double dishPrice) {
-        Dish dish = new Dish(dishName, dishDescription, dishType, dishComposition, dishWeight, dishPrice);
+    public void execute(String dishName, String dishDescription, String dishType,
+                        double dishWeight, double dishPrice, List<Product> productList) {
+        Dish dish = new Dish(dishName, dishDescription, dishType, dishWeight, dishPrice, productList);
         database.save(dish);
     }
 

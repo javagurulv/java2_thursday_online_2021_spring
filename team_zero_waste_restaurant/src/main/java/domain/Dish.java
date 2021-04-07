@@ -3,29 +3,26 @@ package domain;
 import java.util.List;
 import java.util.Objects;
 
-public class Dish {
+public class Dish{
     private String name;
     private String description;
     private String type;
-    private String dishComposition;
     private double weight;
     private double price;
-
-    public Dish() {
-    }
+    private List<Product> productList;
 
     public Dish(String name) {
         this.name = name;
     }
 
-    public Dish(String name, String description, String type, String dishComposition,
-                double weight, double price) {
+    public Dish(String name, String description, String type,
+                double weight, double price, List<Product> productList) {
         this.name = name;
         this.description = description;
         this.type = type;
-        this.dishComposition = dishComposition;
         this.weight = weight;
         this.price = price;
+        this.productList = productList;
     }
 
     public String getName() {
@@ -52,12 +49,12 @@ public class Dish {
         this.type = type;
     }
 
-    public String getDishComposition() {
-        return dishComposition;
+    public List<Product> getProductList() {
+        return productList;
     }
 
-    public void setDishComposition(String dishComposition) {
-        this.dishComposition = dishComposition;
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 
     public double getWeight() {
@@ -76,23 +73,17 @@ public class Dish {
         this.price = price;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Dish)) return false;
         Dish dish = (Dish) o;
-        return Double.compare(dish.weight, weight) == 0 &&
-                Double.compare(dish.price, price) == 0 &&
-                name.equals(dish.name) &&
-                description.equals(dish.description) &&
-                type.equals(dish.type) &&
-                dishComposition.equals(dish.dishComposition);
+        return Double.compare(dish.getWeight(), getWeight()) == 0 && Double.compare(dish.getPrice(), getPrice()) == 0 && getName().equals(dish.getName()) && getDescription().equals(dish.getDescription()) && getType().equals(dish.getType()) && Objects.equals(getProductList(), dish.getProductList());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, type, dishComposition, weight, price);
+        return Objects.hash(getName(), getDescription(), getType(), getProductList(), getWeight(), getPrice());
     }
 
     @Override
@@ -101,7 +92,7 @@ public class Dish {
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", type='" + type + '\'' +
-                ", dishComposition=" + dishComposition +
+                ", productList=" + productList +
                 ", weight=" + weight +
                 ", price=" + price +
                 '}';
