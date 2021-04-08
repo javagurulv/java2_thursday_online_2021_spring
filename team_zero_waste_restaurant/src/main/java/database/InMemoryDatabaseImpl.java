@@ -1,6 +1,7 @@
 package database;
 
 import domain.Dish;
+import domain.Product;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,7 +11,6 @@ import java.util.stream.Collectors;
 public class InMemoryDatabaseImpl implements Database {
 
     private List<Dish> dishes = new ArrayList<>();
-
 
     @Override
     public void save(Dish dish) {

@@ -15,6 +15,14 @@ public class Dish{
         this.name = name;
     }
 
+    public Dish(String name, String description, String type, double weight, double price) {
+        this.name = name;
+        this.description = description;
+        this.type = type;
+        this.weight = weight;
+        this.price = price;
+    }
+
     public Dish(String name, String description, String type,
                 double weight, double price, List<Product> productList) {
         this.name = name;

@@ -27,7 +27,7 @@ public class AddDishUIAction implements UIAction {
         double dishWeight = enterDishWeight();
         double dishPrice = enterDishPrice();
 
-        List<Product> productList = null;
+        List<Product> productList = new ArrayList<>();
         productList = traceThrowableError(productList);
 
         addDishService.execute(dishName, dishDescription, dishType, dishWeight, dishPrice, productList);
