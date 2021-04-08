@@ -24,8 +24,8 @@ public class TestEmployeeService {
         database.saveEmployee(objectOne);
         database.saveEmployee(objectTwo);
 
-        actual.add(database.getAllEmployee().get(0));
-        actual.add(database.getAllEmployee().get(1));
+        actual.add(database.getAllEmployees().get(0));
+        actual.add(database.getAllEmployees().get(1));
 
         List<Employee> expected = new ArrayList<>();
 
@@ -49,7 +49,7 @@ public class TestEmployeeService {
 
         database.deleteEmployee(1L);
 
-        List<Employee> actual = new ArrayList<>(database.getAllEmployee());
+        List<Employee> actual = new ArrayList<>(database.getAllEmployees());
         List<Employee> expected = new ArrayList<>();
 
         expected.add(objectTwo);
@@ -69,7 +69,7 @@ public class TestEmployeeService {
         database.saveEmployee(objectOne);
         database.saveEmployee(objectTwo);
 
-        List<Employee> actual = new ArrayList<>(database.getAllEmployee());
+        List<Employee> actual = new ArrayList<>(database.getAllEmployees());
         List<Employee> expected = new ArrayList<>();
 
         expected.add(objectOne);
