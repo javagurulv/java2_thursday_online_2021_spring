@@ -1,9 +1,6 @@
 package database;
 
 import domain.Dish;
-import domain.Product;
-
-import java.util.List;
 
 public interface Database {
 
