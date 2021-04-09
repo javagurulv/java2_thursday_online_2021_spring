@@ -1,0 +1,15 @@
+package lv.javaguru.java2.hrsystem.database;
+
+import lv.javaguru.java2.hrsystem.bean.Employee;
+
+import java.util.List;
+
+public interface Database {
+
+    void saveEmployee(Employee employee);
+
+    void deleteEmployee(Long id);
+
+    List <Employee> getAllEmployees() ;
+
+}
