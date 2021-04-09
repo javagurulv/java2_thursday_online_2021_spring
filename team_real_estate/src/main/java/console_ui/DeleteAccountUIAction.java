@@ -17,6 +17,5 @@ public class DeleteAccountUIAction implements ConsoleUI{
         new DeleteAccountService().execute(username,password);
         System.out.println("Account deleted");
 
-        scanner.close();
     }
 }

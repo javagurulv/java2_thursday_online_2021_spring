@@ -17,6 +17,5 @@ class CreateAccountUIAction implements ConsoleUI {
         new CreateAccountService().execute(username,password);
         System.out.println("Account created");
 
-        scanner.close();
     }
 }

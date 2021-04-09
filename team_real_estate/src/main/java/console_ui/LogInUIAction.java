@@ -14,7 +14,6 @@ class LogInUIAction implements ConsoleUI {
         String password = scanner.nextLine();
 
         new LogInService().execute(username, password);
-        System.out.println("Logged in");
-        scanner.close();
+
     }
 }

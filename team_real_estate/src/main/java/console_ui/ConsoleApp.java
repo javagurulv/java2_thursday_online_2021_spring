@@ -20,24 +20,21 @@ public class ConsoleApp {
     }
 
     public void run() {
-        Scanner scanner = new Scanner(System.in);
-        int userSelectedMenuNumber;
+        System.out.println("Welcome! \n ");
+
         while (true) {
             printMenu();
-            checkIfUserEnteredNumber(scanner);
-
-            userSelectedMenuNumber = scanner.nextInt();
-
-            if (userSelectedMenuNumber == 0) {
-                scanner.close();
-            }
+            int userSelectedMenuNumber = getNumberFromUser();
             executeOption(userSelectedMenuNumber);
-
         }
     }
 
+    private int getNumberFromUser(){
+        Scanner scanner = new Scanner(System.in);
+        return Integer.parseInt(scanner.nextLine());
+    }
+
     private void printMenu() {
-        System.out.println("Welcome! \n ");
         System.out.print("Choose available option : \n" + "\n" +
                 "0  = Exit \n" +
                 "1 = Create account \n" +
@@ -50,12 +47,6 @@ public class ConsoleApp {
         System.out.println("Please enter menu number: ");
     }
 
-    private void checkIfUserEnteredNumber(Scanner scanner) {
-        while (!scanner.hasNextInt()) {
-            scanner.nextLine();
-            System.out.println("Letters not accepted.Please input numbers : ");
-        }
-    }
 
     private void executeOption(int userMenuChoice) {
         ConsoleUI consoleUI = menuNumberToActionMap.get(userMenuChoice);

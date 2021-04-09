@@ -19,6 +19,5 @@ class CreateOfferUIAction implements ConsoleUI {
         int price = scanner.nextInt();
 
         new CreateOfferService().execute(offerType,propertyCategory,description,price);
-        scanner.close();
     }
 }
