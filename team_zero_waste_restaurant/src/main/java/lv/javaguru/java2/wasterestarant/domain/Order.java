@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class Order {
-
+    private long orderID;
     private Client client;
     private Date orderDate;
     private List<Dish> orderedDishes;
 
-    public Order() { }
+    public Order() {
+    }
 
     public Order(Client client, Date orderDate, List<Dish> orderedDishes) {
         this.client = client;
@@ -40,6 +41,14 @@ public class Order {
 
     public void setOrderedDishes(List<Dish> orderedDishes) {
         this.orderedDishes = orderedDishes;
+    }
+
+    public long getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(long orderID) {
+        this.orderID = orderID;
     }
 
     @Override

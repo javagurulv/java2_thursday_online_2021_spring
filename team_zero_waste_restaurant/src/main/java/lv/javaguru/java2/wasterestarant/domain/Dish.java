@@ -3,7 +3,8 @@ package lv.javaguru.java2.wasterestarant.domain;
 import java.util.List;
 import java.util.Objects;
 
-public class Dish{
+public class Dish {
+    private long dishID;
     private String name;
     private String description;
     private String type;
@@ -79,6 +80,14 @@ public class Dish{
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public long getDishID() {
+        return dishID;
+    }
+
+    public void setDishID(long dishID) {
+        this.dishID = dishID;
     }
 
     @Override

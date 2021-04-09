@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.console_ui;
 
-import lv.javaguru.java2.wasterestarant.services.RemoveDishService;
+import lv.javaguru.java2.wasterestarant.core.services.RemoveDishService;
 
 import java.util.Scanner;
 

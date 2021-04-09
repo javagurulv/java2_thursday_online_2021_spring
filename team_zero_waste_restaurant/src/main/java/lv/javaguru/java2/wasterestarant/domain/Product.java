@@ -5,21 +5,21 @@ import java.util.Objects;
 
 
 public class Product {
-
+    private long productID;
     private String name;
-    private int quantity;
+    private double quantity;
     private double price;
     private Date expiryDate;
 
-    public Product() { }
+    public Product(long productID) {
+        this.productID = productID;
+    }
 
     public Product(String name, int quantity, double price, Date expiryDate) {
-
         this.name = name;
         this.quantity = quantity;
         this.price = price;
         this.expiryDate = expiryDate;
-
     }
 
     public String getName() {
@@ -30,7 +30,7 @@ public class Product {
         this.name = name;
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
@@ -54,6 +54,14 @@ public class Product {
         this.expiryDate = expiryDate;
     }
 
+    public long getProductID() {
+        return productID;
+    }
+
+    public void setProductID(long productID) {
+        this.productID = productID;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,7 +79,7 @@ public class Product {
     @Override
     public String toString() {
         return "lv.javaguru.java2.realestate.domain.Product : " + name + ", quantity : " + quantity + ", price : " + price +
-                ", expiryDate : " + expiryDate ;
+                ", expiryDate : " + expiryDate;
     }
 
 }

@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.database;
+package lv.javaguru.java2.wasterestarant.core.database;
 
 import lv.javaguru.java2.wasterestarant.domain.Dish;
 

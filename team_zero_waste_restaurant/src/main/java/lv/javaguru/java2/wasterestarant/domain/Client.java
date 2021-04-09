@@ -60,7 +60,7 @@ public class Client {
         return "Client{" +
                 "name='" + name + '\'' +
                 ", isRegistered=" + isRegistered +
-                ", clientID=" + clientID +
+                //", clientID=" + clientID +
                 '}';
     }
 

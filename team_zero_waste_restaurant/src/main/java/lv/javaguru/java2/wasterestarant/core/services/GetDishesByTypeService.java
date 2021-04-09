@@ -1,6 +1,6 @@
-package lv.javaguru.java2.wasterestarant.services;
+package lv.javaguru.java2.wasterestarant.core.services;
 
-import lv.javaguru.java2.wasterestarant.database.Database;
+import lv.javaguru.java2.wasterestarant.core.database.Database;
 
 public class GetDishesByTypeService {
 
