@@ -1,2 +1,2 @@
-Подключите интерфейс Database и его реализацию InMemoryDatabaseImpl
+Подключите интерфейс lv.javaguru.java2.hardcore.lv.javaguru.java2.realestate.database и его реализацию InMemoryDatabaseImpl
 к классу XXXListApplication.

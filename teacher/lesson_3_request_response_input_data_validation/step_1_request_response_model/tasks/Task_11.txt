@@ -7,4 +7,4 @@
 core
 core.requests
 core.responses
-core.services
+core.lv.javaguru.java2.realestate.services
