@@ -12,38 +12,49 @@ import java.util.Scanner;
 
 public class UIMain {
 
-    private Map<Integer, UIAction> menuNumberToActionMap;
+    private final Database database = new DatabaseImpl();
 
-    public UIMain() {
+    private final Map<Integer, UIAction> menuNumberToActionMap = new HashMap<>() {{
+           put(1, new AddEmployeeUIAction(new AddEmployeeService(database)));
+           put(2, new DeleteEmployeeUIAction(new DeleteEmployeeService(database)));
+           put(3, new GetAllEmployeesUIAction(new GetAllEmployeesService(database)));
+           put(4, new ExitUIAction());
+        }};
 
-        Database database = new DatabaseImpl();
-
-        menuNumberToActionMap = new HashMap<>();
-        menuNumberToActionMap.put(1, new AddEmployeeUIAction(new AddEmployeeService(database)));
-        menuNumberToActionMap.put(2, new DeleteEmployeeUIAction(new DeleteEmployeeService(database)));
-        menuNumberToActionMap.put(3, new GetAllEmployeesUIAction(new GetAllEmployeesService(database)));
-        menuNumberToActionMap.put(4, new ExitUIAction());
-
+    private int getUserOption() throws Exception {
+        System.out.println("Enter 1 to 4 menu option to execute:");
+        Scanner scanner = new Scanner(System.in);
+        int num = Integer.parseInt(scanner.nextLine());
+        if (num > 0 && num < 5) {
+            return num;
+        } else throw new Exception("Invalid number selected");
     }
 
-    public void run() {
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.println("Select menu option: ");
-            for (int i = 1; i < menuNumberToActionMap.size() + 1; i++) {
-                System.out.println(i + " - " + menuNumberToActionMap.get(i).toString());
-            }
-            int userSelectedMenuNumber = Integer.parseInt(scanner.nextLine());
-            executeUIAction(userSelectedMenuNumber);
+    private void performAction(int userOption) {
+        UIAction uiAction = menuNumberToActionMap.get(userOption);
+        if (uiAction != null) {
+            uiAction.execute();
         }
     }
 
-    private void executeUIAction(int userSelectedMenuNumber) {
-        UIAction uiAction = menuNumberToActionMap.get(userSelectedMenuNumber);
-        if (uiAction != null) {
-            uiAction.execute();
-        } else {
-            System.out.println("No such option: " + userSelectedMenuNumber);
+    private void printMenu() {
+        System.out.println("Program menu:");
+        System.out.println("1. Add new employee");
+        System.out.println("2. Remove employee");
+        System.out.println("3. Show all employees");
+        System.out.println("4. Exit");
+    }
+
+    public void run() {
+        while (true) {
+            printMenu();
+            int option;
+            try {
+                option = getUserOption();
+                performAction(option);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

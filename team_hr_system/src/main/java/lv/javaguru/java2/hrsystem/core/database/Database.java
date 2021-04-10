@@ -8,8 +8,8 @@ public interface Database {
 
     void saveEmployee(Employee employee);
 
-    void deleteEmployee(Long id);
+    boolean deleteEmployee(Long id);
 
-    List <Employee> getAllEmployees() ;
+    List <Employee> getAllEmployees();
 
 }
