@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hrsystem.database;
+package lv.javaguru.java2.hrsystem.core.database;
 
 import lv.javaguru.java2.hrsystem.bean.Employee;
 

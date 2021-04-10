@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
-import lv.javaguru.java2.hrsystem.services.AddEmployeeService;
+import lv.javaguru.java2.hrsystem.core.services.AddEmployeeService;
 import java.util.Scanner;
 
 public class AddEmployeeUIAction implements UIAction{

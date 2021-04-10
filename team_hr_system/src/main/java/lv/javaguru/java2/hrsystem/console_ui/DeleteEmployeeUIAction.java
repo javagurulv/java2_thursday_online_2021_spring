@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
-import lv.javaguru.java2.hrsystem.services.DeleteEmployeeService;
+import lv.javaguru.java2.hrsystem.core.services.DeleteEmployeeService;
 import java.util.Scanner;
 
 public class DeleteEmployeeUIAction implements UIAction{

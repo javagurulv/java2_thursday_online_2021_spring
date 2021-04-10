@@ -1,6 +1,6 @@
-package lv.javaguru.java2.hrsystem.services;
+package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.database.Database;
+import lv.javaguru.java2.hrsystem.core.database.Database;
 
 public class DeleteEmployeeService {
 

@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hrsystem.consoleUI_JK;
+package lv.javaguru.java2.hrsystem.JK.consoleUI_JK;
 
 public class ExitUAction implements UIAction {
 

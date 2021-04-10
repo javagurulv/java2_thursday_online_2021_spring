@@ -1,7 +1,7 @@
-package lv.javaguru.java2.hrsystem.consoleUI_JK;
+package lv.javaguru.java2.hrsystem.JK.consoleUI_JK;
 
 import lv.javaguru.java2.hrsystem.bean.Employee;
-import lv.javaguru.java2.hrsystem.services_JK.GetAllEmployees_JK;
+import lv.javaguru.java2.hrsystem.JK.services_JK.GetAllEmployees_JK;
 
 import java.util.List;
 

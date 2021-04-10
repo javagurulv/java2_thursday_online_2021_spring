@@ -1,15 +1,15 @@
-package lv.javaguru.java2.hrsystem.app_JK_no_map;
+package lv.javaguru.java2.hrsystem.JK.app_JK_no_map;
 
-import lv.javaguru.java2.hrsystem.consoleUI_JK.AddEmployeeUI;
-import lv.javaguru.java2.hrsystem.consoleUI_JK.ExitUAction;
-import lv.javaguru.java2.hrsystem.consoleUI_JK.GetAllEmployeesUI;
-import lv.javaguru.java2.hrsystem.consoleUI_JK.RemoveEmployeeUI;
-import lv.javaguru.java2.hrsystem.consoleUI_JK.UIAction;
-import lv.javaguru.java2.hrsystem.database.Database;
-import lv.javaguru.java2.hrsystem.database.DatabaseImpl;
-import lv.javaguru.java2.hrsystem.services_JK.AddEmployeeService_JK;
-import lv.javaguru.java2.hrsystem.services_JK.GetAllEmployees_JK;
-import lv.javaguru.java2.hrsystem.services_JK.RemoveEmployeeService_JK;
+import lv.javaguru.java2.hrsystem.JK.consoleUI_JK.AddEmployeeUI;
+import lv.javaguru.java2.hrsystem.JK.consoleUI_JK.ExitUAction;
+import lv.javaguru.java2.hrsystem.JK.consoleUI_JK.GetAllEmployeesUI;
+import lv.javaguru.java2.hrsystem.JK.consoleUI_JK.RemoveEmployeeUI;
+import lv.javaguru.java2.hrsystem.JK.consoleUI_JK.UIAction;
+import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.database.DatabaseImpl;
+import lv.javaguru.java2.hrsystem.JK.services_JK.AddEmployeeService_JK;
+import lv.javaguru.java2.hrsystem.JK.services_JK.GetAllEmployees_JK;
+import lv.javaguru.java2.hrsystem.JK.services_JK.RemoveEmployeeService_JK;
 
 import java.util.Scanner;
 

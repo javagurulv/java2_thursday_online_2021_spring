@@ -5,18 +5,18 @@ import java.util.Objects;
 public class Employee {
 
     private Long id;
-    private String firstName;
-    private String secondName;
+    private String name;
+    private String lastName;
     private int age;
 
-    public Employee(String firstName, String secondName) {
-        this.firstName = firstName;
-        this.secondName = secondName;
+    public Employee(String name, String lastName) {
+        this.name = name;
+        this.lastName = lastName;
     }
 
-    public Employee(String firstName, String secondName, int age) {
-        this.firstName = firstName;
-        this.secondName = secondName;
+    public Employee(String name, String lastName, int age) {
+        this.name = name;
+        this.lastName = lastName;
         this.age = age;
     }
 
@@ -28,20 +28,20 @@ public class Employee {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public int getAge() {
@@ -56,10 +56,10 @@ public class Employee {
     public String toString() {
 
         return "Employee - " +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
-                ", age=" + age;
+                "id = " + id +
+                ", Name = '" + name + '\'' +
+                ", Last Name = '" + lastName + '\'' +
+                ", age = " + age;
     }
 
     @Override
@@ -69,12 +69,12 @@ public class Employee {
         Employee employee = (Employee) o;
         return age == employee.age
                 && Objects.equals(id, employee.id)
-                && Objects.equals(firstName, employee.firstName)
-                && Objects.equals(secondName, employee.secondName);
+                && Objects.equals(name, employee.name)
+                && Objects.equals(lastName, employee.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, secondName, age);
+        return Objects.hash(id, name, lastName, age);
     }
 }

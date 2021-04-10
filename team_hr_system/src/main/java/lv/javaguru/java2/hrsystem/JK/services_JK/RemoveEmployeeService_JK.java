@@ -1,6 +1,6 @@
-package lv.javaguru.java2.hrsystem.services_JK;
+package lv.javaguru.java2.hrsystem.JK.services_JK;
 
-import lv.javaguru.java2.hrsystem.database.Database;
+import lv.javaguru.java2.hrsystem.core.database.Database;
 
 public class RemoveEmployeeService_JK {
     private final Database database;
