@@ -20,11 +20,14 @@ public class DeleteEmployeeUIAction implements UIAction{
         Long id = Long.parseLong(scanner.nextLine());
         DeleteEmployeeRequest deleteEmployeeRequest = new DeleteEmployeeRequest(id);
         DeleteEmployeeResponse deleteEmployeeResponse = deleteEmployeeService.execute(deleteEmployeeRequest);
-        if (deleteEmployeeResponse.isRemoved()) {
+        if (deleteEmployeeResponse.hasErrors()) {
+            deleteEmployeeResponse.getErrors().forEach(e -> System.out.println(e.getField() + " " + e.getMessage()));
+        }
+        else if (deleteEmployeeResponse.isRemoved()) {
             System.out.println("Employee removed!");
         }
         else {
-            deleteEmployeeResponse.getErrors().forEach(e -> System.out.println(e.getField() + " " + e.getMessage()));
+            System.out.println("Employee is not removed!");
         }
     }
     @Override

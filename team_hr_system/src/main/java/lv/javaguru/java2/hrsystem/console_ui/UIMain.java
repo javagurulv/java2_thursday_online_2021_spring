@@ -15,19 +15,20 @@ public class UIMain {
     private final Database database = new DatabaseImpl();
 
     private final Map<Integer, UIAction> menuNumberToActionMap = new HashMap<>() {{
-           put(1, new AddEmployeeUIAction(new AddEmployeeService(database)));
-           put(2, new DeleteEmployeeUIAction(new DeleteEmployeeService(database)));
-           put(3, new GetAllEmployeesUIAction(new GetAllEmployeesService(database)));
-           put(4, new ExitUIAction());
-        }};
+        put(1, new AddEmployeeUIAction(new AddEmployeeService(database)));
+        put(2, new DeleteEmployeeUIAction(new DeleteEmployeeService(database)));
+        put(3, new GetAllEmployeesUIAction(new GetAllEmployeesService(database)));
+        put(4, new ExitUIAction());
+    }};
 
-    private int getUserOption() throws Exception {
+    private int getUserOption() {
         System.out.println("Enter 1 to 4 menu option to execute:");
         Scanner scanner = new Scanner(System.in);
-        int num = Integer.parseInt(scanner.nextLine());
-        if (num > 0 && num < 5) {
-            return num;
-        } else throw new Exception("Invalid number selected");
+        return Integer.parseInt(scanner.nextLine());
+    }
+
+    private boolean checkUserInput(int input) {
+        return input > 0 && input < 5;
     }
 
     private void performAction(int userOption) {
@@ -48,12 +49,11 @@ public class UIMain {
     public void run() {
         while (true) {
             printMenu();
-            int option;
-            try {
-                option = getUserOption();
+            int option = getUserOption();
+            if (checkUserInput(option)) {
                 performAction(option);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } else {
+                System.out.println("Invalid number entered! Please try again");
             }
         }
     }
