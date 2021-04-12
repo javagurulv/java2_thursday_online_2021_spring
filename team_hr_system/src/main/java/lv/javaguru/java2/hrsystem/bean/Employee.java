@@ -8,6 +8,14 @@ public class Employee {
     private String name;
     private String lastName;
     private int age;
+    private EmployeeTitle title;
+
+    public Employee(String name, String lastName, int age, EmployeeTitle title) {
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+        this.title = title;
+    }
 
     public Employee(String name, String lastName) {
         this.name = name;
@@ -18,6 +26,10 @@ public class Employee {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
+    }
+
+    public EmployeeTitle getTitle() {
+        return title;
     }
 
     public Long getId() {

@@ -1,9 +1,12 @@
 package lv.javaguru.java2.hrsystem.core.database;
 
 import lv.javaguru.java2.hrsystem.bean.Employee;
+import lv.javaguru.java2.hrsystem.bean.EmployeeTitle;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.stream.Collectors.*;
 
 public class DatabaseImpl implements Database{
 
@@ -25,5 +28,12 @@ public class DatabaseImpl implements Database{
     @Override
     public List<Employee> getAllEmployees() {
         return employeeList;
+    }
+
+    @Override
+    public List<Employee> getEmployeesByTitle(EmployeeTitle title) {
+        return employeeList.stream()
+                .filter(employee -> employee.getTitle() != null && employee.getTitle().equals(title))
+                .collect(toList());
     }
 }
