@@ -6,10 +6,14 @@ import lv.javaguru.java2.realestate.domain.Offer;
 
 import java.util.List;
 
-public class ViewAllOffersService {
-    Database database = new InMemoryDatabaseImpl();
+public class GetAllOffersService {
+    Database database;
+
+    public GetAllOffersService(Database database) {
+        this.database = database;
+    }
 
     public List<Offer> execute(){
-        return database.viewAllOffers();
+        return database.getAllOffers();
     }
 }

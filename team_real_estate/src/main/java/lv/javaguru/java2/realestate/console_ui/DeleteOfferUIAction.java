@@ -5,6 +5,11 @@ import lv.javaguru.java2.realestate.services.DeleteOfferService;
 import java.util.Scanner;
 
 public class DeleteOfferUIAction implements ConsoleUI{
+    DeleteOfferService deleteOfferService;
+
+    public DeleteOfferUIAction(DeleteOfferService deleteOfferService) {
+        this.deleteOfferService = deleteOfferService;
+    }
 
     @Override
     public void execute() {
@@ -18,7 +23,7 @@ public class DeleteOfferUIAction implements ConsoleUI{
         System.out.println("Enter price : ");
         int price = scanner.nextInt();
 
-        new DeleteOfferService().execute(offerType,propertyCategory,description,price);
+        deleteOfferService.execute(offerType,propertyCategory,description,price);
 
     }
 }

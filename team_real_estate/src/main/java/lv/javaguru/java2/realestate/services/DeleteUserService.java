@@ -4,10 +4,14 @@ import lv.javaguru.java2.realestate.database.Database;
 import lv.javaguru.java2.realestate.database.InMemoryDatabaseImpl;
 import lv.javaguru.java2.realestate.domain.User;
 
-public class DeleteAccountService {
-    Database database = new InMemoryDatabaseImpl();
+public class DeleteUserService {
+    Database database;
+
+    public DeleteUserService(Database database) {
+        this.database = database;
+    }
 
     public void execute(String username, String password){
-        database.deleteAccount(new User(username,password));
+        database.deleteUser(new User(username,password));
     }
 }

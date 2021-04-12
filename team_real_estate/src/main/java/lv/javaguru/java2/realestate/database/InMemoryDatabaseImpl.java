@@ -8,8 +8,8 @@ import java.util.List;
 
 public class InMemoryDatabaseImpl implements Database {
 
-    private static final List<User> users = new ArrayList<>();
-    private static final List<Offer> offers = new ArrayList<>();
+    private final List<User> users = new ArrayList<>();
+    private final List<Offer> offers = new ArrayList<>();
 
 
     @Override
@@ -35,7 +35,7 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public List<Offer> viewAllOffers() {
+    public List<Offer> getAllOffers() {
         return offers;
     }
 
@@ -46,7 +46,7 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public void deleteAccount(User user) {
+    public void deleteUser(User user) {
         users.remove(user);
     }
 

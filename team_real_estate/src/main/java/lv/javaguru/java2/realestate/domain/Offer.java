@@ -3,10 +3,10 @@ package lv.javaguru.java2.realestate.domain;
 import java.util.Objects;
 
 public class Offer {
-    String offerType;
-    String propertyCategory;
-    String description;
-    double price;
+    private String offerType;
+    private String propertyCategory;
+    private String description;
+    private double price;
 
     public Offer(String offerType, String propertyCategory, String description, double price) {
         this.offerType = offerType;

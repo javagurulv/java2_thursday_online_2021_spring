@@ -1,10 +1,17 @@
 package lv.javaguru.java2.realestate.console_ui;
 
-import lv.javaguru.java2.realestate.services.DeleteAccountService;
+import lv.javaguru.java2.realestate.services.DeleteUserService;
 
 import java.util.Scanner;
 
-public class DeleteAccountUIAction implements ConsoleUI{
+public class DeleteUserUIAction implements ConsoleUI{
+
+    DeleteUserService deleteUserService;
+
+    public DeleteUserUIAction(DeleteUserService deleteUserService) {
+        this.deleteUserService = deleteUserService;
+    }
+
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
@@ -14,7 +21,7 @@ public class DeleteAccountUIAction implements ConsoleUI{
         System.out.println("Enter password : ");
         String password = scanner.nextLine();
 
-        new DeleteAccountService().execute(username,password);
+        deleteUserService.execute(username,password);
         System.out.println("Account deleted");
 
     }

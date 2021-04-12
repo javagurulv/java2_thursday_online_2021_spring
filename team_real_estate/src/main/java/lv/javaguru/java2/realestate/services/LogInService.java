@@ -6,7 +6,11 @@ import lv.javaguru.java2.realestate.domain.User;
 
 public class LogInService {
 
-    Database database = new InMemoryDatabaseImpl();
+    Database database;
+
+    public LogInService(Database database) {
+        this.database = database;
+    }
 
     public void execute(String username, String password){
         database.logIn(new User(username,password));

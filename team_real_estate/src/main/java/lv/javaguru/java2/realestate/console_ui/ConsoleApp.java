@@ -2,8 +2,7 @@ package lv.javaguru.java2.realestate.console_ui;
 
 import lv.javaguru.java2.realestate.database.Database;
 import lv.javaguru.java2.realestate.database.InMemoryDatabaseImpl;
-import lv.javaguru.java2.realestate.services.CreateAccountService;
-import lv.javaguru.java2.realestate.services.CreateOfferService;
+import lv.javaguru.java2.realestate.services.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,21 +10,24 @@ import java.util.Scanner;
 
 public class ConsoleApp {
     private final Map<Integer, ConsoleUI> menuNumberToActionMap;
-    private final Database database = new InMemoryDatabaseImpl();
-    private final CreateAccountService createAccountService = new CreateAccountService(database);
-    private final CreateOfferService createOfferService = new CreateOfferService(database);
-
+    private final static Database database = new InMemoryDatabaseImpl();
+    private final static CreateUserService CREATE_USER_SERVICE = new CreateUserService(database);
+    private final static CreateOfferService createOfferService = new CreateOfferService(database);
+    private final static DeleteUserService DELETE_USER_SERVICE = new DeleteUserService(database);
+    private final static LogInService logInService = new LogInService(database);
+    private final static DeleteOfferService deleteOfferService = new DeleteOfferService(database);
+    private final static GetAllOffersService getAllOffersService = new GetAllOffersService(database);
 
     public ConsoleApp() {
 
         menuNumberToActionMap = new HashMap();
         menuNumberToActionMap.put(0, new ExitUIAction());
-        menuNumberToActionMap.put(1, new CreateAccountUIAction(createAccountService));
-        menuNumberToActionMap.put(2, new LogInUIAction());
+        menuNumberToActionMap.put(1, new CreateUserUIAction(CREATE_USER_SERVICE));
+        menuNumberToActionMap.put(2, new LogInUIAction(logInService));
         menuNumberToActionMap.put(3, new CreateOfferUIAction(createOfferService));
-        menuNumberToActionMap.put(4, new ViewAllOffersUIAction());
-        menuNumberToActionMap.put(5, new DeleteOfferUIAction());
-        menuNumberToActionMap.put(6, new DeleteAccountUIAction());
+        menuNumberToActionMap.put(4, new GetAllOffersUIAction(getAllOffersService));
+        menuNumberToActionMap.put(5, new DeleteOfferUIAction(deleteOfferService));
+        menuNumberToActionMap.put(6, new DeleteUserUIAction(DELETE_USER_SERVICE));
     }
 
     public void run() {

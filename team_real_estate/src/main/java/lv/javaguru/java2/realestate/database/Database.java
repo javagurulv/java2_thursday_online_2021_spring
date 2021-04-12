@@ -10,7 +10,7 @@ public interface Database {
     void createAccount(User user);
     void logIn(User user);
     void createOffer(Offer offer);
-    List<Offer> viewAllOffers();
+    List<Offer> getAllOffers();
     void deleteOffer(Offer offer);
-    void deleteAccount(User user);
+    void deleteUser(User user);
 }

@@ -5,15 +5,15 @@ import lv.javaguru.java2.realestate.database.InMemoryDatabaseImpl;
 import lv.javaguru.java2.realestate.domain.Offer;
 import org.junit.Assert;
 import org.junit.Test;
-import lv.javaguru.java2.realestate.services.ViewAllOffersService;
+import lv.javaguru.java2.realestate.services.GetAllOffersService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewAllOffersServiceTest {
+public class GetAllOffersServiceTest {
     Offer offer = new Offer("Buy", "House", "ABC", 10);
     Database database = new InMemoryDatabaseImpl();
-    List<Offer> actual = new ViewAllOffersService().execute();
+    List<Offer> actual = new GetAllOffersService(database).execute();
     List<Offer> expected = new ArrayList<>();
 
     @Test

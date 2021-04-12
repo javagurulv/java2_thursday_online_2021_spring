@@ -10,7 +10,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateAccountServiceTest  {
+public class CreateUserServiceTest {
     User user = new User("John","Doe");
     Database database = new InMemoryDatabaseImpl();
 
