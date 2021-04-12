@@ -12,7 +12,7 @@ public class CreateUserService {
         this.database = database;
     }
 
-    public CreateUserResponse execute(CreateUserRequest createUserRequest){
+    public CreateUserResponse execute(CreateUserRequest createUserRequest) {
         User user = new User(
                 createUserRequest.getUsername(),
                 createUserRequest.getPassword());

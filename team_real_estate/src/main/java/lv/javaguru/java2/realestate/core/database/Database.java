@@ -8,9 +8,14 @@ import java.util.List;
 public interface Database {
 
     void createAccount(User user);
+
     void logIn(User user);
+
     void createOffer(Offer offer);
+
     List<Offer> getAllOffers();
-    void deleteOffer(Offer offer);
+
+    boolean deleteOfferByID(int id);
+
     void deleteUser(User user);
 }

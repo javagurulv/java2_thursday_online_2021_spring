@@ -3,6 +3,7 @@ package lv.javaguru.java2.realestate.console_ui;
 import lv.javaguru.java2.realestate.core.requests.LogInRequest;
 import lv.javaguru.java2.realestate.core.response.LogInResponse;
 import lv.javaguru.java2.realestate.core.services.LogInService;
+
 import java.util.Scanner;
 
 class LogInUIAction implements ConsoleUI {
@@ -20,7 +21,7 @@ class LogInUIAction implements ConsoleUI {
         System.out.println("Enter password : ");
         String password = scanner.nextLine();
 
-        LogInRequest request = new LogInRequest(username,password);
+        LogInRequest request = new LogInRequest(username, password);
         LogInResponse response = logInService.execute(request);
 
     }

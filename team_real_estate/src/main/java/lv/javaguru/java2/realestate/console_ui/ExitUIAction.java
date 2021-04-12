@@ -1,6 +1,6 @@
 package lv.javaguru.java2.realestate.console_ui;
 
-class ExitUIAction implements  ConsoleUI{
+class ExitUIAction implements ConsoleUI {
 
     @Override
     public void execute() {

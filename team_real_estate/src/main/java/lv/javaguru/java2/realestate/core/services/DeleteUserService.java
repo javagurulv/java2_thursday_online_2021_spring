@@ -12,7 +12,7 @@ public class DeleteUserService {
         this.database = database;
     }
 
-    public DeleteUserResponse execute(DeleteUserRequest deleteUserRequest){
+    public DeleteUserResponse execute(DeleteUserRequest deleteUserRequest) {
         User user = new User(deleteUserRequest.getUsername(), deleteUserRequest.getPassword());
         database.deleteUser(user);
         return new DeleteUserResponse(user);

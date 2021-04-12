@@ -7,6 +7,7 @@ public class Offer {
     private String propertyCategory;
     private String description;
     private double price;
+    private int id;
 
     public Offer(String offerType, String propertyCategory, String description, double price) {
         this.offerType = offerType;
@@ -47,6 +48,14 @@ public class Offer {
         this.price = price;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,7 +64,8 @@ public class Offer {
         return Double.compare(offer.price, price) == 0
                 && Objects.equals(offerType, offer.offerType)
                 && Objects.equals(propertyCategory, offer.propertyCategory)
-                && Objects.equals(description, offer.description);
+                && Objects.equals(description, offer.description)
+                && Objects.equals(id, offer.id);
     }
 
     @Override
@@ -69,6 +79,7 @@ public class Offer {
                 "offerType='" + offerType + '\'' +
                 ", propertyCategory='" + propertyCategory + '\'' +
                 ", description='" + description + '\'' +
-                ", price=" + price +" $"+ '}';
+                ", price=" + price + "$" + '\'' +
+                ", id='" + id + '}';
     }
 }

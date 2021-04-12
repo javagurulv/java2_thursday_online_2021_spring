@@ -13,7 +13,7 @@ public class LogInService {
         this.database = database;
     }
 
-    public LogInResponse execute(LogInRequest logInRequest){
+    public LogInResponse execute(LogInRequest logInRequest) {
         User user = new User(
                 logInRequest.getUsername(),
                 logInRequest.getPassword());

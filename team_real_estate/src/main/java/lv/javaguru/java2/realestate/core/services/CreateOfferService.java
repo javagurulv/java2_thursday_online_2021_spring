@@ -12,7 +12,7 @@ public class CreateOfferService {
         this.database = database;
     }
 
-    public CreateOfferResponse execute(CreateOfferRequest createOfferRequest){
+    public CreateOfferResponse execute(CreateOfferRequest createOfferRequest) {
         Offer offer = new Offer(
                 createOfferRequest.getOfferType(),
                 createOfferRequest.getPropertyCategory(),

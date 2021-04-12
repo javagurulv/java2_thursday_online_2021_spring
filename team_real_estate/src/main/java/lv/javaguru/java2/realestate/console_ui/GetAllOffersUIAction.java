@@ -13,7 +13,10 @@ class GetAllOffersUIAction implements ConsoleUI {
 
     @Override
     public void execute() {
+        System.out.println("Offer list : ");
         GetAllOffersRequest request = new GetAllOffersRequest();
         GetAllOffersResponse response = getAllOffersService.execute(request);
+        response.getOfferList().forEach(offer -> System.out.println(offer.toString()));
+
     }
 }

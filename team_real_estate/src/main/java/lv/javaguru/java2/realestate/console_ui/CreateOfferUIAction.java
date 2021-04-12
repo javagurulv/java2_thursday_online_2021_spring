@@ -10,7 +10,7 @@ class CreateOfferUIAction implements ConsoleUI {
 
     CreateOfferService createOfferService;
 
-    public CreateOfferUIAction(CreateOfferService createOfferService){
+    public CreateOfferUIAction(CreateOfferService createOfferService) {
         this.createOfferService = createOfferService;
     }
 
@@ -27,9 +27,9 @@ class CreateOfferUIAction implements ConsoleUI {
         System.out.println("Enter price : ");
         int price = scanner.nextInt();
 
-        CreateOfferRequest request = new CreateOfferRequest(offerType,propertyCategory,description,price);
+        CreateOfferRequest request = new CreateOfferRequest(offerType, propertyCategory, description, price);
         CreateOfferResponse response = createOfferService.execute(request);
 
-
+        System.out.println("Offer created");
     }
 }

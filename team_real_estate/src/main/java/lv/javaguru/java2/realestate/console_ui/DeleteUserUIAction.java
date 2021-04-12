@@ -6,7 +6,7 @@ import lv.javaguru.java2.realestate.core.services.DeleteUserService;
 
 import java.util.Scanner;
 
-public class DeleteUserUIAction implements ConsoleUI{
+public class DeleteUserUIAction implements ConsoleUI {
 
     DeleteUserService deleteUserService;
 
@@ -23,7 +23,7 @@ public class DeleteUserUIAction implements ConsoleUI{
         System.out.println("Enter password : ");
         String password = scanner.nextLine();
 
-        DeleteUserRequest request = new DeleteUserRequest(username,password);
+        DeleteUserRequest request = new DeleteUserRequest(username, password);
         DeleteUserResponse response = deleteUserService.execute(request);
 
     }

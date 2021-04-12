@@ -40,7 +40,7 @@ public class ConsoleApp {
         }
     }
 
-    private int getNumberFromUser(){
+    private int getNumberFromUser() {
         Scanner scanner = new Scanner(System.in);
         return Integer.parseInt(scanner.nextLine());
     }

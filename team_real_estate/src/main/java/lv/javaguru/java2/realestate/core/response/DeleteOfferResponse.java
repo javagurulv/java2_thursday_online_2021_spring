@@ -1,15 +1,13 @@
 package lv.javaguru.java2.realestate.core.response;
 
-import lv.javaguru.java2.realestate.core.domain.Offer;
-
 public class DeleteOfferResponse {
-    private final Offer offer;
+    boolean isOfferDeleted;
 
-    public DeleteOfferResponse(Offer offer) {
-        this.offer = offer;
+    public DeleteOfferResponse(boolean isOfferDeleted) {
+        this.isOfferDeleted = isOfferDeleted;
     }
 
-    public Offer getOffer() {
-        return offer;
+    public boolean isOfferDeleted() {
+        return isOfferDeleted;
     }
 }

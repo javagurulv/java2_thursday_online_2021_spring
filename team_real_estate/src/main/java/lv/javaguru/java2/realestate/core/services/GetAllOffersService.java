@@ -11,7 +11,7 @@ public class GetAllOffersService {
         this.database = database;
     }
 
-    public GetAllOffersResponse execute(GetAllOffersRequest getAllOffersRequest){
+    public GetAllOffersResponse execute(GetAllOffersRequest getAllOffersRequest) {
         return new GetAllOffersResponse(database.getAllOffers());
     }
 }
