@@ -78,7 +78,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "lv.javaguru.java2.realestate.domain.Product : " + name + ", quantity : " + quantity + ", price : " + price +
+        return "lv.javaguru.java2.realestate.core.domain.Product : " + name + ", quantity : " + quantity + ", price : " + price +
                 ", expiryDate : " + expiryDate;
     }
 

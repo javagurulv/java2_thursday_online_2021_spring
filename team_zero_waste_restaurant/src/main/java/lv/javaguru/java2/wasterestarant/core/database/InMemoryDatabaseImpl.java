@@ -8,6 +8,7 @@ import java.util.List;
 public class InMemoryDatabaseImpl implements Database {
     private Long nextId = 1L;
     private List<Dish> dishes = new ArrayList<>();
+    private List<Dish> dishByType = new ArrayList<>();
 
     @Override
     public void save(Dish dish) {
@@ -25,34 +26,17 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public void getAllDishes() {
-        for (int i = 0; i < dishes.size(); i++) {
-            printDishWithFields(dishes, i);
-        }
+    public List<Dish> getAllDishes() {
+        return dishes;
     }
 
     @Override
-    public void getDishByType(String dishType) {
-        List<Dish> sortedList = new ArrayList<>();
-        for (Dish dish : dishes) {
-            if (dish.getType().equals(dishType)) {
-                sortedList.add(dish);
-            } else {
-                System.out.println("This dish type not found.");
-            }
-        }
-        for (int i = 0; i < sortedList.size(); i++) {
-            printDishWithFields(sortedList, i);
-        }
-    }
-
-    private void printDishWithFields(List<Dish> sortedList, int i) {
-        System.out.println((i + 1) + ". " + sortedList.get(i).getName() +
-                ", " + sortedList.get(i).getDescription() +
-                //", " + sortedList.get(i).getProductList() +
-                ", " + sortedList.get(i).getType() +
-                ", price - " + sortedList.get(i).getPrice() + " \u0024, " +
-                "weight - " + sortedList.get(i).getWeight() + " grams.");
+    public List<Dish> dishByType(String dishType) {
+       dishes.stream()
+                 .filter(dish -> dish.getType().equals(dishType))
+                 .findFirst()
+                 .ifPresent(dish -> dishByType.add(dish));
+        return dishByType;
     }
 }
 

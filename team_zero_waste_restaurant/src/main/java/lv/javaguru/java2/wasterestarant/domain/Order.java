@@ -53,7 +53,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "lv.javaguru.java2.realestate.domain.Order{" +
+        return "lv.javaguru.java2.realestate.core.domain.Order{" +
                 "clientName='" + client + '\'' +
                 ", orderDate=" + orderDate +
                 ", orderedDishes=" + orderedDishes +

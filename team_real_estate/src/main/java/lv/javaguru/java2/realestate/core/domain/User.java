@@ -1,4 +1,4 @@
-package lv.javaguru.java2.realestate.domain;
+package lv.javaguru.java2.realestate.core.domain;
 
 import java.util.Objects;
 
@@ -63,7 +63,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "lv.javaguru.java2.realestate.domain.User{" +
+        return "lv.javaguru.java2.realestate.core.domain.User{" +
                 "username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", id=" + id +

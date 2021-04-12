@@ -1,6 +1,11 @@
 package lv.javaguru.java2.wasterestarant.core.services;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.requests.GetAllDishesRequest;
+import lv.javaguru.java2.wasterestarant.core.responses.GetAllDishesResponse;
+import lv.javaguru.java2.wasterestarant.domain.Dish;
+
+import java.util.List;
 
 public class GetAllDishesService {
 
@@ -10,8 +15,9 @@ public class GetAllDishesService {
         this.database = database;
     }
 
-    public void execute() {
-        database.getAllDishes();
+    public GetAllDishesResponse execute(GetAllDishesRequest request) {
+        List<Dish> dishes = database.getAllDishes();
+        return new GetAllDishesResponse(dishes);
     }
 
 }

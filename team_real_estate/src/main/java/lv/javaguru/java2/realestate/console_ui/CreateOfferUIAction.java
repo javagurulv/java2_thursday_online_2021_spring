@@ -1,9 +1,18 @@
 package lv.javaguru.java2.realestate.console_ui;
 
-import lv.javaguru.java2.realestate.services.CreateOfferService;
+import lv.javaguru.java2.realestate.core.requests.CreateOfferRequest;
+import lv.javaguru.java2.realestate.core.response.CreateOfferResponse;
+import lv.javaguru.java2.realestate.core.services.CreateOfferService;
+
 import java.util.Scanner;
 
 class CreateOfferUIAction implements ConsoleUI {
+
+    CreateOfferService createOfferService;
+
+    public CreateOfferUIAction(CreateOfferService createOfferService) {
+        this.createOfferService = createOfferService;
+    }
 
 
     @Override
@@ -18,7 +27,9 @@ class CreateOfferUIAction implements ConsoleUI {
         System.out.println("Enter price : ");
         int price = scanner.nextInt();
 
-        new CreateOfferService().execute(offerType,propertyCategory,description,price);
-        scanner.close();
+        CreateOfferRequest request = new CreateOfferRequest(offerType, propertyCategory, description, price);
+        CreateOfferResponse response = createOfferService.execute(request);
+
+        System.out.println("Offer created");
     }
 }
