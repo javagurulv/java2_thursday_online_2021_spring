@@ -1,7 +1,7 @@
-package lv.javaguru.java2.realestate.database;
+package lv.javaguru.java2.realestate.core.database;
 
-import lv.javaguru.java2.realestate.domain.Offer;
-import lv.javaguru.java2.realestate.domain.User;
+import lv.javaguru.java2.realestate.core.domain.Offer;
+import lv.javaguru.java2.realestate.core.domain.User;
 
 import java.util.List;
 

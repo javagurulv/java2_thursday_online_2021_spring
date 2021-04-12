@@ -1,6 +1,6 @@
-package lv.javaguru.java2.realestate.response;
+package lv.javaguru.java2.realestate.core.response;
 
-import lv.javaguru.java2.realestate.domain.User;
+import lv.javaguru.java2.realestate.core.domain.User;
 
 public class CreateUserResponse {
 

@@ -1,6 +1,8 @@
 package lv.javaguru.java2.realestate.console_ui;
 
-import lv.javaguru.java2.realestate.services.DeleteOfferService;
+import lv.javaguru.java2.realestate.core.requests.DeleteOfferRequest;
+import lv.javaguru.java2.realestate.core.response.DeleteOfferResponse;
+import lv.javaguru.java2.realestate.core.services.DeleteOfferService;
 
 import java.util.Scanner;
 
@@ -23,7 +25,8 @@ public class DeleteOfferUIAction implements ConsoleUI{
         System.out.println("Enter price : ");
         int price = scanner.nextInt();
 
-        deleteOfferService.execute(offerType,propertyCategory,description,price);
+        DeleteOfferRequest request = new DeleteOfferRequest(offerType,propertyCategory,description,price);
+        DeleteOfferResponse response = deleteOfferService.execute(request);
 
     }
 }

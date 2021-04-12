@@ -1,11 +1,11 @@
-package lv.javaguru.java2.realestate.requests;
+package lv.javaguru.java2.realestate.core.requests;
 
 public class CreateOfferRequest {
 
-    String offerType;
-    String propertyCategory;
-    String description;
-    double price;
+    private final String offerType;
+    private final String propertyCategory;
+    private final String description;
+    private final double price;
 
     public CreateOfferRequest(String offerType, String propertyCategory, String description, double price) {
         this.offerType = offerType;

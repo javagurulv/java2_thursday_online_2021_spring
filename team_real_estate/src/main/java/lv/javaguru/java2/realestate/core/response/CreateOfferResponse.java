@@ -1,6 +1,6 @@
-package lv.javaguru.java2.realestate.response;
+package lv.javaguru.java2.realestate.core.response;
 
-import lv.javaguru.java2.realestate.domain.Offer;
+import lv.javaguru.java2.realestate.core.domain.Offer;
 
 public class CreateOfferResponse {
 

@@ -1,9 +1,9 @@
-package lv.javaguru.java2.realestate.services;
+package lv.javaguru.java2.realestate.core.services;
 
-import lv.javaguru.java2.realestate.database.Database;
-import lv.javaguru.java2.realestate.domain.User;
-import lv.javaguru.java2.realestate.requests.CreateUserRequest;
-import lv.javaguru.java2.realestate.response.CreateUserResponse;
+import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.domain.User;
+import lv.javaguru.java2.realestate.core.requests.CreateUserRequest;
+import lv.javaguru.java2.realestate.core.response.CreateUserResponse;
 
 public class CreateUserService {
     Database database;

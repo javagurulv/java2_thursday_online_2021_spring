@@ -1,8 +1,8 @@
 package lv.javaguru.java2.realestate.console_ui;
 
-import lv.javaguru.java2.realestate.requests.CreateOfferRequest;
-import lv.javaguru.java2.realestate.response.CreateOfferResponse;
-import lv.javaguru.java2.realestate.services.CreateOfferService;
+import lv.javaguru.java2.realestate.core.requests.CreateOfferRequest;
+import lv.javaguru.java2.realestate.core.response.CreateOfferResponse;
+import lv.javaguru.java2.realestate.core.services.CreateOfferService;
 
 import java.util.Scanner;
 

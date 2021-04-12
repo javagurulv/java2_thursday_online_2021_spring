@@ -1,8 +1,8 @@
 package lv.javaguru.java2.realestate.console_ui;
 
-import lv.javaguru.java2.realestate.requests.CreateUserRequest;
-import lv.javaguru.java2.realestate.response.CreateUserResponse;
-import lv.javaguru.java2.realestate.services.CreateUserService;
+import lv.javaguru.java2.realestate.core.requests.CreateUserRequest;
+import lv.javaguru.java2.realestate.core.response.CreateUserResponse;
+import lv.javaguru.java2.realestate.core.services.CreateUserService;
 import java.util.Scanner;
 
 class CreateUserUIAction implements ConsoleUI {

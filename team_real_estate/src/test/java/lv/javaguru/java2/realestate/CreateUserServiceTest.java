@@ -1,9 +1,9 @@
 package lv.javaguru.java2.realestate;
 
-import lv.javaguru.java2.realestate.database.Database;
-import lv.javaguru.java2.realestate.database.InMemoryDatabaseImpl;
-import lv.javaguru.java2.realestate.domain.Offer;
-import lv.javaguru.java2.realestate.domain.User;
+import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.database.InMemoryDatabaseImpl;
+import lv.javaguru.java2.realestate.core.domain.Offer;
+import lv.javaguru.java2.realestate.core.domain.User;
 
 import org.junit.Test;
 

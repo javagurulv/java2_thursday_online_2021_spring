@@ -1,4 +1,4 @@
-package lv.javaguru.java2.realestate.domain;
+package lv.javaguru.java2.realestate.core.domain;
 
 import java.util.Objects;
 

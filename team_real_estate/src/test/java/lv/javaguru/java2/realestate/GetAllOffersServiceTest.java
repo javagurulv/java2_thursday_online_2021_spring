@@ -1,11 +1,11 @@
 package lv.javaguru.java2.realestate;
 
-import lv.javaguru.java2.realestate.database.Database;
-import lv.javaguru.java2.realestate.database.InMemoryDatabaseImpl;
-import lv.javaguru.java2.realestate.domain.Offer;
+import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.database.InMemoryDatabaseImpl;
+import lv.javaguru.java2.realestate.core.domain.Offer;
 import org.junit.Assert;
 import org.junit.Test;
-import lv.javaguru.java2.realestate.services.GetAllOffersService;
+import lv.javaguru.java2.realestate.core.services.GetAllOffersService;
 
 import java.util.ArrayList;
 import java.util.List;

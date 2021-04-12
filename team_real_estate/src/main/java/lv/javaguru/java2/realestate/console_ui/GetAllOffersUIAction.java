@@ -1,6 +1,8 @@
 package lv.javaguru.java2.realestate.console_ui;
 
-import lv.javaguru.java2.realestate.services.GetAllOffersService;
+import lv.javaguru.java2.realestate.core.requests.GetAllOffersRequest;
+import lv.javaguru.java2.realestate.core.response.GetAllOffersResponse;
+import lv.javaguru.java2.realestate.core.services.GetAllOffersService;
 
 class GetAllOffersUIAction implements ConsoleUI {
     GetAllOffersService getAllOffersService;
@@ -11,6 +13,7 @@ class GetAllOffersUIAction implements ConsoleUI {
 
     @Override
     public void execute() {
-        getAllOffersService.execute().forEach(offer -> System.out.println(offer.toString()));
+        GetAllOffersRequest request = new GetAllOffersRequest();
+        GetAllOffersResponse response = getAllOffersService.execute(request);
     }
 }

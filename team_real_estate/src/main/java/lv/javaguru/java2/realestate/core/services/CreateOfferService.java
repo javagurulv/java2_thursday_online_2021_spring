@@ -1,10 +1,9 @@
-package lv.javaguru.java2.realestate.services;
+package lv.javaguru.java2.realestate.core.services;
 
-import lv.javaguru.java2.realestate.database.Database;
-import lv.javaguru.java2.realestate.database.InMemoryDatabaseImpl;
-import lv.javaguru.java2.realestate.domain.Offer;
-import lv.javaguru.java2.realestate.requests.CreateOfferRequest;
-import lv.javaguru.java2.realestate.response.CreateOfferResponse;
+import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.domain.Offer;
+import lv.javaguru.java2.realestate.core.requests.CreateOfferRequest;
+import lv.javaguru.java2.realestate.core.response.CreateOfferResponse;
 
 public class CreateOfferService {
     Database database;
