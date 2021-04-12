@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hrsystem.database;
+package lv.javaguru.java2.hrsystem.core.database;
 
 import lv.javaguru.java2.hrsystem.bean.Employee;
 
@@ -12,31 +12,18 @@ public class DatabaseImpl implements Database{
 
     @Override
     public void saveEmployee(Employee employee) {
-
         employee.setId(nextIdEmployee);
         nextIdEmployee++;
         employeeList.add(employee);
-
     }
 
-   /* @Override
-    public void deleteEmployee(Long id) {
-
-        employeeList.stream().filter(employee -> employee.getId().equals(id))
-                .findFirst().
-                ifPresent(employeeList::remove);
-
-    }*/
-
     @Override
-    public void deleteEmployee(Long id) {
-        employeeList.removeIf(e -> e.getId().equals(id));
+    public boolean deleteEmployee(Long id) {
+        return employeeList.removeIf(e -> e.getId().equals(id));
     }
 
     @Override
     public List<Employee> getAllEmployees() {
-
         return employeeList;
-
     }
 }

@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hrsystem.database;
+package lv.javaguru.java2.hrsystem.core.database;
 
 import lv.javaguru.java2.hrsystem.bean.Employee;
 
@@ -8,8 +8,8 @@ public interface Database {
 
     void saveEmployee(Employee employee);
 
-    void deleteEmployee(Long id);
+    boolean deleteEmployee(Long id);
 
-    List <Employee> getAllEmployees() ;
+    List <Employee> getAllEmployees();
 
 }

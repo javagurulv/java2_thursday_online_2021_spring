@@ -1,10 +1,10 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
-import lv.javaguru.java2.hrsystem.database.Database;
-import lv.javaguru.java2.hrsystem.database.DatabaseImpl;
-import lv.javaguru.java2.hrsystem.services.AddEmployeeService;
-import lv.javaguru.java2.hrsystem.services.DeleteEmployeeService;
-import lv.javaguru.java2.hrsystem.services.GetAllEmployeeService;
+import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.database.DatabaseImpl;
+import lv.javaguru.java2.hrsystem.core.services.AddEmployeeService;
+import lv.javaguru.java2.hrsystem.core.services.DeleteEmployeeService;
+import lv.javaguru.java2.hrsystem.core.services.GetAllEmployeesService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,42 +12,49 @@ import java.util.Scanner;
 
 public class UIMain {
 
-    private Map<Integer, UIAction> menuNumberToActionMap;
+    private final Database database = new DatabaseImpl();
 
-    public UIMain() {
+    private final Map<Integer, UIAction> menuNumberToActionMap = new HashMap<>() {{
+        put(1, new AddEmployeeUIAction(new AddEmployeeService(database)));
+        put(2, new DeleteEmployeeUIAction(new DeleteEmployeeService(database)));
+        put(3, new GetAllEmployeesUIAction(new GetAllEmployeesService(database)));
+        put(4, new ExitUIAction());
+    }};
 
-        Database database = new DatabaseImpl();
-
-        menuNumberToActionMap = new HashMap<>();
-        menuNumberToActionMap.put(1, new AddEmployeeUIAction(new AddEmployeeService(database)));
-        menuNumberToActionMap.put(2, new DeleteEmployeeUIAction(new DeleteEmployeeService(database)));
-        menuNumberToActionMap.put(3, new GetAllEmployeeUIAction(new GetAllEmployeeService(database)));
-
+    private int getUserOption() {
+        System.out.println("Enter 1 to 4 menu option to execute:");
+        Scanner scanner = new Scanner(System.in);
+        return Integer.parseInt(scanner.nextLine());
     }
 
-    public void run() {
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.println("Select menu option: ");
-            for (int i = 1; i < menuNumberToActionMap.size() + 1; i++) {
-                System.out.println(i + " - " + menuNumberToActionMap.get(i).toString());
-            }
-            int userSelectedMenuNumber = Integer.parseInt(scanner.nextLine());
-            if (userSelectedMenuNumber == 0) {
-                System.out.println("Good bye!");
-                break;
-            } else {
-                executeUIAction(userSelectedMenuNumber);
-            }
+    private boolean checkUserInput(int input) {
+        return input > 0 && input < 5;
+    }
+
+    private void performAction(int userOption) {
+        UIAction uiAction = menuNumberToActionMap.get(userOption);
+        if (uiAction != null) {
+            uiAction.execute();
         }
     }
 
-    private void executeUIAction(int userSelectedMenuNumber) {
-        UIAction uiAction = menuNumberToActionMap.get(userSelectedMenuNumber);
-        if (uiAction != null) {
-            uiAction.execute();
-        } else {
-            System.out.println("No such option: " + userSelectedMenuNumber);
+    private void printMenu() {
+        System.out.println("Program menu:");
+        System.out.println("1. Add new employee");
+        System.out.println("2. Remove employee");
+        System.out.println("3. Show all employees");
+        System.out.println("4. Exit");
+    }
+
+    public void run() {
+        while (true) {
+            printMenu();
+            int option = getUserOption();
+            if (checkUserInput(option)) {
+                performAction(option);
+            } else {
+                System.out.println("Invalid number entered! Please try again");
+            }
         }
     }
 }

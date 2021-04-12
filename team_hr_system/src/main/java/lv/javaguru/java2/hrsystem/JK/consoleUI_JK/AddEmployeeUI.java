@@ -1,6 +1,6 @@
-package lv.javaguru.java2.hrsystem.consoleUI_JK;
+package lv.javaguru.java2.hrsystem.JK.consoleUI_JK;
 
-import lv.javaguru.java2.hrsystem.services_JK.AddEmployeeService_JK;
+import lv.javaguru.java2.hrsystem.JK.services_JK.AddEmployeeService_JK;
 
 import java.util.Scanner;
 

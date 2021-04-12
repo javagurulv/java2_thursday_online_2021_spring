@@ -1,7 +1,7 @@
 package lv.javaguru.java2.hrsystem;
 
 import lv.javaguru.java2.hrsystem.bean.Employee;
-import lv.javaguru.java2.hrsystem.database.DatabaseImpl;
+import lv.javaguru.java2.hrsystem.core.database.DatabaseImpl;
 import org.junit.Test;
 
 import java.util.ArrayList;

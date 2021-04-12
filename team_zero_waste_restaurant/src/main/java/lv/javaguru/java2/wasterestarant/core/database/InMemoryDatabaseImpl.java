@@ -25,34 +25,19 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public void getAllDishes() {
-        for (int i = 0; i < dishes.size(); i++) {
-            printDishWithFields(dishes, i);
-        }
+    public List<Dish> getAllDishes() {
+        return dishes;
     }
 
     @Override
-    public void getDishByType(String dishType) {
-        List<Dish> sortedList = new ArrayList<>();
+    public List<Dish> dishByType(String dishType) {
         for (Dish dish : dishes) {
             if (dish.getType().equals(dishType)) {
-                sortedList.add(dish);
-            } else {
+                dishes.add(dish);
+            }else {
                 System.out.println("This dish type not found.");
             }
-        }
-        for (int i = 0; i < sortedList.size(); i++) {
-            printDishWithFields(sortedList, i);
-        }
-    }
-
-    private void printDishWithFields(List<Dish> sortedList, int i) {
-        System.out.println((i + 1) + ". " + sortedList.get(i).getName() +
-                ", " + sortedList.get(i).getDescription() +
-                //", " + sortedList.get(i).getProductList() +
-                ", " + sortedList.get(i).getType() +
-                ", price - " + sortedList.get(i).getPrice() + " \u0024, " +
-                "weight - " + sortedList.get(i).getWeight() + " grams.");
+        }return dishes;
     }
 }
 
