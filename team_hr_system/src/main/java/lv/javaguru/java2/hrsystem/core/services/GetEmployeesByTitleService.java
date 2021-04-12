@@ -7,10 +7,10 @@ import lv.javaguru.java2.hrsystem.core.responses.GetEmployeesByTitleResponse;
 
 import java.util.List;
 
-public class GetEmployeesByTitle {
+public class GetEmployeesByTitleService {
     private final Database database;
 
-    public GetEmployeesByTitle(Database database) {
+    public GetEmployeesByTitleService(Database database) {
         this.database = database;
     }
 
