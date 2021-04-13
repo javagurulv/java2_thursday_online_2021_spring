@@ -6,10 +6,10 @@ public class Offer {
     private String offerType;
     private String propertyCategory;
     private String description;
-    private double price;
-    private int id;
+    private Double price;
+    private Integer id;
 
-    public Offer(String offerType, String propertyCategory, String description, double price) {
+    public Offer(String offerType, String propertyCategory, String description, Double price) {
         this.offerType = offerType;
         this.propertyCategory = propertyCategory;
         this.description = description;
@@ -40,19 +40,19 @@ public class Offer {
         this.description = description;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

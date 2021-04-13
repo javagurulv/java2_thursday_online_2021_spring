@@ -5,9 +5,9 @@ public class CreateOfferRequest {
     private final String offerType;
     private final String propertyCategory;
     private final String description;
-    private final double price;
+    private final Double price;
 
-    public CreateOfferRequest(String offerType, String propertyCategory, String description, double price) {
+    public CreateOfferRequest(String offerType, String propertyCategory, String description, Double price) {
         this.offerType = offerType;
         this.propertyCategory = propertyCategory;
         this.description = description;
@@ -26,7 +26,7 @@ public class CreateOfferRequest {
         return description;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 }

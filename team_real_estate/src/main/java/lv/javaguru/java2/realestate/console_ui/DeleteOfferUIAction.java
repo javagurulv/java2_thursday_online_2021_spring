@@ -17,7 +17,7 @@ public class DeleteOfferUIAction implements ConsoleUI {
     public void execute() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter offer ID : ");
-        int offerID = scanner.nextInt();
+        Integer offerID = scanner.nextInt();
 
         DeleteOfferRequest request = new DeleteOfferRequest(offerID);
         DeleteOfferResponse response = deleteOfferService.execute(request);

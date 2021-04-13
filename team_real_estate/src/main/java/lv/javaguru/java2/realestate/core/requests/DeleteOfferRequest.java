@@ -1,13 +1,13 @@
 package lv.javaguru.java2.realestate.core.requests;
 
 public class DeleteOfferRequest {
-    private final int id;
+    private final Integer id;
 
     public DeleteOfferRequest(int id) {
         this.id = id;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 }

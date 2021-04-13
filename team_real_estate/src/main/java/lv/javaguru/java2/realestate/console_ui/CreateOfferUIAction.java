@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 class CreateOfferUIAction implements ConsoleUI {
 
-    CreateOfferService createOfferService;
+    private final CreateOfferService createOfferService;
 
     public CreateOfferUIAction(CreateOfferService createOfferService) {
         this.createOfferService = createOfferService;
@@ -25,11 +25,17 @@ class CreateOfferUIAction implements ConsoleUI {
         System.out.println("Type in offer description : ");
         String description = scanner.nextLine();
         System.out.println("Enter price : ");
-        int price = scanner.nextInt();
+        Double price = scanner.nextDouble();
 
         CreateOfferRequest request = new CreateOfferRequest(offerType, propertyCategory, description, price);
         CreateOfferResponse response = createOfferService.execute(request);
 
-        System.out.println("Offer created");
+        if (response.hasErrors()) {
+            response.getErrors().forEach(coreError ->
+                    System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
+        } else {
+            System.out.println("Offer id : " + response.getOffer().getId());
+            System.out.println("Offer created");
+        }
     }
 }
