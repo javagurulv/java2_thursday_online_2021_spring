@@ -1,6 +1,9 @@
 package lv.javaguru.java2.wasterestarant.core.services;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.requests.AddDishRequest;
+import lv.javaguru.java2.wasterestarant.core.responses.AddDishResponse;
+import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.domain.Dish;
 import lv.javaguru.java2.wasterestarant.domain.Product;
 
@@ -12,109 +15,25 @@ import java.util.*;
 public class AddDishService {
 
     private Database database;
+    private AddDishValidator validator;
     private Dish dish;
 
-    public AddDishService(Database database) {
+    public AddDishService(Database database, AddDishValidator validator ) {
         this.database = database;
+        this.validator = validator;
     }
 
-    public void execute() {
-        String dishName = enterDishName();
-        String dishDescription = enterDishDescription();
-        String dishType = enterDishType();
-        double dishWeight = enterDishWeight();
-        double dishPrice = enterDishPrice();
-        List<Product> productList = new ArrayList<>();
-        productList = traceThrowableError(productList);
-        dish = new Dish(dishName, dishDescription, dishType, dishWeight, dishPrice, productList);
+    public AddDishResponse execute(AddDishRequest request) {
+        List<CoreError> errors = validator.validate(request);
+            if (!errors.isEmpty()) {
+                return new AddDishResponse(errors);
+            }
+
+        Dish dish = new Dish(request.getName(), request.getDescription(), request.getType(), request.getWeight(), request.getPrice() /*request.productList*/);
         database.save(dish);
         System.out.println("New dish was added to the list.");
-    }
 
-    private List<Product> traceThrowableError(List<Product> productList) {
-        try {
-            productList = enterProductList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return productList;
-    }
-
-    private static String enterDishName() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter dish name: ");
-        String dishName = scanner.nextLine();
-        return dishName;
-    }
-
-    private static String enterDishDescription() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter dish description: ");
-        String dishDescription = scanner.nextLine();
-        return dishDescription;
-    }
-
-    private static String enterDishType() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter dish type: ");
-        String dishType = scanner.nextLine();
-        return dishType;
-    }
-
-    private static List<Product> enterProductList() throws ParseException {
-        List<Product> productList = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-        boolean isRunning = true;
-        try {
-            while (isRunning) {
-                System.out.println("Enter product name: ");
-                String name = scanner.nextLine();
-                System.out.println("Enter product quantity: ");
-                int quantity = Integer.parseInt(scanner.nextLine());
-                System.out.println("Enter product price: ");
-                double price = Double.parseDouble(scanner.nextLine());
-                System.out.println("Enter product expiry date in the format - date, month, year: ");
-                DateFormat format = new SimpleDateFormat("dd, MM, yyyy", Locale.GERMANY);
-                Date expiryDate = format.parse(scanner.nextLine());
-                Product product1 = new Product(name, quantity, price, expiryDate);
-                productList.add(product1);
-                System.out.println("Product has been added to product list");
-                System.out.println("Enter exit to exit program");
-                String exit = scanner.nextLine();
-                if (exit.equalsIgnoreCase("exit")) break;
-            }
-        } catch (Exception e) {
-            System.out.println("Error! Product hasn't been added to product list");
-        }
-
-        return productList;
-    }
-
-    private static double enterDishWeight() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter dish weight: ");
-        double dishWeight = 0;
-        dishWeight = doubleValueValidation(scanner, dishWeight);
-        return dishWeight;
-    }
-
-    private static double enterDishPrice() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter dish price: ");
-        double dishPrice = 0;
-        dishPrice = doubleValueValidation(scanner, dishPrice);
-        return dishPrice;
-    }
-
-    private static double doubleValueValidation(Scanner scanner, double value) {
-        while (value <= 0)
-            try {
-                value = scanner.nextDouble();
-            } catch (Exception e) {
-                System.out.println("Enter a valid Double value: ");
-                scanner.next();
-            }
-        return value;
+        return new AddDishResponse(dish);
     }
 
 }

@@ -4,9 +4,13 @@ import lv.javaguru.java2.wasterestarant.domain.Dish;
 
 import java.util.List;
 
-public class AddDishResponse extends CoreResponse{
+public class AddDishResponse extends CoreResponse {
 
     private Dish newDish;
+
+    public AddDishResponse(List<CoreError> errors) {
+        super(errors);
+    }
 
     public AddDishResponse(Dish newDish) {
         this.newDish = newDish;
