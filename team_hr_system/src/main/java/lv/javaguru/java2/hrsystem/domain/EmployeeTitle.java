@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hrsystem.bean;
+package lv.javaguru.java2.hrsystem.domain;
 
 public enum EmployeeTitle {
     DEVELOPER,

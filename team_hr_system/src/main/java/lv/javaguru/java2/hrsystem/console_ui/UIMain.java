@@ -11,9 +11,10 @@ import java.util.Scanner;
 public class UIMain {
 
     private final Database database = new DatabaseImpl();
+    private static AddEmployeeValidator addEmployeeValidator = new AddEmployeeValidator();
 
     private final Map<Integer, UIAction> menuNumberToActionMap = new HashMap<>() {{
-        put(1, new AddEmployeeUIAction(new AddEmployeeService(database)));
+        put(1, new AddEmployeeUIAction(new AddEmployeeService(database, addEmployeeValidator)));
         put(2, new AddEmployeeWithTitleUIAction(new AddEmployeeWithTitleService(database)));
         put(3, new DeleteEmployeeUIAction(new DeleteEmployeeService(database)));
         put(4, new GetAllEmployeesUIAction(new GetAllEmployeesService(database)));
@@ -29,7 +30,7 @@ public class UIMain {
     }
 
     private boolean checkUserInput(int input) {
-        return input > 0 && input < 7;
+        return input > 0 && input <= menuNumberToActionMap.size();
     }
 
     private void performAction(int userOption) {
@@ -40,13 +41,10 @@ public class UIMain {
     }
 
     private void printMenu() {
-        System.out.println("Program menu:");
-        System.out.println("1. Add new employee");
-        System.out.println("2. Add new employee with title");
-        System.out.println("3. Remove employee");
-        System.out.println("4. Show all employees");
-        System.out.println("5. Show all employees by selected title");
-        System.out.println("6. Exit");
+        System.out.println("Select menu option: ");
+        for (int i = 1; i < menuNumberToActionMap.size() + 1; i++) {
+            System.out.println(i + " - " + menuNumberToActionMap.get(i).toString());
+        }
     }
 
     public void run() {

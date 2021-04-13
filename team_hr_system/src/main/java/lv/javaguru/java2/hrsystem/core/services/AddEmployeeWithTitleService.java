@@ -1,7 +1,7 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.bean.Employee;
-import lv.javaguru.java2.hrsystem.bean.EmployeeTitle;
+import lv.javaguru.java2.hrsystem.domain.Employee;
+import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
 import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeWithTitleRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddEmployeeWithTitleResponse;

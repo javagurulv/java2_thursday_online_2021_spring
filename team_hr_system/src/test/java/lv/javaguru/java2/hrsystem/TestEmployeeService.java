@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem;
 
-import lv.javaguru.java2.hrsystem.bean.Employee;
+import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.database.DatabaseImpl;
 import org.junit.Test;
 

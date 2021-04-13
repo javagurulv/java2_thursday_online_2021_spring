@@ -23,6 +23,6 @@ public class GetAllEmployeesUIAction implements UIAction {
 
     @Override
     public String toString() {
-        return "Get all employees";
+        return "Show all employees";
     }
 }

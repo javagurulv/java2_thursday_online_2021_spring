@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.responses;
 
-import lv.javaguru.java2.hrsystem.bean.Employee;
+import lv.javaguru.java2.hrsystem.domain.Employee;
 import java.util.List;
 
 public class GetEmployeesByTitleResponse {

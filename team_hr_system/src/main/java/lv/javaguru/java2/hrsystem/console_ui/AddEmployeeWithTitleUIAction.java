@@ -35,4 +35,9 @@ public class AddEmployeeWithTitleUIAction implements UIAction{
                     "|" + firstName + " " + secondName + " - " + age + " - " + title + "|" + "\n");
         }
     }
+
+    @Override
+    public String toString() {
+        return "Add new employee with title";
+    }
 }

@@ -1,7 +1,7 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
-import lv.javaguru.java2.hrsystem.bean.Employee;
-import lv.javaguru.java2.hrsystem.bean.EmployeeTitle;
+import lv.javaguru.java2.hrsystem.domain.Employee;
+import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
 import lv.javaguru.java2.hrsystem.core.requests.GetEmployeesByTitleRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetEmployeesByTitleResponse;
 import lv.javaguru.java2.hrsystem.core.services.GetEmployeesByTitleService;
@@ -30,5 +30,10 @@ public class GetAllEmployeesByTitleUIAction implements UIAction{
         else {
             System.out.println("No employees with selected title");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Show all employees by selected title";
     }
 }

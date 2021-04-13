@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.JK.services_JK;
 
-import lv.javaguru.java2.hrsystem.bean.Employee;
+import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.database.Database;
 
 import java.util.List;

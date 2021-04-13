@@ -1,20 +1,32 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.bean.Employee;
+import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
+import lv.javaguru.java2.hrsystem.core.responses.AddEmployeeResponse;
+import lv.javaguru.java2.hrsystem.core.responses.CoreError;
+import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.database.Database;
+
+import java.util.List;
 
 public class AddEmployeeService {
 
     private Database database;
+    private AddEmployeeValidator validator;
 
-    public AddEmployeeService(Database database) {
-
+    public AddEmployeeService(Database database, AddEmployeeValidator validator) {
         this.database = database;
-
+        this.validator = validator;
     }
 
-    public void execute(String firstNameEmployee, String secondNameEmployee, int ageEmployee) {
-        Employee employee = new Employee(firstNameEmployee, secondNameEmployee, ageEmployee);
+    public AddEmployeeResponse execute(AddEmployeeRequest request) {
+        List<CoreError> errors = validator.validate(request);
+        if (!errors.isEmpty()) {
+            return new AddEmployeeResponse(errors);
+        }
+
+        Employee employee = new Employee(request.getName(), request.getLastName(), request.getAge());
         database.saveEmployee(employee);
+        return new AddEmployeeResponse(employee);
     }
+
 }

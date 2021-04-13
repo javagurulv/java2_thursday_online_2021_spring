@@ -1,7 +1,7 @@
 package lv.javaguru.java2.hrsystem.core.database;
 
-import lv.javaguru.java2.hrsystem.bean.Employee;
-import lv.javaguru.java2.hrsystem.bean.EmployeeTitle;
+import lv.javaguru.java2.hrsystem.domain.Employee;
+import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
 
 import java.util.ArrayList;
 import java.util.List;

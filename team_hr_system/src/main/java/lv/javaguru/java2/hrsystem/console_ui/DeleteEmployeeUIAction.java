@@ -48,6 +48,6 @@ public class DeleteEmployeeUIAction implements UIAction{
 
     @Override
     public String toString() {
-        return "Delete Employee";
+        return "Remove employee";
     }
 }
