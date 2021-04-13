@@ -10,8 +10,8 @@ public class AddDishRequest {
     private String name;
     private String description;
     private String type;
-    private double weight;
-    private double price;
+    private Double weight;
+    private Double price;
 
 
     public AddDishRequest(String name) {
@@ -19,7 +19,7 @@ public class AddDishRequest {
     }
 
 
-    public AddDishRequest(String name, String description, String type, double weight, double price) {
+    public AddDishRequest(String name, String description, String type, Double weight, Double price) {
         this.name = name;
         this.description = description;
         this.type = type;
@@ -39,11 +39,11 @@ public class AddDishRequest {
         return type;
     }
 
-    public double getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 }

@@ -10,8 +10,9 @@ import java.util.Scanner;
 public class RestaurantApplication {
 
     private static Database database = new InMemoryDatabaseImpl();
+    private static AddDishValidator addDishValidator = new AddDishValidator();
     private static AddProductService addProductService = new AddProductService(database);
-    private static AddDishService addDishService = new AddDishService(database);
+    private static AddDishService addDishService = new AddDishService(database, addDishValidator);
     private static RemoveDishService removeDishService = new RemoveDishService(database);
     private static GetAllDishesService getAllDishesService = new GetAllDishesService(database);
     private static GetProductListService getProductListService = new GetProductListService(database);
