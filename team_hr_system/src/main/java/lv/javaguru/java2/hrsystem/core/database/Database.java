@@ -15,4 +15,6 @@ public interface Database {
 
     List<Employee> getEmployeesByTitle(EmployeeTitle title);
 
+    List<EmployeeTitle> getAllTitles();
+
 }

@@ -56,7 +56,7 @@ public class UIMain {
             if (checkUserInput(option)) {
                 performAction(option);
             } else {
-                System.out.println("Invalid number entered! Please try again");
+                System.out.println("Invalid menu option entered! Please try again");
             }
         }
     }

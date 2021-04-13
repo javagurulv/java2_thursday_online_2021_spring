@@ -15,9 +15,7 @@ public class DeleteEmployeeUIAction implements UIAction{
 
     @Override
     public void execute() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter employee ID!");
-        Long id = Long.parseLong(scanner.nextLine());
+        Long id = getId();
         DeleteEmployeeRequest deleteEmployeeRequest = new DeleteEmployeeRequest(id);
         DeleteEmployeeResponse deleteEmployeeResponse = deleteEmployeeService.execute(deleteEmployeeRequest);
         if (deleteEmployeeResponse.hasErrors()) {
@@ -30,6 +28,24 @@ public class DeleteEmployeeUIAction implements UIAction{
             System.out.println("Employee is not removed!");
         }
     }
+
+    private Long getId() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter employee ID!");
+        boolean valid = false;
+        Long id = null;
+        while (!valid) {
+            try {
+                id = Long.parseLong(scanner.nextLine());
+                valid = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter numeric value!");
+                valid = false;
+            }
+        }
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Delete Employee";
