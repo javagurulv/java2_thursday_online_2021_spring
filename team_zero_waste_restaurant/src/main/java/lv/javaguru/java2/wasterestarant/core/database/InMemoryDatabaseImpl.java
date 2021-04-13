@@ -4,6 +4,7 @@ import lv.javaguru.java2.wasterestarant.domain.Dish;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class InMemoryDatabaseImpl implements Database {
     private Long nextId = 1L;
@@ -18,11 +19,16 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public void deleteByName(String name) {
-        dishes.stream()
+    public boolean deleteByNameBool(String name) {
+        boolean isDishDeleted = false;
+        Optional<Dish> dishToDeleteTool = dishes.stream()
                 .filter(dish -> dish.getName().equals(name))
-                .findFirst()
-                .ifPresent(dish -> dishes.remove(dish));
+                .findFirst();
+        if (dishToDeleteTool.isPresent()) {
+            Dish dishToDelete = dishToDeleteTool.get();
+            isDishDeleted = dishes.remove(dishToDelete);
+        }
+        return isDishDeleted;
     }
 
     @Override
@@ -32,10 +38,10 @@ public class InMemoryDatabaseImpl implements Database {
 
     @Override
     public List<Dish> dishByType(String dishType) {
-       dishes.stream()
-                 .filter(dish -> dish.getType().equals(dishType))
-                 .findFirst()
-                 .ifPresent(dish -> dishByType.add(dish));
+        dishes.stream()
+                .filter(dish -> dish.getType().equals(dishType))
+                .findFirst()
+                .ifPresent(dish -> dishByType.add(dish));
         return dishByType;
     }
 }
