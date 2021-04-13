@@ -1,6 +1,8 @@
 package lv.javaguru.java2.wasterestarant.core.services;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.requests.RemoveDishRequest;
+import lv.javaguru.java2.wasterestarant.core.responses.RemoveDishResponse;
 
 public class RemoveDishService {
 
@@ -10,7 +12,8 @@ public class RemoveDishService {
         this.database = database;
     }
 
-    public void execute(String dishName) {
-        database.deleteByName(dishName);
+    public RemoveDishResponse execute(RemoveDishRequest request) {
+        boolean isDishDeleted = database.deleteByNameBool(request.getDishNameToRemove());
+        return new RemoveDishResponse(isDishDeleted);
     }
 }

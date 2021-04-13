@@ -8,7 +8,7 @@ public interface Database {
 
     void save(Dish dish);
 
-    void deleteByName(String name);
+    boolean deleteByNameBool(String name);
 
     List<Dish> getAllDishes();
 
