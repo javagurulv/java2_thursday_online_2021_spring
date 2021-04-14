@@ -25,8 +25,10 @@ public class AddEmployeeWithTitleUIAction implements UIAction{
         int age = Integer.parseInt(scanner.nextLine());
         System.out.println("Employee title: ");
         String title = scanner.nextLine();
+
         AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest(firstName, secondName, age, title);
         AddEmployeeWithTitleResponse response = service.execute(request);
+
         if (response.hasErrors()) {
             response.getErrors().forEach(e -> System.out.println(e.getField() + " "+ e.getMessage()));
         }

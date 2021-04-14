@@ -42,10 +42,9 @@ public class UIMain {
 
     private void printMenu() {
         System.out.println("Select menu option: ");
-        for (int i = 1; i < menuNumberToActionMap.size() + 1; i++) {
-            System.out.println(i + " - " + menuNumberToActionMap.get(i).toString());
-        }
+        menuNumberToActionMap.forEach((key, value) -> System.out.println(key + " - " + value));
     }
+
 
     public void run() {
         while (true) {

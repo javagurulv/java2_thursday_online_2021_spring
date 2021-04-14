@@ -22,11 +22,11 @@ public class AddEmployeeWithTitleService {
         if (!errors.isEmpty()) {
             return new AddEmployeeWithTitleResponse(errors);
         }
-        else {
-            Employee employee = new Employee(
-                    request.getName(), request.getLastName(), request.getAge(), EmployeeTitle.valueOf(request.getTitle()));
-            database.saveEmployee(employee);
-            return new AddEmployeeWithTitleResponse(employee);
-        }
+
+        Employee employee = new Employee(
+                request.getName(), request.getLastName(), request.getAge(), EmployeeTitle.valueOf(request.getTitle()));
+        database.saveEmployee(employee);
+        return new AddEmployeeWithTitleResponse(employee);
+
     }
 }
