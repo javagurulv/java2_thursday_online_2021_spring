@@ -16,7 +16,6 @@ public class AddDishResponse extends CoreResponse {
         this.newDish = newDish;
     }
 
-
     public Dish getNewDish() {
         return newDish;
     }
