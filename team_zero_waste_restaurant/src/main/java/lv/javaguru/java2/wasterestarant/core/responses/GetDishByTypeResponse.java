@@ -3,8 +3,8 @@ package lv.javaguru.java2.wasterestarant.core.responses;
 import lv.javaguru.java2.wasterestarant.domain.Dish;
 
 import java.util.List;
-
-public class GetDishByTypeResponse {
+// AndrejsB
+public class GetDishByTypeResponse extends CoreResponse{
 
     private List<Dish> dishes;
 
@@ -12,7 +12,8 @@ public class GetDishByTypeResponse {
         this.dishes = dishes;
     }
 
-    public List<Dish> getDishes() {
+
+    public List<Dish> getDishesType() {
         return dishes;
     }
 }

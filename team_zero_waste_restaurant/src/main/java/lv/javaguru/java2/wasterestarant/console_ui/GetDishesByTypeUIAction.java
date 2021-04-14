@@ -7,7 +7,7 @@ import lv.javaguru.java2.wasterestarant.domain.Dish;
 
 import java.util.List;
 import java.util.Scanner;
-
+// AndrejsB
 public class GetDishesByTypeUIAction implements UIAction {
 
     private GetDishesByTypeService getDishesByTypeService;
@@ -24,7 +24,7 @@ public class GetDishesByTypeUIAction implements UIAction {
         System.out.println("__________Dishes by type__________");
         GetDishByTypeRequest request = new GetDishByTypeRequest(dishType);
         GetDishByTypeResponse response = getDishesByTypeService.execute(request);
-        List<Dish> printList = response.getDishes();
+        List<Dish> printList = response.getDishesType();
         for (int i = 0; i < printList.size(); i++) {
             printDishWithFields(printList, i);
         }

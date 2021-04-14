@@ -1,5 +1,5 @@
 package lv.javaguru.java2.wasterestarant.core.requests;
-
+// AndrejsB
 public class RemoveDishRequest {
 
     private String dishNameToRemove;

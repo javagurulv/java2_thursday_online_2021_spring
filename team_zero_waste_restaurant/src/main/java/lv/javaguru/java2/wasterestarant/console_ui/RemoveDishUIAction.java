@@ -6,6 +6,8 @@ import lv.javaguru.java2.wasterestarant.core.services.RemoveDishService;
 
 import java.util.Scanner;
 
+// AndrejsB
+
 public class RemoveDishUIAction implements UIAction {
 
     private RemoveDishService removeDishService;
@@ -21,11 +23,16 @@ public class RemoveDishUIAction implements UIAction {
         String dishNameToRemove = scanner.nextLine();
         RemoveDishRequest request = new RemoveDishRequest(dishNameToRemove);
         RemoveDishResponse response = removeDishService.execute(request);
-        if (response.isDishNameDeleted()) {
-            System.out.println("Your dish was succesfully removed from the list.");
+        if (response.hasErrors()) {
+            response.getErrors().forEach(coreError -> System.out.println("Error: " +
+                    coreError.getField() + " " + coreError.getField()));
         } else {
-            System.out.println("Your dish was not removed from the list.");
+            if (response.isDishNameDeleted()) {
+                System.out.println("Your dish was succesfully removed from the list.");
+            } else {
+                System.out.println("Your dish was not removed from the list. " +
+                        "Please enter a valid name from the list.");
+            }
         }
     }
-
 }

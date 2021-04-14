@@ -13,7 +13,8 @@ public class RestaurantApplication {
     private static AddDishValidator addDishValidator = new AddDishValidator();
     private static AddProductService addProductService = new AddProductService(database);
     private static AddDishService addDishService = new AddDishService(database, addDishValidator);
-    private static RemoveDishService removeDishService = new RemoveDishService(database);
+    private static RemoveDishValidator removeDishValidator = new RemoveDishValidator();
+    private static RemoveDishService removeDishService = new RemoveDishService(database, removeDishValidator);
     private static GetDishListService getDishListService = new GetDishListService(database);
     private static GetProductListService getProductListService = new GetProductListService(database);
     private static GetRestaurantMenuService getRestaurantMenuService = new GetRestaurantMenuService(database);

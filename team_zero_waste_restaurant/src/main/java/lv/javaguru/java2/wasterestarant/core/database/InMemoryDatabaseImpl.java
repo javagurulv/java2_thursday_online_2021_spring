@@ -6,12 +6,12 @@ import lv.javaguru.java2.wasterestarant.domain.Product;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class InMemoryDatabaseImpl implements Database {
     private Long nextId = 1L;
     private List<Dish> dishes = new ArrayList<>();
     private List<Product> products = new ArrayList<>();
-    private List<Dish> dishByType = new ArrayList<>();
 
     @Override
     public void save(Dish dish) {
@@ -45,10 +45,9 @@ public class InMemoryDatabaseImpl implements Database {
 
     @Override
     public List<Dish> dishByType(String dishType) {
-        dishes.stream()
+        List<Dish> dishByType = dishes.stream()
                 .filter(dish -> dish.getType().equals(dishType))
-                .findFirst()
-                .ifPresent(dish -> dishByType.add(dish));
+                .collect(Collectors.toList());
         return dishByType;
     }
 }
