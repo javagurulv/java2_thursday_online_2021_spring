@@ -38,10 +38,10 @@ public class InMemoryDatabaseImpl implements Database {
         return dishes;
     }
 
-//    @Override
-//    public List<Product> getAllProducts() {
-//        return products;
-//    }
+    @Override
+    public List<Product> getAllProducts() {
+        return products;
+    }
 
     @Override
     public List<Dish> dishByType(String dishType) {

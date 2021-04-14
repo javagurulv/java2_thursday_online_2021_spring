@@ -13,7 +13,7 @@ public interface Database {
 
     List<Dish> getAllDishes();
 
-    //List<Product> getAllProducts();
+    List<Product> getAllProducts();
 
     List<Dish> dishByType(String dishType);
 
