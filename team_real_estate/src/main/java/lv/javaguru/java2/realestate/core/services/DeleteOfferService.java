@@ -5,21 +5,20 @@ import lv.javaguru.java2.realestate.core.requests.DeleteOfferRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.DeleteOfferResponse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DeleteOfferService {
-    Database database;
+    private final Database database;
+    private final DeleteOfferValidator validator;
 
-    public DeleteOfferService(Database database) {
+    public DeleteOfferService(Database database, DeleteOfferValidator validator) {
         this.database = database;
+        this.validator = validator;
     }
 
     public DeleteOfferResponse execute(DeleteOfferRequest deleteOfferRequest) {
-        if (deleteOfferRequest.getId() == null) {
-            CoreError error = new CoreError("id", "Must not be empty!");
-            List<CoreError> errors = new ArrayList<>();
-            errors.add(error);
+        List<CoreError> errors = validator.validate(deleteOfferRequest);
+        if (!errors.isEmpty()) {
             return new DeleteOfferResponse(errors);
         }
 

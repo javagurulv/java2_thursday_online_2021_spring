@@ -6,7 +6,7 @@ import lv.javaguru.java2.wasterestarant.core.responses.GetDishByTypeResponse;
 import lv.javaguru.java2.wasterestarant.domain.Dish;
 
 import java.util.List;
-
+// AndrejsB
 public class GetDishesByTypeService {
 
     private Database database;

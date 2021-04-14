@@ -1,5 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.requests;
 
+// AndrejsB
 public class GetDishByTypeRequest {
 
     private String dishType;

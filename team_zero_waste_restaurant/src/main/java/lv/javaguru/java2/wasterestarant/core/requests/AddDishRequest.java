@@ -1,9 +1,5 @@
 package lv.javaguru.java2.wasterestarant.core.requests;
 
-import lv.javaguru.java2.wasterestarant.domain.Product;
-
-import java.util.List;
-
 public class AddDishRequest {
 
     private long dishID;
@@ -13,11 +9,9 @@ public class AddDishRequest {
     private Double weight;
     private Double price;
 
-
     public AddDishRequest(String name) {
         this.name = name;
     }
-
 
     public AddDishRequest(String name, String description, String type, Double weight, Double price) {
         this.name = name;
