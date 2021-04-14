@@ -27,6 +27,5 @@ public class AddEmployeeWithTitleService {
                 request.getName(), request.getLastName(), request.getAge(), EmployeeTitle.valueOf(request.getTitle()));
         database.saveEmployee(employee);
         return new AddEmployeeWithTitleResponse(employee);
-
     }
 }

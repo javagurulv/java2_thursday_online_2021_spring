@@ -21,21 +21,44 @@ public class AddEmployeeWithTitleUIAction implements UIAction{
         String firstName = scanner.nextLine();
         System.out.println("Employee last name: ");
         String secondName = scanner.nextLine();
-        System.out.println("Age: ");
-        int age = Integer.parseInt(scanner.nextLine());
-        System.out.println("Employee title: ");
+        int age = getAge();
+        System.out.println("Employee title from the following: \n" +
+                "    DEVELOPER,\n" +
+                "    QA_ENGINEER,\n" +
+                "    BA,\n" +
+                "    MANAGER,\n" +
+                "    HR_MANAGER,\n" +
+                "    SALES_MANAGER");
         String title = scanner.nextLine();
 
         AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest(firstName, secondName, age, title);
         AddEmployeeWithTitleResponse response = service.execute(request);
 
         if (response.hasErrors()) {
-            response.getErrors().forEach(e -> System.out.println(e.getField() + " "+ e.getMessage()));
-        }
-        else {
+            response.getErrors().forEach(coreError ->
+                    System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage())
+            );
+        } else {
             System.out.println("Employee added successfully!" + "\n" +
                     "|" + firstName + " " + secondName + " - " + age + " - " + title + "|" + "\n");
         }
+    }
+
+    private int getAge() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Age: ");
+        boolean valid = false;
+        int age = 0;
+        while (!valid) {
+            try {
+                age = Integer.parseInt(scanner.nextLine());
+                valid = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter numeric value!");
+                valid = false;
+            }
+        }
+        return age;
     }
 
     @Override

@@ -45,7 +45,6 @@ public class UIMain {
         menuNumberToActionMap.forEach((key, value) -> System.out.println(key + " - " + value));
     }
 
-
     public void run() {
         while (true) {
             printMenu();
