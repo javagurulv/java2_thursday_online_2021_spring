@@ -10,7 +10,7 @@ public class Dish {
     private String type;
     private double weight;
     private double price;
-    private List<Product> productList;
+    private List<Ingredient> ingredientList;
 
     public Dish(String name) {
         this.name = name;
@@ -25,13 +25,13 @@ public class Dish {
     }
 
     public Dish(String name, String description, String type,
-                double weight, double price, List<Product> productList) {
+                double weight, double price, List<Ingredient> ingredientList) {
         this.name = name;
         this.description = description;
         this.type = type;
         this.weight = weight;
         this.price = price;
-        this.productList = productList;
+        this.ingredientList = ingredientList;
     }
 
     public String getName() {
@@ -58,14 +58,6 @@ public class Dish {
         this.type = type;
     }
 
-    public List<Product> getProductList() {
-        return productList;
-    }
-
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
-    }
-
     public double getWeight() {
         return weight;
     }
@@ -90,28 +82,33 @@ public class Dish {
         this.dishID = dishID;
     }
 
+    public List<Ingredient> getIngredientList() {
+        return ingredientList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Dish)) return false;
         Dish dish = (Dish) o;
-        return Double.compare(dish.getWeight(), getWeight()) == 0 && Double.compare(dish.getPrice(), getPrice()) == 0 && getName().equals(dish.getName()) && getDescription().equals(dish.getDescription()) && getType().equals(dish.getType()) && Objects.equals(getProductList(), dish.getProductList());
+        return Double.compare(dish.getWeight(), getWeight()) == 0 && Double.compare(dish.getPrice(), getPrice()) == 0 && getName().equals(dish.getName()) && getDescription().equals(dish.getDescription()) && getType().equals(dish.getType()) && getIngredientList().equals(dish.getIngredientList());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getDescription(), getType(), getProductList(), getWeight(), getPrice());
+        return Objects.hash(getName(), getDescription(), getType(), getWeight(), getPrice(), getIngredientList());
     }
 
     @Override
     public String toString() {
         return "Dish{" +
-                "name='" + name + '\'' +
+                "dishID=" + dishID +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", type='" + type + '\'' +
-                ", productList=" + productList +
                 ", weight=" + weight +
                 ", price=" + price +
+                ", ingredientList=" + ingredientList +
                 '}';
     }
 }
