@@ -29,9 +29,9 @@ public class GetDishListUIAction implements UIAction {
     private void printDishWithFields(List<Dish> printList, int i) {
         System.out.println((i + 1) + ". " + printList.get(i).getName() +
                 ", " + printList.get(i).getDescription() +
-                //", " + printList.get(i).getProductList() +
                 ", " + printList.get(i).getType() +
                 ", price - " + printList.get(i).getPrice() + " \u0024, " +
                 "weight - " + printList.get(i).getWeight() + " grams.");
     }
+
 }

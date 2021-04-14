@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
 import lv.javaguru.java2.wasterestarant.domain.Dish;
+import lv.javaguru.java2.wasterestarant.domain.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Optional;
 public class InMemoryDatabaseImpl implements Database {
     private Long nextId = 1L;
     private List<Dish> dishes = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
     private List<Dish> dishByType = new ArrayList<>();
 
     @Override
@@ -35,6 +37,11 @@ public class InMemoryDatabaseImpl implements Database {
     public List<Dish> getAllDishes() {
         return dishes;
     }
+
+//    @Override
+//    public List<Product> getAllProducts() {
+//        return products;
+//    }
 
     @Override
     public List<Dish> dishByType(String dishType) {
