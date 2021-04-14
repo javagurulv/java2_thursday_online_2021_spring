@@ -10,13 +10,21 @@ import java.util.Scanner;
 
 public class ConsoleApp {
     private final Map<Integer, ConsoleUI> menuNumberToActionMap;
+
     private final static Database database = new InMemoryDatabaseImpl();
+
     private final static CreateOfferValidator createOfferValidator = new CreateOfferValidator();
-    private final static CreateUserService createUserService = new CreateUserService(database);
+    private final static CreateUserValidator createUserValidator = new CreateUserValidator();
+    private final static DeleteUserValidator deleteUserValidator = new DeleteUserValidator();
+    private final static LogInValidator logInValidator = new LogInValidator();
+    private final static DeleteOfferValidator deleteOfferValidator = new DeleteOfferValidator();
+
+
+    private final static CreateUserService createUserService = new CreateUserService(database, createUserValidator);
     private final static CreateOfferService createOfferService = new CreateOfferService(database, createOfferValidator);
-    private final static DeleteUserService deleteUserService = new DeleteUserService(database);
-    private final static LogInService logInService = new LogInService(database);
-    private final static DeleteOfferService deleteOfferService = new DeleteOfferService(database);
+    private final static DeleteUserService deleteUserService = new DeleteUserService(database, deleteUserValidator);
+    private final static LogInService logInService = new LogInService(database, logInValidator);
+    private final static DeleteOfferService deleteOfferService = new DeleteOfferService(database, deleteOfferValidator);
     private final static GetAllOffersService getAllOffersService = new GetAllOffersService(database);
 
     public ConsoleApp() {
