@@ -14,7 +14,7 @@ public class RestaurantApplication {
     private static AddProductService addProductService = new AddProductService(database);
     private static AddDishService addDishService = new AddDishService(database, addDishValidator);
     private static RemoveDishService removeDishService = new RemoveDishService(database);
-    private static GetAllDishesService getAllDishesService = new GetAllDishesService(database);
+    private static GetDishListService getDishListService = new GetDishListService(database);
     private static GetProductListService getProductListService = new GetProductListService(database);
     private static GetRestaurantMenuService getRestaurantMenuService = new GetRestaurantMenuService(database);
     private static GetDishesByTypeService getDishesByTypeService = new GetDishesByTypeService(database);
@@ -24,8 +24,8 @@ public class RestaurantApplication {
     private static UIAction addProductUIAction = new AddProductUIAction(addProductService);
     private static UIAction addDishUIAction = new AddDishUIAction(addDishService);
     private static UIAction removeDishUIAction = new RemoveDishUIAction(removeDishService);
-    private static UIAction getAllDishesUIAction = new GetAllDishesUIAction(getAllDishesService);
-    private static UIAction getAllProductListUIAction = new GetProductListUIAction(getProductListService);
+    private static UIAction getDishListUIAction = new GetDishListUIAction(getDishListService);
+    private static UIAction getProductListUIAction = new GetProductListUIAction(getProductListService);
     private static UIAction getRestaurantMenuUIAction = new GetRestaurantMenuUIAction(getRestaurantMenuService);
     private static UIAction getDishesByTypeUIAction = new GetDishesByTypeUIAction(getDishesByTypeService);
     private static UIAction addDishToWishlistUIAction = new AddDishToWishlistUIAction(addDishToWishlistService);
@@ -89,11 +89,11 @@ public class RestaurantApplication {
                 break;
             }
             case 4: {
-                getAllDishesUIAction.execute();
+                getDishListUIAction.execute();
                 break;
             }
             case 5: {
-                getAllProductListUIAction.execute();
+                getProductListUIAction.execute();
                 break;
             }
             case 6: {

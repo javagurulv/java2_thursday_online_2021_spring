@@ -4,11 +4,11 @@ import lv.javaguru.java2.wasterestarant.domain.Dish;
 
 import java.util.List;
 
-public class GetAllDishesResponse extends CoreResponse{
+public class GetDishListResponse extends CoreResponse{
 
     private List<Dish> dishes;
 
-    public GetAllDishesResponse(List<Dish> dishes) {
+    public GetDishListResponse(List<Dish> dishes) {
         this.dishes = dishes;
     }
 

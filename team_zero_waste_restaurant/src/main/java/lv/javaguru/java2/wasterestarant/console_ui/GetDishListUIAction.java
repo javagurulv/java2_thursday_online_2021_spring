@@ -1,25 +1,25 @@
 package lv.javaguru.java2.wasterestarant.console_ui;
 
-import lv.javaguru.java2.wasterestarant.core.requests.GetAllDishesRequest;
-import lv.javaguru.java2.wasterestarant.core.responses.GetAllDishesResponse;
-import lv.javaguru.java2.wasterestarant.core.services.GetAllDishesService;
+import lv.javaguru.java2.wasterestarant.core.requests.GetDishListRequest;
+import lv.javaguru.java2.wasterestarant.core.responses.GetDishListResponse;
+import lv.javaguru.java2.wasterestarant.core.services.GetDishListService;
 import lv.javaguru.java2.wasterestarant.domain.Dish;
 
 import java.util.List;
 
-public class GetAllDishesUIAction implements UIAction {
+public class GetDishListUIAction implements UIAction {
 
-    private GetAllDishesService getAllDishesService;
+    private GetDishListService getDishListService;
 
-    public GetAllDishesUIAction(GetAllDishesService getAllDishesService) {
-        this.getAllDishesService = getAllDishesService;
+    public GetDishListUIAction(GetDishListService getDishListService) {
+        this.getDishListService = getDishListService;
     }
 
     @Override
     public void execute() {
         System.out.println("__________Dish list__________");
-        GetAllDishesRequest request = new GetAllDishesRequest();
-        GetAllDishesResponse response = getAllDishesService.execute(request);
+        GetDishListRequest request = new GetDishListRequest();
+        GetDishListResponse response = getDishListService.execute(request);
         List<Dish> printList = response.getDishes();
         for (int i = 0; i < printList.size(); i++) {
             printDishWithFields(printList, i);

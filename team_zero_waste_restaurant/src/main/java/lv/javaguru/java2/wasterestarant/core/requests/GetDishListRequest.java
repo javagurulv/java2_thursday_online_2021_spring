@@ -1,5 +1,5 @@
 package lv.javaguru.java2.wasterestarant.core.requests;
 
-public class GetAllDishesRequest {
+public class GetDishListRequest {
 
 }
