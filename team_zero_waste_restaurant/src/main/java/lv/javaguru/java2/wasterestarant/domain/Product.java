@@ -15,7 +15,7 @@ public class Product {
         this.productID = productID;
     }
 
-    public Product(String name, int quantity, double price, Date expiryDate) {
+    public Product(String name, double quantity, double price, Date expiryDate) {
         this.name = name;
         this.quantity = quantity;
         this.price = price;
@@ -78,10 +78,14 @@ public class Product {
 
     @Override
     public String toString() {
-        return "lv.javaguru.java2.realestate.core.domain.Product : " + name + ", quantity : " + quantity + ", price : " + price +
-                ", expiryDate : " + expiryDate;
+        return "Product{" +
+                "productID=" + productID +
+                ", name='" + name + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", expiryDate=" + expiryDate +
+                '}';
     }
-
 }
 
 

@@ -6,7 +6,7 @@ import lv.javaguru.java2.wasterestarant.core.services.GetDishListService;
 import lv.javaguru.java2.wasterestarant.domain.Dish;
 
 import java.util.List;
-
+//Elena
 public class GetDishListUIAction implements UIAction {
 
     private GetDishListService getDishListService;
