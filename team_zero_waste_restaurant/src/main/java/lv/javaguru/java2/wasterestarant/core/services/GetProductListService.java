@@ -16,8 +16,7 @@ public class GetProductListService {
     }
 
     public GetProductListResponse execute(GetProductListRequest request){
-//        List<Product> products = new database.getAllProducts();
-//        return new GetProductListResponse(products);
-        return null;
+        List<Product> products = database.getAllProducts();
+        return new GetProductListResponse(products);
     }
 }
