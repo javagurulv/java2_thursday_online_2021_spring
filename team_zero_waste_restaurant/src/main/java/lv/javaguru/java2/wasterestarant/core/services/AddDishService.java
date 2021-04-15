@@ -5,18 +5,12 @@ import lv.javaguru.java2.wasterestarant.core.requests.AddDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.AddDishResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.domain.Dish;
-import lv.javaguru.java2.wasterestarant.domain.Product;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class AddDishService {
 
     private Database database;
     private AddDishValidator validator;
-    private Dish dish;
 
     public AddDishService(Database database, AddDishValidator validator ) {
         this.database = database;

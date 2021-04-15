@@ -7,15 +7,15 @@ import java.util.Objects;
 public class Product {
     private long productID;
     private String name;
-    private double quantity;
-    private double price;
+    private Double quantity;
+    private Double price;
     private Date expiryDate;
 
     public Product(long productID) {
         this.productID = productID;
     }
 
-    public Product(String name, double quantity, double price, Date expiryDate) {
+    public Product(String name, Double quantity, Double price, Date expiryDate) {
         this.name = name;
         this.quantity = quantity;
         this.price = price;
@@ -30,15 +30,15 @@ public class Product {
         this.name = name;
     }
 
-    public double getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 

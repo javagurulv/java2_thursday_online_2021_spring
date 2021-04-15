@@ -11,7 +11,8 @@ public class RestaurantApplication {
 
     private static Database database = new InMemoryDatabaseImpl();
     private static AddDishValidator addDishValidator = new AddDishValidator();
-    private static AddProductService addProductService = new AddProductService(database);
+    private static AddProductValidator addProductValidator = new AddProductValidator();
+    private static AddProductService addProductService = new AddProductService(database, addProductValidator);
     private static AddDishService addDishService = new AddDishService(database, addDishValidator);
     private static RemoveDishValidator removeDishValidator = new RemoveDishValidator();
     private static RemoveDishService removeDishService = new RemoveDishService(database, removeDishValidator);
