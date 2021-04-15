@@ -31,13 +31,13 @@ public class AddProductValidator {
     }
 
     private Optional<CoreError> validatePrice(AddProductRequest request) {
-        return (request.getQuantity() == null)
+        return (request.getPrice() == null)
                 ? Optional.of(new CoreError("Price", "Must be a valid double value"))
                 : Optional.empty();
     }
 
     private Optional<CoreError> validateDate(AddProductRequest request) {
-        return (request.getQuantity() == null)
+        return (request.getDate() == null)
                 ? Optional.of(new CoreError("Date", "Must be a valid date"))
                 : Optional.empty();
     }
