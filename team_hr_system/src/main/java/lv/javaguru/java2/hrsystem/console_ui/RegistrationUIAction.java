@@ -1,5 +1,7 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
+import lv.javaguru.java2.hrsystem.core.requests.RegistrationRequest;
+import lv.javaguru.java2.hrsystem.core.responses.RegistrationResponse;
 import lv.javaguru.java2.hrsystem.core.services.RegistrationService;
 
 import java.util.Scanner;
@@ -27,8 +29,8 @@ public class RegistrationUIAction implements UIAction {
         String email = scanner.nextLine();
         System.out.println("Password: ");
         String password = scanner.nextLine();
-
-        addAdminService.execute(firstName, secondName, email, password);
+        RegistrationRequest request = new RegistrationRequest(firstName, secondName, email, password);
+        RegistrationResponse response = addAdminService.execute(request);
 
         System.out.println("Registration completed!" + "\n" + "Hello " + firstName + " " + secondName + "!");
 

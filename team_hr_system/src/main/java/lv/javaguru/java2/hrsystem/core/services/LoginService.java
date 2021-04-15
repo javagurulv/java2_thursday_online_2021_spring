@@ -2,6 +2,8 @@ package lv.javaguru.java2.hrsystem.core.services;
 
 
 import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.requests.LoginRequest;
+import lv.javaguru.java2.hrsystem.core.responses.LoginResponse;
 
 public class LoginService {
 
@@ -13,9 +15,11 @@ public class LoginService {
 
     }
 
-    public Boolean execute (String email, String password){
+    public LoginResponse execute (LoginRequest loginRequest){
 
-        return database.loginAdm(email, password);
+        boolean login = database.loginAdm(loginRequest.getEmail(), loginRequest.getPassword());
+
+        return new LoginResponse(login);
 
     }
 }

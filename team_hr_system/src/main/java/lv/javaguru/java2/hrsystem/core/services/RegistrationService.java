@@ -1,6 +1,8 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
 import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.requests.RegistrationRequest;
+import lv.javaguru.java2.hrsystem.core.responses.RegistrationResponse;
 import lv.javaguru.java2.hrsystem.domain.Admin;
 
 public class RegistrationService {
@@ -13,9 +15,13 @@ public class RegistrationService {
 
     }
 
-    public void execute (String firstName, String secondName, String email, String password){
+    public RegistrationResponse execute (RegistrationRequest registrationRequest){
 
-        database.registrationAdm(new Admin(firstName, secondName, email, password));
+        Admin admin = new Admin(registrationRequest.getFirstName(), registrationRequest.getSecondName(),
+                registrationRequest.getEmail(), registrationRequest.getPassword());
+        database.registrationAdm(admin);
+
+        return new RegistrationResponse(admin);
 
     }
 }
