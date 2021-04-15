@@ -19,7 +19,8 @@ public class RestaurantApplication {
     private static GetAllDishesService getAllDishesService = new GetAllDishesService(database);
     private static GetAllProductsService getAllProductsService = new GetAllProductsService(database);
     private static GetRestaurantMenuService getRestaurantMenuService = new GetRestaurantMenuService(database);
-    private static GetDishesByTypeService getDishesByTypeService = new GetDishesByTypeService(database);
+    private static GetDishListByTypeValidator getDishListByTypeValidator = new GetDishListByTypeValidator();
+    private static GetDishesByTypeService getDishesByTypeService = new GetDishesByTypeService(database, getDishListByTypeValidator);
     private static AddDishToWishlistService addDishToWishlistService = new AddDishToWishlistService(database);
     private static GetWishlistService getWishlistServiceService = new GetWishlistService(database);
 

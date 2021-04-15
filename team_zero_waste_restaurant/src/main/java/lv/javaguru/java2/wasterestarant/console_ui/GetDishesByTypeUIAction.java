@@ -21,14 +21,19 @@ public class GetDishesByTypeUIAction implements UIAction {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter dish type to show (starter, soup, main, pasta, or desert): ");
         String dishType = scanner.nextLine();
-        System.out.println("__________Dishes by type__________");
         GetDishByTypeRequest request = new GetDishByTypeRequest(dishType);
         GetDishByTypeResponse response = getDishesByTypeService.execute(request);
-        List<Dish> printList = response.getDishesType();
-        for (int i = 0; i < printList.size(); i++) {
-            printDishWithFields(printList, i);
+        System.out.println("__________Dishes by type__________");
+        if (response.hasErrors()) {
+            response.getErrors().forEach(coreError -> System.out.println("Error: " + coreError.getField() +
+                    " " + coreError.getMessage()));
+        } else {
+            List<Dish> printList = response.getDishesType();
+            for (int i = 0; i < printList.size(); i++) {
+                printDishWithFields(printList, i);
+            }
+            System.out.println("________________end_______________");
         }
-        System.out.println("________________end_______________");
     }
     private void printDishWithFields(List<Dish> printList, int i) {
         System.out.println((i + 1) + ". " + printList.get(i).getName() +
