@@ -4,7 +4,7 @@ import lv.javaguru.java2.wasterestarant.domain.OrderItem;
 
 //Nataliya
 
-public class AddDishToWishlistResponse {
+public class AddDishToWishlistResponse extends CoreResponse {
 
     private OrderItem newOrderItem;
 

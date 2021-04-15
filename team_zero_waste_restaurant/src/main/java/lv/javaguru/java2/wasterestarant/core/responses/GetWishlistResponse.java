@@ -7,7 +7,7 @@ import java.util.List;
 
 //Nataliya
 
-public class GetWishlistResponse {
+public class GetWishlistResponse extends CoreResponse {
 
     private List<OrderItem> wishList;
 

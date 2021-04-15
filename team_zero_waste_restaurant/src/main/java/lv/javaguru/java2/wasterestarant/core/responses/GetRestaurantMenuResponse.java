@@ -6,7 +6,7 @@ import java.util.List;
 
 //Nataliya
 
-public class GetRestaurantMenuResponse {
+public class GetRestaurantMenuResponse extends CoreResponse {
 
     private List<Dish> restaurantMenu;
 
