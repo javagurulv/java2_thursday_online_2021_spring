@@ -5,10 +5,10 @@ import lv.javaguru.java2.wasterestarant.domain.Product;
 import java.util.List;
 
 //Elena
-public class GetProductListResponse {
+public class GetAllProductsResponse {
     private List<Product> products;
 
-    public GetProductListResponse(List<Product> products) {
+    public GetAllProductsResponse(List<Product> products) {
         this.products = products;
     }
 

@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 public class InMemoryDatabaseImpl implements Database {
     private Long nextId = 1L;
     private List<Dish> dishes = new ArrayList<>();
+    private List<Dish> restaurantMenu = new ArrayList<>();
     private List<Product> products = new ArrayList<>();
 
     @Override
@@ -21,7 +22,14 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public boolean deleteByNameBool(String name) {
+    public void save(Product product) {
+        product.setProductID(nextId);
+        nextId++;
+        products.add(product);
+    }
+
+    @Override
+    public boolean deleteDishByName(String name) {
         boolean isDishDeleted = false;
         Optional<Dish> dishToDeleteTool = dishes.stream()
                 .filter(dish -> dish.getName().equals(name))
@@ -31,6 +39,11 @@ public class InMemoryDatabaseImpl implements Database {
             isDishDeleted = dishes.remove(dishToDelete);
         }
         return isDishDeleted;
+    }
+
+    @Override
+    public boolean deleteDishByID(Long dishID) {
+        return false;
     }
 
     @Override
@@ -44,7 +57,17 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public List<Dish> dishByType(String dishType) {
+    public List<Dish> getRestaurantMenu() {
+        return restaurantMenu;
+    }
+
+    @Override
+    public List<Dish> getWishList() {
+        return null;
+    }
+
+    @Override
+    public List<Dish> getDishByType(String dishType) {
         List<Dish> dishByType = dishes.stream()
                 .filter(dish -> dish.getType().equals(dishType))
                 .collect(Collectors.toList());

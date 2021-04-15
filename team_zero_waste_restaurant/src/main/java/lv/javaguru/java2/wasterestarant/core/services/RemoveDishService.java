@@ -5,7 +5,6 @@ import lv.javaguru.java2.wasterestarant.core.requests.RemoveDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.RemoveDishResponse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 // AndrejsB
@@ -25,7 +24,7 @@ public class RemoveDishService {
         if(!errors.isEmpty()){
             return new RemoveDishResponse(errors);
         }
-        boolean isDishDeleted = database.deleteByNameBool(request.getDishNameToRemove());
+        boolean isDishDeleted = database.deleteDishByName(request.getDishNameToRemove());
         return new RemoveDishResponse(isDishDeleted);
     }
 }

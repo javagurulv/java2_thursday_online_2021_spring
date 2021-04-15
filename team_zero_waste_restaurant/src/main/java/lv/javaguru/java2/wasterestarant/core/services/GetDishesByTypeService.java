@@ -22,7 +22,7 @@ public class GetDishesByTypeService {
         if (request.getDishType() != null) {
             dishType = request.getDishType();
         }
-        List<Dish> typeDishes = database.dishByType(dishType);
+        List<Dish> typeDishes = database.getDishByType(dishType);
         return new GetDishByTypeResponse(typeDishes);
     }
 }

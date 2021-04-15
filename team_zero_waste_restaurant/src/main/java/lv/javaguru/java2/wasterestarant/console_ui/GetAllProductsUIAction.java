@@ -1,27 +1,25 @@
 package lv.javaguru.java2.wasterestarant.console_ui;
 
-import lv.javaguru.java2.wasterestarant.core.requests.GetDishListRequest;
-import lv.javaguru.java2.wasterestarant.core.requests.GetProductListRequest;
-import lv.javaguru.java2.wasterestarant.core.responses.GetProductListResponse;
-import lv.javaguru.java2.wasterestarant.core.services.GetProductListService;
-import lv.javaguru.java2.wasterestarant.domain.Dish;
+import lv.javaguru.java2.wasterestarant.core.requests.GetAllProductsRequest;
+import lv.javaguru.java2.wasterestarant.core.responses.GetAllProductsResponse;
+import lv.javaguru.java2.wasterestarant.core.services.GetAllProductsService;
 import lv.javaguru.java2.wasterestarant.domain.Product;
 
 import java.util.List;
 
 //Elena
-public class GetProductListUIAction implements UIAction{
-    private GetProductListService getProductListService;
+public class GetAllProductsUIAction implements UIAction{
+    private GetAllProductsService getAllProductsService;
 
-    public GetProductListUIAction(GetProductListService getProductListService) {
-        this.getProductListService = getProductListService;
+    public GetAllProductsUIAction(GetAllProductsService getAllProductsService) {
+        this.getAllProductsService = getAllProductsService;
     }
 
     @Override
     public void execute() {
         System.out.println("__________Product list__________");
-        GetProductListRequest request = new GetProductListRequest();
-        GetProductListResponse response = getProductListService.execute(request);
+        GetAllProductsRequest request = new GetAllProductsRequest();
+        GetAllProductsResponse response = getAllProductsService.execute(request);
         List<Product> printList = response.getProducts();
         for (int i = 0; i < printList.size(); i++) {
             printProductWithFields(printList, i);

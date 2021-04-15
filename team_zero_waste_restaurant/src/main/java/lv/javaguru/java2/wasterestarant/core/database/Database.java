@@ -9,12 +9,20 @@ public interface Database {
 
     void save(Dish dish);
 
-    boolean deleteByNameBool(String name);
+    void save(Product product);
+
+    boolean deleteDishByName(String name);
+
+    boolean deleteDishByID(Long dishID);
 
     List<Dish> getAllDishes();
 
     List<Product> getAllProducts();
 
-    List<Dish> dishByType(String dishType);
+    List<Dish> getRestaurantMenu();
+
+    List<Dish> getWishList(); // is wish list stored in database?
+
+    List<Dish> getDishByType(String dishType);
 
 }
