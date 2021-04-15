@@ -12,6 +12,10 @@ public class GetDishByTypeResponse extends CoreResponse{
         this.dishes = dishes;
     }
 
+    public GetDishByTypeResponse(List<CoreError> errors, String type) {
+        super(errors, type);
+    }
+
 
     public List<Dish> getDishesType() {
         return dishes;

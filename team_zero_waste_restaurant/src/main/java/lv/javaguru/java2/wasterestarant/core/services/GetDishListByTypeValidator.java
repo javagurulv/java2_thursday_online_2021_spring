@@ -2,6 +2,7 @@ package lv.javaguru.java2.wasterestarant.core.services;
 
 import lv.javaguru.java2.wasterestarant.core.requests.GetDishByTypeRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.domain.DishTypes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class GetDishListByTypeValidator {
 
     private Optional<CoreError> validateTypeToFilter(GetDishByTypeRequest request) {
         return (request.getDishType() == null || request.getDishType().isEmpty())
-                ? Optional.of(new CoreError("typeToRemove", "Enter a valid dish type"))
+                ? Optional.of(new CoreError("Dish type ", "Enter a valid dish type"))
                 : Optional.empty();
     }
 
