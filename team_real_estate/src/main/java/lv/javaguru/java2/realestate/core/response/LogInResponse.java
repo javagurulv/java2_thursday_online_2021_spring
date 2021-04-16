@@ -6,17 +6,17 @@ import java.util.List;
 
 public class LogInResponse extends CoreResponse {
     private User user;
-    private boolean isLoggedIn;
+    private boolean isLoggedIn = false;
 
     public LogInResponse(List<CoreError> errors) {
         super(errors);
     }
+    public LogInResponse(){
 
-    public LogInResponse(User user) {
-        this.user = user;
     }
 
-    public LogInResponse(boolean isLoggedIn){
+    public LogInResponse(User user,boolean isLoggedIn) {
+        this.user = user;
         this.isLoggedIn = isLoggedIn;
     }
 
