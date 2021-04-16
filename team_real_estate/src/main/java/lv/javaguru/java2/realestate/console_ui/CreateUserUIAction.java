@@ -26,7 +26,12 @@ class CreateUserUIAction implements ConsoleUI {
         CreateUserRequest request = new CreateUserRequest(username, password);
         CreateUserResponse response = createUserService.execute(request);
 
-        System.out.println("Account created");
-
+        if (response.hasErrors()) {
+            response.getErrors().forEach(coreError ->
+                    System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
+        } else {
+            System.out.println("User id : " + response.getUser().getId());
+            System.out.println("User created");
+        }
     }
 }

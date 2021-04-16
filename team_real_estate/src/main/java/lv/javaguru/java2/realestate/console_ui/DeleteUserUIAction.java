@@ -26,5 +26,12 @@ public class DeleteUserUIAction implements ConsoleUI {
         DeleteUserRequest request = new DeleteUserRequest(username, password);
         DeleteUserResponse response = deleteUserService.execute(request);
 
+        if (response.hasErrors()) {
+            response.getErrors().forEach(coreError ->
+                    System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
+        } else {
+            System.out.println("User deleted : "+response.isUserDeleted());
+        }
+
     }
 }

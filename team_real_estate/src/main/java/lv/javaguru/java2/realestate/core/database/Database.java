@@ -17,5 +17,5 @@ public interface Database {
 
     boolean deleteOfferByID(int id);
 
-    void deleteUser(User user);
+    boolean deleteUser(User user);
 }
