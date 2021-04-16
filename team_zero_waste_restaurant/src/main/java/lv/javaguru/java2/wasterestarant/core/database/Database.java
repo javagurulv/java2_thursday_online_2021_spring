@@ -17,6 +17,12 @@ public interface Database {
 
     List<Dish> getAllDishes();
 
+    List<Dish> findDishByName(String name);
+
+    List<Dish> findDishByType(String type);
+
+    List<Dish> findDishByPrice(Double price);
+
     List<Product> getAllProducts();
 
     List<Dish> getRestaurantMenu();
