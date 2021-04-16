@@ -73,6 +73,39 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
+    public List<Dish> findDishByNameAndType(String name, String type) {
+        return dishes.stream()
+                .filter(dish -> dish.getName().equals(name))
+                .filter(dish -> dish.getType().equals(type))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Dish> findDishByNameAndPrice(String name, Double price) {
+        return dishes.stream()
+                .filter(dish -> dish.getName().equals(name))
+                .filter(dish -> dish.getPrice() == price)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Dish> findDishByTypeAndPrice(String type, Double price) {
+        return dishes.stream()
+                .filter(dish -> dish.getType().equals(type))
+                .filter(dish -> dish.getPrice() == price)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Dish> findDishByNameAndTypeAndPrice(String name, String type, Double price) {
+        return dishes.stream()
+                .filter(dish -> dish.getName().equals(name))
+                .filter(dish -> dish.getType().equals(type))
+                .filter(dish -> dish.getPrice() == price)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public List<Product> getAllProducts() {
         return products;
     }
