@@ -23,12 +23,8 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public void logIn(User user) {
-        if (users.contains(user)) {
-            System.out.println("Welcome " + user.getUsername());
-        } else {
-            System.out.println("Incorrect username or password");
-        }
+    public boolean logIn(User user) {
+        return users.contains(user);
     }
 
     @Override

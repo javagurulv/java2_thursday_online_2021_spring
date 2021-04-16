@@ -9,7 +9,7 @@ public interface Database {
 
     void createAccount(User user);
 
-    void logIn(User user);
+    boolean logIn(User user);
 
     void createOffer(Offer offer);
 

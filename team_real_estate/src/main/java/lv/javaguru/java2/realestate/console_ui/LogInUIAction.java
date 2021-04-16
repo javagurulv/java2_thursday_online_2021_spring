@@ -28,8 +28,10 @@ class LogInUIAction implements ConsoleUI {
             response.getErrors().forEach(coreError ->
                     System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
 
+        } else if (response.isLoggedIn()){
+            System.out.println("User " + response.getUser().getUsername() + " logged in successfully");
         } else {
-            System.out.println("User " + username + " logged in successfully");
+            System.out.println("Incorrect user data");
         }
     }
 }
