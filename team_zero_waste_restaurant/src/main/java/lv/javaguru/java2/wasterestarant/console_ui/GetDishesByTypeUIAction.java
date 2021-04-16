@@ -20,7 +20,7 @@ public class GetDishesByTypeUIAction implements UIAction {
     public void execute() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter dish type to show (starter, soup, main, pasta, or desert): ");
-        String dishType = scanner.nextLine();
+        String dishType = scanner.nextLine(); // if(dishType != null) {
         GetDishByTypeRequest request = new GetDishByTypeRequest(dishType);
         GetDishByTypeResponse response = getDishesByTypeService.execute(request);
         System.out.println("__________Dishes by type__________");
