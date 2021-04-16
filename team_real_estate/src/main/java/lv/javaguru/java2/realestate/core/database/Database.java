@@ -9,7 +9,7 @@ public interface Database {
 
     void createAccount(User user);
 
-    void logIn(User user);
+    boolean logIn(User user);
 
     void createOffer(Offer offer);
 
@@ -17,5 +17,5 @@ public interface Database {
 
     boolean deleteOfferByID(int id);
 
-    void deleteUser(User user);
+    boolean deleteUser(User user);
 }

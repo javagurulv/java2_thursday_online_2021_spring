@@ -25,7 +25,12 @@ class CreateOfferUIAction implements ConsoleUI {
         System.out.println("Type in offer description : ");
         String description = scanner.nextLine();
         System.out.println("Enter price : ");
-        Double price = scanner.nextDouble();
+        Double price = 0.0;
+        if(scanner.nextLine().isEmpty()){
+            System.out.println("Must not be empty");
+        } else {
+            price = scanner.nextDouble();
+        }
 
         CreateOfferRequest request = new CreateOfferRequest(offerType, propertyCategory, description, price);
         CreateOfferResponse response = createOfferService.execute(request);

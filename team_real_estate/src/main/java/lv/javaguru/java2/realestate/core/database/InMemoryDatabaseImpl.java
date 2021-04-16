@@ -23,12 +23,8 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public void logIn(User user) {
-        if (users.contains(user)) {
-            System.out.println("Welcome " + user.getUsername());
-        } else {
-            System.out.println("Incorrect username or password");
-        }
+    public boolean logIn(User user) {
+        return users.contains(user);
     }
 
     @Override
@@ -55,8 +51,15 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public void deleteUser(User user) {
-        users.remove(user);
+    public boolean deleteUser(User user) {
+        boolean isUserDeleted = false;
+        Optional<User> userToDeleteOptional = users.stream()
+                .filter(user1 -> user1.equals(user))
+                .findFirst();
+        if(userToDeleteOptional.isPresent()){
+            isUserDeleted = users.remove(userToDeleteOptional.get());
+        }
+        return isUserDeleted;
     }
 
 }
