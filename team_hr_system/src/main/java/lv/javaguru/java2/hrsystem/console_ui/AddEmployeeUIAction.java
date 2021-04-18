@@ -23,8 +23,7 @@ public class AddEmployeeUIAction implements UIAction {
         String name = scanner.nextLine();
         System.out.println("Employee last name: ");
         String lastName = scanner.nextLine();
-        System.out.println("Age: ");
-        int age = scanner.nextInt();
+        int age = getAge();
         AddEmployeeRequest request = new AddEmployeeRequest(name, lastName, age);
         AddEmployeeResponse response = addEmployeeService.execute(request);
 
@@ -36,7 +35,23 @@ public class AddEmployeeUIAction implements UIAction {
             System.out.println("Employee added successfully!" + "\n" +
                     response.getNewEmployee() + "\n");
         }
+    }
 
+    private int getAge() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Age: ");
+        boolean valid = false;
+        int age = 0;
+        while (!valid) {
+            try {
+                age = Integer.parseInt(scanner.nextLine());
+                valid = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter numeric value!");
+                valid = false;
+            }
+        }
+        return age;
     }
 
     @Override

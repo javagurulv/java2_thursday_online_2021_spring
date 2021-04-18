@@ -1,11 +1,9 @@
 package lv.javaguru.java2.hrsystem.core.requests;
 
-import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
-
-public class GetEmployeesByTitleRequest{
+public class SearchEmployeesByTitleRequest {
     private final String employeeTitle;
 
-    public GetEmployeesByTitleRequest(String employeeTitle) {
+    public SearchEmployeesByTitleRequest(String employeeTitle) {
         this.employeeTitle = employeeTitle;
     }
 

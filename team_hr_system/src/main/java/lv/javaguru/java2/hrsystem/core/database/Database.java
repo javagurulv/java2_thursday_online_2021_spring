@@ -5,6 +5,7 @@ import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
 
 import java.util.List;
+import java.util.Set;
 
 public interface Database {
 
@@ -20,6 +21,6 @@ public interface Database {
 
     List<Employee> getEmployeesByTitle(EmployeeTitle title);
 
-    List<EmployeeTitle> getAllTitles();
+    Set<EmployeeTitle> getAllTitles();
 
 }

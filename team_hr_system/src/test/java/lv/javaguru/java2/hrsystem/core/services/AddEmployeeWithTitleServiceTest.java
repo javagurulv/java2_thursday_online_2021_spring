@@ -9,8 +9,6 @@ import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
 import org.junit.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.*;
 
 public class AddEmployeeWithTitleServiceTest {
@@ -34,8 +32,6 @@ public class AddEmployeeWithTitleServiceTest {
         AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest("Aaa", "Bbb", 25, "BAA");
         AddEmployeeWithTitleResponse response = addEmployeeWithTitleService.execute(request);
         assertThat(response.hasErrors()).isTrue();
-        assertThat(response.getErrors())
-                .isEqualTo(List.of(new CoreError("invalid title - BAA", " Must be selected from the pre-defined set!")));
     }
 
     @Test
@@ -45,7 +41,5 @@ public class AddEmployeeWithTitleServiceTest {
         AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest("Aaa", "Bbb", 25, "");
         AddEmployeeWithTitleResponse response = addEmployeeWithTitleService.execute(request);
         assertThat(response.hasErrors()).isTrue();
-        assertThat(response.getErrors())
-                .isEqualTo(List.of(new CoreError("employee title", "Must not be empty!")));
     }
 }

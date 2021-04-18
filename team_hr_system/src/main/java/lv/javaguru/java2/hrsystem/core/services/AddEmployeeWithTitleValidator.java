@@ -21,27 +21,31 @@ public class AddEmployeeWithTitleValidator {
     }
 
     private Optional<CoreError> validateName(AddEmployeeWithTitleRequest request) {
-        if (request.getName() == null || request.getName().isEmpty()) {
+        if (isEmpty(request.getName())) {
             return Optional.of(new CoreError("employee name", "Must not be empty!"));
         }
         return Optional.empty();
     }
 
     private Optional<CoreError> validateLastName(AddEmployeeWithTitleRequest request) {
-        if (request.getName() == null || request.getLastName().isEmpty()) {
+        if (isEmpty(request.getLastName())) {
             return Optional.of(new CoreError("employee last name", "Must not be empty!"));
         }
         return Optional.empty();
     }
 
     private Optional<CoreError> validateTitle(AddEmployeeWithTitleRequest request) {
-        if (request.getTitle() == null || request.getTitle().isEmpty()) {
+        if (isEmpty(request.getTitle())) {
             return Optional.of(new CoreError("employee title", "Must not be empty!"));
         }
         else if (!isValidTitle(request.getTitle())) {
             return Optional.of(new CoreError("invalid title - " + request.getTitle(), " Must be selected from the pre-defined set!"));
         }
         return Optional.empty();
+    }
+
+    private boolean isEmpty(String field) {
+        return field == null || field.isEmpty();
     }
 
     private boolean isValidTitle(String title) {

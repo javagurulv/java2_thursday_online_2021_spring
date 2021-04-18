@@ -1,5 +1,6 @@
 package lv.javaguru.java2.hrsystem.domain;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Employee {
@@ -9,6 +10,7 @@ public class Employee {
     private String lastName;
     private int age;
     private EmployeeTitle title;
+    private List<Skill> skills;
 
     public Employee(String name, String lastName, int age, EmployeeTitle title) {
         this.name = name;
@@ -34,6 +36,18 @@ public class Employee {
         this.lastName = lastName;
         this.age = age;
         this.title = title;
+    }
+
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
+    }
+
+    public boolean addSkill(Skill skill) {
+        return skills.add(skill);
     }
 
     public EmployeeTitle getTitle() {
