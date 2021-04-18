@@ -1,19 +1,19 @@
 package lv.javaguru.java2.wasterestarant.core.responses;
 
-import lv.javaguru.java2.wasterestarant.domain.OrderItem;
-
 //Nataliya
+
+import lv.javaguru.java2.wasterestarant.domain.OrderItem;
 
 public class AddDishToWishlistResponse extends CoreResponse {
 
-    private OrderItem newOrderItem;
+    private OrderItem newSelectedItem;
 
-    public AddDishToWishlistResponse(OrderItem newOrderItem) {
-        this.newOrderItem = newOrderItem;
+    public AddDishToWishlistResponse(OrderItem newSelectedItem) {
+        this.newSelectedItem = newSelectedItem;
     }
 
-    public OrderItem getNewOrderItem() {
-        return newOrderItem;
+    public OrderItem getNewSelectedItem() {
+        return newSelectedItem;
     }
 
 }

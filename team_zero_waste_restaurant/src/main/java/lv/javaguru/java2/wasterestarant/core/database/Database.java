@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
 import lv.javaguru.java2.wasterestarant.domain.Dish;
+import lv.javaguru.java2.wasterestarant.domain.OrderItem;
 import lv.javaguru.java2.wasterestarant.domain.Product;
 
 import java.util.List;
@@ -40,5 +41,9 @@ public interface Database {
     List<Dish> getDishByType(String dishType);
 
     List<Product> searchProductByName(String name);
+
+    void addToWishlist(Long clientID, OrderItem selectedItem);
+
+    List<OrderItem> getWishlist(Long clientID);
 
 }
