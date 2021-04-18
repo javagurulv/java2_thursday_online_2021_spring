@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
 import lv.javaguru.java2.wasterestarant.domain.Dish;
+import lv.javaguru.java2.wasterestarant.domain.OrderItem;
 import lv.javaguru.java2.wasterestarant.domain.Product;
 
 import java.util.ArrayList;
@@ -133,6 +134,16 @@ public class InMemoryDatabaseImpl implements Database {
         return products.stream()
                 .filter(product -> product.getName().equals(name))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void addToWishlist(Long clientID, OrderItem selectedItem) {
+        // TO DO
+    }
+
+    @Override
+    public List<OrderItem> getWishlist(Long clientID) {
+        return null; // TO DO
     }
 }
 

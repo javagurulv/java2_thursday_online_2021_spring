@@ -14,7 +14,6 @@ public class OrderItem {
     }
 
     public OrderItem(String name, int quantity) {
-        this.orderId = orderId;
         this.name = name;
         this.quantity = quantity;
     }
@@ -61,7 +60,6 @@ public class OrderItem {
     @Override
     public String toString() {
         return "OrderItem{" +
-                "orderId=" + orderId +
                 ", name='" + name + '\'' +
                 ", quantity=" + quantity +
                 '}';

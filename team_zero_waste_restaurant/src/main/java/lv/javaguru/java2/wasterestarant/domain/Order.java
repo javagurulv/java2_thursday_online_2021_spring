@@ -5,26 +5,27 @@ import java.util.List;
 import java.util.Objects;
 
 public class Order {
-    private long orderID;
-    private Client client;
+
+    private Long orderID;
+    private Long clientID;
     private Date orderDate;
-    private List<Dish> orderedDishes;
+    private List<OrderItem> orderItems;
 
     public Order() {
     }
 
-    public Order(Client client, Date orderDate, List<Dish> orderedDishes) {
-        this.client = client;
+    public Order(Long clientID, Date orderDate, List<OrderItem> orderItems) {
+        this.clientID = clientID;
         this.orderDate = orderDate;
-        this.orderedDishes = orderedDishes;
+        this.orderItems = orderItems;
     }
 
-    public Client getClientName() {
-        return client;
+    public Long getClientID() {
+        return clientID;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClientID(Long clientID) {
+        this.clientID = clientID;
     }
 
     public Date getOrderDate() {
@@ -35,12 +36,12 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public List<Dish> getOrderedDishes() {
-        return orderedDishes;
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
     public void setOrderedDishes(List<Dish> orderedDishes) {
-        this.orderedDishes = orderedDishes;
+        this.orderItems = orderItems;
     }
 
     public long getOrderID() {
@@ -53,10 +54,11 @@ public class Order {
 
     @Override
     public String toString() {
-        return "lv.javaguru.java2.realestate.core.domain.Order{" +
-                "clientName='" + client + '\'' +
+        return "Order{" +
+                "orderID=" + orderID +
+                ", client=" + clientID +
                 ", orderDate=" + orderDate +
-                ", orderedDishes=" + orderedDishes +
+                ", orderItems=" + orderItems +
                 '}';
     }
 
@@ -65,12 +67,13 @@ public class Order {
         if (this == o) return true;
         if (!(o instanceof Order)) return false;
         Order order = (Order) o;
-        return client.equals(order.client) &&
+        return orderID == order.orderID &&
+                clientID.equals(order.clientID) &&
                 orderDate.equals(order.orderDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(client, orderDate);
+        return Objects.hash(orderID, clientID, orderDate);
     }
 }
