@@ -39,4 +39,6 @@ public interface Database {
 
     List<Dish> getDishByType(String dishType);
 
+    List<Product> searchProductByName(String name);
+
 }

@@ -127,6 +127,13 @@ public class InMemoryDatabaseImpl implements Database {
                 .collect(Collectors.toList());
         return dishByType;
     }
+
+    @Override
+    public List<Product> searchProductByName(String name) {
+        return products.stream()
+                .filter(product -> product.getName().equals(name))
+                .collect(Collectors.toList());
+    }
 }
 
 
