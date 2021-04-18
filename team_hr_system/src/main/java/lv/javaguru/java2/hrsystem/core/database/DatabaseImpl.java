@@ -53,6 +53,7 @@ public class DatabaseImpl implements Database{
         employee.setId(nextIdEmployee);
         nextIdEmployee++;
         employeeList.add(employee);
+        employeeTitles.add(employee.getTitle());
     }
 
     @Override
