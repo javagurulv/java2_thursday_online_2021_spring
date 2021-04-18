@@ -30,7 +30,6 @@ public class AddEmployeeWithTitleUIAction implements UIAction{
                 "    HR_MANAGER,\n" +
                 "    SALES_MANAGER");
         String title = scanner.nextLine();
-
         AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest(firstName, secondName, age, title);
         AddEmployeeWithTitleResponse response = service.execute(request);
 

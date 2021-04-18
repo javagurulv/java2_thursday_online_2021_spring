@@ -3,13 +3,13 @@ package lv.javaguru.java2.hrsystem.core.requests;
 import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
 
 public class GetEmployeesByTitleRequest{
-    private final EmployeeTitle employeeTitle;
+    private final String employeeTitle;
 
-    public GetEmployeesByTitleRequest(EmployeeTitle employeeTitle) {
+    public GetEmployeesByTitleRequest(String employeeTitle) {
         this.employeeTitle = employeeTitle;
     }
 
-    public EmployeeTitle getEmployeeTitle() {
+    public String getEmployeeTitle() {
         return employeeTitle;
     }
 }

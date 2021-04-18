@@ -28,6 +28,14 @@ public class Employee {
         this.age = age;
     }
 
+    public Employee(Long id, String name, String lastName, int age, EmployeeTitle title) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+        this.title = title;
+    }
+
     public EmployeeTitle getTitle() {
         return title;
     }

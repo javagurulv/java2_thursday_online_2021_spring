@@ -21,7 +21,7 @@ public class GetAllEmployeesByTitleUIAction implements UIAction{
         System.out.println("Enter employee title: ");
         Scanner scanner = new Scanner(System.in);
         String title = scanner.nextLine();
-        GetEmployeesByTitleRequest request = new GetEmployeesByTitleRequest(EmployeeTitle.valueOf(title));
+        GetEmployeesByTitleRequest request = new GetEmployeesByTitleRequest(title);
         GetEmployeesByTitleResponse response = service.execute(request);
         List<Employee> employees = response.getEmployees();
         if (!employees.isEmpty()) {
