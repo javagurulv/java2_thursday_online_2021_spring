@@ -11,6 +11,8 @@ public class RestaurantApplication {
 
     private static Database database = new InMemoryDatabaseImpl();
 
+    private static AddDishIngredientValidator addDishIngredientValidator = new AddDishIngredientValidator();
+    private static AddDishIngredientService addDishIngredientService = new AddDishIngredientService(database, addDishIngredientValidator);
     private static RegistrationService registrationService = new RegistrationService(database);
     private static LoginService loginService = new LoginService(database);
     private static AddDishValidator addDishValidator = new AddDishValidator();
@@ -27,6 +29,7 @@ public class RestaurantApplication {
     private static AddDishToWishlistService addDishToWishlistService = new AddDishToWishlistService(database);
     private static GetWishlistService getWishlistServiceService = new GetWishlistService(database);
 
+    private static UIAction addDishIngredientUiAction = new AddDishIngredientUiAction(addDishIngredientService);
     private static UIAction registrationUIAction = new RegistrationUIAction(registrationService);
     private static UIAction loginUIAction = new LoginUIAction(loginService);
     private static UIAction addProductUIAction = new AddProductUIAction(addProductService);
@@ -100,6 +103,7 @@ public class RestaurantApplication {
             }
             case 4: {
                 addDishUIAction.execute();
+                addDishIngredientUiAction.execute();
                 break;
             }
             case 5: {

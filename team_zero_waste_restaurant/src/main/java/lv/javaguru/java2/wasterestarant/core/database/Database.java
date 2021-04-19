@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
 import lv.javaguru.java2.wasterestarant.domain.Dish;
+import lv.javaguru.java2.wasterestarant.domain.Ingredient;
 import lv.javaguru.java2.wasterestarant.domain.OrderItem;
 import lv.javaguru.java2.wasterestarant.domain.Product;
 
@@ -11,6 +12,8 @@ public interface Database {
     void save(Dish dish);
 
     void save(Product product);
+
+    void save(Ingredient ingredient);
 
     boolean deleteDishByName(String name);
 

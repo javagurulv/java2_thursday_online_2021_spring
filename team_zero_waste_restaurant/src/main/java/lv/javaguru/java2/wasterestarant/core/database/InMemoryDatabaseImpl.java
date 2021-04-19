@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
 import lv.javaguru.java2.wasterestarant.domain.Dish;
+import lv.javaguru.java2.wasterestarant.domain.Ingredient;
 import lv.javaguru.java2.wasterestarant.domain.OrderItem;
 import lv.javaguru.java2.wasterestarant.domain.Product;
 
@@ -14,6 +15,7 @@ public class InMemoryDatabaseImpl implements Database {
     private List<Dish> dishes = new ArrayList<>();
     private List<Dish> restaurantMenu = new ArrayList<>();
     private List<Product> products = new ArrayList<>();
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     @Override
     public void save(Dish dish) {
@@ -27,6 +29,12 @@ public class InMemoryDatabaseImpl implements Database {
         product.setProductID(nextId);
         nextId++;
         products.add(product);
+    }
+
+    @Override
+    public void save(Ingredient ingredient) {
+        ingredients.add(ingredient);
+
     }
 
     @Override
