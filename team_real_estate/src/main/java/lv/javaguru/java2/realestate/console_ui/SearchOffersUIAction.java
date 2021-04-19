@@ -25,10 +25,9 @@ public class SearchOffersUIAction implements ConsoleUI {
         String category = scanner.nextLine();
         System.out.println("Enter Offer price");
         Double price = scanner.nextDouble();
-        System.out.println("Enter Offer id");
-        Integer id = scanner.nextInt();
 
-        SearchOffersRequest request = new SearchOffersRequest(type, category, price, id);
+
+        SearchOffersRequest request = new SearchOffersRequest(type, category, price);
         SearchOffersResponse response = searchOffersService.execute(request);
 
         if (response.hasErrors()) {

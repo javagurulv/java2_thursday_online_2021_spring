@@ -16,12 +16,11 @@ public class SearchOffersValidator {
         List<CoreError> errors = new ArrayList<>();
         if (isEmptyString(request.getOfferType())
                 && isEmptyString(request.getOfferCategory())
-                && isEmptyDouble(request.getPrice())
-                && isEmptyInteger(request.getId())) {
+                && isEmptyDouble(request.getPrice()))
+        {
             errors.add(new CoreError("Type", "Must not be empty!"));
             errors.add(new CoreError("Category", "Must not be empty!"));
             errors.add(new CoreError("Price", "Must not be empty"));
-            errors.add(new CoreError("ID", "Must not be empty"));
         }
         return errors;
     }
@@ -34,7 +33,4 @@ public class SearchOffersValidator {
         return aDouble == null || aDouble == 0.0;
     }
 
-    private boolean isEmptyInteger(Integer aInteger) {
-        return aInteger == null;
-    }
 }
