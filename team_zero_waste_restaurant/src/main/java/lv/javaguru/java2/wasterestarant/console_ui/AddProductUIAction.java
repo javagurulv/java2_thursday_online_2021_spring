@@ -29,10 +29,6 @@ public class AddProductUIAction implements UIAction{
         System.out.println("Enter product expiry date (format: \"dd, MM, yyyy\") : ");
         Date productDate = getDate(scanner);
 
-
-
-
-
         AddProductRequest request = new AddProductRequest(productName, productQuantity, productPrice, productDate);
         AddProductResponse response = addProductService.execute(request);
 
