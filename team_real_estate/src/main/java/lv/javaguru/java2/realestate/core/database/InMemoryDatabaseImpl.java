@@ -2,10 +2,13 @@ package lv.javaguru.java2.realestate.core.database;
 
 import lv.javaguru.java2.realestate.core.domain.Offer;
 import lv.javaguru.java2.realestate.core.domain.User;
+import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class InMemoryDatabaseImpl implements Database {
 
@@ -62,4 +65,22 @@ public class InMemoryDatabaseImpl implements Database {
         return isUserDeleted;
     }
 
+    @Override
+    public List<Offer> searchOffers(SearchOffersRequest request){
+        Predicate<Offer> offerTypePredicate = (a) -> request.getOfferType() == null
+                || a.getOfferType().equals(request.getOfferType());
+
+        Predicate<Offer> offerCategoryPredicate = (a) -> request.getOfferCategory() == null
+                || a.getPropertyCategory().equals(request.getOfferCategory());
+
+        Predicate<Offer> offerPricePredicate = (a) -> request.getPrice() == null
+                || a.getPrice().equals(request.getPrice());
+
+        Predicate<Offer> offerIDPredicate = (a) -> request.getId() == null
+                || a.getPrice().equals(request.getPrice());
+
+        return offers.stream().filter(offerTypePredicate.and(offerCategoryPredicate
+                .and(offerPricePredicate.and(offerIDPredicate))))
+                .collect(Collectors.toList());
+    }
 }
