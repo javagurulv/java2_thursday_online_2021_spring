@@ -41,8 +41,6 @@ public interface Database {
 
     List<Dish> getWishList(); // is wish list stored in database?
 
-    List<Dish> getDishByType(String dishType);
-
     List<Product> searchProductByName(String name);
 
     void addToWishlist(Long clientID, OrderItem selectedItem);

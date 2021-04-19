@@ -24,8 +24,8 @@ public class RestaurantApplication {
     private static GetAllDishesService getAllDishesService = new GetAllDishesService(database);
     private static GetAllProductsService getAllProductsService = new GetAllProductsService(database);
     private static GetRestaurantMenuService getRestaurantMenuService = new GetRestaurantMenuService(database);
-    private static GetDishListByTypeValidator getDishListByTypeValidator = new GetDishListByTypeValidator();
-    private static GetDishesByTypeService getDishesByTypeService = new GetDishesByTypeService(database, getDishListByTypeValidator);
+    private static SearchProductServiceValidator searchProductServiceValidator = new SearchProductServiceValidator();
+    private static SearchProductService searchProductService = new SearchProductService(database, searchProductServiceValidator);
     private static AddDishToWishlistService addDishToWishlistService = new AddDishToWishlistService(database);
     private static GetWishlistService getWishlistServiceService = new GetWishlistService(database);
 
@@ -38,7 +38,7 @@ public class RestaurantApplication {
     private static UIAction getAllDishesUIAction = new GetAllDishesUIAction(getAllDishesService);
     private static UIAction getAllProductsUIAction = new GetAllProductsUIAction(getAllProductsService);
     private static UIAction getRestaurantMenuUIAction = new GetRestaurantMenuUIAction(getRestaurantMenuService);
-    private static UIAction getDishesByTypeUIAction = new GetDishesByTypeUIAction(getDishesByTypeService);
+    private static UIAction searchProductUIAction = new SearchProductUIAction(searchProductService);
     private static UIAction addDishToWishlistUIAction = new AddDishToWishlistUIAction(addDishToWishlistService);
     private static UIAction getWishlistUIAction = new GetWishListUIAction(getWishlistServiceService);
     private static UIAction exitUIAction = new ExitUIAction();
@@ -62,7 +62,7 @@ public class RestaurantApplication {
         System.out.println("6. Show all dishes in the list");
         System.out.println("7. Show all products in the list");
         System.out.println("8. Show full restaurant menu list");
-        System.out.println("9. Show dishes by type");
+        System.out.println("9. Search products by name");
         System.out.println("10. Add dish to wishlist");
         System.out.println("11. Show wishlist");
         System.out.println("12. Exit");
@@ -123,7 +123,7 @@ public class RestaurantApplication {
                 break;
             }
             case 9: {
-                getDishesByTypeUIAction.execute();
+                searchProductUIAction.execute();
                 break;
             }
             case 10: {
