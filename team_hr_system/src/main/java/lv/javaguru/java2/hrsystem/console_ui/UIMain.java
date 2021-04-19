@@ -18,7 +18,7 @@ public class UIMain {
         put(2, new AddEmployeeWithTitleUIAction(new AddEmployeeWithTitleService(database)));
         put(3, new DeleteEmployeeUIAction(new DeleteEmployeeService(database)));
         put(4, new GetAllEmployeesUIAction(new GetAllEmployeesService(database)));
-        put(5, new GetAllEmployeesByTitleUIAction(new GetEmployeesByTitleService(database)));
+        put(5, new SearchEmployeesByTitleUIAction(new SearchEmployeesByTitleService(database)));
         put(6, new ExitUIAction());
 
     }};

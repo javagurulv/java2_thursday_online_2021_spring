@@ -17,8 +17,13 @@ public class GetAllEmployeesUIAction implements UIAction {
         System.out.println("\n" + "Employees list:");
         GetAllEmployeesRequest request = new GetAllEmployeesRequest();
         GetAllEmployeesResponse response = getAllEmployeesService.execute(request);
-        response.getEmployees().forEach(System.out::println);
-        System.out.println("---end of employees list---" + "\n");
+        if (response.hasEmployees()) {
+            response.getEmployees().forEach(System.out::println);
+            System.out.println("---end of employees list---" + "\n");
+        }
+        else {
+            System.out.println("No employees added at the moment");
+        }
     }
 
     @Override

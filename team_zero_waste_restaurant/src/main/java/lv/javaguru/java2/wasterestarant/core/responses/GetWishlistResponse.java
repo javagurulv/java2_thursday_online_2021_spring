@@ -1,6 +1,5 @@
 package lv.javaguru.java2.wasterestarant.core.responses;
 
-import lv.javaguru.java2.wasterestarant.domain.Dish;
 import lv.javaguru.java2.wasterestarant.domain.OrderItem;
 
 import java.util.List;
@@ -9,14 +8,14 @@ import java.util.List;
 
 public class GetWishlistResponse extends CoreResponse {
 
-    private List<OrderItem> wishList;
+    private List<OrderItem> selectedItems;
 
-    public GetWishlistResponse(List<OrderItem> wishList) {
-        this.wishList = wishList;
+    public GetWishlistResponse(List<OrderItem> selectedItems) {
+        this.selectedItems = selectedItems;
     }
 
-    public List<OrderItem> getWishList() {
-        return wishList;
+    public List<OrderItem> getWishlist() {
+        return selectedItems;
     }
 
 }

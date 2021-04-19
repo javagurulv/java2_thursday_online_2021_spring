@@ -28,5 +28,11 @@ public class LoginUIAction implements UIAction {
         LoginRequest request = new LoginRequest(email, password);
         LoginResponse response = loginAdminService.execute(request);
 
+        if (response.hasErrors()) {
+            response.getErrors().forEach(coreError ->
+                    System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage())
+            );
+
+        }
     }
 }

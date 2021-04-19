@@ -23,17 +23,30 @@ public class RegistrationUIAction implements UIAction {
         System.out.println("Input the following data");
         System.out.println("First name: ");
         String firstName = scanner.nextLine();
+
         System.out.println("Last name: ");
         String secondName = scanner.nextLine();
+
         System.out.println("Email: ");
         String email = scanner.nextLine();
+
         System.out.println("Password: ");
         String password = scanner.nextLine();
+
         RegistrationRequest request = new RegistrationRequest(firstName, secondName, email, password);
         RegistrationResponse response = addAdminService.execute(request);
 
-        System.out.println("Registration completed!" + "\n" + "Hello " + firstName + " " + secondName + "!");
+        if (response.hasErrors()) {
+            response.getErrors().forEach(coreError ->
+                    System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage())
+            );
 
+        } else {
+
+            System.out.println("Registration completed!" + "\n" + "Hello " + response.getAdmin().getFirstName()
+                    + " " + response.getAdmin().getSecondName() + "!");
+
+        }
     }
 
     @Override

@@ -9,7 +9,9 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 
 import static java.util.stream.Collectors.*;
 
@@ -18,7 +20,7 @@ public class DatabaseImpl implements Database{
     private Long nextIdEmployee = 1L;
     private Long nextIdAdmin = 1L;
     private List <Employee> employeeList = new ArrayList<>();
-    private List<EmployeeTitle> employeeTitles = new ArrayList<>();
+    private EnumSet<EmployeeTitle> employeeTitles = EnumSet.allOf(EmployeeTitle.class);
     private static List<Admin> adminList = new ArrayList<>();
     private static final String filename = "admin.txt";
 
@@ -53,6 +55,7 @@ public class DatabaseImpl implements Database{
         employee.setId(nextIdEmployee);
         nextIdEmployee++;
         employeeList.add(employee);
+      //  employeeTitles.add(employee.getTitle());
     }
 
     @Override
@@ -73,7 +76,7 @@ public class DatabaseImpl implements Database{
     }
 
     @Override
-    public List<EmployeeTitle> getAllTitles() {
+    public Set<EmployeeTitle> getAllTitles() {
         return employeeTitles;
     }
 }

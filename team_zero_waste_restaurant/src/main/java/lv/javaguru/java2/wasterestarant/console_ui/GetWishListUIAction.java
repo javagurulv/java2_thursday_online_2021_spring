@@ -1,15 +1,17 @@
 package lv.javaguru.java2.wasterestarant.console_ui;
 
-import lv.javaguru.java2.wasterestarant.core.requests.GetWishListRequest;
+import lv.javaguru.java2.wasterestarant.core.requests.GetWishlistRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.GetWishlistResponse;
 import lv.javaguru.java2.wasterestarant.core.services.GetWishlistService;
 import lv.javaguru.java2.wasterestarant.domain.OrderItem;
 
 import java.util.List;
+import java.util.Scanner;
 
 //Nataliya - in process
 
 public class GetWishListUIAction implements UIAction{
+
     private GetWishlistService getWishlistService;
 
     public GetWishListUIAction(GetWishlistService getWishlistService) {
@@ -18,17 +20,26 @@ public class GetWishListUIAction implements UIAction{
 
     @Override
     public void execute() {
-        System.out.println("__________Wish list__________");
-        GetWishListRequest request = new GetWishListRequest();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter client ID to show his wishlist: ");
+        Long clientID = scanner.nextLong();
+        GetWishlistRequest request = new GetWishlistRequest(clientID);
         GetWishlistResponse response = getWishlistService.execute(request);
-        List<OrderItem> printList = response.getWishList();
-        for (int i = 0; i < printList.size(); i++) {
-            printWishListWithFields(printList, i);
+        System.out.println("__________Wishlist__________");
+        if (response.hasErrors()) {
+            response.getErrors().forEach(coreError -> System.out.println("Error: " + coreError.getField() +
+                    " " + coreError.getMessage()));
+        } else {
+            List<OrderItem> printList = response.getWishlist();
+            for (int i = 0; i < printList.size(); i++) {
+                printWishlistWithFields(printList, i);
+            }
+            System.out.println("________________end_______________");
         }
-        System.out.println("_____________end_____________");
+
     }
 
-    private void printWishListWithFields(List<OrderItem> printList, int i) {
+    private void printWishlistWithFields(List<OrderItem> printList, int i) {
         System.out.println((i + 1) + ". " + printList.get(i).getName() +
                 ", quantity - " + printList.get(i).getQuantity() + ".");
     }

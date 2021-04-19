@@ -14,4 +14,8 @@ public class GetAllEmployeesResponse extends CoreResponse{
     public List<Employee> getEmployees() {
         return employees;
     }
+
+    public boolean hasEmployees() {
+        return !employees.isEmpty();
+    }
 }
