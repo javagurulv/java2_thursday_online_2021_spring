@@ -130,14 +130,6 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public List<Dish> getDishByType(String dishType) {
-        List<Dish> dishByType = dishes.stream()
-                .filter(dish -> dish.getType().equals(dishType))
-                .collect(Collectors.toList());
-        return dishByType;
-    }
-
-    @Override
     public List<Product> searchProductByName(String name) {
         return products.stream()
                 .filter(product -> product.getName().equals(name))
