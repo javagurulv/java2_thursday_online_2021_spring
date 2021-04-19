@@ -11,6 +11,7 @@ public class SearchDishesRequestValidator {
     public List<CoreError> validate(SearchDishesRequest request) {
         List<CoreError> errors = new ArrayList<>();
         errors.addAll(validateSearchFields(request));
+
         return errors;
     }
 
