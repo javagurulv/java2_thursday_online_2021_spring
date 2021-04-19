@@ -38,7 +38,7 @@ public class CreateOfferValidator {
 
     private Optional<CoreError> validatePrice(CreateOfferRequest request) {
         return (request.getPrice() == null || request.getPrice() == 0.0)
-                ? Optional.of(new CoreError("Price", "Must not be empty or zero"))
+                ? Optional.of(new CoreError("Price", "Must not be zero"))
                 : Optional.empty();
     }
 }

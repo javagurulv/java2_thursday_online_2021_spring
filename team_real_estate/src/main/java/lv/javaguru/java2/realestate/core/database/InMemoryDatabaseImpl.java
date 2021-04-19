@@ -59,28 +59,22 @@ public class InMemoryDatabaseImpl implements Database {
         Optional<User> userToDeleteOptional = users.stream()
                 .filter(user1 -> user1.equals(user))
                 .findFirst();
-        if(userToDeleteOptional.isPresent()){
+        if (userToDeleteOptional.isPresent()) {
             isUserDeleted = users.remove(userToDeleteOptional.get());
         }
         return isUserDeleted;
     }
 
     @Override
-    public List<Offer> searchOffers(SearchOffersRequest request){
-        Predicate<Offer> offerTypePredicate = (a) -> request.getOfferType() == null
-                || a.getOfferType().equals(request.getOfferType());
+    public List<Offer> searchOffers(SearchOffersRequest request) {
+        Predicate<Offer> offerTypePredicate = (a) -> request.getOfferType().equals("") || a.getOfferType().equals(request.getOfferType());
 
-        Predicate<Offer> offerCategoryPredicate = (a) -> request.getOfferCategory() == null
-                || a.getPropertyCategory().equals(request.getOfferCategory());
+        Predicate<Offer> offerCategoryPredicate = (a) -> request.getOfferCategory().equals("") || a.getPropertyCategory().equals(request.getOfferCategory());
 
-        Predicate<Offer> offerPricePredicate = (a) -> request.getPrice() == null
-                || a.getPrice().equals(request.getPrice());
+        Predicate<Offer> offerPricePredicate = (a) -> request.getPrice() == null || a.getPrice().equals(request.getPrice());
 
-        Predicate<Offer> offerIDPredicate = (a) -> request.getId() == null
-                || a.getPrice().equals(request.getPrice());
-
-        return offers.stream().filter(offerTypePredicate.and(offerCategoryPredicate
-                .and(offerPricePredicate.and(offerIDPredicate))))
+        return offers.stream()
+                .filter(offerTypePredicate.and(offerCategoryPredicate.and(offerPricePredicate)))
                 .collect(Collectors.toList());
     }
 }
