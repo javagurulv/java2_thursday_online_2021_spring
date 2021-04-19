@@ -1,10 +1,10 @@
 package lv.javaguru.java2.wasterestarant.domain;
 
 public class Ingredient {
-    private Product ingredient;
-    private double quantity;
+    private String ingredient;
+    private Double quantity;
 
-    public Ingredient(Product ingredient, double quantity) {
+    public Ingredient(String ingredient, Double quantity) {
         this.ingredient = ingredient;
         this.quantity = quantity;
     }
