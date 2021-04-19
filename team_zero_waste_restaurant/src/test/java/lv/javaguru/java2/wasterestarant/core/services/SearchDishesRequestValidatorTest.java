@@ -20,29 +20,8 @@ public class SearchDishesRequestValidatorTest {
 
     @Test
     public void test2Validate() {
-        SearchDishesRequest request2 = new SearchDishesRequest("Pumpkin soup", "", 4.95);
+        SearchDishesRequest request2 = new SearchDishesRequest("", "", -4.95);
         List<CoreError> errors = victim.validate(request2);
-        assertEquals(1, errors.size());
-    }
-
-    @Test
-    public void test3Validate() {
-        SearchDishesRequest request3 = new SearchDishesRequest("", "Soup", 4.95);
-        List<CoreError> errors = victim.validate(request3);
-        assertEquals(1, errors.size());
-    }
-
-    @Test
-    public void test4Validate() {
-        SearchDishesRequest request4 = new SearchDishesRequest("Pumpkin soup", "", -4.95);
-        List<CoreError> errors = victim.validate(request4);
-        assertEquals(2, errors.size());
-    }
-
-    @Test
-    public void test5Validate() {
-        SearchDishesRequest request4 = new SearchDishesRequest("", "", 4.95);
-        List<CoreError> errors = victim.validate(request4);
-        assertEquals(2, errors.size());
+        assertEquals(3, errors.size());
     }
 }

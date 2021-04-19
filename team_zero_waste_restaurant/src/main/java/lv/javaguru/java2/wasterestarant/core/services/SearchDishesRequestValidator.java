@@ -6,6 +6,7 @@ import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import java.util.ArrayList;
 import java.util.List;
 
+//Elena
 public class SearchDishesRequestValidator {
     public List<CoreError> validate(SearchDishesRequest request) {
         List<CoreError> errors = new ArrayList<>();
@@ -15,15 +16,21 @@ public class SearchDishesRequestValidator {
 
     private List<CoreError> validateSearchFields(SearchDishesRequest request) {
         List<CoreError> errors = new ArrayList<>();
-        if (request.getName().isEmpty() || request.getName() == null){
-            errors.add(new CoreError("name", "Must not be empty!"));
-        }if(request.getType().isEmpty() || request.getType() == null){
-            errors.add(new CoreError("type", "Must not be empty!"));
-        }if (request.getPrice().isNaN()){
-            errors.add(new CoreError("price", "Field price must be a number!"));
-        }if (request.getPrice() < 0) {
-            errors.add(new CoreError("price", "Price must be higher 0!"));
+        if (isEmptyString(request.getName()) &&
+                isEmptyString(request.getType()) &&
+                isEmptyDouble(request.getPrice())) {
+            errors.add(new CoreError("name", "Must not be empty"));
+            errors.add(new CoreError("type", "Must not be empty"));
+            errors.add(new CoreError("price", "Must not be empty"));
         }
         return errors;
+    }
+
+    private boolean isEmptyString(String str){
+        return str == null || str.isEmpty();
+    }
+
+    private boolean isEmptyDouble(Double dbl){
+        return dbl == null || dbl == 0.0 || dbl < 0 || dbl.isNaN();
     }
 }

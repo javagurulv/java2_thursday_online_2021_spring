@@ -1,5 +1,5 @@
 package lv.javaguru.java2.wasterestarant.core.requests;
-
+//Elena
 public class SearchDishesRequest {
     private String name;
     private String type;
