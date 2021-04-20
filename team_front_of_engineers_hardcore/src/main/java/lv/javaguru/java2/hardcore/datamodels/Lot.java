@@ -53,10 +53,10 @@ public class Lot {
 
     @Override
     public String toString() {
-        return "lv.javaguru.java2.hardcore.DataModels.Lot{" +
+        return "Lot{" +
                 "name='" + name + '\'' +
-                ", startPrice=" + startPrice +
-                ", id=" + id +
+                ", startPrice=" + startPrice +" eur"+
+                ", lotID=" + id +
                 '}';
     }
 }
