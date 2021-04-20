@@ -34,9 +34,7 @@ public class RegistrationValidator {
 
             return Optional.of(new CoreError("email", "Must not be empty!"));
 
-        } else if (request.getEmail().regionMatches(request.getEmail().length() - 11, "@gmail.com", 0, 10) ||
-                request.getEmail().regionMatches(request.getEmail().length() - 9, "@mail.ru", 0, 8) ||
-                request.getEmail().regionMatches(request.getEmail().length() - 9, "@list.ru", 0, 8)) {
+        } else if (request.getEmail().matches("^[a-zA-Z0-9]*$")) {
 
             return Optional.of(new CoreError("email", "Wrong format!"));
 
@@ -56,8 +54,8 @@ public class RegistrationValidator {
 
             return Optional.of(new CoreError("password", "Must not be short!"));
 
-        } else if (request.getPassword().matches(".*[0-9]+.*") ||
-                request.getPassword().matches(".*[a-zA-Z]+.*")) {
+        } else if (request.getPassword().matches("^[0-9]*$") ||
+                request.getPassword().matches("^[a-zA-Z]*$")) {
 
             return Optional.of(new CoreError("password", "Must not contain only numbers or letters!"));
 
