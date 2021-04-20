@@ -8,7 +8,8 @@ public interface LotDatabase {
 
     void saveLot(Lot lot);
 
-    void deleteLotById(Long id);
+    boolean deleteLotById(Long id);
 
     List<Lot> getAllLots();
+
 }

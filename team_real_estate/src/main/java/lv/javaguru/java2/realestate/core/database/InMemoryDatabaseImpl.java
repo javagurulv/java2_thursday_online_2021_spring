@@ -67,11 +67,14 @@ public class InMemoryDatabaseImpl implements Database {
 
     @Override
     public List<Offer> searchOffers(SearchOffersRequest request) {
-        Predicate<Offer> offerTypePredicate = (a) -> request.getOfferType().equals("") || a.getOfferType().equals(request.getOfferType());
+        Predicate<Offer> offerTypePredicate = (a) ->
+                request.getOfferType().equals("") || a.getOfferType().equals(request.getOfferType());
 
-        Predicate<Offer> offerCategoryPredicate = (a) -> request.getOfferCategory().equals("") || a.getPropertyCategory().equals(request.getOfferCategory());
+        Predicate<Offer> offerCategoryPredicate = (a) ->
+                request.getOfferCategory().equals("") || a.getOfferCategory().equals(request.getOfferCategory());
 
-        Predicate<Offer> offerPricePredicate = (a) -> request.getPrice() == null || a.getPrice().equals(request.getPrice());
+        Predicate<Offer> offerPricePredicate = (a) ->
+                request.getPrice() == 0.0 || a.getPrice().equals(request.getPrice());
 
         return offers.stream()
                 .filter(offerTypePredicate.and(offerCategoryPredicate.and(offerPricePredicate)))
