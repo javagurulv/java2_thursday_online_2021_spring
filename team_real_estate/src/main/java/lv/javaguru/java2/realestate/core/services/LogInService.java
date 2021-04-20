@@ -26,8 +26,8 @@ public class LogInService {
         User user = new User(
                 logInRequest.getUsername(),
                 logInRequest.getPassword());
-        if(database.logIn(user)){
-            return new LogInResponse(user,true);
+        if (database.logIn(user)) {
+            return new LogInResponse(user, true);
         } else {
             return new LogInResponse();
         }

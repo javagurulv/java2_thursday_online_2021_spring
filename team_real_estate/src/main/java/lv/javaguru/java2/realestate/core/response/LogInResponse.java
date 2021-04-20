@@ -11,11 +11,12 @@ public class LogInResponse extends CoreResponse {
     public LogInResponse(List<CoreError> errors) {
         super(errors);
     }
-    public LogInResponse(){
+
+    public LogInResponse() {
 
     }
 
-    public LogInResponse(User user,boolean isLoggedIn) {
+    public LogInResponse(User user, boolean isLoggedIn) {
         this.user = user;
         this.isLoggedIn = isLoggedIn;
     }

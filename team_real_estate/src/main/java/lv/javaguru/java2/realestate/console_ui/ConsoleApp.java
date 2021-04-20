@@ -27,7 +27,7 @@ public class ConsoleApp {
     private final static LogInService logInService = new LogInService(database, logInValidator);
     private final static DeleteOfferService deleteOfferService = new DeleteOfferService(database, deleteOfferValidator);
     private final static GetAllOffersService getAllOffersService = new GetAllOffersService(database);
-    private final static SearchOffersService searchOffersService = new SearchOffersService(database,searchOffersValidator);
+    private final static SearchOffersService searchOffersService = new SearchOffersService(database, searchOffersValidator);
 
     public ConsoleApp() {
 

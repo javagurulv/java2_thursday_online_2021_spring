@@ -1,5 +1,6 @@
 package lv.javaguru.java2.realestate.console_ui;
 
+import lv.javaguru.java2.realestate.core.requests.Ordering;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
 import lv.javaguru.java2.realestate.core.response.SearchOffersResponse;
 import lv.javaguru.java2.realestate.core.services.SearchOffersService;
@@ -24,10 +25,17 @@ public class SearchOffersUIAction implements ConsoleUI {
         System.out.println("Enter Offer category");
         String category = scanner.nextLine();
         System.out.println("Enter Offer price");
-        Double price = scanner.nextDouble();
+        String stringPrice = scanner.nextLine();
+        Double price = Double.parseDouble(stringPrice);
+
+        System.out.println("Enter orderBy (type||category||price): ");
+        String orderBy = scanner.nextLine();
+        System.out.println("Enter orderDirection (ASCENDING||DESCENDING): ");
+        String orderDirection = scanner.nextLine();
+        Ordering ordering = new Ordering(orderBy, orderDirection);
 
 
-        SearchOffersRequest request = new SearchOffersRequest(type, category, price);
+        SearchOffersRequest request = new SearchOffersRequest(type, category, price, ordering);
         SearchOffersResponse response = searchOffersService.execute(request);
 
         if (response.hasErrors()) {
