@@ -45,7 +45,8 @@ public class SearchOffersValidator {
 
     private Optional<CoreError> validateOrderBy(Ordering ordering) {
         return (ordering.getOrderBy() != null
-                && !(ordering.getOrderBy().equals("author") || ordering.getOrderBy().equals("title")))
+                && !(ordering.getOrderBy().equals("type") || ordering.getOrderBy().equals("category")
+                || ordering.getOrderBy().equals("price")))
                 ? Optional.of(new CoreError("orderBy", "Must contain 'author' or 'title' only!"))
                 : Optional.empty();
     }
