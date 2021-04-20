@@ -1,5 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services;
 
+import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.SearchDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import org.junit.Test;
@@ -9,19 +10,100 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class SearchDishesRequestValidatorTest {
-    SearchDishesRequestValidator victim = new SearchDishesRequestValidator();
+    SearchDishesRequestValidator validator = new SearchDishesRequestValidator();
 
     @Test
-    public void test1Validate() {
-        SearchDishesRequest request1 = new SearchDishesRequest("Pizza", "Pizza", 12.95);
-        List<CoreError> errors = victim.validate(request1);
+    public void shouldNotReturnErrorsWhenNameIsProvided() {
+        SearchDishesRequest request = new SearchDishesRequest("Pizza", null, null);
+        List<CoreError> errors = validator.validate(request);
         assertEquals(0, errors.size());
     }
 
     @Test
-    public void test2Validate() {
-        SearchDishesRequest request2 = new SearchDishesRequest("", "", -4.95);
-        List<CoreError> errors = victim.validate(request2);
+    public void shouldNotReturnErrorsWhenTypeIsProvided() {
+        SearchDishesRequest request = new SearchDishesRequest("", "Pizza", null);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(0, errors.size());
+    }
+
+    @Test
+    public void shouldNotReturnErrorsWhenPriceIsProvided() {
+        SearchDishesRequest request = new SearchDishesRequest("", "", 4.99);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(0, errors.size());
+    }
+
+    @Test
+    public void shouldNotReturnErrorsWhenNameAndTypeIsProvided() {
+        SearchDishesRequest request = new SearchDishesRequest("Pizza", "Pizza", null);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(0, errors.size());
+    }
+
+    @Test
+    public void shouldNotReturnErrorsWhenNameAndPriceIsProvided() {
+        SearchDishesRequest request = new SearchDishesRequest("Pizza", "", 4.99);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(0, errors.size());
+    }
+
+    @Test
+    public void shouldNotReturnErrorsWhenTypeAndPriceIsProvided() {
+        SearchDishesRequest request = new SearchDishesRequest("", "Pizza", 4.99);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(0, errors.size());
+    }
+
+    @Test
+    public void shouldReturnErrorWhenSearchFieldsAreEmpty() {
+        SearchDishesRequest request = new SearchDishesRequest(null, null, null);
+        List<CoreError> errors = validator.validate(request);
         assertEquals(3, errors.size());
+        assertEquals(errors.get(0).getField(), "name");
+        assertEquals(errors.get(0).getMessage(), "Must not be empty!");
+        assertEquals(errors.get(1).getField(), "type");
+        assertEquals(errors.get(1).getMessage(), "Must not be empty!");
+        assertEquals(errors.get(2).getField(), "price");
+        assertEquals(errors.get(2).getMessage(), "Must not be empty!");
+    }
+
+    @Test
+    public void shouldReturnErrorWhenOrderDirectionAreEmpty() {
+        Ordering ordering = new Ordering("name", null);
+        SearchDishesRequest request = new SearchDishesRequest("Pizza", "Pizza", 4.99, ordering);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals( 1, errors.size());
+        assertEquals(errors.get(0).getField(), "orderDirection");
+        assertEquals(errors.get(0).getMessage(), "Must not be empty!");
+    }
+
+    @Test
+    public void shouldReturnErrorWhenOrderByAreEmpty() {
+        Ordering ordering = new Ordering(null, "ASCENDING");
+        SearchDishesRequest request = new SearchDishesRequest("Pizza", "Pizza", 4.99, ordering);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(1, errors.size());
+        assertEquals(errors.get(0).getField(), "orderBy");
+        assertEquals(errors.get(0).getMessage(), "Must not be empty!");
+    }
+
+    @Test
+    public void shouldReturnErrorWhenOrderByContainNotValidValue() {
+        Ordering ordering = new Ordering("notValidValue", "ASCENDING");
+        SearchDishesRequest request = new SearchDishesRequest("Pizza", "Pizza", 4.99, ordering);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(1, errors.size());
+        assertEquals(errors.get(0).getField(), "orderBy");
+        assertEquals(errors.get(0).getMessage(), "Must contain 'name' or 'type' or 'price' only!");
+    }
+
+    @Test
+    public void shouldReturnErrorWhenOrderDirectionContainNotValidValue() {
+        Ordering ordering = new Ordering("name", "notValidValue");
+        SearchDishesRequest request = new SearchDishesRequest("Pizza", "Pizza", 4.99, ordering);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(1, errors.size());
+        assertEquals(errors.get(0).getField(), "orderDirection");
+        assertEquals(errors.get(0).getMessage(), "Must contain 'ASCENDING' or 'DESCENDING' only!");
     }
 }
