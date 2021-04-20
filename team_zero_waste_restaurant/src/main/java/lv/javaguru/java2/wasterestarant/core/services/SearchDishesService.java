@@ -22,48 +22,73 @@ public class SearchDishesService {
         this.validator = validator;
     }
 
-    public SearchDishesResponse execute(SearchDishesRequest request){
+    public SearchDishesResponse execute(SearchDishesRequest request) {
         List<CoreError> errors = validator.validate(request);
         if (!errors.isEmpty()) {
             return new SearchDishesResponse(null, errors);
         }
-//        List<Dish> dishes = search(request);
-//        dishes = order(dishes, request.getOrdering());
-//        return new SearchDishesResponse(dishes, null);
-        return null;
+        List<Dish> dishes = search(request);
+        dishes = order(dishes, request.getOrdering());
+        return new SearchDishesResponse(dishes, null);
     }
 
     private List<Dish> order(List<Dish> dishes, Ordering ordering) {
         if (ordering != null) {
-            Comparator<Dish> comparator = null;
-            if(ordering.getOrderBy().equals("name")) {
-                Comparator.comparing(Dish::getName);
-            }else if(ordering.getOrderBy().equals("type")){
-                Comparator.comparing(Dish::getType);
-            }else{
-                Comparator.comparing(Dish::getPrice);
+            Comparator<Dish> comparator;
+            switch (ordering.getOrderBy()) {
+                case "name" -> {
+                    comparator = Comparator.comparing(Dish::getName);
+                    if (ordering.getOrderDirection().equals("DESCENDING")) {
+                        comparator.reversed();
+                        return dishes.stream().sorted(comparator).collect(Collectors.toList());
+                    }
+                }
+                case "type" -> {
+                    comparator = Comparator.comparing(Dish::getType);
+                    if (ordering.getOrderDirection().equals("DESCENDING")) {
+                        comparator.reversed();
+                        return dishes.stream().sorted(comparator).collect(Collectors.toList());
+                    }
+                }
+                case "price" -> {
+                    comparator = Comparator.comparing(Dish::getPrice);
+                    if (ordering.getOrderDirection().equals("DESCENDING")) {
+                        comparator.reversed();
+                        return dishes.stream().sorted(comparator).collect(Collectors.toList());
+                    }
+                }
             }
-            if (ordering.getOrderDirection().equals("DESCENDING")) {
-                comparator = comparator.reversed();
-            }
-            return dishes.stream().sorted(comparator).collect(Collectors.toList());
         } else {
             return dishes;
         }
+        return dishes;
     }
 
-//    private List<Dish> search(SearchDishesRequest request) {
-//        List<Dish> books = new ArrayList<>();
-//        if (request.isTitleProvided() && !request.isAuthorProvided()) {
-//            books = database.findByTitle(request.getTitle());
-//        }
-//        if (!request.isTitleProvided() && request.isAuthorProvided()) {
-//            books = database.findByAuthor(request.getAuthor());
-//        }
-//        if (request.isTitleProvided() && request.isAuthorProvided()) {
-//            books = database.findByTitleAndAuthor(request.getTitle(), request.getAuthor());
-//        }
-//        return books;
-//    }
+
+    private List<Dish> search(SearchDishesRequest request) {
+        List<Dish> dishes = new ArrayList<>();
+        if (request.isNameProvided() && !request.isTypeProvided() && !request.isPriceProvided()) {
+            dishes = database.findDishByName(request.getName());
+        }
+        if (request.isTypeProvided() && !request.isNameProvided() && !request.isPriceProvided()) {
+            dishes = database.findDishByType(request.getType());
+        }
+        if (request.isPriceProvided() && !request.isNameProvided() && !request.isTypeProvided()) {
+            dishes = database.findDishByPrice(request.getPrice());
+        }
+        if (request.isNameProvided() && request.isTypeProvided() && !request.isPriceProvided()) {
+            dishes = database.findDishByNameAndType(request.getName(), request.getType());
+        }
+        if (request.isNameProvided() && request.isPriceProvided() && !request.isTypeProvided()) {
+            dishes = database.findDishByNameAndPrice(request.getName(), request.getPrice());
+        }
+        if (request.isTypeProvided() && request.isPriceProvided() && !request.isNameProvided()) {
+            dishes = database.findDishByTypeAndPrice(request.getType(), request.getPrice());
+        }
+        if (request.isNameProvided() && request.isTypeProvided() && request.isPriceProvided()) {
+            dishes = database.findDishByNameAndTypeAndPrice(request.getName(), request.getType(), request.getPrice());
+        }
+        return dishes;
+    }
 
 }
