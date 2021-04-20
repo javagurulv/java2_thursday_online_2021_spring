@@ -24,7 +24,7 @@ public class Offer {
         this.offerType = offerType;
     }
 
-    public String getPropertyCategory() {
+    public String getOfferCategory() {
         return propertyCategory;
     }
 

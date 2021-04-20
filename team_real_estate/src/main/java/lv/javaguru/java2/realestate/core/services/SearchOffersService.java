@@ -22,8 +22,7 @@ public class SearchOffersService {
 
     public SearchOffersResponse execute(SearchOffersRequest request) {
         List<CoreError> errors = validator.validate(request);
-        List<Offer> offers = database.searchOffers(request);
-        offers = order(offers, request.getOrdering());
+        List<Offer> offers = order(database.searchOffers(request), request.getOrdering());
 
         return new SearchOffersResponse(errors, offers);
     }
@@ -46,7 +45,7 @@ public class SearchOffersService {
         if ("type".equals(sortBy)) {
             return Comparator.comparing(Offer::getOfferType);
         } else if ("category".equals(sortBy)) {
-            return Comparator.comparing(Offer::getPropertyCategory);
+            return Comparator.comparing(Offer::getOfferCategory);
         } else if ("price".equals(sortBy)) {
             return Comparator.comparing(Offer::getPrice);
         } else {
