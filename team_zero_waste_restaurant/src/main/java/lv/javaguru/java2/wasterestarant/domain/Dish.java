@@ -11,6 +11,7 @@ public class Dish {
     private double weight;
     private double price;
     private List<Ingredient> ingredientList;
+    private boolean isInActiveMenu;
 
     public Dish(String name) {
         this.name = name;
@@ -86,6 +87,14 @@ public class Dish {
         return ingredientList;
     }
 
+    public boolean isInActiveMenu() {
+        return isInActiveMenu;
+    }
+
+    public void setInActiveMenu(boolean inActiveMenu) {
+        isInActiveMenu = inActiveMenu;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -111,4 +120,13 @@ public class Dish {
                 ", ingredientList=" + ingredientList +
                 '}';
     }
+
+    public void addToActiveMenu() {
+        isInActiveMenu = true;
+    }
+
+    public void removeFromActiveMenu() {
+        isInActiveMenu = false;
+    }
+
 }
