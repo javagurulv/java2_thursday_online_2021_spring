@@ -1,15 +1,32 @@
 package lv.javaguru.java2.wasterestarant.core.services;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.requests.AddProductRequest;
+import lv.javaguru.java2.wasterestarant.core.responses.AddProductResponse;
+import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.domain.Product;
+
+import java.util.List;
 
 public class AddProductService {
     private Database database;
+    private AddProductValidator validator;
 
-    public AddProductService(Database database) {
+    public AddProductService(Database database, AddProductValidator validator) {
         this.database = database;
+        this.validator = validator;
     }
 
-    public void execute() {
-        //TODO implement logic
+    public AddProductResponse execute(AddProductRequest request) {
+        List<CoreError> errors = validator.validate(request);
+        if (!errors.isEmpty()) {
+            return new AddProductResponse(errors);
+        }
+
+        Product product = new Product(request.getName(), request.getQuantity(), request.getPrice(), request.getDate());
+        database.save(product);
+        System.out.println("New dish was added to the list.");
+
+        return new AddProductResponse(product);
     }
 }

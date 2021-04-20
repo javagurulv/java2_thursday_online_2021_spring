@@ -1,5 +1,6 @@
 package lv.javaguru.java2.wasterestarant.domain;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Client {
@@ -7,6 +8,7 @@ public class Client {
     private String name;
     private boolean isRegistered;
     private long clientID;
+    private List<OrderItem> wishlist;
 
     public Client() {
     }
@@ -39,6 +41,15 @@ public class Client {
     public void setClientID(long clientID) {
         this.clientID = clientID;
     }
+
+    public List<OrderItem> getWishlist() {
+        return wishlist;
+    }
+
+    public void setWishlist(List<OrderItem> wishlist) {
+        this.wishlist = wishlist;
+    }
+
 
     @Override
     public boolean equals(Object o) {

@@ -22,5 +22,11 @@ public class DeleteOfferUIAction implements ConsoleUI {
         DeleteOfferRequest request = new DeleteOfferRequest(offerID);
         DeleteOfferResponse response = deleteOfferService.execute(request);
 
+        if (response.hasErrors()) {
+            response.getErrors().forEach(coreError ->
+                    System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
+        } else {
+            System.out.println("Offer deleted :  " + response.isOfferDeleted());
+        }
     }
 }

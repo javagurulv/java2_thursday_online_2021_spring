@@ -2,6 +2,7 @@ package lv.javaguru.java2.realestate.core.database;
 
 import lv.javaguru.java2.realestate.core.domain.Offer;
 import lv.javaguru.java2.realestate.core.domain.User;
+import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface Database {
 
     void createAccount(User user);
 
-    void logIn(User user);
+    boolean logIn(User user);
 
     void createOffer(Offer offer);
 
@@ -17,5 +18,7 @@ public interface Database {
 
     boolean deleteOfferByID(int id);
 
-    void deleteUser(User user);
+    boolean deleteUser(User user);
+
+    List<Offer> searchOffers(SearchOffersRequest request);
 }

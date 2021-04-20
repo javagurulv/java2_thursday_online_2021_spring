@@ -18,6 +18,7 @@ public class ConsoleApp {
     private final static DeleteUserValidator deleteUserValidator = new DeleteUserValidator();
     private final static LogInValidator logInValidator = new LogInValidator();
     private final static DeleteOfferValidator deleteOfferValidator = new DeleteOfferValidator();
+    private final static SearchOffersValidator searchOffersValidator = new SearchOffersValidator();
 
 
     private final static CreateUserService createUserService = new CreateUserService(database, createUserValidator);
@@ -26,6 +27,7 @@ public class ConsoleApp {
     private final static LogInService logInService = new LogInService(database, logInValidator);
     private final static DeleteOfferService deleteOfferService = new DeleteOfferService(database, deleteOfferValidator);
     private final static GetAllOffersService getAllOffersService = new GetAllOffersService(database);
+    private final static SearchOffersService searchOffersService = new SearchOffersService(database, searchOffersValidator);
 
     public ConsoleApp() {
 
@@ -37,6 +39,7 @@ public class ConsoleApp {
         menuNumberToActionMap.put(4, new GetAllOffersUIAction(getAllOffersService));
         menuNumberToActionMap.put(5, new DeleteOfferUIAction(deleteOfferService));
         menuNumberToActionMap.put(6, new DeleteUserUIAction(deleteUserService));
+        menuNumberToActionMap.put(7, new SearchOffersUIAction(searchOffersService));
     }
 
     public void run() {
@@ -63,6 +66,7 @@ public class ConsoleApp {
                 "4 = View all offers\n" +
                 "5 = Delete offer\n" +
                 "6 = Delete account\n" +
+                "7 = Search offers\n" +
                 "\n");
         System.out.println("Please enter menu number: ");
     }

@@ -1,18 +1,22 @@
 package lv.javaguru.java2.hrsystem;
 
+import lv.javaguru.java2.hrsystem.domain.Admin;
 import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.database.DatabaseImpl;
+import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TestEmployeeService {
 
     @Test
-    public void AddEmployeeServiceTest() {
+    public void addEmployeeServiceTest() {
 
         DatabaseImpl database = new DatabaseImpl();
 
@@ -37,7 +41,7 @@ public class TestEmployeeService {
     }
 
     @Test
-    public void DeleteEmployeeServiceTest() {
+    public void deleteEmployeeServiceTest() {
 
         DatabaseImpl database = new DatabaseImpl();
 
@@ -59,7 +63,7 @@ public class TestEmployeeService {
     }
 
     @Test
-    public void GetAllEmployeeServiceTest() {
+    public void getAllEmployeeServiceTest() {
 
         DatabaseImpl database = new DatabaseImpl();
 
@@ -78,4 +82,69 @@ public class TestEmployeeService {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void getEmployeesByTitleTest() {
+
+        DatabaseImpl database = new DatabaseImpl();
+
+        Employee objectOne = new Employee("A1", "F1", 21, EmployeeTitle.HR_MANAGER);
+        Employee objectTwo = new Employee("A2", "F1", 32, EmployeeTitle.DEVELOPER);
+
+        database.saveEmployee(objectOne);
+        database.saveEmployee(objectTwo);
+
+        List<Employee> actual = new ArrayList<>();
+        actual.add(objectTwo);
+
+        List<Employee> expected = new ArrayList<>(database.getEmployeesByTitle(EmployeeTitle.DEVELOPER));
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void getAllTitlesTest() {
+
+        DatabaseImpl database = new DatabaseImpl();
+
+        Employee objectOne = new Employee("A1", "F1", 21, EmployeeTitle.HR_MANAGER);
+        Employee objectTwo = new Employee("A2", "F2", 32, EmployeeTitle.DEVELOPER);
+
+
+        database.saveEmployee(objectOne);
+        database.saveEmployee(objectTwo);
+
+        List<EmployeeTitle> actual = new ArrayList<>();
+        actual.add(objectOne.getTitle());
+        actual.add(objectTwo.getTitle());
+
+        List<EmployeeTitle> expected = new ArrayList<>(database.getAllTitles());
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void loginAdmTest() {
+
+        DatabaseImpl database = new DatabaseImpl();
+
+        Admin objectOne = new Admin("Alex", "Med", "alexmed@gmail.com", "qwert123");
+        Admin objectTwo = new Admin("Max", "Lem", "maxlim@", "qwert123456");
+
+        database.registrationAdm(objectOne);
+        database.registrationAdm(objectTwo);
+
+        List<Boolean> actual = new ArrayList<>();
+        actual.add(true);
+        actual.add(true);
+
+        List<Boolean> expected = new ArrayList<>();
+
+        expected.add(database.loginAdm("alexmed@gmail.com", "qwert123"));
+        expected.add(database.loginAdm("maxlim@", "qwert123456"));
+
+        assertEquals(expected, actual);
+
+    }
 }

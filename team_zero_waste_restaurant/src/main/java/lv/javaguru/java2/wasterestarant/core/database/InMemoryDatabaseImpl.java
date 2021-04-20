@@ -1,6 +1,8 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
 import lv.javaguru.java2.wasterestarant.domain.Dish;
+import lv.javaguru.java2.wasterestarant.domain.Ingredient;
+import lv.javaguru.java2.wasterestarant.domain.OrderItem;
 import lv.javaguru.java2.wasterestarant.domain.Product;
 
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ public class InMemoryDatabaseImpl implements Database {
     private List<Dish> dishes = new ArrayList<>();
     private List<Dish> restaurantMenu = new ArrayList<>();
     private List<Product> products = new ArrayList<>();
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     @Override
     public void save(Dish dish) {
@@ -26,6 +29,12 @@ public class InMemoryDatabaseImpl implements Database {
         product.setProductID(nextId);
         nextId++;
         products.add(product);
+    }
+
+    @Override
+    public void save(Ingredient ingredient) {
+        ingredients.add(ingredient);
+
     }
 
     @Override
@@ -52,6 +61,60 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
+    public List<Dish> findDishByName(String name) {
+        return dishes.stream()
+                .filter(dish -> dish.getName().equals(name))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Dish> findDishByType(String type) {
+        return dishes.stream()
+                .filter(dish -> dish.getType().equals(type))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Dish> findDishByPrice(Double price) {
+        return dishes.stream()
+                .filter(dish -> dish.getPrice() == price)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Dish> findDishByNameAndType(String name, String type) {
+        return dishes.stream()
+                .filter(dish -> dish.getName().equals(name))
+                .filter(dish -> dish.getType().equals(type))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Dish> findDishByNameAndPrice(String name, Double price) {
+        return dishes.stream()
+                .filter(dish -> dish.getName().equals(name))
+                .filter(dish -> dish.getPrice() == price)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Dish> findDishByTypeAndPrice(String type, Double price) {
+        return dishes.stream()
+                .filter(dish -> dish.getType().equals(type))
+                .filter(dish -> dish.getPrice() == price)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Dish> findDishByNameAndTypeAndPrice(String name, String type, Double price) {
+        return dishes.stream()
+                .filter(dish -> dish.getName().equals(name))
+                .filter(dish -> dish.getType().equals(type))
+                .filter(dish -> dish.getPrice() == price)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public List<Product> getAllProducts() {
         return products;
     }
@@ -67,11 +130,20 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public List<Dish> getDishByType(String dishType) {
-        List<Dish> dishByType = dishes.stream()
-                .filter(dish -> dish.getType().equals(dishType))
+    public List<Product> searchProductByName(String name) {
+        return products.stream()
+                .filter(product -> product.getName().equals(name))
                 .collect(Collectors.toList());
-        return dishByType;
+    }
+
+    @Override
+    public void addToWishlist(Long clientID, OrderItem selectedItem) {
+        // TO DO
+    }
+
+    @Override
+    public List<OrderItem> getWishlist(Long clientID) {
+        return null; // TO DO
     }
 }
 

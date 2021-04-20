@@ -23,8 +23,9 @@ public class DeleteUserService {
             return new DeleteUserResponse(errors);
         }
         User user = new User(deleteUserRequest.getUsername(), deleteUserRequest.getPassword());
-        database.deleteUser(user);
-        return new DeleteUserResponse(user);
+        boolean isUserDeleted = database.deleteUser(user);
+
+        return new DeleteUserResponse(isUserDeleted);
     }
 }
 
