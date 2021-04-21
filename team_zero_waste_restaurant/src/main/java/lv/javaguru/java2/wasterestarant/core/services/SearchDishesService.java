@@ -38,32 +38,29 @@ public class SearchDishesService {
             switch (ordering.getOrderBy()) {
                 case "name" -> {
                     comparator = Comparator.comparing(Dish::getName);
-                    if (ordering.getOrderDirection().equals("DESCENDING")) {
+                    if (orderingDirection(ordering)) {
                         comparator.reversed();
                         return dishes.stream().sorted(comparator).collect(Collectors.toList());
                     }
                 }
                 case "type" -> {
                     comparator = Comparator.comparing(Dish::getType);
-                    if (ordering.getOrderDirection().equals("DESCENDING")) {
+                    if (orderingDirection(ordering)) {
                         comparator.reversed();
                         return dishes.stream().sorted(comparator).collect(Collectors.toList());
                     }
                 }
                 case "price" -> {
                     comparator = Comparator.comparing(Dish::getPrice);
-                    if (ordering.getOrderDirection().equals("DESCENDING")) {
+                    if (orderingDirection(ordering)) {
                         comparator.reversed();
                         return dishes.stream().sorted(comparator).collect(Collectors.toList());
                     }
                 }
             }
-        } else {
-            return dishes;
         }
         return dishes;
     }
-
 
     private List<Dish> search(SearchDishesRequest request) {
         List<Dish> dishes = new ArrayList<>();
@@ -91,4 +88,7 @@ public class SearchDishesService {
         return dishes;
     }
 
+    private boolean orderingDirection(Ordering ordering) {
+        return ordering.getOrderDirection().equals("DESCENDING");
+    }
 }
