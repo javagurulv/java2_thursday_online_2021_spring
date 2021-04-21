@@ -84,7 +84,7 @@ public class DatabaseImpl implements Database{
     @Override
     public List<Employee> getEmployeesByTitleAdnName(EmployeeTitle title, String name) {
         return employeeList.stream()
-                .filter(e -> e.getTitle().equals(title) && e.getName().equalsIgnoreCase(name))
+                .filter(e -> e.getTitle() != null && e.getTitle().equals(title) && e.getName().equalsIgnoreCase(name))
                 .collect(toList());
     }
 
