@@ -3,6 +3,8 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.database.DatabaseImpl;
 import lv.javaguru.java2.hrsystem.core.services.*;
+import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesRequestValidator;
 
 import java.util.HashMap;
 import java.util.Map;
