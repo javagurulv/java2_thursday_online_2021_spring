@@ -11,6 +11,8 @@ public class RestaurantApplication {
 
     private static Database database = new InMemoryDatabaseImpl();
 
+    private static SearchIngredientValidator searchIngredientValidator = new SearchIngredientValidator();
+    private static SearchIngredientService searchIngredientService = new SearchIngredientService(database, searchIngredientValidator);
     private static AddDishIngredientValidator addDishIngredientValidator = new AddDishIngredientValidator();
     private static AddDishIngredientService addDishIngredientService = new AddDishIngredientService(database, addDishIngredientValidator);
     private static RegistrationService registrationService = new RegistrationService(database);
@@ -29,6 +31,7 @@ public class RestaurantApplication {
     private static AddDishToWishlistService addDishToWishlistService = new AddDishToWishlistService(database);
     private static GetWishlistService getWishlistServiceService = new GetWishlistService(database);
 
+    private static UIAction searchIngredientUiAction = new SearchIngredientUiAction(searchIngredientService);
     private static UIAction addDishIngredientUiAction = new AddDishIngredientUiAction(addDishIngredientService);
     private static UIAction registrationUIAction = new RegistrationUIAction(registrationService);
     private static UIAction loginUIAction = new LoginUIAction(loginService);
@@ -59,13 +62,14 @@ public class RestaurantApplication {
         System.out.println("3. Add product to list");
         System.out.println("4. Add dish to list");
         System.out.println("5. Delete dish from list");
-        System.out.println("6. Show all dishes in the list");
-        System.out.println("7. Show all products in the list");
-        System.out.println("8. Show full restaurant menu list");
-        System.out.println("9. Search products by name");
-        System.out.println("10. Add dish to wishlist");
-        System.out.println("11. Show wishlist");
-        System.out.println("12. Exit");
+        System.out.println("6. Search Ingredients");
+        System.out.println("7. Show all dishes in the list");
+        System.out.println("8. Show all products in the list");
+        System.out.println("9. Show full restaurant menu list");
+        System.out.println("10. Search products by name");
+        System.out.println("11. Add dish to wishlist");
+        System.out.println("12. Show wishlist");
+        System.out.println("13. Exit");
         System.out.println();
     }
 
@@ -111,30 +115,34 @@ public class RestaurantApplication {
                 break;
             }
             case 6: {
-                getAllDishesUIAction.execute();
+                searchIngredientUiAction.execute();
                 break;
             }
             case 7: {
-                getAllProductsUIAction.execute();
+                getAllDishesUIAction.execute();
                 break;
             }
             case 8: {
-                getRestaurantMenuUIAction.execute();
+                getAllProductsUIAction.execute();
                 break;
             }
             case 9: {
-                searchProductUIAction.execute();
+                getRestaurantMenuUIAction.execute();
                 break;
             }
             case 10: {
-                addDishToWishlistUIAction.execute();
+                searchProductUIAction.execute();
                 break;
             }
             case 11: {
-                getWishlistUIAction.execute();
+                addDishToWishlistUIAction.execute();
                 break;
             }
             case 12: {
+                getWishlistUIAction.execute();
+                break;
+            }
+            case 13: {
                 exitUIAction.execute();
                 break;
             }
