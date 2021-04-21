@@ -103,28 +103,6 @@ public class TestEmployeeService {
     }
 
     @Test
-    public void getAllTitlesTest() {
-
-        DatabaseImpl database = new DatabaseImpl();
-
-        Employee objectOne = new Employee("A1", "F1", 21, EmployeeTitle.HR_MANAGER);
-        Employee objectTwo = new Employee("A2", "F2", 32, EmployeeTitle.DEVELOPER);
-
-
-        database.saveEmployee(objectOne);
-        database.saveEmployee(objectTwo);
-
-        List<EmployeeTitle> actual = new ArrayList<>();
-        actual.add(objectOne.getTitle());
-        actual.add(objectTwo.getTitle());
-
-        List<EmployeeTitle> expected = new ArrayList<>(database.getAllTitles());
-
-        assertEquals(expected, actual);
-
-    }
-
-    @Test
     public void loginAdmTest() {
 
         DatabaseImpl database = new DatabaseImpl();
