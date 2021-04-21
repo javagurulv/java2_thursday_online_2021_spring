@@ -19,6 +19,8 @@ public interface Database {
 
     boolean deleteDishByID(Long dishID);
 
+    List<Ingredient> findIngredientByName(String name);
+
     List<Dish> getAllDishes();
 
     List<Dish> findDishByName(String name);

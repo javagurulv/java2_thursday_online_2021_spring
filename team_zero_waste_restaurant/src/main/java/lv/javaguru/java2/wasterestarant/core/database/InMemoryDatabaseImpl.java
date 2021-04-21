@@ -56,6 +56,13 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
+    public List<Ingredient> findIngredientByName(String name) {
+        return ingredients.stream()
+                .filter(ingredient -> ingredient.getIngredient().equals(name))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public List<Dish> getAllDishes() {
         return dishes;
     }

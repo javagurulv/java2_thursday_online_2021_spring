@@ -8,4 +8,8 @@ public class Ingredient {
         this.ingredient = ingredient;
         this.quantity = quantity;
     }
+
+    public String getIngredient(){
+        return ingredient;
+    }
 }
