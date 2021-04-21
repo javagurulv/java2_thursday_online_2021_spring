@@ -45,7 +45,7 @@ public class SearchDishesRequest {
     }
 
     public boolean isPriceProvided() {
-        return this.price != null && !this.price.isNaN() && this.price < 0 && this.price == 0.0;
+        return this.price != null && this.price > 0.0;
     }
 
     public String getName() {
