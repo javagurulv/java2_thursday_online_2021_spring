@@ -3,6 +3,7 @@ package lv.javaguru.java2.realestate.core.services;
 import lv.javaguru.java2.realestate.core.database.Database;
 import lv.javaguru.java2.realestate.core.domain.Offer;
 import lv.javaguru.java2.realestate.core.requests.Ordering;
+import lv.javaguru.java2.realestate.core.requests.Paging;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.SearchOffersResponse;
@@ -22,7 +23,10 @@ public class SearchOffersService {
 
     public SearchOffersResponse execute(SearchOffersRequest request) {
         List<CoreError> errors = validator.validate(request);
-        List<Offer> offers = order(database.searchOffers(request), request.getOrdering());
+        List<Offer> offers = database.searchOffers(request);
+
+        offers = order(offers, request.getOrdering());
+        offers = paging(offers, request.getPaging());
 
         return new SearchOffersResponse(errors, offers);
     }
@@ -50,6 +54,18 @@ public class SearchOffersService {
             return Comparator.comparing(Offer::getPrice);
         } else {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private List<Offer> paging(List<Offer> books, Paging paging) {
+        if (paging != null) {
+            int skip = (paging.getPageNumber() - 1) * paging.getPageSize();
+            return books.stream()
+                    .skip(skip)
+                    .limit(paging.getPageSize())
+                    .collect(Collectors.toList());
+        } else {
+            return books;
         }
     }
 }

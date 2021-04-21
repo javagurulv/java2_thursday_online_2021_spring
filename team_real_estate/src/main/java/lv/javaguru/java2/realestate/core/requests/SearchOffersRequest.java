@@ -6,12 +6,14 @@ public class SearchOffersRequest {
     private final Double price;
 
     private final Ordering ordering;
+    private final Paging paging;
 
-    public SearchOffersRequest(String offerType, String offerCategory, Double price, Ordering ordering) {
+    public SearchOffersRequest(String offerType, String offerCategory, Double price, Ordering ordering,Paging paging) {
         this.offerType = offerType;
         this.offerCategory = offerCategory;
         this.price = price;
         this.ordering = ordering;
+        this.paging = paging;
     }
 
     public String getOfferType() {
@@ -28,5 +30,9 @@ public class SearchOffersRequest {
 
     public Ordering getOrdering() {
         return ordering;
+    }
+
+    public Paging getPaging() {
+        return paging;
     }
 }
