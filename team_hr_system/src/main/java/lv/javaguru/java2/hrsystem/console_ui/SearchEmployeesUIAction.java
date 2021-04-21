@@ -1,17 +1,17 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
 import lv.javaguru.java2.hrsystem.domain.Employee;
-import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesByTitleRequest;
-import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesByTitleResponse;
-import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesByTitleService;
+import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
+import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesResponse;
+import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesService;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class SearchEmployeesByTitleUIAction implements UIAction{
-    private final SearchEmployeesByTitleService service;
+public class SearchEmployeesUIAction implements UIAction{
+    private final SearchEmployeesService service;
 
-    public SearchEmployeesByTitleUIAction(SearchEmployeesByTitleService service) {
+    public SearchEmployeesUIAction(SearchEmployeesService service) {
         this.service = service;
     }
 
@@ -20,8 +20,10 @@ public class SearchEmployeesByTitleUIAction implements UIAction{
         System.out.println("Enter employee title: ");
         Scanner scanner = new Scanner(System.in);
         String title = scanner.nextLine();
-        SearchEmployeesByTitleRequest request = new SearchEmployeesByTitleRequest(title);
-        SearchEmployeesByTitleResponse response = service.execute(request);
+        System.out.println("Enter employee name: ");
+        String name = scanner.nextLine();
+        SearchEmployeesRequest request = new SearchEmployeesRequest(title, name);
+        SearchEmployeesResponse response = service.execute(request);
         List<Employee> employees = response.getEmployees();
         if (response.hasErrors()) {
             response.getErrors().forEach(coreError ->
@@ -32,12 +34,12 @@ public class SearchEmployeesByTitleUIAction implements UIAction{
             employees.forEach(System.out::println);
         }
         else {
-            System.out.println("No employees with selected title");
+            System.out.println("No employees found");
         }
     }
 
     @Override
     public String toString() {
-        return "Search employees by selected title";
+        return "Search employees";
     }
 }

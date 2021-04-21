@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
 
@@ -72,6 +73,18 @@ public class DatabaseImpl implements Database{
     public List<Employee> getEmployeesByTitle(EmployeeTitle title) {
         return employeeList.stream()
                 .filter(employee -> employee.getTitle() != null && employee.getTitle().equals(title))
+                .collect(toList());
+    }
+
+    @Override
+    public List<Employee> getEmployeesByName(String name) {
+        return employeeList.stream().filter(e -> e.getName().equalsIgnoreCase(name)).collect(toList());
+    }
+
+    @Override
+    public List<Employee> getEmployeesByTitleAdnName(EmployeeTitle title, String name) {
+        return employeeList.stream()
+                .filter(e -> e.getTitle().equals(title) && e.getName().equalsIgnoreCase(name))
                 .collect(toList());
     }
 

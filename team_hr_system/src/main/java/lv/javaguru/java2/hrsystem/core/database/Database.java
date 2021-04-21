@@ -21,6 +21,10 @@ public interface Database {
 
     List<Employee> getEmployeesByTitle(EmployeeTitle title);
 
+    List<Employee> getEmployeesByName(String name);
+
+    List<Employee> getEmployeesByTitleAdnName(EmployeeTitle title, String name);
+
     Set<EmployeeTitle> getAllTitles();
 
 }
