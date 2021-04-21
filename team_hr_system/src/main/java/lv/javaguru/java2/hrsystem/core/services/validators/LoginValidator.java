@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hrsystem.core.services;
+package lv.javaguru.java2.hrsystem.core.services.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.LoginRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
