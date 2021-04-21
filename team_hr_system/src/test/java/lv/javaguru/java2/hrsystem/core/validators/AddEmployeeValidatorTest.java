@@ -1,7 +1,8 @@
-package lv.javaguru.java2.hrsystem.core.services;
+package lv.javaguru.java2.hrsystem.core.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
+import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeValidator;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.*;

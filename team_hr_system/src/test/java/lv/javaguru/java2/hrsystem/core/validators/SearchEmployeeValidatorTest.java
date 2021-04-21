@@ -1,8 +1,8 @@
-package lv.javaguru.java2.hrsystem;
+package lv.javaguru.java2.hrsystem.core.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesRequestValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesRequestValidator;
 
 import org.junit.Test;
 

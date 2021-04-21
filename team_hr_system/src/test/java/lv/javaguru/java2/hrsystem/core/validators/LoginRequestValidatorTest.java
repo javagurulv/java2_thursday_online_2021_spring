@@ -1,8 +1,8 @@
-package lv.javaguru.java2.hrsystem;
+package lv.javaguru.java2.hrsystem.core.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.LoginRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.services.LoginValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.LoginValidator;
 import org.junit.Test;
 
 import java.util.List;

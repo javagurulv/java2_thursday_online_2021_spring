@@ -1,8 +1,8 @@
-package lv.javaguru.java2.hrsystem;
+package lv.javaguru.java2.hrsystem.core.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.RegistrationRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.services.RegistrationValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.RegistrationValidator;
 import org.junit.Test;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
