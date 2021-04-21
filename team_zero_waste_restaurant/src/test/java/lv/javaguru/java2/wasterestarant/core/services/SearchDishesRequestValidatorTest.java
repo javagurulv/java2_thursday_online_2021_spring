@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.services;
 
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
+import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.SearchDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import org.junit.Test;
@@ -105,5 +106,45 @@ public class SearchDishesRequestValidatorTest {
         assertEquals(1, errors.size());
         assertEquals(errors.get(0).getField(), "orderDirection");
         assertEquals(errors.get(0).getMessage(), "Must contain 'ASCENDING' or 'DESCENDING' only!");
+    }
+
+    @Test
+    public void shouldReturnErrorWhenPageNumberContainNotValidValue() {
+        Paging paging = new Paging(0, 1);
+        SearchDishesRequest request = new SearchDishesRequest("Pizza", "Pizza", 4.99, paging);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "pageNumber");
+        assertEquals(errors.get(0).getMessage(), "Must be greater then 0!");
+    }
+
+    @Test
+    public void shouldReturnErrorWhenPageSizeContainNotValidValue() {
+        Paging paging = new Paging(1, 0);
+        SearchDishesRequest request = new SearchDishesRequest("Pizza", "Pizza", 4.99, paging);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "pageSize");
+        assertEquals(errors.get(0).getMessage(), "Must be greater then 0!");
+    }
+
+    @Test
+    public void shouldReturnErrorWhenPageNumberAreEmpty() {
+        Paging paging = new Paging(null, 1);
+        SearchDishesRequest request = new SearchDishesRequest("Pizza", "Pizza", 4.99, paging);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "pageNumber");
+        assertEquals(errors.get(0).getMessage(), "Must not be empty!");
+    }
+
+    @Test
+    public void shouldReturnErrorWhenPageSizeAreEmpty() {
+        Paging paging = new Paging(1, null);
+        SearchDishesRequest request = new SearchDishesRequest("Pizza", "Pizza", 4.99, paging);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "pageSize");
+        assertEquals(errors.get(0).getMessage(), "Must not be empty!");
     }
 }

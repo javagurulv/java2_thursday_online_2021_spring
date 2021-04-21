@@ -2,6 +2,7 @@ package lv.javaguru.java2.wasterestarant.core.services;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
+import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.SearchDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.SearchDishesResponse;
@@ -29,6 +30,7 @@ public class SearchDishesService {
         }
         List<Dish> dishes = search(request);
         dishes = order(dishes, request.getOrdering());
+        dishes = paging(dishes, request.getPaging());
         return new SearchDishesResponse(dishes, null);
     }
 
@@ -38,24 +40,24 @@ public class SearchDishesService {
             switch (ordering.getOrderBy()) {
                 case "name" -> {
                     comparator = Comparator.comparing(Dish::getName);
-                    if (orderingDirection(ordering)) {
+                    if (ordering.getOrderDirection().equals("DESCENDING")) {
                         comparator.reversed();
-                        return dishes.stream().sorted(comparator).collect(Collectors.toList());
                     }
+                    return dishes.stream().sorted(comparator).collect(Collectors.toList());
                 }
                 case "type" -> {
                     comparator = Comparator.comparing(Dish::getType);
-                    if (orderingDirection(ordering)) {
+                    if (ordering.getOrderDirection().equals("DESCENDING")) {
                         comparator.reversed();
-                        return dishes.stream().sorted(comparator).collect(Collectors.toList());
                     }
+                    return dishes.stream().sorted(comparator).collect(Collectors.toList());
                 }
                 case "price" -> {
                     comparator = Comparator.comparing(Dish::getPrice);
-                    if (orderingDirection(ordering)) {
+                    if (ordering.getOrderDirection().equals("DESCENDING")) {
                         comparator.reversed();
-                        return dishes.stream().sorted(comparator).collect(Collectors.toList());
                     }
+                    return dishes.stream().sorted(comparator).collect(Collectors.toList());
                 }
             }
         }
@@ -86,6 +88,17 @@ public class SearchDishesService {
             dishes = database.findDishByNameAndTypeAndPrice(request.getName(), request.getType(), request.getPrice());
         }
         return dishes;
+    }
+    private List<Dish> paging(List<Dish> books, Paging paging) {
+        if (paging != null) {
+            int skip = (paging.getPageNumber() - 1) * paging.getPageSize();
+            return books.stream()
+                    .skip(skip)
+                    .limit(paging.getPageSize())
+                    .collect(Collectors.toList());
+        } else {
+            return books;
+        }
     }
 
     private boolean orderingDirection(Ordering ordering) {
