@@ -24,11 +24,11 @@ class LogInUIAction implements ConsoleUI {
         LogInRequest request = new LogInRequest(username, password);
         LogInResponse response = logInService.execute(request);
 
-        if(response.hasErrors()){
+        if (response.hasErrors()) {
             response.getErrors().forEach(coreError ->
                     System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
 
-        } else if (response.isLoggedIn()){
+        } else if (response.isLoggedIn()) {
             System.out.println("User " + response.getUser().getUsername() + " logged in successfully");
         } else {
             System.out.println("Incorrect user data");

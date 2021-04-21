@@ -30,7 +30,7 @@ public class DeleteUserUIAction implements ConsoleUI {
             response.getErrors().forEach(coreError ->
                     System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
         } else {
-            System.out.println("User deleted : "+response.isUserDeleted());
+            System.out.println("User deleted : " + response.isUserDeleted());
         }
 
     }
