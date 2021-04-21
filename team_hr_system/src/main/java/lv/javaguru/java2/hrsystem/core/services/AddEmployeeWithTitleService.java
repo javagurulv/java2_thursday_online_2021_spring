@@ -1,5 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
+import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeWithTitleValidator;
 import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
 import lv.javaguru.java2.hrsystem.core.database.Database;
