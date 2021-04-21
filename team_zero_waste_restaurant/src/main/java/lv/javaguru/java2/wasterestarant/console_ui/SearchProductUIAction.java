@@ -1,5 +1,6 @@
 package lv.javaguru.java2.wasterestarant.console_ui;
 
+import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.SearchProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.SearchProductResponse;
 import lv.javaguru.java2.wasterestarant.core.services.SearchProductService;
@@ -20,10 +21,14 @@ public class SearchProductUIAction implements UIAction {
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the product's name to search: ");
+        System.out.println("Enter product's name to search: ");
         String name = scanner.nextLine();
-
-        SearchProductRequest request = new SearchProductRequest(name);
+        System.out.println("Enter ordering parameter: BBD - for 'best before date', Q - for quantity.");
+        String orderBy = scanner.nextLine();
+        System.out.println("Enter ordering direction: ASC for ascending or DESC for descending:");
+        String orderDirection = scanner.nextLine();
+        Ordering ordering = new Ordering(orderBy, orderDirection);
+        SearchProductRequest request = new SearchProductRequest(name, ordering);
         SearchProductResponse response = searchProductService.execute(request);
 
         if (response.hasErrors()) {
@@ -34,8 +39,8 @@ public class SearchProductUIAction implements UIAction {
             List<Product> printList = response.getProducts();
             for (int i = 0; i < printList.size(); i++) {
                 printDishWithFields(printList, i);
-                System.out.println("_____________end_____________");
             }
+            System.out.println("_____________end_____________");
         }
     }
 
