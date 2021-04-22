@@ -100,8 +100,4 @@ public class SearchDishesService {
             return books;
         }
     }
-
-    private boolean orderingDirection(Ordering ordering) {
-        return ordering.getOrderDirection().equals("DESCENDING");
-    }
 }

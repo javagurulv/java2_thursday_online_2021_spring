@@ -59,9 +59,10 @@ public class SearchDishesServiceTest {
     @Test
     public void searchByNameDescending() {
         Ordering ordering = new Ordering("name", "DESCENDING");
-        SearchDishesRequest request = new SearchDishesRequest("Margherita", "Pizza", 4.99, ordering);
+        SearchDishesRequest request = new SearchDishesRequest("", "Pizza", null, ordering);
         SearchDishesResponse actualResponse = searchDishesService.execute(request);
-        assertEquals(actualResponse.getDishes().size(), 1);
+        assertEquals(actualResponse.getDishes().size(), 4);
+        assertEquals(actualResponse.getDishes().get(0).getName(), "Margherita");
     }
 
     @Test
