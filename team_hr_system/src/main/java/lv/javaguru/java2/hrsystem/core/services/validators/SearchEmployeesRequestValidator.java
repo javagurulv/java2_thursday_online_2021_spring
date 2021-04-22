@@ -1,5 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services.validators;
 
+import lv.javaguru.java2.hrsystem.core.requests.Paging;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
@@ -13,8 +14,18 @@ public class SearchEmployeesRequestValidator {
 
     public List<CoreError> validate(SearchEmployeesRequest request) {
         List<CoreError> errors = new ArrayList<>();
+
         errors.addAll(validateSearchFields(request));
+
+        if (request.getPaging() != null) {
+            validatePageNumber(request.getPaging()).ifPresent(errors::add);
+            validatePageSize(request.getPaging()).ifPresent(errors::add);
+            validateMandatoryPageNumber(request.getPaging()).ifPresent(errors::add);
+            validateMandatoryPageSize(request.getPaging()).ifPresent(errors::add);
+        }
+
         return errors;
+
     }
 
     private List<CoreError> validateSearchFields(SearchEmployeesRequest request) {
@@ -23,9 +34,11 @@ public class SearchEmployeesRequestValidator {
             errors.add(new CoreError("name", "Must not be empty!"));
             errors.add(new CoreError("title", "Must not be empty!"));
         }
+
         if (!isEmpty(request.getEmployeeTitle())) {
             validateTitle(request).ifPresent(errors::add);
         }
+
         return errors;
     }
 
@@ -49,5 +62,30 @@ public class SearchEmployeesRequestValidator {
             valid = false;
         }
         return valid;
+    }
+
+    private Optional<CoreError> validatePageNumber(Paging paging) {
+        return (paging.getPageNumber() != null
+                && paging.getPageNumber() <= 0
+                ? Optional.of(new CoreError("pageNumber", "Must be greater then 0!"))
+                : Optional.empty());
+    }
+
+    private Optional<CoreError> validatePageSize(Paging paging) {
+        return (paging.getPageSize() != null && paging.getPageSize() <= 0
+                ? Optional.of(new CoreError("pageSize", "Must be greater then 0!"))
+                : Optional.empty());
+    }
+
+    private Optional<CoreError> validateMandatoryPageNumber(Paging paging) {
+        return (paging.getPageNumber() == null && paging.getPageSize() != null
+                ? Optional.of(new CoreError("pageNumber", "Must not be empty!"))
+                : Optional.empty());
+    }
+
+    private Optional<CoreError> validateMandatoryPageSize(Paging paging) {
+        return (paging.getPageSize() == null && paging.getPageNumber() != null
+                ? Optional.of(new CoreError("pageSize", "Must not be empty!"))
+                : Optional.empty());
     }
 }
