@@ -2,6 +2,7 @@ package lv.javaguru.java2.wasterestarant.core.services;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
+import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.SearchProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.SearchProductResponse;
@@ -29,6 +30,7 @@ public class SearchProductService {
         }
         List<Product> products = search(request);
         products = order(products, request.getOrdering());
+        products = paging(products, request.getPaging());
         return new SearchProductResponse(null, products);
     }
 
@@ -52,5 +54,17 @@ public class SearchProductService {
             products = database.searchProductByName(request.getNameToSearch());
         }
         return products;
+    }
+
+    private List<Product> paging(List<Product> products, Paging paging) {
+        if(paging != null) {
+            int skip = (paging.getPageNumber() -1) * paging.getPageSize();
+            return products.stream()
+                    .skip(skip)
+                    .limit(paging.getPageSize())
+                    .collect(Collectors.toList());
+        } else {
+            return products;
+        }
     }
 }
