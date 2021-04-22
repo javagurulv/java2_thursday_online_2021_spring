@@ -1,5 +1,6 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
+import lv.javaguru.java2.hrsystem.core.requests.Paging;
 import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesResponse;
@@ -22,15 +23,24 @@ public class SearchEmployeesUIAction implements UIAction{
         String title = scanner.nextLine();
         System.out.println("Enter employee name: ");
         String name = scanner.nextLine();
-        SearchEmployeesRequest request = new SearchEmployeesRequest(title, name);
+
+        System.out.println("Enter page number: ");
+        Integer pageNumber = scanner.nextInt();
+        System.out.println("Enter size name: ");
+        Integer pageSize = scanner.nextInt();
+
+        Paging paging = new Paging(pageNumber, pageSize);
+
+        SearchEmployeesRequest request = new SearchEmployeesRequest(title, name, paging);
         SearchEmployeesResponse response = service.execute(request);
+
         List<Employee> employees = response.getEmployees();
+
         if (response.hasErrors()) {
             response.getErrors().forEach(coreError ->
                     System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage())
             );
-        }
-        else if (!employees.isEmpty()) {
+        } else if (!employees.isEmpty()) {
             employees.forEach(System.out::println);
         }
         else {
