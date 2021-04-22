@@ -18,6 +18,11 @@ public class SearchProductRequest {
         this.paging = paging;
     }
 
+    public SearchProductRequest(String nameToSearch, Paging paging) {
+        this.nameToSearch = nameToSearch;
+        this.paging = paging;
+    }
+
     public SearchProductRequest(String nameToSearch, Ordering ordering) {
         this.nameToSearch = nameToSearch;
         this.ordering = ordering;

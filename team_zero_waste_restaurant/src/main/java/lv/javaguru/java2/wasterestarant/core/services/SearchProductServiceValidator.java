@@ -53,19 +53,18 @@ public class SearchProductServiceValidator {
     private Optional<CoreError> validateOrderDirection(Ordering ordering) {
         return (!isEmpty(ordering.getOrderDirection())
                 && !(ordering.getOrderDirection().equals("ASC") || ordering.getOrderDirection().equals("DESC")))
-                ? Optional.of(new CoreError("order direction", "Must contain only 'ASC'" +
-                " or 'DESC'!"))
+                ? Optional.of(new CoreError("ordering direction", "Must contain only 'ASC' or 'DESC'!"))
                 : Optional.empty();
     }
 
     private Optional<CoreError> validateMandatoryOrderBy(Ordering ordering) {
-        return (!isEmpty(ordering.getOrderBy()) && ordering.getOrderBy() == null) //ordering.getOrderDirection() != null
+        return (!isEmpty(ordering.getOrderDirection()) && ordering.getOrderBy() == null)
                 ? Optional.of(new CoreError("ordering By", "Must not be empty!"))
                 : Optional.empty();
     }
 
     private Optional<CoreError> validateMandatoryOrderDirection(Ordering ordering) {
-        return (!isEmpty(ordering.getOrderDirection()) && ordering.getOrderDirection() == null)
+        return (!isEmpty(ordering.getOrderBy()) && ordering.getOrderDirection() == null)
                 ? Optional.of(new CoreError("ordering direction", "Must not be empty!"))
                 : Optional.empty();
     }
