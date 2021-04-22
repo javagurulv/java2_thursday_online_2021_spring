@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.console_ui;
 
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
+import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.SearchProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.SearchProductResponse;
 import lv.javaguru.java2.wasterestarant.core.services.SearchProductService;
@@ -28,8 +29,16 @@ public class SearchProductUIAction implements UIAction {
         System.out.println("Enter ordering direction: ASC for ascending or DESC for descending:");
         String orderDirection = scanner.nextLine();
         Ordering ordering = new Ordering(orderBy, orderDirection);
-        SearchProductRequest request = new SearchProductRequest(name, ordering);
+
+        System.out.println("Enter page number: ");
+        Integer pageNumber = scanner.nextInt();
+        System.out.println("Enter page size: ");
+        Integer pageSize = scanner.nextInt();
+        Paging paging = new Paging(pageNumber, pageSize);
+
+        SearchProductRequest request = new SearchProductRequest(name, ordering, paging);
         SearchProductResponse response = searchProductService.execute(request);
+
 
         if (response.hasErrors()) {
             response.getErrors().forEach(coreError -> System.out.println("Error: " + coreError.getField() +

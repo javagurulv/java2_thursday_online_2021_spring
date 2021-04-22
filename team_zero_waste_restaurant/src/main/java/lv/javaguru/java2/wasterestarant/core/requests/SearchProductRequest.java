@@ -6,10 +6,17 @@ public class SearchProductRequest {
 
     private Ordering ordering;
 
+    private Paging paging;
+
     public SearchProductRequest(String nameToSearch) {
         this.nameToSearch = nameToSearch;
     }
 
+    public SearchProductRequest(String nameToSearch, Ordering ordering, Paging paging) {
+        this.nameToSearch = nameToSearch;
+        this.ordering = ordering;
+        this.paging = paging;
+    }
 
     public SearchProductRequest(String nameToSearch, Ordering ordering) {
         this.nameToSearch = nameToSearch;
@@ -22,6 +29,10 @@ public class SearchProductRequest {
 
     public Ordering getOrdering() {
         return ordering;
+    }
+
+    public Paging getPaging() {
+        return paging;
     }
 
     public boolean isNameProvided() {
