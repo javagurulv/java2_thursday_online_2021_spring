@@ -4,6 +4,7 @@ import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.database.DatabaseImpl;
 import lv.javaguru.java2.hrsystem.core.services.*;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.AddSkillRequestValidator;
 import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesRequestValidator;
 
 import java.util.HashMap;
@@ -15,6 +16,7 @@ public class UIMain {
     private final Database database = new DatabaseImpl();
     private static AddEmployeeValidator addEmployeeValidator = new AddEmployeeValidator();
     private static SearchEmployeesRequestValidator searchEmployeesRequestValidator = new SearchEmployeesRequestValidator();
+    private static AddSkillRequestValidator addSkillRequestValidator = new AddSkillRequestValidator();
 
     private final Map<Integer, UIAction> menuNumberToActionMap = new HashMap<>() {{
         put(1, new AddEmployeeUIAction(new AddEmployeeService(database, addEmployeeValidator)));
@@ -22,12 +24,12 @@ public class UIMain {
         put(3, new DeleteEmployeeUIAction(new DeleteEmployeeService(database)));
         put(4, new GetAllEmployeesUIAction(new GetAllEmployeesService(database)));
         put(5, new SearchEmployeesUIAction(new SearchEmployeesService(database, searchEmployeesRequestValidator)));
-        put(6, new ExitUIAction());
-
+        put(6, new AddSkillUIAction(new AddSkillService(database, addSkillRequestValidator)));
+        put(7, new ExitUIAction());
     }};
 
     private int getUserOption() {
-        System.out.println("Enter 1 to 6 menu option to execute:");
+        System.out.printf("Enter 1 to %d menu option to execute:\n", menuNumberToActionMap.size());
         Scanner scanner = new Scanner(System.in);
         return Integer.parseInt(scanner.nextLine());
     }
