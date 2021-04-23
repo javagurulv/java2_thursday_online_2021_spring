@@ -2,8 +2,9 @@ package lv.javaguru.java2.wasterestarant.core.services;
 
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
-import lv.javaguru.java2.wasterestarant.core.requests.SearchDishesRequest;
+import lv.javaguru.java2.wasterestarant.core.requests.Dish.SearchDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.core.services.Dish.SearchDishesRequestValidator;
 import org.junit.Test;
 
 import java.util.List;
