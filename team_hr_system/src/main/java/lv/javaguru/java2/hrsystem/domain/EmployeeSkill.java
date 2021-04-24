@@ -31,4 +31,12 @@ public class EmployeeSkill {
     public int hashCode() {
         return Objects.hash(employee, skill);
     }
+
+    @Override
+    public String toString() {
+        return "EmployeeSkill{" +
+                "employee=" + employee +
+                ", skill=" + skill +
+                '}';
+    }
 }

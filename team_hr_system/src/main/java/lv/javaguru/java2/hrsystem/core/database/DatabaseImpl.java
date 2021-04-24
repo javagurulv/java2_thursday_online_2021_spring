@@ -109,4 +109,9 @@ public class DatabaseImpl implements Database {
         }
         return false;
     }
+
+    @Override
+    public List<EmployeeSkill> getAllSkills() {
+        return employeeSkills;
+    }
 }

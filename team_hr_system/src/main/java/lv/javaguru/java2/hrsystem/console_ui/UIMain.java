@@ -25,7 +25,8 @@ public class UIMain {
         put(4, new GetAllEmployeesUIAction(new GetAllEmployeesService(database)));
         put(5, new SearchEmployeesUIAction(new SearchEmployeesService(database, searchEmployeesRequestValidator)));
         put(6, new AddSkillUIAction(new AddSkillService(database, addSkillRequestValidator)));
-        put(7, new ExitUIAction());
+        put(7, new GetAllEmployeeSkillUIAction(new GetAllEmployeeSkillsService(database)));
+        put(8, new ExitUIAction());
     }};
 
     private int getUserOption() {

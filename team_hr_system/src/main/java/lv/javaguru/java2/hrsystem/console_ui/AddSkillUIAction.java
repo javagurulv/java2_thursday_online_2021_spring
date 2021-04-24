@@ -37,7 +37,7 @@ public class AddSkillUIAction implements UIAction {
         System.out.println("Enter skills separated by comma: ");
         String skillsLine = scanner.nextLine();
         //scanner.close();
-        return skillsLine.split("[?\\s,]+");
+        return skillsLine.split("[?\\s,]+" ,-1);
     }
 
     private Long getEmployeeID() {

@@ -29,4 +29,6 @@ public interface Database {
 
     boolean addSkill(Employee employee, Skill skill);
 
+    List<EmployeeSkill> getAllSkills();
+
 }
