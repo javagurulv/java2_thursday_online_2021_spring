@@ -22,7 +22,7 @@ public class GetAllEmployeesUIAction implements UIAction {
             System.out.println("---end of employees list---" + "\n");
         }
         else {
-            System.out.println("No employees added at the moment");
+            System.out.println("No employees added yet");
         }
     }
 

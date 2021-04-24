@@ -17,7 +17,7 @@ public class GetAllEmployeeSkillUIAction implements UIAction {
         GetAllEmployeeSkillsResponse response = service.execute(request);
         if (response.hasEmployeeSkills()) {
             response.getEmployeeSkills().forEach(eSkill -> System.out.println("Employee ID: "
-                    + eSkill.getEmployee().getId() + "| skill: " + eSkill.getSkill().getSkillName()));
+                    + eSkill.getEmployee().getId() + " | skill: " + eSkill.getSkill().getSkillName()));
         } else {
             System.out.println("No skills added yet");
         }
@@ -25,6 +25,6 @@ public class GetAllEmployeeSkillUIAction implements UIAction {
 
     @Override
     public String toString() {
-        return "Show all employee skills";
+        return "Show all skills per employee";
     }
 }
