@@ -52,16 +52,16 @@ public class SearchEmployeesService {
         return employees;
     }
 
-    private List<Employee> paging(List<Employee> books, Paging paging) {
+    private List<Employee> paging(List<Employee> employees, Paging paging) {
 
         if (paging != null) {
             int skip = (paging.getPageNumber() - 1) * paging.getPageSize();
-            return books.stream()
+            return employees.stream()
                     .skip(skip)
                     .limit(paging.getPageSize())
                     .collect(Collectors.toList());
         } else {
-            return books;
+            return employees;
         }
     }
 }
