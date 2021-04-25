@@ -1,9 +1,27 @@
 package lv.javaguru.java2.wasterestarant;
 
 import lv.javaguru.java2.wasterestarant.console_ui.*;
+import lv.javaguru.java2.wasterestarant.console_ui.Dish.AddDishUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.Dish.GetAllDishesUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.Dish.RemoveDishUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.Ingredient.AddDishIngredientUiAction;
+import lv.javaguru.java2.wasterestarant.console_ui.Ingredient.SearchIngredientUiAction;
+import lv.javaguru.java2.wasterestarant.console_ui.Product.AddProductUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.Product.GetAllProductsUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.Product.SearchProductUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.Wishlist.AddDishToWishlistUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.Wishlist.GetWishListUIAction;
 import lv.javaguru.java2.wasterestarant.core.database.Database;
 import lv.javaguru.java2.wasterestarant.core.database.InMemoryDatabaseImpl;
 import lv.javaguru.java2.wasterestarant.core.services.*;
+import lv.javaguru.java2.wasterestarant.core.services.Dish.*;
+import lv.javaguru.java2.wasterestarant.core.services.Ingredient.AddDishIngredientService;
+import lv.javaguru.java2.wasterestarant.core.services.Ingredient.AddDishIngredientValidator;
+import lv.javaguru.java2.wasterestarant.core.services.Ingredient.SearchIngredientService;
+import lv.javaguru.java2.wasterestarant.core.services.Ingredient.SearchIngredientValidator;
+import lv.javaguru.java2.wasterestarant.core.services.Products.*;
+import lv.javaguru.java2.wasterestarant.core.services.Wishlist.AddDishToWishlistService;
+import lv.javaguru.java2.wasterestarant.core.services.Wishlist.GetWishlistService;
 
 import java.util.Scanner;
 

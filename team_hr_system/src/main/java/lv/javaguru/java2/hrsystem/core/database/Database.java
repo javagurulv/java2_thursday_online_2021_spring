@@ -1,8 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.database;
 
-import lv.javaguru.java2.hrsystem.domain.Admin;
-import lv.javaguru.java2.hrsystem.domain.Employee;
-import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
+import lv.javaguru.java2.hrsystem.domain.*;
 
 import java.util.List;
 import java.util.Set;
@@ -26,5 +24,11 @@ public interface Database {
     List<Employee> getEmployeesByTitleAdnName(EmployeeTitle title, String name);
 
     Set<EmployeeTitle> getAllTitles();
+
+    List<Employee> getEmployeesBySkill(Skill skill);
+
+    boolean addSkill(Employee employee, Skill skill);
+
+    List<EmployeeSkill> getAllSkills();
 
 }

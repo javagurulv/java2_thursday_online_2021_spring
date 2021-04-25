@@ -2,7 +2,7 @@ package lv.javaguru.java2.wasterestarant.core.responses;
 
 import java.util.List;
 
-abstract class CoreResponse {
+public abstract class CoreResponse {
     private List<CoreError> errors;
     private String type;
     private CoreError error;

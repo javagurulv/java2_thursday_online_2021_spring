@@ -4,6 +4,7 @@ import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.requests.LoginRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.responses.LoginResponse;
+import lv.javaguru.java2.hrsystem.core.services.validators.LoginValidator;
 
 import java.util.List;
 

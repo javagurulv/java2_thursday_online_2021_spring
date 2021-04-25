@@ -1,6 +1,8 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
+import lv.javaguru.java2.hrsystem.core.requests.Paging;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
+import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesRequestValidator;
 import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
@@ -8,6 +10,7 @@ import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesResponse;
 import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SearchEmployeesService {
     private final Database database;
@@ -19,11 +22,24 @@ public class SearchEmployeesService {
     }
 
     public SearchEmployeesResponse execute(SearchEmployeesRequest request) {
+
         List<CoreError> errors = validator.validate(request);
+
         if (!errors.isEmpty()) {
             return new SearchEmployeesResponse(errors, null);
         }
+
+        List<Employee> employee = search(request);
+
+        employee = paging(employee, request.getPaging());
+
+        return new SearchEmployeesResponse(null, employee);
+    }
+
+    public List<Employee> search(SearchEmployeesRequest request) {
+
         List<Employee> employees = null;
+
         if (request.isNameProvided() && !request.isTitleProvided()) {
             employees = database.getEmployeesByName(request.getName());
         }
@@ -33,6 +49,19 @@ public class SearchEmployeesService {
         if (request.isNameProvided() && request.isTitleProvided()) {
             employees = database.getEmployeesByTitleAdnName(EmployeeTitle.valueOf(request.getEmployeeTitle()), request.getName());
         }
-        return new SearchEmployeesResponse(null, employees);
+        return employees;
+    }
+
+    private List<Employee> paging(List<Employee> employees, Paging paging) {
+
+        if (paging != null) {
+            int skip = (paging.getPageNumber() - 1) * paging.getPageSize();
+            return employees.stream()
+                    .skip(skip)
+                    .limit(paging.getPageSize())
+                    .collect(Collectors.toList());
+        } else {
+            return employees;
+        }
     }
 }

@@ -12,4 +12,8 @@ public class Ingredient {
     public String getIngredient(){
         return ingredient;
     }
+
+    public Double getQuantity(){
+        return quantity;
+    }
 }
