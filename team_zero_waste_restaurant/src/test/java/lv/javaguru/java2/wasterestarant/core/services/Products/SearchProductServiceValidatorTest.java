@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.core.services;
+package lv.javaguru.java2.wasterestarant.core.services.Products;
 
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
