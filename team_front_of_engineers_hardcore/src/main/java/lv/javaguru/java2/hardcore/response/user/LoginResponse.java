@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hardcore.response.user;
 
-import lv.javaguru.java2.hardcore.datamodels.User;
+import lv.javaguru.java2.hardcore.domain.User;
 import lv.javaguru.java2.hardcore.response.CoreError;
 import lv.javaguru.java2.hardcore.response.CoreResponse;
 

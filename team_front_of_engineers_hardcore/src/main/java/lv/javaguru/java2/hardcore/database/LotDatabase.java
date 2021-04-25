@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hardcore.database;
 
-import lv.javaguru.java2.hardcore.datamodels.Lot;
+import lv.javaguru.java2.hardcore.domain.Lot;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hardcore.datamodels;
+package lv.javaguru.java2.hardcore.domain;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -7,12 +7,15 @@ public class Bet {
 
     private BigDecimal bet;
     private Long betId;
+    private User user;
+    private Long userID;
 
-    public Bet(BigDecimal bet, Long betId) {
+    public Bet(BigDecimal bet, Long betId, User user, Long userID) {
         this.bet = bet;
         this.betId = betId;
+        this.user = user;
+        this.userID = userID;
     }
-
 
     public BigDecimal getBet() {
         return bet;
@@ -30,6 +33,22 @@ public class Bet {
         this.betId = betId;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Long userID) {
+        this.userID = userID;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -45,9 +64,10 @@ public class Bet {
 
     @Override
     public String toString() {
-        return "Bet{" +
-                "bet=" + bet +
-                ", ItemId=" + betId +
+        return  bet +" eur"+
+                ", LotID=" + betId +
+                ", UserWhoMadeBet=" + user.getName() +
+                ", userID#=" + userID +
                 '}';
     }
 }

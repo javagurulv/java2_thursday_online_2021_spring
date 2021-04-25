@@ -2,7 +2,7 @@ package lv.javaguru.java2.hardcore.services.user;
 
 
 import lv.javaguru.java2.hardcore.database.UserDatabase;
-import lv.javaguru.java2.hardcore.datamodels.User;
+import lv.javaguru.java2.hardcore.domain.User;
 import lv.javaguru.java2.hardcore.requests.user.AddUserRequest;
 import lv.javaguru.java2.hardcore.response.CoreError;
 import lv.javaguru.java2.hardcore.response.user.AddUserResponse;

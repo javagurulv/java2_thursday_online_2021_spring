@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hardcore.datamodels;
+package lv.javaguru.java2.hardcore.domain;
 
 import java.util.Objects;
 
@@ -53,8 +53,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
-                ", userId=" + userId +
+                "Name='" + name + '\'' +
+                ", ID#=" + userId +
                 '}';
     }
 }
