@@ -101,6 +101,6 @@ public class SearchDishesRequestValidator {
     }
 
     private boolean isEmptyDouble(Double dbl){
-        return dbl == null || dbl == 0.0 || dbl < 0 || dbl.isNaN();
+        return dbl == null || dbl < 0;
     }
 }
