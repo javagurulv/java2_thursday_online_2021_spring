@@ -1,6 +1,5 @@
 package lv.javaguru.java2.wasterestarant.domain;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Client {
@@ -8,7 +7,7 @@ public class Client {
     private String name;
     private boolean isRegistered;
     private long clientID;
-    private List<OrderItem> wishlist;
+    private Cart cart;
 
     public Client() {
     }
@@ -42,12 +41,12 @@ public class Client {
         this.clientID = clientID;
     }
 
-    public List<OrderItem> getWishlist() {
-        return wishlist;
+    public Cart getCart() {
+        return cart;
     }
 
-    public void setWishlist(List<OrderItem> wishlist) {
-        this.wishlist = wishlist;
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
 

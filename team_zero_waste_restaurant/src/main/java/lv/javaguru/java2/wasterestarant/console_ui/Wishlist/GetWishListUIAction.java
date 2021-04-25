@@ -9,7 +9,7 @@ import lv.javaguru.java2.wasterestarant.domain.OrderItem;
 import java.util.List;
 import java.util.Scanner;
 
-//Nataliya - in process
+//Nataliya
 
 public class GetWishListUIAction implements UIAction {
 
@@ -41,7 +41,7 @@ public class GetWishListUIAction implements UIAction {
     }
 
     private void printWishlistWithFields(List<OrderItem> printList, int i) {
-        System.out.println((i + 1) + ". " + printList.get(i).getName() +
+        System.out.println((i + 1) + ". " + printList.get(i).getDishName() +
                 ", quantity - " + printList.get(i).getQuantity() + ".");
     }
 

@@ -1,11 +1,10 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
-import lv.javaguru.java2.wasterestarant.domain.Dish;
-import lv.javaguru.java2.wasterestarant.domain.Ingredient;
-import lv.javaguru.java2.wasterestarant.domain.OrderItem;
-import lv.javaguru.java2.wasterestarant.domain.Product;
+import lv.javaguru.java2.wasterestarant.domain.*;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public interface Database {
 
@@ -41,12 +40,22 @@ public interface Database {
 
     List<Dish> getRestaurantMenu();
 
-    List<Dish> getWishList(); // is wish list stored in database?
-
     List<Product> searchProductByName(String name);
 
-    void addToWishlist(Long clientID, OrderItem selectedItem);
+    Optional<Client> clientByID (Long clientID);
 
-    List<OrderItem> getWishlist(Long clientID);
+    List<OrderItem> getWishlistByClientID(Long clientID);
+
+    OrderItem selectedOrderItem(String dishName, int quantity);
+
+    void addDishToWishlist(Long clientID, String dishName, int quantity);
+
+    void save(Order order);
+
+    List<Order> getAllOrders();
+
+    List<Order> getOrdersByClientID(Long clientID);
+
+    List<Order> getOrderByDate(Date orderDate);
 
 }

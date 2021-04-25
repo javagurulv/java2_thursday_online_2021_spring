@@ -2,8 +2,6 @@ package lv.javaguru.java2.wasterestarant.core.requests.Wishlist;
 
 //Nataliya
 
-import java.util.List;
-
 public class GetWishlistRequest {
 
     private Long clientID;
@@ -12,4 +10,7 @@ public class GetWishlistRequest {
         this.clientID = clientID;
     }
 
+    public Long getClientID() {
+        return clientID;
+    }
 }
