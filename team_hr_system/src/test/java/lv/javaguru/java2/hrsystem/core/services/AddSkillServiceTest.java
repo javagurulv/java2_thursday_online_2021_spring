@@ -5,6 +5,8 @@ import lv.javaguru.java2.hrsystem.core.requests.AddSkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddSkillResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddSkillRequestValidator;
+import lv.javaguru.java2.hrsystem.domain.Employee;
+import lv.javaguru.java2.hrsystem.domain.Skill;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -90,5 +92,27 @@ public class AddSkillServiceTest {
                 new CoreError("employee skill", " Must not be empty!"))).isTrue();
 
         Mockito.verifyNoInteractions(database);
+    }
+
+    @Test
+    public void testSuccessfulAddingSkill() {
+        AddSkillRequest request = new AddSkillRequest(1L, "Java");
+        Mockito.when(validator.validate(request)).thenReturn(List.of());
+        Mockito.when(database.addSkill(new Employee(1L), new Skill("Java")))
+                .thenReturn(true);
+        AddSkillResponse response = service.execute(request);
+        assertThat(response.hasErrors()).isFalse();
+        assertThat(response.isEmployeeSkillAdded()).isTrue();
+    }
+
+    @Test
+    public void testAddingAlreadyAddedSkill() {
+        AddSkillRequest request = new AddSkillRequest(1L, "Java");
+        Mockito.when(validator.validate(request)).thenReturn(List.of());
+        Mockito.when(database.addSkill(new Employee(1L), new Skill("Java")))
+                .thenReturn(false);
+        AddSkillResponse response = service.execute(request);
+        assertThat(response.hasErrors()).isFalse();
+        assertThat(response.isEmployeeSkillAdded()).isFalse();
     }
 }

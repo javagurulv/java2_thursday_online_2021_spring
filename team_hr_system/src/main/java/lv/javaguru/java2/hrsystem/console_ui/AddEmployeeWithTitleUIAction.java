@@ -30,7 +30,7 @@ public class AddEmployeeWithTitleUIAction implements UIAction{
                 "    HR_MANAGER,\n" +
                 "    SALES_MANAGER");
         String title = scanner.nextLine();
-        AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest(firstName, secondName, age, title);
+        AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest(firstName, secondName, age, title.toUpperCase());
         AddEmployeeWithTitleResponse response = service.execute(request);
 
         if (response.hasErrors()) {
@@ -39,7 +39,8 @@ public class AddEmployeeWithTitleUIAction implements UIAction{
             );
         } else {
             System.out.println("Employee added successfully!" + "\n" +
-                    "|" + firstName + " " + secondName + " - " + age + " - " + title + "|" + "\n");
+                    "|" + response.getEmployee().getName() + " " + response.getEmployee().getLastName()
+                    + " - " + response.getEmployee().getAge() + " - " + response.getEmployee().getTitle() + "|" + "\n");
         }
     }
 
