@@ -5,17 +5,13 @@ import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.SearchDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
 import static org.junit.Assert.*;
 //Elena
-@RunWith(MockitoJUnitRunner.class)
 public class SearchDishesRequestValidatorTest {
-    @Mock
+
     SearchDishesRequestValidator validator = new SearchDishesRequestValidator();
 
     @Test
