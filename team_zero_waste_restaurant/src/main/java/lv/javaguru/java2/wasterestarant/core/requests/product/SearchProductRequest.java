@@ -8,6 +8,8 @@ public class SearchProductRequest {
 
     private String nameToSearch;
 
+    private Double quantity;
+
     private Ordering ordering;
 
     private Paging paging;
@@ -30,6 +32,12 @@ public class SearchProductRequest {
     public SearchProductRequest(String nameToSearch, Ordering ordering) {
         this.nameToSearch = nameToSearch;
         this.ordering = ordering;
+    }
+
+    public SearchProductRequest(String nameToSearch, Double quantity, Paging paging) {
+        this.nameToSearch = nameToSearch;
+        this.quantity = quantity;
+        this.paging = paging;
     }
 
     public String getNameToSearch() {
