@@ -36,29 +36,29 @@ public class SearchDishesService {
 
     private List<Dish> order(List<Dish> dishes, Ordering ordering) {
         if (ordering != null) {
-            Comparator<Dish> comparator;
-            switch (ordering.getOrderBy()) {
-                case "name" -> {
-                    comparator = Comparator.comparing(Dish::getName);
-                    if (ordering.getOrderDirection().equals("DESCENDING")) {
-                        comparator.reversed();
-                    }
-                    return dishes.stream().sorted(comparator).collect(Collectors.toList());
-                }
-                case "type" -> {
-                    comparator = Comparator.comparing(Dish::getType);
-                    if (ordering.getOrderDirection().equals("DESCENDING")) {
-                        comparator.reversed();
-                    }
-                    return dishes.stream().sorted(comparator).collect(Collectors.toList());
-                }
-                case "price" -> {
-                    comparator = Comparator.comparing(Dish::getPrice);
-                    if (ordering.getOrderDirection().equals("DESCENDING")) {
-                        comparator.reversed();
-                    }
-                    return dishes.stream().sorted(comparator).collect(Collectors.toList());
-                }
+            if ((ordering.getOrderBy().equals("name")) && (ordering.getOrderDirection().equals("ASCENDING"))) {
+                return dishes.stream().sorted(Comparator.comparing(Dish::getName))
+                        .collect(Collectors.toList());
+            }
+            if ((ordering.getOrderBy().equals("name")) && (ordering.getOrderDirection().equals("DESCENDING"))) {
+                return dishes.stream().sorted(Comparator.comparing(Dish::getName).reversed())
+                        .collect(Collectors.toList());
+            }
+            if ((ordering.getOrderBy().equals("type")) && (ordering.getOrderDirection().equals("ASCENDING"))) {
+                return dishes.stream().sorted(Comparator.comparing(Dish::getType))
+                        .collect(Collectors.toList());
+            }
+            if ((ordering.getOrderBy().equals("type")) && (ordering.getOrderDirection().equals("DESCENDING"))) {
+                return dishes.stream().sorted(Comparator.comparing(Dish::getType).reversed())
+                        .collect(Collectors.toList());
+            }
+            if ((ordering.getOrderBy().equals("price")) && (ordering.getOrderDirection().equals("ASCENDING"))) {
+                return dishes.stream().sorted(Comparator.comparing(Dish::getPrice))
+                        .collect(Collectors.toList());
+            }
+            if ((ordering.getOrderBy().equals("price")) && (ordering.getOrderDirection().equals("DESCENDING"))) {
+                return dishes.stream().sorted(Comparator.comparing(Dish::getPrice).reversed())
+                        .collect(Collectors.toList());
             }
         }
         return dishes;
@@ -89,6 +89,7 @@ public class SearchDishesService {
         }
         return dishes;
     }
+
     private List<Dish> paging(List<Dish> books, Paging paging) {
         if (paging != null) {
             int skip = (paging.getPageNumber() - 1) * paging.getPageSize();
