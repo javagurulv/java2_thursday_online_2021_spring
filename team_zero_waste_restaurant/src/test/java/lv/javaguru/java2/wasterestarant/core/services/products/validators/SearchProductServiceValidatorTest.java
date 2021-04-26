@@ -1,9 +1,10 @@
-package lv.javaguru.java2.wasterestarant.core.services.products;
+package lv.javaguru.java2.wasterestarant.core.services.products.validators;
 
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.product.SearchProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.core.services.products.SearchProductServiceValidator;
 import org.junit.Test;
 
 import java.util.List;

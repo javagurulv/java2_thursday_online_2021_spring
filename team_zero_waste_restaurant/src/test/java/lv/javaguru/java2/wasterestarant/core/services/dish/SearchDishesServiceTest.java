@@ -151,7 +151,7 @@ public class SearchDishesServiceTest {
     }
 
     @Test
-    public void shouldSearchByTypeWithOrderingAscending() {
+    public void shouldSearchByTypeWithOrderingByNameAscending() {
         Ordering ordering = new Ordering("name", "ASCENDING");
         SearchDishesRequest request = new SearchDishesRequest(null, "Pizza", null, ordering);
         Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
@@ -167,7 +167,7 @@ public class SearchDishesServiceTest {
     }
 
     @Test
-    public void shouldSearchByTypeWithOrderingDescending() {
+    public void shouldSearchByTypeWithOrderingByNameDescending() {
         Ordering ordering = new Ordering("name", "DESCENDING");
         SearchDishesRequest request = new SearchDishesRequest(null, "Pizza", null, ordering);
         Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
@@ -178,8 +178,72 @@ public class SearchDishesServiceTest {
         SearchDishesResponse response = searchDishesService.execute(request);
         assertFalse(response.hasErrors());
         assertEquals(response.getDishes().size(), 2);
-        //assertEquals(response.getDishes().get(0).getName(), "Abc2");
-        //assertEquals(response.getDishes().get(1).getName(), "Abc1");
+        assertEquals(response.getDishes().get(0).getName(), "Abc2");
+        assertEquals(response.getDishes().get(1).getName(), "Abc1");
+    }
+
+    @Test
+    public void shouldSearchByNameWithOrderingByTypeAscending() {
+        Ordering ordering = new Ordering("type", "ASCENDING");
+        SearchDishesRequest request = new SearchDishesRequest("Marinara", null, null, ordering);
+        Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
+        List<Dish> dishes = new ArrayList<>();
+        dishes.add(new Dish("Marinara", "Marinara", "Pizza", 0.2, 4.99));
+        dishes.add(new Dish("Marinara", "Marinara", "Pasta", 0.2, 4.99));
+        Mockito.when(database.findDishByName("Marinara")).thenReturn(dishes);
+        SearchDishesResponse response = searchDishesService.execute(request);
+        assertFalse(response.hasErrors());
+        assertEquals(response.getDishes().size(), 2);
+        assertEquals(response.getDishes().get(0).getType(), "Pasta");
+        assertEquals(response.getDishes().get(1).getType(), "Pizza");
+    }
+
+    @Test
+    public void shouldSearchByNameWithOrderingByTypeDescending() {
+        Ordering ordering = new Ordering("type", "DESCENDING");
+        SearchDishesRequest request = new SearchDishesRequest("Marinara", null, null, ordering);
+        Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
+        List<Dish> dishes = new ArrayList<>();
+        dishes.add(new Dish("Marinara", "Margherita", "Pizza", 0.2, 4.99));
+        dishes.add(new Dish("Marinara", "Marinara", "Pasta", 0.2, 4.99));
+        Mockito.when(database.findDishByName("Marinara")).thenReturn(dishes);
+        SearchDishesResponse response = searchDishesService.execute(request);
+        assertFalse(response.hasErrors());
+        assertEquals(response.getDishes().size(), 2);
+        assertEquals(response.getDishes().get(0).getType(), "Pizza");
+        assertEquals(response.getDishes().get(1).getType(), "Pasta");
+    }
+
+    @Test
+    public void shouldSearchByTypeWithOrderingByPriceAscending() {
+        Ordering ordering = new Ordering("price", "ASCENDING");
+        SearchDishesRequest request = new SearchDishesRequest(null, "Pizza", null, ordering);
+        Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
+        List<Dish> dishes = new ArrayList<>();
+        dishes.add(new Dish("Marinara", "Marinara", "Pizza", 0.2, 4.99));
+        dishes.add(new Dish("Margherita", "Margherita", "Pizza", 0.2, 5.99));
+        Mockito.when(database.findDishByType("Pizza")).thenReturn(dishes);
+        SearchDishesResponse response = searchDishesService.execute(request);
+        assertFalse(response.hasErrors());
+        assertEquals(response.getDishes().size(), 2);
+        assertEquals(response.getDishes().get(0).getPrice(), 4.99, 0);
+        assertEquals(response.getDishes().get(1).getPrice(), 5.99, 0);
+    }
+
+    @Test
+    public void shouldSearchByTypeWithOrderingByPriceDescending() {
+        Ordering ordering = new Ordering("price", "DESCENDING");
+        SearchDishesRequest request = new SearchDishesRequest(null, "Pizza", null, ordering);
+        Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
+        List<Dish> dishes = new ArrayList<>();
+        dishes.add(new Dish("Marinara", "Marinara", "Pizza", 0.2, 4.99));
+        dishes.add(new Dish("Margherita", "Margherita", "Pizza", 0.2, 5.99));
+        Mockito.when(database.findDishByType("Pizza")).thenReturn(dishes);
+        SearchDishesResponse response = searchDishesService.execute(request);
+        assertFalse(response.hasErrors());
+        assertEquals(response.getDishes().size(), 2);
+        assertEquals(response.getDishes().get(0).getPrice(), 5.99, 0);
+        assertEquals(response.getDishes().get(1).getPrice(), 4.99, 0);
     }
 
     @Test
