@@ -5,6 +5,7 @@ import lv.javaguru.java2.hrsystem.core.database.DatabaseImpl;
 import lv.javaguru.java2.hrsystem.core.services.*;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeValidator;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddSkillRequestValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesBySkillRequestValidator;
 import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesRequestValidator;
 
 import java.util.HashMap;
@@ -17,6 +18,7 @@ public class UIMain {
     private static AddEmployeeValidator addEmployeeValidator = new AddEmployeeValidator();
     private static SearchEmployeesRequestValidator searchEmployeesRequestValidator = new SearchEmployeesRequestValidator();
     private static AddSkillRequestValidator addSkillRequestValidator = new AddSkillRequestValidator();
+    private static SearchEmployeesBySkillRequestValidator searchEmployeesBySkillRequestValidator = new SearchEmployeesBySkillRequestValidator();
 
     private final Map<Integer, UIAction> menuNumberToActionMap = new HashMap<>() {{
         put(1, new AddEmployeeUIAction(new AddEmployeeService(database, addEmployeeValidator)));
@@ -26,7 +28,8 @@ public class UIMain {
         put(5, new SearchEmployeesUIAction(new SearchEmployeesService(database, searchEmployeesRequestValidator)));
         put(6, new AddSkillUIAction(new AddSkillService(database, addSkillRequestValidator)));
         put(7, new GetAllEmployeeSkillUIAction(new GetAllEmployeeSkillsService(database)));
-        put(8, new ExitUIAction());
+        put(8, new SearchEmployeesBySkillUIAction(new SearchEmployeesBySkillService(database,searchEmployeesBySkillRequestValidator)));
+        put(9, new ExitUIAction());
     }};
 
     private int getUserOption() {
