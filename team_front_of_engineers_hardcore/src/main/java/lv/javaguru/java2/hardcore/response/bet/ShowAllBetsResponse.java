@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hardcore.response.bet;
 
-import lv.javaguru.java2.hardcore.datamodels.Bet;
+import lv.javaguru.java2.hardcore.domain.Bet;
 import lv.javaguru.java2.hardcore.response.CoreResponse;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package lv.javaguru.java2.hardcore.services.bet;
 
 import lv.javaguru.java2.hardcore.database.BetDatabase;
-import lv.javaguru.java2.hardcore.datamodels.Bet;
+import lv.javaguru.java2.hardcore.domain.Bet;
 import lv.javaguru.java2.hardcore.requests.bet.ShowAllBetsRequest;
 import lv.javaguru.java2.hardcore.response.bet.ShowAllBetsResponse;
 

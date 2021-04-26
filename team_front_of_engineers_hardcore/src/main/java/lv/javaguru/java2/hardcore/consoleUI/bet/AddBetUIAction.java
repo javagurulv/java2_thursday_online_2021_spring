@@ -2,9 +2,7 @@ package lv.javaguru.java2.hardcore.consoleUI.bet;
 
 import lv.javaguru.java2.hardcore.consoleUI.UIAction;
 import lv.javaguru.java2.hardcore.requests.bet.AddBetRequest;
-import lv.javaguru.java2.hardcore.requests.lot.AddLotRequest;
 import lv.javaguru.java2.hardcore.response.bet.AddBetResponse;
-import lv.javaguru.java2.hardcore.response.lot.AddLotResponse;
 import lv.javaguru.java2.hardcore.services.bet.AddBetService;
 
 import java.math.BigDecimal;

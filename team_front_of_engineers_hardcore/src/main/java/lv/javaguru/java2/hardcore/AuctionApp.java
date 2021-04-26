@@ -33,10 +33,10 @@ public class AuctionApp {
     private LoginService loginService = new LoginService(userDatabase, loginValidator);
     private AddUserService addUserService = new AddUserService(userDatabase, addUserValidator);
     private ShowAllUsersService showAllUsersService = new ShowAllUsersService(userDatabase);
-    private AddLotService addLotService = new AddLotService(lotDatabase, addLotValidator);
+    private AddLotService addLotService = new AddLotService(lotDatabase, addLotValidator,loginService);
     private GetAllLotsService getAllLotsService = new GetAllLotsService(lotDatabase);
     private RemoveLotService removeLotService = new RemoveLotService(lotDatabase, removeLotValidator);
-    private AddBetService addBetService = new AddBetService(betDatabase, addBetValidator);
+    private AddBetService addBetService = new AddBetService(betDatabase, addBetValidator,loginService);
     private RemoveBetService removeBetService = new RemoveBetService(betDatabase, removeBetValidator);
     private ShowAllBetsService showAllBetsService = new ShowAllBetsService(betDatabase);
 

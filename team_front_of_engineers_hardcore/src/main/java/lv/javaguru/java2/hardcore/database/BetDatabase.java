@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hardcore.database;
 
-import lv.javaguru.java2.hardcore.datamodels.Bet;
+import lv.javaguru.java2.hardcore.domain.Bet;
 
 import java.util.List;
 

@@ -1,7 +1,6 @@
 package lv.javaguru.java2.hardcore.database;
 
-import lv.javaguru.java2.hardcore.datamodels.Bet;
-import lv.javaguru.java2.hardcore.datamodels.Lot;
+import lv.javaguru.java2.hardcore.domain.Bet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,4 +35,6 @@ public class InMemoryBetDatabase implements BetDatabase{
         }
         return isBetDeleted;
     }
+
+
 }

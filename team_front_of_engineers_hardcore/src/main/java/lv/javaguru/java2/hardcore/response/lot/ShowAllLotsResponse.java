@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hardcore.response.lot;
 
-import lv.javaguru.java2.hardcore.datamodels.Lot;
+import lv.javaguru.java2.hardcore.domain.Lot;
 import lv.javaguru.java2.hardcore.response.CoreResponse;
 
 import java.util.List;

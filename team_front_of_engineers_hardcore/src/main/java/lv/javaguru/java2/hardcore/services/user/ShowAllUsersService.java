@@ -3,12 +3,10 @@ package lv.javaguru.java2.hardcore.services.user;
 
 
 import lv.javaguru.java2.hardcore.database.UserDatabase;
-import lv.javaguru.java2.hardcore.datamodels.User;
+import lv.javaguru.java2.hardcore.domain.User;
 import lv.javaguru.java2.hardcore.requests.user.ShowAllUserRequest;
-import lv.javaguru.java2.hardcore.response.CoreError;
 import lv.javaguru.java2.hardcore.response.user.ShowAllUsersResponse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ShowAllUsersService {

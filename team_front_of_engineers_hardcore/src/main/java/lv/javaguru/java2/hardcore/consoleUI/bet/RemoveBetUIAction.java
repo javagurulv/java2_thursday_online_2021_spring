@@ -2,9 +2,7 @@ package lv.javaguru.java2.hardcore.consoleUI.bet;
 
 import lv.javaguru.java2.hardcore.consoleUI.UIAction;
 import lv.javaguru.java2.hardcore.requests.bet.RemoveBetRequest;
-import lv.javaguru.java2.hardcore.requests.lot.RemoveLotRequest;
 import lv.javaguru.java2.hardcore.response.bet.RemoveBetResponse;
-import lv.javaguru.java2.hardcore.response.lot.RemoveLotResponse;
 import lv.javaguru.java2.hardcore.services.bet.RemoveBetService;
 
 import java.util.Scanner;
