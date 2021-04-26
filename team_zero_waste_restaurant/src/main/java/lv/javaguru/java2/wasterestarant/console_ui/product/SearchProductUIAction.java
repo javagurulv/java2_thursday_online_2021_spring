@@ -31,9 +31,9 @@ public class SearchProductUIAction implements UIAction {
         Ordering ordering = new Ordering(orderBy, orderDirection);
 
         System.out.println("Enter page number: ");
-        Integer pageNumber = scanner.nextInt();
+        Integer pageNumber = validatePagingInput(scanner);
         System.out.println("Enter page size: ");
-        Integer pageSize = scanner.nextInt();
+        Integer pageSize = validatePagingInput(scanner);
         Paging paging = new Paging(pageNumber, pageSize);
 
         SearchProductRequest request = new SearchProductRequest(name, ordering, paging);
@@ -57,5 +57,13 @@ public class SearchProductUIAction implements UIAction {
         System.out.println((i + 1) + ". " + printList.get(i).getName() + ", quantity - "
                 + printList.get(i).getQuantity() + ", price - " + printList.get(i).getPrice()
                 + " \u0024, " + " with expiry date - " + printList.get(i).getExpiryDate());
+    }
+
+    private Integer validatePagingInput(Scanner scanner) {
+        try{
+            return Integer.parseInt(scanner.nextLine());
+        } catch (Exception e){
+            return null;
+        }
     }
 }
