@@ -1,11 +1,11 @@
 package lv.javaguru.java2.hrsystem.core.requests;
 
-public class LoginRequest {
+public class AuthorizationRequest {
 
     private String email;
     private String password;
 
-    public LoginRequest(String email, String password) {
+    public AuthorizationRequest(String email, String password) {
         this.email = email;
         this.password = password;
     }
