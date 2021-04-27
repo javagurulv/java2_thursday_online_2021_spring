@@ -5,7 +5,7 @@ import lv.javaguru.java2.hrsystem.core.requests.RegistrationRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.responses.RegistrationResponse;
 import lv.javaguru.java2.hrsystem.core.services.validators.RegistrationValidator;
-import lv.javaguru.java2.hrsystem.domain.Admin;
+import lv.javaguru.java2.hrsystem.domain.User;
 
 import java.util.List;
 
@@ -28,11 +28,15 @@ public class RegistrationService {
             return new RegistrationResponse(errors);
         }
 
-        Admin admin = new Admin(registrationRequest.getFirstName(), registrationRequest.getSecondName(),
-                registrationRequest.getEmail(), registrationRequest.getPassword());
-        database.registrationAdm(admin);
+        User user = new User(registrationRequest.getUserRole(),
+                registrationRequest.getFirstName(),
+                registrationRequest.getSecondName(),
+                registrationRequest.getEmail(),
+                registrationRequest.getPassword());
 
-        return new RegistrationResponse(admin);
+        database.registration(user);
+
+        return new RegistrationResponse(user);
 
     }
 }
