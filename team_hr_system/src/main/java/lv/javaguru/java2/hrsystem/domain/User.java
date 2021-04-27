@@ -3,15 +3,17 @@ package lv.javaguru.java2.hrsystem.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Admin implements Serializable {
+public class User implements Serializable {
 
     private Long id;
+    private UserRole userRole;
     private String firstName;
     private String secondName;
     private String email;
     private String password;
 
-    public Admin(String firstName, String secondName, String email, String password) {
+    public User(UserRole userRole, String firstName, String secondName, String email, String password) {
+        this.userRole = userRole;
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;
@@ -24,6 +26,14 @@ public class Admin implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 
     public String getFirstName() {
@@ -62,19 +72,20 @@ public class Admin implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Admin admin = (Admin) o;
-        return Objects.equals(id, admin.id) && Objects.equals(firstName, admin.firstName) && Objects.equals(secondName, admin.secondName) && Objects.equals(email, admin.email) && Objects.equals(password, admin.password);
+        User user = (User) o;
+        return Objects.equals(id, user.id) && userRole == user.userRole && Objects.equals(firstName, user.firstName) && Objects.equals(secondName, user.secondName) && Objects.equals(email, user.email) && Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, secondName, email, password);
+        return Objects.hash(id, userRole, firstName, secondName, email, password);
     }
 
     @Override
     public String toString() {
-        return "Admin{" +
+        return "User{" +
                 "id=" + id +
+                ", userRole=" + userRole +
                 ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", email='" + email + '\'' +
