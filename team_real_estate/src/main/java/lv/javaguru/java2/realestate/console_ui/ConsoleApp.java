@@ -1,5 +1,6 @@
 package lv.javaguru.java2.realestate.console_ui;
 
+import lv.javaguru.java2.realestate.ApplicationContext;
 import lv.javaguru.java2.realestate.core.database.Database;
 import lv.javaguru.java2.realestate.core.database.InMemoryDatabaseImpl;
 import lv.javaguru.java2.realestate.core.services.*;
@@ -11,35 +12,19 @@ import java.util.Scanner;
 public class ConsoleApp {
     private final Map<Integer, ConsoleUI> menuNumberToActionMap;
 
-    private final static Database database = new InMemoryDatabaseImpl();
-
-    private final static CreateOfferValidator createOfferValidator = new CreateOfferValidator();
-    private final static CreateUserValidator createUserValidator = new CreateUserValidator();
-    private final static DeleteUserValidator deleteUserValidator = new DeleteUserValidator();
-    private final static LogInValidator logInValidator = new LogInValidator();
-    private final static DeleteOfferValidator deleteOfferValidator = new DeleteOfferValidator();
-    private final static SearchOffersValidator searchOffersValidator = new SearchOffersValidator();
-
-
-    private final static CreateUserService createUserService = new CreateUserService(database, createUserValidator);
-    private final static CreateOfferService createOfferService = new CreateOfferService(database, createOfferValidator);
-    private final static DeleteUserService deleteUserService = new DeleteUserService(database, deleteUserValidator);
-    private final static LogInService logInService = new LogInService(database, logInValidator);
-    private final static DeleteOfferService deleteOfferService = new DeleteOfferService(database, deleteOfferValidator);
-    private final static GetAllOffersService getAllOffersService = new GetAllOffersService(database);
-    private final static SearchOffersService searchOffersService = new SearchOffersService(database, searchOffersValidator);
+    private final static ApplicationContext beans = new ApplicationContext();
 
     public ConsoleApp() {
 
         menuNumberToActionMap = new HashMap();
-        menuNumberToActionMap.put(0, new ExitUIAction());
-        menuNumberToActionMap.put(1, new CreateUserUIAction(createUserService));
-        menuNumberToActionMap.put(2, new LogInUIAction(logInService));
-        menuNumberToActionMap.put(3, new CreateOfferUIAction(createOfferService));
-        menuNumberToActionMap.put(4, new GetAllOffersUIAction(getAllOffersService));
-        menuNumberToActionMap.put(5, new DeleteOfferUIAction(deleteOfferService));
-        menuNumberToActionMap.put(6, new DeleteUserUIAction(deleteUserService));
-        menuNumberToActionMap.put(7, new SearchOffersUIAction(searchOffersService));
+        menuNumberToActionMap.put(0, beans.getBean(ExitUIAction.class));
+        menuNumberToActionMap.put(1, beans.getBean(CreateUserUIAction.class));
+        menuNumberToActionMap.put(2, beans.getBean(LogInUIAction.class));
+        menuNumberToActionMap.put(3, beans.getBean(CreateOfferUIAction.class));
+        menuNumberToActionMap.put(4, beans.getBean(GetAllOffersUIAction.class));
+        menuNumberToActionMap.put(5, beans.getBean(DeleteOfferUIAction.class));
+        menuNumberToActionMap.put(6, beans.getBean(DeleteUserUIAction.class));
+        menuNumberToActionMap.put(7, beans.getBean(SearchOffersUIAction.class));
     }
 
     public void run() {

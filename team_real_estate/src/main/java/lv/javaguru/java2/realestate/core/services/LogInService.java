@@ -5,6 +5,7 @@ import lv.javaguru.java2.realestate.core.domain.User;
 import lv.javaguru.java2.realestate.core.requests.LogInRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.LogInResponse;
+import lv.javaguru.java2.realestate.core.services.validators.LogInValidator;
 
 import java.util.List;
 

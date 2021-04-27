@@ -5,6 +5,7 @@ import lv.javaguru.java2.realestate.core.domain.Offer;
 import lv.javaguru.java2.realestate.core.requests.CreateOfferRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.CreateOfferResponse;
+import lv.javaguru.java2.realestate.core.services.validators.CreateOfferValidator;
 
 import java.util.List;
 

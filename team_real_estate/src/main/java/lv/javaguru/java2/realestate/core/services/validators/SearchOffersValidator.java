@@ -1,4 +1,4 @@
-package lv.javaguru.java2.realestate.core.services;
+package lv.javaguru.java2.realestate.core.services.validators;
 
 import lv.javaguru.java2.realestate.core.requests.Ordering;
 import lv.javaguru.java2.realestate.core.requests.Paging;

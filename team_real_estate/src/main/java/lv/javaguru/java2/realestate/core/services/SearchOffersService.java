@@ -7,6 +7,7 @@ import lv.javaguru.java2.realestate.core.requests.Paging;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.SearchOffersResponse;
+import lv.javaguru.java2.realestate.core.services.validators.SearchOffersValidator;
 
 import java.util.Comparator;
 import java.util.List;

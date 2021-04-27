@@ -6,7 +6,7 @@ import lv.javaguru.java2.realestate.core.services.CreateOfferService;
 
 import java.util.Scanner;
 
-class CreateOfferUIAction implements ConsoleUI {
+public class CreateOfferUIAction implements ConsoleUI {
 
     private final CreateOfferService createOfferService;
 
