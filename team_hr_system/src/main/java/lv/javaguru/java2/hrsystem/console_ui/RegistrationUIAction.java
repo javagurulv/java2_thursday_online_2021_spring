@@ -3,16 +3,24 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import lv.javaguru.java2.hrsystem.core.requests.RegistrationRequest;
 import lv.javaguru.java2.hrsystem.core.responses.RegistrationResponse;
 import lv.javaguru.java2.hrsystem.core.services.RegistrationService;
+import lv.javaguru.java2.hrsystem.domain.UserRole;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class RegistrationUIAction implements UIAction {
 
-    private RegistrationService addAdminService;
+    private RegistrationService registration;
+
+    private Map<Integer, UserRole> userRoleMap = new HashMap<>() {{
+        put(1, UserRole.ADMIN);
+        put(2, UserRole.HR_MANAGE);}};
+    private UserRole userRole = null;
 
     public RegistrationUIAction(RegistrationService addAdminService) {
 
-        this.addAdminService = addAdminService;
+        this.registration = addAdminService;
 
     }
 
@@ -21,6 +29,13 @@ public class RegistrationUIAction implements UIAction {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input the following data");
+
+        System.out.println("Select your role: ");
+        userRoleMap.forEach((key, value) -> System.out.println(key + " - " + value));
+        int select = scanner.nextInt();
+
+        scanner.nextLine();
+
         System.out.println("First name: ");
         String firstName = scanner.nextLine();
 
@@ -33,8 +48,8 @@ public class RegistrationUIAction implements UIAction {
         System.out.println("Password: ");
         String password = scanner.nextLine();
 
-        RegistrationRequest request = new RegistrationRequest(firstName, secondName, email, password);
-        RegistrationResponse response = addAdminService.execute(request);
+        RegistrationRequest request = new RegistrationRequest(userRoleMap.get(select), firstName, secondName, email, password);
+        RegistrationResponse response = registration.execute(request);
 
         if (response.hasErrors()) {
             response.getErrors().forEach(coreError ->
@@ -43,8 +58,8 @@ public class RegistrationUIAction implements UIAction {
 
         } else {
 
-            System.out.println("Registration completed!" + "\n" + "Hello " + response.getAdmin().getFirstName()
-                    + " " + response.getAdmin().getSecondName() + "!");
+            System.out.println("Registration completed!" + "\n" + "Hello " + response.getUser().getFirstName()
+                    + " " + response.getUser().getSecondName() + "!");
 
         }
     }
