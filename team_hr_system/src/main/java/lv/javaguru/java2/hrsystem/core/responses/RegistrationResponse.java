@@ -1,22 +1,22 @@
 package lv.javaguru.java2.hrsystem.core.responses;
 
-import lv.javaguru.java2.hrsystem.domain.Admin;
+import lv.javaguru.java2.hrsystem.domain.User;
 
 import java.util.List;
 
 public class RegistrationResponse extends CoreResponse{
 
-    private Admin admin;
+    private User user;
 
     public RegistrationResponse(List<CoreError> errors) {
         super(errors);
     }
 
-    public RegistrationResponse(Admin admin) {
-        this.admin = admin;
+    public RegistrationResponse(User user) {
+        this.user = user;
     }
 
-    public Admin getAdmin() {
-        return admin;
+    public User getUser() {
+        return user;
     }
 }
