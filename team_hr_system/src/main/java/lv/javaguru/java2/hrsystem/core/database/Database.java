@@ -2,15 +2,13 @@ package lv.javaguru.java2.hrsystem.core.database;
 
 import lv.javaguru.java2.hrsystem.domain.*;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public interface Database {
 
-    void registration(User user);
+    void registerUser(User user);
 
-    Optional<User> authorization(String email, String password);
+    Optional<User> authorizeUser(String email, String password);
 
     void saveEmployee(Employee employee);
 
