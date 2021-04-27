@@ -2,10 +2,7 @@ package lv.javaguru.java2.hrsystem.core.database;
 
 import lv.javaguru.java2.hrsystem.domain.*;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.*;
 
 import static java.util.stream.Collectors.*;
@@ -29,7 +26,7 @@ public class DatabaseImpl implements Database {
     }
 
     @Override
-    public void registration(User user) {
+    public void registerUser(User user) {
             try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
                 user.setId(nextIdUser);
                 nextIdUser++;
@@ -41,7 +38,7 @@ public class DatabaseImpl implements Database {
     }
 
     @Override
-    public Optional<User> authorization(String email, String password) {
+    public Optional<User> authorizeUser(String email, String password) {
         return userList.stream()
                 .filter(admin -> admin.getEmail().equals(email) && admin.getPassword().equals(password))
                 .findFirst();
