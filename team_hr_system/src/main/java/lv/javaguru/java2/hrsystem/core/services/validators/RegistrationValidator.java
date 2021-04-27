@@ -10,11 +10,18 @@ public class RegistrationValidator {
 
     public List<CoreError> validate (RegistrationRequest request){
         List<CoreError> errors = new ArrayList<>();
+        validateUserRole(request).ifPresent(errors::add);
         validateFirstName(request).ifPresent(errors::add);
         validateSecondName(request).ifPresent(errors::add);
         validateEmail(request).ifPresent(errors::add);
         validatePassword(request).ifPresent(errors::add);
         return errors;
+    }
+
+    private Optional<CoreError> validateUserRole(RegistrationRequest request){
+        return (request.getUserRole() == null
+                ? Optional.of(new CoreError("user role", "Must not be empty!"))
+                : Optional.empty());
     }
 
     private Optional<CoreError> validateFirstName(RegistrationRequest request) {
@@ -34,7 +41,7 @@ public class RegistrationValidator {
 
             return Optional.of(new CoreError("email", "Must not be empty!"));
 
-        } else if (request.getEmail().matches("^[a-zA-Z0-9]*$")) {
+        } else if (request.getEmail().matches("^[A-Za-z]([.A-Za-z0-9-]{1,18})([A-Za-z0-9])$")) {
 
             return Optional.of(new CoreError("email", "Wrong format!"));
 
@@ -59,10 +66,13 @@ public class RegistrationValidator {
 
             return Optional.of(new CoreError("password", "Must not contain only numbers or letters!"));
 
-        } else {
+        } else if (request.getPassword().matches("(?=\\S+$)")) {
+
+            return Optional.of(new CoreError("password", "Must not contain space!"));
+
+        } else
 
             return Optional.empty();
 
-        }
     }
 }
