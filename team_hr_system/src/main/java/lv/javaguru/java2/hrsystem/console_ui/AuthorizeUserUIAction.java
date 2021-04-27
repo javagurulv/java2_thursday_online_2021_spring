@@ -1,17 +1,17 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
-import lv.javaguru.java2.hrsystem.core.requests.AuthorizationRequest;
-import lv.javaguru.java2.hrsystem.core.responses.AuthorizationResponse;
-import lv.javaguru.java2.hrsystem.core.services.AuthorizationService;
+import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
+import lv.javaguru.java2.hrsystem.core.responses.AuthorizeUserResponse;
+import lv.javaguru.java2.hrsystem.core.services.AuthorizeUserService;
 import lv.javaguru.java2.hrsystem.domain.UserRole;
 
 import java.util.Scanner;
 
-public class AuthorizationUIAction implements UIAction {
+public class AuthorizeUserUIAction implements UIAction {
 
-    private AuthorizationService loginAdminService;
+    private AuthorizeUserService loginAdminService;
 
-    public AuthorizationUIAction(AuthorizationService loginAdminService) {
+    public AuthorizeUserUIAction(AuthorizeUserService loginAdminService) {
 
         this.loginAdminService = loginAdminService;
 
@@ -26,8 +26,8 @@ public class AuthorizationUIAction implements UIAction {
         String email = scanner.nextLine();
         System.out.println("Password: ");
         String password = scanner.nextLine();
-        AuthorizationRequest request = new AuthorizationRequest(email, password);
-        AuthorizationResponse response = loginAdminService.execute(request);
+        AuthorizeUserRequest request = new AuthorizeUserRequest(email, password);
+        AuthorizeUserResponse response = loginAdminService.execute(request);
 
         if (response.hasErrors()) {
             response.getErrors().forEach(coreError ->

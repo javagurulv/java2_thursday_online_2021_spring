@@ -2,18 +2,17 @@ package lv.javaguru.java2.hrsystem.core.responses;
 
 import lv.javaguru.java2.hrsystem.domain.User;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
-public class AuthorizationResponse extends CoreResponse{
+public class AuthorizeUserResponse extends CoreResponse{
 
     private Optional <User> authorization;
 
-    public AuthorizationResponse(List<CoreError> errors) {
+    public AuthorizeUserResponse(List<CoreError> errors) {
         super(errors);
     }
 
-    public AuthorizationResponse(Optional<User> authorization) {
+    public AuthorizeUserResponse(Optional<User> authorization) {
         this.authorization = authorization;
     }
 

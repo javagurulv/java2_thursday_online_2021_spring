@@ -1,20 +1,20 @@
 package lv.javaguru.java2.hrsystem.core.validators;
 
-import lv.javaguru.java2.hrsystem.core.requests.RegistrationRequest;
+import lv.javaguru.java2.hrsystem.core.requests.RegisterUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.services.validators.RegistrationValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.RegisterUserValidator;
 import lv.javaguru.java2.hrsystem.domain.UserRole;
 import org.junit.Test;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 
-public class RegistrationRequestValidatorTest {
+public class RegisterUserRequestValidatorTest {
 
-    RegistrationValidator validator = new RegistrationValidator();
+    RegisterUserValidator validator = new RegisterUserValidator();
 
     @Test
     public void shouldReturnErrorWhenUserRoleNullTest() {
-        RegistrationRequest request = new RegistrationRequest( null, "null", "null", "null876@null.null", "nul53l23");
+        RegisterUserRequest request = new RegisterUserRequest( null, "null", "null", "null876@null.null", "nul53l23");
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "user role");
@@ -23,7 +23,7 @@ public class RegistrationRequestValidatorTest {
 
     @Test
     public void shouldReturnErrorWhenFirstNameNullTest() {
-        RegistrationRequest request = new RegistrationRequest(UserRole.ADMIN, null, "null", "null876@null.null", "nul53l23");
+        RegisterUserRequest request = new RegisterUserRequest(UserRole.ADMIN, null, "null", "null876@null.null", "nul53l23");
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "first name");
@@ -32,7 +32,7 @@ public class RegistrationRequestValidatorTest {
 
     @Test
     public void shouldReturnErrorWhenSecondNameNullTest() {
-        RegistrationRequest request = new RegistrationRequest(UserRole.ADMIN, "null",null, "null876@null.null", "nul53l23");
+        RegisterUserRequest request = new RegisterUserRequest(UserRole.ADMIN, "null",null, "null876@null.null", "nul53l23");
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "second name");
@@ -41,7 +41,7 @@ public class RegistrationRequestValidatorTest {
 
     @Test
     public void shouldReturnErrorsWhenEmailNullTest() {
-        RegistrationRequest request = new RegistrationRequest(UserRole.ADMIN, "null","null", null, "nul53l23");
+        RegisterUserRequest request = new RegisterUserRequest(UserRole.ADMIN, "null","null", null, "nul53l23");
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "email");
@@ -50,7 +50,7 @@ public class RegistrationRequestValidatorTest {
 
     @Test
     public void shouldReturnErrorsWhenPasswordNullTest() {
-        RegistrationRequest request = new RegistrationRequest(UserRole.ADMIN,"null", "null", "null876@null.null", null);
+        RegisterUserRequest request = new RegisterUserRequest(UserRole.ADMIN,"null", "null", "null876@null.null", null);
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "password");

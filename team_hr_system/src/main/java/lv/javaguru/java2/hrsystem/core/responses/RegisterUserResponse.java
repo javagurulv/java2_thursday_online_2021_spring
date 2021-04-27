@@ -4,15 +4,15 @@ import lv.javaguru.java2.hrsystem.domain.User;
 
 import java.util.List;
 
-public class RegistrationResponse extends CoreResponse{
+public class RegisterUserResponse extends CoreResponse{
 
     private User user;
 
-    public RegistrationResponse(List<CoreError> errors) {
+    public RegisterUserResponse(List<CoreError> errors) {
         super(errors);
     }
 
-    public RegistrationResponse(User user) {
+    public RegisterUserResponse(User user) {
         this.user = user;
     }
 

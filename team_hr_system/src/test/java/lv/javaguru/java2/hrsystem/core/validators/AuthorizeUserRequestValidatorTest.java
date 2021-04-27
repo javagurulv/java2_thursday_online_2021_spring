@@ -1,21 +1,21 @@
 package lv.javaguru.java2.hrsystem.core.validators;
 
-import lv.javaguru.java2.hrsystem.core.requests.AuthorizationRequest;
+import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.services.validators.AuthorizationValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.AuthorizeUserValidator;
 import org.junit.Test;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class LoginRequestValidatorTest {
+public class AuthorizeUserRequestValidatorTest {
 
-    AuthorizationValidator validator = new AuthorizationValidator();
+    AuthorizeUserValidator validator = new AuthorizeUserValidator();
 
     @Test
     public void shouldReturnErrorsWhenEmailNullTest() {
-        AuthorizationRequest request = new AuthorizationRequest(null, "nullll");
+        AuthorizeUserRequest request = new AuthorizeUserRequest(null, "nullll");
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "email");
@@ -25,7 +25,7 @@ public class LoginRequestValidatorTest {
 
     @Test
     public void shouldReturnErrorsWhenPasswordNullTest() {
-        AuthorizationRequest request = new AuthorizationRequest("null", null);
+        AuthorizeUserRequest request = new AuthorizeUserRequest("null", null);
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "password");

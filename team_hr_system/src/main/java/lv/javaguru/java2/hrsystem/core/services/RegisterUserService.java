@@ -1,31 +1,31 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
 import lv.javaguru.java2.hrsystem.core.database.Database;
-import lv.javaguru.java2.hrsystem.core.requests.RegistrationRequest;
+import lv.javaguru.java2.hrsystem.core.requests.RegisterUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.responses.RegistrationResponse;
-import lv.javaguru.java2.hrsystem.core.services.validators.RegistrationValidator;
+import lv.javaguru.java2.hrsystem.core.responses.RegisterUserResponse;
+import lv.javaguru.java2.hrsystem.core.services.validators.RegisterUserValidator;
 import lv.javaguru.java2.hrsystem.domain.User;
 
 import java.util.List;
 
-public class RegistrationService {
+public class RegisterUserService {
 
    private Database database;
-   private RegistrationValidator validator;
+   private RegisterUserValidator validator;
 
-    public RegistrationService(Database database, RegistrationValidator validator) {
+    public RegisterUserService(Database database, RegisterUserValidator validator) {
 
         this.database = database;
         this.validator = validator;
 
     }
 
-    public RegistrationResponse execute (RegistrationRequest registrationRequest){
+    public RegisterUserResponse execute (RegisterUserRequest registrationRequest){
         List<CoreError> errors = validator.validate(registrationRequest);
 
         if (!errors.isEmpty()) {
-            return new RegistrationResponse(errors);
+            return new RegisterUserResponse(errors);
         }
 
         User user = new User(registrationRequest.getUserRole(),
@@ -34,9 +34,9 @@ public class RegistrationService {
                 registrationRequest.getEmail(),
                 registrationRequest.getPassword());
 
-        database.registration(user);
+        database.registerUser(user);
 
-        return new RegistrationResponse(user);
+        return new RegisterUserResponse(user);
 
     }
 }

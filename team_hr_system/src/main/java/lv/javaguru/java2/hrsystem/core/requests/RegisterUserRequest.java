@@ -2,7 +2,7 @@ package lv.javaguru.java2.hrsystem.core.requests;
 
 import lv.javaguru.java2.hrsystem.domain.UserRole;
 
-public class RegistrationRequest {
+public class RegisterUserRequest {
 
     private UserRole userRole;
     private String firstName;
@@ -10,7 +10,7 @@ public class RegistrationRequest {
     private String email;
     private String password;
 
-    public RegistrationRequest(UserRole userRole, String firstName, String secondName, String email, String password) {
+    public RegisterUserRequest(UserRole userRole, String firstName, String secondName, String email, String password) {
         this.userRole = userRole;
         this.firstName = firstName;
         this.secondName = secondName;

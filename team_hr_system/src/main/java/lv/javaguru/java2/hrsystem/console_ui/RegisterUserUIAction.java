@@ -1,24 +1,21 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
-import lv.javaguru.java2.hrsystem.core.requests.RegistrationRequest;
-import lv.javaguru.java2.hrsystem.core.responses.RegistrationResponse;
-import lv.javaguru.java2.hrsystem.core.services.RegistrationService;
+import lv.javaguru.java2.hrsystem.core.requests.RegisterUserRequest;
+import lv.javaguru.java2.hrsystem.core.responses.RegisterUserResponse;
+import lv.javaguru.java2.hrsystem.core.services.RegisterUserService;
 import lv.javaguru.java2.hrsystem.domain.UserRole;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
-public class RegistrationUIAction implements UIAction {
+public class RegisterUserUIAction implements UIAction {
 
-    private RegistrationService registration;
+    private RegisterUserService registration;
 
     private Map<Integer, UserRole> userRoleMap = new HashMap<>() {{
         put(1, UserRole.ADMIN);
         put(2, UserRole.HR_MANAGE);}};
-    private UserRole userRole = null;
 
-    public RegistrationUIAction(RegistrationService addAdminService) {
+    public RegisterUserUIAction(RegisterUserService addAdminService) {
 
         this.registration = addAdminService;
 
@@ -48,8 +45,8 @@ public class RegistrationUIAction implements UIAction {
         System.out.println("Password: ");
         String password = scanner.nextLine();
 
-        RegistrationRequest request = new RegistrationRequest(userRoleMap.get(select), firstName, secondName, email, password);
-        RegistrationResponse response = registration.execute(request);
+        RegisterUserRequest request = new RegisterUserRequest(userRoleMap.get(select), firstName, secondName, email, password);
+        RegisterUserResponse response = registration.execute(request);
 
         if (response.hasErrors()) {
             response.getErrors().forEach(coreError ->
