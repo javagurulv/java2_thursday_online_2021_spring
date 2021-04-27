@@ -3,11 +3,11 @@ package lv.javaguru.java2.hrsystem.application;
 import lv.javaguru.java2.hrsystem.console_ui.*;
 import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.database.DatabaseImpl;
-import lv.javaguru.java2.hrsystem.core.services.AuthorizationService;
+import lv.javaguru.java2.hrsystem.core.services.AuthorizeUserService;
 import lv.javaguru.java2.hrsystem.core.services.GetAllUsersService;
-import lv.javaguru.java2.hrsystem.core.services.RegistrationService;
-import lv.javaguru.java2.hrsystem.core.services.validators.AuthorizationValidator;
-import lv.javaguru.java2.hrsystem.core.services.validators.RegistrationValidator;
+import lv.javaguru.java2.hrsystem.core.services.RegisterUserService;
+import lv.javaguru.java2.hrsystem.core.services.validators.AuthorizeUserValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.RegisterUserValidator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,8 +18,8 @@ public class HumanResourcesSystemApp {
     private final Database database = new DatabaseImpl();
 
     private final Map<Integer, UIAction> menuNumberToActionMap = new HashMap<>() {{
-        put(1, new RegistrationUIAction(new RegistrationService(database, new RegistrationValidator())));
-        put(2, new AuthorizationUIAction(new AuthorizationService(database, new AuthorizationValidator())));
+        put(1, new RegisterUserUIAction(new RegisterUserService(database, new RegisterUserValidator())));
+        put(2, new AuthorizeUserUIAction(new AuthorizeUserService(database, new AuthorizeUserValidator())));
         put(3, new GetAllUsersUIAction(new GetAllUsersService(database)));
         put(4, new ExitUIAction());
     }};
