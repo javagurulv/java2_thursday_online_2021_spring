@@ -25,7 +25,7 @@ public class AddProductService {
 
         Product product = new Product(request.getName(), request.getQuantity(), request.getPrice(), request.getDate());
         database.save(product);
-        System.out.println("New dish was added to the list.");
+        System.out.println("New product was added to the list.");
 
         return new AddProductResponse(product);
     }
