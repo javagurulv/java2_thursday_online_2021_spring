@@ -3,17 +3,20 @@ package lv.javaguru.java2.hrsystem.core.database;
 import lv.javaguru.java2.hrsystem.domain.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public interface Database {
 
-    void registrationAdm (Admin admin);
+    void registration(User user);
 
-    boolean loginAdm(String email, String password);
+    Optional<User> authorization(String email, String password);
 
     void saveEmployee(Employee employee);
 
     boolean deleteEmployee(Long id);
+
+    List<User> getAllUsers();
 
     List <Employee> getAllEmployees();
 

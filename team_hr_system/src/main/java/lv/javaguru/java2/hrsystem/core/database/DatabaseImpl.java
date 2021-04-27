@@ -6,48 +6,45 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
 
 import static java.util.stream.Collectors.*;
 
 public class DatabaseImpl implements Database {
 
     private Long nextIdEmployee = 1L;
-    private Long nextIdAdmin = 1L;
+    private Long nextIdUser = userList.size() + 1L;
     private List<Employee> employeeList = new ArrayList<>();
     private EnumSet<EmployeeTitle> employeeTitles = EnumSet.allOf(EmployeeTitle.class);
-    private static List<Admin> adminList = new ArrayList<>();
-    private static final String filename = "admin.txt";
+    private static List<User> userList = new ArrayList<>();
+    private static final String filename = "team_hr_system/src/main/java/lv/javaguru/java2/hrsystem/domain/save_user/user.out";
     private List<EmployeeSkill> employeeSkills = new ArrayList<>();
 
     static {
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filename))) {
-            adminList = (List<Admin>) objectInputStream.readObject();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
+            userList = ((List<User>) ois.readObject());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
 
     @Override
-    public void registrationAdm(Admin admin) {
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(filename))) {
-            admin.setId(nextIdAdmin);
-            nextIdAdmin++;
-            adminList.add(admin);
-            objectOutputStream.writeObject(admin);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+    public void registration(User user) {
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
+                user.setId(nextIdUser);
+                nextIdUser++;
+                userList.add(user);
+                oos.writeObject(userList);
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
         }
     }
 
     @Override
-    public boolean loginAdm(String email, String password) {
-        return adminList.stream().anyMatch(admin -> admin.getEmail().equals(email)) &&
-                adminList.stream().anyMatch(admin -> admin.getPassword().equals(password));
+    public Optional<User> authorization(String email, String password) {
+        return userList.stream()
+                .filter(admin -> admin.getEmail().equals(email) && admin.getPassword().equals(password))
+                .findFirst();
     }
 
     @Override
@@ -61,6 +58,11 @@ public class DatabaseImpl implements Database {
     @Override
     public boolean deleteEmployee(Long id) {
         return employeeList.removeIf(e -> e.getId().equals(id));
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userList;
     }
 
     @Override
