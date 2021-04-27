@@ -1,11 +1,9 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
-import lv.javaguru.java2.wasterestarant.domain.Dish;
-import lv.javaguru.java2.wasterestarant.domain.Ingredient;
-import lv.javaguru.java2.wasterestarant.domain.OrderItem;
-import lv.javaguru.java2.wasterestarant.domain.Product;
+import lv.javaguru.java2.wasterestarant.domain.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,6 +14,8 @@ public class InMemoryDatabaseImpl implements Database {
     private List<Dish> restaurantMenu = new ArrayList<>();
     private List<Product> products = new ArrayList<>();
     private List<Ingredient> ingredients = new ArrayList<>();
+    private List<Client> clients = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
     @Override
     public void save(Dish dish) {
@@ -132,11 +132,6 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public List<Dish> getWishList() {
-        return null;
-    }
-
-    @Override
     public List<Product> searchProductByName(String name) {
         return products.stream()
                 .filter(product -> product.getName().equals(name))
@@ -144,14 +139,56 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public void addToWishlist(Long clientID, OrderItem selectedItem) {
-        // TO DO
+    public Optional<Client> clientByID(Long clientID) {
+        for (Client client : clients) {
+            if (client.getClientID() == clientID) {
+                return Optional.of(client);
+            }
+        }
+        return Optional.empty();
     }
 
     @Override
-    public List<OrderItem> getWishlist(Long clientID) {
-        return null; // TO DO
+    public List<OrderItem> getWishlistByClientID(Long clientID) {
+        return clientByID(clientID).get().getCart().getClientsWishlist();
     }
+
+    @Override
+    public OrderItem selectedOrderItem(String dishName, int quantity) {
+        return new OrderItem(dishName, quantity);
+    }
+
+    @Override
+    public void addDishToWishlist(Long clientID, String dishName, int quantity) {
+        getWishlistByClientID(clientID).add(selectedOrderItem(dishName, quantity));
+    }
+
+    @Override
+    public void save(Order order) {
+        order.setOrderID(nextId);
+        nextId++;
+        orders.add(order);
+    }
+
+    @Override
+    public List<Order> getAllOrders() {
+        return orders;
+    }
+
+    @Override
+    public List<Order> getOrdersByClientID(Long clientID) {
+        return orders.stream()
+                .filter(ingredient -> ingredient.getClientID().equals(clientID))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Order> getOrderByDate(Date orderDate) {
+        return orders.stream()
+                .filter(ingredient -> ingredient.getClientID().equals(orderDate))
+                .collect(Collectors.toList());
+    }
+
 }
 
 

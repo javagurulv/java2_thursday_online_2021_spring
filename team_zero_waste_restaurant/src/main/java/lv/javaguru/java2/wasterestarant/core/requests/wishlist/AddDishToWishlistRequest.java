@@ -5,10 +5,12 @@ package lv.javaguru.java2.wasterestarant.core.requests.wishlist;
 public class AddDishToWishlistRequest {
 
     private String name;
+    private Long dishID;
     private int quantity;
 
-    public AddDishToWishlistRequest(String name, int quantity) {
+    public AddDishToWishlistRequest(String name, Long dishID, int quantity) {
         this.name = name;
+        this.dishID = dishID;
         this.quantity = quantity;
     }
 
@@ -20,4 +22,7 @@ public class AddDishToWishlistRequest {
         return  quantity;
     }
 
+    public Long getDishID() {
+        return dishID;
+    }
 }
