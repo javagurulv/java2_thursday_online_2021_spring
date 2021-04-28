@@ -6,7 +6,7 @@ import lv.javaguru.java2.realestate.core.services.LogInService;
 
 import java.util.Scanner;
 
-class LogInUIAction implements ConsoleUI {
+public class LogInUIAction implements ConsoleUI {
     LogInService logInService;
 
     public LogInUIAction(LogInService logInService) {

@@ -93,16 +93,22 @@ public class SearchProductServiceTestMock {
 
         List<Product> products = new ArrayList<>();
         products.add(new Product("name", 3.0, 0.6, new SimpleDateFormat("dd/MM/yyyy")
-                .parse("10/05/2021")));
+                .parse("10/06/2021")));
         products.add(new Product("name", 4.0, 0.9, new SimpleDateFormat("dd/MM/yyyy")
-                .parse("10/06/2022")));
+                .parse("10/05/2022")));
+        products.add(new Product("name", 4.0, 0.9, new SimpleDateFormat("dd/MM/yyyy")
+                .parse("10/07/2017")));
         Mockito.when(database.searchProductByName("name")).thenReturn(products);
 
         SearchProductResponse response = service.execute(request);
         assertFalse(response.hasErrors());
-        assertEquals(response.getProducts().size(), 2);
+        assertEquals(response.getProducts().size(), 3);
         assertEquals(response.getProducts().get(0).getExpiryDate(), new SimpleDateFormat("dd/MM/yyyy")
-                .parse("10/05/2021"));
+                .parse("10/07/2017"));
+        assertEquals(response.getProducts().get(1).getExpiryDate(), new SimpleDateFormat("dd/MM/yyyy")
+                .parse("10/06/2021"));
+        assertEquals(response.getProducts().get(2).getExpiryDate(), new SimpleDateFormat("dd/MM/yyyy")
+                .parse("10/05/2022"));
     }
 
     @Test

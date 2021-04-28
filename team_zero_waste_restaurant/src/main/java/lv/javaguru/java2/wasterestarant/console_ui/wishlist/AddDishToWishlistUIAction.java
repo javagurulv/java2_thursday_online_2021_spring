@@ -21,9 +21,11 @@ public class AddDishToWishlistUIAction implements UIAction {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter dish name: ");
         String dishName = scanner.nextLine();
+        System.out.println("Enter dish ID: ");
+        Long dishID = scanner.nextLong();
         System.out.println("Enter amount for chosen dish: ");
-        int dishQuantity = scanner.nextInt();
-        AddDishToWishlistRequest request = new AddDishToWishlistRequest(dishName, dishQuantity);
+        int quantity = scanner.nextInt();
+        AddDishToWishlistRequest request = new AddDishToWishlistRequest(dishName, dishID, quantity);
         addDishToWishlistService.execute(request);
         System.out.println("New dish was added to wishlist.");
     }

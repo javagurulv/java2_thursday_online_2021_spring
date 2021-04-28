@@ -6,7 +6,7 @@ import lv.javaguru.java2.realestate.core.services.CreateUserService;
 
 import java.util.Scanner;
 
-class CreateUserUIAction implements ConsoleUI {
+public class CreateUserUIAction implements ConsoleUI {
 
     CreateUserService createUserService;
 

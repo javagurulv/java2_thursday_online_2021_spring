@@ -10,4 +10,7 @@ public class GetWishlistRequest {
         this.clientID = clientID;
     }
 
+    public Long getClientID() {
+        return clientID;
+    }
 }
