@@ -36,12 +36,13 @@ public class LogInServiceTest {
     public void shouldReturnResponseWithErrorsWhenValidationFails() {
         LogInRequest request = new LogInRequest(null, "password");
         List<CoreError> errors = new ArrayList<>();
-        errors.add(new CoreError("username", "Must not be empty !"));
+        errors.add(new CoreError("username", "Must not be empty"));
         Mockito.when(validator.validate(request)).thenReturn(errors);
+
         LogInResponse response = service.execute(request);
         assertEquals(response.getErrors().size(), 1);
         assertEquals(response.getErrors().get(0).getField(), "username");
-        assertEquals(response.getErrors().get(0).getMessage(), "Must not be empty !");
+        assertEquals(response.getErrors().get(0).getMessage(), "Must not be empty");
 
         Mockito.verifyNoInteractions(database);
     }
@@ -54,5 +55,7 @@ public class LogInServiceTest {
         assertFalse(response.hasErrors());
         Mockito.verify(database).logIn(
                 argThat(new UserMatcher("username", "password")));
+
+
     }
 }
