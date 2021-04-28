@@ -12,7 +12,7 @@ public class CreateOfferValidator {
     public List<CoreError> validate(CreateOfferRequest request) {
         List<CoreError> errors = new ArrayList<>();
         validateOfferType(request).ifPresent(errors::add);
-        validatePropertyCategory(request).ifPresent(errors::add);
+        validateOfferCategory(request).ifPresent(errors::add);
         validateDescription(request).ifPresent(errors::add);
         validatePrice(request).ifPresent(errors::add);
         return errors;
@@ -24,9 +24,9 @@ public class CreateOfferValidator {
                 : Optional.empty();
     }
 
-    private Optional<CoreError> validatePropertyCategory(CreateOfferRequest request) {
-        return (request.getPropertyCategory() == null || request.getPropertyCategory().isEmpty())
-                ? Optional.of(new CoreError("Property Category", "Must not be empty"))
+    private Optional<CoreError> validateOfferCategory(CreateOfferRequest request) {
+        return (request.getOfferCategory() == null || request.getOfferCategory().isEmpty())
+                ? Optional.of(new CoreError("Offer Category", "Must not be empty"))
                 : Optional.empty();
     }
 

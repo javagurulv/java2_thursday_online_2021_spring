@@ -28,7 +28,7 @@ public class CreateOfferService {
 
         Offer offer = new Offer(
                 createOfferRequest.getOfferType(),
-                createOfferRequest.getPropertyCategory(),
+                createOfferRequest.getOfferCategory(),
                 createOfferRequest.getDescription(),
                 createOfferRequest.getPrice());
 

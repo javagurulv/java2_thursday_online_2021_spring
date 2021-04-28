@@ -20,15 +20,15 @@ public class CreateOfferUIAction implements ConsoleUI {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter offer type (Buy/Sell/Rent) : ");
         String offerType = scanner.nextLine();
-        System.out.println("Enter property category (Land/House/Flat : ");
-        String propertyCategory = scanner.nextLine();
+        System.out.println("Enter offer category (Land/House/Flat : ");
+        String offerCategory = scanner.nextLine();
         System.out.println("Type in offer description : ");
         String description = scanner.nextLine();
         System.out.println("Enter price : ");
         Double price = scanner.nextDouble();
 
 
-        CreateOfferRequest request = new CreateOfferRequest(offerType, propertyCategory, description, price);
+        CreateOfferRequest request = new CreateOfferRequest(offerType, offerCategory, description, price);
         CreateOfferResponse response = createOfferService.execute(request);
 
         if (response.hasErrors()) {
