@@ -80,5 +80,61 @@ public class SearchIngredientServiceTest {
         assertEquals(response.getIngredients().get(1).getQuantity(), 0.70, 0.001);
     }
 
+    @Test
+    public void shouldSearchByTitleWithOrderingDescending() {
+        Ordering ordering = new Ordering("Q", "D");
+        SearchIngredientRequest request = new SearchIngredientRequest("Ingredient", ordering);
+        Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
+
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(new Ingredient("Ingredient", 0.70));
+        ingredients.add(new Ingredient("Ingredient", 0.60));
+        ingredients.add(new Ingredient("Ingredient", 0.50));
+        Mockito.when(database.findIngredientByName("Ingredient")).thenReturn(ingredients);
+
+        SearchIngredientResponse response = service.execute(request);
+        assertFalse(response.hasErrors());
+        assertEquals(response.getIngredients().size(), 3);
+        assertEquals(response.getIngredients().get(0).getQuantity(), 0.70, 0.001);
+        assertEquals(response.getIngredients().get(1).getQuantity(), 0.60, 0.001);
+        assertEquals(response.getIngredients().get(2).getQuantity(), 0.50, 0.001);
+    }
+
+    @Test
+    public void shouldSearchByTitleWithPagingFirstPage() {
+        Paging paging = new Paging(1, 1);
+        SearchIngredientRequest request = new SearchIngredientRequest("Ingredient", null, paging);
+        Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
+
+        List<Ingredient> books = new ArrayList<>();
+        books.add(new Ingredient("Ingredient", 0.6));
+        books.add(new Ingredient("Ingredient", 0.7));
+        Mockito.when(database.findIngredientByName("Ingredient")).thenReturn(books);
+
+        SearchIngredientResponse response = service.execute(request);
+        assertFalse(response.hasErrors());
+        assertEquals(response.getIngredients().size(), 1);
+        assertEquals(response.getIngredients().get(0).getIngredient(), "Ingredient");
+        assertEquals(response.getIngredients().get(0).getQuantity(), 0.6, 0.001);
+    }
+
+    @Test
+    public void shouldSearchByTitleWithPagingSecondPage() {
+        Paging paging = new Paging(2, 1);
+        SearchIngredientRequest request = new SearchIngredientRequest("Ingredient", null, paging);
+        Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
+
+        List<Ingredient> books = new ArrayList<>();
+        books.add(new Ingredient("Ingredient", 0.6));
+        books.add(new Ingredient("Ingredient", 0.7));
+        Mockito.when(database.findIngredientByName("Ingredient")).thenReturn(books);
+
+        SearchIngredientResponse response = service.execute(request);
+        assertFalse(response.hasErrors());
+        assertEquals(response.getIngredients().size(), 1);
+        assertEquals(response.getIngredients().get(0).getIngredient(), "Ingredient");
+        assertEquals(response.getIngredients().get(0).getQuantity(), 0.7, 0.001);
+    }
+
 
 }

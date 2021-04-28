@@ -33,9 +33,6 @@ public class SearchIngredientService {
         List<Ingredient> ingredients = search(request);
         ingredients = order(ingredients, request.getOrdering());
         ingredients = paging(ingredients, request.getPaging());
-        if(request.isIngredientNameProvided()) {
-            ingredients = database.findIngredientByName(request.getIngredientName());
-        }
 
         return new SearchIngredientResponse(ingredients, null);
     }
@@ -52,26 +49,7 @@ public class SearchIngredientService {
         } else {
             return ingredients;
         }
-        /*if (ordering != null) {
-            Comparator<Ingredient> comparator;
-            switch (ordering.getOrderBy()) {
-                case "N" -> {
-                    comparator = Comparator.comparing(Ingredient::getIngredient);
-                    if (ordering.getOrderDirection().equals("D")) {
-                        comparator.reversed();
-                    }
-                    return ingredients.stream().sorted(comparator).collect(Collectors.toList());
-                }
-                case "Q" -> {
-                    comparator = Comparator.comparing(Ingredient::getQuantity);
-                    if (ordering.getOrderDirection().equals("D")) {
-                        comparator.reversed();
-                    }
-                    return ingredients.stream().sorted(comparator).collect(Collectors.toList());
-                }
-            }
-        }
-        return ingredients;*/
+
     }
 
     private List<Ingredient> paging(List<Ingredient> ingredients, Paging paging) {
