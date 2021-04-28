@@ -7,6 +7,7 @@ import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.SearchIngredientResponse;
 import lv.javaguru.java2.wasterestarant.domain.Ingredient;
+import lv.javaguru.java2.wasterestarant.domain.Product;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -29,7 +30,9 @@ public class SearchIngredientService {
             return new SearchIngredientResponse(null, errors);
         }
 
-        List<Ingredient> ingredients = null;
+        List<Ingredient> ingredients = search(request);
+        ingredients = order(ingredients, request.getOrdering());
+        ingredients = paging(ingredients, request.getPaging());
         if(request.isIngredientNameProvided()) {
             ingredients = database.findIngredientByName(request.getIngredientName());
         }
@@ -39,6 +42,17 @@ public class SearchIngredientService {
 
     private List<Ingredient> order(List<Ingredient> ingredients, Ordering ordering) {
         if (ordering != null) {
+            Comparator<Ingredient> comparator = ordering.getOrderBy().equals("N")
+                    ? Comparator.comparing(Ingredient::getIngredient)
+                    : Comparator.comparing(Ingredient::getQuantity);
+            if (ordering.getOrderDirection().equals("D")) {
+                comparator = comparator.reversed();
+            }
+            return ingredients.stream().sorted(comparator).collect(Collectors.toList());
+        } else {
+            return ingredients;
+        }
+        /*if (ordering != null) {
             Comparator<Ingredient> comparator;
             switch (ordering.getOrderBy()) {
                 case "N" -> {
@@ -57,7 +71,7 @@ public class SearchIngredientService {
                 }
             }
         }
-        return ingredients;
+        return ingredients;*/
     }
 
     private List<Ingredient> paging(List<Ingredient> ingredients, Paging paging) {

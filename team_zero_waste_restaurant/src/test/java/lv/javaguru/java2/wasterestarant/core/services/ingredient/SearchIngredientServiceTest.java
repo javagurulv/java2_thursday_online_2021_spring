@@ -1,0 +1,84 @@
+package lv.javaguru.java2.wasterestarant.core.services.ingredient;
+
+
+import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
+import lv.javaguru.java2.wasterestarant.core.requests.Paging;
+import lv.javaguru.java2.wasterestarant.core.requests.ingredient.SearchIngredientRequest;
+import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.core.responses.ingredient.SearchIngredientResponse;
+import lv.javaguru.java2.wasterestarant.domain.Ingredient;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.any;
+
+@RunWith(MockitoJUnitRunner.class)
+public class SearchIngredientServiceTest {
+
+    @Mock
+    private Database database;
+    @Mock
+    private SearchIngredientValidator validator;
+    @InjectMocks
+    private SearchIngredientService service;
+
+    @Test
+    public void shouldReturnResponseWithErrorsWhenValidatorFails() {
+        SearchIngredientRequest request = new SearchIngredientRequest(null);
+        List<CoreError> errors = new ArrayList<>();
+        errors.add(new CoreError("ingredient", "Must not be empty!"));;
+        Mockito.when(validator.validate(request)).thenReturn(errors);
+
+        SearchIngredientResponse response = service.execute(request);
+        assertTrue(response.hasErrors());
+        assertEquals(response.getErrors().size(), 1);
+
+        Mockito.verify(validator).validate(request);
+        Mockito.verify(validator).validate(any());
+        Mockito.verifyNoInteractions(database);
+    }
+
+    @Test
+    public void shouldSearchByIngredientName() {
+        SearchIngredientRequest request = new SearchIngredientRequest("Ingredient");
+        Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
+
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(new Ingredient("Ingredient",null));
+        Mockito.when(database.findIngredientByName("Ingredient")).thenReturn(ingredients);
+
+        SearchIngredientResponse response = service.execute(request);
+        assertFalse(response.hasErrors());
+        assertEquals(response.getIngredients().size(), 1);
+        assertEquals(response.getIngredients().get(0).getIngredient(), "Ingredient");
+    }
+
+    @Test
+    public void shouldSearchByTitleWithOrderingAscending() {
+        Ordering ordering = new Ordering("Q", "A");
+        SearchIngredientRequest request = new SearchIngredientRequest("Ingredient", ordering);
+        Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
+
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(new Ingredient("Ingredient", 0.70));
+        ingredients.add(new Ingredient("Ingredient", 0.60));
+        Mockito.when(database.findIngredientByName("Ingredient")).thenReturn(ingredients);
+
+        SearchIngredientResponse response = service.execute(request);
+        assertFalse(response.hasErrors());
+        assertEquals(response.getIngredients().size(), 2);
+        assertEquals(response.getIngredients().get(0).getQuantity(), 0.60, 0.001);
+        assertEquals(response.getIngredients().get(1).getQuantity(), 0.70, 0.001);
+    }
+
+
+}
