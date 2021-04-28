@@ -1,12 +1,6 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
-import lv.javaguru.java2.hrsystem.core.database.Database;
-import lv.javaguru.java2.hrsystem.core.database.DatabaseImpl;
-import lv.javaguru.java2.hrsystem.core.services.*;
-import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeRequestValidator;
-import lv.javaguru.java2.hrsystem.core.services.validators.AddSkillRequestValidator;
-import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesBySkillRequestValidator;
-import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesRequestValidator;
+import lv.javaguru.java2.hrsystem.application.ApplicationContext;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,22 +8,19 @@ import java.util.Scanner;
 
 public class UIMain {
 
-    private final Database database = new DatabaseImpl();
-    private static AddEmployeeRequestValidator addEmployeeValidator = new AddEmployeeRequestValidator();
-    private static SearchEmployeesRequestValidator searchEmployeesRequestValidator = new SearchEmployeesRequestValidator();
-    private static AddSkillRequestValidator addSkillRequestValidator = new AddSkillRequestValidator();
-    private static SearchEmployeesBySkillRequestValidator searchEmployeesBySkillRequestValidator = new SearchEmployeesBySkillRequestValidator();
+    private static ApplicationContext applicationContext = new ApplicationContext();
 
     private final Map<Integer, UIAction> menuNumberToActionMap = new HashMap<>() {{
-        put(1, new AddEmployeeUIAction(new AddEmployeeService(database, addEmployeeValidator)));
-        put(2, new AddEmployeeWithTitleUIAction(new AddEmployeeWithTitleService(database)));
-        put(3, new DeleteEmployeeUIAction(new DeleteEmployeeService(database)));
-        put(4, new GetAllEmployeesUIAction(new GetAllEmployeesService(database)));
-        put(5, new SearchEmployeesUIAction(new SearchEmployeesService(database, searchEmployeesRequestValidator)));
-        put(6, new AddSkillUIAction(new AddSkillService(database, addSkillRequestValidator)));
-        put(7, new GetAllEmployeeSkillUIAction(new GetAllEmployeeSkillsService(database)));
-        put(8, new SearchEmployeesBySkillUIAction(new SearchEmployeesBySkillService(database,searchEmployeesBySkillRequestValidator)));
-        put(9, new ExitUIAction());
+        put(1, applicationContext.getBean(AddEmployeeUIAction.class));
+        put(2, applicationContext.getBean(AddEmployeeWithTitleUIAction.class));
+        put(3, applicationContext.getBean(DeleteEmployeeUIAction.class));
+        put(4, applicationContext.getBean(GetAllEmployeesUIAction.class));
+        put(5, applicationContext.getBean(SearchEmployeesUIAction.class));
+        put(6, applicationContext.getBean(AddSkillUIAction.class));
+        put(7, applicationContext.getBean(GetAllEmployeeSkillUIAction.class));
+        put(8, applicationContext.getBean(SearchEmployeesBySkillUIAction.class));
+        put(9, applicationContext.getBean(ExitUIAction.class));
+
     }};
 
     private int getUserOption() {
