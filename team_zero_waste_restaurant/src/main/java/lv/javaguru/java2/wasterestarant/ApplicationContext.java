@@ -9,6 +9,8 @@ import lv.javaguru.java2.wasterestarant.console_ui.GetRestaurantMenuUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.ingredient.AddDishIngredientUiAction;
 import lv.javaguru.java2.wasterestarant.console_ui.ingredient.SearchIngredientUiAction;
 import lv.javaguru.java2.wasterestarant.console_ui.LoginUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.order.CreateNewOrderUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.order.GetAllOrdersUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.AddProductUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.GetAllProductsUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.SearchProductUIAction;
@@ -24,6 +26,8 @@ import lv.javaguru.java2.wasterestarant.core.services.ingredient.AddDishIngredie
 import lv.javaguru.java2.wasterestarant.core.services.ingredient.SearchIngredientService;
 import lv.javaguru.java2.wasterestarant.core.services.ingredient.SearchIngredientValidator;
 import lv.javaguru.java2.wasterestarant.core.services.LoginService;
+import lv.javaguru.java2.wasterestarant.core.services.order.CreateNewOrderService;
+import lv.javaguru.java2.wasterestarant.core.services.order.GetAllOrdersService;
 import lv.javaguru.java2.wasterestarant.core.services.products.*;
 import lv.javaguru.java2.wasterestarant.core.services.RegistrationService;
 import lv.javaguru.java2.wasterestarant.core.services.wishlist.AddDishToWishlistService;
@@ -71,6 +75,10 @@ public class ApplicationContext {
         beans.put(SearchProductService.class, new SearchProductService(
                 getBean(Database.class),
                 getBean(SearchProductServiceValidator.class)));
+        //update after logic implementation
+        beans.put(CreateNewOrderService.class, new CreateNewOrderService());
+        //update after logic implementation
+        beans.put(GetAllOrdersService.class, new GetAllOrdersService());
         beans.put(AddDishToWishlistService.class, new AddDishToWishlistService(
                 getBean(Database.class)));
         beans.put(GetWishlistService.class, new GetWishlistService(
@@ -91,10 +99,14 @@ public class ApplicationContext {
         beans.put(AddProductUIAction.class, new AddProductUIAction(getBean(AddProductService.class)));
         beans.put(GetAllProductsUIAction.class, new GetAllProductsUIAction(getBean(GetAllProductsService.class)));
         beans.put(SearchProductUIAction.class, new SearchProductUIAction(getBean(SearchProductService.class)));
+        //update after logic implementation
+        beans.put(CreateNewOrderUIAction.class, new CreateNewOrderUIAction());
+        //update after logic implementation
+        beans.put(GetAllOrdersUIAction.class, new GetAllOrdersUIAction());
         beans.put(AddDishToWishlistUIAction.class, new AddDishToWishlistUIAction(getBean(AddDishToWishlistService.class)));
         beans.put(GetWishListUIAction.class, new GetWishListUIAction(getBean(GetWishlistService.class)));
         beans.put(ExitUIAction.class, new ExitUIAction());
-        beans.put(GetRestaurantMenuUIAction. class, new GetRestaurantMenuUIAction(getBean(GetRestaurantMenuService.class)));
+        beans.put(GetRestaurantMenuUIAction.class, new GetRestaurantMenuUIAction(getBean(GetRestaurantMenuService.class)));
         beans.put(LoginUIAction.class, new LoginUIAction(getBean(LoginService.class)));
         beans.put(RegistrationUIAction.class, new RegistrationUIAction(getBean(RegistrationService.class)));
     }
