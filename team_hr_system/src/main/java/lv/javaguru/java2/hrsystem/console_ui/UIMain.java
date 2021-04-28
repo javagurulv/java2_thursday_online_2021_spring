@@ -3,7 +3,7 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.database.DatabaseImpl;
 import lv.javaguru.java2.hrsystem.core.services.*;
-import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeRequestValidator;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddSkillRequestValidator;
 import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesBySkillRequestValidator;
 import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesRequestValidator;
@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class UIMain {
 
     private final Database database = new DatabaseImpl();
-    private static AddEmployeeValidator addEmployeeValidator = new AddEmployeeValidator();
+    private static AddEmployeeRequestValidator addEmployeeValidator = new AddEmployeeRequestValidator();
     private static SearchEmployeesRequestValidator searchEmployeesRequestValidator = new SearchEmployeesRequestValidator();
     private static AddSkillRequestValidator addSkillRequestValidator = new AddSkillRequestValidator();
     private static SearchEmployeesBySkillRequestValidator searchEmployeesBySkillRequestValidator = new SearchEmployeesBySkillRequestValidator();

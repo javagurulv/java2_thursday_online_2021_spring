@@ -21,7 +21,7 @@ public class AddSkillUIAction implements UIAction {
             AddSkillRequest request = new AddSkillRequest(id, skill);
             AddSkillResponse response = service.execute(request);
             if (response.hasErrors()) {
-                response.getErrors().forEach(e -> System.out.println("Error: " + e.getField() + " " + e.getMessage()));
+                response.getErrors().forEach(e -> System.out.println(e.getField() + " " + e.getMessage()));
             }
             else if (response.isEmployeeSkillAdded()){
                 System.out.printf("Skill %s is added\n", skill);
