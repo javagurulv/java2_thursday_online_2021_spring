@@ -1,17 +1,25 @@
 package lv.javaguru.java2.hrsystem.core.requests;
 
-public class RegistrationRequest {
+import lv.javaguru.java2.hrsystem.domain.UserRole;
 
+public class RegisterUserRequest {
+
+    private UserRole userRole;
     private String firstName;
     private String secondName;
     private String email;
     private String password;
 
-    public RegistrationRequest(String firstName, String secondName, String email, String password) {
+    public RegisterUserRequest(UserRole userRole, String firstName, String secondName, String email, String password) {
+        this.userRole = userRole;
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;
         this.password = password;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
     }
 
     public String getFirstName() {

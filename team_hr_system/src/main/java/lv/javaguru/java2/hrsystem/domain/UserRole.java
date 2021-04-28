@@ -1,0 +1,15 @@
+package lv.javaguru.java2.hrsystem.domain;
+
+import java.io.Serializable;
+
+public enum UserRole implements Serializable {
+
+    ADMIN("Admin"),
+    HR_MANAGE("HR Manager");
+
+    private String role;
+
+    UserRole(String role) {
+        this.role = role;
+    }
+}
