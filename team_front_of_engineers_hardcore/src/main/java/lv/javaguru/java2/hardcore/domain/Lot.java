@@ -58,17 +58,18 @@ public class Lot {
         this.userID = userID;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Lot that = (Lot) o;
-        return Objects.equals(name, that.name) && Objects.equals(startPrice, that.startPrice) && Objects.equals(id, that.id);
+        Lot lot = (Lot) o;
+        return Objects.equals(id, lot.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, startPrice, id);
+        return Objects.hash(id);
     }
 
     @Override

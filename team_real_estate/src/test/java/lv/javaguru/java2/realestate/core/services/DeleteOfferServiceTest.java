@@ -33,13 +33,16 @@ public class DeleteOfferServiceTest {
     public void shouldReturnErrorWhenOfferIdNotProvided() {
         DeleteOfferRequest request = new DeleteOfferRequest(null);
         List<CoreError> errors = new ArrayList<>();
-        errors.add(new CoreError("ID", "Must not be empty !"));
+        errors.add(new CoreError("ID", "Must not be empty"));
         Mockito.when(validator.validate(request)).thenReturn(errors);
+
         DeleteOfferResponse response = service.execute(request);
         assertTrue(response.hasErrors());
         assertEquals(response.getErrors().size(), 1);
         assertEquals(response.getErrors().get(0).getField(), "ID");
-        assertEquals(response.getErrors().get(0).getMessage(), "Must not be empty !");
+        assertEquals(response.getErrors().get(0).getMessage(), "Must not be empty");
+
+        Mockito.verifyNoInteractions(database);
     }
 
     @Test
@@ -50,5 +53,7 @@ public class DeleteOfferServiceTest {
         DeleteOfferResponse response = service.execute(request);
         assertFalse(response.hasErrors());
         assertTrue(response.isOfferDeleted());
+
+
     }
 }

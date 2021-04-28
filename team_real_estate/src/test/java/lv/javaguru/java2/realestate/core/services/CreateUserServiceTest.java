@@ -32,17 +32,32 @@ public class CreateUserServiceTest {
     private CreateUserService service;
 
     @Test
-    public void shouldReturnResponseWithErrorsWhenValidationFails() {
+    public void shouldReturnResponseWithErrorsWhenUsernameIsEmpty() {
         CreateUserRequest request = new CreateUserRequest(null, "password");
         List<CoreError> errors = new ArrayList<>();
-        errors.add(new CoreError("username", "Must not be empty !"));
+        errors.add(new CoreError("username", "Must not be empty"));
         Mockito.when(validator.validate(request)).thenReturn(errors);
 
         CreateUserResponse response = service.execute(request);
         assertTrue(response.hasErrors());
         assertEquals(response.getErrors().size(), 1);
         assertEquals(response.getErrors().get(0).getField(), "username");
-        assertEquals(response.getErrors().get(0).getMessage(), "Must not be empty !");
+        assertEquals(response.getErrors().get(0).getMessage(), "Must not be empty");
+
+        Mockito.verifyNoInteractions(database);
+    }
+
+    @Test
+    public void shouldReturnResponseWithErrorsWhenPasswordIsEmpty(){
+        CreateUserRequest request = new CreateUserRequest("username",null);
+        List<CoreError> errors = new ArrayList<>();
+        errors.add(new CoreError("password", "Must not be empty"));
+        Mockito.when(validator.validate(request)).thenReturn(errors);
+
+        CreateUserResponse response = service.execute(request);
+        assertTrue(response.hasErrors());
+        assertEquals(response.getErrors().get(0).getField(),"password");
+        assertEquals(response.getErrors().get(0).getMessage(),"Must not be empty");
 
         Mockito.verifyNoInteractions(database);
     }
@@ -55,5 +70,7 @@ public class CreateUserServiceTest {
         assertFalse(response.hasErrors());
         Mockito.verify(database).createAccount(
                 argThat(new UserMatcher("username", "password")));
+
+
     }
 }
