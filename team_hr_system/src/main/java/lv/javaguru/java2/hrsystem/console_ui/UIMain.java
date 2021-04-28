@@ -20,7 +20,6 @@ public class UIMain {
         put(7, applicationContext.getBean(GetAllEmployeeSkillUIAction.class));
         put(8, applicationContext.getBean(SearchEmployeesBySkillUIAction.class));
         put(9, applicationContext.getBean(ExitUIAction.class));
-
     }};
 
     private int getUserOption() {
