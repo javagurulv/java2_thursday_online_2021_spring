@@ -1,5 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
+import lv.javaguru.java2.hrsystem.core.requests.Ordering;
 import lv.javaguru.java2.hrsystem.core.requests.Paging;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesRequestValidator;
@@ -9,6 +10,7 @@ import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesResponse;
 import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,17 +31,15 @@ public class SearchEmployeesService {
             return new SearchEmployeesResponse(errors, null);
         }
 
-        List<Employee> employee = search(request);
+        List<Employee> employees = search(request);
+        employees = order(employees, request.getOrdering());
+        employees = paging(employees, request.getPaging());
 
-        employee = paging(employee, request.getPaging());
-
-        return new SearchEmployeesResponse(null, employee);
+        return new SearchEmployeesResponse(null, employees);
     }
 
     public List<Employee> search(SearchEmployeesRequest request) {
-
         List<Employee> employees = null;
-
         if (request.isNameProvided() && !request.isTitleProvided()) {
             employees = database.getEmployeesByName(request.getName());
         }
@@ -50,6 +50,20 @@ public class SearchEmployeesService {
             employees = database.getEmployeesByTitleAdnName(EmployeeTitle.valueOf(request.getEmployeeTitle()), request.getName());
         }
         return employees;
+    }
+
+    private List<Employee> order(List<Employee> employees, Ordering ordering) {
+        if (ordering != null) {
+            Comparator<Employee> comparator = ordering.getOrderBy().equals("title")
+                    ? Comparator.comparing(Employee::getTitle)
+                    : Comparator.comparing(Employee::getName);
+            if (ordering.getOrderDirection().equals("DESCENDING")) {
+                comparator = comparator.reversed();
+            }
+            return employees.stream().sorted(comparator).collect(Collectors.toList());
+        } else {
+            return employees;
+        }
     }
 
     private List<Employee> paging(List<Employee> employees, Paging paging) {

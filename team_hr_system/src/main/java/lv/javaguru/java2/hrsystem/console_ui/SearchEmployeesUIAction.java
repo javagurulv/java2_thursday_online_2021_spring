@@ -1,5 +1,6 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
+import lv.javaguru.java2.hrsystem.core.requests.Ordering;
 import lv.javaguru.java2.hrsystem.core.requests.Paging;
 import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
@@ -24,6 +25,12 @@ public class SearchEmployeesUIAction implements UIAction{
         System.out.println("Enter employee name: ");
         String name = scanner.nextLine();
 
+        System.out.println("Enter orderBy (title||name): ");
+        String orderBy = scanner.nextLine();
+        System.out.println("Enter orderDirection (ASCENDING||DESCENDING): ");
+        String orderDirection = scanner.nextLine();
+        Ordering ordering = new Ordering(orderBy, orderDirection);
+
         System.out.println("Enter page number: ");
         Integer pageNumber = scanner.nextInt();
         System.out.println("Enter size name: ");
@@ -31,7 +38,7 @@ public class SearchEmployeesUIAction implements UIAction{
 
         Paging paging = new Paging(pageNumber, pageSize);
 
-        SearchEmployeesRequest request = new SearchEmployeesRequest(title.toUpperCase(), name, paging);
+        SearchEmployeesRequest request = new SearchEmployeesRequest(title.toUpperCase(), name, ordering, paging);
         SearchEmployeesResponse response = service.execute(request);
 
         List<Employee> employees = response.getEmployees();
@@ -42,8 +49,7 @@ public class SearchEmployeesUIAction implements UIAction{
             );
         } else if (!employees.isEmpty()) {
             employees.forEach(System.out::println);
-        }
-        else {
+        } else {
             System.out.println("No employees found");
         }
     }
