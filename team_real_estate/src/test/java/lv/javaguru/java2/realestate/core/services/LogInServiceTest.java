@@ -1,13 +1,11 @@
 package lv.javaguru.java2.realestate.core.services;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.argThat;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.requests.LogInRequest;
+import lv.javaguru.java2.realestate.core.response.CoreError;
+import lv.javaguru.java2.realestate.core.response.LogInResponse;
+import lv.javaguru.java2.realestate.core.services.validators.LogInValidator;
+import lv.javaguru.java2.realestate.matchers.UserMatcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -15,12 +13,13 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import lv.javaguru.java2.realestate.core.database.Database;
-import lv.javaguru.java2.realestate.core.requests.LogInRequest;
-import lv.javaguru.java2.realestate.core.response.CoreError;
-import lv.javaguru.java2.realestate.core.response.LogInResponse;
-import lv.javaguru.java2.realestate.core.services.validators.LogInValidator;
-import lv.javaguru.java2.realestate.matchers.UserMatcher;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.argThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LogInServiceTest {
@@ -55,7 +54,6 @@ public class LogInServiceTest {
         assertFalse(response.hasErrors());
         Mockito.verify(database).logIn(
                 argThat(new UserMatcher("username", "password")));
-
 
     }
 }

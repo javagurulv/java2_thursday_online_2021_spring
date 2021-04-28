@@ -1,11 +1,10 @@
 package lv.javaguru.java2.realestate.core.services;
 
-import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.any;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.requests.DeleteOfferRequest;
+import lv.javaguru.java2.realestate.core.response.CoreError;
+import lv.javaguru.java2.realestate.core.response.DeleteOfferResponse;
+import lv.javaguru.java2.realestate.core.services.validators.DeleteOfferValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -13,11 +12,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import lv.javaguru.java2.realestate.core.database.Database;
-import lv.javaguru.java2.realestate.core.requests.DeleteOfferRequest;
-import lv.javaguru.java2.realestate.core.response.CoreError;
-import lv.javaguru.java2.realestate.core.response.DeleteOfferResponse;
-import lv.javaguru.java2.realestate.core.services.validators.DeleteOfferValidator;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.any;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DeleteOfferServiceTest {
@@ -30,7 +29,7 @@ public class DeleteOfferServiceTest {
     private DeleteOfferService service;
 
     @Test
-    public void shouldReturnErrorWhenOfferIdNotProvided() {
+    public void shouldReturnErrorWhenWhenValidationFails() {
         DeleteOfferRequest request = new DeleteOfferRequest(null);
         List<CoreError> errors = new ArrayList<>();
         errors.add(new CoreError("ID", "Must not be empty"));

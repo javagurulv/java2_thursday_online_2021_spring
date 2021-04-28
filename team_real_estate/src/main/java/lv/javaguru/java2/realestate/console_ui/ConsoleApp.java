@@ -1,9 +1,6 @@
 package lv.javaguru.java2.realestate.console_ui;
 
 import lv.javaguru.java2.realestate.ApplicationContext;
-import lv.javaguru.java2.realestate.core.database.Database;
-import lv.javaguru.java2.realestate.core.database.InMemoryDatabaseImpl;
-import lv.javaguru.java2.realestate.core.services.*;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -35,9 +35,9 @@ public class SearchOffersValidator {
         if (isEmptyString(request.getOfferType())
                 && isEmptyString(request.getOfferCategory())
                 && isEmptyDouble(request.getPrice())) {
-            errors.add(new CoreError("Type", "Must not be empty!"));
-            errors.add(new CoreError("Category", "Must not be empty!"));
-            errors.add(new CoreError("Price", "Must not be empty"));
+            errors.add(new CoreError("Offer Type", "Must not be empty!"));
+            errors.add(new CoreError("Offer Category", "Must not be empty!"));
+            errors.add(new CoreError("Price", "Must not be empty or zero!"));
         }
         return errors;
     }
@@ -77,6 +77,7 @@ public class SearchOffersValidator {
                 : Optional.empty();
 
     }
+
     private Optional<CoreError> validatePageNumber(Paging paging) {
         return (paging.getPageNumber() != null
                 && paging.getPageNumber() <= 0)
