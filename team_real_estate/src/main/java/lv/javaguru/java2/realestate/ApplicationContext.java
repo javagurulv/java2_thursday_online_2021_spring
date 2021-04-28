@@ -12,7 +12,7 @@ import java.util.Map;
 public class ApplicationContext {
     private Map<Class, Object> beans = new HashMap<>();
 
-    public ApplicationContext(){
+    public ApplicationContext() {
         beans.put(Database.class, new InMemoryDatabaseImpl());
 
         beans.put(CreateOfferValidator.class, new CreateOfferValidator());
@@ -51,7 +51,7 @@ public class ApplicationContext {
         beans.put(SearchOffersUIAction.class, new SearchOffersUIAction(getBean(SearchOffersService.class)));
     }
 
-    public <T extends Object> T getBean(Class c){
+    public <T extends Object> T getBean(Class c) {
         return (T) beans.get(c);
     }
 }

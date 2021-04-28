@@ -29,7 +29,7 @@ public class SearchOffersUIAction implements ConsoleUI {
         String stringPrice = scanner.nextLine();
         Double price = 0.0;
 
-        if(!"".equals(stringPrice)) {
+        if (!"".equals(stringPrice)) {
             price = Double.parseDouble(stringPrice);
         }
 
