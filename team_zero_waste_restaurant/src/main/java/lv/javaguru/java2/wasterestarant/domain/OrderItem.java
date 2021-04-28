@@ -2,23 +2,33 @@ package lv.javaguru.java2.wasterestarant.domain;
 
 public class OrderItem {
 
-    private String name;
+    private String dishName;
+    private Long dishID;
     private int quantity;
 
     public OrderItem() {
     }
 
     public OrderItem(String name, int quantity) {
-        this.name = name;
+        this.dishName = name;
+        this.dishID = getDishID();
         this.quantity = quantity;
     }
 
-    public String getName() {
-        return name;
+    public Long getDishID() {
+        return dishID;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDishID(Long dishID) {
+        this.dishID = dishID;
+    }
+
+    public String getDishName() {
+        return dishName;
+    }
+
+    public void setDishName(String name) {
+        this.dishName = name;
     }
 
     public int getQuantity() {
@@ -32,7 +42,7 @@ public class OrderItem {
     @Override
     public String toString() {
         return "OrderItem{" +
-                ", name='" + name + '\'' +
+                ", name='" + dishName + '\'' +
                 ", quantity=" + quantity +
                 '}';
     }

@@ -4,6 +4,7 @@ import lv.javaguru.java2.realestate.core.database.Database;
 import lv.javaguru.java2.realestate.core.requests.DeleteOfferRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.DeleteOfferResponse;
+import lv.javaguru.java2.realestate.core.services.validators.DeleteOfferValidator;
 
 import java.util.List;
 

@@ -5,6 +5,7 @@ import lv.javaguru.java2.realestate.core.domain.User;
 import lv.javaguru.java2.realestate.core.requests.DeleteUserRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.DeleteUserResponse;
+import lv.javaguru.java2.realestate.core.services.validators.DeleteUserValidator;
 
 import java.util.List;
 
