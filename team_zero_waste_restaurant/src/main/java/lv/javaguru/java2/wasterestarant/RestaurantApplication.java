@@ -1,68 +1,26 @@
 package lv.javaguru.java2.wasterestarant;
 
-import lv.javaguru.java2.wasterestarant.console_ui.*;
+import lv.javaguru.java2.wasterestarant.console_ui.ExitUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.GetRestaurantMenuUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.LoginUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.RegistrationUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.dish.AddDishUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.dish.GetAllDishesUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.dish.RemoveDishUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.dish.SearchDishesUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.ingredient.AddDishIngredientUiAction;
 import lv.javaguru.java2.wasterestarant.console_ui.ingredient.SearchIngredientUiAction;
+import lv.javaguru.java2.wasterestarant.console_ui.order.GetAllOrdersUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.AddProductUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.GetAllProductsUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.SearchProductUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.wishlist.AddDishToWishlistUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.wishlist.GetWishListUIAction;
-import lv.javaguru.java2.wasterestarant.core.database.Database;
-import lv.javaguru.java2.wasterestarant.core.database.InMemoryDatabaseImpl;
-import lv.javaguru.java2.wasterestarant.core.services.*;
-import lv.javaguru.java2.wasterestarant.core.services.dish.*;
-import lv.javaguru.java2.wasterestarant.core.services.ingredient.AddDishIngredientService;
-import lv.javaguru.java2.wasterestarant.core.services.ingredient.AddDishIngredientValidator;
-import lv.javaguru.java2.wasterestarant.core.services.ingredient.SearchIngredientService;
-import lv.javaguru.java2.wasterestarant.core.services.ingredient.SearchIngredientValidator;
-import lv.javaguru.java2.wasterestarant.core.services.products.*;
-import lv.javaguru.java2.wasterestarant.core.services.wishlist.AddDishToWishlistService;
-import lv.javaguru.java2.wasterestarant.core.services.wishlist.GetWishlistService;
 
 import java.util.Scanner;
 
 public class RestaurantApplication {
-
-    private static Database database = new InMemoryDatabaseImpl();
-
-    private static SearchIngredientValidator searchIngredientValidator = new SearchIngredientValidator();
-    private static SearchIngredientService searchIngredientService = new SearchIngredientService(database, searchIngredientValidator);
-    private static AddDishIngredientValidator addDishIngredientValidator = new AddDishIngredientValidator();
-    private static AddDishIngredientService addDishIngredientService = new AddDishIngredientService(database, addDishIngredientValidator);
-    private static RegistrationService registrationService = new RegistrationService(database);
-    private static LoginService loginService = new LoginService(database);
-    private static AddDishValidator addDishValidator = new AddDishValidator();
-    private static AddProductValidator addProductValidator = new AddProductValidator();
-    private static AddProductService addProductService = new AddProductService(database, addProductValidator);
-    private static AddDishService addDishService = new AddDishService(database, addDishValidator);
-    private static RemoveDishValidator removeDishValidator = new RemoveDishValidator();
-    private static RemoveDishService removeDishService = new RemoveDishService(database, removeDishValidator);
-    private static GetAllDishesService getAllDishesService = new GetAllDishesService(database);
-    private static GetAllProductsService getAllProductsService = new GetAllProductsService(database);
-    private static GetRestaurantMenuService getRestaurantMenuService = new GetRestaurantMenuService(database);
-    private static SearchProductServiceValidator searchProductServiceValidator = new SearchProductServiceValidator();
-    private static SearchProductService searchProductService = new SearchProductService(database, searchProductServiceValidator);
-    private static AddDishToWishlistService addDishToWishlistService = new AddDishToWishlistService(database);
-    private static GetWishlistService getWishlistServiceService = new GetWishlistService(database);
-
-    private static UIAction searchIngredientUiAction = new SearchIngredientUiAction(searchIngredientService);
-    private static UIAction addDishIngredientUiAction = new AddDishIngredientUiAction(addDishIngredientService);
-    private static UIAction registrationUIAction = new RegistrationUIAction(registrationService);
-    private static UIAction loginUIAction = new LoginUIAction(loginService);
-    private static UIAction addProductUIAction = new AddProductUIAction(addProductService);
-    private static UIAction addDishUIAction = new AddDishUIAction(addDishService);
-    private static UIAction removeDishUIAction = new RemoveDishUIAction(removeDishService);
-    private static UIAction getAllDishesUIAction = new GetAllDishesUIAction(getAllDishesService);
-    private static UIAction getAllProductsUIAction = new GetAllProductsUIAction(getAllProductsService);
-    private static UIAction getRestaurantMenuUIAction = new GetRestaurantMenuUIAction(getRestaurantMenuService);
-    private static UIAction searchProductUIAction = new SearchProductUIAction(searchProductService);
-    private static UIAction addDishToWishlistUIAction = new AddDishToWishlistUIAction(addDishToWishlistService);
-    private static UIAction getWishlistUIAction = new GetWishListUIAction(getWishlistServiceService);
-    private static UIAction exitUIAction = new ExitUIAction();
+    private static ApplicationContext applicationContext = new ApplicationContext();
 
     public static void main(String[] args) {
         while (true) {
@@ -77,17 +35,19 @@ public class RestaurantApplication {
         System.out.println("Program menu:");
         System.out.println("1. Registration");
         System.out.println("2. Login");
-        System.out.println("3. Add product to list");
-        System.out.println("4. Add dish to list");
-        System.out.println("5. Delete dish from list");
-        System.out.println("6. Search Ingredients");
-        System.out.println("7. Show all dishes in the list");
-        System.out.println("8. Show all products in the list");
-        System.out.println("9. Show full restaurant menu list");
-        System.out.println("10. Search products by name");
-        System.out.println("11. Add dish to wishlist");
-        System.out.println("12. Show wishlist");
-        System.out.println("13. Exit");
+        System.out.println("3. Add dish to the list");
+        System.out.println("4. Add product to the list");
+        System.out.println("5. Remove dish from the list");
+        System.out.println("6. Search dishes");
+        System.out.println("7. Search products");
+        System.out.println("8. Search ingredients");
+        System.out.println("9. Show all dishes in the list");
+        System.out.println("10. Show all products in the list");
+        System.out.println("11. Show all orders in the list");
+        System.out.println("12. Show full restaurant menu list");
+        System.out.println("13. Add dish to wishlist");
+        System.out.println("14. Show wishlist");
+        System.out.println("15. Exit");
         System.out.println();
     }
 
@@ -112,59 +72,82 @@ public class RestaurantApplication {
     private static void executeSelectedMenuItem(int selectedMenu) {
         switch (selectedMenu) {
             case 1: {
-                registrationUIAction.execute();
+                RegistrationUIAction uiAction = applicationContext.getBean(RegistrationUIAction.class);
+                uiAction.execute();
                 break;
             }
             case 2: {
-                loginUIAction.execute();
+                LoginUIAction uiAction = applicationContext.getBean(LoginUIAction.class);
+                uiAction.execute();
                 break;
             }
             case 3: {
-                addProductUIAction.execute();
+                AddDishUIAction uiAction1 = applicationContext.getBean(AddDishUIAction.class);
+                uiAction1.execute();
+                AddDishIngredientUiAction uiAction2 = applicationContext.getBean(AddDishIngredientUiAction.class);
+                uiAction2.execute();
                 break;
             }
             case 4: {
-                addDishUIAction.execute();
-                addDishIngredientUiAction.execute();
+                AddProductUIAction uiAction = applicationContext.getBean(AddProductUIAction.class);
+                uiAction.execute();
                 break;
             }
             case 5: {
-                removeDishUIAction.execute();
+                RemoveDishUIAction uiAction = applicationContext.getBean(RemoveDishUIAction.class);
+                uiAction.execute();
                 break;
             }
             case 6: {
-                searchIngredientUiAction.execute();
+                SearchDishesUIAction uiAction = applicationContext.getBean(SearchDishesUIAction.class);
+                uiAction.execute();
                 break;
             }
             case 7: {
-                getAllDishesUIAction.execute();
+                SearchProductUIAction uiAction = applicationContext.getBean(SearchProductUIAction.class);
+                uiAction.execute();
                 break;
             }
             case 8: {
-                getAllProductsUIAction.execute();
+                SearchIngredientUiAction uiAction = applicationContext.getBean(SearchIngredientUiAction.class);
+                uiAction.execute();
                 break;
             }
             case 9: {
-                getRestaurantMenuUIAction.execute();
+                GetAllDishesUIAction uiAction = applicationContext.getBean(GetAllDishesUIAction.class);
+                uiAction.execute();
                 break;
             }
             case 10: {
-                searchProductUIAction.execute();
+                GetAllProductsUIAction uiAction = applicationContext.getBean(GetAllProductsUIAction.class);
+                uiAction.execute();
                 break;
             }
             case 11: {
-                addDishToWishlistUIAction.execute();
+                GetAllOrdersUIAction uiAction = applicationContext.getBean(GetAllOrdersUIAction.class);
+                //remove comment after implementation is done
+                //uiAction.execute();
                 break;
             }
             case 12: {
-                getWishlistUIAction.execute();
+                GetRestaurantMenuUIAction uiAction = applicationContext.getBean(GetRestaurantMenuUIAction.class);
                 break;
             }
             case 13: {
-                exitUIAction.execute();
+                AddDishToWishlistUIAction uiAction = applicationContext.getBean(AddDishToWishlistUIAction.class);
+                uiAction.execute();
+                break;
+            }
+            case 14: {
+                GetWishListUIAction uiAction = applicationContext.getBean(GetWishListUIAction.class);
+                uiAction.execute();
+                break;
+            }
+            case 15: {
+                ExitUIAction uiAction = applicationContext.getBean(ExitUIAction.class);
+                uiAction.execute();
                 break;
             }
         }
     }
-
 }

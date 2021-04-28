@@ -10,7 +10,7 @@ import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesService;
 import java.util.List;
 import java.util.Scanner;
 
-public class SearchEmployeesUIAction implements UIAction {
+public class SearchEmployeesUIAction implements UIAction{
     private final SearchEmployeesService service;
 
     public SearchEmployeesUIAction(SearchEmployeesService service) {
@@ -38,7 +38,7 @@ public class SearchEmployeesUIAction implements UIAction {
 
         Paging paging = new Paging(pageNumber, pageSize);
 
-        SearchEmployeesRequest request = new SearchEmployeesRequest(title, name, ordering, paging);
+        SearchEmployeesRequest request = new SearchEmployeesRequest(title.toUpperCase(), name, ordering, paging);
         SearchEmployeesResponse response = service.execute(request);
 
         List<Employee> employees = response.getEmployees();

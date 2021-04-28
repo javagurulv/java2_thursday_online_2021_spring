@@ -4,25 +4,25 @@ package lv.javaguru.java2.wasterestarant.core.requests.wishlist;
 
 public class AddDishToWishlistRequest {
 
-    private String name;
-    private Long dishID;
+    private Long clientID;
+    private String dishName;
     private int quantity;
 
-    public AddDishToWishlistRequest(String name, Long dishID, int quantity) {
-        this.name = name;
-        this.dishID = dishID;
+    public AddDishToWishlistRequest(Long clientID, String dishName, int quantity) {
+        this.clientID = clientID;
+        this.dishName = dishName;
         this.quantity = quantity;
     }
 
-    public String getName() {
-        return  name;
+    public String getDishName() {
+        return  dishName;
     }
 
     public int getQuantity() {
         return  quantity;
     }
 
-    public Long getDishID() {
-        return dishID;
+    public Long getClientID() {
+        return clientID;
     }
 }
