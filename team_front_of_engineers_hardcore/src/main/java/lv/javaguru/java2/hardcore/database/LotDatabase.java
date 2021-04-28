@@ -12,4 +12,6 @@ public interface LotDatabase {
 
     List<Lot> getAllLots();
 
+    List<Lot> searchByName(String name);
+
 }
