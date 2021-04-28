@@ -17,7 +17,7 @@ public class SearchEmployeesRequestValidator {
         List<CoreError> errors = new ArrayList<>();
         errors.addAll(validateSearchFields(request));
 
-        if(request.getOrdering() != null){
+        if (request.getOrdering() != null) {
             validateOrderBy(request.getOrdering()).ifPresent(errors::add);
             validateOrderDirection(request.getOrdering()).ifPresent(errors::add);
             validateMandatoryOrderBy(request.getOrdering()).ifPresent(errors::add);

@@ -24,10 +24,10 @@ public class HumanResourcesSystemApp {
         put(4, new ExitUIAction());
     }};
 
-        public static void main(String[] args) {
+    public static void main(String[] args) {
 
-            HumanResourcesSystemApp humanResourcesSystemApp = new HumanResourcesSystemApp();
-            humanResourcesSystemApp.run();
+        HumanResourcesSystemApp humanResourcesSystemApp = new HumanResourcesSystemApp();
+        humanResourcesSystemApp.run();
 
     }
 

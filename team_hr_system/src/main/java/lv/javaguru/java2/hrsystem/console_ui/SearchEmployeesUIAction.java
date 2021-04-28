@@ -10,7 +10,7 @@ import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesService;
 import java.util.List;
 import java.util.Scanner;
 
-public class SearchEmployeesUIAction implements UIAction{
+public class SearchEmployeesUIAction implements UIAction {
     private final SearchEmployeesService service;
 
     public SearchEmployeesUIAction(SearchEmployeesService service) {
@@ -49,8 +49,7 @@ public class SearchEmployeesUIAction implements UIAction{
             );
         } else if (!employees.isEmpty()) {
             employees.forEach(System.out::println);
-        }
-        else {
+        } else {
             System.out.println("No employees found");
         }
     }
