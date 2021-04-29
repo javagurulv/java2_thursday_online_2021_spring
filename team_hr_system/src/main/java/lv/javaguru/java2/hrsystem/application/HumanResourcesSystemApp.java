@@ -1,13 +1,6 @@
 package lv.javaguru.java2.hrsystem.application;
 
 import lv.javaguru.java2.hrsystem.console_ui.*;
-import lv.javaguru.java2.hrsystem.core.database.Database;
-import lv.javaguru.java2.hrsystem.core.database.DatabaseImpl;
-import lv.javaguru.java2.hrsystem.core.services.AuthorizeUserService;
-import lv.javaguru.java2.hrsystem.core.services.GetAllUsersService;
-import lv.javaguru.java2.hrsystem.core.services.RegisterUserService;
-import lv.javaguru.java2.hrsystem.core.services.validators.AuthorizeUserValidator;
-import lv.javaguru.java2.hrsystem.core.services.validators.RegisterUserValidator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,19 +8,19 @@ import java.util.Scanner;
 
 public class HumanResourcesSystemApp {
 
-    private final Database database = new DatabaseImpl();
+    private static ApplicationContext applicationContext = new ApplicationContext();
 
     private final Map<Integer, UIAction> menuNumberToActionMap = new HashMap<>() {{
-        put(1, new RegisterUserUIAction(new RegisterUserService(database, new RegisterUserValidator())));
-        put(2, new AuthorizeUserUIAction(new AuthorizeUserService(database, new AuthorizeUserValidator())));
-        put(3, new GetAllUsersUIAction(new GetAllUsersService(database)));
-        put(4, new ExitUIAction());
+        put(1, applicationContext.getBean(RegisterUserUIAction.class));
+        put(2, applicationContext.getBean(AuthorizeUserUIAction.class));
+        put(3, applicationContext.getBean(GetAllUsersUIAction.class));
+        put(4, applicationContext.getBean(ExitUIAction.class));
     }};
 
-        public static void main(String[] args) {
+    public static void main(String[] args) {
 
-            HumanResourcesSystemApp humanResourcesSystemApp = new HumanResourcesSystemApp();
-            humanResourcesSystemApp.run();
+        HumanResourcesSystemApp humanResourcesSystemApp = new HumanResourcesSystemApp();
+        humanResourcesSystemApp.run();
 
     }
 

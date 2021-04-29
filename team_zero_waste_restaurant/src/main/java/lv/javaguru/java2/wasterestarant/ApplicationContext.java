@@ -31,6 +31,7 @@ import lv.javaguru.java2.wasterestarant.core.services.order.GetAllOrdersService;
 import lv.javaguru.java2.wasterestarant.core.services.products.*;
 import lv.javaguru.java2.wasterestarant.core.services.RegistrationService;
 import lv.javaguru.java2.wasterestarant.core.services.wishlist.AddDishToWishlistService;
+import lv.javaguru.java2.wasterestarant.core.services.wishlist.AddDishToWishlistValidator;
 import lv.javaguru.java2.wasterestarant.core.services.wishlist.GetWishlistService;
 
 import java.util.HashMap;
@@ -80,7 +81,8 @@ public class ApplicationContext {
         //update after logic implementation
         beans.put(GetAllOrdersService.class, new GetAllOrdersService());
         beans.put(AddDishToWishlistService.class, new AddDishToWishlistService(
-                getBean(Database.class)));
+                getBean(Database.class),
+                getBean(AddDishToWishlistValidator.class)));
         beans.put(GetWishlistService.class, new GetWishlistService(
                 getBean(Database.class)));
         beans.put(GetRestaurantMenuService.class, new GetRestaurantMenuService(

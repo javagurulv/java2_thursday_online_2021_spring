@@ -1,5 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.validators;
 
+import lv.javaguru.java2.hrsystem.core.requests.Ordering;
 import lv.javaguru.java2.hrsystem.core.requests.Paging;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
@@ -58,6 +59,54 @@ public class SearchEmployeeValidatorTest {
         }};
         List<CoreError> act = validator.validate(request);
         assertThat(act).isEqualTo(exp);
+    }
+
+    @Test
+    public void shouldReturnErrorWhenOrderDirectionIsEmptyTest() {
+        Ordering ordering = new Ordering("title", null);
+        SearchEmployeesRequest request = new SearchEmployeesRequest("DEVELOPER", "Name", ordering);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "orderDirection");
+        assertEquals(errors.get(0).getMessage(), "Must not be empty!");
+    }
+
+    @Test
+    public void shouldReturnErrorWhenOrderByIsEmptyTest() {
+        Ordering ordering = new Ordering(null, "ASCENDING");
+        SearchEmployeesRequest request = new SearchEmployeesRequest("DEVELOPER", "Name", ordering);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "orderBy");
+        assertEquals(errors.get(0).getMessage(), "Must not be empty!");
+    }
+
+    @Test
+    public void shouldReturnErrorWhenOrderByContainsNotValidValueTest() {
+        Ordering ordering = new Ordering("notValidValue", "ASCENDING");
+        SearchEmployeesRequest request = new SearchEmployeesRequest("DEVELOPER", "Name", ordering);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "orderBy");
+        assertEquals(errors.get(0).getMessage(), "Must contain 'name' or 'title' only!");
+    }
+
+    @Test
+    public void shouldReturnErrorWhenOrderDirectionContainNotValidValueTest() {
+        Ordering ordering = new Ordering("title", "notValidValue");
+        SearchEmployeesRequest request = new SearchEmployeesRequest("DEVELOPER", "Name", ordering);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "orderDirection");
+        assertEquals(errors.get(0).getMessage(), "Must contain 'ASCENDING' or 'DESCENDING' only!");
+    }
+
+    @Test
+    public void shouldReturnTwoOrderingErrorsWhenOrderByAndOrderDirectionContainsNotValidValuesTest() {
+        Ordering ordering = new Ordering(null, "notValidValue");
+        SearchEmployeesRequest request = new SearchEmployeesRequest("DEVELOPER", "Name", ordering);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 2);
     }
 
     @Test

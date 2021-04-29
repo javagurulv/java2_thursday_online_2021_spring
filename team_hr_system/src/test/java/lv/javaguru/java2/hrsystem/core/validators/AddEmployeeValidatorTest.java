@@ -2,13 +2,13 @@ package lv.javaguru.java2.hrsystem.core.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeRequestValidator;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class AddEmployeeValidatorTest {
-    private AddEmployeeValidator validator = new AddEmployeeValidator();
+    private AddEmployeeRequestValidator validator = new AddEmployeeRequestValidator();
 
     @Test
     public void testValidName() {

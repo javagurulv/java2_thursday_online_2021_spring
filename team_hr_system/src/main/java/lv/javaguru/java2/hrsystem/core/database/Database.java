@@ -16,7 +16,7 @@ public interface Database {
 
     List<User> getAllUsers();
 
-    List <Employee> getAllEmployees();
+    List<Employee> getAllEmployees();
 
     List<Employee> getEmployeesByTitle(EmployeeTitle title);
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class AddEmployeeValidator {
+public class AddEmployeeRequestValidator {
 
     public List<CoreError> validate(AddEmployeeRequest request) {
         List<CoreError> errors = new ArrayList<>();

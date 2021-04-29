@@ -4,7 +4,9 @@ import lv.javaguru.java2.hardcore.domain.Lot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class InMemoryLotDatabase implements LotDatabase {
 
@@ -34,5 +36,8 @@ public class InMemoryLotDatabase implements LotDatabase {
         return lots;
     }
 
-
+    @Override
+    public List<Lot> searchByName(String name) {
+        return lots.stream().filter(lot -> lot.getName().toLowerCase(Locale.ROOT).startsWith(name.toLowerCase(Locale.ROOT))).collect(Collectors.toList());
+    }
 }

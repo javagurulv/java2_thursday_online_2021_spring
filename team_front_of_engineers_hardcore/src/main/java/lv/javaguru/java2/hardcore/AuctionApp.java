@@ -6,6 +6,7 @@ import lv.javaguru.java2.hardcore.consoleUI.bet.ShowAllBetsUIAction;
 import lv.javaguru.java2.hardcore.consoleUI.lot.AddLotUIAction;
 import lv.javaguru.java2.hardcore.consoleUI.lot.GetAllLotsUIAction;
 import lv.javaguru.java2.hardcore.consoleUI.lot.RemoveLotUIAction;
+import lv.javaguru.java2.hardcore.consoleUI.lot.SearchLotByNameUIAction;
 import lv.javaguru.java2.hardcore.consoleUI.user.AddUserUIAction;
 import lv.javaguru.java2.hardcore.consoleUI.user.LoginUIAction;
 import lv.javaguru.java2.hardcore.consoleUI.user.ShowAllUsersUIAction;
@@ -29,6 +30,7 @@ public class AuctionApp {
     private LoginValidator loginValidator = new LoginValidator();
     private AddBetValidator addBetValidator = new AddBetValidator();
     private RemoveBetValidator removeBetValidator = new RemoveBetValidator();
+    private SearchLotByNameRequestValidator searchLotByNameRequestValidator = new SearchLotByNameRequestValidator();
 
     private LoginService loginService = new LoginService(userDatabase, loginValidator);
     private AddUserService addUserService = new AddUserService(userDatabase, addUserValidator);
@@ -39,6 +41,7 @@ public class AuctionApp {
     private AddBetService addBetService = new AddBetService(betDatabase, addBetValidator,loginService);
     private RemoveBetService removeBetService = new RemoveBetService(betDatabase, removeBetValidator);
     private ShowAllBetsService showAllBetsService = new ShowAllBetsService(betDatabase);
+    private SearchLotByNameService searchLotByNameService = new SearchLotByNameService(lotDatabase,searchLotByNameRequestValidator);
 
 
     private UIAction addBetUIAction = new AddBetUIAction(addBetService);
@@ -50,6 +53,7 @@ public class AuctionApp {
     private UIAction addLotUIAction = new AddLotUIAction(addLotService);
     private UIAction getAllLotsUIAction = new GetAllLotsUIAction(getAllLotsService);
     private UIAction removeLotUIAction = new RemoveLotUIAction(removeLotService);
+    private UIAction searchLotByNameUIAction =new SearchLotByNameUIAction(searchLotByNameService);
     private UIAction exitUIAction = new ExitUiAction();
 
 
@@ -80,6 +84,7 @@ public class AuctionApp {
         System.out.println("7. Show all users from User list");
         System.out.println("8. Remove lot from the list");
         System.out.println("9. Remove bet from the list");
+        System.out.println("10. Search lot by name");
         System.out.println("0. Exit");
         System.out.println(" ");
     }
@@ -129,6 +134,9 @@ public class AuctionApp {
             }
             case 9: {
                 removeBetUIAction.execute();
+                break;
+            }case 10: {
+                searchLotByNameUIAction.execute();
                 break;
             }
 

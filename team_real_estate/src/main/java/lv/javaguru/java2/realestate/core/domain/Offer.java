@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class Offer {
     private String offerType;
-    private String propertyCategory;
+    private String offerCategory;
     private String description;
     private Double price;
     private Integer id;
 
-    public Offer(String offerType, String propertyCategory, String description, Double price) {
+    public Offer(String offerType, String offerCategory, String description, Double price) {
         this.offerType = offerType;
-        this.propertyCategory = propertyCategory;
+        this.offerCategory = offerCategory;
         this.description = description;
         this.price = price;
     }
@@ -25,11 +25,11 @@ public class Offer {
     }
 
     public String getOfferCategory() {
-        return propertyCategory;
+        return offerCategory;
     }
 
-    public void setPropertyCategory(String propertyCategory) {
-        this.propertyCategory = propertyCategory;
+    public void setOfferCategory(String offerCategory) {
+        this.offerCategory = offerCategory;
     }
 
     public String getDescription() {
@@ -63,21 +63,21 @@ public class Offer {
         Offer offer = (Offer) o;
         return Double.compare(offer.price, price) == 0
                 && Objects.equals(offerType, offer.offerType)
-                && Objects.equals(propertyCategory, offer.propertyCategory)
+                && Objects.equals(offerCategory, offer.offerCategory)
                 && Objects.equals(description, offer.description)
                 && Objects.equals(id, offer.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(offerType, propertyCategory, description, price);
+        return Objects.hash(offerType, offerCategory, description, price);
     }
 
     @Override
     public String toString() {
         return "Offer{" +
                 "offerType='" + offerType + '\'' +
-                ", propertyCategory='" + propertyCategory + '\'' +
+                ", propertyCategory='" + offerCategory + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price + "$" + '\'' +
                 ", id='" + id + '}';
