@@ -1,7 +1,7 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
 import lv.javaguru.java2.hrsystem.core.database.Database;
-import lv.javaguru.java2.hrsystem.core.matchers.EmployeeMatcher;
+import lv.javaguru.java2.hrsystem.matchers.EmployeeMatcher;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddEmployeeResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;

@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hrsystem.core.matchers;
+package lv.javaguru.java2.hrsystem.matchers;
 
 import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;

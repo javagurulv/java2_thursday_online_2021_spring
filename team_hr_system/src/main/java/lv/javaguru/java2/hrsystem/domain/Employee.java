@@ -35,7 +35,12 @@ public class Employee {
         this.age = age;
         this.title = title;
     }
-
+    public Employee(Long id, String name, String lastName, int age) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+    }
     public Employee(Long employeeId) {
         this.id = employeeId;
     }
