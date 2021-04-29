@@ -46,7 +46,7 @@ public class AcceptanceTest1 {
     }
 
     @Test
-    public void searchBooksOrderingAscending() {
+    public void searchDishesOrderingAscending() {
         AddDishRequest request1 = new AddDishRequest("abc1", "Margherita", "Pizza", 0.2, 4.99);
         getAddDishService().execute(request1);
         AddDishRequest request2 = new AddDishRequest("abc2", "Marinara", "Pizza", 0.2, 4.99);
