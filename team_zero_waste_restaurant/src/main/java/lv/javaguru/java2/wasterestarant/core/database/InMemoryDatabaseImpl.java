@@ -51,6 +51,19 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
+    public boolean deleteProductByName(String name) {
+        boolean isProductDeleted = false;
+        Optional<Product> productToDeleteTool = products.stream()
+                .filter(product -> product.getName().equals(name))
+                .findFirst();
+        if (productToDeleteTool.isPresent()) {
+            Product productToDelete = productToDeleteTool.get();
+            isProductDeleted = products.remove(productToDelete);
+        }
+        return isProductDeleted;
+    }
+
+    @Override
     public boolean deleteDishByID(Long dishID) {
         return false;
     }
