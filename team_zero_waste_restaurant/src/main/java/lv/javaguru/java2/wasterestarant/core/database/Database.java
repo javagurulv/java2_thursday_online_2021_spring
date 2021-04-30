@@ -16,6 +16,8 @@ public interface Database {
 
     boolean deleteDishByName(String name);
 
+    boolean deleteProductByName(String name);
+
     boolean deleteDishByID(Long dishID);
 
     List<Ingredient> findIngredientByName(String name);

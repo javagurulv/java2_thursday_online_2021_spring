@@ -23,7 +23,7 @@ public class RemoveDishValidatorTest {
     }
 
     @Test
-    public void shouldRemoveProduct() {
+    public void shouldRemoveDish() {
         RemoveDishRequest request = new RemoveDishRequest("name");
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 0);

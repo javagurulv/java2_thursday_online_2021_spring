@@ -33,14 +33,12 @@ public class SearchIngredientValidatorTest {
 
     @Test
     public void shouldReturnErrorWhenOrderDirectionIsEmpty() {
-        Ordering ordering = new Ordering("Ingredient", null);
+        Ordering ordering = new Ordering("Q", null);
         SearchIngredientRequest request = new SearchIngredientRequest("Ingredient", ordering);
         List<CoreError> errors = validator.validate(request);
-        assertEquals(errors.size(), 2);
-        assertEquals(errors.get(0).getField(), "orderBy");
-        assertEquals(errors.get(0).getMessage(), "Must contain 'N' or 'Q' only");
-        assertEquals(errors.get(1).getField(), "orderDirection");
-        assertEquals(errors.get(1).getMessage(), "Must not be empty");
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "orderDirection");
+        assertEquals(errors.get(0).getMessage(), "Must not be empty");
     }
 
     @Test
@@ -64,19 +62,17 @@ public class SearchIngredientValidatorTest {
     }
 
     @Test
-    public void shouldReturnErrorWhenOrderDirectionContainNotValidValue() {
-        Ordering ordering = new Ordering("Ingredient", "notValidValue");
+    public void shouldReturnErrorWhenOrderDirectionContainsInvalidValue() {
+        Ordering ordering = new Ordering("Q", "notValidValue");
         SearchIngredientRequest request = new SearchIngredientRequest("Ingredient", ordering);
         List<CoreError> errors = validator.validate(request);
-        assertEquals(errors.size(), 2);
-        assertEquals(errors.get(0).getField(), "orderBy");
-        assertEquals(errors.get(0).getMessage(), "Must contain 'N' or 'Q' only");
-        assertEquals(errors.get(1).getField(), "orderDirection");
-        assertEquals(errors.get(1).getMessage(), "Must contain 'A' or 'D' only");
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "orderDirection");
+        assertEquals(errors.get(0).getMessage(), "Must contain 'A' or 'D' only");
     }
 
     @Test
-    public void shouldReturnErrorWhenPageNumberContainNotValidValue() {
+    public void shouldReturnErrorWhenPageNumberContainsInvalidValue() {
         Paging paging = new Paging(0, 1);
         SearchIngredientRequest request = new SearchIngredientRequest("Ingredient", paging);
         List<CoreError> errors = validator.validate(request);
@@ -86,7 +82,7 @@ public class SearchIngredientValidatorTest {
     }
 
     @Test
-    public void shouldReturnErrorWhenPageSizeContainNotValidValue() {
+    public void shouldReturnErrorWhenPageSizeContainsInvalidValue() {
         Paging paging = new Paging(1, 0);
         SearchIngredientRequest request = new SearchIngredientRequest("Ingredient", paging);
         List<CoreError> errors = validator.validate(request);
@@ -96,7 +92,7 @@ public class SearchIngredientValidatorTest {
     }
 
     @Test
-    public void shouldReturnErrorWhenPageNumberAreEmpty() {
+    public void shouldReturnErrorWhenPageNumberIsEmpty() {
         Paging paging = new Paging(null, 1);
         SearchIngredientRequest request = new SearchIngredientRequest("Ingredient", paging);
         List<CoreError> errors = validator.validate(request);

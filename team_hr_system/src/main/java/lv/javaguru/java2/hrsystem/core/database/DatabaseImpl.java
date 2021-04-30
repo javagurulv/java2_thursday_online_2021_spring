@@ -14,7 +14,7 @@ public class DatabaseImpl implements Database {
     private List<Employee> employeeList = new ArrayList<>();
     private EnumSet<EmployeeTitle> employeeTitles = EnumSet.allOf(EmployeeTitle.class);
     private static List<User> userList = new ArrayList<>();
-    private static final String filename = "team_hr_system/src/main/java/lv/javaguru/java2/hrsystem/domain/save_user/user.out";
+    private static final String filename = "user.out";
     private List<EmployeeSkill> employeeSkills = new ArrayList<>();
 
     static {
@@ -27,13 +27,13 @@ public class DatabaseImpl implements Database {
 
     @Override
     public void registerUser(User user) {
-            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
-                user.setId(nextIdUser);
-                nextIdUser++;
-                userList.add(user);
-                oos.writeObject(userList);
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
+            user.setId(nextIdUser);
+            nextIdUser++;
+            userList.add(user);
+            oos.writeObject(userList);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -49,7 +49,6 @@ public class DatabaseImpl implements Database {
         employee.setId(nextIdEmployee);
         nextIdEmployee++;
         employeeList.add(employee);
-        //  employeeTitles.add(employee.getTitle());
     }
 
     @Override

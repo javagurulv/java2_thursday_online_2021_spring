@@ -9,6 +9,7 @@ import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.SearchOffersResponse;
 import lv.javaguru.java2.realestate.core.services.validators.SearchOffersValidator;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,10 +25,13 @@ public class SearchOffersService {
 
     public SearchOffersResponse execute(SearchOffersRequest request) {
         List<CoreError> errors = validator.validate(request);
-        List<Offer> offers = database.searchOffers(request);
+        List<Offer> offers = new ArrayList<>();
 
-        offers = order(offers, request.getOrdering());
-        offers = paging(offers, request.getPaging());
+        if (errors.isEmpty()) {
+            offers = database.searchOffers(request);
+            offers = order(offers, request.getOrdering());
+            offers = paging(offers, request.getPaging());
+        }
 
         return new SearchOffersResponse(errors, offers);
     }
