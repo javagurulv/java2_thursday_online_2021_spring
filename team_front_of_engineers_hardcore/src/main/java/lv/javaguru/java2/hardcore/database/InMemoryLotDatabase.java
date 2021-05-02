@@ -2,6 +2,7 @@ package lv.javaguru.java2.hardcore.database;
 
 import lv.javaguru.java2.hardcore.domain.Lot;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -39,5 +40,19 @@ public class InMemoryLotDatabase implements LotDatabase {
     @Override
     public List<Lot> searchByName(String name) {
         return lots.stream().filter(lot -> lot.getName().toLowerCase(Locale.ROOT).startsWith(name.toLowerCase(Locale.ROOT))).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Lot> searchByPrice(BigDecimal price) {
+        return lots.stream().filter(lot -> lot.getStartPrice().compareTo(price) <= 0).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Lot> searchByNameAndPrice(String name, BigDecimal price) {
+        return lots.stream()
+                .filter(lot -> lot.getName().toLowerCase(Locale.ROOT).startsWith(name.toLowerCase(Locale.ROOT)))
+                .filter(lot -> lot.getStartPrice().compareTo(price) >= 0)
+                .collect(Collectors.toList());
+
     }
 }

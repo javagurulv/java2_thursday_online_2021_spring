@@ -6,15 +6,15 @@ import lv.javaguru.java2.hardcore.response.CoreResponse;
 
 import java.util.List;
 
-public class SearchLotByNameResponse extends CoreResponse {
+public class SearchLotByNameOrPriceResponse extends CoreResponse {
 
     private List<Lot> lots;
 
-    public SearchLotByNameResponse(List<Lot> lots) {
+    public SearchLotByNameOrPriceResponse(List<Lot> lots) {
         this.lots = lots;
     }
 
-    public SearchLotByNameResponse(List<CoreError> errors, List<Lot> lots) {
+    public SearchLotByNameOrPriceResponse(List<CoreError> errors, List<Lot> lots) {
         super(errors);
         this.lots = lots;
     }
