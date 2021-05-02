@@ -2,7 +2,8 @@ package lv.javaguru.java2.hardcore.services.lot;
 
 import lv.javaguru.java2.hardcore.database.LotDatabase;
 import lv.javaguru.java2.hardcore.domain.Lot;
-import lv.javaguru.java2.hardcore.requests.lot.Ordering;
+import lv.javaguru.java2.hardcore.requests.Ordering;
+import lv.javaguru.java2.hardcore.requests.Paging;
 import lv.javaguru.java2.hardcore.requests.lot.SearchLotByNameOrPriceRequest;
 import lv.javaguru.java2.hardcore.response.CoreError;
 import lv.javaguru.java2.hardcore.response.lot.SearchLotByNameOrPriceResponse;
@@ -27,8 +28,10 @@ public class SearchLotByNameOrPriceService {
         if (!errors.isEmpty()) {
             return new SearchLotByNameOrPriceResponse(errors, null);
         }
+
         List<Lot> lots = search(request);
         lots = order(lots, request.getOrdering());
+        lots = paging(lots,request.getPaging());
 
         return new SearchLotByNameOrPriceResponse(null, lots);
     }
@@ -48,6 +51,18 @@ public class SearchLotByNameOrPriceService {
         }
     }
 
+
+    private List<Lot> paging(List<Lot> lots, Paging paging) {
+        if (paging != null) {
+            int skip = (paging.getPageNumber() - 1) * paging.getPageSize();
+            return lots.stream()
+                    .skip(skip)
+                    .limit(paging.getPageSize())
+                    .collect(Collectors.toList());
+        } else {
+            return lots;
+        }
+    }
 
     private List<Lot> search(SearchLotByNameOrPriceRequest request) {
         List<Lot> lots = new ArrayList<>();

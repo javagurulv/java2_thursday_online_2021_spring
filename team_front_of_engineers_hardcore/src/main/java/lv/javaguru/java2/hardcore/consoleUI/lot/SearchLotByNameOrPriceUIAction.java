@@ -2,7 +2,8 @@ package lv.javaguru.java2.hardcore.consoleUI.lot;
 
 import lv.javaguru.java2.hardcore.consoleUI.UIAction;
 import lv.javaguru.java2.hardcore.domain.Lot;
-import lv.javaguru.java2.hardcore.requests.lot.Ordering;
+import lv.javaguru.java2.hardcore.requests.Ordering;
+import lv.javaguru.java2.hardcore.requests.Paging;
 import lv.javaguru.java2.hardcore.requests.lot.SearchLotByNameOrPriceRequest;
 import lv.javaguru.java2.hardcore.response.lot.SearchLotByNameOrPriceResponse;
 import lv.javaguru.java2.hardcore.services.lot.SearchLotByNameOrPriceService;
@@ -30,8 +31,13 @@ public class SearchLotByNameOrPriceUIAction implements UIAction {
         String orderBy = scanner.nextLine();
         System.out.println("Enter ASC or DESC");
         String orderDirection = scanner.nextLine();
+        System.out.println("Enter page number");
+        Integer pageNumber = scanner.nextInt();
+        System.out.println("Enter page size");
+        Integer pageSize = scanner.nextInt();
+        Paging paging = new Paging(pageNumber,pageSize);
         Ordering ordering = new Ordering(orderBy, orderDirection);
-        SearchLotByNameOrPriceRequest request = new SearchLotByNameOrPriceRequest(nameOfLot, price,ordering);
+        SearchLotByNameOrPriceRequest request = new SearchLotByNameOrPriceRequest(nameOfLot, price,ordering,paging);
         SearchLotByNameOrPriceResponse response = searchLotByNameOrPriceService.execute(request);
         if (!response.getLots().isEmpty()) {
             System.out.println("Search result:");

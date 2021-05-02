@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hardcore.requests.lot;
+package lv.javaguru.java2.hardcore.requests;
 
 public class Ordering {
 

@@ -1,5 +1,8 @@
 package lv.javaguru.java2.hardcore.requests.lot;
 
+import lv.javaguru.java2.hardcore.requests.Ordering;
+import lv.javaguru.java2.hardcore.requests.Paging;
+
 import java.math.BigDecimal;
 
 public class SearchLotByNameOrPriceRequest {
@@ -9,6 +12,8 @@ public class SearchLotByNameOrPriceRequest {
     private BigDecimal price;
 
     private Ordering ordering;
+
+    private Paging paging;
 
     public SearchLotByNameOrPriceRequest(String name, BigDecimal price) {
         this.name = name;
@@ -21,6 +26,13 @@ public class SearchLotByNameOrPriceRequest {
         this.ordering = ordering;
     }
 
+    public SearchLotByNameOrPriceRequest(String name, BigDecimal price, Ordering ordering, Paging paging) {
+        this.name = name;
+        this.price = price;
+        this.ordering = ordering;
+        this.paging = paging;
+    }
+
     public String getName() {
         return name;
     }
@@ -31,6 +43,10 @@ public class SearchLotByNameOrPriceRequest {
 
     public Ordering getOrdering() {
         return ordering;
+    }
+
+    public Paging getPaging() {
+        return paging;
     }
 
     public boolean isNameProvided() {
