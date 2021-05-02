@@ -2,6 +2,7 @@ package lv.javaguru.java2.hardcore.consoleUI.lot;
 
 import lv.javaguru.java2.hardcore.consoleUI.UIAction;
 import lv.javaguru.java2.hardcore.domain.Lot;
+import lv.javaguru.java2.hardcore.requests.lot.Ordering;
 import lv.javaguru.java2.hardcore.requests.lot.SearchLotByNameOrPriceRequest;
 import lv.javaguru.java2.hardcore.response.lot.SearchLotByNameOrPriceResponse;
 import lv.javaguru.java2.hardcore.services.lot.SearchLotByNameOrPriceService;
@@ -11,21 +12,27 @@ import java.util.Scanner;
 
 public class SearchLotByNameOrPriceUIAction implements UIAction {
 
-    private SearchLotByNameOrPriceService searchLotService;
+    private SearchLotByNameOrPriceService searchLotByNameOrPriceService;
 
-    public SearchLotByNameOrPriceUIAction(SearchLotByNameOrPriceService searchLotService) {
-        this.searchLotService = searchLotService;
+    public SearchLotByNameOrPriceUIAction(SearchLotByNameOrPriceService searchLotByNameOrPriceService) {
+        this.searchLotByNameOrPriceService = searchLotByNameOrPriceService;
     }
 
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter lot name: ");
-        String name = scanner.nextLine();
+        String nameOfLot = scanner.nextLine();
         System.out.println("Enter lot price");
         BigDecimal price = scanner.nextBigDecimal();
-        SearchLotByNameOrPriceRequest request = new SearchLotByNameOrPriceRequest(name, price);
-        SearchLotByNameOrPriceResponse response = searchLotService.execute(request);
+        scanner.nextLine();
+        System.out.println("Enter sortBY:(name/price)");
+        String orderBy = scanner.nextLine();
+        System.out.println("Enter ASC or DESC");
+        String orderDirection = scanner.nextLine();
+        Ordering ordering = new Ordering(orderBy, orderDirection);
+        SearchLotByNameOrPriceRequest request = new SearchLotByNameOrPriceRequest(nameOfLot, price,ordering);
+        SearchLotByNameOrPriceResponse response = searchLotByNameOrPriceService.execute(request);
         if (!response.getLots().isEmpty()) {
             System.out.println("Search result:");
             response.getLots().forEach(System.out::println);

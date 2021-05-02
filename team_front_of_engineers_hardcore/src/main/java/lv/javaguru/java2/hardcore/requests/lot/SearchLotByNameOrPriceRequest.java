@@ -8,9 +8,17 @@ public class SearchLotByNameOrPriceRequest {
 
     private BigDecimal price;
 
+    private Ordering ordering;
+
     public SearchLotByNameOrPriceRequest(String name, BigDecimal price) {
         this.name = name;
         this.price = price;
+    }
+
+    public SearchLotByNameOrPriceRequest(String name, BigDecimal price, Ordering ordering) {
+        this.name = name;
+        this.price = price;
+        this.ordering = ordering;
     }
 
     public String getName() {
@@ -19,6 +27,10 @@ public class SearchLotByNameOrPriceRequest {
 
     public BigDecimal getPrice() {
         return price;
+    }
+
+    public Ordering getOrdering() {
+        return ordering;
     }
 
     public boolean isNameProvided() {

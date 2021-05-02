@@ -10,10 +10,6 @@ public class SearchLotByNameOrPriceResponse extends CoreResponse {
 
     private List<Lot> lots;
 
-    public SearchLotByNameOrPriceResponse(List<Lot> lots) {
-        this.lots = lots;
-    }
-
     public SearchLotByNameOrPriceResponse(List<CoreError> errors, List<Lot> lots) {
         super(errors);
         this.lots = lots;
