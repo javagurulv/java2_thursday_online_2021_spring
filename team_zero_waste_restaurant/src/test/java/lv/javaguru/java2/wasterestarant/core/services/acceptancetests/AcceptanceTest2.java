@@ -1,19 +1,19 @@
 package lv.javaguru.java2.wasterestarant.core.services.acceptancetests;
 
-import lv.javaguru.java2.wasterestarant.dependency_injection.ApplicationContext;
-import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
-import lv.javaguru.java2.wasterestarant.core.requests.Paging;
-import lv.javaguru.java2.wasterestarant.core.requests.product.AddProductRequest;
-import lv.javaguru.java2.wasterestarant.core.requests.product.SearchProductRequest;
-import lv.javaguru.java2.wasterestarant.core.responses.product.SearchProductResponse;
-import lv.javaguru.java2.wasterestarant.core.services.products.AddProductService;
-import lv.javaguru.java2.wasterestarant.core.services.products.SearchProductService;
-import org.junit.Test;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import static org.junit.Assert.assertEquals;
+//import lv.javaguru.java2.wasterestarant.dependency_injection.ApplicationContext;
+//import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
+//import lv.javaguru.java2.wasterestarant.core.requests.Paging;
+//import lv.javaguru.java2.wasterestarant.core.requests.product.AddProductRequest;
+//import lv.javaguru.java2.wasterestarant.core.requests.product.SearchProductRequest;
+//import lv.javaguru.java2.wasterestarant.core.responses.product.SearchProductResponse;
+//import lv.javaguru.java2.wasterestarant.core.services.products.AddProductService;
+//import lv.javaguru.java2.wasterestarant.core.services.products.SearchProductService;
+//import org.junit.Test;
+//
+//import java.text.ParseException;
+//import java.text.SimpleDateFormat;
+//
+//import static org.junit.Assert.assertEquals;
 
 //AndrejsB
 public class AcceptanceTest2 {
