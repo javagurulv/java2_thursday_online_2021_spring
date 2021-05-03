@@ -6,17 +6,17 @@ import lv.javaguru.java2.wasterestarant.core.requests.product.RemoveProductReque
 import lv.javaguru.java2.wasterestarant.core.responses.dish.RemoveDishResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.product.RemoveProductResponse;
 import lv.javaguru.java2.wasterestarant.core.services.products.RemoveProductService;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 
 import java.util.Scanner;
 
 //AndrejsB
+@DIComponent
 public class RemoveProductUiAction implements UIAction {
 
+    @DIDependency
     private RemoveProductService service;
-
-    public RemoveProductUiAction(RemoveProductService service) {
-        this.service = service;
-    }
 
     @Override
     public void execute() {

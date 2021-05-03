@@ -2,11 +2,13 @@ package lv.javaguru.java2.realestate.core.services.validators;
 
 import lv.javaguru.java2.realestate.core.requests.DeleteUserRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
+import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@DIComponent
 public class DeleteUserValidator {
 
     public List<CoreError> validate(DeleteUserRequest request) {

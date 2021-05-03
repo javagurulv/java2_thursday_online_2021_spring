@@ -4,12 +4,14 @@ import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.SearchDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 //Elena
+@DIComponent
 public class SearchDishesRequestValidator {
     public List<CoreError> validate(SearchDishesRequest request) {
         List<CoreError> errors = new ArrayList<>();

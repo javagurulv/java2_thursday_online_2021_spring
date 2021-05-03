@@ -4,12 +4,14 @@ import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.product.*;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 //AndrejsB
+@DIComponent
 public class SearchProductServiceValidator {
 
     public List<CoreError> validate(SearchProductRequest request) {
@@ -82,6 +84,7 @@ public class SearchProductServiceValidator {
                 ? Optional.of(new CoreError("Page size", "Must be greater then 0!"))
                 : Optional.empty();
     }
+
     private Optional<CoreError> validateMandatoryPageNumber(Paging paging) {
         return (paging.getPageNumber() == null
                 && paging.getPageSize() != 0)

@@ -6,16 +6,15 @@ import lv.javaguru.java2.wasterestarant.core.requests.dish.AddDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.AddDishResponse;
 
 import lv.javaguru.java2.wasterestarant.core.services.dish.AddDishService;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 
 import java.util.Scanner;
-
+@DIComponent
 public class AddDishUIAction implements UIAction {
 
+    @DIDependency
     private AddDishService addDishService;
-
-    public AddDishUIAction(AddDishService addDishService) {
-        this.addDishService = addDishService;
-    }
 
     @Override
     public void execute() {

@@ -3,15 +3,15 @@ package lv.javaguru.java2.realestate.console_ui;
 import lv.javaguru.java2.realestate.core.requests.LogInRequest;
 import lv.javaguru.java2.realestate.core.response.LogInResponse;
 import lv.javaguru.java2.realestate.core.services.LogInService;
+import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
+import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
 
 import java.util.Scanner;
 
+@DIComponent
 public class LogInUIAction implements ConsoleUI {
-    LogInService logInService;
-
-    public LogInUIAction(LogInService logInService) {
-        this.logInService = logInService;
-    }
+    @DIDependency
+    private LogInService logInService;
 
     @Override
     public void execute() {

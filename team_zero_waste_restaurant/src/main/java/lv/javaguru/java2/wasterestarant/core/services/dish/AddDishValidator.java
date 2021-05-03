@@ -2,11 +2,14 @@ package lv.javaguru.java2.wasterestarant.core.services.dish;
 
 import lv.javaguru.java2.wasterestarant.core.requests.dish.AddDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
 
 import java.util.*;
 
+@DIComponent
 public class AddDishValidator {
     List<CoreError> errors = new ArrayList<>();
+
     public List<CoreError> validate(AddDishRequest request) {
         validateName(request).ifPresent(errors::add);
         validateDescription(request).ifPresent(errors::add);
@@ -18,8 +21,8 @@ public class AddDishValidator {
 
     private Optional<CoreError> validateName(AddDishRequest request) {
         return (request.getName() == null || request.getName().isEmpty())
-            ? Optional.of(new CoreError("Name", "Must not be empty"))
-            : Optional.empty();
+                ? Optional.of(new CoreError("Name", "Must not be empty"))
+                : Optional.empty();
     }
 
     private Optional<CoreError> validateDescription(AddDishRequest request) {
@@ -38,9 +41,9 @@ public class AddDishValidator {
 
         Double weight = request.getWeight();
 
-            return(weight == null)
-                    ? Optional.of(new CoreError("Weight", "Must be a valid double value"))
-                    : Optional.empty();
+        return (weight == null)
+                ? Optional.of(new CoreError("Weight", "Must be a valid double value"))
+                : Optional.empty();
 
     }
 
@@ -48,7 +51,7 @@ public class AddDishValidator {
 
         Double price = request.getPrice();
 
-        return(price == null)
+        return (price == null)
                 ? Optional.of(new CoreError("Price", "Must be a valid double value"))
                 : Optional.empty();
 

@@ -8,20 +8,20 @@ import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.SearchOffersResponse;
 import lv.javaguru.java2.realestate.core.services.validators.SearchOffersValidator;
+import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
+import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@DIComponent
 public class SearchOffersService {
-    private final Database database;
-    private final SearchOffersValidator validator;
-
-    public SearchOffersService(Database database, SearchOffersValidator validator) {
-        this.database = database;
-        this.validator = validator;
-    }
+    @DIDependency
+    private Database database;
+    @DIDependency
+    private SearchOffersValidator validator;
 
     public SearchOffersResponse execute(SearchOffersRequest request) {
         List<CoreError> errors = validator.validate(request);

@@ -6,6 +6,8 @@ import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.SearchDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.SearchDishesResponse;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 import lv.javaguru.java2.wasterestarant.domain.Dish;
 
 import java.util.ArrayList;
@@ -14,14 +16,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //Elena
+@DIComponent
 public class SearchDishesService {
-    private Database database;
+    @DIDependency private Database database;
+    @DIDependency
     private SearchDishesRequestValidator validator;
-
-    public SearchDishesService(Database database, SearchDishesRequestValidator validator) {
-        this.database = database;
-        this.validator = validator;
-    }
 
     public SearchDishesResponse execute(SearchDishesRequest request) {
         List<CoreError> errors = validator.validate(request);

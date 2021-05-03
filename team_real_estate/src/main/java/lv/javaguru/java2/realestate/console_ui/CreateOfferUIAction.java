@@ -3,16 +3,16 @@ package lv.javaguru.java2.realestate.console_ui;
 import lv.javaguru.java2.realestate.core.requests.CreateOfferRequest;
 import lv.javaguru.java2.realestate.core.response.CreateOfferResponse;
 import lv.javaguru.java2.realestate.core.services.CreateOfferService;
+import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
+import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
 
 import java.util.Scanner;
 
+@DIComponent
 public class CreateOfferUIAction implements ConsoleUI {
 
-    private final CreateOfferService createOfferService;
-
-    public CreateOfferUIAction(CreateOfferService createOfferService) {
-        this.createOfferService = createOfferService;
-    }
+    @DIDependency
+    private CreateOfferService createOfferService;
 
 
     @Override

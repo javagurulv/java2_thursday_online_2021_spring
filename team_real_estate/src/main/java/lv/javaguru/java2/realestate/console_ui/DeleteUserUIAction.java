@@ -3,16 +3,16 @@ package lv.javaguru.java2.realestate.console_ui;
 import lv.javaguru.java2.realestate.core.requests.DeleteUserRequest;
 import lv.javaguru.java2.realestate.core.response.DeleteUserResponse;
 import lv.javaguru.java2.realestate.core.services.DeleteUserService;
+import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
+import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
 
 import java.util.Scanner;
 
+@DIComponent
 public class DeleteUserUIAction implements ConsoleUI {
 
-    DeleteUserService deleteUserService;
-
-    public DeleteUserUIAction(DeleteUserService deleteUserService) {
-        this.deleteUserService = deleteUserService;
-    }
+    @DIDependency
+    private DeleteUserService deleteUserService;
 
     @Override
     public void execute() {
