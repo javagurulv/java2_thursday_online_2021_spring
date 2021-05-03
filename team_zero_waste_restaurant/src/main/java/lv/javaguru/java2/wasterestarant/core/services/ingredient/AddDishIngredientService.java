@@ -4,18 +4,18 @@ import lv.javaguru.java2.wasterestarant.core.database.Database;
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.AddDishIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.AddDishIngredientResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 import lv.javaguru.java2.wasterestarant.domain.Ingredient;
 
 import java.util.List;
 
+@DIComponent
 public class AddDishIngredientService {
+    @DIDependency
     private Database database;
+    @DIDependency
     private AddDishIngredientValidator validator;
-
-    public AddDishIngredientService(Database database, AddDishIngredientValidator validator ) {
-        this.database = database;
-        this.validator = validator;
-    }
 
     public AddDishIngredientResponse execute(AddDishIngredientRequest request) {
         List<CoreError> errors = validator.validate(request);

@@ -4,18 +4,17 @@ import lv.javaguru.java2.wasterestarant.core.database.Database;
 import lv.javaguru.java2.wasterestarant.core.requests.product.AddProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.product.AddProductResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 import lv.javaguru.java2.wasterestarant.domain.Product;
 
 import java.util.List;
 
+@DIComponent
 public class AddProductService {
+    @DIDependency
     private Database database;
-    private AddProductValidator validator;
-
-    public AddProductService(Database database, AddProductValidator validator) {
-        this.database = database;
-        this.validator = validator;
-    }
+    @DIDependency private AddProductValidator validator;
 
     public AddProductResponse execute(AddProductRequest request) {
         List<CoreError> errors = validator.validate(request);

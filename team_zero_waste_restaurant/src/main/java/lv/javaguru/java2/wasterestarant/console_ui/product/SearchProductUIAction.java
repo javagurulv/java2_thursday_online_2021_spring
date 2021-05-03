@@ -6,18 +6,17 @@ import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.product.SearchProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.product.SearchProductResponse;
 import lv.javaguru.java2.wasterestarant.core.services.products.SearchProductService;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 import lv.javaguru.java2.wasterestarant.domain.Product;
 
 import java.util.List;
 import java.util.Scanner;
-
+@DIComponent
 public class SearchProductUIAction implements UIAction {
 
+    @DIDependency
     private SearchProductService searchProductService;
-
-    public SearchProductUIAction(SearchProductService searchProductService) {
-        this.searchProductService = searchProductService;
-    }
 
     @Override
     public void execute() {

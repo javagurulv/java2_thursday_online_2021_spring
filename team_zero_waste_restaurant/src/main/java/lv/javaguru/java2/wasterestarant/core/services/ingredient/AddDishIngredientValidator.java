@@ -2,23 +2,27 @@ package lv.javaguru.java2.wasterestarant.core.services.ingredient;
 
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.AddDishIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@DIComponent
 public class AddDishIngredientValidator {
     List<CoreError> errors = new ArrayList<>();
+
     public List<CoreError> validate(AddDishIngredientRequest request) {
         validateIngredient(request).ifPresent(errors::add);
         validateQuantity(request).ifPresent(errors::add);
         return errors;
     }
-     private Optional<CoreError> validateIngredient(AddDishIngredientRequest request) {
+
+    private Optional<CoreError> validateIngredient(AddDishIngredientRequest request) {
         return (request.getIngredient() == null || request.getIngredient().isEmpty())
                 ? Optional.of(new CoreError("Ingredient", "Must be a valid Product"))
                 : Optional.empty();
-     }
+    }
 
     private Optional<CoreError> validateQuantity(AddDishIngredientRequest request) {
         return (request.getQuantity() == null)

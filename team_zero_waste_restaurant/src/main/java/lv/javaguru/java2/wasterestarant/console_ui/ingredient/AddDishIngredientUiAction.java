@@ -4,16 +4,15 @@ import lv.javaguru.java2.wasterestarant.console_ui.UIAction;
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.AddDishIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.AddDishIngredientResponse;
 import lv.javaguru.java2.wasterestarant.core.services.ingredient.AddDishIngredientService;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 
 import java.util.Scanner;
-
+@DIComponent
 public class AddDishIngredientUiAction implements UIAction {
 
+    @DIDependency
     private AddDishIngredientService addDishIngredientService;
-
-    public AddDishIngredientUiAction(AddDishIngredientService addDishIngredientService) {
-        this.addDishIngredientService = addDishIngredientService;
-    }
 
     @Override
     public void execute() {

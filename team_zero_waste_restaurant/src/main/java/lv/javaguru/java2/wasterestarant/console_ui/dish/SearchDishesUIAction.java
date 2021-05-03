@@ -6,16 +6,16 @@ import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.SearchDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.SearchDishesResponse;
 import lv.javaguru.java2.wasterestarant.core.services.dish.SearchDishesService;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 import lv.javaguru.java2.wasterestarant.domain.Dish;
 
 import java.util.Scanner;
 //Elena
+@DIComponent
 public class SearchDishesUIAction implements UIAction {
+    @DIDependency
     private SearchDishesService searchDishesService;
-
-    public SearchDishesUIAction(SearchDishesService searchDishesService) {
-        this.searchDishesService = searchDishesService;
-    }
 
     @Override
     public void execute() {

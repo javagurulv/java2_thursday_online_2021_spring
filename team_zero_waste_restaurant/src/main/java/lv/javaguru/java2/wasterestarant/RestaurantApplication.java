@@ -16,6 +16,7 @@ import lv.javaguru.java2.wasterestarant.console_ui.product.GetAllProductsUIActio
 import lv.javaguru.java2.wasterestarant.console_ui.product.SearchProductUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.wishlist.AddDishToWishlistUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.wishlist.GetWishListUIAction;
+import lv.javaguru.java2.wasterestarant.dependency_injection.ApplicationContext;
 
 import java.util.Scanner;
 

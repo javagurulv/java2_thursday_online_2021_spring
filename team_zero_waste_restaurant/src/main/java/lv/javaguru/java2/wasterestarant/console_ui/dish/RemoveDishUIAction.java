@@ -4,18 +4,17 @@ import lv.javaguru.java2.wasterestarant.console_ui.UIAction;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.RemoveDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.RemoveDishResponse;
 import lv.javaguru.java2.wasterestarant.core.services.dish.RemoveDishService;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 
 import java.util.Scanner;
 
 // AndrejsB
-
+@DIComponent
 public class RemoveDishUIAction implements UIAction {
 
+    @DIDependency
     private RemoveDishService removeDishService;
-
-    public RemoveDishUIAction(RemoveDishService removeDishService) {
-        this.removeDishService = removeDishService;
-    }
 
     @Override
     public void execute() {

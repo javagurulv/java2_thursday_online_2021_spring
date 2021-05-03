@@ -6,6 +6,8 @@ import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.product.SearchProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.product.SearchProductResponse;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 import lv.javaguru.java2.wasterestarant.domain.Product;
 
 import java.util.ArrayList;
@@ -13,15 +15,13 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@DIComponent
 public class SearchProductService {
 
+    @DIDependency
     private Database database;
+    @DIDependency
     private SearchProductServiceValidator validator;
-
-    public SearchProductService(Database database, SearchProductServiceValidator validator) {
-        this.database = database;
-        this.validator = validator;
-    }
 
     public SearchProductResponse execute(SearchProductRequest request) {
         List<CoreError> errors = validator.validate(request);
@@ -57,8 +57,8 @@ public class SearchProductService {
     }
 
     private List<Product> paging(List<Product> products, Paging paging) {
-        if(paging != null) {
-            int skip = (paging.getPageNumber() -1) * paging.getPageSize();
+        if (paging != null) {
+            int skip = (paging.getPageNumber() - 1) * paging.getPageSize();
             return products.stream()
                     .skip(skip)
                     .limit(paging.getPageSize())
