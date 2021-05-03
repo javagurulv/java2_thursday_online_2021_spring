@@ -2,8 +2,11 @@ package lv.javaguru.java2.hrsystem.core.services.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.RegisterUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
+
 import java.util.*;
 
+@DIComponent
 public class RegisterUserValidator {
 
     public List<CoreError> validate (RegisterUserRequest request){

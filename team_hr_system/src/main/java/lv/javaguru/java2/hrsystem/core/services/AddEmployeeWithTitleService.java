@@ -1,6 +1,8 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
 import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeWithTitleValidator;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
 import lv.javaguru.java2.hrsystem.core.database.Database;
@@ -10,13 +12,16 @@ import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 
 import java.util.List;
 
+@DIComponent
 public class AddEmployeeWithTitleService {
-    private final Database database;
-    private final AddEmployeeWithTitleValidator validator = new AddEmployeeWithTitleValidator();
+    @DIDependency
+    private Database database;
+    @DIDependency
+    private AddEmployeeWithTitleValidator validator;
 
-    public AddEmployeeWithTitleService(Database database) {
+  /*  public AddEmployeeWithTitleService(Database database) {
         this.database = database;
-    }
+    }*/
 
     public AddEmployeeWithTitleResponse execute(AddEmployeeWithTitleRequest request) {
         List<CoreError> errors = validator.validate(request);

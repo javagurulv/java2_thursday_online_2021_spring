@@ -3,15 +3,19 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeWithTitleRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddEmployeeWithTitleResponse;
 import lv.javaguru.java2.hrsystem.core.services.AddEmployeeWithTitleService;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 
 import java.util.Scanner;
 
+@DIComponent
 public class AddEmployeeWithTitleUIAction implements UIAction{
+    @DIDependency
     private AddEmployeeWithTitleService service;
 
-    public AddEmployeeWithTitleUIAction(AddEmployeeWithTitleService service) {
+   /* public AddEmployeeWithTitleUIAction(AddEmployeeWithTitleService service) {
         this.service = service;
-    }
+    }*/
 
     @Override
     public void execute() {

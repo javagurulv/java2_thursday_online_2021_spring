@@ -3,13 +3,17 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import lv.javaguru.java2.hrsystem.core.requests.GetAllEmployeeSkillsRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllEmployeeSkillsResponse;
 import lv.javaguru.java2.hrsystem.core.services.GetAllEmployeeSkillsService;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 
+@DIComponent
 public class GetAllEmployeeSkillUIAction implements UIAction {
+    @DIDependency
     private GetAllEmployeeSkillsService service;
 
-    public GetAllEmployeeSkillUIAction(GetAllEmployeeSkillsService service) {
+   /* public GetAllEmployeeSkillUIAction(GetAllEmployeeSkillsService service) {
         this.service = service;
-    }
+    }*/
 
     @Override
     public void execute() {

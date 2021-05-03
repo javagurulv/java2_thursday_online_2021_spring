@@ -4,6 +4,8 @@ import lv.javaguru.java2.hrsystem.core.requests.Ordering;
 import lv.javaguru.java2.hrsystem.core.requests.Paging;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesRequestValidator;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
@@ -14,14 +16,17 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@DIComponent
 public class SearchEmployeesService {
-    private final Database database;
-    private final SearchEmployeesRequestValidator validator;
+    @DIDependency
+    private Database database;
+    @DIDependency
+    private SearchEmployeesRequestValidator validator;
 
-    public SearchEmployeesService(Database database, SearchEmployeesRequestValidator validator) {
+  /*  public SearchEmployeesService(Database database, SearchEmployeesRequestValidator validator) {
         this.database = database;
         this.validator = validator;
-    }
+    }*/
 
     public SearchEmployeesResponse execute(SearchEmployeesRequest request) {
 

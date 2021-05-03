@@ -3,23 +3,27 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import lv.javaguru.java2.hrsystem.core.requests.RegisterUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.RegisterUserResponse;
 import lv.javaguru.java2.hrsystem.core.services.RegisterUserService;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 import lv.javaguru.java2.hrsystem.domain.UserRole;
 
 import java.util.*;
 
+@DIComponent
 public class RegisterUserUIAction implements UIAction {
 
+    @DIDependency
     private RegisterUserService registration;
 
     private Map<Integer, UserRole> userRoleMap = new HashMap<>() {{
         put(1, UserRole.ADMIN);
         put(2, UserRole.HR_MANAGE);}};
 
-    public RegisterUserUIAction(RegisterUserService addAdminService) {
+   /* public RegisterUserUIAction(RegisterUserService addAdminService) {
 
         this.registration = addAdminService;
 
-    }
+    }*/
 
     @Override
     public void execute() {

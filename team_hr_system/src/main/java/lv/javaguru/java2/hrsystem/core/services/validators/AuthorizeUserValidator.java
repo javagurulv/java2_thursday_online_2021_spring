@@ -2,8 +2,11 @@ package lv.javaguru.java2.hrsystem.core.services.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
+
 import java.util.*;
 
+@DIComponent
 public class AuthorizeUserValidator {
     public List<CoreError> validate (AuthorizeUserRequest request) {
         List<CoreError> errors = new ArrayList<>();

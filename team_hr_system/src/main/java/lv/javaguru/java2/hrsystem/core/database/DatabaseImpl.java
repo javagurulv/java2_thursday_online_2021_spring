@@ -1,5 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.database;
 
+import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
 import lv.javaguru.java2.hrsystem.domain.*;
 
 import java.io.*;
@@ -7,6 +8,7 @@ import java.util.*;
 
 import static java.util.stream.Collectors.*;
 
+@DIComponent
 public class DatabaseImpl implements Database {
 
     private Long nextIdEmployee = 1L;

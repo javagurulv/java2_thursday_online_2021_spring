@@ -3,15 +3,19 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesBySkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesBySkillResponse;
 import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesBySkillService;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 
 import java.util.Scanner;
 
+@DIComponent
 public class SearchEmployeesBySkillUIAction implements UIAction {
+    @DIDependency
     private SearchEmployeesBySkillService service;
 
-    public SearchEmployeesBySkillUIAction(SearchEmployeesBySkillService service) {
+   /* public SearchEmployeesBySkillUIAction(SearchEmployeesBySkillService service) {
         this.service = service;
-    }
+    }*/
 
     @Override
     public void execute() {
