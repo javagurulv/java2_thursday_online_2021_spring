@@ -1,16 +1,16 @@
 package lv.javaguru.java2.wasterestarant.core.services.acceptancetests;
 
-import lv.javaguru.java2.wasterestarant.dependency_injection.ApplicationContext;
-import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
-import lv.javaguru.java2.wasterestarant.core.requests.Paging;
-import lv.javaguru.java2.wasterestarant.core.requests.dish.AddDishRequest;
-import lv.javaguru.java2.wasterestarant.core.requests.dish.SearchDishesRequest;
-import lv.javaguru.java2.wasterestarant.core.responses.dish.SearchDishesResponse;
-import lv.javaguru.java2.wasterestarant.core.services.dish.AddDishService;
-import lv.javaguru.java2.wasterestarant.core.services.dish.SearchDishesService;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
+//import lv.javaguru.java2.wasterestarant.dependency_injection.ApplicationContext;
+//import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
+//import lv.javaguru.java2.wasterestarant.core.requests.Paging;
+//import lv.javaguru.java2.wasterestarant.core.requests.dish.AddDishRequest;
+//import lv.javaguru.java2.wasterestarant.core.requests.dish.SearchDishesRequest;
+//import lv.javaguru.java2.wasterestarant.core.responses.dish.SearchDishesResponse;
+//import lv.javaguru.java2.wasterestarant.core.services.dish.AddDishService;
+//import lv.javaguru.java2.wasterestarant.core.services.dish.SearchDishesService;
+//import org.junit.Test;
+//
+//import static org.junit.Assert.assertEquals;
 
 //Elena
 public class AcceptanceTest1 {
