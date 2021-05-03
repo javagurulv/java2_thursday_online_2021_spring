@@ -1,6 +1,7 @@
 package lv.javaguru.java2.realestate.console_ui;
 
-import lv.javaguru.java2.realestate.ApplicationContext;
+import lv.javaguru.java2.realestate.dependency_injection.ApplicationContext;
+import lv.javaguru.java2.realestate.dependency_injection.DIApplicationContextBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,19 +10,20 @@ import java.util.Scanner;
 public class ConsoleApp {
     private final Map<Integer, ConsoleUI> menuNumberToActionMap;
 
-    private final static ApplicationContext beans = new ApplicationContext();
+    private static ApplicationContext applicationContext =
+            new DIApplicationContextBuilder().build("lv.javaguru.java2.realestate");
 
     public ConsoleApp() {
 
         menuNumberToActionMap = new HashMap();
-        menuNumberToActionMap.put(0, beans.getBean(ExitUIAction.class));
-        menuNumberToActionMap.put(1, beans.getBean(CreateUserUIAction.class));
-        menuNumberToActionMap.put(2, beans.getBean(LogInUIAction.class));
-        menuNumberToActionMap.put(3, beans.getBean(CreateOfferUIAction.class));
-        menuNumberToActionMap.put(4, beans.getBean(GetAllOffersUIAction.class));
-        menuNumberToActionMap.put(5, beans.getBean(DeleteOfferUIAction.class));
-        menuNumberToActionMap.put(6, beans.getBean(DeleteUserUIAction.class));
-        menuNumberToActionMap.put(7, beans.getBean(SearchOffersUIAction.class));
+        menuNumberToActionMap.put(0, applicationContext.getBean(ExitUIAction.class));
+        menuNumberToActionMap.put(1, applicationContext.getBean(CreateUserUIAction.class));
+        menuNumberToActionMap.put(2, applicationContext.getBean(LogInUIAction.class));
+        menuNumberToActionMap.put(3, applicationContext.getBean(CreateOfferUIAction.class));
+        menuNumberToActionMap.put(4, applicationContext.getBean(GetAllOffersUIAction.class));
+        menuNumberToActionMap.put(5, applicationContext.getBean(DeleteOfferUIAction.class));
+        menuNumberToActionMap.put(6, applicationContext.getBean(DeleteUserUIAction.class));
+        menuNumberToActionMap.put(7, applicationContext.getBean(SearchOffersUIAction.class));
     }
 
     public void run() {

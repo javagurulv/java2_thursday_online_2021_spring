@@ -3,15 +3,15 @@ package lv.javaguru.java2.realestate.console_ui;
 import lv.javaguru.java2.realestate.core.requests.DeleteOfferRequest;
 import lv.javaguru.java2.realestate.core.response.DeleteOfferResponse;
 import lv.javaguru.java2.realestate.core.services.DeleteOfferService;
+import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
+import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
 
 import java.util.Scanner;
 
+@DIComponent
 public class DeleteOfferUIAction implements ConsoleUI {
-    DeleteOfferService deleteOfferService;
-
-    public DeleteOfferUIAction(DeleteOfferService deleteOfferService) {
-        this.deleteOfferService = deleteOfferService;
-    }
+    @DIDependency
+    private DeleteOfferService deleteOfferService;
 
     @Override
     public void execute() {

@@ -5,16 +5,15 @@ import lv.javaguru.java2.realestate.core.requests.Paging;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
 import lv.javaguru.java2.realestate.core.response.SearchOffersResponse;
 import lv.javaguru.java2.realestate.core.services.SearchOffersService;
+import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
+import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
 
 import java.util.Scanner;
 
+@DIComponent
 public class SearchOffersUIAction implements ConsoleUI {
-
-    SearchOffersService searchOffersService;
-
-    public SearchOffersUIAction(SearchOffersService searchOffersService) {
-        this.searchOffersService = searchOffersService;
-    }
+    @DIDependency
+    private SearchOffersService searchOffersService;
 
     @Override
     public void execute() {
