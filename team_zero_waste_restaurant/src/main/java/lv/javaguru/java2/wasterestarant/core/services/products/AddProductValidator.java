@@ -2,14 +2,17 @@ package lv.javaguru.java2.wasterestarant.core.services.products;
 
 import lv.javaguru.java2.wasterestarant.core.requests.product.AddProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@DIComponent
 public class AddProductValidator {
 
     List<CoreError> errors = new ArrayList<>();
+
     public List<CoreError> validate(AddProductRequest request) {
         validateName(request).ifPresent(errors::add);
         validateQuantity(request).ifPresent(errors::add);

@@ -6,6 +6,8 @@ import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.SearchIngredientResponse;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 import lv.javaguru.java2.wasterestarant.domain.Ingredient;
 import lv.javaguru.java2.wasterestarant.domain.Product;
 
@@ -13,16 +15,12 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@DIComponent
 public class SearchIngredientService {
 
-    private Database database;
+    @DIDependency private Database database;
+    @DIDependency
     private SearchIngredientValidator validator;
-
-    public SearchIngredientService(Database database, SearchIngredientValidator validator) {
-        this.database = database;
-        this.validator = validator;
-    }
 
     public SearchIngredientResponse execute(SearchIngredientRequest request) {
         List<CoreError> errors = validator.validate(request);

@@ -4,11 +4,13 @@ import lv.javaguru.java2.realestate.core.requests.Ordering;
 import lv.javaguru.java2.realestate.core.requests.Paging;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
+import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@DIComponent
 public class SearchOffersValidator {
 
     public List<CoreError> validate(SearchOffersRequest request) {

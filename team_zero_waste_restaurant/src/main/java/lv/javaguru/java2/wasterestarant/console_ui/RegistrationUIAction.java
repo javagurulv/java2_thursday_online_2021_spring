@@ -1,13 +1,13 @@
 package lv.javaguru.java2.wasterestarant.console_ui;
 
 import lv.javaguru.java2.wasterestarant.core.services.RegistrationService;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 
-public class RegistrationUIAction implements UIAction{
+@DIComponent
+public class RegistrationUIAction implements UIAction {
+    @DIDependency
     private RegistrationService registrationService;
-
-    public RegistrationUIAction(RegistrationService registrationService) {
-        this.registrationService = registrationService;
-    }
 
     @Override
     public void execute() {

@@ -4,17 +4,17 @@ import lv.javaguru.java2.wasterestarant.console_ui.UIAction;
 import lv.javaguru.java2.wasterestarant.core.requests.product.GetAllProductsRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.product.GetAllProductsResponse;
 import lv.javaguru.java2.wasterestarant.core.services.products.GetAllProductsService;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 import lv.javaguru.java2.wasterestarant.domain.Product;
 
 import java.util.List;
 
 //Elena
+@DIComponent
 public class GetAllProductsUIAction implements UIAction {
+    @DIDependency
     private GetAllProductsService getAllProductsService;
-
-    public GetAllProductsUIAction(GetAllProductsService getAllProductsService) {
-        this.getAllProductsService = getAllProductsService;
-    }
 
     @Override
     public void execute() {

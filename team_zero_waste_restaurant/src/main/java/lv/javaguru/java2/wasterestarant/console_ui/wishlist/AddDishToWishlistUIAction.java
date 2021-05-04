@@ -5,18 +5,17 @@ import lv.javaguru.java2.wasterestarant.core.requests.wishlist.AddDishToWishlist
 import lv.javaguru.java2.wasterestarant.core.responses.dish.AddDishResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.wishlist.AddDishToWishlistResponse;
 import lv.javaguru.java2.wasterestarant.core.services.wishlist.AddDishToWishlistService;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 
 import java.util.Scanner;
 
 //Nataliya
-
+@DIComponent
 public class AddDishToWishlistUIAction implements UIAction {
 
+    @DIDependency
     private AddDishToWishlistService addDishToWishlistService;
-
-    public AddDishToWishlistUIAction(AddDishToWishlistService addDishToWishlistService) {
-        this.addDishToWishlistService = addDishToWishlistService;
-    }
 
     @Override
     public void execute() {

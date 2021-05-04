@@ -1,5 +1,8 @@
 package lv.javaguru.java2.wasterestarant.console_ui;
 
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+
+@DIComponent
 public class ExitUIAction implements UIAction {
 
     @Override

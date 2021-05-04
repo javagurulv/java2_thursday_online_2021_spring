@@ -6,17 +6,17 @@ import lv.javaguru.java2.realestate.core.requests.CreateUserRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.CreateUserResponse;
 import lv.javaguru.java2.realestate.core.services.validators.CreateUserValidator;
+import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
+import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
 
 import java.util.List;
 
+@DIComponent
 public class CreateUserService {
-    private final Database database;
-    private final CreateUserValidator validator;
-
-    public CreateUserService(Database database, CreateUserValidator validator) {
-        this.database = database;
-        this.validator = validator;
-    }
+    @DIDependency
+    private Database database;
+    @DIDependency
+    private CreateUserValidator validator;
 
     public CreateUserResponse execute(CreateUserRequest createUserRequest) {
         List<CoreError> errors = validator.validate(createUserRequest);

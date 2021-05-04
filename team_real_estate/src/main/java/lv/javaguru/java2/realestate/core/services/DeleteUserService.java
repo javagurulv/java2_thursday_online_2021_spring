@@ -6,17 +6,17 @@ import lv.javaguru.java2.realestate.core.requests.DeleteUserRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.DeleteUserResponse;
 import lv.javaguru.java2.realestate.core.services.validators.DeleteUserValidator;
+import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
+import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
 
 import java.util.List;
 
+@DIComponent
 public class DeleteUserService {
-    private final Database database;
-    private final DeleteUserValidator validator;
-
-    public DeleteUserService(Database database, DeleteUserValidator validator) {
-        this.database = database;
-        this.validator = validator;
-    }
+    @DIDependency
+    private Database database;
+    @DIDependency
+    private DeleteUserValidator validator;
 
     public DeleteUserResponse execute(DeleteUserRequest deleteUserRequest) {
         List<CoreError> errors = validator.validate(deleteUserRequest);

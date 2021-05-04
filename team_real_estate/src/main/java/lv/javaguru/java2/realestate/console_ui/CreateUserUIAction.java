@@ -3,16 +3,16 @@ package lv.javaguru.java2.realestate.console_ui;
 import lv.javaguru.java2.realestate.core.requests.CreateUserRequest;
 import lv.javaguru.java2.realestate.core.response.CreateUserResponse;
 import lv.javaguru.java2.realestate.core.services.CreateUserService;
+import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
+import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
 
 import java.util.Scanner;
 
+@DIComponent
 public class CreateUserUIAction implements ConsoleUI {
 
-    CreateUserService createUserService;
-
-    public CreateUserUIAction(CreateUserService createUserService) {
-        this.createUserService = createUserService;
-    }
+    @DIDependency
+    private CreateUserService createUserService;
 
     @Override
     public void execute() {
