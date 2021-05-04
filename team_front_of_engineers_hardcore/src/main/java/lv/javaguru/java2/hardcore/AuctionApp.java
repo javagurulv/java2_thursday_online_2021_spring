@@ -17,44 +17,12 @@ import lv.javaguru.java2.hardcore.services.bet.*;
 import lv.javaguru.java2.hardcore.services.lot.*;
 import lv.javaguru.java2.hardcore.services.user.*;
 
+import java.security.SecureRandom;
 import java.util.Scanner;
 
 public class AuctionApp {
-    private LotDatabase lotDatabase = new InMemoryLotDatabase();
-    private UserDatabase userDatabase = new InMemoryUserDatabase();
-    private BetDatabase betDatabase = new InMemoryBetDatabase();
 
-    private AddLotValidator addLotValidator = new AddLotValidator();
-    private RemoveLotValidator removeLotValidator = new RemoveLotValidator();
-    private AddUserValidator addUserValidator = new AddUserValidator();
-    private LoginValidator loginValidator = new LoginValidator();
-    private AddBetValidator addBetValidator = new AddBetValidator();
-    private RemoveBetValidator removeBetValidator = new RemoveBetValidator();
-    private SearchLotByNameOrPriceRequestValidator searchLotByNameRequestValidator = new SearchLotByNameOrPriceRequestValidator();
-
-    private LoginService loginService = new LoginService(userDatabase, loginValidator);
-    private AddUserService addUserService = new AddUserService(userDatabase, addUserValidator);
-    private ShowAllUsersService showAllUsersService = new ShowAllUsersService(userDatabase);
-    private AddLotService addLotService = new AddLotService(lotDatabase, addLotValidator,loginService);
-    private GetAllLotsService getAllLotsService = new GetAllLotsService(lotDatabase);
-    private RemoveLotService removeLotService = new RemoveLotService(lotDatabase, removeLotValidator);
-    private AddBetService addBetService = new AddBetService(betDatabase, addBetValidator,loginService);
-    private RemoveBetService removeBetService = new RemoveBetService(betDatabase, removeBetValidator);
-    private ShowAllBetsService showAllBetsService = new ShowAllBetsService(betDatabase);
-    private SearchLotByNameOrPriceService searchLotByNameService = new SearchLotByNameOrPriceService(lotDatabase,searchLotByNameRequestValidator);
-
-
-    private UIAction addBetUIAction = new AddBetUIAction(addBetService);
-    private UIAction removeBetUIAction = new RemoveBetUIAction(removeBetService);
-    private UIAction showAllBetsUIAction = new ShowAllBetsUIAction(showAllBetsService);
-    private UIAction loginUIAction = new LoginUIAction(loginService);
-    private UIAction addUserUIAction = new AddUserUIAction(addUserService);
-    private UIAction showAllUsersUIAction = new ShowAllUsersUIAction(showAllUsersService);
-    private UIAction addLotUIAction = new AddLotUIAction(addLotService);
-    private UIAction getAllLotsUIAction = new GetAllLotsUIAction(getAllLotsService);
-    private UIAction removeLotUIAction = new RemoveLotUIAction(removeLotService);
-    private UIAction searchLotByNameUIAction =new SearchLotByNameOrPriceUIAction(searchLotByNameService);
-    private UIAction exitUIAction = new ExitUiAction();
+    private ApplicationContext applicationContext = new ApplicationContext();
 
 
     public static void main(String[] args) {
@@ -99,49 +67,60 @@ public class AuctionApp {
     private void executeSelectedMenuItem(int selectedMenu) {
         switch (selectedMenu) {
             case 1: {
+                LoginUIAction loginUIAction = applicationContext.getBean(LoginUIAction.class);
                 loginUIAction.execute();
                 break;
             }
             case 2: {
+                AddUserUIAction addUserUIAction = applicationContext.getBean(AddUserUIAction.class);
                 addUserUIAction.execute();
                 break;
             }
             case 3: {
+                AddLotUIAction addLotUIAction = applicationContext.getBean(AddLotUIAction.class);
                 addLotUIAction.execute();
                 break;
             }
             case 4: {
+                AddBetUIAction addBetUIAction = applicationContext.getBean(AddBetUIAction.class);
                 addBetUIAction.execute();
                 break;
 
             }
             case 5: {
+                ShowAllBetsUIAction showAllBetsUIAction = applicationContext.getBean(ShowAllBetsUIAction.class);
                 showAllBetsUIAction.execute();
                 break;
 
             }
             case 6: {
+                GetAllLotsUIAction getAllLotsUIAction = applicationContext.getBean(GetAllLotsUIAction.class);
                 getAllLotsUIAction.execute();
                 break;
             }
             case 7: {
+                ShowAllUsersUIAction showAllUsersUIAction = applicationContext.getBean(ShowAllUsersUIAction.class);
                 showAllUsersUIAction.execute();
                 break;
             }
             case 8: {
+                RemoveLotUIAction removeLotUIAction = applicationContext.getBean(RemoveLotUIAction.class);
                 removeLotUIAction.execute();
                 break;
             }
             case 9: {
+                RemoveBetUIAction removeBetUIAction = applicationContext.getBean(RemoveBetUIAction.class);
                 removeBetUIAction.execute();
                 break;
             }case 10: {
-                searchLotByNameUIAction.execute();
+                SearchLotByNameOrPriceUIAction searchLotByNameOrPriceUIAction = applicationContext.getBean(SearchLotByNameOrPriceUIAction.class);
+                searchLotByNameOrPriceUIAction.execute();
                 break;
             }
 
             case 0: {
-                exitUIAction.execute();
+                ExitUiAction exitUiAction = applicationContext.getBean(ExitUiAction.class);
+                exitUiAction.execute();
                 break;
             }
         }
