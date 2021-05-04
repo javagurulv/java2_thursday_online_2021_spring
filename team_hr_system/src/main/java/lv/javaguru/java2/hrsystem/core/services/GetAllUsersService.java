@@ -15,7 +15,7 @@ public class GetAllUsersService {
         this.database = database;
     }
 
-    public GetAllUsersResponse execute(GetAllUsersRequest request) {
+    public GetAllUsersResponse execute() {
         List<User> userList = database.getAllUsers();
         return new GetAllUsersResponse(userList);
     }
