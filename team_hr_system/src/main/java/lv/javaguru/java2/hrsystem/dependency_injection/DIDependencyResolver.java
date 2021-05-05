@@ -11,7 +11,7 @@ public class DIDependencyResolver {
     public void resolve(ApplicationContext applicationContext, List<Class> diComponents) {
         diComponents.forEach(diComponent -> {
             Object diInstance = applicationContext.getBean(diComponent);
-            List<Field> diFields = getFields(diComponent);
+            List<Field> diFields = getFieldsWithDIDependency(diComponent);
             diFields.forEach(field -> {
                 tryToSetDependency(applicationContext, diInstance, field);
             });
@@ -37,7 +37,7 @@ public class DIDependencyResolver {
         }
     }
 
-    private List<Field> getFields(Class diComponent) {
+    private List<Field> getFieldsWithDIDependency(Class diComponent) {
         return Arrays.stream(diComponent.getDeclaredFields())
                 .filter(field -> field.isAnnotationPresent(DIDependency.class))
                 .collect(toList());

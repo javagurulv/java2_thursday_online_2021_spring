@@ -1,6 +1,5 @@
 package lv.javaguru.java2.hrsystem.dependency_injection;
 
-import java.io.IOException;
 import java.util.List;
 
 public class DIApplicationContextBuilder {

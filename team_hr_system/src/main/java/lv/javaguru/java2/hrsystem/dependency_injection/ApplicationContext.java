@@ -1,17 +1,14 @@
 package lv.javaguru.java2.hrsystem.dependency_injection;
 
-import lv.javaguru.java2.hrsystem.console_ui.*;
-import lv.javaguru.java2.hrsystem.core.database.Database;
-import lv.javaguru.java2.hrsystem.core.database.DatabaseImpl;
-import lv.javaguru.java2.hrsystem.core.services.*;
-import lv.javaguru.java2.hrsystem.core.services.validators.*;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class ApplicationContext {
 
     private Map<Class, Object> beans = new HashMap<>();
+
+    public ApplicationContext() {
+    }
 
     public void addBean(Class beanClass, Object beanInstance) {
         beans.put(beanClass, beanInstance);
