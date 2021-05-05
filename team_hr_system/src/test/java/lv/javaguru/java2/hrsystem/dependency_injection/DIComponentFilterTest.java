@@ -1,6 +1,5 @@
 package lv.javaguru.java2.hrsystem.dependency_injection;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.io.IOException;
