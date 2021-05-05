@@ -1,5 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
 import lv.javaguru.java2.wasterestarant.domain.*;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@DIComponent
 public class InMemoryDatabaseImpl implements Database {
     private Long nextId = 1L;
     private List<Dish> dishes = new ArrayList<>();
