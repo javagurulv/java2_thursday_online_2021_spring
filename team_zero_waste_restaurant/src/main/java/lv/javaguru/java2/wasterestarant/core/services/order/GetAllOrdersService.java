@@ -5,6 +5,9 @@ import lv.javaguru.java2.wasterestarant.core.requests.order.GetAllOrdersRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.order.GetAllOrdersResponse;
 import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
 import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
+import lv.javaguru.java2.wasterestarant.domain.Order;
+
+import java.util.List;
 
 @DIComponent
 public class GetAllOrdersService {
@@ -12,7 +15,7 @@ public class GetAllOrdersService {
     private Database database;
 
     public GetAllOrdersResponse execute(GetAllOrdersRequest request) {
-        //TODO
-        return null;
+        List<Order> orders = database.getAllOrders();
+        return new GetAllOrdersResponse(orders);
     }
 }

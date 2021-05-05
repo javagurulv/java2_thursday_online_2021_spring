@@ -17,11 +17,14 @@ import lv.javaguru.java2.wasterestarant.console_ui.product.SearchProductUIAction
 import lv.javaguru.java2.wasterestarant.console_ui.wishlist.AddDishToWishlistUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.wishlist.GetWishListUIAction;
 import lv.javaguru.java2.wasterestarant.dependency_injection.ApplicationContext;
+import lv.javaguru.java2.wasterestarant.dependency_injection.DIApplicationContextBuilder;
 
 import java.util.Scanner;
 
 public class RestaurantApplication {
-    private static ApplicationContext applicationContext = new ApplicationContext();
+
+    private static ApplicationContext applicationContext =
+            new DIApplicationContextBuilder().build("lv.javaguru.java2.wasterestarant");
 
     public static void main(String[] args) {
         while (true) {
@@ -126,8 +129,7 @@ public class RestaurantApplication {
             }
             case 11: {
                 GetAllOrdersUIAction uiAction = applicationContext.getBean(GetAllOrdersUIAction.class);
-                //remove comment after implementation is done
-                //uiAction.execute();
+                uiAction.execute();
                 break;
             }
             case 12: {
