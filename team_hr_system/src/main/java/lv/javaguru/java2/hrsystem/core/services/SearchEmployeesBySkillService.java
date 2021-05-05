@@ -5,20 +5,25 @@ import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesBySkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesBySkillResponse;
 import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesBySkillRequestValidator;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.domain.Skill;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@DIComponent
 public class SearchEmployeesBySkillService {
+    @DIDependency
     private Database database;
+    @DIDependency
     private SearchEmployeesBySkillRequestValidator validator;
 
-    public SearchEmployeesBySkillService(Database database, SearchEmployeesBySkillRequestValidator validator) {
+   /* public SearchEmployeesBySkillService(Database database, SearchEmployeesBySkillRequestValidator validator) {
         this.database = database;
         this.validator = validator;
-    }
+    }*/
 
     public SearchEmployeesBySkillResponse execute(SearchEmployeesBySkillRequest request) {
         List<CoreError> errors = validator.validate(request);

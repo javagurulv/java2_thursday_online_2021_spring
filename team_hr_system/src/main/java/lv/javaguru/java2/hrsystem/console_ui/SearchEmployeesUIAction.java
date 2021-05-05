@@ -2,6 +2,8 @@ package lv.javaguru.java2.hrsystem.console_ui;
 
 import lv.javaguru.java2.hrsystem.core.requests.Ordering;
 import lv.javaguru.java2.hrsystem.core.requests.Paging;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesResponse;
@@ -10,12 +12,14 @@ import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesService;
 import java.util.List;
 import java.util.Scanner;
 
+@DIComponent
 public class SearchEmployeesUIAction implements UIAction{
-    private final SearchEmployeesService service;
+    @DIDependency
+    private SearchEmployeesService service;
 
-    public SearchEmployeesUIAction(SearchEmployeesService service) {
+   /* public SearchEmployeesUIAction(SearchEmployeesService service) {
         this.service = service;
-    }
+    }*/
 
     @Override
     public void execute() {

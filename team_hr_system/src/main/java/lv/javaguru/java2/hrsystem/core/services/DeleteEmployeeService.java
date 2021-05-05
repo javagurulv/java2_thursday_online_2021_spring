@@ -5,17 +5,22 @@ import lv.javaguru.java2.hrsystem.core.requests.DeleteEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.responses.DeleteEmployeeResponse;
 import lv.javaguru.java2.hrsystem.core.services.validators.DeleteEmployeeRequestValidator;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 
 import java.util.List;
 
+@DIComponent
 public class DeleteEmployeeService {
 
-    private final Database database;
-    private DeleteEmployeeRequestValidator validator = new DeleteEmployeeRequestValidator();
+    @DIDependency
+    private  Database database;
+    @DIDependency
+    private DeleteEmployeeRequestValidator validator;
 
-    public DeleteEmployeeService(Database database) {
+    /*public DeleteEmployeeService(Database database) {
         this.database = database;
-    }
+    }*/
 
     public DeleteEmployeeResponse execute(DeleteEmployeeRequest deleteEmployeeRequest) {
         List<CoreError> errors = validator.validate(deleteEmployeeRequest);
