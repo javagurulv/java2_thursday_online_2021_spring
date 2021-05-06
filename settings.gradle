@@ -18,6 +18,9 @@ include 'teacher:lesson_5_testing_with_junit_and_mockito:step_3_acceptance_tests
 
 include 'teacher:lesson_6_dependency_injection_inversion_of_control:step_1_dependency_injection'
 
+include 'teacher:lesson_7_spring_basics:step_1_spring'
+include 'teacher:lesson_7_spring_basics:step_2_strategy'
+
 
 include 'team_zero_waste_restaurant'
 include 'team_real_estate'
