@@ -8,6 +8,10 @@ public class Cart {
 
     public Cart() {}
 
+    public Cart(List<OrderItem> clientsWishlist) {
+        this.clientsWishlist = clientsWishlist;
+    }
+
     public List<OrderItem> getClientsWishlist() {
         return clientsWishlist;
     }

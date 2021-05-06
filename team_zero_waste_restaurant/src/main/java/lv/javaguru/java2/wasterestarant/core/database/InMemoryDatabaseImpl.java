@@ -11,7 +11,10 @@ import java.util.stream.Collectors;
 
 @DIComponent
 public class InMemoryDatabaseImpl implements Database {
-    private Long nextId = 1L;
+    private Long nextDishId = 1L;
+    private Long nextProductId = 1L;
+    private Long nextClientId = 1L;
+    private Long nextOrderId = 1L;
     private List<Dish> dishes = new ArrayList<>();
     private List<Dish> restaurantMenu = new ArrayList<>();
     private List<Product> products = new ArrayList<>();
@@ -21,15 +24,15 @@ public class InMemoryDatabaseImpl implements Database {
 
     @Override
     public void save(Dish dish) {
-        dish.setDishID(nextId);
-        nextId++;
+        dish.setDishID(nextDishId);
+        nextDishId++;
         dishes.add(dish);
     }
 
     @Override
     public void save(Product product) {
-        product.setProductID(nextId);
-        nextId++;
+        product.setProductID(nextProductId);
+        nextProductId++;
         products.add(product);
     }
 
@@ -37,6 +40,20 @@ public class InMemoryDatabaseImpl implements Database {
     public void save(Ingredient ingredient) {
         ingredients.add(ingredient);
 
+    }
+
+    @Override
+    public void save(Client client) {
+        client.setClientID(nextClientId);
+        nextClientId++;
+        clients.add(client);
+    }
+
+    @Override
+    public void save(Order order) {
+        order.setOrderID(nextOrderId);
+        nextOrderId++;
+        orders.add(order);
     }
 
     @Override
@@ -160,12 +177,16 @@ public class InMemoryDatabaseImpl implements Database {
                 return Optional.of(client);
             }
         }
+        System.out.println("No client with such ID");
         return Optional.empty();
     }
 
     @Override
     public List<OrderItem> getWishlistByClientID(Long clientID) {
-        return clientByID(clientID).get().getCart().getClientsWishlist();
+        if (clientByID(clientID).isPresent()) {
+            return clientByID(clientID).get().getCart().getClientsWishlist();
+        }
+        return new ArrayList<>();
     }
 
     @Override
@@ -176,13 +197,6 @@ public class InMemoryDatabaseImpl implements Database {
     @Override
     public void addDishToWishlist(Long clientID, String dishName, int quantity) {
         getWishlistByClientID(clientID).add(selectedOrderItem(dishName, quantity));
-    }
-
-    @Override
-    public void save(Order order) {
-        order.setOrderID(nextId);
-        nextId++;
-        orders.add(order);
     }
 
     @Override

@@ -12,7 +12,11 @@ public interface Database {
 
     void save(Product product);
 
+    void save(Client client);
+
     void save(Ingredient ingredient);
+
+    void save(Order order);
 
     boolean deleteDishByName(String name);
 
@@ -51,8 +55,6 @@ public interface Database {
     OrderItem selectedOrderItem(String dishName, int quantity);
 
     void addDishToWishlist(Long clientID, String dishName, int quantity);
-
-    void save(Order order);
 
     List<Order> getAllOrders();
 

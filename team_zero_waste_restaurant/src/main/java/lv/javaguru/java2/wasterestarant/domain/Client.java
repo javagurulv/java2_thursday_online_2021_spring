@@ -5,16 +5,15 @@ import java.util.Objects;
 public class Client {
 
     private String name;
-    private boolean isRegistered;
     private long clientID;
     private Cart cart;
 
     public Client() {
     }
 
-    public Client(String name, boolean isRegistered) {
+    public Client(String name, Cart cart) {
         this.name = name;
-        this.isRegistered = isRegistered;
+        this.cart = cart;
     }
 
     public String getName() {
@@ -23,14 +22,6 @@ public class Client {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public boolean isRegistered() {
-        return isRegistered;
-    }
-
-    public void setRegistered(boolean registered) {
-        isRegistered = registered;
     }
 
     public long getClientID() {
@@ -55,22 +46,20 @@ public class Client {
         if (this == o) return true;
         if (!(o instanceof Client)) return false;
         Client client = (Client) o;
-        return isRegistered == client.isRegistered &&
-                clientID == client.clientID &&
+        return  clientID == client.clientID &&
                 name.equals(client.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, isRegistered, clientID);
+        return Objects.hash(name, clientID);
     }
 
     @Override
     public String toString() {
         return "Client{" +
                 "name='" + name + '\'' +
-                ", isRegistered=" + isRegistered +
-                //", clientID=" + clientID +
+                ", clientID=" + clientID +
                 '}';
     }
 
