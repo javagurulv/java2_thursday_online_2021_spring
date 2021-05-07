@@ -1,27 +1,52 @@
 package lv.javaguru.java2.wasterestarant.dependency_injection;
 
 import lv.javaguru.java2.wasterestarant.dependency_injection.testClass.TestClassForClassCreator;
+import lv.javaguru.java2.wasterestarant.dependency_injection.testClass.TestClassForClassCreator2;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
+
 //AndrejsB
 public class DIComponentCreatorTest {
 
+    private ApplicationContext applicationContext = new ApplicationContext();
+    private DIComponentCreator diComponentCreator = new DIComponentCreator();
+    private List<Class> classes;
+
+    @Before
+    public void setUp() {
+        classes = new ArrayList<>();
+        classes.add(TestClassForClassCreator.class);
+        classes.add(TestClassForClassCreator2.class);
+
+    }
+
+
     @Test
     public void test() throws IOException, ClassNotFoundException {
-        ApplicationContext applicationContext = new ApplicationContext();
-        DIComponentCreator diComponentCreator = new DIComponentCreator();
-        DIComponentFilter filter = new DIComponentFilter();
-        ClassFinder classFinder = new ClassFinder();
-        List<Class> classes = classFinder.findClassesInsidePackage("lv.javaguru.java2.wasterestarant." +
-                "dependency_injection.testClass");
-        List<Class> diComponents = filter.filter(classes);
-        diComponentCreator.create(applicationContext, diComponents);
+        diComponentCreator.create(applicationContext, classes);
+        assertEquals(new TestClassForClassCreator(), applicationContext.getBean(TestClassForClassCreator.class));
+        assertEquals(new TestClassForClassCreator2(), applicationContext.getBean(TestClassForClassCreator2.class));
+    }
 
-//        assertEquals(new TestClassForClassCreator(), applicationContext.getBean(TestClassForClassCreator.class));
-//        assertEquals(TestClassForClassCreator.class, applicationContext.getBean(TestClassForClassCreator.class));
+
+    @DIComponent
+    public static class TestClassForClassCreator {
+        @Override
+        public boolean equals(Object obj) {
+            return obj instanceof TestClassForClassCreator;
+        }
+    }
+    @DIComponent
+    public static class TestClassForClassCreator2 {
+        @Override
+        public boolean equals(Object obj) {
+            return obj instanceof TestClassForClassCreator2;
+        }
     }
 }
