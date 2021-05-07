@@ -4,13 +4,9 @@ import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
 import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 //AndrejsB
 @DIComponent
-public class TestClassForClassCreator {
+public class TestClassForClassCreator2 {
 
-    @DIDependency private TestClassForClassCreator2 testClassForClassCreator2;
+    @DIDependency private TestClassForClassCreator testClassForClassCreator;
 
-    @Override
-    public boolean equals(Object obj) {
-        return obj instanceof TestClassForClassCreator;
-    }
 
 }
