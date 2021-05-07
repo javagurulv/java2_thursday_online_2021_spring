@@ -5,24 +5,21 @@ import lv.javaguru.java2.hrsystem.core.requests.AddSkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddSkillResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddSkillRequestValidator;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.domain.Skill;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@DIComponent
+@Component
 public class AddSkillService {
-    @DIDependency
+
+    @Autowired
     private Database database;
-    @DIDependency
+    @Autowired
     private AddSkillRequestValidator validator;
 
-    /*public AddSkillService(Database database, AddSkillRequestValidator validator) {
-        this.database = database;
-        this.validator = validator;
-    }*/
 
     public AddSkillResponse execute(AddSkillRequest request) {
         List<CoreError> errors = validator.validate(request);

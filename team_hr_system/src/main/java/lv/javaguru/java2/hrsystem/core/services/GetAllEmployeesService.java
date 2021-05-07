@@ -1,23 +1,19 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
-import lv.javaguru.java2.hrsystem.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.requests.GetAllEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllEmployeesResponse;
+import lv.javaguru.java2.hrsystem.domain.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@DIComponent
+@Component
 public class GetAllEmployeesService {
 
-    @DIDependency
+    @Autowired
     private Database database;
-
-   /* public GetAllEmployeesService(Database database) {
-        this.database = database;
-    }*/
 
     public GetAllEmployeesResponse execute(GetAllEmployeesRequest request) {
         List<Employee> employees = database.getAllEmployees();

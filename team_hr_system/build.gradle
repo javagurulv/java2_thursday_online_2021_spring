@@ -2,4 +2,6 @@ dependencies {
     testCompile('junit:junit:4.13.1')
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.19.0'
     testCompile('org.mockito:mockito-core:3.6.0')
+    implementation group: 'org.springframework', name: 'spring-context', version: '5.2.14.RELEASE'
+    testImplementation group: 'org.springframework', name: 'spring-test', version: '5.2.14.RELEASE'
 }

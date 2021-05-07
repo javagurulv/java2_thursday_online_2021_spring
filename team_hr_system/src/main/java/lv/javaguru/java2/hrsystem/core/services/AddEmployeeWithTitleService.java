@@ -1,27 +1,25 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeWithTitleValidator;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
-import lv.javaguru.java2.hrsystem.domain.Employee;
-import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
 import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeWithTitleRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddEmployeeWithTitleResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
+import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeWithTitleValidator;
+import lv.javaguru.java2.hrsystem.domain.Employee;
+import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@DIComponent
+@Component
 public class AddEmployeeWithTitleService {
-    @DIDependency
+
+    @Autowired
     private Database database;
-    @DIDependency
+    @Autowired
     private AddEmployeeWithTitleValidator validator;
 
-  /*  public AddEmployeeWithTitleService(Database database) {
-        this.database = database;
-    }*/
 
     public AddEmployeeWithTitleResponse execute(AddEmployeeWithTitleRequest request) {
         List<CoreError> errors = validator.validate(request);

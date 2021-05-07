@@ -1,28 +1,23 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
+import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddEmployeeResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeRequestValidator;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 import lv.javaguru.java2.hrsystem.domain.Employee;
-import lv.javaguru.java2.hrsystem.core.database.Database;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@DIComponent
+@Component
 public class AddEmployeeService {
 
-    @DIDependency
+    @Autowired
     private Database database;
-    @DIDependency
+    @Autowired
     private AddEmployeeRequestValidator validator;
-
-   /* public AddEmployeeService(Database database, AddEmployeeRequestValidator validator) {
-        this.database = database;
-        this.validator = validator;
-    }*/
 
     public AddEmployeeResponse execute(AddEmployeeRequest request) {
         List<CoreError> errors = validator.validate(request);

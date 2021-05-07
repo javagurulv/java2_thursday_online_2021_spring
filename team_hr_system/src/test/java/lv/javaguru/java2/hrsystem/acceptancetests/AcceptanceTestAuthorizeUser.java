@@ -1,22 +1,29 @@
 package lv.javaguru.java2.hrsystem.acceptancetests;
 
+import lv.javaguru.java2.hrsystem.config.HRSystemConfiguration;
 import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
 import lv.javaguru.java2.hrsystem.core.requests.RegisterUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllUsersResponse;
 import lv.javaguru.java2.hrsystem.core.services.AuthorizeUserService;
 import lv.javaguru.java2.hrsystem.core.services.GetAllUsersService;
 import lv.javaguru.java2.hrsystem.core.services.RegisterUserService;
-import lv.javaguru.java2.hrsystem.dependency_injection.ApplicationContext;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIApplicationContextBuilder;
 import lv.javaguru.java2.hrsystem.domain.User;
 import lv.javaguru.java2.hrsystem.domain.UserRole;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AcceptanceTestAuthorizeUser {
 
-    private ApplicationContext context = new DIApplicationContextBuilder().build("lv.javaguru.java2.hrsystem");
+    private ApplicationContext context;
+
+    @Before
+    public void setup() {
+        context = new AnnotationConfigApplicationContext(HRSystemConfiguration.class);
+    }
 
     @Test
     public void shouldReturnAuthorizeUser() {

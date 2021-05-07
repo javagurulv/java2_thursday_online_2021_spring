@@ -2,29 +2,24 @@ package lv.javaguru.java2.hrsystem.core.services;
 
 import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
-import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.responses.AuthorizeUserResponse;
+import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.AuthorizeUserValidator;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 import lv.javaguru.java2.hrsystem.domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
-@DIComponent
+@Component
 public class AuthorizeUserService {
 
-    @DIDependency
+    @Autowired
     private Database database;
-    @DIDependency
+    @Autowired
     private AuthorizeUserValidator validator;
 
-  /*  public AuthorizeUserService(Database database, AuthorizeUserValidator validator) {
-
-        this.database = database;
-        this.validator = validator;
-
-    }*/
 
     public AuthorizeUserResponse execute (AuthorizeUserRequest request){
 
