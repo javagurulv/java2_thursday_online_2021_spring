@@ -3,23 +3,17 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AuthorizeUserResponse;
 import lv.javaguru.java2.hrsystem.core.services.AuthorizeUserService;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 import lv.javaguru.java2.hrsystem.domain.UserRole;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@DIComponent
+@Component
 public class AuthorizeUserUIAction implements UIAction {
 
-    @DIDependency
+    @Autowired
     private AuthorizeUserService loginAdminService;
-
-   /* public AuthorizeUserUIAction(AuthorizeUserService loginAdminService) {
-
-        this.loginAdminService = loginAdminService;
-
-    }*/
 
     @Override
     public void execute() {

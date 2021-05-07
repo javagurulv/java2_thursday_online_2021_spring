@@ -3,20 +3,16 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import lv.javaguru.java2.hrsystem.core.requests.DeleteEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.DeleteEmployeeResponse;
 import lv.javaguru.java2.hrsystem.core.services.DeleteEmployeeService;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@DIComponent
+@Component
 public class DeleteEmployeeUIAction implements UIAction{
 
-    @DIDependency
+    @Autowired
     private DeleteEmployeeService deleteEmployeeService;
-
-   /* public DeleteEmployeeUIAction(DeleteEmployeeService deleteEmployeeService) {
-        this.deleteEmployeeService = deleteEmployeeService;
-    }*/
 
     @Override
     public void execute() {

@@ -1,14 +1,17 @@
 package lv.javaguru.java2.hrsystem.core.database;
 
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
 import lv.javaguru.java2.hrsystem.domain.*;
+import org.springframework.stereotype.Component;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
 
-@DIComponent
+@Component
 public class DatabaseImpl implements Database {
 
     private Long nextIdEmployee = 1L;

@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.acceptancetests;
 
-import lv.javaguru.java2.hrsystem.dependency_injection.ApplicationContext;
+import lv.javaguru.java2.hrsystem.config.HRSystemConfiguration;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeWithTitleRequest;
 import lv.javaguru.java2.hrsystem.core.requests.Ordering;
 import lv.javaguru.java2.hrsystem.core.requests.Paging;
@@ -8,17 +8,24 @@ import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesResponse;
 import lv.javaguru.java2.hrsystem.core.services.AddEmployeeWithTitleService;
 import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesService;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIApplicationContextBuilder;
 import lv.javaguru.java2.hrsystem.domain.Employee;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class AcceptanceTestSearchByTitle {
-    private static ApplicationContext context = new DIApplicationContextBuilder()
-            .build("lv.javaguru.java2.hrsystem");
+    private ApplicationContext context;
+
+    @Before
+    public void setup() {
+        context = new AnnotationConfigApplicationContext(HRSystemConfiguration.class);
+    }
+
 
     public AddEmployeeWithTitleService getAddEmployeeWithTitleService() {
         return context.getBean(AddEmployeeWithTitleService.class);
