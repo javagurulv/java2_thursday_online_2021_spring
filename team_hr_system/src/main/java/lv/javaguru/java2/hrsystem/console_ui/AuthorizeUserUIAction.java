@@ -14,6 +14,9 @@ public class AuthorizeUserUIAction implements UIAction {
 
     @Autowired
     private AuthorizeUserService loginAdminService;
+    @Autowired
+    private MainMenu mainMenu;
+
 
     @Override
     public void execute() {
@@ -35,8 +38,7 @@ public class AuthorizeUserUIAction implements UIAction {
                 response.getAuthorization().get().getUserRole().equals(UserRole.ADMIN)){
             System.out.println("Hello " + response.getAuthorization().get().getFirstName() + "!");
 
-            var uiMain = new UIMain();
-            uiMain.run();
+            mainMenu.run();
 
         } else if (!response.getAuthorization().isEmpty() &&
         response.getAuthorization().get().getUserRole().equals(UserRole.HR_MANAGE)){
