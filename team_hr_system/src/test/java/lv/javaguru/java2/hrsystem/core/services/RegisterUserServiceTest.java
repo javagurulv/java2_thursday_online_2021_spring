@@ -5,7 +5,7 @@ import lv.javaguru.java2.hrsystem.core.requests.RegisterUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.responses.RegisterUserResponse;
 import lv.javaguru.java2.hrsystem.core.services.validators.RegisterUserValidator;
-import lv.javaguru.java2.hrsystem.domain.UserRole;
+import lv.javaguru.java2.hrsystem.core.domain.UserRole;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

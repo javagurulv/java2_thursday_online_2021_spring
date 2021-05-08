@@ -8,7 +8,7 @@ import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesBySkillResponse;
 import lv.javaguru.java2.hrsystem.core.services.AddEmployeeService;
 import lv.javaguru.java2.hrsystem.core.services.AddSkillService;
 import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesBySkillService;
-import lv.javaguru.java2.hrsystem.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

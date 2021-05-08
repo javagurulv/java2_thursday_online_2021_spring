@@ -9,7 +9,7 @@ import lv.javaguru.java2.hrsystem.core.responses.GetAllEmployeesResponse;
 import lv.javaguru.java2.hrsystem.core.services.AddEmployeeService;
 import lv.javaguru.java2.hrsystem.core.services.DeleteEmployeeService;
 import lv.javaguru.java2.hrsystem.core.services.GetAllEmployeesService;
-import lv.javaguru.java2.hrsystem.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
