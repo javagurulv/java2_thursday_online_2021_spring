@@ -6,20 +6,20 @@ import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.SearchIngredientResponse;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 import lv.javaguru.java2.wasterestarant.domain.Ingredient;
-import lv.javaguru.java2.wasterestarant.domain.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-@DIComponent
+@Component
 public class SearchIngredientService {
 
-    @DIDependency private Database database;
-    @DIDependency
+    @Autowired
+    private Database database;
+    @Autowired
     private SearchIngredientValidator validator;
 
     public SearchIngredientResponse execute(SearchIngredientRequest request) {

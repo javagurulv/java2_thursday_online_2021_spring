@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.acceptancetests;
 
-import lv.javaguru.java2.wasterestarant.dependency_injection.ApplicationContext;
+import lv.javaguru.java2.wasterestarant.config.RestaurantApplicationConfiguration;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.AddDishIngredientRequest;
@@ -9,14 +9,21 @@ import lv.javaguru.java2.wasterestarant.core.responses.ingredient.SearchIngredie
 import lv.javaguru.java2.wasterestarant.core.services.ingredient.AddDishIngredientService;
 import lv.javaguru.java2.wasterestarant.core.services.ingredient.SearchIngredientService;
 import lv.javaguru.java2.wasterestarant.dependency_injection.DIApplicationContextBuilder;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.junit.Assert.assertEquals;
 
 public class AcceptanceTest3 {
 
-    private ApplicationContext applicationContext =
-            new DIApplicationContextBuilder().build("lv.javaguru.java2.wasterestarant");
+    private ApplicationContext applicationContext;
+
+    @Before
+    public void setup() {
+        applicationContext = new AnnotationConfigApplicationContext(RestaurantApplicationConfiguration.class);
+    }
 
     private AddDishIngredientService getDishIngredientService() {
         return applicationContext.getBean(AddDishIngredientService.class);

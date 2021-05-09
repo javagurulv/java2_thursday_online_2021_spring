@@ -4,16 +4,16 @@ import lv.javaguru.java2.wasterestarant.console_ui.UIAction;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.GetAllDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.GetAllDishesResponse;
 import lv.javaguru.java2.wasterestarant.core.services.dish.GetAllDishesService;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 import lv.javaguru.java2.wasterestarant.domain.Dish;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 //Elena
-@DIComponent
+@Component
 public class GetAllDishesUIAction implements UIAction {
 
-    @DIDependency
+    @Autowired
     private GetAllDishesService getAllDishesService;
 
     @Override

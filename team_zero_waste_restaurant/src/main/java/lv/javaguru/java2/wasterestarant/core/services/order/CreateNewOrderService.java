@@ -2,13 +2,13 @@ package lv.javaguru.java2.wasterestarant.core.services.order;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
 import lv.javaguru.java2.wasterestarant.core.requests.order.CreateNewOrderRequest;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 import lv.javaguru.java2.wasterestarant.domain.Order;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@DIComponent
+@Component
 public class CreateNewOrderService {
-    @DIDependency
+    @Autowired
     private Database database;
 
     public Order execute(CreateNewOrderRequest request) {

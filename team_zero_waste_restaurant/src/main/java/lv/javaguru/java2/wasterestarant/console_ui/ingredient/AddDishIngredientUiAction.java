@@ -4,14 +4,14 @@ import lv.javaguru.java2.wasterestarant.console_ui.UIAction;
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.AddDishIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.AddDishIngredientResponse;
 import lv.javaguru.java2.wasterestarant.core.services.ingredient.AddDishIngredientService;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import java.util.Scanner;
-@DIComponent
+
+@Component
 public class AddDishIngredientUiAction implements UIAction {
 
-    @DIDependency
+    @Autowired
     private AddDishIngredientService addDishIngredientService;
 
     @Override

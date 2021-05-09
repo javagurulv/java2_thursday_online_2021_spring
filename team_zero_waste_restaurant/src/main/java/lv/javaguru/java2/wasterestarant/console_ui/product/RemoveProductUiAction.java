@@ -1,21 +1,19 @@
 package lv.javaguru.java2.wasterestarant.console_ui.product;
 
 import lv.javaguru.java2.wasterestarant.console_ui.UIAction;
-import lv.javaguru.java2.wasterestarant.core.requests.dish.RemoveDishRequest;
 import lv.javaguru.java2.wasterestarant.core.requests.product.RemoveProductRequest;
-import lv.javaguru.java2.wasterestarant.core.responses.dish.RemoveDishResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.product.RemoveProductResponse;
 import lv.javaguru.java2.wasterestarant.core.services.products.RemoveProductService;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
 //AndrejsB
-@DIComponent
+@Component
 public class RemoveProductUiAction implements UIAction {
 
-    @DIDependency
+    @Autowired
     private RemoveProductService service;
 
     @Override

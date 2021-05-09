@@ -1,18 +1,21 @@
 package lv.javaguru.java2.wasterestarant.core.services.acceptancetests;
 
 
+import lv.javaguru.java2.wasterestarant.config.RestaurantApplicationConfiguration;
 import lv.javaguru.java2.wasterestarant.core.database.InMemoryDatabaseImpl;
 import lv.javaguru.java2.wasterestarant.core.requests.wishlist.AddDishToWishlistRequest;
 import lv.javaguru.java2.wasterestarant.core.requests.wishlist.GetWishlistRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.wishlist.GetWishlistResponse;
 import lv.javaguru.java2.wasterestarant.core.services.wishlist.AddDishToWishlistService;
 import lv.javaguru.java2.wasterestarant.core.services.wishlist.GetWishlistService;
-import lv.javaguru.java2.wasterestarant.dependency_injection.ApplicationContext;
 import lv.javaguru.java2.wasterestarant.dependency_injection.DIApplicationContextBuilder;
 import lv.javaguru.java2.wasterestarant.domain.Cart;
 import lv.javaguru.java2.wasterestarant.domain.Client;
 import lv.javaguru.java2.wasterestarant.domain.OrderItem;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +26,12 @@ import static org.junit.Assert.*;
 
 public class AcceptanceTest4 {
 
-    private ApplicationContext applicationContext =
-            new DIApplicationContextBuilder().build("lv.javaguru.java2.wasterestarant");
+    private ApplicationContext applicationContext;
+
+    @Before
+    public void setup() {
+        applicationContext = new AnnotationConfigApplicationContext(RestaurantApplicationConfiguration.class);
+    }
 
     private Client client1;
     private Client client2;

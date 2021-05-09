@@ -1,8 +1,8 @@
 package lv.javaguru.java2.wasterestarant.console_ui;
 
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import org.springframework.stereotype.Component;
 
-@DIComponent
+@Component
 public class ExitUIAction implements UIAction {
 
     @Override
