@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.database;
 
-import lv.javaguru.java2.hrsystem.domain.*;
+import lv.javaguru.java2.hrsystem.core.domain.*;
 import org.springframework.stereotype.Component;
 
 import java.io.FileInputStream;
@@ -84,7 +84,7 @@ public class DatabaseImpl implements Database {
     }
 
     @Override
-    public List<Employee> getEmployeesByTitleAdnName(EmployeeTitle title, String name) {
+    public List<Employee> getEmployeesByTitleAndName(EmployeeTitle title, String name) {
         return employeeList.stream()
                 .filter(e -> e.getTitle() != null && e.getTitle().equals(title) && e.getName().equalsIgnoreCase(name))
                 .collect(toList());

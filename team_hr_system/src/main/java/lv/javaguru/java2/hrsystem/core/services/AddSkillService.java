@@ -5,8 +5,8 @@ import lv.javaguru.java2.hrsystem.core.requests.AddSkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddSkillResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddSkillRequestValidator;
-import lv.javaguru.java2.hrsystem.domain.Employee;
-import lv.javaguru.java2.hrsystem.domain.Skill;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hrsystem.domain;
+package lv.javaguru.java2.hrsystem.core.domain;
 
 import java.io.Serializable;
 import java.util.Objects;

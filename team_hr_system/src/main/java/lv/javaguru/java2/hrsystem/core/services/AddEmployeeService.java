@@ -5,7 +5,7 @@ import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddEmployeeResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeRequestValidator;
-import lv.javaguru.java2.hrsystem.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
