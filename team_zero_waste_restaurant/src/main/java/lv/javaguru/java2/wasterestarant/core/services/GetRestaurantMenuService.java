@@ -9,16 +9,14 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-//Nataliya - in process
+//Nataliya
 @Component
 public class GetRestaurantMenuService {
     @Autowired
     private Database database;
 
     public GetRestaurantMenuResponse execute(GetRestaurantMenuRequest request) {
-//        List<Dish> restaurantMenu = database.getRestaurantMenu();
-        List<Dish> restaurantMenu = database.getAllDishes(); // NB. Temporary route.
-        // Need to implement List<Dish> restaurantMenu into database.
+        List<Dish> restaurantMenu = database.getRestaurantMenu();
         return new GetRestaurantMenuResponse(restaurantMenu);
     }
 }
