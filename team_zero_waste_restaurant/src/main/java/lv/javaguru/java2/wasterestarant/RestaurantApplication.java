@@ -135,6 +135,7 @@ public class RestaurantApplication {
             }
             case 12: {
                 GetRestaurantMenuUIAction uiAction = applicationContext.getBean(GetRestaurantMenuUIAction.class);
+                uiAction.execute();
                 break;
             }
             case 13: {
