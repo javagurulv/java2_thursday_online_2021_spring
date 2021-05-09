@@ -6,9 +6,9 @@ import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.SearchDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.SearchDishesResponse;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 import lv.javaguru.java2.wasterestarant.domain.Dish;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -16,10 +16,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //Elena
-@DIComponent
+@Component
 public class SearchDishesService {
-    @DIDependency private Database database;
-    @DIDependency
+    @Autowired
+    private Database database;
+    @Autowired
     private SearchDishesRequestValidator validator;
 
     public SearchDishesResponse execute(SearchDishesRequest request) {

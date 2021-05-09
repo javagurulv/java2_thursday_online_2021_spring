@@ -2,6 +2,7 @@ package lv.javaguru.java2.wasterestarant.core.database;
 
 import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
 import lv.javaguru.java2.wasterestarant.domain.*;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,14 +10,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@DIComponent
+@Component
 public class InMemoryDatabaseImpl implements Database {
     private Long nextDishId = 1L;
     private Long nextProductId = 1L;
     private Long nextClientId = 1L;
     private Long nextOrderId = 1L;
     private List<Dish> dishes = new ArrayList<>();
-    private List<Dish> restaurantMenu = new ArrayList<>();
     private List<Product> products = new ArrayList<>();
     private List<Ingredient> ingredients = new ArrayList<>();
     private List<Client> clients = new ArrayList<>();
@@ -160,7 +160,9 @@ public class InMemoryDatabaseImpl implements Database {
 
     @Override
     public List<Dish> getRestaurantMenu() {
-        return restaurantMenu;
+        return dishes.stream()
+                .filter(dish -> dish.isInActiveMenu())
+                .collect(Collectors.toList());
     }
 
     @Override

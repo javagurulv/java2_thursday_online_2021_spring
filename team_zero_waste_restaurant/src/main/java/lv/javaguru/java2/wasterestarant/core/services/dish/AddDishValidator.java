@@ -2,11 +2,11 @@ package lv.javaguru.java2.wasterestarant.core.services.dish;
 
 import lv.javaguru.java2.wasterestarant.core.requests.dish.AddDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
-@DIComponent
+@Component
 public class AddDishValidator {
     List<CoreError> errors = new ArrayList<>();
 

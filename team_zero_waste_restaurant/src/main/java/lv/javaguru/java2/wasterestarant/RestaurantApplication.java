@@ -1,5 +1,6 @@
 package lv.javaguru.java2.wasterestarant;
 
+import lv.javaguru.java2.wasterestarant.config.RestaurantApplicationConfiguration;
 import lv.javaguru.java2.wasterestarant.console_ui.ExitUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.GetRestaurantMenuUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.LoginUIAction;
@@ -16,15 +17,15 @@ import lv.javaguru.java2.wasterestarant.console_ui.product.GetAllProductsUIActio
 import lv.javaguru.java2.wasterestarant.console_ui.product.SearchProductUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.wishlist.AddDishToWishlistUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.wishlist.GetWishListUIAction;
-import lv.javaguru.java2.wasterestarant.dependency_injection.ApplicationContext;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIApplicationContextBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Scanner;
 
 public class RestaurantApplication {
 
     private static ApplicationContext applicationContext =
-            new DIApplicationContextBuilder().build("lv.javaguru.java2.wasterestarant");
+            new AnnotationConfigApplicationContext(RestaurantApplicationConfiguration.class);
 
     public static void main(String[] args) {
         while (true) {
@@ -134,6 +135,7 @@ public class RestaurantApplication {
             }
             case 12: {
                 GetRestaurantMenuUIAction uiAction = applicationContext.getBean(GetRestaurantMenuUIAction.class);
+                uiAction.execute();
                 break;
             }
             case 13: {

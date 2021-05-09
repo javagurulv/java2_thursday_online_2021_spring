@@ -4,16 +4,16 @@ import lv.javaguru.java2.wasterestarant.console_ui.UIAction;
 import lv.javaguru.java2.wasterestarant.core.requests.product.GetAllProductsRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.product.GetAllProductsResponse;
 import lv.javaguru.java2.wasterestarant.core.services.products.GetAllProductsService;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
 import lv.javaguru.java2.wasterestarant.domain.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 //Elena
-@DIComponent
+@Component
 public class GetAllProductsUIAction implements UIAction {
-    @DIDependency
+    @Autowired
     private GetAllProductsService getAllProductsService;
 
     @Override

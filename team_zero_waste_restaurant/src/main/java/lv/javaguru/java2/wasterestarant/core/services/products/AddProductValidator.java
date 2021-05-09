@@ -2,13 +2,13 @@ package lv.javaguru.java2.wasterestarant.core.services.products;
 
 import lv.javaguru.java2.wasterestarant.core.requests.product.AddProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@DIComponent
+@Component
 public class AddProductValidator {
 
     List<CoreError> errors = new ArrayList<>();

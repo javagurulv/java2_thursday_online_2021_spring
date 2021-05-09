@@ -6,14 +6,14 @@ import lv.javaguru.java2.wasterestarant.core.requests.dish.AddDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.AddDishResponse;
 
 import lv.javaguru.java2.wasterestarant.core.services.dish.AddDishService;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
-@DIComponent
+@Component
 public class AddDishUIAction implements UIAction {
 
-    @DIDependency
+    @Autowired
     private AddDishService addDishService;
 
     @Override

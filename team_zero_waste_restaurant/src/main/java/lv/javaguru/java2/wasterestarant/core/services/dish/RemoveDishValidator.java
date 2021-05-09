@@ -2,14 +2,14 @@ package lv.javaguru.java2.wasterestarant.core.services.dish;
 
 import lv.javaguru.java2.wasterestarant.core.requests.dish.RemoveDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 //AndrejsB
-@DIComponent
+@Component
 public class RemoveDishValidator {
 
     List<CoreError> errors = new ArrayList<>();

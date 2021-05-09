@@ -2,14 +2,14 @@ package lv.javaguru.java2.wasterestarant.core.services.products;
 
 import lv.javaguru.java2.wasterestarant.core.requests.product.RemoveProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 //AndrejsB
-@DIComponent
+@Component
 public class RemoveProductValidator {
     List<CoreError> errors = new ArrayList<>();
 
