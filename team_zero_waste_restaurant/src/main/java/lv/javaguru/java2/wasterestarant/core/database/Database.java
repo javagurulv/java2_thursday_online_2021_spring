@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
-import lv.javaguru.java2.wasterestarant.domain.*;
+import lv.javaguru.java2.wasterestarant.core.domain.*;
 
 import java.util.Date;
 import java.util.List;
