@@ -8,10 +8,9 @@ import lv.javaguru.java2.wasterestarant.core.requests.wishlist.GetWishlistReques
 import lv.javaguru.java2.wasterestarant.core.responses.wishlist.GetWishlistResponse;
 import lv.javaguru.java2.wasterestarant.core.services.wishlist.AddDishToWishlistService;
 import lv.javaguru.java2.wasterestarant.core.services.wishlist.GetWishlistService;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIApplicationContextBuilder;
-import lv.javaguru.java2.wasterestarant.domain.Cart;
-import lv.javaguru.java2.wasterestarant.domain.Client;
-import lv.javaguru.java2.wasterestarant.domain.OrderItem;
+import lv.javaguru.java2.wasterestarant.core.domain.Cart;
+import lv.javaguru.java2.wasterestarant.core.domain.Client;
+import lv.javaguru.java2.wasterestarant.core.domain.OrderItem;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

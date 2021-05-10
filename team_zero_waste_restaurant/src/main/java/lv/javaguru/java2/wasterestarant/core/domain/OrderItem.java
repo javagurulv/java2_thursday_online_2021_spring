@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.domain;
+package lv.javaguru.java2.wasterestarant.core.domain;
 
 public class OrderItem {
 

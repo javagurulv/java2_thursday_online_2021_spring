@@ -3,7 +3,7 @@ package lv.javaguru.java2.wasterestarant.core.services.dish;
 import lv.javaguru.java2.wasterestarant.core.database.Database;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.GetAllDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.GetAllDishesResponse;
-import lv.javaguru.java2.wasterestarant.domain.Dish;
+import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

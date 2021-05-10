@@ -5,7 +5,7 @@ import lv.javaguru.java2.wasterestarant.core.database.Database;
 import lv.javaguru.java2.wasterestarant.core.requests.wishlist.AddDishToWishlistRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.wishlist.AddDishToWishlistResponse;
-import lv.javaguru.java2.wasterestarant.domain.OrderItem;
+import lv.javaguru.java2.wasterestarant.core.domain.OrderItem;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
