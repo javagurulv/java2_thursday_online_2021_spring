@@ -206,16 +206,24 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public List<Order> getOrdersByClientID(Long clientID) {
+    public List<Order> searchOrderByClientIDAndDate(Long clientID, Date orderDate) {
         return orders.stream()
-                .filter(ingredient -> ingredient.getClientID().equals(clientID))
+                .filter(order -> order.getClientID().equals(clientID))
+                .filter(order -> order.getClientID().equals(orderDate))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<Order> getOrderByDate(Date orderDate) {
+    public List<Order> searchOrdersByClientID(Long clientID) {
         return orders.stream()
-                .filter(ingredient -> ingredient.getClientID().equals(orderDate))
+                .filter(order -> order.getClientID().equals(clientID))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Order> searchOrderByDate(Date orderDate) {
+        return orders.stream()
+                .filter(order -> order.getClientID().equals(orderDate))
                 .collect(Collectors.toList());
     }
 
