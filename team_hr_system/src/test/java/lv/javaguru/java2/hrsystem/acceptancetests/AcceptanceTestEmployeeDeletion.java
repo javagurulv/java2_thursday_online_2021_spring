@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.acceptancetests;
 
-import lv.javaguru.java2.hrsystem.application.ApplicationContext;
+import lv.javaguru.java2.hrsystem.dependency_injection.ApplicationContext;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.requests.DeleteEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.requests.GetAllEmployeesRequest;
@@ -9,6 +9,7 @@ import lv.javaguru.java2.hrsystem.core.responses.GetAllEmployeesResponse;
 import lv.javaguru.java2.hrsystem.core.services.AddEmployeeService;
 import lv.javaguru.java2.hrsystem.core.services.DeleteEmployeeService;
 import lv.javaguru.java2.hrsystem.core.services.GetAllEmployeesService;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIApplicationContextBuilder;
 import lv.javaguru.java2.hrsystem.domain.Employee;
 import org.junit.Test;
 
@@ -17,7 +18,9 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 public class AcceptanceTestEmployeeDeletion {
-    private ApplicationContext context = new ApplicationContext();
+
+    private static ApplicationContext context =
+            new DIApplicationContextBuilder().build("lv.javaguru.java2.hrsystem");
 
     public AddEmployeeService getAddEmployeeService() {
         return context.getBean(AddEmployeeService.class);

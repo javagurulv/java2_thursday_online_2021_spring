@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
-import lv.javaguru.java2.hrsystem.application.ApplicationContext;
+import lv.javaguru.java2.hrsystem.dependency_injection.ApplicationContext;
 
 import java.util.HashMap;
 import java.util.Map;

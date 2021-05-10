@@ -3,14 +3,13 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import lv.javaguru.java2.hrsystem.core.requests.GetAllUsersRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllUsersResponse;
 import lv.javaguru.java2.hrsystem.core.services.GetAllUsersService;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 
+@DIComponent
 public class GetAllUsersUIAction implements UIAction{
 
-    private GetAllUsersService getAllUsersService;
-
-    public GetAllUsersUIAction(GetAllUsersService getAllUsersService) {
-        this.getAllUsersService = getAllUsersService;
-    }
+    @DIDependency private GetAllUsersService getAllUsersService;
 
     @Override
     public void execute() {

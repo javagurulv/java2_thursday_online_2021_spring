@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.acceptancetests;
 
-import lv.javaguru.java2.hrsystem.application.ApplicationContext;
+import lv.javaguru.java2.hrsystem.dependency_injection.ApplicationContext;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.requests.AddSkillRequest;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesBySkillRequest;
@@ -8,6 +8,7 @@ import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesBySkillResponse;
 import lv.javaguru.java2.hrsystem.core.services.AddEmployeeService;
 import lv.javaguru.java2.hrsystem.core.services.AddSkillService;
 import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesBySkillService;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIApplicationContextBuilder;
 import lv.javaguru.java2.hrsystem.domain.Employee;
 import org.junit.Test;
 
@@ -16,7 +17,9 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 public class AcceptanceTestSearchBySkill {
-    private ApplicationContext context = new ApplicationContext();
+
+    private static ApplicationContext context =
+            new DIApplicationContextBuilder().build("lv.javaguru.java2.hrsystem");
 
     public AddEmployeeService getAddEmployeeService() {
         return context.getBean(AddEmployeeService.class);

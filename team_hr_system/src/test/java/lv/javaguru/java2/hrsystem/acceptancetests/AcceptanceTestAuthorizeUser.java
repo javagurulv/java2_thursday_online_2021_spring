@@ -1,9 +1,10 @@
 package lv.javaguru.java2.hrsystem.acceptancetests;
 
-import lv.javaguru.java2.hrsystem.application.ApplicationContext;
+import lv.javaguru.java2.hrsystem.dependency_injection.ApplicationContext;
 import lv.javaguru.java2.hrsystem.core.requests.*;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllUsersResponse;
 import lv.javaguru.java2.hrsystem.core.services.*;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIApplicationContextBuilder;
 import lv.javaguru.java2.hrsystem.domain.*;
 import org.junit.Test;
 
@@ -11,7 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class AcceptanceTestAuthorizeUser {
 
-    private ApplicationContext context = new ApplicationContext();
+    private static ApplicationContext context =
+            new DIApplicationContextBuilder().build("lv.javaguru.java2.hrsystem");
 
     @Test
     public void shouldReturnAuthorizeUser() {

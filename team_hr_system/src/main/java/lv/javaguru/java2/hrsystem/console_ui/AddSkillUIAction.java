@@ -3,15 +3,15 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import lv.javaguru.java2.hrsystem.core.requests.AddSkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddSkillResponse;
 import lv.javaguru.java2.hrsystem.core.services.AddSkillService;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
 
 import java.util.Scanner;
 
+@DIComponent
 public class AddSkillUIAction implements UIAction {
-    private AddSkillService service;
 
-    public AddSkillUIAction(AddSkillService service) {
-        this.service = service;
-    }
+    @DIDependency private AddSkillService service;
 
     @Override
     public void execute() {

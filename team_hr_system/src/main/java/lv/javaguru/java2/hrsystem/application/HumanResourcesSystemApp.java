@@ -1,6 +1,8 @@
 package lv.javaguru.java2.hrsystem.application;
 
 import lv.javaguru.java2.hrsystem.console_ui.*;
+import lv.javaguru.java2.hrsystem.dependency_injection.ApplicationContext;
+import lv.javaguru.java2.hrsystem.dependency_injection.DIApplicationContextBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +10,8 @@ import java.util.Scanner;
 
 public class HumanResourcesSystemApp {
 
-    private static ApplicationContext applicationContext = new ApplicationContext();
+    private static ApplicationContext applicationContext =
+            new DIApplicationContextBuilder().build("lv.javaguru.java2.hrsystem");
 
     private final Map<Integer, UIAction> menuNumberToActionMap = new HashMap<>() {{
         put(1, applicationContext.getBean(RegisterUserUIAction.class));
