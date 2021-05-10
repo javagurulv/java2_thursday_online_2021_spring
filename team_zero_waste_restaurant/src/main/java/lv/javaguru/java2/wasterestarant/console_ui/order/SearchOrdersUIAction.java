@@ -5,19 +5,19 @@ import lv.javaguru.java2.wasterestarant.core.domain.Order;
 import lv.javaguru.java2.wasterestarant.core.requests.order.SearchOrdersRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.order.SearchOrdersResponse;
 import lv.javaguru.java2.wasterestarant.core.services.order.SearchOrdersService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+@Component
 public class SearchOrdersUIAction implements UIAction {
 
+    @Autowired
     private SearchOrdersService searchOrdersService;
-
-    public SearchOrdersUIAction(SearchOrdersService searchBooksService) {
-        this.searchOrdersService = searchBooksService;
-    }
 
     @Override
     public void execute() {
