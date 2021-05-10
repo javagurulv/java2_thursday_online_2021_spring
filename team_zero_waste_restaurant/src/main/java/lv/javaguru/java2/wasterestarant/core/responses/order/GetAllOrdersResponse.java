@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.responses.order;
 
-import lv.javaguru.java2.wasterestarant.domain.Order;
+import lv.javaguru.java2.wasterestarant.core.domain.Order;
 
 import java.util.List;
 

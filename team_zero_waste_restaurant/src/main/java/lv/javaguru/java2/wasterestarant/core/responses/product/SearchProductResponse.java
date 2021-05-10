@@ -2,7 +2,7 @@ package lv.javaguru.java2.wasterestarant.core.responses.product;
 
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreResponse;
-import lv.javaguru.java2.wasterestarant.domain.Product;
+import lv.javaguru.java2.wasterestarant.core.domain.Product;
 
 import java.util.List;
 

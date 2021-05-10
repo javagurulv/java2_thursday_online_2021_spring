@@ -1,7 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.domain.*;
+import lv.javaguru.java2.wasterestarant.core.domain.*;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

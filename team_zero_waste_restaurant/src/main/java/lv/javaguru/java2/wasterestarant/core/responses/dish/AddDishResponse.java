@@ -2,7 +2,7 @@ package lv.javaguru.java2.wasterestarant.core.responses.dish;
 
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreResponse;
-import lv.javaguru.java2.wasterestarant.domain.Dish;
+import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 
 import java.util.List;
 

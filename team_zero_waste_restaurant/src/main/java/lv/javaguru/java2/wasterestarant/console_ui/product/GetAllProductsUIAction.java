@@ -4,7 +4,7 @@ import lv.javaguru.java2.wasterestarant.console_ui.UIAction;
 import lv.javaguru.java2.wasterestarant.core.requests.product.GetAllProductsRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.product.GetAllProductsResponse;
 import lv.javaguru.java2.wasterestarant.core.services.products.GetAllProductsService;
-import lv.javaguru.java2.wasterestarant.domain.Product;
+import lv.javaguru.java2.wasterestarant.core.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

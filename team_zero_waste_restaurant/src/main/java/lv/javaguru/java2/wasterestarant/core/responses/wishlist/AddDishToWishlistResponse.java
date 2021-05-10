@@ -4,7 +4,7 @@ package lv.javaguru.java2.wasterestarant.core.responses.wishlist;
 
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreResponse;
-import lv.javaguru.java2.wasterestarant.domain.OrderItem;
+import lv.javaguru.java2.wasterestarant.core.domain.OrderItem;
 
 import java.util.List;
 

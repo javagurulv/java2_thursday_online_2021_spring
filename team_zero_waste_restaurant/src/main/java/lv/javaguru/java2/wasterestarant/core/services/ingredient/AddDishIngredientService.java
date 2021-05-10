@@ -4,7 +4,7 @@ import lv.javaguru.java2.wasterestarant.core.database.Database;
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.AddDishIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.AddDishIngredientResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
-import lv.javaguru.java2.wasterestarant.domain.Ingredient;
+import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

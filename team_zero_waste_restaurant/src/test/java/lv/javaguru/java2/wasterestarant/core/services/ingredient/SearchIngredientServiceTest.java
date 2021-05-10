@@ -7,13 +7,15 @@ import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.SearchIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.SearchIngredientResponse;
-import lv.javaguru.java2.wasterestarant.domain.Ingredient;
+import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,12 @@ public class SearchIngredientServiceTest {
     private SearchIngredientValidator validator;
     @InjectMocks
     private SearchIngredientService service;
+
+    @Before
+    public void setup() {
+        ReflectionTestUtils.setField(service, "orderingEnabled", true);
+        ReflectionTestUtils.setField(service, "pagingEnabled", true);
+    }
 
     @Test
     public void shouldReturnResponseWithErrorsWhenValidatorFails() {
