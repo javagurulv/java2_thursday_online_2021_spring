@@ -19,14 +19,15 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
-//AndrejsB
-//@Component
+//AndrejsB and Andris
+@Component
 public class ProgramMenu {
 
     private Map<Integer, UIAction> menuNumberToUIActionMap;
 
-    //@Autowired
+    @Autowired
     public ProgramMenu(List<UIAction> uiActions) {
         menuNumberToUIActionMap = new HashMap<>();
         menuNumberToUIActionMap.put(1, findUIActions(uiActions,RegistrationUIAction.class));
@@ -47,6 +48,19 @@ public class ProgramMenu {
         menuNumberToUIActionMap.put(15, findUIActions(uiActions,ExitUIAction.class));
 
 
+    }
+
+    private UIAction findUIActions(List<UIAction> uiActions, Class uiActionClass){
+        return uiActions.stream()
+                .filter(uiAction -> uiAction.getClass().equals(uiActionClass))
+                .findFirst()
+                .get();
+    }
+
+    public int getMenuNumberFromUser() {
+        System.out.println("Enter menu item number to execute:");
+        Scanner scanner = new Scanner(System.in);
+        return Integer.parseInt(scanner.nextLine());
     }
 
     public void printProgramMenu() {
@@ -70,11 +84,8 @@ public class ProgramMenu {
         System.out.println();
     }
 
-    private UIAction findUIActions(List<UIAction> uiActions, Class uiActionClass){
-        return uiActions.stream()
-                .filter(uiAction -> uiAction.getClass().equals(uiActionClass))
-                .findFirst()
-                .get();
+    public void executeSelectedMenuItem(int selectedMenu) {
+        menuNumberToUIActionMap.get(selectedMenu).execute();
     }
     
 }
