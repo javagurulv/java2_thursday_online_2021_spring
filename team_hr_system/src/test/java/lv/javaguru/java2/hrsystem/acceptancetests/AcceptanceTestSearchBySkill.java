@@ -1,16 +1,14 @@
 package lv.javaguru.java2.hrsystem.acceptancetests;
 
-import lv.javaguru.java2.hrsystem.dependency_injection.ApplicationContext;
-import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
-import lv.javaguru.java2.hrsystem.core.requests.AddSkillRequest;
-import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesBySkillRequest;
+import lv.javaguru.java2.hrsystem.config.HumanResourcesSystemConfiguration;
 import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesBySkillResponse;
-import lv.javaguru.java2.hrsystem.core.services.AddEmployeeService;
-import lv.javaguru.java2.hrsystem.core.services.AddSkillService;
-import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesBySkillService;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIApplicationContextBuilder;
-import lv.javaguru.java2.hrsystem.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.requests.*;
+import lv.javaguru.java2.hrsystem.core.services.*;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
 
@@ -18,19 +16,23 @@ import static org.assertj.core.api.Assertions.*;
 
 public class AcceptanceTestSearchBySkill {
 
-    private static ApplicationContext context =
-            new DIApplicationContextBuilder().build("lv.javaguru.java2.hrsystem");
+    private ApplicationContext appContext;
+
+    @Before
+    public void setup() {
+        appContext = new AnnotationConfigApplicationContext(HumanResourcesSystemConfiguration.class);
+    }
 
     public AddEmployeeService getAddEmployeeService() {
-        return context.getBean(AddEmployeeService.class);
+        return appContext.getBean(AddEmployeeService.class);
     }
 
     public AddSkillService getAddSkillService() {
-        return context.getBean(AddSkillService.class);
+        return appContext.getBean(AddSkillService.class);
     }
 
-    public SearchEmployeesBySkillService getSearchBySkillService(){
-        return context.getBean(SearchEmployeesBySkillService.class);
+    public SearchEmployeesBySkillService getSearchBySkillService() {
+        return appContext.getBean(SearchEmployeesBySkillService.class);
     }
 
     @Test

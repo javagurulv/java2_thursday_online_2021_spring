@@ -1,17 +1,16 @@
 package lv.javaguru.java2.hrsystem.application;
 
+import lv.javaguru.java2.hrsystem.config.HumanResourcesSystemConfiguration;
 import lv.javaguru.java2.hrsystem.console_ui.*;
-import lv.javaguru.java2.hrsystem.dependency_injection.ApplicationContext;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIApplicationContextBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class HumanResourcesSystemApp {
 
     private static ApplicationContext applicationContext =
-            new DIApplicationContextBuilder().build("lv.javaguru.java2.hrsystem");
+            new AnnotationConfigApplicationContext(HumanResourcesSystemConfiguration.class);
 
     private final Map<Integer, UIAction> menuNumberToActionMap = new HashMap<>() {{
         put(1, applicationContext.getBean(RegisterUserUIAction.class));

@@ -1,18 +1,17 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
 import lv.javaguru.java2.hrsystem.core.database.Database;
-import lv.javaguru.java2.hrsystem.core.requests.GetAllUsersRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllUsersResponse;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
-import lv.javaguru.java2.hrsystem.domain.User;
+import lv.javaguru.java2.hrsystem.core.domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@DIComponent
+@Component
 public class GetAllUsersService {
 
-    @DIDependency private Database database;
+    @Autowired private Database database;
 
     public GetAllUsersResponse execute() {
         List<User> userList = database.getAllUsers();

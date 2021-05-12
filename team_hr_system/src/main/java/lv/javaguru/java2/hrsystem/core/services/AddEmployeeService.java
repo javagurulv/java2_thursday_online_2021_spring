@@ -3,18 +3,18 @@ package lv.javaguru.java2.hrsystem.core.services;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.*;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeRequestValidator;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
-import lv.javaguru.java2.hrsystem.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.database.Database;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@DIComponent
+@Component
 public class AddEmployeeService {
 
-    @DIDependency private Database database;
-    @DIDependency private AddEmployeeRequestValidator validator;
+    @Autowired private Database database;
+    @Autowired private AddEmployeeRequestValidator validator;
 
     public AddEmployeeResponse execute(AddEmployeeRequest request) {
         List<CoreError> errors = validator.validate(request);

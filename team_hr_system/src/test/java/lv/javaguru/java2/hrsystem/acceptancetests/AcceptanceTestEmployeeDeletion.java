@@ -1,17 +1,14 @@
 package lv.javaguru.java2.hrsystem.acceptancetests;
 
-import lv.javaguru.java2.hrsystem.dependency_injection.ApplicationContext;
-import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
-import lv.javaguru.java2.hrsystem.core.requests.DeleteEmployeeRequest;
-import lv.javaguru.java2.hrsystem.core.requests.GetAllEmployeesRequest;
-import lv.javaguru.java2.hrsystem.core.responses.DeleteEmployeeResponse;
-import lv.javaguru.java2.hrsystem.core.responses.GetAllEmployeesResponse;
-import lv.javaguru.java2.hrsystem.core.services.AddEmployeeService;
-import lv.javaguru.java2.hrsystem.core.services.DeleteEmployeeService;
-import lv.javaguru.java2.hrsystem.core.services.GetAllEmployeesService;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIApplicationContextBuilder;
-import lv.javaguru.java2.hrsystem.domain.Employee;
+import lv.javaguru.java2.hrsystem.config.HumanResourcesSystemConfiguration;
+import lv.javaguru.java2.hrsystem.core.requests.*;
+import lv.javaguru.java2.hrsystem.core.responses.*;
+import lv.javaguru.java2.hrsystem.core.services.*;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
 
@@ -19,19 +16,24 @@ import static org.assertj.core.api.Assertions.*;
 
 public class AcceptanceTestEmployeeDeletion {
 
-    private static ApplicationContext context =
-            new DIApplicationContextBuilder().build("lv.javaguru.java2.hrsystem");
+    private ApplicationContext appContext;
+
+    @Before
+    public void setup(){
+        appContext = new AnnotationConfigApplicationContext(HumanResourcesSystemConfiguration.class);
+    }
+
 
     public AddEmployeeService getAddEmployeeService() {
-        return context.getBean(AddEmployeeService.class);
+        return appContext.getBean(AddEmployeeService.class);
     }
 
     public DeleteEmployeeService getDeleteEmployeeService() {
-        return context.getBean(DeleteEmployeeService.class);
+        return appContext.getBean(DeleteEmployeeService.class);
     }
 
     public GetAllEmployeesService getAllEmployeesService() {
-        return context.getBean(GetAllEmployeesService.class);
+        return appContext.getBean(GetAllEmployeesService.class);
     }
 
     @Test

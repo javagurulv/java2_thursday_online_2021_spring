@@ -1,7 +1,7 @@
 package lv.javaguru.java2.hrsystem.matchers;
 
-import lv.javaguru.java2.hrsystem.domain.Employee;
-import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import org.mockito.ArgumentMatcher;
 
 public class EmployeeMatcher implements ArgumentMatcher<Employee> {

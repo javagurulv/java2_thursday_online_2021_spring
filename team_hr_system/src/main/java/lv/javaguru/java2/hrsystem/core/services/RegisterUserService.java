@@ -4,17 +4,17 @@ import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.requests.RegisterUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.*;
 import lv.javaguru.java2.hrsystem.core.services.validators.RegisterUserValidator;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
-import lv.javaguru.java2.hrsystem.domain.User;
+import lv.javaguru.java2.hrsystem.core.domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@DIComponent
+@Component
 public class RegisterUserService {
 
-   @DIDependency private Database database;
-   @DIDependency private RegisterUserValidator validator;
+   @Autowired private Database database;
+   @Autowired private RegisterUserValidator validator;
 
    public RegisterUserResponse execute (RegisterUserRequest registrationRequest){
        List<CoreError> errors = validator.validate(registrationRequest);

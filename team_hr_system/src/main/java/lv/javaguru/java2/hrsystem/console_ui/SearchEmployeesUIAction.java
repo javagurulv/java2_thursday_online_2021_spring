@@ -1,21 +1,19 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
-import lv.javaguru.java2.hrsystem.core.requests.Ordering;
-import lv.javaguru.java2.hrsystem.core.requests.Paging;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
-import lv.javaguru.java2.hrsystem.domain.Employee;
-import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
+import lv.javaguru.java2.hrsystem.core.requests.*;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesResponse;
 import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Scanner;
 
-@DIComponent
+@Component
 public class SearchEmployeesUIAction implements UIAction{
 
-   @DIDependency private SearchEmployeesService service;
+   @Autowired private SearchEmployeesService service;
 
     @Override
     public void execute() {

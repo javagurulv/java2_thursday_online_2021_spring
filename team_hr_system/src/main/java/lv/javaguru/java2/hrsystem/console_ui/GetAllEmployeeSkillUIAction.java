@@ -3,13 +3,14 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import lv.javaguru.java2.hrsystem.core.requests.GetAllEmployeeSkillsRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllEmployeeSkillsResponse;
 import lv.javaguru.java2.hrsystem.core.services.GetAllEmployeeSkillsService;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@DIComponent
+@Component
 public class GetAllEmployeeSkillUIAction implements UIAction {
 
-    @DIDependency private GetAllEmployeeSkillsService service;
+    @Autowired
+    private GetAllEmployeeSkillsService service;
 
     @Override
     public void execute() {

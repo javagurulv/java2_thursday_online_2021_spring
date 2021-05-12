@@ -1,19 +1,37 @@
 package lv.javaguru.java2.hrsystem.acceptancetests;
 
-import lv.javaguru.java2.hrsystem.dependency_injection.ApplicationContext;
-import lv.javaguru.java2.hrsystem.core.requests.*;
+import lv.javaguru.java2.hrsystem.config.HumanResourcesSystemConfiguration;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllUsersResponse;
+import lv.javaguru.java2.hrsystem.core.requests.*;
+import lv.javaguru.java2.hrsystem.core.domain.*;
 import lv.javaguru.java2.hrsystem.core.services.*;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIApplicationContextBuilder;
-import lv.javaguru.java2.hrsystem.domain.*;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AcceptanceTestAuthorizeUser {
 
-    private static ApplicationContext context =
-            new DIApplicationContextBuilder().build("lv.javaguru.java2.hrsystem");
+    private ApplicationContext appContext;
+
+    @Before
+    public void setup() {
+        appContext = new AnnotationConfigApplicationContext(HumanResourcesSystemConfiguration.class);
+    }
+
+    private RegisterUserService registerUserService() {
+        return appContext.getBean(RegisterUserService.class);
+    }
+
+    private AuthorizeUserService authorizeUserService() {
+        return appContext.getBean(AuthorizeUserService.class);
+    }
+
+    private GetAllUsersService getAllUsersService() {
+        return appContext.getBean(GetAllUsersService.class);
+    }
 
     @Test
     public void shouldReturnAuthorizeUser() {
@@ -34,17 +52,5 @@ public class AcceptanceTestAuthorizeUser {
         expectedUser.setId(1L);
 
         assertThat(getAllUsersResponse.getUsers().get(0)).isEqualTo(expectedUser);
-    }
-
-    private RegisterUserService registerUserService() {
-        return context.getBean(RegisterUserService.class);
-    }
-
-    private AuthorizeUserService authorizeUserService() {
-        return context.getBean(AuthorizeUserService.class);
-    }
-
-    private GetAllUsersService getAllUsersService() {
-        return context.getBean(GetAllUsersService.class);
     }
 }

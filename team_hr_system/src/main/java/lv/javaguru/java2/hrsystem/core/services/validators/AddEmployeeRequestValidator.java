@@ -2,13 +2,11 @@ package lv.javaguru.java2.hrsystem.core.services.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
+import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
-@DIComponent
+@Component
 public class AddEmployeeRequestValidator {
 
     public List<CoreError> validate(AddEmployeeRequest request) {

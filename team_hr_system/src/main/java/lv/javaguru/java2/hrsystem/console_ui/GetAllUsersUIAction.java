@@ -1,15 +1,14 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
-import lv.javaguru.java2.hrsystem.core.requests.GetAllUsersRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllUsersResponse;
 import lv.javaguru.java2.hrsystem.core.services.GetAllUsersService;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@DIComponent
+@Component
 public class GetAllUsersUIAction implements UIAction{
 
-    @DIDependency private GetAllUsersService getAllUsersService;
+    @Autowired private GetAllUsersService getAllUsersService;
 
     @Override
     public void execute() {

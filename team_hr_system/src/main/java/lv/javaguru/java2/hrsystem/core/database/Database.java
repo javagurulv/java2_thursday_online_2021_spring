@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.database;
 
-import lv.javaguru.java2.hrsystem.domain.*;
+import lv.javaguru.java2.hrsystem.core.domain.*;
 
 import java.util.*;
 

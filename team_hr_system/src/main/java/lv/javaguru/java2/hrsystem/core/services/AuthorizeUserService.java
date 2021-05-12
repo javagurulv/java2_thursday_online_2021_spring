@@ -4,17 +4,17 @@ import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.*;
 import lv.javaguru.java2.hrsystem.core.services.validators.AuthorizeUserValidator;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
-import lv.javaguru.java2.hrsystem.domain.User;
+import lv.javaguru.java2.hrsystem.core.domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
-@DIComponent
+@Component
 public class AuthorizeUserService {
 
-    @DIDependency private Database database;
-    @DIDependency private AuthorizeUserValidator validator;
+    @Autowired private Database database;
+    @Autowired private AuthorizeUserValidator validator;
 
     public AuthorizeUserResponse execute (AuthorizeUserRequest request){
 

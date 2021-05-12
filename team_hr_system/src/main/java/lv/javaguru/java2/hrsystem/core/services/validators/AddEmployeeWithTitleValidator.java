@@ -2,15 +2,12 @@ package lv.javaguru.java2.hrsystem.core.services.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeWithTitleRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
+import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
+import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
-@DIComponent
+@Component
 public class AddEmployeeWithTitleValidator {
 
     public List<CoreError> validate(AddEmployeeWithTitleRequest request) {

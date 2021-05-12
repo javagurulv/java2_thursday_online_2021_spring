@@ -4,18 +4,18 @@ import lv.javaguru.java2.hrsystem.core.database.Database;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesBySkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.*;
 import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesBySkillRequestValidator;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIComponent;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIDependency;
-import lv.javaguru.java2.hrsystem.domain.*;
+import lv.javaguru.java2.hrsystem.core.domain.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@DIComponent
+@Component
 public class SearchEmployeesBySkillService {
 
-    @DIDependency private Database database;
-    @DIDependency private SearchEmployeesBySkillRequestValidator validator;
+    @Autowired private Database database;
+    @Autowired private SearchEmployeesBySkillRequestValidator validator;
 
     public SearchEmployeesBySkillResponse execute(SearchEmployeesBySkillRequest request) {
         List<CoreError> errors = validator.validate(request);

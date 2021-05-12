@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.responses;
 
-import lv.javaguru.java2.hrsystem.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
 
 import java.util.List;
 

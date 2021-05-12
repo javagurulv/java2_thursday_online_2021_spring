@@ -1,16 +1,14 @@
 package lv.javaguru.java2.hrsystem.acceptancetests;
 
-import lv.javaguru.java2.hrsystem.dependency_injection.ApplicationContext;
-import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeWithTitleRequest;
-import lv.javaguru.java2.hrsystem.core.requests.Ordering;
-import lv.javaguru.java2.hrsystem.core.requests.Paging;
-import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
+import lv.javaguru.java2.hrsystem.config.HumanResourcesSystemConfiguration;
 import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesResponse;
-import lv.javaguru.java2.hrsystem.core.services.AddEmployeeWithTitleService;
-import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesService;
-import lv.javaguru.java2.hrsystem.dependency_injection.DIApplicationContextBuilder;
-import lv.javaguru.java2.hrsystem.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.requests.*;
+import lv.javaguru.java2.hrsystem.core.services.*;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
 
@@ -18,15 +16,19 @@ import static org.assertj.core.api.Assertions.*;
 
 public class AcceptanceTestSearchByTitle {
 
-    private static ApplicationContext context =
-            new DIApplicationContextBuilder().build("lv.javaguru.java2.hrsystem");
+    private ApplicationContext appContext;
+
+    @Before
+    public void setup() {
+        appContext = new AnnotationConfigApplicationContext(HumanResourcesSystemConfiguration.class);
+    }
 
     public AddEmployeeWithTitleService getAddEmployeeWithTitleService() {
-        return context.getBean(AddEmployeeWithTitleService.class);
+        return appContext.getBean(AddEmployeeWithTitleService.class);
     }
 
     public SearchEmployeesService getSearchEmployeeService() {
-        return context.getBean(SearchEmployeesService.class);
+        return appContext.getBean(SearchEmployeesService.class);
     }
 
     @Test
