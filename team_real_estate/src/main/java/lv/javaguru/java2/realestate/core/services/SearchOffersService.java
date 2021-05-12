@@ -8,19 +8,27 @@ import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.SearchOffersResponse;
 import lv.javaguru.java2.realestate.core.services.validators.SearchOffersValidator;
-import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
-import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@DIComponent
+@Component
 public class SearchOffersService {
-    @DIDependency
+
+    @Value("${search.ordering.enabled}")
+    private boolean orderingEnabled;
+
+    @Value("${search.paging.enabled}")
+    private boolean pagingEnabled;
+
+    @Autowired
     private Database database;
-    @DIDependency
+    @Autowired
     private SearchOffersValidator validator;
 
     public SearchOffersResponse execute(SearchOffersRequest request) {
@@ -37,7 +45,7 @@ public class SearchOffersService {
     }
 
     private List<Offer> order(List<Offer> offers, Ordering ordering) {
-        if (ordering != null) {
+        if (orderingEnabled && ordering != null) {
             Comparator<Offer> comparator = getComparator(ordering.getOrderBy());
 
             if (ordering.getOrderDirection().equals("DESCENDING")) {
@@ -63,7 +71,7 @@ public class SearchOffersService {
     }
 
     private List<Offer> paging(List<Offer> books, Paging paging) {
-        if (paging != null) {
+        if (pagingEnabled && paging != null) {
             int skip = (paging.getPageNumber() - 1) * paging.getPageSize();
             return books.stream()
                     .skip(skip)

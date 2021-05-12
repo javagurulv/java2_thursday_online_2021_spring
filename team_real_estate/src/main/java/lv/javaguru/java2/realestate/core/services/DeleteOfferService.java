@@ -5,16 +5,16 @@ import lv.javaguru.java2.realestate.core.requests.DeleteOfferRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.DeleteOfferResponse;
 import lv.javaguru.java2.realestate.core.services.validators.DeleteOfferValidator;
-import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
-import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@DIComponent
+@Component
 public class DeleteOfferService {
-    @DIDependency
+    @Autowired
     private Database database;
-    @DIDependency
+    @Autowired
     private DeleteOfferValidator validator;
 
     public DeleteOfferResponse execute(DeleteOfferRequest deleteOfferRequest) {

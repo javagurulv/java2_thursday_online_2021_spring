@@ -1,7 +1,8 @@
 package lv.javaguru.java2.realestate.console_ui;
 
-import lv.javaguru.java2.realestate.dependency_injection.ApplicationContext;
-import lv.javaguru.java2.realestate.dependency_injection.DIApplicationContextBuilder;
+import lv.javaguru.java2.realestate.config.RealEstateConfiguration;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,7 @@ public class ConsoleApp {
     private final Map<Integer, ConsoleUI> menuNumberToActionMap;
 
     private static ApplicationContext applicationContext =
-            new DIApplicationContextBuilder().build("lv.javaguru.java2.realestate");
+            new AnnotationConfigApplicationContext(RealEstateConfiguration.class);
 
     public ConsoleApp() {
 

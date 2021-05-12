@@ -5,14 +5,14 @@ import lv.javaguru.java2.realestate.core.requests.Paging;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
 import lv.javaguru.java2.realestate.core.response.SearchOffersResponse;
 import lv.javaguru.java2.realestate.core.services.SearchOffersService;
-import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
-import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@DIComponent
+@Component
 public class SearchOffersUIAction implements ConsoleUI {
-    @DIDependency
+    @Autowired
     private SearchOffersService searchOffersService;
 
     @Override

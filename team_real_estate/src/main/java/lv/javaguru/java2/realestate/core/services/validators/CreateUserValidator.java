@@ -2,13 +2,13 @@ package lv.javaguru.java2.realestate.core.services.validators;
 
 import lv.javaguru.java2.realestate.core.requests.CreateUserRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
-import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@DIComponent
+@Component
 public class CreateUserValidator {
 
     public List<CoreError> validate(CreateUserRequest request) {
