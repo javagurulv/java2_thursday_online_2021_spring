@@ -1,12 +1,12 @@
 package lv.javaguru.java2.wasterestarant.console_ui;
 
 import lv.javaguru.java2.wasterestarant.core.services.RegistrationService;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@DIComponent
+@Component
 public class RegistrationUIAction implements UIAction {
-    @DIDependency
+    @Autowired
     private RegistrationService registrationService;
 
     @Override

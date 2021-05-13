@@ -3,15 +3,15 @@ package lv.javaguru.java2.realestate.console_ui;
 import lv.javaguru.java2.realestate.core.requests.CreateUserRequest;
 import lv.javaguru.java2.realestate.core.response.CreateUserResponse;
 import lv.javaguru.java2.realestate.core.services.CreateUserService;
-import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
-import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@DIComponent
+@Component
 public class CreateUserUIAction implements ConsoleUI {
 
-    @DIDependency
+    @Autowired
     private CreateUserService createUserService;
 
     @Override

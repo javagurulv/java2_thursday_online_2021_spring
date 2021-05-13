@@ -3,7 +3,7 @@ package lv.javaguru.java2.realestate.core.database;
 import lv.javaguru.java2.realestate.core.domain.Offer;
 import lv.javaguru.java2.realestate.core.domain.User;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
-import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-@DIComponent
+@Component
 public class InMemoryDatabaseImpl implements Database {
 
     private final List<User> users = new ArrayList<>();

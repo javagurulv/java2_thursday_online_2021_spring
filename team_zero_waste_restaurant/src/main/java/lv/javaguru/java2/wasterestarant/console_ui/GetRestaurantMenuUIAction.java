@@ -3,16 +3,17 @@ package lv.javaguru.java2.wasterestarant.console_ui;
 import lv.javaguru.java2.wasterestarant.core.requests.GetRestaurantMenuRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.GetRestaurantMenuResponse;
 import lv.javaguru.java2.wasterestarant.core.services.GetRestaurantMenuService;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
-import lv.javaguru.java2.wasterestarant.domain.Dish;
+import lv.javaguru.java2.wasterestarant.core.domain.Dish;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 //Nataliya - in process
-@DIComponent
+@Component
 public class GetRestaurantMenuUIAction implements UIAction{
-    @DIDependency private GetRestaurantMenuService getRestaurantMenuService;
+    @Autowired
+    private GetRestaurantMenuService getRestaurantMenuService;
 
     @Override
     public void execute() {

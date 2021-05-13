@@ -6,21 +6,27 @@ import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.product.SearchProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.product.SearchProductResponse;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
-import lv.javaguru.java2.wasterestarant.domain.Product;
+import lv.javaguru.java2.wasterestarant.core.domain.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@DIComponent
+@Component
 public class SearchProductService {
 
-    @DIDependency
+    @Value("${search.ordering.enabled}")
+    private boolean orderingEnabled;
+    @Value("${search.paging.enabled}")
+    private boolean pagingEnabled;
+
+    @Autowired
     private Database database;
-    @DIDependency
+    @Autowired
     private SearchProductServiceValidator validator;
 
     public SearchProductResponse execute(SearchProductRequest request) {
@@ -35,7 +41,7 @@ public class SearchProductService {
     }
 
     private List<Product> order(List<Product> products, Ordering ordering) {
-        if (ordering != null) {
+        if (orderingEnabled && (ordering != null)) {
             Comparator<Product> comparator = ordering.getOrderBy().equals("BBD")
                     ? Comparator.comparing(Product::getExpiryDate)
                     : Comparator.comparing(Product::getQuantity);
@@ -57,7 +63,7 @@ public class SearchProductService {
     }
 
     private List<Product> paging(List<Product> products, Paging paging) {
-        if (paging != null) {
+        if (pagingEnabled && (paging != null)) {
             int skip = (paging.getPageNumber() - 1) * paging.getPageSize();
             return products.stream()
                     .skip(skip)

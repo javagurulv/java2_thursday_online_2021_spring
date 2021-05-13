@@ -6,13 +6,16 @@ import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.product.SearchProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.product.SearchProductResponse;
-import lv.javaguru.java2.wasterestarant.domain.Product;
+import lv.javaguru.java2.wasterestarant.core.domain.Product;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.util.ReflectionTestUtils;
+
 import static org.mockito.ArgumentMatchers.any;
 
 import java.text.ParseException;
@@ -33,6 +36,12 @@ public class SearchProductServiceTestMock {
 
     @InjectMocks
     private SearchProductService service;
+
+    @Before
+    public void setup() {
+        ReflectionTestUtils.setField(service, "orderingEnabled", true);
+        ReflectionTestUtils.setField(service, "pagingEnabled", true);
+    }
 
     @Test
     public void shouldSearchByName() throws ParseException {

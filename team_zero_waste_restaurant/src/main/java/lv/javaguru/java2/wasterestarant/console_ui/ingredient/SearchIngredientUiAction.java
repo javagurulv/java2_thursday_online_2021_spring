@@ -6,16 +6,17 @@ import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.SearchIngredientResponse;
 import lv.javaguru.java2.wasterestarant.core.services.ingredient.SearchIngredientService;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
-import lv.javaguru.java2.wasterestarant.domain.Ingredient;
+import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Scanner;
-@DIComponent
+
+@Component
 public class SearchIngredientUiAction implements UIAction {
 
-    @DIDependency
+    @Autowired
     private SearchIngredientService searchIngredientService;
 
     @Override

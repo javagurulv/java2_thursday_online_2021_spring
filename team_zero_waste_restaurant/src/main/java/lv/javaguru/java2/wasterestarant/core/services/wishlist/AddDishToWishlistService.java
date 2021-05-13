@@ -3,21 +3,20 @@ package lv.javaguru.java2.wasterestarant.core.services.wishlist;
 import lv.javaguru.java2.wasterestarant.core.database.Database;
 import lv.javaguru.java2.wasterestarant.core.requests.wishlist.AddDishToWishlistRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
-import lv.javaguru.java2.wasterestarant.core.responses.dish.AddDishResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.wishlist.AddDishToWishlistResponse;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
-import lv.javaguru.java2.wasterestarant.domain.OrderItem;
+import lv.javaguru.java2.wasterestarant.core.domain.OrderItem;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 //Nataliya - in process
-@DIComponent
+@Component
 public class AddDishToWishlistService {
 
-    @DIDependency
+    @Autowired
     private Database database;
-    @DIDependency
+    @Autowired
     private AddDishToWishlistValidator validator;
 
     public AddDishToWishlistResponse execute(AddDishToWishlistRequest request) {

@@ -6,16 +6,16 @@ import lv.javaguru.java2.realestate.core.requests.CreateUserRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.CreateUserResponse;
 import lv.javaguru.java2.realestate.core.services.validators.CreateUserValidator;
-import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
-import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@DIComponent
+@Component
 public class CreateUserService {
-    @DIDependency
+    @Autowired
     private Database database;
-    @DIDependency
+    @Autowired
     private CreateUserValidator validator;
 
     public CreateUserResponse execute(CreateUserRequest createUserRequest) {

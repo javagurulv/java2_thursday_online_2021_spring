@@ -6,16 +6,16 @@ import lv.javaguru.java2.realestate.core.requests.DeleteUserRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.DeleteUserResponse;
 import lv.javaguru.java2.realestate.core.services.validators.DeleteUserValidator;
-import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
-import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@DIComponent
+@Component
 public class DeleteUserService {
-    @DIDependency
+    @Autowired
     private Database database;
-    @DIDependency
+    @Autowired
     private DeleteUserValidator validator;
 
     public DeleteUserResponse execute(DeleteUserRequest deleteUserRequest) {

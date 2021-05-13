@@ -5,8 +5,8 @@ import lv.javaguru.java2.hrsystem.core.requests.AddSkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddSkillResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddSkillRequestValidator;
-import lv.javaguru.java2.hrsystem.domain.Employee;
-import lv.javaguru.java2.hrsystem.domain.Skill;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -70,7 +70,7 @@ public class AddSkillServiceTest {
         List<CoreError> errors = new ArrayList<>() {{
             add(new CoreError("employee skill", " Must not be empty!"));
         }};
-        Mockito.when(validator.validate(request)).thenReturn(errors);
+        Mockito.lenient().when(validator.validate(request)).thenReturn(errors);
         AddSkillResponse response = service.execute(request);
         assertThat(response.getErrors().size() == 1).isTrue();
         assertThat(response.getErrors().contains(
@@ -98,6 +98,7 @@ public class AddSkillServiceTest {
     public void testSuccessfulAddingSkill() {
         AddSkillRequest request = new AddSkillRequest(1L, "Java");
         Mockito.when(validator.validate(request)).thenReturn(List.of());
+        Mockito.lenient().when(database.getAllEmployees()).thenReturn(List.of(new Employee(1L)));
         Mockito.when(database.addSkill(new Employee(1L), new Skill("Java")))
                 .thenReturn(true);
         AddSkillResponse response = service.execute(request);
@@ -109,7 +110,7 @@ public class AddSkillServiceTest {
     public void testAddingAlreadyAddedSkill() {
         AddSkillRequest request = new AddSkillRequest(1L, "Java");
         Mockito.when(validator.validate(request)).thenReturn(List.of());
-        Mockito.when(database.addSkill(new Employee(1L), new Skill("Java")))
+        Mockito.lenient().when(database.addSkill(new Employee(1L), new Skill("Java")))
                 .thenReturn(false);
         AddSkillResponse response = service.execute(request);
         assertThat(response.hasErrors()).isFalse();

@@ -6,9 +6,10 @@ import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.SearchDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.SearchDishesResponse;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
-import lv.javaguru.java2.wasterestarant.domain.Dish;
+import lv.javaguru.java2.wasterestarant.core.domain.Dish;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -16,10 +17,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //Elena
-@DIComponent
+@Component
 public class SearchDishesService {
-    @DIDependency private Database database;
-    @DIDependency
+
+    @Value("${search.ordering.enabled}")
+    private boolean orderingEnabled;
+    @Value("${search.paging.enabled}")
+    private boolean pagingEnabled;
+
+    @Autowired
+    private Database database;
+    @Autowired
     private SearchDishesRequestValidator validator;
 
     public SearchDishesResponse execute(SearchDishesRequest request) {
@@ -34,7 +42,7 @@ public class SearchDishesService {
     }
 
     private List<Dish> order(List<Dish> dishes, Ordering ordering) {
-        if (ordering != null) {
+        if (orderingEnabled && (ordering != null)) {
             if ((ordering.getOrderBy().equals("name")) && (ordering.getOrderDirection().equals("ASCENDING"))) {
                 return dishes.stream().sorted(Comparator.comparing(Dish::getName))
                         .collect(Collectors.toList());
@@ -90,7 +98,7 @@ public class SearchDishesService {
     }
 
     private List<Dish> paging(List<Dish> books, Paging paging) {
-        if (paging != null) {
+        if (pagingEnabled && (paging != null)) {
             int skip = (paging.getPageNumber() - 1) * paging.getPageSize();
             return books.stream()
                     .skip(skip)

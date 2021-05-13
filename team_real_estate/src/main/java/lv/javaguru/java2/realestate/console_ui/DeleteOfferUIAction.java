@@ -3,14 +3,14 @@ package lv.javaguru.java2.realestate.console_ui;
 import lv.javaguru.java2.realestate.core.requests.DeleteOfferRequest;
 import lv.javaguru.java2.realestate.core.response.DeleteOfferResponse;
 import lv.javaguru.java2.realestate.core.services.DeleteOfferService;
-import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
-import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@DIComponent
+@Component
 public class DeleteOfferUIAction implements ConsoleUI {
-    @DIDependency
+    @Autowired
     private DeleteOfferService deleteOfferService;
 
     @Override

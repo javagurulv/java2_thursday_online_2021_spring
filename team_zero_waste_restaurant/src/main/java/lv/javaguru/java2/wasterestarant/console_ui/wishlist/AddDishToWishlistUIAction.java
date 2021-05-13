@@ -2,19 +2,18 @@ package lv.javaguru.java2.wasterestarant.console_ui.wishlist;
 
 import lv.javaguru.java2.wasterestarant.console_ui.UIAction;
 import lv.javaguru.java2.wasterestarant.core.requests.wishlist.AddDishToWishlistRequest;
-import lv.javaguru.java2.wasterestarant.core.responses.dish.AddDishResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.wishlist.AddDishToWishlistResponse;
 import lv.javaguru.java2.wasterestarant.core.services.wishlist.AddDishToWishlistService;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
 //Nataliya
-@DIComponent
+@Component
 public class AddDishToWishlistUIAction implements UIAction {
 
-    @DIDependency
+    @Autowired
     private AddDishToWishlistService addDishToWishlistService;
 
     @Override

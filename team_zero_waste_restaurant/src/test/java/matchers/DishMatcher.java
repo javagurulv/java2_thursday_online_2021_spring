@@ -1,6 +1,6 @@
 package matchers;
 
-import lv.javaguru.java2.wasterestarant.domain.Dish;
+import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 import org.mockito.ArgumentMatcher;
 
 //Andris

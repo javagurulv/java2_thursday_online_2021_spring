@@ -2,13 +2,13 @@ package lv.javaguru.java2.wasterestarant.core.services.wishlist;
 
 import lv.javaguru.java2.wasterestarant.core.requests.wishlist.AddDishToWishlistRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@DIComponent
+@Component
 public class AddDishToWishlistValidator {
 
     List<CoreError> errors = new ArrayList<>();

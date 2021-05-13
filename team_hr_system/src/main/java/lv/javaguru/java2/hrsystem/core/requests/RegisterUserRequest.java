@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.requests;
 
-import lv.javaguru.java2.hrsystem.domain.UserRole;
+import lv.javaguru.java2.hrsystem.core.domain.UserRole;
 
 public class RegisterUserRequest {
 

@@ -5,7 +5,7 @@ import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AuthorizeUserResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.AuthorizeUserValidator;
-import lv.javaguru.java2.hrsystem.domain.User;
+import lv.javaguru.java2.hrsystem.core.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

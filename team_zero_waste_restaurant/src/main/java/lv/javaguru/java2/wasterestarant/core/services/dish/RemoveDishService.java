@@ -4,17 +4,18 @@ import lv.javaguru.java2.wasterestarant.core.database.Database;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.RemoveDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.RemoveDishResponse;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 // AndrejsB
-@DIComponent
+@Component
 public class RemoveDishService {
 
-    @DIDependency private Database database;
-    @DIDependency
+    @Autowired
+    private Database database;
+    @Autowired
     private RemoveDishValidator validator;
 
     public RemoveDishResponse execute(RemoveDishRequest request) {

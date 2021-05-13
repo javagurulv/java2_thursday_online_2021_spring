@@ -2,6 +2,8 @@ package lv.javaguru.java2.realestate.acceptancetests;
 
 import static org.junit.Assert.assertEquals;
 
+import lv.javaguru.java2.realestate.config.RealEstateConfiguration;
+import org.junit.Before;
 import org.junit.Test;
 
 import lv.javaguru.java2.realestate.core.requests.CreateOfferRequest;
@@ -9,14 +11,18 @@ import lv.javaguru.java2.realestate.core.requests.GetAllOffersRequest;
 import lv.javaguru.java2.realestate.core.response.GetAllOffersResponse;
 import lv.javaguru.java2.realestate.core.services.CreateOfferService;
 import lv.javaguru.java2.realestate.core.services.GetAllOffersService;
-import lv.javaguru.java2.realestate.dependency_injection.ApplicationContext;
-import lv.javaguru.java2.realestate.dependency_injection.DIApplicationContextBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
 public class AcceptanceTest1 {
 
-    private ApplicationContext applicationContext =
-            new DIApplicationContextBuilder().build("lv.javaguru.java2.realestate");
+    private ApplicationContext applicationContext;
+
+    @Before
+    public void setup(){
+        applicationContext = new AnnotationConfigApplicationContext(RealEstateConfiguration.class);
+    }
 
     @Test
     public void shouldReturnOfferList() {

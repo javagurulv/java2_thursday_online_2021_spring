@@ -6,17 +6,17 @@ import lv.javaguru.java2.realestate.core.requests.CreateOfferRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.CreateOfferResponse;
 import lv.javaguru.java2.realestate.core.services.validators.CreateOfferValidator;
-import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
-import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@DIComponent
+@Component
 public class CreateOfferService {
 
-    @DIDependency
+    @Autowired
     private Database database;
-    @DIDependency
+    @Autowired
     private CreateOfferValidator validator;
 
     public CreateOfferResponse execute(CreateOfferRequest createOfferRequest) {

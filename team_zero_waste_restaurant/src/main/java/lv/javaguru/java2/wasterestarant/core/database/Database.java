@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
-import lv.javaguru.java2.wasterestarant.domain.*;
+import lv.javaguru.java2.wasterestarant.core.domain.*;
 
 import java.util.Date;
 import java.util.List;
@@ -58,8 +58,10 @@ public interface Database {
 
     List<Order> getAllOrders();
 
-    List<Order> getOrdersByClientID(Long clientID);
+    List<Order> searchOrdersByClientID(Long clientID);
 
-    List<Order> getOrderByDate(Date orderDate);
+    List<Order> searchOrderByDate(Date orderDate);
+
+    List<Order> searchOrderByClientIDAndDate(Long clientID, Date orderDate);
 
 }

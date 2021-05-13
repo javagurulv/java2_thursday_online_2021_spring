@@ -4,17 +4,17 @@ import lv.javaguru.java2.wasterestarant.core.database.Database;
 import lv.javaguru.java2.wasterestarant.core.requests.product.AddProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.product.AddProductResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
-import lv.javaguru.java2.wasterestarant.domain.Product;
+import lv.javaguru.java2.wasterestarant.core.domain.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@DIComponent
+@Component
 public class AddProductService {
-    @DIDependency
+    @Autowired
     private Database database;
-    @DIDependency private AddProductValidator validator;
+    @Autowired private AddProductValidator validator;
 
     public AddProductResponse execute(AddProductRequest request) {
         List<CoreError> errors = validator.validate(request);

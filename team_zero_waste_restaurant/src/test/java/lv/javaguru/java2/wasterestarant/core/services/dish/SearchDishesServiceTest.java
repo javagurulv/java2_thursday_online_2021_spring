@@ -6,13 +6,15 @@ import lv.javaguru.java2.wasterestarant.core.requests.dish.SearchDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.SearchDishesResponse;
-import lv.javaguru.java2.wasterestarant.domain.Dish;
+import lv.javaguru.java2.wasterestarant.core.domain.Dish;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,12 @@ public class SearchDishesServiceTest {
     private SearchDishesRequestValidator validator;
     @InjectMocks
     SearchDishesService searchDishesService;
+
+    @Before
+    public void setup() {
+        ReflectionTestUtils.setField(searchDishesService, "orderingEnabled", true);
+        ReflectionTestUtils.setField(searchDishesService, "pagingEnabled", true);
+    }
 
     @Test
     public void shouldReturnResponseWithErrorsWhenValidatorFails() {

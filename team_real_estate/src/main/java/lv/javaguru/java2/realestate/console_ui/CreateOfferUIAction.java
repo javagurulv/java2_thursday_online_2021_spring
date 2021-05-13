@@ -3,15 +3,15 @@ package lv.javaguru.java2.realestate.console_ui;
 import lv.javaguru.java2.realestate.core.requests.CreateOfferRequest;
 import lv.javaguru.java2.realestate.core.response.CreateOfferResponse;
 import lv.javaguru.java2.realestate.core.services.CreateOfferService;
-import lv.javaguru.java2.realestate.dependency_injection.DIComponent;
-import lv.javaguru.java2.realestate.dependency_injection.DIDependency;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@DIComponent
+@Component
 public class CreateOfferUIAction implements ConsoleUI {
 
-    @DIDependency
+    @Autowired
     private CreateOfferService createOfferService;
 
 

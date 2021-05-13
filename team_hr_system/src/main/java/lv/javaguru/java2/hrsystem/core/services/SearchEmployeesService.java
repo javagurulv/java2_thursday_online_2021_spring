@@ -7,9 +7,10 @@ import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesResponse;
 import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesRequestValidator;
-import lv.javaguru.java2.hrsystem.domain.Employee;
-import lv.javaguru.java2.hrsystem.domain.EmployeeTitle;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
@@ -18,6 +19,13 @@ import java.util.stream.Collectors;
 
 @Component
 public class SearchEmployeesService {
+
+    @Value("${search.ordering.enabled}")
+    private boolean orderingEnabled;
+
+    @Value("${search.paging.enabled}")
+    private boolean pagingEnabled;
+
     @Autowired
     private Database database;
     @Autowired
@@ -48,13 +56,13 @@ public class SearchEmployeesService {
             employees = database.getEmployeesByTitle(EmployeeTitle.valueOf(request.getEmployeeTitle()));
         }
         if (request.isNameProvided() && request.isTitleProvided()) {
-            employees = database.getEmployeesByTitleAdnName(EmployeeTitle.valueOf(request.getEmployeeTitle()), request.getName());
+            employees = database.getEmployeesByTitleAndName(EmployeeTitle.valueOf(request.getEmployeeTitle()), request.getName());
         }
         return employees;
     }
 
     private List<Employee> order(List<Employee> employees, Ordering ordering) {
-        if (ordering != null) {
+        if (orderingEnabled && (ordering != null)) {
             Comparator<Employee> comparator = ordering.getOrderBy().equals("title")
                     ? Comparator.comparing(Employee::getTitle)
                     : Comparator.comparing(Employee::getName);
@@ -69,7 +77,7 @@ public class SearchEmployeesService {
 
     private List<Employee> paging(List<Employee> employees, Paging paging) {
 
-        if (paging != null) {
+        if (pagingEnabled && (paging != null)) {
             int skip = (paging.getPageNumber() - 1) * paging.getPageSize();
             return employees.stream()
                     .skip(skip)

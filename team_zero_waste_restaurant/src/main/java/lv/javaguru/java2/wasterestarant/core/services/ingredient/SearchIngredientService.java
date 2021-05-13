@@ -6,20 +6,26 @@ import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.SearchIngredientResponse;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIComponent;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIDependency;
-import lv.javaguru.java2.wasterestarant.domain.Ingredient;
-import lv.javaguru.java2.wasterestarant.domain.Product;
+import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-@DIComponent
+@Component
 public class SearchIngredientService {
 
-    @DIDependency private Database database;
-    @DIDependency
+    @Value("${search.ordering.enabled}")
+    private boolean orderingEnabled;
+    @Value("${search.paging.enabled}")
+    private boolean pagingEnabled;
+
+    @Autowired
+    private Database database;
+    @Autowired
     private SearchIngredientValidator validator;
 
     public SearchIngredientResponse execute(SearchIngredientRequest request) {
@@ -36,7 +42,7 @@ public class SearchIngredientService {
     }
 
     private List<Ingredient> order(List<Ingredient> ingredients, Ordering ordering) {
-        if (ordering != null) {
+        if (orderingEnabled && (ordering != null)) {
             Comparator<Ingredient> comparator = ordering.getOrderBy().equals("N")
                     ? Comparator.comparing(Ingredient::getIngredient)
                     : Comparator.comparing(Ingredient::getQuantity);
@@ -51,7 +57,7 @@ public class SearchIngredientService {
     }
 
     private List<Ingredient> paging(List<Ingredient> ingredients, Paging paging) {
-        if (paging != null) {
+        if (pagingEnabled && (paging != null)) {
             int skip = (paging.getPageNumber() - 1) * paging.getPageSize();
             return ingredients.stream()
                     .skip(skip)
