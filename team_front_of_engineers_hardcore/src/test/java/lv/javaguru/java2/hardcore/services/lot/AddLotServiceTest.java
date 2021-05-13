@@ -1,15 +1,11 @@
 package lv.javaguru.java2.hardcore.services.lot;
 
 import lv.javaguru.java2.hardcore.database.LotDatabase;
-import lv.javaguru.java2.hardcore.database.UserDatabase;
 import lv.javaguru.java2.hardcore.domain.Lot;
-import lv.javaguru.java2.hardcore.domain.User;
 import lv.javaguru.java2.hardcore.requests.lot.AddLotRequest;
 import lv.javaguru.java2.hardcore.response.CoreError;
 import lv.javaguru.java2.hardcore.response.lot.AddLotResponse;
 import lv.javaguru.java2.hardcore.services.user.LoginService;
-import lv.javaguru.java2.hardcore.services.user.LoginValidator;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

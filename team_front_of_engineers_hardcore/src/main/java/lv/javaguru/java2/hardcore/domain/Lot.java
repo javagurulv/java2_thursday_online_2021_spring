@@ -9,13 +9,12 @@ public class Lot {
     private BigDecimal startPrice;
     private Long id;
     private User user;
-    private Long userID;
 
-    public Lot(String name, BigDecimal startPrice, User user, Long userID) {
+
+    public Lot(String name, BigDecimal startPrice, User user) {
         this.name = name;
         this.startPrice = startPrice;
         this.user = user;
-        this.userID = userID;
     }
 
     public String getName() {
@@ -50,13 +49,6 @@ public class Lot {
         this.user = user;
     }
 
-    public Long getUserID() {
-        return userID;
-    }
-
-    public void setUserID(Long userID) {
-        this.userID = userID;
-    }
 
 
     @Override
@@ -74,10 +66,10 @@ public class Lot {
 
     @Override
     public String toString() {
-        return  "LotName='" + name + '\'' +
+        return "LotName='" + name + '\'' +
                 ", LotstartPrice=" + startPrice +
                 ", LotId#=" + id +
-                ", UserWhoMadeLot=" + user.getName() +", UserID#"+userID+
+                ", UserWhoMadeLot=" + user+
                 '}';
     }
 }

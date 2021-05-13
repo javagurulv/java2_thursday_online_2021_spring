@@ -1,6 +1,8 @@
 package lv.javaguru.java2.hardcore.database;
 
+
 import lv.javaguru.java2.hardcore.domain.Lot;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@Component
 public class InMemoryLotDatabase implements LotDatabase {
 
     private Long nextId = 1L;

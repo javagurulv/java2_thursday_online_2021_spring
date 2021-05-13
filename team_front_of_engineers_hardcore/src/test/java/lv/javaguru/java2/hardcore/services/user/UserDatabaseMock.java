@@ -21,8 +21,4 @@ public class UserDatabaseMock implements UserDatabase {
         return null;
     }
 
-    @Override
-    public Long getUserId() {
-        return null;
-    }
 }

@@ -1,6 +1,10 @@
 package lv.javaguru.java2.hardcore.consoleUI;
 
-public class ExitUiAction implements UIAction{
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class ExitUiAction implements UIAction {
 
     @Override
     public void execute() {

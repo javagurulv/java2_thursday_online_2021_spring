@@ -17,6 +17,6 @@ public interface LotDatabase {
 
     List<Lot> searchByPrice(BigDecimal price);
 
-    List<Lot> searchByNameAndPrice(String name,BigDecimal price);
+    List<Lot> searchByNameAndPrice(String name, BigDecimal price);
 
 }

@@ -1,21 +1,13 @@
 package lv.javaguru.java2.hardcore.services.bet;
 
-import static org.junit.Assert.*;
-
-import java.math.BigDecimal;
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import lv.javaguru.java2.hardcore.database.BetDatabase;
-import lv.javaguru.java2.hardcore.domain.Bet;
 import lv.javaguru.java2.hardcore.requests.bet.ShowAllBetsRequest;
-import lv.javaguru.java2.hardcore.response.bet.ShowAllBetsResponse;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ShowAllBetsServiceTest {

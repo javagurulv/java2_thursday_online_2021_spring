@@ -1,16 +1,17 @@
 package lv.javaguru.java2.hardcore.database;
 
+
 import lv.javaguru.java2.hardcore.domain.Bet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-public class InMemoryBetDatabase implements BetDatabase{
+@Component
+public class InMemoryBetDatabase implements BetDatabase {
 
     private Long nextId = 1L;
     private List<Bet> bets = new ArrayList<>();
-
 
 
     @Override

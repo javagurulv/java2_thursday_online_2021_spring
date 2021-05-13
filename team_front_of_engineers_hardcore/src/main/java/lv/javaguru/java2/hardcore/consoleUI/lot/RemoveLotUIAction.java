@@ -1,19 +1,21 @@
 package lv.javaguru.java2.hardcore.consoleUI.lot;
 
 import lv.javaguru.java2.hardcore.consoleUI.UIAction;
+
 import lv.javaguru.java2.hardcore.requests.lot.RemoveLotRequest;
 import lv.javaguru.java2.hardcore.response.lot.RemoveLotResponse;
 import lv.javaguru.java2.hardcore.services.lot.RemoveLotService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class RemoveLotUIAction implements UIAction {
 
+    @Autowired
     private RemoveLotService removeLotService;
 
-    public RemoveLotUIAction(RemoveLotService removeLotService) {
-        this.removeLotService = removeLotService;
-    }
 
     @Override
     public void execute() {

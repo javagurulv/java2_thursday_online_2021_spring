@@ -1,15 +1,17 @@
 package lv.javaguru.java2.hardcore.services.lot;
 
+
 import lv.javaguru.java2.hardcore.requests.Ordering;
 import lv.javaguru.java2.hardcore.requests.Paging;
 import lv.javaguru.java2.hardcore.requests.lot.SearchLotByNameOrPriceRequest;
 import lv.javaguru.java2.hardcore.response.CoreError;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+@Component
 public class SearchLotByNameOrPriceRequestValidator {
 
     public List<CoreError> validate(SearchLotByNameOrPriceRequest request) {

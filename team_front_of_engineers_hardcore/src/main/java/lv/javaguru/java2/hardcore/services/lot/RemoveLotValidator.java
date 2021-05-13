@@ -1,12 +1,14 @@
 package lv.javaguru.java2.hardcore.services.lot;
 
+
 import lv.javaguru.java2.hardcore.requests.lot.RemoveLotRequest;
 import lv.javaguru.java2.hardcore.response.CoreError;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+@Component
 public class RemoveLotValidator {
 
 

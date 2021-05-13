@@ -1,5 +1,6 @@
 package lv.javaguru.java2.hardcore;
 
+import lv.javaguru.java2.hardcore.config.LotListConfiguration;
 import lv.javaguru.java2.hardcore.consoleUI.bet.AddBetUIAction;
 import lv.javaguru.java2.hardcore.consoleUI.bet.RemoveBetUIAction;
 import lv.javaguru.java2.hardcore.consoleUI.bet.ShowAllBetsUIAction;
@@ -10,19 +11,17 @@ import lv.javaguru.java2.hardcore.consoleUI.lot.SearchLotByNameOrPriceUIAction;
 import lv.javaguru.java2.hardcore.consoleUI.user.AddUserUIAction;
 import lv.javaguru.java2.hardcore.consoleUI.user.LoginUIAction;
 import lv.javaguru.java2.hardcore.consoleUI.user.ShowAllUsersUIAction;
-import lv.javaguru.java2.hardcore.database.LotDatabase;
 import lv.javaguru.java2.hardcore.consoleUI.*;
-import lv.javaguru.java2.hardcore.database.*;
-import lv.javaguru.java2.hardcore.services.bet.*;
-import lv.javaguru.java2.hardcore.services.lot.*;
-import lv.javaguru.java2.hardcore.services.user.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.security.SecureRandom;
 import java.util.Scanner;
 
 public class AuctionApp {
 
-    private ApplicationContext applicationContext = new ApplicationContext();
+
+    private static ApplicationContext applicationContext =
+            new AnnotationConfigApplicationContext(LotListConfiguration.class);
 
 
     public static void main(String[] args) {
@@ -112,7 +111,8 @@ public class AuctionApp {
                 RemoveBetUIAction removeBetUIAction = applicationContext.getBean(RemoveBetUIAction.class);
                 removeBetUIAction.execute();
                 break;
-            }case 10: {
+            }
+            case 10: {
                 SearchLotByNameOrPriceUIAction searchLotByNameOrPriceUIAction = applicationContext.getBean(SearchLotByNameOrPriceUIAction.class);
                 searchLotByNameOrPriceUIAction.execute();
                 break;
@@ -125,31 +125,6 @@ public class AuctionApp {
             }
         }
     }
-//    private void printLoginMenu() {
-//        System.out.println("Start menu");
-//        System.out.println("1. Log in");
-//        System.out.println("2. Register");
-//        System.out.println("3. Exit program");
-//        System.out.println(" ");
-//    }
-
-//    private void executeSelectedStartMenu(int selectedMenu) {
-//        switch (selectedMenu) {
-//            case 1: {
-//                loginUIAction.execute();
-//                break;
-//                }
-//            case 2: {
-//                addUserUIAction.execute();
-//                break;
-//            }
-//            case 3: {
-//                exitUIAction.execute();
-//                break;
-//            }
-//
-//        }
-//    }
 
 
 }

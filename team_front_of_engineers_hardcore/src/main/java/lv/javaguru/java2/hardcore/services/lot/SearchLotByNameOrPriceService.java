@@ -1,27 +1,25 @@
 package lv.javaguru.java2.hardcore.services.lot;
 
 import lv.javaguru.java2.hardcore.database.LotDatabase;
+
 import lv.javaguru.java2.hardcore.domain.Lot;
 import lv.javaguru.java2.hardcore.requests.Ordering;
 import lv.javaguru.java2.hardcore.requests.Paging;
 import lv.javaguru.java2.hardcore.requests.lot.SearchLotByNameOrPriceRequest;
 import lv.javaguru.java2.hardcore.response.CoreError;
 import lv.javaguru.java2.hardcore.response.lot.SearchLotByNameOrPriceResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Component
 public class SearchLotByNameOrPriceService {
-
+    @Autowired
     private LotDatabase lotDatabase;
     private SearchLotByNameOrPriceRequestValidator validator;
-
-    public SearchLotByNameOrPriceService(LotDatabase lotDatabase, SearchLotByNameOrPriceRequestValidator validator) {
-        this.lotDatabase = lotDatabase;
-        this.validator = validator;
-    }
 
     public SearchLotByNameOrPriceResponse execute(SearchLotByNameOrPriceRequest request) {
         List<CoreError> errors = validator.validate(request);
@@ -31,7 +29,7 @@ public class SearchLotByNameOrPriceService {
 
         List<Lot> lots = search(request);
         lots = order(lots, request.getOrdering());
-        lots = paging(lots,request.getPaging());
+        lots = paging(lots, request.getPaging());
 
         return new SearchLotByNameOrPriceResponse(null, lots);
     }

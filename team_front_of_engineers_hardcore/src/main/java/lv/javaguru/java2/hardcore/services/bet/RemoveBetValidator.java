@@ -1,13 +1,15 @@
 package lv.javaguru.java2.hardcore.services.bet;
 
 
+
 import lv.javaguru.java2.hardcore.requests.bet.RemoveBetRequest;
 import lv.javaguru.java2.hardcore.response.CoreError;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+@Component
 public class RemoveBetValidator {
 
     public List<CoreError> validate(RemoveBetRequest request) {

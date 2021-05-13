@@ -4,17 +4,15 @@ import lv.javaguru.java2.hardcore.consoleUI.UIAction;
 import lv.javaguru.java2.hardcore.requests.bet.AddBetRequest;
 import lv.javaguru.java2.hardcore.response.bet.AddBetResponse;
 import lv.javaguru.java2.hardcore.services.bet.AddBetService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+@Component
 public class AddBetUIAction implements UIAction {
-
-    private AddBetService addBetService;
-
-    public AddBetUIAction(AddBetService addBetService) {
-        this.addBetService = addBetService;
-    }
+    @Autowired private AddBetService addBetService;
 
     @Override
     public void execute() {
@@ -23,12 +21,12 @@ public class AddBetUIAction implements UIAction {
         Long betId = scanner.nextLong();
         System.out.println("Enter your bet: ");
         BigDecimal betPrice = scanner.nextBigDecimal();
-        AddBetRequest request = new AddBetRequest(betId,betPrice);
+        AddBetRequest request = new AddBetRequest(betId, betPrice);
         AddBetResponse response = addBetService.execute(request);
-        if(response.hasErrors()){
-            response.getErrors().forEach(coreError -> System.out.println("Error: "+coreError.getField()+" "+coreError.getMessage() ));
-        }else {
-            System.out.println("Your bet was: "+response.getNewBet());
+        if (response.hasErrors()) {
+            response.getErrors().forEach(coreError -> System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
+        } else {
+            System.out.println("Your bet was: " + response.getNewBet());
             System.out.println("Your bet was added to list.");
         }
     }

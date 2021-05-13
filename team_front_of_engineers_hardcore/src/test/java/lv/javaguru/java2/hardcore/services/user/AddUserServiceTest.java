@@ -5,7 +5,6 @@ import lv.javaguru.java2.hardcore.requests.user.AddUserRequest;
 import lv.javaguru.java2.hardcore.response.user.AddUserResponse;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
 
@@ -19,7 +18,7 @@ public class AddUserServiceTest {
     public void init() {
         userDatabase = new UserDatabaseMock();
         addUserValidator = new AddUserValidatorMock();
-        addUserService = new AddUserService(userDatabase, addUserValidator);
+        addUserService = new AddUserService();
     }
     @Test
     public void addUserTest() {

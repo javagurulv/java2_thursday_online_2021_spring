@@ -1,22 +1,20 @@
 package lv.javaguru.java2.hardcore.consoleUI.user;
 
 
-import lv.javaguru.java2.hardcore.consoleUI.UIAction;
+import lv.javaguru.java2.hardcore.database.UserDatabase;
 import lv.javaguru.java2.hardcore.requests.user.LoginRequest;
 import lv.javaguru.java2.hardcore.response.user.LoginResponse;
 import lv.javaguru.java2.hardcore.services.user.LoginService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
+@Component
+public class LoginUIAction  {
+   @Autowired
+   private LoginService loginService;
 
-public class LoginUIAction implements UIAction {
 
-    private LoginService loginService;
-
-    public LoginUIAction(LoginService loginService) {
-        this.loginService = loginService;
-    }
-
-    @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter account name: ");
@@ -26,5 +24,6 @@ public class LoginUIAction implements UIAction {
         LoginRequest request = new LoginRequest(acc, pas);
         LoginResponse response = loginService.execute(request);
     }
+
 }
 

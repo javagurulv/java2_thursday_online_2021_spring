@@ -4,16 +4,17 @@ import lv.javaguru.java2.hardcore.consoleUI.UIAction;
 import lv.javaguru.java2.hardcore.requests.bet.RemoveBetRequest;
 import lv.javaguru.java2.hardcore.response.bet.RemoveBetResponse;
 import lv.javaguru.java2.hardcore.services.bet.RemoveBetService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class RemoveBetUIAction implements UIAction {
 
+    @Autowired
     private RemoveBetService removeBetService;
 
-    public RemoveBetUIAction(RemoveBetService removeBetService) {
-        this.removeBetService = removeBetService;
-    }
 
     @Override
     public void execute() {
@@ -22,14 +23,15 @@ public class RemoveBetUIAction implements UIAction {
         Long id = scanner.nextLong();
         RemoveBetRequest request = new RemoveBetRequest(id);
         RemoveBetResponse response = removeBetService.execute(request);
-        if(response.hasErrors()){
-            response.getErrors().forEach(coreError -> System.out.println("Error: "+coreError.getField()+" "+coreError.getMessage()));
-        }else {
-            System.out.println("Lot with id :"+request.getBetIdToRemove()+" removing status is: "+response.isRemoved());
-        } if (!response.isRemoved()){
+        if (response.hasErrors()) {
+            response.getErrors().forEach(coreError -> System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
+        } else {
+            System.out.println("Lot with id :" + request.getBetIdToRemove() + " removing status is: " + response.isRemoved());
+        }
+        if (!response.isRemoved()) {
             System.out.println("Such ID doesn't exist,please try again");
-        }else {
-            System.out.println("Lot with id: "+request.getBetIdToRemove()+" was removed,please check list for changes");
+        } else {
+            System.out.println("Lot with id: " + request.getBetIdToRemove() + " was removed,please check list for changes");
         }
     }
 }
