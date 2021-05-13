@@ -1,8 +1,8 @@
 package lv.javaguru.java2.hardcore.consoleUI;
 
-import lv.javaguru.java2.hardcore.requests.bet.RemoveBetRequest;
-import lv.javaguru.java2.hardcore.response.bet.RemoveBetResponse;
-import lv.javaguru.java2.hardcore.services.bet.RemoveBetService;
+import lv.javaguru.java2.hardcore.core.requests.bet.RemoveBetRequest;
+import lv.javaguru.java2.hardcore.core.response.bet.RemoveBetResponse;
+import lv.javaguru.java2.hardcore.core.services.bet.RemoveBetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

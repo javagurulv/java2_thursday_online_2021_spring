@@ -1,9 +1,9 @@
 package lv.javaguru.java2.hardcore.consoleUI;
 
 
-import lv.javaguru.java2.hardcore.requests.user.AddUserRequest;
-import lv.javaguru.java2.hardcore.response.user.AddUserResponse;
-import lv.javaguru.java2.hardcore.services.user.AddUserService;
+import lv.javaguru.java2.hardcore.core.requests.user.AddUserRequest;
+import lv.javaguru.java2.hardcore.core.response.user.AddUserResponse;
+import lv.javaguru.java2.hardcore.core.services.user.AddUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

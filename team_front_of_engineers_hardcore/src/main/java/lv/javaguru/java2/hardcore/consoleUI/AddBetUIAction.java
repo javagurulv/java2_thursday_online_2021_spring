@@ -1,8 +1,8 @@
 package lv.javaguru.java2.hardcore.consoleUI;
 
-import lv.javaguru.java2.hardcore.requests.bet.AddBetRequest;
-import lv.javaguru.java2.hardcore.response.bet.AddBetResponse;
-import lv.javaguru.java2.hardcore.services.bet.AddBetService;
+import lv.javaguru.java2.hardcore.core.requests.bet.AddBetRequest;
+import lv.javaguru.java2.hardcore.core.response.bet.AddBetResponse;
+import lv.javaguru.java2.hardcore.core.services.bet.AddBetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

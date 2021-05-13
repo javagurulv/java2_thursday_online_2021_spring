@@ -1,12 +1,12 @@
 package lv.javaguru.java2.hardcore.consoleUI;
 
 
-import lv.javaguru.java2.hardcore.domain.Lot;
-import lv.javaguru.java2.hardcore.requests.Ordering;
-import lv.javaguru.java2.hardcore.requests.Paging;
-import lv.javaguru.java2.hardcore.requests.lot.SearchLotByNameOrPriceRequest;
-import lv.javaguru.java2.hardcore.response.lot.SearchLotByNameOrPriceResponse;
-import lv.javaguru.java2.hardcore.services.lot.SearchLotByNameOrPriceService;
+import lv.javaguru.java2.hardcore.core.domain.Lot;
+import lv.javaguru.java2.hardcore.core.requests.Ordering;
+import lv.javaguru.java2.hardcore.core.requests.Paging;
+import lv.javaguru.java2.hardcore.core.requests.lot.SearchLotByNameOrPriceRequest;
+import lv.javaguru.java2.hardcore.core.response.lot.SearchLotByNameOrPriceResponse;
+import lv.javaguru.java2.hardcore.core.services.lot.SearchLotByNameOrPriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

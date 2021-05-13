@@ -1,9 +1,9 @@
 package lv.javaguru.java2.hardcore.consoleUI;
 
 
-import lv.javaguru.java2.hardcore.requests.lot.RemoveLotRequest;
-import lv.javaguru.java2.hardcore.response.lot.RemoveLotResponse;
-import lv.javaguru.java2.hardcore.services.lot.RemoveLotService;
+import lv.javaguru.java2.hardcore.core.requests.lot.RemoveLotRequest;
+import lv.javaguru.java2.hardcore.core.response.lot.RemoveLotResponse;
+import lv.javaguru.java2.hardcore.core.services.lot.RemoveLotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
