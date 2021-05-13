@@ -2,11 +2,8 @@ package lv.javaguru.java2.hardcore.database;
 
 
 
-import lv.javaguru.java2.hardcore.consoleUI.user.LoginUIAction;
 import lv.javaguru.java2.hardcore.domain.User;
-import lv.javaguru.java2.hardcore.requests.user.LoginRequest;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.beanvalidation.SpringValidatorAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

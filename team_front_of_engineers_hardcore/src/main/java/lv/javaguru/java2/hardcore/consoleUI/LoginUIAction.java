@@ -1,7 +1,6 @@
-package lv.javaguru.java2.hardcore.consoleUI.user;
+package lv.javaguru.java2.hardcore.consoleUI;
 
 
-import lv.javaguru.java2.hardcore.database.UserDatabase;
 import lv.javaguru.java2.hardcore.requests.user.LoginRequest;
 import lv.javaguru.java2.hardcore.response.user.LoginResponse;
 import lv.javaguru.java2.hardcore.services.user.LoginService;
@@ -9,10 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
+
 @Component
-public class LoginUIAction  {
-   @Autowired
-   private LoginService loginService;
+public class LoginUIAction {
+    @Autowired
+    private LoginService loginService;
 
 
     public void execute() {

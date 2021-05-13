@@ -1,7 +1,5 @@
-package lv.javaguru.java2.hardcore.consoleUI.user;
+package lv.javaguru.java2.hardcore.consoleUI;
 
-
-import lv.javaguru.java2.hardcore.consoleUI.UIAction;
 
 import lv.javaguru.java2.hardcore.requests.user.ShowAllUserRequest;
 import lv.javaguru.java2.hardcore.response.user.ShowAllUsersResponse;

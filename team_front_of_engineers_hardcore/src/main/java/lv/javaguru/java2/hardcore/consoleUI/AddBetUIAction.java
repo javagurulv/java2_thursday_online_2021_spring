@@ -1,6 +1,5 @@
-package lv.javaguru.java2.hardcore.consoleUI.bet;
+package lv.javaguru.java2.hardcore.consoleUI;
 
-import lv.javaguru.java2.hardcore.consoleUI.UIAction;
 import lv.javaguru.java2.hardcore.requests.bet.AddBetRequest;
 import lv.javaguru.java2.hardcore.response.bet.AddBetResponse;
 import lv.javaguru.java2.hardcore.services.bet.AddBetService;
@@ -12,7 +11,9 @@ import java.util.Scanner;
 
 @Component
 public class AddBetUIAction implements UIAction {
-    @Autowired private AddBetService addBetService;
+
+    @Autowired
+    private AddBetService addBetService;
 
     @Override
     public void execute() {

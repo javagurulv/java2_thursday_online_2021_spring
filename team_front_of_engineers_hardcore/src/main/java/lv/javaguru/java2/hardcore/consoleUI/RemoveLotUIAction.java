@@ -1,6 +1,5 @@
-package lv.javaguru.java2.hardcore.consoleUI.lot;
+package lv.javaguru.java2.hardcore.consoleUI;
 
-import lv.javaguru.java2.hardcore.consoleUI.UIAction;
 
 import lv.javaguru.java2.hardcore.requests.lot.RemoveLotRequest;
 import lv.javaguru.java2.hardcore.response.lot.RemoveLotResponse;

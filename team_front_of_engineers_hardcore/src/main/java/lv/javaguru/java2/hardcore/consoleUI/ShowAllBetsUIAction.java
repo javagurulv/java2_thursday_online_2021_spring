@@ -1,6 +1,5 @@
-package lv.javaguru.java2.hardcore.consoleUI.bet;
+package lv.javaguru.java2.hardcore.consoleUI;
 
-import lv.javaguru.java2.hardcore.consoleUI.UIAction;
 import lv.javaguru.java2.hardcore.requests.bet.ShowAllBetsRequest;
 import lv.javaguru.java2.hardcore.response.bet.ShowAllBetsResponse;
 import lv.javaguru.java2.hardcore.services.bet.ShowAllBetsService;

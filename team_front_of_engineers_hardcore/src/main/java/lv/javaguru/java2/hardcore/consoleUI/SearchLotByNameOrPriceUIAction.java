@@ -1,6 +1,5 @@
-package lv.javaguru.java2.hardcore.consoleUI.lot;
+package lv.javaguru.java2.hardcore.consoleUI;
 
-import lv.javaguru.java2.hardcore.consoleUI.UIAction;
 
 import lv.javaguru.java2.hardcore.domain.Lot;
 import lv.javaguru.java2.hardcore.requests.Ordering;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
+
 @Component
 public class SearchLotByNameOrPriceUIAction implements UIAction {
     @Autowired

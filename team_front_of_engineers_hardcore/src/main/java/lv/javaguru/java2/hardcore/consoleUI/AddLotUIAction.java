@@ -1,8 +1,5 @@
-package lv.javaguru.java2.hardcore.consoleUI.lot;
+package lv.javaguru.java2.hardcore.consoleUI;
 
-import lv.javaguru.java2.hardcore.consoleUI.UIAction;
-
-import lv.javaguru.java2.hardcore.consoleUI.user.LoginUIAction;
 import lv.javaguru.java2.hardcore.requests.lot.AddLotRequest;
 import lv.javaguru.java2.hardcore.response.lot.AddLotResponse;
 import lv.javaguru.java2.hardcore.services.lot.AddLotService;
@@ -11,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
+
 @Component
 public class AddLotUIAction implements UIAction {
     @Autowired

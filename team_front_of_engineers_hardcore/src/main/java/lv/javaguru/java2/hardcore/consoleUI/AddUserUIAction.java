@@ -1,7 +1,5 @@
-package lv.javaguru.java2.hardcore.consoleUI.user;
+package lv.javaguru.java2.hardcore.consoleUI;
 
-
-import lv.javaguru.java2.hardcore.consoleUI.UIAction;
 
 import lv.javaguru.java2.hardcore.requests.user.AddUserRequest;
 import lv.javaguru.java2.hardcore.response.user.AddUserResponse;
@@ -10,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
+
 @Component
 public class AddUserUIAction implements UIAction {
 
