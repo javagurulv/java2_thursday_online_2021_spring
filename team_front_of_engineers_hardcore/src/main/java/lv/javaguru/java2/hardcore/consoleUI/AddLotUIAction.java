@@ -13,21 +13,28 @@ import java.util.Scanner;
 public class AddLotUIAction implements UIAction {
     @Autowired
     private AddLotService addLotService;
+    @Autowired
+    private UserSession userSession;
 
 
     @Override
     public void execute() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter lot name: ");
-        String lotName = scanner.nextLine();
-        System.out.println("Enter lot price: ");
-        BigDecimal lotPrice = scanner.nextBigDecimal();
-        AddLotRequest request = new AddLotRequest(lotName, lotPrice);
-        AddLotResponse response = addLotService.execute(request);
-        if (response.hasErrors()) {
-            response.getErrors().forEach(coreError -> System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
-        } else {
-            System.out.println("Your lot was added to list: " + response.getNewLot());
+        if(userSession.isAuthorized()) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter lot name: ");
+            String lotName = scanner.nextLine();
+            System.out.println("Enter lot price: ");
+            BigDecimal lotPrice = scanner.nextBigDecimal();
+            AddLotRequest request = new AddLotRequest(lotName, lotPrice);
+            AddLotResponse response = addLotService.execute(request);
+            if (response.hasErrors()) {
+                response.getErrors().forEach(coreError -> System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
+            } else {
+                System.out.println("Your lot was added to list: " + response.getNewLot());
+            }
+        }
+        else {
+            System.out.println("Please log in first!");
         }
     }
 }

@@ -8,13 +8,13 @@ public class Lot {
     private String name;
     private BigDecimal startPrice;
     private Long id;
-    private User user;
+    private String username;
 
 
-    public Lot(String name, BigDecimal startPrice, User user) {
+    public Lot(String name, BigDecimal startPrice, String username) {
         this.name = name;
         this.startPrice = startPrice;
-        this.user = user;
+        this.username = username;
     }
 
     public String getName() {
@@ -41,15 +41,13 @@ public class Lot {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -69,7 +67,7 @@ public class Lot {
         return "LotName='" + name + '\'' +
                 ", LotstartPrice=" + startPrice +
                 ", LotId#=" + id +
-                ", UserWhoMadeLot=" + user+
+                ", UserWhoMadeLot=" + username+
                 '}';
     }
 }

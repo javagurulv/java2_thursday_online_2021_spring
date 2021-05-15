@@ -7,12 +7,12 @@ public class Bet {
 
     private BigDecimal bet;
     private Long betId;
-    private User user;
+    private String username;
 
-    public Bet(BigDecimal bet, Long betId, User user) {
+    public Bet(BigDecimal bet, Long betId, String username) {
         this.bet = bet;
         this.betId = betId;
-        this.user = user;
+        this.username = username;
     }
 
     public BigDecimal getBet() {
@@ -31,14 +31,13 @@ public class Bet {
         this.betId = betId;
     }
 
-    public User getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -57,7 +56,7 @@ public class Bet {
     public String toString() {
         return "Bet " + bet + " eur" +
                 ", LotID=" + betId +
-                ", UserWhoMadeBet=" + user+
+                ", UserWhoMadeBet=" + username+
                 '}';
     }
 }

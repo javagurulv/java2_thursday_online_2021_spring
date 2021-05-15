@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 public class SearchLotByNameOrPriceService {
     @Autowired
     private LotDatabase lotDatabase;
+    @Autowired
     private SearchLotByNameOrPriceRequestValidator validator;
 
     public SearchLotByNameOrPriceResponse execute(SearchLotByNameOrPriceRequest request) {

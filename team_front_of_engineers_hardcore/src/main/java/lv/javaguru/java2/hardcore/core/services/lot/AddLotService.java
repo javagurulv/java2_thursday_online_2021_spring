@@ -1,5 +1,6 @@
 package lv.javaguru.java2.hardcore.core.services.lot;
 
+import lv.javaguru.java2.hardcore.consoleUI.UserSession;
 import lv.javaguru.java2.hardcore.core.domain.Lot;
 import lv.javaguru.java2.hardcore.core.database.LotDatabase;
 import lv.javaguru.java2.hardcore.core.requests.lot.AddLotRequest;
@@ -15,6 +16,8 @@ public class AddLotService {
     private LotDatabase lotDatabase;
     @Autowired
     private AddLotValidator validator;
+    @Autowired
+    private UserSession userSession;
 
 
 
@@ -22,10 +25,11 @@ public class AddLotService {
 
     public AddLotResponse execute(AddLotRequest request) {
         List<CoreError> errors = validator.validate(request);
-        if (!errors.isEmpty()) {
+        if (!errors.isEmpty()&& userSession.isAuthorized()) {
             return new AddLotResponse(errors);
         }
-        Lot lot = new Lot(request.getName(), request.getPrice(), null);
+
+        Lot lot = new Lot(request.getName(), request.getPrice(), userSession.getUsername());
         lotDatabase.saveLot(lot);
         return new AddLotResponse(lot);
 
