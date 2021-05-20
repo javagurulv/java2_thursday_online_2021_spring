@@ -1,5 +1,6 @@
 package lv.javaguru.java2.hardcore.core.services.bet;
 
+import lv.javaguru.java2.hardcore.consoleUI.UserSession;
 import lv.javaguru.java2.hardcore.core.database.BetDatabase;
 
 import lv.javaguru.java2.hardcore.core.domain.Bet;
@@ -18,7 +19,7 @@ public class AddBetService {
     @Autowired
     private AddBetValidator validator;
     @Autowired
-    private LoginService loginService;
+    private UserSession userSession;
 
 
     public AddBetResponse execute(AddBetRequest request) {
@@ -26,7 +27,7 @@ public class AddBetService {
         if (!errors.isEmpty()) {
             return new AddBetResponse(errors);
         }
-        Bet bet = new Bet(request.getBet(), request.getId(), null);
+        Bet bet = new Bet(request.getBet(), request.getId(), userSession.getUsername());
         betDatabase.addBet(bet);
         return new AddBetResponse(bet);
     }

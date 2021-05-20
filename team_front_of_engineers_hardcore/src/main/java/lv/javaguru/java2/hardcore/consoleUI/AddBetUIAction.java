@@ -14,9 +14,12 @@ public class AddBetUIAction implements UIAction {
 
     @Autowired
     private AddBetService addBetService;
+    @Autowired
+    private UserSession userSession;
 
     @Override
     public void execute() {
+        if(userSession.isAuthorized()){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter item id,from lot list: ");
         Long betId = scanner.nextLong();
@@ -29,6 +32,9 @@ public class AddBetUIAction implements UIAction {
         } else {
             System.out.println("Your bet was: " + response.getNewBet());
             System.out.println("Your bet was added to list.");
+        }}
+        else {
+            System.out.println("Please log in first!");
         }
     }
 }

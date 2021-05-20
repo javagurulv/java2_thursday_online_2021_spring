@@ -1,6 +1,7 @@
 package lv.javaguru.java2.hardcore.core.services.user;
 
 
+import lv.javaguru.java2.hardcore.consoleUI.UserSession;
 import lv.javaguru.java2.hardcore.core.database.UserDatabase;
 import lv.javaguru.java2.hardcore.core.domain.User;
 import lv.javaguru.java2.hardcore.core.requests.user.LoginRequest;
@@ -16,6 +17,8 @@ public class LoginService {
     private UserDatabase userDatabase;
     @Autowired
     private LoginValidator validator;
+    @Autowired
+    private UserSession userSession;
 
 
 
@@ -26,6 +29,8 @@ public class LoginService {
         }
         User user = new User(request.getName(), request.getPassword());
         userDatabase.logIn(user);
+        userSession.setUsername(user.getName());
+        userSession.setAuthorized(true);
         return new LoginResponse(user);
 
     }

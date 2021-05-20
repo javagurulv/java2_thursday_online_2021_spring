@@ -1,8 +1,8 @@
-package lv.javaguru.java2.hardcore.services.user;
+package lv.javaguru.java2.hardcore.core.services.user;
 
-import lv.javaguru.java2.hardcore.database.UserDatabase;
-import lv.javaguru.java2.hardcore.requests.user.AddUserRequest;
-import lv.javaguru.java2.hardcore.response.user.AddUserResponse;
+import lv.javaguru.java2.hardcore.core.database.UserDatabase;
+import lv.javaguru.java2.hardcore.core.requests.user.AddUserRequest;
+import lv.javaguru.java2.hardcore.core.response.user.AddUserResponse;
 import org.junit.Before;
 import org.junit.Test;
 

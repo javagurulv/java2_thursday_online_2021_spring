@@ -1,11 +1,11 @@
-package lv.javaguru.java2.hardcore.services.lot;
+package lv.javaguru.java2.hardcore.core.services.lot;
 
-import lv.javaguru.java2.hardcore.database.LotDatabase;
-import lv.javaguru.java2.hardcore.domain.Lot;
-import lv.javaguru.java2.hardcore.requests.lot.AddLotRequest;
-import lv.javaguru.java2.hardcore.response.CoreError;
-import lv.javaguru.java2.hardcore.response.lot.AddLotResponse;
-import lv.javaguru.java2.hardcore.services.user.LoginService;
+import lv.javaguru.java2.hardcore.core.database.LotDatabase;
+import lv.javaguru.java2.hardcore.core.domain.Lot;
+import lv.javaguru.java2.hardcore.core.requests.lot.AddLotRequest;
+import lv.javaguru.java2.hardcore.core.response.CoreError;
+import lv.javaguru.java2.hardcore.core.response.lot.AddLotResponse;
+import lv.javaguru.java2.hardcore.core.services.user.LoginService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

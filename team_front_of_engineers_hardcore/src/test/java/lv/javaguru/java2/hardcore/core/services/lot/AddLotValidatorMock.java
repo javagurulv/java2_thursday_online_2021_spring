@@ -1,7 +1,7 @@
-package lv.javaguru.java2.hardcore.services.lot;
+package lv.javaguru.java2.hardcore.core.services.lot;
 
-import lv.javaguru.java2.hardcore.requests.lot.AddLotRequest;
-import lv.javaguru.java2.hardcore.response.CoreError;
+import lv.javaguru.java2.hardcore.core.requests.lot.AddLotRequest;
+import lv.javaguru.java2.hardcore.core.response.CoreError;
 
 import java.util.List;
 

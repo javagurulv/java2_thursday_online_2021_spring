@@ -1,7 +1,7 @@
-package lv.javaguru.java2.hardcore.services.user;
+package lv.javaguru.java2.hardcore.core.services.user;
 
-import lv.javaguru.java2.hardcore.requests.user.AddUserRequest;
-import lv.javaguru.java2.hardcore.response.CoreError;
+import lv.javaguru.java2.hardcore.core.requests.user.AddUserRequest;
+import lv.javaguru.java2.hardcore.core.response.CoreError;
 
 import java.util.List;
 

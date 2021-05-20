@@ -32,15 +32,6 @@ public class InMemoryUserDatabase implements UserDatabase {
             System.out.println("Username or password are incorrect,please try again");
         }
     }
-//    public void getCurrentUser(String name,String password){
-//        for (User log:loggedInUsers
-//             ) {if(log.getName().equals(name)&&log.getPassword().equals(password)){
-//
-//        }
-//
-//        }
-//
-//    }
 
     @Override
     public List<User> getAllUsers() {
