@@ -45,7 +45,6 @@ public class AddSkillServiceTest {
                 new CoreError("employee id", " Must not be empty!"))).isTrue();
         assertThat(response.getErrors().contains(
                 new CoreError("employee skill", " Must not be empty!"))).isTrue();
-
         Mockito.verifyNoInteractions(database);
     }
 

@@ -17,28 +17,22 @@ public class AddSkillUIAction implements UIAction {
     @Override
     public void execute() {
         Long id = getEmployeeID();
-        String[] skills = getSkills();
-        for (String skill : skills) {
-            AddSkillRequest request = new AddSkillRequest(id, skill);
-            AddSkillResponse response = service.execute(request);
-            if (response.hasErrors()) {
-                response.getErrors().forEach(e -> System.out.println(e.getField() + " " + e.getMessage()));
-            }
-            else if (response.isEmployeeSkillAdded()){
-                System.out.printf("Skill %s is added\n", skill);
-            }
-            else {
-                System.out.printf("Skill %s is already added for this employee\n", skill);
-            }
+        String skill = getSkill();
+        AddSkillRequest request = new AddSkillRequest(id, skill);
+        AddSkillResponse response = service.execute(request);
+        if (response.hasErrors()) {
+            response.getErrors().forEach(e -> System.out.println(e.getField() + " " + e.getMessage()));
+        } else if (response.isEmployeeSkillAdded()) {
+            System.out.printf("Skill %s is added\n", skill);
+        } else {
+            System.out.printf("Skill %s is already added for this employee\n", skill);
         }
     }
 
-    private String[] getSkills() {
+    private String getSkill() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter skills separated by comma: ");
-        String skillsLine = scanner.nextLine();
-        //scanner.close();
-        return skillsLine.split("[?\\s,]+" ,-1);
+        System.out.println("Enter skill: ");
+        return scanner.nextLine();
     }
 
     private Long getEmployeeID() {

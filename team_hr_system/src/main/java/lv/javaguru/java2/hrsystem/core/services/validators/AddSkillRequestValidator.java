@@ -2,6 +2,7 @@ package lv.javaguru.java2.hrsystem.core.services.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.AddSkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -11,11 +12,22 @@ import java.util.Optional;
 @Component
 public class AddSkillRequestValidator {
 
+    @Autowired
+    private EmployeeValidator employeeValidator;
+
     public List<CoreError> validate(AddSkillRequest request) {
         List<CoreError> errors = new ArrayList<>();
         validateEmployeeId(request).ifPresent(errors::add);
         validateSkillName(request).ifPresent(errors::add);
+        validateEmployeeIdExists(request).filter(errors::add);
         return errors;
+    }
+
+    private Optional<CoreError> validateEmployeeIdExists(AddSkillRequest request) {
+        if (!employeeValidator.employeeExists(request.getEmployeeId())) {
+            return Optional.of(new CoreError("employee id", " does not exist"));
+        }
+        return Optional.empty();
     }
 
     private Optional<CoreError> validateEmployeeId(AddSkillRequest request) {
