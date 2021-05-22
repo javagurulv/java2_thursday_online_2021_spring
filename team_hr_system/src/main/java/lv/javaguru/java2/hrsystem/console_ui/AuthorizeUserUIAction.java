@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class AuthorizeUserUIAction implements UIAction {
 
     @Autowired private AuthorizeUserService loginAdminService;
+    @Autowired private UIAdminMenu uiAdminMenu;
 
     @Override
     public void execute() {
@@ -34,8 +35,9 @@ public class AuthorizeUserUIAction implements UIAction {
                 response.getAuthorization().get().getUserRole().equals(UserRole.ADMIN)){
             System.out.println("Hello " + response.getAuthorization().get().getFirstName() + "!");
 
-            var uiMain = new UIMain();
-            uiMain.run();
+            uiAdminMenu.print();
+            int menuNumber = uiAdminMenu.getMenuNumberFromUser();
+            uiAdminMenu.executeSelectedMenuItem(menuNumber);
 
         } else if (!response.getAuthorization().isEmpty() &&
         response.getAuthorization().get().getUserRole().equals(UserRole.HR_MANAGE)){
