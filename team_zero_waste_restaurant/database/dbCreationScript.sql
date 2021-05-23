@@ -44,6 +44,43 @@ CREATE TABLE IF NOT EXISTS ingredient
 ALTER TABLE ingredient
 ADD FOREIGN KEY (product_id) REFERENCES product (id);
 
+CREATE TABLE IF NOT EXISTS client_list
+(
+    id          BIGINT       NOT NULL AUTO_INCREMENT,
+    name        VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+)
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 1001;
+
+CREATE TABLE IF NOT EXISTS order_item
+(
+    id          BIGINT       NOT NULL AUTO_INCREMENT,
+	client_id  	BIGINT       NOT NULL,
+    dish_id   	BIGINT       NOT NULL,
+    quantity    TINYINT		 NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (client_id) REFERENCES client_list (id),
+    FOREIGN KEY (dish_id) REFERENCES dish (id)
+)
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 1001;
+
+CREATE TABLE IF NOT EXISTS order_list
+(
+    id          BIGINT       NOT NULL AUTO_INCREMENT,
+	client_id  	BIGINT       NOT NULL,
+    order_date	DATE         NOT NULL, /*YYYY-MM-DD*/
+    PRIMARY KEY (id),
+    FOREIGN KEY (client_id) REFERENCES client_list (id)
+)
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 1001;
+
+ALTER TABLE order_list
+ADD column order_item_id BIGINT       NOT NULL,
+ADD FOREIGN KEY (order_item_id) REFERENCES order_item (id);
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

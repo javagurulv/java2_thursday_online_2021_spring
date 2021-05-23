@@ -38,3 +38,45 @@ VALUES(1003, 'tomatoes', 100);
 INSERT INTO ingredient(product_id, name, quantity)
 VALUES(1004, 'ham', 100);
 
+
+
+INSERT INTO client_list(name)
+VALUE('John Doe');
+
+INSERT INTO client_list(name)
+VALUE('Ivan Ivanov');
+
+INSERT INTO client_list(name)
+VALUE('Nataliya Petrova');
+
+INSERT INTO client_list(name)
+VALUE('Sarah Jones');
+
+
+
+
+INSERT INTO order_item(client_id, dish_id, quantity)
+VALUES(1001, 1001, 2);
+
+INSERT INTO order_item(client_id, dish_id, quantity)
+VALUES(1002, 1003, 1);
+
+INSERT INTO order_item(client_id, dish_id, quantity)
+VALUES(1003, 1004, 1);
+
+INSERT INTO order_item(client_id, dish_id, quantity)
+VALUES(1004, 1002, 2);
+
+
+
+INSERT INTO order_list(client_id, order_date, order_item_id)
+VALUES(1001, '2021-07-01', 1001);
+
+INSERT INTO order_list(client_id, order_date, order_item_id)
+VALUES(1002, '2021-07-01', 1003);
+
+INSERT INTO order_list(client_id, order_date, order_item_id)
+VALUES(1003, '2021-07-01', 1004);
+
+INSERT INTO order_list(client_id, order_date, order_item_id)
+VALUES(1004, '2021-07-01', 1002);
