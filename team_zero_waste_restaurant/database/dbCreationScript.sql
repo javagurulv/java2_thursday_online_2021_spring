@@ -30,8 +30,19 @@ CREATE TABLE IF NOT EXISTS product
     ENGINE = InnoDB
     AUTO_INCREMENT = 1001;
 
+CREATE TABLE IF NOT EXISTS ingredient
+(
+    id          BIGINT       NOT NULL AUTO_INCREMENT,
+    product_id  BIGINT       NOT NULL,
+    name        VARCHAR(100) NOT NULL,
+    quantity    FLOAT        NOT NULL,
+    PRIMARY KEY (id)
+)
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 1;
 
-
+ALTER TABLE ingredient
+ADD FOREIGN KEY (product_id) REFERENCES product (id);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

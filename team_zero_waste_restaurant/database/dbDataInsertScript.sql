@@ -23,3 +23,18 @@ VALUES('tomatoes', 5, 0.9, '2021-06-01');
 
 INSERT INTO product(name, quantity, price, expiryDate)
 VALUES('ham', 3, 4.24, '2021-07-01');
+
+
+
+INSERT INTO ingredient(product_id, name, quantity)
+VALUES(1001, 'flour', 100);
+
+INSERT INTO ingredient(product_id, name, quantity)
+VALUES(1002, 'olive oil', 100);
+
+INSERT INTO ingredient(product_id, name, quantity)
+VALUES(1003, 'tomatoes', 100);
+
+INSERT INTO ingredient(product_id, name, quantity)
+VALUES(1004, 'ham', 100);
+
