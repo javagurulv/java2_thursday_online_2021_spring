@@ -8,7 +8,7 @@ WHERE expiryDate = '2021-06-01';
 
 UPDATE ingredient
 SET name = 'tomato'
-WHERE expiryDate = 'tomatoes';
+WHERE name = 'tomatoes';
 
 UPDATE client_list
 SET name = 'Sarah Johnes-Miller'
