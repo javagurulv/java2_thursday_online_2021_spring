@@ -56,7 +56,7 @@ INSERT INTO `employee_skills`(`empl_id`, `skill_id`)
 VALUES (1, 4);
 
 INSERT INTO `employee_skills`(`empl_id`, `skill_id`)
-VALUES (4, 4);
+VALUES (111, 4);
 
 INSERT INTO `employee_skills`(`empl_id`, `skill_id`)
 VALUES (112, 6);
@@ -86,3 +86,24 @@ inner join skills
 on employees.id = employee_skills.empl_id
 and employee_skills.skill_id = skills.id
 order by `first_name` ASC;
+
+
+update skills
+set skill_name = "decision making/problem solving"
+where id = 4;
+
+select empl_id, skill_id,  skill_name from `employee_skills`
+inner join skills
+on employee_skills.skill_id = skills.id;
+
+select * from skills;
+
+ALTER TABLE employee_skills
+DROP FOREIGN KEY employee_skills_ibfk_2;
+
+ALTER TABLE employee_skills
+ADD FOREIGN KEY (skill_id) REFERENCES skills(id)
+ON DELETE CASCADE;
+
+DELETE FROM skills
+WHERE id = 4;
