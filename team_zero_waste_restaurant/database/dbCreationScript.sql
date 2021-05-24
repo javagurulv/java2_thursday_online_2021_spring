@@ -81,6 +81,10 @@ ALTER TABLE order_list
 ADD column order_item_id BIGINT       NOT NULL,
 ADD FOREIGN KEY (order_item_id) REFERENCES order_item (id);
 
+CREATE INDEX idx_dish on dish (name, type);
+CREATE UNIQUE INDEX idx_product on product (name);
+CREATE INDEX idx_client on client_list (name);
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
