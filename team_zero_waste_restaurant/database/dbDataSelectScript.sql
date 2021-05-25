@@ -40,9 +40,10 @@ SELECT * FROM order_list;
 
 SELECT * FROM order_list WHERE order_date LIKE '2021-07-01'AND client_id < 1003;
 
-SELECT name FROM client_list USE INDEX (idx_client);
+SELECT name FROM client_list USE INDEX (idx_client_name);
 
-SELECT name, type FROM dish USE INDEX (idx_dish);
+SELECT name, type FROM dish USE INDEX (idx_dish_name_type);
 
-SELECT name FROM product USE INDEX (idx_product);
+SELECT name FROM product USE INDEX (idx_product_name);
+
 
