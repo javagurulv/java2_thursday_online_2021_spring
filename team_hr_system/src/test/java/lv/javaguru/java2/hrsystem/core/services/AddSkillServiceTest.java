@@ -1,12 +1,12 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
 import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import lv.javaguru.java2.hrsystem.core.requests.AddSkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddSkillResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddSkillRequestValidator;
-import lv.javaguru.java2.hrsystem.core.domain.Employee;
-import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -17,7 +17,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AddSkillServiceTest {
@@ -114,5 +114,17 @@ public class AddSkillServiceTest {
         AddSkillResponse response = service.execute(request);
         assertThat(response.hasErrors()).isFalse();
         assertThat(response.isEmployeeSkillAdded()).isFalse();
+    }
+
+    @Test
+    public void testAddingSkillWithNonExistingEmployee() {
+        AddSkillRequest request = new AddSkillRequest(1L, "QA");
+        Mockito.when(validator.validate(request)).thenReturn(List.of(
+                new CoreError("employee id", " does not exist")));
+        AddSkillResponse response = service.execute(request);
+        assertThat(response.hasErrors()).isTrue();
+        assertThat(response.getErrors()).isEqualTo(List.of(
+                new CoreError("employee id", " does not exist")));
+        Mockito.verifyNoInteractions(database);
     }
 }

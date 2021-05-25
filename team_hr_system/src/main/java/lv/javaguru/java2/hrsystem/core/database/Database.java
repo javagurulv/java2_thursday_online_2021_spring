@@ -32,4 +32,6 @@ public interface Database {
 
     List<EmployeeSkill> getAllSkills();
 
+    List<Skill> getAllExistingSkills();
+
 }

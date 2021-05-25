@@ -1,9 +1,6 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
-import lv.javaguru.java2.hrsystem.config.HRSystemConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -27,7 +24,8 @@ public class MainMenu {
         menuNumberToUIActionMap.put(6, findUIAction(uiActions, AddSkillUIAction.class));
         menuNumberToUIActionMap.put(7, findUIAction(uiActions, GetAllEmployeeSkillUIAction.class));
         menuNumberToUIActionMap.put(8, findUIAction(uiActions, SearchEmployeesBySkillUIAction.class));
-        menuNumberToUIActionMap.put(9, findUIAction(uiActions, ExitUIAction.class));
+        menuNumberToUIActionMap.put(9, findUIAction(uiActions, GetAllExistingSkillUIAction.class));
+        menuNumberToUIActionMap.put(10, findUIAction(uiActions, ExitUIAction.class));
     }
 
     private UIAction findUIAction(List<UIAction> uiActions, Class uiActionClass) {

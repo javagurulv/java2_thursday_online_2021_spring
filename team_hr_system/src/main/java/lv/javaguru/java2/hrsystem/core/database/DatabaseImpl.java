@@ -22,6 +22,9 @@ public class DatabaseImpl implements Database {
     private static final String filename = "user.out";
     private List<EmployeeSkill> employeeSkills = new ArrayList<>();
 
+    private Long nextIdSkill = 1L;
+    private List<Skill> skills = new ArrayList<>();
+
     static {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
             userList = ((List<User>) ois.readObject());
@@ -108,6 +111,13 @@ public class DatabaseImpl implements Database {
         EmployeeSkill employeeSkill = new EmployeeSkill(employee, skill);
         if (!employeeSkills.contains(employeeSkill)) {
             employeeSkills.add(employeeSkill);
+            //auto-populate skills with new unique skill
+            Skill sk = new Skill(skill.getSkillName());
+            if (skills.stream().noneMatch(s -> s.getSkillName().equals(skill.getSkillName()))) {
+                sk.setSkillId(nextIdSkill);
+                nextIdSkill++;
+                skills.add(sk);
+            }
             return true;
         }
         return false;
@@ -116,5 +126,10 @@ public class DatabaseImpl implements Database {
     @Override
     public List<EmployeeSkill> getAllSkills() {
         return employeeSkills;
+    }
+
+    @Override
+    public List<Skill> getAllExistingSkills() {
+        return skills;
     }
 }

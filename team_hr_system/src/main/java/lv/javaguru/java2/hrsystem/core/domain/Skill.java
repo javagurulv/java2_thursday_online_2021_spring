@@ -3,18 +3,23 @@ package lv.javaguru.java2.hrsystem.core.domain;
 import java.util.Objects;
 
 public class Skill {
-    private int skillId;
+    private Long skillId;
     private String skillName;
 
     public Skill(String skillName) {
         this.skillName = skillName;
     }
 
-    public int getSkillId() {
+    public Skill(Long skillId, String skillName) {
+        this.skillId = skillId;
+        this.skillName = skillName;
+    }
+
+    public Long getSkillId() {
         return skillId;
     }
 
-    public void setSkillId(int skillId) {
+    public void setSkillId(Long skillId) {
         this.skillId = skillId;
     }
 
@@ -31,8 +36,7 @@ public class Skill {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Skill skill = (Skill) o;
-        return skillId == skill.skillId &&
-                Objects.equals(skillName, skill.skillName);
+        return Objects.equals(skillId, skill.skillId) && Objects.equals(skillName, skill.skillName);
     }
 
     @Override
