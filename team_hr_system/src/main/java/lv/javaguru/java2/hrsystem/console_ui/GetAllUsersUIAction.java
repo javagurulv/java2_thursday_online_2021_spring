@@ -20,7 +20,7 @@ public class GetAllUsersUIAction implements UIAction{
             response.getUsers().stream().map(user -> user.getId()
                     + " | " + user.getUserRole()
                     + " - " + user.getFirstName()
-                    + " " + user.getSecondName()).
+                    + " " + user.getLastName()).
                     forEach(System.out::println);
             System.out.println("---end of users list---" + "\n");
         }

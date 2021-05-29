@@ -11,7 +11,7 @@ import java.util.*;
 
 import static java.util.stream.Collectors.toList;
 
-@Component
+//@Component
 public class DatabaseImpl implements Database {
 
     private Long nextIdEmployee = 1L;

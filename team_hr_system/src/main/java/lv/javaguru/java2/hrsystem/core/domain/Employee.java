@@ -17,9 +17,13 @@ public class Employee {
         this.title = title;
     }
 
-    public Employee(String name, String lastName) {
-        this.name = name;
-        this.lastName = lastName;
+//    public Employee(String name, String lastName) {
+//        this.name = name;
+//        this.lastName = lastName;
+//    }
+
+    public Employee() {
+
     }
 
     public Employee(String name, String lastName, int age) {
@@ -35,18 +39,16 @@ public class Employee {
         this.age = age;
         this.title = title;
     }
+
     public Employee(Long id, String name, String lastName, int age) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.age = age;
     }
+
     public Employee(Long employeeId) {
         this.id = employeeId;
-    }
-
-    public EmployeeTitle getTitle() {
-        return title;
     }
 
     public Long getId() {
@@ -79,6 +81,14 @@ public class Employee {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public EmployeeTitle getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = EmployeeTitle.valueOf(title);
     }
 
     @Override

@@ -68,18 +68,12 @@ INSERT INTO `employee_skills`(`empl_id`, `skill_id`)
 VALUES (114, 3);
 
 INSERT INTO users
-(user_role, first_name, last_name)
-VALUE("ADMIN", "ALEX", "MED");
+(user_role, first_name, last_name, email, password)
+VALUE("ADMIN", "ALEX", "MED", "alexmed@gmail.com", "qweasd123");
 
 INSERT INTO users
-(user_role, first_name, last_name)
-VALUE("HR_MANAGER", "DIMA", "KEK");
-
-INSERT INTO users_log
-VALUE(1000, "alexmed@gmail.com", "qweasd123");
-
-INSERT INTO users_log
-VALUE(1001, "dimakek@gmail.com", "qweasd123");
+(user_role, first_name, last_name, email, password)
+VALUE("HR_MANAGER", "DIMA", "KEK", "dimakek@gmail.com", "qweasd123");
 
 INSERT INTO user_employees
 (user_id, employee_id, employee_add_date)
@@ -96,9 +90,6 @@ VALUE (1001, 112, NOW());
 INSERT INTO user_employees
 (user_id, employee_id, employee_add_date)
 VALUE (1001, 113, NOW());
-
-DELETE FROM skills
-WHERE id = 4;
 
 ALTER TABLE employee_skills
 DROP FOREIGN KEY employee_skills_ibfk_2;
