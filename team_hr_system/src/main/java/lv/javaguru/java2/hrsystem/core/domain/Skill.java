@@ -6,6 +6,9 @@ public class Skill {
     private Long skillId;
     private String skillName;
 
+    public Skill() {
+    }
+
     public Skill(String skillName) {
         this.skillName = skillName;
     }
