@@ -54,6 +54,43 @@ ADD FOREIGN KEY (`empl_id`) REFERENCES `employees`(`id`);
 ALTER TABLE `employee_skills`
 ADD FOREIGN KEY (`skill_id`) REFERENCES `skills`(`id`);
 
+CREATE TABLE IF NOT EXISTS users (
+id BIGINT NOT NULL AUTO_INCREMENT,
+user_role VARCHAR (20) NOT NULL,
+first_name VARCHAR (30) NOT NULL,
+last_name VARCHAR (30) NOT NULL,
+PRIMARY KEY (id)
+)
+ENGINE = InnoDB
+AUTO_INCREMENT = 1000;
+
+CREATE TABLE IF NOT EXISTS users_log (
+user_id BIGINT NOT NULL,
+email VARCHAR (50) NOT NULL,
+password VARCHAR (40) NOT NULL
+)
+ENGINE = InnoDB;
+
+ALTER TABLE users_log
+ADD FOREIGN KEY (user_id) REFERENCES users (id);
+
+CREATE TABLE IF NOT EXISTS user_employees (
+id BIGINT NOT NULL AUTO_INCREMENT,
+user_id BIGINT NOT NULL,
+employee_id BIGINT NOT NULL,
+employee_add_date DATETIME NOT NULL,
+employee_out_date DATETIME,
+PRIMARY KEY (id)
+)
+
+ENGINE = InnoDBusers_log
+AUTO_INCREMENT = 1000;
+
+ALTER TABLE user_employees
+ADD FOREIGN KEY (user_id) REFERENCES users (id);
+
+ALTER TABLE user_employees
+ADD FOREIGN KEY (employee_id) REFERENCES employees (id);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

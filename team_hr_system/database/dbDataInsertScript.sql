@@ -53,7 +53,7 @@ INSERT INTO `skills`(`skill_name`)
 VALUES ("financial");
 
 INSERT INTO `employee_skills`(`empl_id`, `skill_id`)
-VALUES (1, 4);
+VALUES (3, 4);
 
 INSERT INTO `employee_skills`(`empl_id`, `skill_id`)
 VALUES (111, 4);
@@ -67,36 +67,38 @@ VALUES (114, 1);
 INSERT INTO `employee_skills`(`empl_id`, `skill_id`)
 VALUES (114, 3);
 
-SELECT * FROM `employees`;
+INSERT INTO users
+(user_role, first_name, last_name)
+VALUE("ADMIN", "ALEX", "MED");
 
-SELECT * FROM `employee_titles`;
+INSERT INTO users
+(user_role, first_name, last_name)
+VALUE("HR_MANAGER", "DIMA", "KEK");
 
-SELECT * FROM `skills`;
+INSERT INTO users_log
+VALUE(1000, "alexmed@gmail.com", "qweasd123");
 
-SELECT * FROM `employee_skills`;
+INSERT INTO users_log
+VALUE(1001, "dimakek@gmail.com", "qweasd123");
 
-UPDATE `employees`
-SET `last_name` = "Test"
-WHERE `id` = 111;
+INSERT INTO user_employees
+(user_id, employee_id, employee_add_date)
+VALUE (1001, 3, NOW());
 
-select `first_name`, `last_name`, employee_skills.empl_id, employee_skills.skill_id, skills.skill_name
-from employees
-inner join employee_skills
-inner join skills
-on employees.id = employee_skills.empl_id
-and employee_skills.skill_id = skills.id
-order by `first_name` ASC;
+INSERT INTO user_employees
+(user_id, employee_id, employee_add_date)
+VALUE (1001, 111, NOW());
 
+INSERT INTO user_employees
+(user_id, employee_id, employee_add_date)
+VALUE (1001, 112, NOW());
 
-update skills
-set skill_name = "decision making/problem solving"
-where id = 4;
+INSERT INTO user_employees
+(user_id, employee_id, employee_add_date)
+VALUE (1001, 113, NOW());
 
-select empl_id, skill_id,  skill_name from `employee_skills`
-inner join skills
-on employee_skills.skill_id = skills.id;
-
-select * from skills;
+DELETE FROM skills
+WHERE id = 4;
 
 ALTER TABLE employee_skills
 DROP FOREIGN KEY employee_skills_ibfk_2;
@@ -104,6 +106,3 @@ DROP FOREIGN KEY employee_skills_ibfk_2;
 ALTER TABLE employee_skills
 ADD FOREIGN KEY (skill_id) REFERENCES skills(id)
 ON DELETE CASCADE;
-
-DELETE FROM skills
-WHERE id = 4;
