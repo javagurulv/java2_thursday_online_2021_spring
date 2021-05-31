@@ -79,7 +79,8 @@ class JdbcDatabaseImpl implements Database {
 
     @Override
     public List<Dish> getAllDishes() {
-        return null;
+        String sql = "SELECT * FROM dish";
+        return jdbcTemplate.query(sql, new DishRowMapper());
     }
 
     @Override
@@ -119,7 +120,8 @@ class JdbcDatabaseImpl implements Database {
 
     @Override
     public List<Product> getAllProducts() {
-        return null;
+        String sql = "SELECT * FROM product";
+        return jdbcTemplate.query(sql, new ProductRowMapper());
     }
 
     @Override
