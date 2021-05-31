@@ -35,6 +35,9 @@ public class Dish {
         this.ingredientList = ingredientList;
     }
 
+    public Dish() {
+    }
+
     public String getName() {
         return name;
     }

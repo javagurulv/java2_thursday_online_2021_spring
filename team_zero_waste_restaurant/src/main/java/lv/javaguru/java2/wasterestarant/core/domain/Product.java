@@ -22,6 +22,9 @@ public class Product {
         this.expiryDate = expiryDate;
     }
 
+    public Product() {
+    }
+
     public String getName() {
         return name;
     }
