@@ -9,11 +9,13 @@ import java.sql.SQLException;
 public class OfferRowMapper implements RowMapper<Offer> {
     @Override
     public Offer mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new Offer(
+        Offer offer = new Offer(
                 rs.getString("type"),
                 rs.getString("category"),
                 rs.getString("description"),
                 rs.getDouble("price")
         );
+        offer.setId(rs.getInt("id"));
+        return offer;
     }
 }
