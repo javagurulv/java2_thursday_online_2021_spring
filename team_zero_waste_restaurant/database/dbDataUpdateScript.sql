@@ -24,3 +24,6 @@ SET order_date = '2021-07-02';
 UPDATE order_item
 SET client_id = 1004
 WHERE client_id = 1001;
+
+ALTER TABLE dish
+MODIFY description varchar (300);
