@@ -13,8 +13,6 @@ import lv.javaguru.java2.wasterestarant.console_ui.product.AddProductUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.GetAllProductsUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.RemoveProductUiAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.SearchProductUIAction;
-import lv.javaguru.java2.wasterestarant.console_ui.wishlist.AddDishToWishlistUIAction;
-import lv.javaguru.java2.wasterestarant.console_ui.wishlist.GetWishListUIAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -46,10 +44,8 @@ public class ProgramMenu {
         menuNumberToUIActionMap.put(11, findUIActions(uiActions, GetAllProductsUIAction.class));
         menuNumberToUIActionMap.put(12, findUIActions(uiActions, GetAllOrdersUIAction.class));
         menuNumberToUIActionMap.put(13, findUIActions(uiActions,GetRestaurantMenuUIAction.class));
-        menuNumberToUIActionMap.put(14, findUIActions(uiActions, AddDishToWishlistUIAction.class));
-        menuNumberToUIActionMap.put(15, findUIActions(uiActions, GetWishListUIAction.class));
-        menuNumberToUIActionMap.put(16, findUIActions(uiActions, CreateNewOrderUIAction.class));
-        menuNumberToUIActionMap.put(17, findUIActions(uiActions,ExitUIAction.class));
+        menuNumberToUIActionMap.put(14, findUIActions(uiActions, CreateNewOrderUIAction.class));
+        menuNumberToUIActionMap.put(15, findUIActions(uiActions,ExitUIAction.class));
 
 
     }
@@ -83,10 +79,8 @@ public class ProgramMenu {
         System.out.println("11. Show all products in the list");
         System.out.println("12. Show all orders in the list");
         System.out.println("13. Show full restaurant menu list");
-        System.out.println("14. Add dish to wishlist");
-        System.out.println("15. Show wishlist");
-        System.out.println("16. Create new order");
-        System.out.println("17. Exit");
+        System.out.println("14. Create new order");
+        System.out.println("15. Exit");
         System.out.println();
     }
 
