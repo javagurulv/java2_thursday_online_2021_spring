@@ -61,7 +61,9 @@ class JdbcDatabaseImpl implements Database {
 
     @Override
     public boolean deleteProductByName(String name) {
-        return false;
+        String sql = "DELETE FROM product WHERE name = ?";
+        Object[] args = new Object[] {name};
+        return jdbcTemplate.update(sql, args) == 1;
     }
 
     @Override
