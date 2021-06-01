@@ -2,14 +2,16 @@ package lv.javaguru.java2.wasterestarant.core.requests.order;
 
 //Nataliya
 
-import lv.javaguru.java2.wasterestarant.core.domain.Client;
+import lv.javaguru.java2.wasterestarant.core.domain.OrderItem;
 
 import java.util.Date;
+import java.util.List;
 
 public class CreateNewOrderRequest {
 
     private Long clientID;
     private Date orderDate;
+    private List<OrderItem> orderItems;
 
     public CreateNewOrderRequest(Long clientID, Date orderDate) {
         this.clientID = clientID;
@@ -24,4 +26,7 @@ public class CreateNewOrderRequest {
         return orderDate;
     }
 
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
 }

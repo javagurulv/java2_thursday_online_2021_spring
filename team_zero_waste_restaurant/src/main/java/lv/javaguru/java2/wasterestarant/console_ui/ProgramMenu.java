@@ -5,15 +5,12 @@ import lv.javaguru.java2.wasterestarant.console_ui.dish.AddDishUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.dish.GetAllDishesUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.dish.RemoveDishUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.dish.SearchDishesUIAction;
-import lv.javaguru.java2.wasterestarant.console_ui.ingredient.AddDishIngredientUiAction;
 import lv.javaguru.java2.wasterestarant.console_ui.ingredient.SearchIngredientUiAction;
 import lv.javaguru.java2.wasterestarant.console_ui.order.CreateNewOrderUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.order.GetAllOrdersUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.AddProductUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.GetAllProductsUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.SearchProductUIAction;
-import lv.javaguru.java2.wasterestarant.console_ui.wishlist.AddDishToWishlistUIAction;
-import lv.javaguru.java2.wasterestarant.console_ui.wishlist.GetWishListUIAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -44,10 +41,8 @@ public class ProgramMenu {
         menuNumberToUIActionMap.put(10, findUIActions(uiActions, GetAllProductsUIAction.class));
         menuNumberToUIActionMap.put(11, findUIActions(uiActions, GetAllOrdersUIAction.class));
         menuNumberToUIActionMap.put(12, findUIActions(uiActions,GetRestaurantMenuUIAction.class));
-        menuNumberToUIActionMap.put(13, findUIActions(uiActions, AddDishToWishlistUIAction.class));
-        menuNumberToUIActionMap.put(14, findUIActions(uiActions, GetWishListUIAction.class));
-        menuNumberToUIActionMap.put(15, findUIActions(uiActions, CreateNewOrderUIAction.class));
-        menuNumberToUIActionMap.put(16, findUIActions(uiActions,ExitUIAction.class));
+        menuNumberToUIActionMap.put(13, findUIActions(uiActions, CreateNewOrderUIAction.class));
+        menuNumberToUIActionMap.put(14, findUIActions(uiActions,ExitUIAction.class));
 
 
     }
@@ -80,10 +75,8 @@ public class ProgramMenu {
         System.out.println("10. Show all products in the list");
         System.out.println("11. Show all orders in the list");
         System.out.println("12. Show full restaurant menu list");
-        System.out.println("13. Add dish to wishlist");
-        System.out.println("14. Show wishlist");
-        System.out.println("15. Create new order");
-        System.out.println("16. Exit");
+        System.out.println("13. Create new order");
+        System.out.println("14. Exit");
         System.out.println();
     }
 

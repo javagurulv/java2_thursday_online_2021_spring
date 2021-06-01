@@ -34,11 +34,11 @@ class JdbcDatabaseImpl implements Database {
     }
 
     @Override
-    public void save(Client client) {
+    public void save(User user) {
         jdbcTemplate.update(
                 "INSERT INTO client_list(name)"
                         + "VALUES (?)",
-                client.getName()
+                user.getName()
         );
     }
 
@@ -135,23 +135,8 @@ class JdbcDatabaseImpl implements Database {
     }
 
     @Override
-    public Optional<Client> clientByID(Long clientID) {
+    public Optional<User> clientByID(Long clientID) {
         return Optional.empty();
-    }
-
-    @Override
-    public List<OrderItem> getWishlistByClientID(Long clientID) {
-        return null;
-    }
-
-    @Override
-    public OrderItem selectedOrderItem(String dishName, int quantity) {
-        return null;
-    }
-
-    @Override
-    public void addDishToWishlist(Long clientID, String dishName, int quantity) {
-
     }
 
     @Override

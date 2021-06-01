@@ -12,7 +12,7 @@ public interface Database {
 
     void save(Product product);
 
-    void save(Client client);
+    void save(User user);
 
     void save(Ingredient ingredient);
 
@@ -48,13 +48,7 @@ public interface Database {
 
     List<Product> searchProductByName(String name);
 
-    Optional<Client> clientByID (Long clientID);
-
-    List<OrderItem> getWishlistByClientID(Long clientID);
-
-    OrderItem selectedOrderItem(String dishName, int quantity);
-
-    void addDishToWishlist(Long clientID, String dishName, int quantity);
+    Optional<User> clientByID (Long clientID);
 
     List<Order> getAllOrders();
 

@@ -24,8 +24,7 @@ public class CreateNewOrderService {
             return new CreateNewOrderResponse(errors);
         }
 
-        Order order = new Order(request.getClientID(), request.getOrderDate(),
-                database.clientByID(request.getClientID()).get().getCart().getClientsWishlist());
+        Order order = new Order(request.getClientID(), request.getOrderDate(), request.getOrderItems());
         database.save(order);
         System.out.println("New order created");
 

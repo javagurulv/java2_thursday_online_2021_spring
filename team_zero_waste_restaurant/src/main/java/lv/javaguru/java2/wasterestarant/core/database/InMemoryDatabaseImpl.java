@@ -1,7 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
 import lv.javaguru.java2.wasterestarant.core.domain.*;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,7 +17,7 @@ public class InMemoryDatabaseImpl implements Database {
     private List<Dish> dishes = new ArrayList<>();
     private List<Product> products = new ArrayList<>();
     private List<Ingredient> ingredients = new ArrayList<>();
-    private List<Client> clients = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
     private List<Order> orders = new ArrayList<>();
 
     @Override
@@ -42,10 +41,10 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public void save(Client client) {
-        client.setClientID(nextClientId);
+    public void save(User user) {
+        user.setClientID(nextClientId);
         nextClientId++;
-        clients.add(client);
+        users.add(user);
     }
 
     @Override
@@ -172,32 +171,14 @@ public class InMemoryDatabaseImpl implements Database {
     }
 
     @Override
-    public Optional<Client> clientByID(Long clientID) {
-        for (Client client : clients) {
-            if (client.getClientID() == clientID) {
-                return Optional.of(client);
+    public Optional<User> clientByID(Long clientID) {
+        for (User user : users) {
+            if (user.getClientID() == clientID) {
+                return Optional.of(user);
             }
         }
         System.out.println("No client with such ID");
         return Optional.empty();
-    }
-
-    @Override
-    public List<OrderItem> getWishlistByClientID(Long clientID) {
-        if (clientByID(clientID).isPresent()) {
-            return clientByID(clientID).get().getCart().getClientsWishlist();
-        }
-        return new ArrayList<>();
-    }
-
-    @Override
-    public OrderItem selectedOrderItem(String dishName, int quantity) {
-        return new OrderItem(dishName, quantity);
-    }
-
-    @Override
-    public void addDishToWishlist(Long clientID, String dishName, int quantity) {
-        getWishlistByClientID(clientID).add(selectedOrderItem(dishName, quantity));
     }
 
     @Override
