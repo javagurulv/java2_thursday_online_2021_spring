@@ -61,7 +61,9 @@ class JdbcDatabaseImpl implements Database {
 
     @Override
     public boolean deleteProductByName(String name) {
-        return false;
+        String sql = "DELETE FROM product WHERE name = ?";
+        Object[] args = new Object[] {name};
+        return jdbcTemplate.update(sql, args) == 1;
     }
 
     @Override
@@ -131,7 +133,9 @@ class JdbcDatabaseImpl implements Database {
 
     @Override
     public List<Product> searchProductByName(String name) {
-        return null;
+        String sql = "SELECT * FROM product WHERE name = ?";
+        Object[] args = new Object[] {name};
+        return jdbcTemplate.query(sql, args, new ProductRowMapper());
     }
 
     @Override
