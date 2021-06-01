@@ -133,7 +133,9 @@ class JdbcDatabaseImpl implements Database {
 
     @Override
     public List<Product> searchProductByName(String name) {
-        return null;
+        String sql = "SELECT * FROM product WHERE name = ?";
+        Object[] args = new Object[] {name};
+        return jdbcTemplate.query(sql, args, new ProductRowMapper());
     }
 
     @Override
