@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hrsystem.acceptancetests;
+/*package lv.javaguru.java2.hrsystem.acceptancetests;
 
 import lv.javaguru.java2.hrsystem.config.HRSystemConfiguration;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
@@ -56,4 +56,4 @@ public class AcceptanceTestEmployeeDeletion {
         assertThat(getAllResponse.getEmployees()).isEqualTo(List.of(
                 new Employee(2L, "John", "Smith", 44)));
     }
-}
+}*/

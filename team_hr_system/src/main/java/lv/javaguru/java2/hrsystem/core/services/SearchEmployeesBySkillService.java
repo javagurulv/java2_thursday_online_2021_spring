@@ -1,22 +1,26 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.database.EmployeeSkillsRepository;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.EmployeeSkill;
+import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesBySkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesBySkillResponse;
 import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesBySkillRequestValidator;
-import lv.javaguru.java2.hrsystem.core.domain.Employee;
-import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @Component
 public class SearchEmployeesBySkillService {
+
     @Autowired
-    private Database database;
+    private EmployeeSkillsRepository employeeSkillsRepository;
+
     @Autowired
     private SearchEmployeesBySkillRequestValidator validator;
 
@@ -26,21 +30,15 @@ public class SearchEmployeesBySkillService {
         if (!errors.isEmpty()) {
             return new SearchEmployeesBySkillResponse(errors, null);
         }
-        List<Employee> employeesWithSkill = database.getEmployeesBySkill(new Skill(request.getSkillName()));
-        List<Employee> result = getEmployeesWithSkillWithNames(employeesWithSkill);
+        Skill skillToSearch = new Skill(request.getSkillName());
+        List<EmployeeSkill> employeesWithSkill = employeeSkillsRepository.getEmplSkillsBySkillName(skillToSearch);
+        List<Employee> result = mapToEmployees(employeesWithSkill);
         return new SearchEmployeesBySkillResponse(null, result);
     }
 
-    private List<Employee> getEmployeesWithSkillWithNames(List<Employee> employees) {
-        List<Employee> result = new ArrayList<>();
-        List<Employee> allEmployees = database.getAllEmployees();
-        allEmployees.forEach(employee -> {
-            for (Employee e : employees) {
-                if (employee.getId().equals(e.getId())) {
-                    result.add(employee);
-                }
-            }
-        });
-        return result;
+    private List<Employee> mapToEmployees(List<EmployeeSkill> employeeSkills) {
+        return employeeSkills.stream()
+                .map(EmployeeSkill::getEmployee)
+                .collect(toList());
     }
 }

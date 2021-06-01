@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hrsystem.acceptancetests;
+/*package lv.javaguru.java2.hrsystem.acceptancetests;
 
 import lv.javaguru.java2.hrsystem.config.HRSystemConfiguration;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeWithTitleRequest;
@@ -79,4 +79,4 @@ public class AcceptanceTestSearchByTitle {
         assertThat(searchResponse.getEmployees().isEmpty()).isTrue();
         assertThat(searchResponse.getEmployees()).isEqualTo(List.of());
     }
-}
+}*/

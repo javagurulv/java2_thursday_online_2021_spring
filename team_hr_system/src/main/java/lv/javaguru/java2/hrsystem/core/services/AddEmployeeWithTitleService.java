@@ -1,12 +1,12 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.database.EmployeeRepository;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeWithTitleRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddEmployeeWithTitleResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeWithTitleValidator;
-import lv.javaguru.java2.hrsystem.core.domain.Employee;
-import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,7 @@ import java.util.List;
 public class AddEmployeeWithTitleService {
 
     @Autowired
-    private Database database;
+    private EmployeeRepository employeeRepository;
     @Autowired
     private AddEmployeeWithTitleValidator validator;
 
@@ -29,7 +29,7 @@ public class AddEmployeeWithTitleService {
 
         Employee employee = new Employee(
                 request.getName(), request.getLastName(), request.getAge(), EmployeeTitle.valueOf(request.getTitle()));
-        database.saveEmployee(employee);
+        employeeRepository.saveEmployee(employee);
         return new AddEmployeeWithTitleResponse(employee);
     }
 }

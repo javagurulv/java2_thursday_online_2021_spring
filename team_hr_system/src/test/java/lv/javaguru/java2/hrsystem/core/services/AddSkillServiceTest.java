@@ -1,7 +1,9 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.database.EmployeeSkillsRepository;
+import lv.javaguru.java2.hrsystem.core.database.SkillRepository;
 import lv.javaguru.java2.hrsystem.core.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.EmployeeSkill;
 import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import lv.javaguru.java2.hrsystem.core.requests.AddSkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddSkillResponse;
@@ -23,7 +25,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AddSkillServiceTest {
 
     @Mock
-    private Database database;
+    private EmployeeSkillsRepository employeeSkillsRepository;
+
+    @Mock
+    private SkillRepository skillRepository;
 
     @Mock
     private AddSkillRequestValidator validator;
@@ -45,7 +50,8 @@ public class AddSkillServiceTest {
                 new CoreError("employee id", " Must not be empty!"))).isTrue();
         assertThat(response.getErrors().contains(
                 new CoreError("employee skill", " Must not be empty!"))).isTrue();
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(employeeSkillsRepository);
+        Mockito.verifyNoInteractions(skillRepository);
     }
 
     @Test
@@ -60,7 +66,8 @@ public class AddSkillServiceTest {
         assertThat(response.getErrors().contains(
                 new CoreError("employee id", " Must not be empty!"))).isTrue();
 
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(employeeSkillsRepository);
+        Mockito.verifyNoInteractions(skillRepository);
     }
 
     @Test
@@ -75,7 +82,8 @@ public class AddSkillServiceTest {
         assertThat(response.getErrors().contains(
                 new CoreError("employee skill", " Must not be empty!"))).isTrue();
 
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(employeeSkillsRepository);
+        Mockito.verifyNoInteractions(skillRepository);
     }
 
     @Test
@@ -90,15 +98,17 @@ public class AddSkillServiceTest {
         assertThat(response.getErrors().contains(
                 new CoreError("employee skill", " Must not be empty!"))).isTrue();
 
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(employeeSkillsRepository);
+        Mockito.verifyNoInteractions(skillRepository);
     }
 
     @Test
     public void testSuccessfulAddingSkill() {
         AddSkillRequest request = new AddSkillRequest(1L, "Java");
         Mockito.when(validator.validate(request)).thenReturn(List.of());
-        Mockito.lenient().when(database.getAllEmployees()).thenReturn(List.of(new Employee(1L)));
-        Mockito.when(database.addSkill(new Employee(1L), new Skill("Java")))
+        Mockito.when(skillRepository.getSkillIdByName(request.getSkillName())).thenReturn(1L);
+        Mockito.when(employeeSkillsRepository.addEmplSkill(
+                new EmployeeSkill(new Employee(1L), new Skill(1L,"Java"))))
                 .thenReturn(true);
         AddSkillResponse response = service.execute(request);
         assertThat(response.hasErrors()).isFalse();
@@ -109,7 +119,8 @@ public class AddSkillServiceTest {
     public void testAddingAlreadyAddedSkill() {
         AddSkillRequest request = new AddSkillRequest(1L, "Java");
         Mockito.when(validator.validate(request)).thenReturn(List.of());
-        Mockito.lenient().when(database.addSkill(new Employee(1L), new Skill("Java")))
+        Mockito.lenient().when(employeeSkillsRepository.addEmplSkill(
+                new EmployeeSkill(new Employee(1L), new Skill(1L,"Java"))))
                 .thenReturn(false);
         AddSkillResponse response = service.execute(request);
         assertThat(response.hasErrors()).isFalse();
@@ -125,6 +136,6 @@ public class AddSkillServiceTest {
         assertThat(response.hasErrors()).isTrue();
         assertThat(response.getErrors()).isEqualTo(List.of(
                 new CoreError("employee id", " does not exist")));
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(employeeSkillsRepository);
     }
 }

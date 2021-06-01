@@ -1,9 +1,9 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.database.EmployeeRepository;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.requests.GetAllEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllEmployeesResponse;
-import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,10 +13,10 @@ import java.util.List;
 public class GetAllEmployeesService {
 
     @Autowired
-    private Database database;
+    private EmployeeRepository employeeRepository;
 
     public GetAllEmployeesResponse execute(GetAllEmployeesRequest request) {
-        List<Employee> employees = database.getAllEmployees();
+        List<Employee> employees = employeeRepository.getAllEmployees();
         return new GetAllEmployeesResponse(employees);
     }
 }

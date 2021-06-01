@@ -1,14 +1,14 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.database.EmployeeRepository;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import lv.javaguru.java2.hrsystem.core.requests.Ordering;
 import lv.javaguru.java2.hrsystem.core.requests.Paging;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesResponse;
 import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesRequestValidator;
-import lv.javaguru.java2.hrsystem.core.domain.Employee;
-import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -27,7 +27,7 @@ public class SearchEmployeesService {
     private boolean pagingEnabled;
 
     @Autowired
-    private Database database;
+    private EmployeeRepository employeeRepository;
     @Autowired
     private SearchEmployeesRequestValidator validator;
 
@@ -50,13 +50,13 @@ public class SearchEmployeesService {
     public List<Employee> search(SearchEmployeesRequest request) {
         List<Employee> employees = null;
         if (request.isNameProvided() && !request.isTitleProvided()) {
-            employees = database.getEmployeesByName(request.getName());
+            employees = employeeRepository.getEmployeesByName(request.getName());
         }
         if (request.isTitleProvided() && !request.isNameProvided()) {
-            employees = database.getEmployeesByTitle(EmployeeTitle.valueOf(request.getEmployeeTitle()));
+            employees = employeeRepository.getEmployeesByTitle(EmployeeTitle.valueOf(request.getEmployeeTitle()));
         }
         if (request.isNameProvided() && request.isTitleProvided()) {
-            employees = database.getEmployeesByTitleAndName(EmployeeTitle.valueOf(request.getEmployeeTitle()), request.getName());
+            employees = employeeRepository.getEmployeesByTitleAndName(EmployeeTitle.valueOf(request.getEmployeeTitle()), request.getName());
         }
         return employees;
     }

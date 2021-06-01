@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.database.EmployeeRepository;
 import lv.javaguru.java2.hrsystem.core.requests.DeleteEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.responses.DeleteEmployeeResponse;
@@ -15,7 +15,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DeleteEmployeeServiceTest {
@@ -24,7 +24,7 @@ public class DeleteEmployeeServiceTest {
     private DeleteEmployeeRequestValidator validator;
 
     @Mock
-    private Database database;
+    private EmployeeRepository employeeRepository;
 
     @InjectMocks
     private DeleteEmployeeService service;
@@ -39,14 +39,14 @@ public class DeleteEmployeeServiceTest {
         DeleteEmployeeResponse response = service.execute(request);
         assertThat(response.hasErrors()).isTrue();
         assertThat(response.getErrors()).isEqualTo(errors);
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(employeeRepository);
     }
 
     @Test
     public void testResponseWithValidRequest() {
         DeleteEmployeeRequest request = new DeleteEmployeeRequest(1L);
         Mockito.lenient().when(validator.validate(request)).thenReturn(List.of());
-        Mockito.when(database.deleteEmployee(1L)).thenReturn(true);
+        Mockito.when(employeeRepository.deleteEmployee(1L)).thenReturn(true);
         DeleteEmployeeResponse response = service.execute(request);
         assertThat(response.hasErrors()).isFalse();
         assertThat(response.isRemoved()).isTrue();
@@ -56,7 +56,7 @@ public class DeleteEmployeeServiceTest {
     public void testResponseWithValidRequestNoIdInDB() {
         DeleteEmployeeRequest request = new DeleteEmployeeRequest(1L);
         Mockito.lenient().when(validator.validate(request)).thenReturn(List.of());
-        Mockito.when(database.deleteEmployee(1L)).thenReturn(false);
+        Mockito.when(employeeRepository.deleteEmployee(1L)).thenReturn(false);
         DeleteEmployeeResponse response = service.execute(request);
         assertThat(!response.hasErrors()).isTrue();
         assertThat(response.isRemoved()).isFalse();
