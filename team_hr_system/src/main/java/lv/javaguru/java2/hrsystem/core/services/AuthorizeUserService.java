@@ -1,11 +1,11 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.database.UserRepository;
+import lv.javaguru.java2.hrsystem.core.domain.User;
 import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AuthorizeUserResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.AuthorizeUserValidator;
-import lv.javaguru.java2.hrsystem.core.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,7 @@ import java.util.Optional;
 public class AuthorizeUserService {
 
     @Autowired
-    private Database database;
+    private UserRepository userRepository;
     @Autowired
     private AuthorizeUserValidator validator;
 
@@ -28,7 +28,7 @@ public class AuthorizeUserService {
         if (!errors.isEmpty()) {
             return new AuthorizeUserResponse(errors);
         }
-        Optional <User> authorization = database.authorizeUser(request.getEmail(), request.getPassword());
+        Optional <User> authorization = userRepository.authorizeUser(request.getEmail(), request.getPassword());
 
         return new AuthorizeUserResponse(authorization);
 

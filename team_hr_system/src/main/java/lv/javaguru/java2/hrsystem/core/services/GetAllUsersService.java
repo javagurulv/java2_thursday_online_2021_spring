@@ -1,8 +1,8 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.Database;
-import lv.javaguru.java2.hrsystem.core.responses.GetAllUsersResponse;
+import lv.javaguru.java2.hrsystem.core.database.UserRepository;
 import lv.javaguru.java2.hrsystem.core.domain.User;
+import lv.javaguru.java2.hrsystem.core.responses.GetAllUsersResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +12,10 @@ import java.util.List;
 public class GetAllUsersService {
 
     @Autowired
-    private Database database;
+    private UserRepository userRepository;
 
     public GetAllUsersResponse execute() {
-        List<User> userList = database.getAllUsers();
+        List<User> userList = userRepository.getAllUsers();
         return new GetAllUsersResponse(userList);
     }
 }

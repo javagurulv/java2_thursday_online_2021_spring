@@ -1,11 +1,11 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.database.UserRepository;
+import lv.javaguru.java2.hrsystem.core.domain.User;
 import lv.javaguru.java2.hrsystem.core.requests.RegisterUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.responses.RegisterUserResponse;
 import lv.javaguru.java2.hrsystem.core.services.validators.RegisterUserValidator;
-import lv.javaguru.java2.hrsystem.core.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,7 @@ import java.util.List;
 public class RegisterUserService {
 
     @Autowired
-    private Database database;
+    private UserRepository userRepository;
 
     @Autowired
     private RegisterUserValidator validator;
@@ -34,7 +34,7 @@ public class RegisterUserService {
                 registrationRequest.getEmail(),
                 registrationRequest.getPassword());
 
-        database.registerUser(user);
+        userRepository.registerUser(user);
 
         return new RegisterUserResponse(user);
 
