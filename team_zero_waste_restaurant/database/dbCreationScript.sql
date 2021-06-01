@@ -85,6 +85,20 @@ CREATE INDEX idx_dish_name_type on dish (name, type);
 CREATE UNIQUE INDEX idx_product_name on product (name);
 CREATE INDEX idx_client_name on client_list (name);
 
+CREATE TABLE IF NOT EXISTS user_list
+(
+    id          BIGINT       NOT NULL AUTO_INCREMENT,
+    user_role   VARCHAR(100) NOT NULL,
+    name        VARCHAR(100) NOT NULL,
+    surname     VARCHAR(100) NOT NULL,
+    email       VARCHAR(100) NOT NULL,
+    password    VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+)
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 1;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
