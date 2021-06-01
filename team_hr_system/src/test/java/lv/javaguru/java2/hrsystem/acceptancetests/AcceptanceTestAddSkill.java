@@ -1,6 +1,8 @@
-package lv.javaguru.java2.hrsystem.acceptancetests;
+/*package lv.javaguru.java2.hrsystem.acceptancetests;
 
+import lv.javaguru.java2.hrsystem.DatabaseCleaner;
 import lv.javaguru.java2.hrsystem.config.HRSystemConfiguration;
+import lv.javaguru.java2.hrsystem.core.database.SkillRepository;
 import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.domain.EmployeeSkill;
 import lv.javaguru.java2.hrsystem.core.domain.Skill;
@@ -32,6 +34,7 @@ public class AcceptanceTestAddSkill {
     @Before
     public void setup() {
         context = new AnnotationConfigApplicationContext(HRSystemConfiguration.class);
+        getDatabaseCleaner().clean();
     }
 
     public AddEmployeeService getAddEmployeeService() {
@@ -48,6 +51,14 @@ public class AcceptanceTestAddSkill {
 
     public GetAllExistingSkillsService getAllExistingSkillsService() {
         return context.getBean(GetAllExistingSkillsService.class);
+    }
+
+    public SkillRepository getSkillRepository(){
+        return context.getBean(SkillRepository.class);
+    }
+
+    public DatabaseCleaner getDatabaseCleaner() {
+        return context.getBean(DatabaseCleaner.class);
     }
 
     @Test
@@ -68,7 +79,7 @@ public class AcceptanceTestAddSkill {
     public void addSkillForNonExistingEmployee() {
         AddEmployeeRequest addEmployeeRequest = new AddEmployeeRequest("John", "Smith", 22);
         getAddEmployeeService().execute(addEmployeeRequest);
-        AddSkillRequest addSkillRequest = new AddSkillRequest(2L, "Java");
+        AddSkillRequest addSkillRequest = new AddSkillRequest(3L, "Java");
         AddSkillResponse addSkillResponse = getAddSkillService().execute(addSkillRequest);
         assertThat(addSkillResponse.isEmployeeSkillAdded()).isFalse();
         assertThat(addSkillResponse.getErrors()).isEqualTo(List.of(new CoreError("employee id", " does not exist")));
@@ -138,4 +149,4 @@ public class AcceptanceTestAddSkill {
         //check skill list populated with newly added skills
         assertThat(getAllExistingSkillsResponse.getSkills()).isEqualTo(List.of(new Skill(1L, "Java")));
     }
-}
+}*/

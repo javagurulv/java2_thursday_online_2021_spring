@@ -11,12 +11,24 @@ public class EmployeeSkill {
         this.skill = skill;
     }
 
+    public EmployeeSkill() {
+
+    }
+
     public Employee getEmployee() {
         return employee;
     }
 
     public Skill getSkill() {
         return skill;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public void setSkill(Skill skill) {
+        this.skill = skill;
     }
 
     @Override

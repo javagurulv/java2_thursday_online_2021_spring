@@ -10,9 +10,17 @@ public class Skill {
         this.skillName = skillName;
     }
 
+    public Skill(Long skillId) {
+        this.skillId = skillId;
+    }
+
     public Skill(Long skillId, String skillName) {
         this.skillId = skillId;
         this.skillName = skillName;
+    }
+
+    public Skill() {
+
     }
 
     public Long getSkillId() {

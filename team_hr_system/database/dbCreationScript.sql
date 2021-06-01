@@ -83,7 +83,7 @@ employee_out_date DATETIME,
 PRIMARY KEY (id)
 )
 
-ENGINE = InnoDBusers_log
+ENGINE = InnoDB
 AUTO_INCREMENT = 1000;
 
 ALTER TABLE user_employees
@@ -91,6 +91,19 @@ ADD FOREIGN KEY (user_id) REFERENCES users (id);
 
 ALTER TABLE user_employees
 ADD FOREIGN KEY (employee_id) REFERENCES employees (id);
+
+
+alter table employee_skills
+drop foreign key employee_skills_ibfk_1;
+
+alter table employee_skills
+drop foreign key employee_skills_ibfk_2;
+
+ALTER TABLE `employee_skills`
+ADD FOREIGN KEY (`empl_id`) REFERENCES `employees`(`id`) on delete cascade;
+
+ALTER TABLE `employee_skills`
+ADD FOREIGN KEY (`skill_id`) REFERENCES `skills`(`id`) on delete cascade;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

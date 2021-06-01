@@ -1,11 +1,11 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.Database;
-import lv.javaguru.java2.hrsystem.matchers.EmployeeMatcher;
+import lv.javaguru.java2.hrsystem.core.database.EmployeeRepository;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddEmployeeResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeRequestValidator;
+import lv.javaguru.java2.hrsystem.matchers.EmployeeMatcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -15,13 +15,13 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.argThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AddEmployeeServiceTest {
     @Mock
-    private Database database;
+    private EmployeeRepository employeeRepository;
 
     @Mock
     private AddEmployeeRequestValidator validator;
@@ -41,7 +41,7 @@ public class AddEmployeeServiceTest {
         assertThat(response.hasErrors()).isTrue();
         assertThat(response.getErrors().size() == 3).isTrue();
         assertThat(response.getErrors()).isEqualTo(expected);
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(employeeRepository);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class AddEmployeeServiceTest {
         Mockito.when(validator.validate(request)).thenReturn(List.of());
         AddEmployeeResponse response = service.execute(request);
         assertThat(response.hasErrors()).isFalse();
-        Mockito.verify(database).saveEmployee(argThat(
+        Mockito.verify(employeeRepository).saveEmployee(argThat(
                 new EmployeeMatcher("Tom", "Smith", 28)));
     }
 
@@ -64,7 +64,7 @@ public class AddEmployeeServiceTest {
         assertThat(response.hasErrors()).isTrue();
         assertThat(response.getErrors().size() == 1).isTrue();
         assertThat(response.getErrors()).isEqualTo(expected);
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(employeeRepository);
     }
 
     @Test
@@ -77,6 +77,6 @@ public class AddEmployeeServiceTest {
         assertThat(response.hasErrors()).isTrue();
         assertThat(response.getErrors().size() == 1).isTrue();
         assertThat(response.getErrors()).isEqualTo(expected);
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(employeeRepository);
     }
 }

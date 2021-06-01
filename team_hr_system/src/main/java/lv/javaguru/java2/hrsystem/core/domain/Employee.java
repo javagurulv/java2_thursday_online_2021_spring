@@ -45,6 +45,10 @@ public class Employee {
         this.id = employeeId;
     }
 
+    public Employee() {
+
+    }
+
     public EmployeeTitle getTitle() {
         return title;
     }
