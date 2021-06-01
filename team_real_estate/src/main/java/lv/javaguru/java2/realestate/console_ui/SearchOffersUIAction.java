@@ -26,7 +26,7 @@ public class SearchOffersUIAction implements ConsoleUI {
         String category = scanner.nextLine();
         System.out.println("Enter Offer price");
         String stringPrice = scanner.nextLine();
-        Double price = 0.0;
+        Double price = 0.00;
 
         if (!"".equals(stringPrice)) {
             price = Double.parseDouble(stringPrice);

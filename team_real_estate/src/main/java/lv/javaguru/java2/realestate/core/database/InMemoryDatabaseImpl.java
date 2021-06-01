@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-@Component
+//@Component
 public class InMemoryDatabaseImpl implements Database {
 
     private final List<User> users = new ArrayList<>();
