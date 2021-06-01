@@ -11,6 +11,7 @@ import lv.javaguru.java2.wasterestarant.console_ui.order.CreateNewOrderUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.order.GetAllOrdersUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.AddProductUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.GetAllProductsUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.product.RemoveProductUiAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.SearchProductUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.wishlist.AddDishToWishlistUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.wishlist.GetWishListUIAction;
@@ -36,7 +37,7 @@ public class ProgramMenu {
         menuNumberToUIActionMap.put(3, findUIActions(uiActions, AddDishUIAction.class));
         //menuNumberToUIActionMap.put(3, findUIActions(uiActions, AddDishIngredientUiAction.class)); //todo implement this correctly
         menuNumberToUIActionMap.put(4, findUIActions(uiActions, AddProductUIAction.class));
-        menuNumberToUIActionMap.put(5, findUIActions(uiActions, AddProductUIAction.class));
+        menuNumberToUIActionMap.put(5, findUIActions(uiActions, RemoveProductUiAction.class));
         menuNumberToUIActionMap.put(6, findUIActions(uiActions, RemoveDishUIAction.class));
         menuNumberToUIActionMap.put(7, findUIActions(uiActions, SearchDishesUIAction.class));
         menuNumberToUIActionMap.put(8, findUIActions(uiActions, SearchProductUIAction.class));
