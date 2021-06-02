@@ -20,19 +20,19 @@ public class InMemoryDatabaseImpl implements Database {
     private List<User> users = new ArrayList<>();
     private List<Order> orders = new ArrayList<>();
 
-    @Override
-    public void save(Dish dish) {
-        dish.setDishID(nextDishId);
-        nextDishId++;
-        dishes.add(dish);
-    }
+//    @Override
+//    public void save(Dish dish) {
+//        dish.setDishID(nextDishId);
+//        nextDishId++;
+//        dishes.add(dish);
+//    }
 
 
-    @Override
-    public void save(Ingredient ingredient) {
-        ingredients.add(ingredient);
-
-    }
+//    @Override
+//    public void save(Ingredient ingredient) {
+//        ingredients.add(ingredient);
+//
+//    }
 
     @Override
     public void save(User user) {
@@ -48,90 +48,90 @@ public class InMemoryDatabaseImpl implements Database {
         orders.add(order);
     }
 
-    @Override
-    public boolean deleteDishByName(String name) {
-        boolean isDishDeleted = false;
-        Optional<Dish> dishToDeleteTool = dishes.stream()
-                .filter(dish -> dish.getName().equals(name))
-                .findFirst();
-        if (dishToDeleteTool.isPresent()) {
-            Dish dishToDelete = dishToDeleteTool.get();
-            isDishDeleted = dishes.remove(dishToDelete);
-        }
-        return isDishDeleted;
-    }
+//    @Override
+//    public boolean deleteDishByName(String name) {
+//        boolean isDishDeleted = false;
+//        Optional<Dish> dishToDeleteTool = dishes.stream()
+//                .filter(dish -> dish.getName().equals(name))
+//                .findFirst();
+//        if (dishToDeleteTool.isPresent()) {
+//            Dish dishToDelete = dishToDeleteTool.get();
+//            isDishDeleted = dishes.remove(dishToDelete);
+//        }
+//        return isDishDeleted;
+//    }
 
 
-    @Override
-    public boolean deleteDishByID(Long dishID) {
-        return false;
-    }
+//    @Override
+//    public boolean deleteDishByID(Long dishID) {
+//        return false;
+//    }
 
-    @Override
-    public List<Ingredient> findIngredientByName(String name) {
-        return ingredients.stream()
-                .filter(ingredient -> ingredient.getIngredient().equals(name))
-                .collect(Collectors.toList());
-    }
+//    @Override
+//    public List<Ingredient> findIngredientByName(String name) {
+//        return ingredients.stream()
+//                .filter(ingredient -> ingredient.getIngredient().equals(name))
+//                .collect(Collectors.toList());
+//    }
 
-    @Override
-    public List<Dish> getAllDishes() {
-        return dishes;
-    }
+//    @Override
+//    public List<Dish> getAllDishes() {
+//        return dishes;
+//    }
 
-    @Override
-    public List<Dish> findDishByName(String name) {
-        return dishes.stream()
-                .filter(dish -> dish.getName().equals(name))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Dish> findDishByType(String type) {
-        return dishes.stream()
-                .filter(dish -> dish.getType().equals(type))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Dish> findDishByPrice(Double price) {
-        return dishes.stream()
-                .filter(dish -> dish.getPrice() == price)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Dish> findDishByNameAndType(String name, String type) {
-        return dishes.stream()
-                .filter(dish -> dish.getName().equals(name))
-                .filter(dish -> dish.getType().equals(type))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Dish> findDishByNameAndPrice(String name, Double price) {
-        return dishes.stream()
-                .filter(dish -> dish.getName().equals(name))
-                .filter(dish -> dish.getPrice() == price)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Dish> findDishByTypeAndPrice(String type, Double price) {
-        return dishes.stream()
-                .filter(dish -> dish.getType().equals(type))
-                .filter(dish -> dish.getPrice() == price)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Dish> findDishByNameAndTypeAndPrice(String name, String type, Double price) {
-        return dishes.stream()
-                .filter(dish -> dish.getName().equals(name))
-                .filter(dish -> dish.getType().equals(type))
-                .filter(dish -> dish.getPrice() == price)
-                .collect(Collectors.toList());
-    }
+//    @Override
+//    public List<Dish> findDishByName(String name) {
+//        return dishes.stream()
+//                .filter(dish -> dish.getName().equals(name))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Dish> findDishByType(String type) {
+//        return dishes.stream()
+//                .filter(dish -> dish.getType().equals(type))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Dish> findDishByPrice(Double price) {
+//        return dishes.stream()
+//                .filter(dish -> dish.getPrice() == price)
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Dish> findDishByNameAndType(String name, String type) {
+//        return dishes.stream()
+//                .filter(dish -> dish.getName().equals(name))
+//                .filter(dish -> dish.getType().equals(type))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Dish> findDishByNameAndPrice(String name, Double price) {
+//        return dishes.stream()
+//                .filter(dish -> dish.getName().equals(name))
+//                .filter(dish -> dish.getPrice() == price)
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Dish> findDishByTypeAndPrice(String type, Double price) {
+//        return dishes.stream()
+//                .filter(dish -> dish.getType().equals(type))
+//                .filter(dish -> dish.getPrice() == price)
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Dish> findDishByNameAndTypeAndPrice(String name, String type, Double price) {
+//        return dishes.stream()
+//                .filter(dish -> dish.getName().equals(name))
+//                .filter(dish -> dish.getType().equals(type))
+//                .filter(dish -> dish.getPrice() == price)
+//                .collect(Collectors.toList());
+//    }
 
 
     @Override

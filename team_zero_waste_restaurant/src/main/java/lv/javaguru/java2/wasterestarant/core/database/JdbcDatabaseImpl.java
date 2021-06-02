@@ -1,9 +1,8 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
-import lv.javaguru.java2.wasterestarant.core.database.Product.ProductRowMapper;
-import lv.javaguru.java2.wasterestarant.core.database.dish.DishRowMapper;
-import lv.javaguru.java2.wasterestarant.core.database.ingredient.IngredientRowMapper;
-import lv.javaguru.java2.wasterestarant.core.domain.*;
+import lv.javaguru.java2.wasterestarant.core.domain.Dish;
+import lv.javaguru.java2.wasterestarant.core.domain.Order;
+import lv.javaguru.java2.wasterestarant.core.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -18,14 +17,14 @@ class JdbcDatabaseImpl implements Database {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Override
-    public void save(Dish dish) {
-        jdbcTemplate.update(
-                "INSERT INTO dish(name, description, type, weight, price)"
-                        + "VALUES (?, ?, ?, ?, ?)",
-                dish.getName(), dish.getDescription(), dish.getType(), dish.getWeight(), dish.getPrice()
-        );
-    }
+//    @Override
+//    public void save(Dish dish) {
+//        jdbcTemplate.update(
+//                "INSERT INTO dish(name, description, type, weight, price)"
+//                        + "VALUES (?, ?, ?, ?, ?)",
+//                dish.getName(), dish.getDescription(), dish.getType(), dish.getWeight(), dish.getPrice()
+//        );
+//    }
 
     /*@Override
     public void save(Product product) {
@@ -45,27 +44,27 @@ class JdbcDatabaseImpl implements Database {
         );
     }
 
-    @Override
-    public void save(Ingredient ingredient) {
-        Product product = new Product();
-        jdbcTemplate.update(
-                "INSERT INTO ingredient(product_id, name, quantity)"
-                        + "VALUES((SELECT id FROM product WHERE name = ?), ?, ?)",
-                product.getProductID(), ingredient.getIngredient(), ingredient.getQuantity()
-        );
-    }
+//    @Override
+//    public void save(Ingredient ingredient) {
+//        Product product = new Product();
+//        jdbcTemplate.update(
+//                "INSERT INTO ingredient(product_id, name, quantity)"
+//                        + "VALUES((SELECT id FROM product WHERE name = ?), ?, ?)",
+//                product.getProductID(), ingredient.getIngredient(), ingredient.getQuantity()
+//        );
+//    }
 
     @Override
     public void save(Order order) {
 
     }
 
-    @Override
-    public boolean deleteDishByName(String name) {
-        String sql = "DELETE FROM dish WHERE name = ?";
-        Object[] args = new Object[]{name};
-        return jdbcTemplate.update(sql, args) == 1;
-    }
+//    @Override
+//    public boolean deleteDishByName(String name) {
+//        String sql = "DELETE FROM dish WHERE name = ?";
+//        Object[] args = new Object[]{name};
+//        return jdbcTemplate.update(sql, args) == 1;
+//    }
 
    /* @Override
     public boolean deleteProductByName(String name) {
@@ -74,61 +73,61 @@ class JdbcDatabaseImpl implements Database {
         return jdbcTemplate.update(sql, args) == 1;
     }*/
 
-    @Override
-    public boolean deleteDishByID(Long dishID) {
-//        String sql = "DELETE FROM dish WHERE id = ?"; // No such function in program menu. Only delete by name
-//        Object[] args = new Object[] {dishID};
-//        return jdbcTemplate.update(sql, args) == 1;
-        return false;
-    }
-
-    @Override
-    public List<Ingredient> findIngredientByName(String name) {
-        String sql = "SELECT * FROM ingredient WHERE name = ?";
-        Object[] args = new Object[] {name};
-        return jdbcTemplate.query(sql, args, new IngredientRowMapper());
-    }
-
-    @Override
-    public List<Dish> getAllDishes() {
-        String sql = "SELECT * FROM dish";
-        return jdbcTemplate.query(sql, new DishRowMapper());
-    }
-
-    @Override
-    public List<Dish> findDishByName(String name) {
-        return null;
-    }
-
-    @Override
-    public List<Dish> findDishByType(String type) {
-        return null;
-    }
-
-    @Override
-    public List<Dish> findDishByPrice(Double price) {
-        return null;
-    }
-
-    @Override
-    public List<Dish> findDishByNameAndType(String name, String type) {
-        return null;
-    }
-
-    @Override
-    public List<Dish> findDishByNameAndPrice(String name, Double price) {
-        return null;
-    }
-
-    @Override
-    public List<Dish> findDishByTypeAndPrice(String type, Double price) {
-        return null;
-    }
-
-    @Override
-    public List<Dish> findDishByNameAndTypeAndPrice(String name, String type, Double price) {
-        return null;
-    }
+//    @Override
+//    public boolean deleteDishByID(Long dishID) {
+////        String sql = "DELETE FROM dish WHERE id = ?"; // No such function in program menu. Only delete by name
+////        Object[] args = new Object[] {dishID};
+////        return jdbcTemplate.update(sql, args) == 1;
+//        return false;
+//    }
+//
+//    @Override
+//    public List<Ingredient> findIngredientByName(String name) {
+//        String sql = "SELECT * FROM ingredient WHERE name = ?";
+//        Object[] args = new Object[] {name};
+//        return jdbcTemplate.query(sql, args, new IngredientRowMapper());
+//    }
+//
+//    @Override
+//    public List<Dish> getAllDishes() {
+//        String sql = "SELECT * FROM dish";
+//        return jdbcTemplate.query(sql, new DishRowMapper());
+//    }
+//
+//    @Override
+//    public List<Dish> findDishByName(String name) {
+//        return null;
+//    }
+//
+//    @Override
+//    public List<Dish> findDishByType(String type) {
+//        return null;
+//    }
+//
+//    @Override
+//    public List<Dish> findDishByPrice(Double price) {
+//        return null;
+//    }
+//
+//    @Override
+//    public List<Dish> findDishByNameAndType(String name, String type) {
+//        return null;
+//    }
+//
+//    @Override
+//    public List<Dish> findDishByNameAndPrice(String name, Double price) {
+//        return null;
+//    }
+//
+//    @Override
+//    public List<Dish> findDishByTypeAndPrice(String type, Double price) {
+//        return null;
+//    }
+//
+//    @Override
+//    public List<Dish> findDishByNameAndTypeAndPrice(String name, String type, Double price) {
+//        return null;
+//    }
 
     /*@Override
     public List<Product> getAllProducts() {
