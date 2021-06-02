@@ -13,6 +13,14 @@ public class User {
     public User() {
     }
 
+    public User(Long userId, String name, String surname, String email, String password) {
+        this.userId = userId;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+    }
+
     public User(Long clientID, UserRole role, String name, String surname, String email, String password) {
         this.userId = clientID;
         this.role = role;
