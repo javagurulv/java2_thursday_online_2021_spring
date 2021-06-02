@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.dish;
 
-import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.database.dish.DishDatabase;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.RemoveDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.RemoveDishResponse;
@@ -21,7 +21,7 @@ import static org.mockito.ArgumentMatchers.any;
 @RunWith(MockitoJUnitRunner.class)
 public class RemoveDishServiceTest {
 
-    @Mock private Database database;
+    @Mock private DishDatabase database;
     @Mock private RemoveDishValidator validator;
     @InjectMocks private RemoveDishService service;
 
