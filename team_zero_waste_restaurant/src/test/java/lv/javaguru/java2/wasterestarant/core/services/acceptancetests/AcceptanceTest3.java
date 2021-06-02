@@ -1,5 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.acceptancetests;
 
+import lv.javaguru.java2.wasterestarant.DatabaseCleaner;
 import lv.javaguru.java2.wasterestarant.config.RestaurantApplicationConfiguration;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
@@ -23,6 +24,11 @@ public class AcceptanceTest3 {
     @Before
     public void setup() {
         applicationContext = new AnnotationConfigApplicationContext(RestaurantApplicationConfiguration.class);
+        getDatabaseCleaner().clean();
+    }
+
+    private DatabaseCleaner getDatabaseCleaner() {
+        return applicationContext.getBean(DatabaseCleaner.class);
     }
 
     private AddDishIngredientService getDishIngredientService() {
