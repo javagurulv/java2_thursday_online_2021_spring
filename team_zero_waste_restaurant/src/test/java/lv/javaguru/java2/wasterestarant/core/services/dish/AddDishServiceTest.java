@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.services.dish;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.database.dish.DishDatabase;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.AddDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.AddDishResponse;
@@ -22,7 +23,7 @@ import static org.mockito.ArgumentMatchers.argThat;
 public class AddDishServiceTest {
 
     @Mock
-    private Database database;
+    private DishDatabase database;
     @Mock
     private AddDishValidator validator;
     @InjectMocks
