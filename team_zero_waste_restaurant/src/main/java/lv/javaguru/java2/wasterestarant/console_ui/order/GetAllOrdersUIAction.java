@@ -30,8 +30,7 @@ public class GetAllOrdersUIAction implements UIAction {
     private void printOrderWithFields(List<Order> printList, int i) {
         System.out.println((i + 1) + ". Order ID: " + printList.get(i).getOrderID() +
                 ", client ID: " + printList.get(i).getClientID() +
-                ", order date: " + printList.get(i).getOrderDate() +
-                ", ordered items: " + printList.get(i).getOrderItems());
+                ", order date: " + printList.get(i).getOrderDate());
     }
 
 }

@@ -41,12 +41,12 @@ public class InMemoryDatabaseImpl implements Database {
         users.add(user);
     }
 
-    @Override
-    public void save(Order order) {
-        order.setOrderID(nextOrderId);
-        nextOrderId++;
-        orders.add(order);
-    }
+//    @Override
+//    public void save(Order order) {
+//        order.setOrderID(nextOrderId);
+//        nextOrderId++;
+//        orders.add(order);
+//    }
 
 //    @Override
 //    public boolean deleteDishByName(String name) {
@@ -153,32 +153,32 @@ public class InMemoryDatabaseImpl implements Database {
         return Optional.empty();
     }
 
-    @Override
-    public List<Order> getAllOrders() {
-        return orders;
-    }
-
-    @Override
-    public List<Order> searchOrderByClientIDAndDate(Long clientID, Date orderDate) {
-        return orders.stream()
-                .filter(order -> order.getClientID().equals(clientID))
-                .filter(order -> order.getClientID().equals(orderDate))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Order> searchOrdersByClientID(Long clientID) {
-        return orders.stream()
-                .filter(order -> order.getClientID().equals(clientID))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Order> searchOrderByDate(Date orderDate) {
-        return orders.stream()
-                .filter(order -> order.getClientID().equals(orderDate))
-                .collect(Collectors.toList());
-    }
+//    @Override
+//    public List<Order> getAllOrders() {
+//        return orders;
+//    }
+//
+//    @Override
+//    public List<Order> searchOrderByClientIDAndDate(Long clientID, Date orderDate) {
+//        return orders.stream()
+//                .filter(order -> order.getClientID().equals(clientID))
+//                .filter(order -> order.getClientID().equals(orderDate))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Order> searchOrdersByClientID(Long clientID) {
+//        return orders.stream()
+//                .filter(order -> order.getClientID().equals(clientID))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Order> searchOrderByDate(Date orderDate) {
+//        return orders.stream()
+//                .filter(order -> order.getClientID().equals(orderDate))
+//                .collect(Collectors.toList());
+//    }
 
 }
 

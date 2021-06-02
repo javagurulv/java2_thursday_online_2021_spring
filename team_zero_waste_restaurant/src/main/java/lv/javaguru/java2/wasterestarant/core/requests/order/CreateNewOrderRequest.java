@@ -11,7 +11,6 @@ public class CreateNewOrderRequest {
 
     private Long clientID;
     private Date orderDate;
-    private List<OrderItem> orderItems;
 
     public CreateNewOrderRequest(Long clientID, Date orderDate) {
         this.clientID = clientID;
@@ -26,7 +25,4 @@ public class CreateNewOrderRequest {
         return orderDate;
     }
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
-    }
 }

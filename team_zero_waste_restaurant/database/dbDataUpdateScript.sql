@@ -33,3 +33,19 @@ DROP foreign key ingredient_ibfk_1;
 
 ALTER TABLE ingredient
 DROP product_id;
+
+ALTER TABLE order_list
+DROP foreign key order_list_ibfk_2;
+
+ALTER TABLE order_list
+DROP order_item_id;
+
+ALTER TABLE order_item
+DROP foreign key order_item_ibfk_1;
+
+ALTER TABLE order_item
+DROP client_id;
+
+ALTER TABLE order_item
+ADD column order_list_id BIGINT       NOT NULL,
+ADD FOREIGN KEY (order_list_id) REFERENCES order_list (id);

@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.order;
 
-import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.database.order.OrderDatabase;
 import lv.javaguru.java2.wasterestarant.core.requests.order.CreateNewOrderRequest;
 import lv.javaguru.java2.wasterestarant.core.domain.Order;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
@@ -12,8 +12,9 @@ import java.util.List;
 
 @Component
 public class CreateNewOrderService {
+
     @Autowired
-    private Database database;
+    private OrderDatabase database;
     @Autowired
     private CreateNewOrderValidator validator;
 
@@ -24,7 +25,7 @@ public class CreateNewOrderService {
             return new CreateNewOrderResponse(errors);
         }
 
-        Order order = new Order(request.getClientID(), request.getOrderDate(), request.getOrderItems());
+        Order order = new Order(request.getClientID(), request.getOrderDate());
         database.save(order);
         System.out.println("New order created");
 

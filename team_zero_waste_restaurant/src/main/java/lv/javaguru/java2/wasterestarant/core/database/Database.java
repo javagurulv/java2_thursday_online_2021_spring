@@ -16,7 +16,7 @@ public interface Database {
 
     //void save(Ingredient ingredient);
 
-    void save(Order order);
+//    void save(Order order);
 
    // boolean deleteDishByName(String name);
 
@@ -50,12 +50,12 @@ public interface Database {
 
     Optional<User> clientByID (Long clientID);
 
-    List<Order> getAllOrders();
-
-    List<Order> searchOrdersByClientID(Long clientID);
-
-    List<Order> searchOrderByDate(Date orderDate);
-
-    List<Order> searchOrderByClientIDAndDate(Long clientID, Date orderDate);
+//    List<Order> getAllOrders();
+//
+//    List<Order> searchOrdersByClientID(Long clientID);
+//
+//    List<Order> searchOrderByDate(Date orderDate);
+//
+//    List<Order> searchOrderByClientIDAndDate(Long clientID, Date orderDate);
 
 }

@@ -9,15 +9,21 @@ public class Order {
     private Long orderID;
     private Long clientID;
     private Date orderDate;
-    private List<OrderItem> orderItems;
+    private List<OrderItem> wishlist;
 
     public Order() {
+
     }
 
-    public Order(Long clientID, Date orderDate, List<OrderItem> orderItems) {
+    public Order(Long clientID, Date orderDate) {
         this.clientID = clientID;
         this.orderDate = orderDate;
-        this.orderItems = orderItems;
+    }
+
+    public Order(long clientID, Date orderDate, List<OrderItem> wishlist) {
+        this.clientID = clientID;
+        this.orderDate = orderDate;
+        this.wishlist = wishlist;
     }
 
     public Long getClientID() {
@@ -36,14 +42,6 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderedDishes(List<Dish> orderedDishes) {
-        this.orderItems = orderItems;
-    }
-
     public long getOrderID() {
         return orderID;
     }
@@ -52,13 +50,22 @@ public class Order {
         this.orderID = orderID;
     }
 
+
+    public List<OrderItem> getWishlist() {
+        return wishlist;
+    }
+
+    public void setWishlist(List<OrderItem> wishlist) {
+        this.wishlist = wishlist;
+    }
+
+
     @Override
     public String toString() {
         return "Order{" +
                 "orderID=" + orderID +
                 ", client=" + clientID +
                 ", orderDate=" + orderDate +
-                ", orderItems=" + orderItems +
                 '}';
     }
 
