@@ -27,3 +27,9 @@ WHERE client_id = 1001;
 
 ALTER TABLE dish
 MODIFY description varchar (300);
+
+ALTER TABLE ingredient
+DROP foreign key ingredient_ibfk_1;
+
+ALTER TABLE ingredient
+DROP product_id;
