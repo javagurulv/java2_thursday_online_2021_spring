@@ -17,6 +17,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import static org.junit.Assert.assertEquals;
 
+
+//Test is deprecated - can be deleted
+
+/*
 public class AcceptanceTest3 {
 
     private ApplicationContext applicationContext;
@@ -101,3 +105,4 @@ public class AcceptanceTest3 {
 
 
 }
+*/
