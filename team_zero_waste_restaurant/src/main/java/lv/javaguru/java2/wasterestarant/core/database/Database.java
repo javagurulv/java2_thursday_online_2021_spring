@@ -10,7 +10,7 @@ public interface Database {
 
     void save(Dish dish);
 
-    void save(Product product);
+    /*void save(Product product);*/
 
     void save(User user);
 
@@ -20,7 +20,7 @@ public interface Database {
 
     boolean deleteDishByName(String name);
 
-    boolean deleteProductByName(String name);
+  /*  boolean deleteProductByName(String name);*/
 
     boolean deleteDishByID(Long dishID);
 
@@ -42,11 +42,11 @@ public interface Database {
 
     List<Dish> findDishByNameAndTypeAndPrice(String name, String type, Double price);
 
-    List<Product> getAllProducts();
+    /*List<Product> getAllProducts();*/
 
     List<Dish> getRestaurantMenu();
 
-    List<Product> searchProductByName(String name);
+/*    List<Product> searchProductByName(String name);*/
 
     Optional<User> clientByID (Long clientID);
 

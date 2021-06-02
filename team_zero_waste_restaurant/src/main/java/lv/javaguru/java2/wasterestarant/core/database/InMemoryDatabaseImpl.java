@@ -27,12 +27,6 @@ public class InMemoryDatabaseImpl implements Database {
         dishes.add(dish);
     }
 
-    @Override
-    public void save(Product product) {
-        product.setProductID(nextProductId);
-        nextProductId++;
-        products.add(product);
-    }
 
     @Override
     public void save(Ingredient ingredient) {
@@ -67,18 +61,6 @@ public class InMemoryDatabaseImpl implements Database {
         return isDishDeleted;
     }
 
-    @Override
-    public boolean deleteProductByName(String name) {
-        boolean isProductDeleted = false;
-        Optional<Product> productToDeleteTool = products.stream()
-                .filter(product -> product.getName().equals(name))
-                .findFirst();
-        if (productToDeleteTool.isPresent()) {
-            Product productToDelete = productToDeleteTool.get();
-            isProductDeleted = products.remove(productToDelete);
-        }
-        return isProductDeleted;
-    }
 
     @Override
     public boolean deleteDishByID(Long dishID) {
@@ -151,10 +133,6 @@ public class InMemoryDatabaseImpl implements Database {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public List<Product> getAllProducts() {
-        return products;
-    }
 
     @Override
     public List<Dish> getRestaurantMenu() {
@@ -163,12 +141,6 @@ public class InMemoryDatabaseImpl implements Database {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public List<Product> searchProductByName(String name) {
-        return products.stream()
-                .filter(product -> product.getName().equals(name))
-                .collect(Collectors.toList());
-    }
 
     @Override
     public Optional<User> clientByID(Long clientID) {

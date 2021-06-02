@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.services.products;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.database.Product.ProductDatabase;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.product.SearchProductRequest;
@@ -25,7 +26,7 @@ public class SearchProductService {
     private boolean pagingEnabled;
 
     @Autowired
-    private Database database;
+    private ProductDatabase database;
     @Autowired
     private SearchProductServiceValidator validator;
 

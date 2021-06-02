@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.services.products.validators;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.database.Product.ProductDatabase;
 import lv.javaguru.java2.wasterestarant.core.requests.product.RemoveProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.product.RemoveProductResponse;
@@ -27,7 +28,7 @@ import static org.mockito.ArgumentMatchers.any;
 public class RemoveProductServiceTest {
 
     @Mock
-    private Database database;
+    private ProductDatabase database;
     @Mock
     private RemoveProductValidator validator;
     @InjectMocks

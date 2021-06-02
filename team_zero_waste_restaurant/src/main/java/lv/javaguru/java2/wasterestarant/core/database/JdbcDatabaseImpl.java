@@ -1,5 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
+import lv.javaguru.java2.wasterestarant.core.database.Product.ProductRowMapper;
 import lv.javaguru.java2.wasterestarant.core.database.dish.DishRowMapper;
 import lv.javaguru.java2.wasterestarant.core.database.ingredient.IngredientRowMapper;
 import lv.javaguru.java2.wasterestarant.core.domain.*;
@@ -26,14 +27,14 @@ class JdbcDatabaseImpl implements Database {
         );
     }
 
-    @Override
+    /*@Override
     public void save(Product product) {
         jdbcTemplate.update(
                 "INSERT INTO product(name, quantity, price, expiryDate)"
                         + "VALUES (?, ?, ?, ?)",
                 product.getName(), product.getQuantity(), product.getPrice(), product.getExpiryDate()
         );
-    }
+    }*/
 
     @Override
     public void save(User user) {
@@ -66,12 +67,12 @@ class JdbcDatabaseImpl implements Database {
         return jdbcTemplate.update(sql, args) == 1;
     }
 
-    @Override
+   /* @Override
     public boolean deleteProductByName(String name) {
         String sql = "DELETE FROM product WHERE name = ?";
         Object[] args = new Object[]{name};
         return jdbcTemplate.update(sql, args) == 1;
-    }
+    }*/
 
     @Override
     public boolean deleteDishByID(Long dishID) {
@@ -129,23 +130,23 @@ class JdbcDatabaseImpl implements Database {
         return null;
     }
 
-    @Override
+    /*@Override
     public List<Product> getAllProducts() {
         String sql = "SELECT * FROM product";
         return jdbcTemplate.query(sql, new ProductRowMapper());
-    }
+    }*/
 
     @Override
     public List<Dish> getRestaurantMenu() {
         return null;
     }
 
-    @Override
+    /*@Override
     public List<Product> searchProductByName(String name) {
         String sql = "SELECT * FROM product WHERE name = ?";
         Object[] args = new Object[] {name};
         return jdbcTemplate.query(sql, args, new ProductRowMapper());
-    }
+    }*/
 
     @Override
     public Optional<User> clientByID(Long clientID) {
