@@ -15,6 +15,22 @@ public class Ingredient {
         this.quantity = quantity;
     }
 
+    public Ingredient() {
+
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public void setIngredient(String ingredient) {
+        this.ingredient = ingredient;
+    }
+
+    public void setQuantity(Double quantity) {
+        this.quantity = quantity;
+    }
+
     public String getIngredient(){
         return ingredient;
     }

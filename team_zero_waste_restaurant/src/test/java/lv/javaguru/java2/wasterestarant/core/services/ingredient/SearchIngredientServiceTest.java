@@ -2,6 +2,7 @@ package lv.javaguru.java2.wasterestarant.core.services.ingredient;
 
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.database.ingredient.IngredientDatabase;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.SearchIngredientRequest;
@@ -27,7 +28,7 @@ import static org.mockito.ArgumentMatchers.any;
 public class SearchIngredientServiceTest {
 
     @Mock
-    private Database database;
+    private IngredientDatabase database;
     @Mock
     private SearchIngredientValidator validator;
     @InjectMocks

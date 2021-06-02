@@ -1,5 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
+import lv.javaguru.java2.wasterestarant.core.database.dish.DishRowMapper;
+import lv.javaguru.java2.wasterestarant.core.database.ingredient.IngredientRowMapper;
 import lv.javaguru.java2.wasterestarant.core.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -44,7 +46,12 @@ class JdbcDatabaseImpl implements Database {
 
     @Override
     public void save(Ingredient ingredient) {
-
+        Product product = new Product();
+        jdbcTemplate.update(
+                "INSERT INTO ingredient(product_id, name, quantity)"
+                        + "VALUES((SELECT id FROM product WHERE name = ?), ?, ?)",
+                product.getProductID(), ingredient.getIngredient(), ingredient.getQuantity()
+        );
     }
 
     @Override
@@ -55,14 +62,14 @@ class JdbcDatabaseImpl implements Database {
     @Override
     public boolean deleteDishByName(String name) {
         String sql = "DELETE FROM dish WHERE name = ?";
-        Object[] args = new Object[] {name};
+        Object[] args = new Object[]{name};
         return jdbcTemplate.update(sql, args) == 1;
     }
 
     @Override
     public boolean deleteProductByName(String name) {
         String sql = "DELETE FROM product WHERE name = ?";
-        Object[] args = new Object[] {name};
+        Object[] args = new Object[]{name};
         return jdbcTemplate.update(sql, args) == 1;
     }
 
@@ -76,7 +83,9 @@ class JdbcDatabaseImpl implements Database {
 
     @Override
     public List<Ingredient> findIngredientByName(String name) {
-        return null;
+        String sql = "SELECT * FROM ingredient WHERE name = ?";
+        Object[] args = new Object[] {name};
+        return jdbcTemplate.query(sql, args, new IngredientRowMapper());
     }
 
     @Override

@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.services.dish;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.database.dish.DishDatabase;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.GetAllDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.GetAllDishesResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
@@ -19,7 +20,7 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class GetAllDishesServiceTest {
     @Mock
-    private Database database;
+    private DishDatabase database;
     @InjectMocks
     GetAllDishesService service;
 
