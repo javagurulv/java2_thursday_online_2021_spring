@@ -23,7 +23,7 @@ import static org.mockito.ArgumentMatchers.argThat;
 public class AddDishServiceTest {
 
     @Mock
-    private DishDatabase database;
+    private Database database;
     @Mock
     private AddDishValidator validator;
     @InjectMocks
