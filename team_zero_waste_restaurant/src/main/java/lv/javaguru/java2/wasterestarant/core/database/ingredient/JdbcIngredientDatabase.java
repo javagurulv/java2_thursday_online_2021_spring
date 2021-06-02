@@ -1,13 +1,12 @@
 package lv.javaguru.java2.wasterestarant.core.database.ingredient;
 
 import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
-import lv.javaguru.java2.wasterestarant.core.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-//AndrejsB IN PROGRESS......
+//AndrejsB
 @Component
 public class JdbcIngredientDatabase implements IngredientDatabase{
 
@@ -16,11 +15,11 @@ public class JdbcIngredientDatabase implements IngredientDatabase{
 
     @Override
     public void save(Ingredient ingredient) {
-        Product product = new Product();
+
         jdbcTemplate.update(
-                "INSERT INTO ingredient(product_id, name, quantity)"
-                        + "VALUES((SELECT id FROM product WHERE name = ?), ?, ?)",
-                product.getProductID(), ingredient.getIngredient(), ingredient.getQuantity()
+                "INSERT INTO ingredient(name, quantity)"
+                        + "VALUES(?, ?)",
+               ingredient.getIngredient(), ingredient.getQuantity()
         );
     }
     @Override
