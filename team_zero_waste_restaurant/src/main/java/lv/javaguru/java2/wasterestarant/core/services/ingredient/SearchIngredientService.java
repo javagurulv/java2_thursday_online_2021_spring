@@ -1,7 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.services.ingredient;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
-import lv.javaguru.java2.wasterestarant.core.database.ingredient.IngredientDatabase;
+
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.SearchIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
@@ -25,7 +25,7 @@ public class SearchIngredientService {
     private boolean pagingEnabled;
 
     @Autowired
-    private IngredientDatabase database;
+    private Database database;
     @Autowired
     private SearchIngredientValidator validator;
 

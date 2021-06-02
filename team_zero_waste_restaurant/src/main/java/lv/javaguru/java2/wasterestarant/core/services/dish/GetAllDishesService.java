@@ -1,7 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.services.dish;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
-import lv.javaguru.java2.wasterestarant.core.database.dish.DishDatabase;
+
 import lv.javaguru.java2.wasterestarant.core.requests.dish.GetAllDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.GetAllDishesResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
@@ -14,7 +14,7 @@ import java.util.List;
 public class GetAllDishesService {
 
     @Autowired
-    private DishDatabase database;
+    private Database database;
 
     public GetAllDishesResponse execute(GetAllDishesRequest request) {
         List<Dish> dishes = database.getAllDishes();

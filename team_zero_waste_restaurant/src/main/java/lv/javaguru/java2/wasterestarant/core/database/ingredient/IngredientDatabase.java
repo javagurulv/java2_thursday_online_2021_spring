@@ -1,12 +1,12 @@
-package lv.javaguru.java2.wasterestarant.core.database.ingredient;
-
-import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
-
-import java.util.List;
-//AndrejsB
-public interface IngredientDatabase {
-
-    void save(Ingredient ingredient);
-
-    List<Ingredient> findIngredientByName(String name);
-}
+//package lv.javaguru.java2.wasterestarant.core.database.ingredient;
+//
+//import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
+//
+//import java.util.List;
+////AndrejsB
+//public interface IngredientDatabase {
+//
+//    void save(Ingredient ingredient);
+//
+//    List<Ingredient> findIngredientByName(String name);
+//}

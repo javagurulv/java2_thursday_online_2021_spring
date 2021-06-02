@@ -1,7 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.dish;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
-import lv.javaguru.java2.wasterestarant.core.database.dish.DishDatabase;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.SearchDishesRequest;
@@ -27,7 +26,7 @@ public class SearchDishesService {
     private boolean pagingEnabled;
 
     @Autowired
-    private DishDatabase database;
+    private Database database;
     @Autowired
     private SearchDishesRequestValidator validator;
 
