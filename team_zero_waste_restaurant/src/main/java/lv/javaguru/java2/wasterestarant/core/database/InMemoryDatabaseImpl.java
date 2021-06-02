@@ -36,7 +36,7 @@ public class InMemoryDatabaseImpl implements Database {
 
     @Override
     public void save(User user) {
-        user.setClientID(nextClientId);
+        user.setUserId(nextClientId);
         nextClientId++;
         users.add(user);
     }
@@ -145,7 +145,7 @@ public class InMemoryDatabaseImpl implements Database {
     @Override
     public Optional<User> clientByID(Long clientID) {
         for (User user : users) {
-            if (user.getClientID() == clientID) {
+            if (user.getUserId() == clientID) {
                 return Optional.of(user);
             }
         }
