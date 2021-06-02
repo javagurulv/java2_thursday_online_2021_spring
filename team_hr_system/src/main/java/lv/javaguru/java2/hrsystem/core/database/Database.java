@@ -14,7 +14,7 @@ public interface Database {
 
    // boolean deleteEmployee(Long id);
 
-    List<User> getAllUsers();
+  //  List<User> getAllUsers();
 
   //  List<Employee> getAllEmployees();
 

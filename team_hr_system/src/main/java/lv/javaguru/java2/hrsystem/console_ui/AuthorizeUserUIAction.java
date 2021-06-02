@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class AuthorizeUserUIAction implements UIAction {
 
     @Autowired
-    private AuthorizeUserService loginAdminService;
+    private AuthorizeUserService authorizeUserService;
     @Autowired
     private MainMenu mainMenu;
 
@@ -28,7 +28,7 @@ public class AuthorizeUserUIAction implements UIAction {
         System.out.println("Password: ");
         String password = scanner.nextLine();
         AuthorizeUserRequest request = new AuthorizeUserRequest(email, password);
-        AuthorizeUserResponse response = loginAdminService.execute(request);
+        AuthorizeUserResponse response = authorizeUserService.execute(request);
 
         if (response.hasErrors()) {
             response.getErrors().forEach(coreError ->
