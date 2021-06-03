@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.order;
 
-import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.database.order.OrderDatabase;
 import lv.javaguru.java2.wasterestarant.core.requests.order.GetAllOrdersRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.order.GetAllOrdersResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Order;
@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
 public class GetAllOrdersServiceTest {
 
     @Mock
-    private Database database;
+    private OrderDatabase database;
     @InjectMocks
     GetAllOrdersService service;
 
@@ -31,18 +31,16 @@ public class GetAllOrdersServiceTest {
     public void shouldReturnAllOrders() throws ParseException {
         GetAllOrdersRequest request = new GetAllOrdersRequest();
 
-        List<OrderItem> wishlist1 = new ArrayList<>();
-        wishlist1.add(0, new OrderItem("Brownie", 1));
-        wishlist1.add(0, new OrderItem("Tea", 1));
+//        List<OrderItem> wishlist1 = new ArrayList<>();
+//        wishlist1.add(0, new OrderItem("Brownie", 1));
+//        wishlist1.add(0, new OrderItem("Tea", 1));
+//
+//        List<OrderItem> wishlist2 = new ArrayList<>();
+//        wishlist2.add(0, new OrderItem("Cheese cake", 1));
+//        wishlist2.add(0, new OrderItem("Latte", 1));
 
-        List<OrderItem> wishlist2 = new ArrayList<>();
-        wishlist2.add(0, new OrderItem("Cheese cake", 1));
-        wishlist2.add(0, new OrderItem("Latte", 1));
-
-        Order order1 = new Order(1L, new SimpleDateFormat("dd/MM/yyyy").parse("10/05/2021"),
-                wishlist1);
-        Order order2 = new Order(2L, new SimpleDateFormat("dd/MM/yyyy").parse("10/05/2021"),
-                wishlist2);
+        Order order1 = new Order(1L, new SimpleDateFormat("dd/MM/yyyy").parse("10/05/2021"));
+        Order order2 = new Order(2L, new SimpleDateFormat("dd/MM/yyyy").parse("10/05/2021"));
         Mockito.when(database.getAllOrders())
                 .thenReturn(List.of(order1, order2));
         GetAllOrdersResponse response = service.execute(request);

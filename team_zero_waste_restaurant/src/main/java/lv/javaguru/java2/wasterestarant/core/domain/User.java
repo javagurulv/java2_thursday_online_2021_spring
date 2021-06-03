@@ -3,7 +3,7 @@ package lv.javaguru.java2.wasterestarant.core.domain;
 import java.util.Objects;
 
 public class User {
-    private Long clientID;
+    private Long userId;
     private UserRole role;
     private String name;
     private String surname;
@@ -13,8 +13,16 @@ public class User {
     public User() {
     }
 
+    public User(Long userId, String name, String surname, String email, String password) {
+        this.userId = userId;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+    }
+
     public User(Long clientID, UserRole role, String name, String surname, String email, String password) {
-        this.clientID = clientID;
+        this.userId = clientID;
         this.role = role;
         this.name = name;
         this.surname = surname;
@@ -22,12 +30,12 @@ public class User {
         this.password = password;
     }
 
-    public Long getClientID() {
-        return clientID;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setClientID(Long clientID) {
-        this.clientID = clientID;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public UserRole getRole() {

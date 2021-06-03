@@ -54,10 +54,10 @@ class JdbcDatabaseImpl implements Database {
 //        );
 //    }
 
-    @Override
-    public void save(Order order) {
-
-    }
+//    @Override
+//    public void save(Order order) {
+//
+//    }
 
 //    @Override
 //    public boolean deleteDishByName(String name) {
@@ -151,24 +151,24 @@ class JdbcDatabaseImpl implements Database {
     public Optional<User> clientByID(Long clientID) {
         return Optional.empty();
     }
-
-    @Override
-    public List<Order> getAllOrders() {
-        return null;
-    }
-
-    @Override
-    public List<Order> searchOrdersByClientID(Long clientID) {
-        return null;
-    }
-
-    @Override
-    public List<Order> searchOrderByDate(Date orderDate) {
-        return null;
-    }
-
-    @Override
-    public List<Order> searchOrderByClientIDAndDate(Long clientID, Date orderDate) {
-        return null;
-    }
+//
+//    @Override
+//    public List<Order> getAllOrders() {
+//        return null;
+//    }
+//
+//    @Override
+//    public List<Order> searchOrdersByClientID(Long clientID) {
+//        return null;
+//    }
+//
+//    @Override
+//    public List<Order> searchOrderByDate(Date orderDate) {
+//        return null;
+//    }
+//
+//    @Override
+//    public List<Order> searchOrderByClientIDAndDate(Long clientID, Date orderDate) {
+//        return null;
+//    }
 }
