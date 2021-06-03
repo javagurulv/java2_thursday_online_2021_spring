@@ -1,5 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.acceptancetests;
 
+import lv.javaguru.java2.wasterestarant.DatabaseCleaner;
 import lv.javaguru.java2.wasterestarant.config.RestaurantApplicationConfiguration;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
@@ -16,6 +17,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import static org.junit.Assert.assertEquals;
 
+
+//Test is deprecated - can be deleted
+
+/*
 public class AcceptanceTest3 {
 
     private ApplicationContext applicationContext;
@@ -23,6 +28,11 @@ public class AcceptanceTest3 {
     @Before
     public void setup() {
         applicationContext = new AnnotationConfigApplicationContext(RestaurantApplicationConfiguration.class);
+        getDatabaseCleaner().clean();
+    }
+
+    private DatabaseCleaner getDatabaseCleaner() {
+        return applicationContext.getBean(DatabaseCleaner.class);
     }
 
     private AddDishIngredientService getDishIngredientService() {
@@ -95,3 +105,4 @@ public class AcceptanceTest3 {
 
 
 }
+*/

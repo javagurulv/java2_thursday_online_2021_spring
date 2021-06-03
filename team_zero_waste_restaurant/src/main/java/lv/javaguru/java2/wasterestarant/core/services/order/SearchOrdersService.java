@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.order;
 
-import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.database.order.OrderDatabase;
 import lv.javaguru.java2.wasterestarant.core.domain.Order;
 import lv.javaguru.java2.wasterestarant.core.requests.order.SearchOrdersRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
@@ -15,7 +15,7 @@ import java.util.List;
 public class SearchOrdersService {
 
     @Autowired
-    private Database database;
+    private OrderDatabase database;
     @Autowired
     private SearchOrdersRequestValidator validator;
 

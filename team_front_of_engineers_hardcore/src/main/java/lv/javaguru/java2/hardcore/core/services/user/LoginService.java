@@ -29,7 +29,7 @@ public class LoginService {
         }
         User user = new User(request.getName(), request.getPassword());
         userDatabase.logIn(user);
-        userSession.setUsername(user.getName());
+        userSession.setUserID(user.getUserId());
         userSession.setAuthorized(true);
         return new LoginResponse(user);
 

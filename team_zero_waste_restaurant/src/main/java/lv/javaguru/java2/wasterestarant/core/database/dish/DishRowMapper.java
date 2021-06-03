@@ -1,11 +1,11 @@
-package lv.javaguru.java2.wasterestarant.core.database;
+package lv.javaguru.java2.wasterestarant.core.database.dish;
 
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+//AndrejsB
 public class DishRowMapper implements RowMapper<Dish> {
     @Override
     public Dish mapRow(ResultSet rs, int rowNum) throws SQLException {

@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.services.products;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.database.Product.ProductDatabase;
 import lv.javaguru.java2.wasterestarant.core.requests.product.GetAllProductsRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.product.GetAllProductsResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Product;
@@ -21,7 +22,7 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class GetAllProductsServiceTest {
     @Mock
-    private Database database;
+    private ProductDatabase database;
     @InjectMocks
     GetAllProductsService service;
 

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Scanner;
 
 @Component
@@ -35,7 +34,6 @@ public class CreateNewOrderUIAction implements UIAction {
             response.getErrors().forEach(coreError ->
                     System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
         } else {
-            System.out.println("New order id : " + response.getNewOrder().getOrderID());
             System.out.println("Your order has been added to the list");
         }
 

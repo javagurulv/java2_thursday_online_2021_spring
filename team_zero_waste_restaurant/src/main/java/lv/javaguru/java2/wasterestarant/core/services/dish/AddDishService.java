@@ -1,19 +1,19 @@
 package lv.javaguru.java2.wasterestarant.core.services.dish;
 
-import lv.javaguru.java2.wasterestarant.core.database.Database;
-import lv.javaguru.java2.wasterestarant.core.requests.dish.AddDishRequest;
-import lv.javaguru.java2.wasterestarant.core.responses.dish.AddDishResponse;
-import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.core.database.dish.DishDatabase;
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
+import lv.javaguru.java2.wasterestarant.core.requests.dish.AddDishRequest;
+import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.core.responses.dish.AddDishResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.List;
 @Component
 public class AddDishService {
 
     @Autowired
-    private Database database;
+    private DishDatabase database;
     @Autowired
     private AddDishValidator validator;
 

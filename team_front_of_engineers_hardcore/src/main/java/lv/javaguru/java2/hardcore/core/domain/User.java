@@ -7,6 +7,9 @@ public class User {
     private String password;
     private Long userId;
 
+    public User() {
+    }
+
     public User(String name, String password) {
         this.name = name;
         this.password = password;

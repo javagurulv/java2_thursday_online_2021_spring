@@ -1,6 +1,8 @@
 package lv.javaguru.java2.wasterestarant.core.services.ingredient;
 
 import lv.javaguru.java2.wasterestarant.core.database.Database;
+
+import lv.javaguru.java2.wasterestarant.core.database.ingredient.IngredientDatabase;
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.AddDishIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.AddDishIngredientResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
@@ -13,7 +15,7 @@ import java.util.List;
 @Component
 public class AddDishIngredientService {
     @Autowired
-    private Database database;
+    private IngredientDatabase database;
     @Autowired
     private AddDishIngredientValidator validator;
 

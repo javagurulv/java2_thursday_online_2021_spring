@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.core.database;
+package lv.javaguru.java2.wasterestarant.core.database.Product;
 
 import lv.javaguru.java2.wasterestarant.core.domain.Product;
 import org.springframework.jdbc.core.RowMapper;
