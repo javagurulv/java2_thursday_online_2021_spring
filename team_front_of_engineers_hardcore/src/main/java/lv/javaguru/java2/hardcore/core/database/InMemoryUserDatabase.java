@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+//@Component
 public class InMemoryUserDatabase implements UserDatabase {
 
     private Long nextId = 1L;

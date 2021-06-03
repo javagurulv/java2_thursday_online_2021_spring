@@ -27,7 +27,7 @@ public class AddBetService {
         if (!errors.isEmpty()) {
             return new AddBetResponse(errors);
         }
-        Bet bet = new Bet(request.getBet(), request.getId(), userSession.getUsername());
+        Bet bet = new Bet(request.getBet(), request.getId(), userSession.getUserID());
         betDatabase.addBet(bet);
         return new AddBetResponse(bet);
     }

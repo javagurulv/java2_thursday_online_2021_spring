@@ -6,15 +6,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserSession {
 
-    private String username;
+    private Long userID;
     private boolean authorized = false;
 
-    public String getUsername() {
-        return username;
+    public Long getUserID() {
+        return userID;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserID(Long userID) {
+        this.userID = userID;
     }
 
     public boolean isAuthorized() {

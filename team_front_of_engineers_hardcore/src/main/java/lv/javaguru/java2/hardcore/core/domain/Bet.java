@@ -7,12 +7,15 @@ public class Bet {
 
     private BigDecimal bet;
     private Long betId;
-    private String username;
+    private Long userID;
 
-    public Bet(BigDecimal bet, Long betId, String username) {
+    public Bet() {
+    }
+
+    public Bet(BigDecimal bet, Long betId, Long userID) {
         this.bet = bet;
         this.betId = betId;
-        this.username = username;
+        this.userID = userID;
     }
 
     public BigDecimal getBet() {
@@ -31,12 +34,12 @@ public class Bet {
         this.betId = betId;
     }
 
-    public String getUsername() {
-        return username;
+    public Long getUserID() {
+        return userID;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserID(Long userID) {
+        this.userID = userID;
     }
 
     @Override
@@ -56,7 +59,7 @@ public class Bet {
     public String toString() {
         return "Bet " + bet + " eur" +
                 ", LotID=" + betId +
-                ", UserWhoMadeBet=" + username+
+                ", IdOfUserWhoMadeBet=" + userID+
                 '}';
     }
 }

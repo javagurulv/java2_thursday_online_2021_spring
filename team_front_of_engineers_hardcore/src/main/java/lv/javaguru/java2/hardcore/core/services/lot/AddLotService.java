@@ -29,7 +29,7 @@ public class AddLotService {
             return new AddLotResponse(errors);
         }
 
-        Lot lot = new Lot(request.getName(), request.getPrice(), userSession.getUsername());
+        Lot lot = new Lot(request.getName(), request.getPrice(), userSession.getUserID());
         lotDatabase.saveLot(lot);
         return new AddLotResponse(lot);
 
