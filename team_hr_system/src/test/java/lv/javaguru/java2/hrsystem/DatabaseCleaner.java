@@ -27,6 +27,7 @@ public class DatabaseCleaner {
         tableNames.add("employees");
         tableNames.add("skills");
         tableNames.add("employee_titles");
+        tableNames.add("users");
         return tableNames;
     }
 

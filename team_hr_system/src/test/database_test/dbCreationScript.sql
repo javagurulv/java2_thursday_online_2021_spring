@@ -2,8 +2,8 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=1;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=1;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `humanresources` DEFAULT CHARACTER SET utf8 ;
-USE `humanresources` ;
+CREATE SCHEMA IF NOT EXISTS `humanresources_TEST` DEFAULT CHARACTER SET utf8 ;
+USE `humanresources_TEST` ;
 
 CREATE TABLE IF NOT EXISTS `employees` (
 `id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -57,10 +57,10 @@ ADD FOREIGN KEY (`skill_id`) REFERENCES `skills`(`id`);
 CREATE TABLE IF NOT EXISTS users (
 id BIGINT NOT NULL AUTO_INCREMENT,
 user_role VARCHAR (20) NOT NULL,
-first_name VARCHAR (30) NOT NULL,
-last_name VARCHAR (30) NOT NULL,
-email VARCHAR (50) NOT NULL,
-password VARCHAR (40) NOT NULL,
+first_name VARCHAR (20) NOT NULL,
+last_name VARCHAR (20) NOT NULL,
+email VARCHAR (30) NOT NULL,
+password VARCHAR (20) NOT NULL,
 PRIMARY KEY (id)
 )
 ENGINE = InnoDB
@@ -83,19 +83,6 @@ ADD FOREIGN KEY (user_id) REFERENCES users (id);
 
 ALTER TABLE user_employees
 ADD FOREIGN KEY (employee_id) REFERENCES employees (id);
-
-
-alter table employee_skills
-drop foreign key employee_skills_ibfk_1;
-
-alter table employee_skills
-drop foreign key employee_skills_ibfk_2;
-
-ALTER TABLE `employee_skills`
-ADD FOREIGN KEY (`empl_id`) REFERENCES `employees`(`id`) on delete cascade;
-
-ALTER TABLE `employee_skills`
-ADD FOREIGN KEY (`skill_id`) REFERENCES `skills`(`id`) on delete cascade;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

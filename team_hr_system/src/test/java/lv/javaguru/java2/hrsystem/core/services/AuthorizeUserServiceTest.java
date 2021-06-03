@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.database.UserRepository;
 import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AuthorizeUserResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AuthorizeUserServiceTest {
 
     @Mock
-    private Database database;
+    private UserRepository userRepository;
 
     @Mock
     private AuthorizeUserValidator validator;
@@ -34,7 +34,7 @@ public class AuthorizeUserServiceTest {
         AuthorizeUserRequest request = new AuthorizeUserRequest("null@null.null", "null213null");
         AuthorizeUserResponse response = service.execute(request);
 
-        Mockito.verify(database).authorizeUser(request.getEmail(), request.getPassword());
+        Mockito.verify(userRepository).authorizeUser(request.getEmail(), request.getPassword());
 
         assertThat(response.hasErrors()).isFalse();
     }
@@ -58,7 +58,7 @@ public class AuthorizeUserServiceTest {
         assertThat(response.getErrors().contains(new CoreError("password",
                 "Must not be empty!"))).isTrue();
 
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(userRepository);
     }
 
     @Test
@@ -77,7 +77,7 @@ public class AuthorizeUserServiceTest {
         assertThat(response.getErrors().contains(new CoreError("email",
                 "Must not be empty!"))).isTrue();
 
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(userRepository);
     }
 
     @Test
@@ -96,6 +96,6 @@ public class AuthorizeUserServiceTest {
         assertThat(response.getErrors().contains(new CoreError("password",
                 "Must not be empty!"))).isTrue();
 
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(userRepository);
     }
 }

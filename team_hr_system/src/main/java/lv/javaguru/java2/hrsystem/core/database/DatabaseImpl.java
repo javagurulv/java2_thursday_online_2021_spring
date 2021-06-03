@@ -1,7 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.database;
 
 import lv.javaguru.java2.hrsystem.core.domain.*;
-import org.springframework.stereotype.Component;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -9,7 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.*;
 
-@Component
+//@Component
 public class DatabaseImpl implements Database {
 
     private Long nextIdEmployee = 1L;
@@ -62,10 +61,10 @@ public class DatabaseImpl implements Database {
         return employeeList.removeIf(e -> e.getId().equals(id));
     }*/
 
-    @Override
-    public List<User> getAllUsers() {
-        return userList;
-    }
+//    @Override
+//    public List<User> getAllUsers() {
+//        return userList;
+//    }
 
    /* @Override
     public List<Employee> getAllEmployees() {

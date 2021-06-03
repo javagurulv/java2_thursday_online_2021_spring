@@ -57,7 +57,7 @@ public class RegisterUserUIAction implements UIAction {
         } else {
 
             System.out.println("Registration completed!" + "\n" + "Hello " + response.getUser().getFirstName()
-                    + " " + response.getUser().getSecondName() + "!");
+                    + " " + response.getUser().getLastName() + "!");
 
         }
     }

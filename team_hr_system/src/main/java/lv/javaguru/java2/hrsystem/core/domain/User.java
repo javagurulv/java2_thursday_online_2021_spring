@@ -8,14 +8,17 @@ public class User implements Serializable {
     private Long id;
     private UserRole userRole;
     private String firstName;
-    private String secondName;
+    private String lastName;
     private String email;
     private String password;
 
-    public User(UserRole userRole, String firstName, String secondName, String email, String password) {
+    public User() {
+    }
+
+    public User(UserRole userRole, String firstName, String lastName, String email, String password) {
         this.userRole = userRole;
         this.firstName = firstName;
-        this.secondName = secondName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
     }
@@ -44,12 +47,12 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -73,12 +76,12 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && userRole == user.userRole && Objects.equals(firstName, user.firstName) && Objects.equals(secondName, user.secondName) && Objects.equals(email, user.email) && Objects.equals(password, user.password);
+        return Objects.equals(id, user.id) && userRole == user.userRole && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userRole, firstName, secondName, email, password);
+        return Objects.hash(id, userRole, firstName, lastName, email, password);
     }
 
     @Override
@@ -87,7 +90,7 @@ public class User implements Serializable {
                 "id=" + id +
                 ", userRole=" + userRole +
                 ", firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
+                ", secondName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
