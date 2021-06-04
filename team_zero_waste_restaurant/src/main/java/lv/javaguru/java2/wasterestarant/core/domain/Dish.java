@@ -1,8 +1,11 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "dish")
 public class Dish {
     private long dishID;
     private String name;

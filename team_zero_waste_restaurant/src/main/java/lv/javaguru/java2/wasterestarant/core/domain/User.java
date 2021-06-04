@@ -1,7 +1,11 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Objects;
 
+@Entity
+@Table(name = "user_list")
 public class User {
     private Long userId;
     private UserRole role;

@@ -1,9 +1,13 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "order_list")
 public class Order {
 
     private Long orderID;
