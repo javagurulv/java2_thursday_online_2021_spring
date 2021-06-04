@@ -1,9 +1,12 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.Objects;
 
-
+@Entity
+@Table(name = "product")
 public class Product {
     private long productID;
     private String name;

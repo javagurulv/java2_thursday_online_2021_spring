@@ -1,5 +1,10 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ingredient")
 public class Ingredient {
     private Product product;
     private String ingredient;
