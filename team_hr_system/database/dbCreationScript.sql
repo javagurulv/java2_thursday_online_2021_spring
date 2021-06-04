@@ -97,6 +97,9 @@ ADD FOREIGN KEY (`empl_id`) REFERENCES `employees`(`id`) on delete cascade;
 ALTER TABLE `employee_skills`
 ADD FOREIGN KEY (`skill_id`) REFERENCES `skills`(`id`) on delete cascade;
 
+ALTER TABLE employee_titles
+ADD COLUMN title_description VARCHAR(200);
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

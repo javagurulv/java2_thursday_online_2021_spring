@@ -4,11 +4,9 @@ import lv.javaguru.java2.hrsystem.core.requests.Ordering;
 import lv.javaguru.java2.hrsystem.core.requests.Paging;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,25 +42,25 @@ public class SearchEmployeesRequestValidator {
             errors.add(new CoreError("title", "Must not be empty!"));
         }
 
-        if (!isEmpty(request.getEmployeeTitle())) {
+      /*  if (!isEmpty(request.getEmployeeTitle())) {
             validateTitle(request).ifPresent(errors::add);
-        }
+        }*/
 
         return errors;
     }
 
-    private Optional<CoreError> validateTitle(SearchEmployeesRequest request) {
+  /*  private Optional<CoreError> validateTitle(SearchEmployeesRequest request) {
         if (!isValidTitle(request.getEmployeeTitle())) {
             return Optional.of(new CoreError("invalid title - " + request.getEmployeeTitle(), " Must be selected from the pre-defined set!"));
         }
         return Optional.empty();
-    }
+    }*/
 
     private boolean isEmpty(String field) {
         return field == null || field.isEmpty();
     }
 
-    private boolean isValidTitle(String title) {
+    /*private boolean isValidTitle(String title) {
         EnumSet<EmployeeTitle> titles = EnumSet.allOf(EmployeeTitle.class);
         boolean valid;
         try {
@@ -71,7 +69,7 @@ public class SearchEmployeesRequestValidator {
             valid = false;
         }
         return valid;
-    }
+    }*/
 
     private Optional<CoreError> validateOrderBy(Ordering ordering) {
         return (ordering.getOrderBy() != null

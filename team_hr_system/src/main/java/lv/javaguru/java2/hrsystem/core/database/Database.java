@@ -10,28 +10,28 @@ public interface Database {
 
     Optional<User> authorizeUser(String email, String password);
 
-  //  void saveEmployee(Employee employee);
+    void saveEmployee(Employee employee);
 
-   // boolean deleteEmployee(Long id);
+    boolean deleteEmployee(Long id);
 
-  //  List<User> getAllUsers();
+    List<User> getAllUsers();
 
-  //  List<Employee> getAllEmployees();
+    List<Employee> getAllEmployees();
 
-  //  List<Employee> getEmployeesByTitle(EmployeeTitle title);
+    List<Employee> getEmployeesByTitle(EmployeeTitle title);
 
-  //  List<Employee> getEmployeesByName(String name);
+    List<Employee> getEmployeesByName(String name);
 
-  //  List<Employee> getEmployeesByTitleAndName(EmployeeTitle title, String name);
+    List<Employee> getEmployeesByTitleAndName(EmployeeTitle title, String name);
 
-    Set<EmployeeTitle> getAllTitles();
+    //Set<EmployeeTitle> getAllTitles();
 
- //   List<Employee> getEmployeesBySkill(Skill skill);
+    List<Employee> getEmployeesBySkill(Skill skill);
 
-   // boolean addSkill(Employee employee, Skill skill);
+    boolean addSkill(Employee employee, Skill skill);
 
-  //  List<EmployeeSkill> getAllSkills();
+    List<EmployeeSkill> getAllSkills();
 
-  //  List<Skill> getAllExistingSkills();
+    List<Skill> getAllExistingSkills();
 
 }
