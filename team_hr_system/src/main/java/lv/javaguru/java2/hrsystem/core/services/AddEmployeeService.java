@@ -27,7 +27,6 @@ public class AddEmployeeService {
         }
 
         Employee employee = new Employee(request.getName(), request.getLastName(), request.getAge());
-       // employeeRepository.saveEmployee(employee);
         BigInteger id = employeeRepository.saveEmployeeAndReturnID(employee);
         employee.setId(id.longValue());
         return new AddEmployeeResponse(employee);

@@ -17,13 +17,6 @@ public class AddEmployeeWithTitleValidatorTest {
     }
 
     @Test
-    public void testInValidTitle() {
-        AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest("Aaa", "Bbb", 22, "QA");
-        assertThat(validator.validate(request))
-                .contains(new CoreError("invalid title - QA", " Must be selected from the pre-defined set!"));
-    }
-
-    @Test
     public void testEmptyTitle() {
         AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest("Aaa", "Bbb", 22, "");
         assertThat(validator.validate(request))

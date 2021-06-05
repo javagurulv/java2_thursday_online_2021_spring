@@ -18,14 +18,16 @@ public class MainMenu {
         menuNumberToUIActionMap = new HashMap<>();
         menuNumberToUIActionMap.put(1, findUIAction(uiActions, AddEmployeeUIAction.class));
         menuNumberToUIActionMap.put(2, findUIAction(uiActions, AddEmployeeWithTitleUIAction.class));
-        menuNumberToUIActionMap.put(3, findUIAction(uiActions, DeleteEmployeeUIAction.class));
-        menuNumberToUIActionMap.put(4, findUIAction(uiActions, GetAllEmployeesUIAction.class));
-        menuNumberToUIActionMap.put(5, findUIAction(uiActions, SearchEmployeesUIAction.class));
-        menuNumberToUIActionMap.put(6, findUIAction(uiActions, AddSkillUIAction.class));
-        menuNumberToUIActionMap.put(7, findUIAction(uiActions, GetAllEmployeeSkillUIAction.class));
-        menuNumberToUIActionMap.put(8, findUIAction(uiActions, SearchEmployeesBySkillUIAction.class));
-        menuNumberToUIActionMap.put(9, findUIAction(uiActions, GetAllExistingSkillUIAction.class));
-        menuNumberToUIActionMap.put(10, findUIAction(uiActions, ExitUIAction.class));
+        menuNumberToUIActionMap.put(3, findUIAction(uiActions, AddEmployeeTitleUIAction.class));
+        menuNumberToUIActionMap.put(4, findUIAction(uiActions, GetAllTitlesUIAction.class));
+        menuNumberToUIActionMap.put(5, findUIAction(uiActions, DeleteEmployeeUIAction.class));
+        menuNumberToUIActionMap.put(6, findUIAction(uiActions, GetAllEmployeesUIAction.class));
+        menuNumberToUIActionMap.put(7, findUIAction(uiActions, SearchEmployeesUIAction.class));
+        menuNumberToUIActionMap.put(8, findUIAction(uiActions, AddSkillUIAction.class));
+        menuNumberToUIActionMap.put(9, findUIAction(uiActions, GetAllEmployeeSkillUIAction.class));
+        menuNumberToUIActionMap.put(10, findUIAction(uiActions, SearchEmployeesBySkillUIAction.class));
+        menuNumberToUIActionMap.put(11, findUIAction(uiActions, GetAllExistingSkillUIAction.class));
+        menuNumberToUIActionMap.put(12, findUIAction(uiActions, ExitUIAction.class));
     }
 
     private UIAction findUIAction(List<UIAction> uiActions, Class uiActionClass) {

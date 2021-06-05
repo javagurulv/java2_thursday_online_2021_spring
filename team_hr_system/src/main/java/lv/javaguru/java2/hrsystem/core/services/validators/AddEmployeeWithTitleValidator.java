@@ -2,11 +2,9 @@ package lv.javaguru.java2.hrsystem.core.services.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeWithTitleRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,9 +38,9 @@ public class AddEmployeeWithTitleValidator {
         if (isEmpty(request.getTitle())) {
             return Optional.of(new CoreError("employee title", "Must not be empty!"));
         }
-        else if (!isValidTitle(request.getTitle())) {
+       /* else if (!isValidTitle(request.getTitle())) {
             return Optional.of(new CoreError("invalid title - " + request.getTitle(), " Must be selected from the pre-defined set!"));
-        }
+        }*/
         return Optional.empty();
     }
 
@@ -50,7 +48,7 @@ public class AddEmployeeWithTitleValidator {
         return field == null || field.isEmpty();
     }
 
-    private boolean isValidTitle(String title) {
+  /*  private boolean isValidTitle(String title) {
         EnumSet<EmployeeTitle> titles = EnumSet.allOf(EmployeeTitle.class);
         boolean valid;
         try {
@@ -60,7 +58,7 @@ public class AddEmployeeWithTitleValidator {
             valid = false;
         }
         return valid;
-    }
+    }*/
 
     private Optional<CoreError> validateAge(AddEmployeeWithTitleRequest request) {
         if (request.getAge() < 18) {
