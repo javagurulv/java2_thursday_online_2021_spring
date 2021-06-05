@@ -28,7 +28,7 @@ public class EmployeeRepository {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection
-                    .prepareStatement("INSERT INTO employees (first_name, last_name, age, employee_title) VALUES (?, ?, ?, ?)",
+                    .prepareStatement("INSERT INTO employees (first_name, last_name, age) VALUES (?, ?, ?)",
                             Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, employee.getName());
             ps.setString(2, employee.getLastName());
