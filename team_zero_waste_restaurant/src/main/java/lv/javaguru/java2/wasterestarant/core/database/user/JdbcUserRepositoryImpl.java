@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
-public class JdbcUserDatabase implements UserDatabase {
+//@Component
+public class JdbcUserRepositoryImpl implements UserRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -22,9 +22,9 @@ public class JdbcUserDatabase implements UserDatabase {
     }
 
     @Override
-    public boolean deleteUserById(Long userId) {
+    public boolean deleteUserById(Long id) {
         String sql = "DELETE FROM user_list WHERE userId = ?";
-        Object[] args = new Object[]{userId};
+        Object[] args = new Object[]{id};
         return jdbcTemplate.update(sql, args) == 1;
     }
 
@@ -35,35 +35,35 @@ public class JdbcUserDatabase implements UserDatabase {
     }
 
     @Override
-    public List<User> searchUserById(Long userId) {
+    public List<User> findUserById(Long userId) {
         String sql = "SELECT * FROM user_list WHERE userId = ?";
         Object[] args = new Object[]{userId};
         return jdbcTemplate.query(sql, args, new UserRowMapper());
     }
 
     @Override
-    public List<User> searchUserByName(String name) {
+    public List<User> findUserByName(String name) {
         String sql = "SELECT * FROM user_list WHERE name = ?";
         Object[] args = new Object[]{name};
         return jdbcTemplate.query(sql, args, new UserRowMapper());
     }
 
     @Override
-    public List<User> searchUserBySurname(String surname) {
+    public List<User> findUserBySurname(String surname) {
         String sql = "SELECT * FROM user_list WHERE surname = ?";
         Object[] args = new Object[]{surname};
         return jdbcTemplate.query(sql, args, new UserRowMapper());
     }
 
     @Override
-    public List<User> searchUserByEmail(String email) {
+    public List<User> findUserByEmail(String email) {
         String sql = "SELECT * FROM user_list WHERE email = ?";
         Object[] args = new Object[]{email};
         return jdbcTemplate.query(sql, args, new UserRowMapper());
     }
 
     @Override
-    public List<UserRole> searchUserByRole(String role) {
+    public List<UserRole> findUserByRole(String role) {
         return null;
 //        String sql = "SELECT * FROM user_list WHERE role = ?";
 //        Object[] args = new Object[] {role};

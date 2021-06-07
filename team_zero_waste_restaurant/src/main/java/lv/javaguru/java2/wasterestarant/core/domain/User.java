@@ -1,17 +1,29 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "user_list")
 public class User {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+
+    @Column(name="user_role", nullable = false)
     private UserRole role;
+
+    @Column(name="name", nullable = false)
     private String name;
+
+    @Column(name="surname", nullable = false)
     private String surname;
+
+    @Column(name="email", nullable = false)
     private String email;
+
+    @Column(name="password", nullable = false)
     private String password;
 
     public User() {
