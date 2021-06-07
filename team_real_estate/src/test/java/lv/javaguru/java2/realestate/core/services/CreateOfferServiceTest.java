@@ -1,6 +1,6 @@
 package lv.javaguru.java2.realestate.core.services;
 
-import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.database.user.OfferRepository;
 import lv.javaguru.java2.realestate.core.requests.CreateOfferRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.CreateOfferResponse;
@@ -24,7 +24,7 @@ import static org.mockito.ArgumentMatchers.argThat;
 public class CreateOfferServiceTest {
 
     @Mock
-    private Database database;
+    private OfferRepository database;
     @Mock
     private CreateOfferValidator validator;
     @InjectMocks

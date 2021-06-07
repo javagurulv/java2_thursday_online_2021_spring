@@ -1,6 +1,6 @@
 package lv.javaguru.java2.realestate.core.services;
 
-import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.database.offer.UserRepository;
 import lv.javaguru.java2.realestate.core.requests.DeleteUserRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.DeleteUserResponse;
@@ -24,7 +24,7 @@ import static org.mockito.ArgumentMatchers.argThat;
 public class DeleteUserServiceTest {
 
     @Mock
-    private Database database;
+    private UserRepository database;
     @Mock
     private DeleteUserValidator validator;
     @InjectMocks

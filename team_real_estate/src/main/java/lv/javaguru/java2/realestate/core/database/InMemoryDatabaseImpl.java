@@ -1,5 +1,7 @@
 package lv.javaguru.java2.realestate.core.database;
 
+import lv.javaguru.java2.realestate.core.database.offer.UserRepository;
+import lv.javaguru.java2.realestate.core.database.user.OfferRepository;
 import lv.javaguru.java2.realestate.core.domain.Offer;
 import lv.javaguru.java2.realestate.core.domain.User;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
@@ -12,7 +14,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 //@Component
-public class InMemoryDatabaseImpl implements Database {
+public class InMemoryDatabaseImpl implements UserRepository, OfferRepository {
 
     private final List<User> users = new ArrayList<>();
     private final List<Offer> offers = new ArrayList<>();

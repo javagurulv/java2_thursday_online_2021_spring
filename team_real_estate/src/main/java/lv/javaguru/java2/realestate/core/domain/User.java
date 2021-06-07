@@ -1,12 +1,27 @@
 package lv.javaguru.java2.realestate.core.domain;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "registered_user")
 public class User {
-    private String username;
-    private String password;
-    private String email;
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "username", nullable = false)
+    private String username;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = "email")
+    private String email;
+
+    public User(){
+    }
 
     public User(String username, String password) {
         this.username = username;

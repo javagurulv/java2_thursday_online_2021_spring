@@ -1,5 +1,7 @@
 package lv.javaguru.java2.realestate.core.database;
 
+import lv.javaguru.java2.realestate.core.database.offer.UserRepository;
+import lv.javaguru.java2.realestate.core.database.user.OfferRepository;
 import lv.javaguru.java2.realestate.core.domain.Offer;
 import lv.javaguru.java2.realestate.core.domain.User;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
@@ -7,14 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Component
-public class JdbcDatabaseImpl implements Database {
+//@Component
+public class JdbcDatabaseImpl implements UserRepository, OfferRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    //TODO User id
     @Override
     public void createAccount(User user) {
         String sql = "INSERT INTO registered_user (username, password, email) "
@@ -63,6 +67,7 @@ public class JdbcDatabaseImpl implements Database {
         return jdbcTemplate.update(sql, args) == 1;
     }
 
+    //TODO sql join table delete
     @Override
     public boolean deleteUser(User user) {
         Integer userID = jdbcTemplate.queryForObject("SELECT id FROM registered_user WHERE " +
@@ -85,13 +90,23 @@ public class JdbcDatabaseImpl implements Database {
         return jdbcTemplate.update(sql, args) == 1;
     }
 
-    //TODO
+    //TODO input to null
+
     @Override
     public List<Offer> searchOffers(SearchOffersRequest request) {
-        String sql = "SELECT * FROM offer WHERE" +
-                "(type = '" + request.getOfferType() + "') AND " +
-                "(category = '" + request.getOfferCategory() + "') AND " +
-                "(price = '" + request.getPrice() + "')";
+        List<String> strings = new ArrayList<>();
+
+        if(!"".equals(request.getOfferType())){
+            strings.add("type = '"+request.getOfferType()+"'");
+        }
+        if(!"".equals(request.getOfferCategory())){
+            strings.add("category = '"+request.getOfferCategory()+"'");
+        }
+        if(0.0 != (request.getPrice())){
+            strings.add("price = '"+request.getPrice()+"'");
+        }
+
+        String sql = "SELECT * FROM offer WHERE "+ String.join(" AND ", strings);
 
         return jdbcTemplate.query(sql, new OfferRowMapper());
     }
