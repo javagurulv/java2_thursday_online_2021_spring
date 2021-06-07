@@ -13,6 +13,8 @@ import lv.javaguru.java2.wasterestarant.console_ui.product.AddProductUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.GetAllProductsUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.RemoveProductUiAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.SearchProductUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.user.LoginUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.user.RegistrationUIAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -30,8 +32,8 @@ public class ProgramMenu {
     @Autowired
     public ProgramMenu(List<UIAction> uiActions) {
         menuNumberToUIActionMap = new HashMap<>();
-        menuNumberToUIActionMap.put(1, findUIActions(uiActions,RegistrationUIAction.class));
-        menuNumberToUIActionMap.put(2, findUIActions(uiActions,LoginUIAction.class));
+        menuNumberToUIActionMap.put(1, findUIActions(uiActions, RegistrationUIAction.class));
+        menuNumberToUIActionMap.put(2, findUIActions(uiActions, LoginUIAction.class));
         menuNumberToUIActionMap.put(3, findUIActions(uiActions, AddDishUIAction.class));
         //menuNumberToUIActionMap.put(3, findUIActions(uiActions, AddDishIngredientUiAction.class)); //todo implement this correctly
         menuNumberToUIActionMap.put(4, findUIActions(uiActions, AddProductUIAction.class));

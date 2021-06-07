@@ -1,6 +1,7 @@
-package lv.javaguru.java2.wasterestarant.console_ui;
+package lv.javaguru.java2.wasterestarant.console_ui.user;
 
-import lv.javaguru.java2.wasterestarant.core.services.RegistrationService;
+import lv.javaguru.java2.wasterestarant.console_ui.UIAction;
+import lv.javaguru.java2.wasterestarant.core.services.user.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
