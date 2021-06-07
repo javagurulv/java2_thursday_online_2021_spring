@@ -1,13 +1,29 @@
 package lv.javaguru.java2.hrsystem.core.domain;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "employees")
 public class Employee {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "first_name", nullable = false)
     private String name;
+
+    @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @Column(name = "age", nullable = false)
     private int age;
+
+   // @Column(name = "employee_title")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "employee_title", referencedColumnName = "title")
     private EmployeeTitle title;
 
     public Employee(String name, String lastName, int age, EmployeeTitle title) {
@@ -35,12 +51,14 @@ public class Employee {
         this.age = age;
         this.title = title;
     }
+
     public Employee(Long id, String name, String lastName, int age) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.age = age;
     }
+
     public Employee(Long employeeId) {
         this.id = employeeId;
     }

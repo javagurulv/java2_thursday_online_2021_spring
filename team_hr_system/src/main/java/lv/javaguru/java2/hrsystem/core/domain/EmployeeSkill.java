@@ -1,8 +1,18 @@
 package lv.javaguru.java2.hrsystem.core.domain;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "employee_skills")
 public class EmployeeSkill {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+
     private Employee employee;
     private Skill skill;
 
@@ -13,6 +23,20 @@ public class EmployeeSkill {
 
     public EmployeeSkill() {
 
+    }
+
+    public EmployeeSkill(Long id, Employee employee, Skill skill) {
+        this.id = id;
+        this.employee = employee;
+        this.skill = skill;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Employee getEmployee() {

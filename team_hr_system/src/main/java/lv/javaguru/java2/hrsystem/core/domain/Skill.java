@@ -1,9 +1,18 @@
 package lv.javaguru.java2.hrsystem.core.domain;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "skills")
 public class Skill {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long skillId;
+
+    @Column(name = "skill_name", nullable = false, unique = true)
     private String skillName;
 
     public Skill(String skillName) {

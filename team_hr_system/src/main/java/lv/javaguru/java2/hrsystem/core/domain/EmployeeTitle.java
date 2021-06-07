@@ -1,10 +1,22 @@
 package lv.javaguru.java2.hrsystem.core.domain;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "employee_titles")
 public class EmployeeTitle {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+   // @Column(name = "title", nullable = false)
+    @OneToOne(mappedBy = "employee_titles")
     private String name;
+
+    @Column(name = "title_description")
     private String description;
 
     public EmployeeTitle() {
