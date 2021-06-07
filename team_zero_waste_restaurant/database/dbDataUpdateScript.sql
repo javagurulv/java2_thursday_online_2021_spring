@@ -49,3 +49,6 @@ DROP client_id;
 ALTER TABLE order_item
 ADD column order_list_id BIGINT       NOT NULL,
 ADD FOREIGN KEY (order_list_id) REFERENCES order_list (id);
+
+ALTER TABLE user_list
+ADD FOREIGN KEY (user_role) REFERENCES user_role (id);
