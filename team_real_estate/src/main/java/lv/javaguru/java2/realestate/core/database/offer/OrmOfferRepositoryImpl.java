@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
+@Transactional
 public class OrmOfferRepositoryImpl implements OfferRepository {
     @Autowired
     private SessionFactory sessionFactory;
@@ -18,14 +20,14 @@ public class OrmOfferRepositoryImpl implements OfferRepository {
     @Override
     public List<Offer> getAllOffers() {
         return sessionFactory.getCurrentSession()
-                .createQuery("SELECT o FROM offer o", Offer.class)
+                .createQuery("SELECT o FROM Offer o ", Offer.class)
                 .getResultList();
     }
 
     @Override
     public boolean deleteOfferByID(int id) {
         Query query = sessionFactory.getCurrentSession()
-                .createQuery("DELETE offer WHERE id = :id");
+                .createQuery("DELETE Offer WHERE id = :id");
         query.setParameter("id",id);
         int result = query.executeUpdate();
         return result == 1;
@@ -36,9 +38,17 @@ public class OrmOfferRepositoryImpl implements OfferRepository {
         sessionFactory.getCurrentSession().save(offer);
     }
 
-    //TODO
     @Override
     public List<Offer> searchOffers(SearchOffersRequest request) {
-        return null;
+        String sql = "FROM Offer WHERE :type is null or type = :type " +
+                "AND :category is null or category = :category " +
+                "AND :price is null or price = :price";
+
+       return sessionFactory.getCurrentSession()
+                .createQuery(sql, Offer.class)
+                .setParameter("type",request.getOfferType())
+                .setParameter("category",request.getOfferCategory())
+                .setParameter("price",request.getPrice()).getResultList();
+
     }
 }
