@@ -30,7 +30,6 @@ public class User {
     }
 
     public User(String name, String surname, String email, String password) {
-        this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -38,7 +37,6 @@ public class User {
     }
 
     public User(UserRole role, String name, String surname, String email, String password) {
-        this.id = id;
         this.role = role;
         this.name = name;
         this.surname = surname;
