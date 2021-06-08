@@ -1,7 +1,9 @@
 package lv.javaguru.java2.hrsystem.core.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "employee_titles")
@@ -9,15 +11,17 @@ public class EmployeeTitle {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "employee_titles")
     private Long id;
 
-   // @Column(name = "title", nullable = false)
-    @OneToOne(mappedBy = "employee_titles")
+    @Column(name = "title", nullable = false)
     private String name;
 
     @Column(name = "title_description")
     private String description;
+
+    @OneToMany(mappedBy = "title")
+    private Set<Employee> employees = new HashSet<>();
 
     public EmployeeTitle() {
     }

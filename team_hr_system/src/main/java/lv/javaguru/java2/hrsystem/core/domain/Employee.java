@@ -1,7 +1,9 @@
 package lv.javaguru.java2.hrsystem.core.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "employees")
@@ -9,7 +11,7 @@ public class Employee {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "employees")
     private Long id;
 
     @Column(name = "first_name", nullable = false)
@@ -21,10 +23,16 @@ public class Employee {
     @Column(name = "age", nullable = false)
     private int age;
 
-   // @Column(name = "employee_title")
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = EmployeeTitle.class)
     @JoinColumn(name = "employee_title", referencedColumnName = "title")
     private EmployeeTitle title;
+
+    @ManyToMany
+    @JoinTable(
+            name = "employee_skills",
+            joinColumns = @JoinColumn(name = "empl_id"),
+            inverseJoinColumns = @JoinColumn(name = "skill_id"))
+    private Set<Skill> skills = new HashSet<>();
 
     public Employee(String name, String lastName, int age, EmployeeTitle title) {
         this.name = name;
