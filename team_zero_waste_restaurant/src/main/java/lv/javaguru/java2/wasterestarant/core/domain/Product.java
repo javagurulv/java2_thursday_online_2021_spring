@@ -1,21 +1,32 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "product")
 public class Product {
-    private long productID;
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "quantity", nullable = false)
     private Double quantity;
+
+    @Column(name = "price", nullable = false)
     private Double price;
+
+    @Column(name = "expiryDate", nullable = false)
     private Date expiryDate;
 
-    public Product(long productID) {
-        this.productID = productID;
+    public Product(Long productID) {
+        this.id = productID;
     }
 
     public Product(String name, Double quantity, Double price, Date expiryDate) {
@@ -60,12 +71,12 @@ public class Product {
         this.expiryDate = expiryDate;
     }
 
-    public long getProductID() {
-        return productID;
+    public Long getProductID() {
+        return id;
     }
 
-    public void setProductID(long productID) {
-        this.productID = productID;
+    public void setProductID(Long id) {
+        this.id = id;
     }
 
     @Override
@@ -85,7 +96,7 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "productID=" + productID +
+                "productID=" + id +
                 ", name='" + name + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +

@@ -4,7 +4,7 @@ import lv.javaguru.java2.wasterestarant.core.domain.Product;
 
 import java.util.List;
 
-public interface ProductDatabase {
+public interface ProductRepository {
 
     void save(Product product);
 
