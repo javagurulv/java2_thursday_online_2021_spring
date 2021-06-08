@@ -1,13 +1,30 @@
 package lv.javaguru.java2.realestate.core.domain;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "offer")
 public class Offer {
-    private String offerType;
-    private String offerCategory;
-    private String description;
-    private Double price;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "type", nullable = false)
+    private String offerType;
+
+    @Column(name = "category", nullable = false)
+    private String offerCategory;
+
+    @Column(name = "description", nullable = false)
+    private String description;
+
+    @Column(name = "price", nullable = false)
+    private Double price;
+
+    public Offer() {
+    }
 
     public Offer(String offerType, String offerCategory, String description, Double price) {
         this.offerType = offerType;
@@ -15,6 +32,7 @@ public class Offer {
         this.description = description;
         this.price = price;
     }
+
 
     public String getOfferType() {
         return offerType;

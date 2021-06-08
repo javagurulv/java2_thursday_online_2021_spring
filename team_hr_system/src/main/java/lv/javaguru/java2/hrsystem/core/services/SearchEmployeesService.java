@@ -53,10 +53,10 @@ public class SearchEmployeesService {
             employees = employeeRepository.getEmployeesByName(request.getName());
         }
         if (request.isTitleProvided() && !request.isNameProvided()) {
-            employees = employeeRepository.getEmployeesByTitle(EmployeeTitle.valueOf(request.getEmployeeTitle()));
+            employees = employeeRepository.getEmployeesByTitle(new EmployeeTitle(request.getEmployeeTitle()));
         }
         if (request.isNameProvided() && request.isTitleProvided()) {
-            employees = employeeRepository.getEmployeesByTitleAndName(EmployeeTitle.valueOf(request.getEmployeeTitle()), request.getName());
+            employees = employeeRepository.getEmployeesByTitleAndName(new EmployeeTitle(request.getEmployeeTitle()), request.getName());
         }
         return employees;
     }
@@ -64,7 +64,7 @@ public class SearchEmployeesService {
     private List<Employee> order(List<Employee> employees, Ordering ordering) {
         if (orderingEnabled && (ordering != null)) {
             Comparator<Employee> comparator = ordering.getOrderBy().equals("title")
-                    ? Comparator.comparing(Employee::getTitle)
+                    ? Comparator.comparing(e -> e.getTitle().getName())
                     : Comparator.comparing(Employee::getName);
             if (ordering.getOrderDirection().equals("DESCENDING")) {
                 comparator = comparator.reversed();

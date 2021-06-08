@@ -1,6 +1,6 @@
 package lv.javaguru.java2.realestate.core.services;
 
-import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.database.offer.UserRepository;
 import lv.javaguru.java2.realestate.core.domain.User;
 import lv.javaguru.java2.realestate.core.requests.DeleteUserRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
@@ -14,7 +14,7 @@ import java.util.List;
 @Component
 public class DeleteUserService {
     @Autowired
-    private Database database;
+    private UserRepository userRepository;
     @Autowired
     private DeleteUserValidator validator;
 
@@ -24,7 +24,7 @@ public class DeleteUserService {
             return new DeleteUserResponse(errors);
         }
         User user = new User(deleteUserRequest.getUsername(), deleteUserRequest.getPassword());
-        boolean isUserDeleted = database.deleteUser(user);
+        boolean isUserDeleted = userRepository.deleteUser(user);
 
         return new DeleteUserResponse(isUserDeleted);
     }

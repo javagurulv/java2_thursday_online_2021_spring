@@ -1,11 +1,11 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.Database;
+import lv.javaguru.java2.hrsystem.core.database.UserRepository;
+import lv.javaguru.java2.hrsystem.core.domain.UserRole;
 import lv.javaguru.java2.hrsystem.core.requests.RegisterUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.responses.RegisterUserResponse;
 import lv.javaguru.java2.hrsystem.core.services.validators.RegisterUserValidator;
-import lv.javaguru.java2.hrsystem.core.domain.UserRole;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RegisterUserServiceTest {
 
     @Mock
-    private Database database;
+    private UserRepository userRepository;
 
     @Mock
     private RegisterUserValidator validator;
@@ -36,7 +36,7 @@ public class RegisterUserServiceTest {
                 "null", "null@null.null", "nu2311ll");
         RegisterUserResponse response = service.execute(request);
 
-        Mockito.verify(database).registerUser(response.getUser());
+        Mockito.verify(userRepository).registerUser(response.getUser());
 
         assertThat(response.hasErrors()).isFalse();
     }
@@ -70,7 +70,7 @@ public class RegisterUserServiceTest {
         assertThat(response.getErrors().contains(new CoreError("password",
                 "Must not be empty!"))).isTrue();
 
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(userRepository);
     }
 
     @Test
@@ -90,7 +90,7 @@ public class RegisterUserServiceTest {
         assertThat(response.getErrors().contains(new CoreError("email",
                 "Wrong format!"))).isTrue();
 
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(userRepository);
     }
 
     @Test
@@ -110,7 +110,7 @@ public class RegisterUserServiceTest {
         assertThat(response.getErrors().contains(new CoreError("password",
                 "Must not be short!"))).isTrue();
 
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(userRepository);
     }
 
     @Test
@@ -130,7 +130,7 @@ public class RegisterUserServiceTest {
         assertThat(response.getErrors().contains(new CoreError("password",
                 "Must not contain only numbers or letters!"))).isTrue();
 
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(userRepository);
     }
 
     @Test
@@ -150,7 +150,7 @@ public class RegisterUserServiceTest {
         assertThat(response.getErrors().contains(new CoreError("password",
                 "Must not contain only numbers or letters!"))).isTrue();
 
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(userRepository);
     }
 
     @Test
@@ -170,6 +170,6 @@ public class RegisterUserServiceTest {
         assertThat(response.getErrors().contains(new CoreError("password",
                 "Must not contain space!"))).isTrue();
 
-        Mockito.verifyNoInteractions(database);
+        Mockito.verifyNoInteractions(userRepository);
     }
 }

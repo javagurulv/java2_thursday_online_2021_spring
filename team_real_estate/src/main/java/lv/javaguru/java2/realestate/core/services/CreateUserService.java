@@ -1,6 +1,6 @@
 package lv.javaguru.java2.realestate.core.services;
 
-import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.database.offer.UserRepository;
 import lv.javaguru.java2.realestate.core.domain.User;
 import lv.javaguru.java2.realestate.core.requests.CreateUserRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
@@ -14,7 +14,7 @@ import java.util.List;
 @Component
 public class CreateUserService {
     @Autowired
-    private Database database;
+    private UserRepository userRepository;
     @Autowired
     private CreateUserValidator validator;
 
@@ -28,7 +28,7 @@ public class CreateUserService {
                 createUserRequest.getUsername(),
                 createUserRequest.getPassword());
 
-        database.createAccount(user);
+        userRepository.createAccount(user);
         return new CreateUserResponse(user);
     }
 }

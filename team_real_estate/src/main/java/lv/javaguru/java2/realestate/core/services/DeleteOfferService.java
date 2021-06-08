@@ -1,6 +1,6 @@
 package lv.javaguru.java2.realestate.core.services;
 
-import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.database.user.OfferRepository;
 import lv.javaguru.java2.realestate.core.requests.DeleteOfferRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.DeleteOfferResponse;
@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 public class DeleteOfferService {
     @Autowired
-    private Database database;
+    private OfferRepository offerRepository;
     @Autowired
     private DeleteOfferValidator validator;
 
@@ -23,7 +23,7 @@ public class DeleteOfferService {
             return new DeleteOfferResponse(errors);
         }
 
-        boolean isOfferDeleted = database.deleteOfferByID(deleteOfferRequest.getId());
+        boolean isOfferDeleted = offerRepository.deleteOfferByID(deleteOfferRequest.getId());
 
         return new DeleteOfferResponse(isOfferDeleted);
     }

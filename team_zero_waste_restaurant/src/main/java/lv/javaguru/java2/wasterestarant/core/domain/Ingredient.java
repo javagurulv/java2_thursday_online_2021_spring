@@ -1,8 +1,20 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ingredient")
 public class Ingredient {
     private Product product;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long ingredientID;
+
+    @Column(name = "ingredient")
     private String ingredient;
+
+    @Column(name = "quantity")
     private Double quantity;
 
     public Ingredient(String ingredient, Double quantity, Product product) {
@@ -17,6 +29,14 @@ public class Ingredient {
 
     public Ingredient() {
 
+    }
+
+    public long getIngredientID() {
+        return ingredientID;
+    }
+
+    public void setIngredientID(long ingredientID) {
+        this.ingredientID = ingredientID;
     }
 
     public void setProduct(Product product) {

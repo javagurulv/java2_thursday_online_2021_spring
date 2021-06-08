@@ -1,6 +1,6 @@
 package lv.javaguru.java2.realestate.core.services;
 
-import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.database.offer.UserRepository;
 import lv.javaguru.java2.realestate.core.requests.CreateUserRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.CreateUserResponse;
@@ -24,7 +24,7 @@ import static org.mockito.ArgumentMatchers.argThat;
 public class CreateUserServiceTest {
 
     @Mock
-    private Database database;
+    private UserRepository database;
     @Mock
     private CreateUserValidator validator;
     @InjectMocks

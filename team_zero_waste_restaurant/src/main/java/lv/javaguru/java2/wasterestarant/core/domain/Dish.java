@@ -1,17 +1,38 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "dish")
 public class Dish {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long dishID;
+
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "description", nullable = false)
     private String description;
+
+    @Column(name = "type", nullable = false)
     private String type;
+
+    @Column(name = "weight", nullable = false)
     private double weight;
+
+    @Column(name = "price", nullable = false)
     private double price;
-    private List<Ingredient> ingredientList;
+
+    @Column(name = "isInActiveMenu")
     private boolean isInActiveMenu;
+
+
+    private List<Ingredient> ingredientList;
+
 
     public Dish(String name) {
         this.name = name;

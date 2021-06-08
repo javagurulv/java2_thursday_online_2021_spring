@@ -1,7 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.products;
 
-import lv.javaguru.java2.wasterestarant.core.database.Database;
-import lv.javaguru.java2.wasterestarant.core.database.Product.ProductDatabase;
+import lv.javaguru.java2.wasterestarant.core.database.Product.ProductRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.product.AddProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.product.AddProductResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
@@ -14,7 +13,7 @@ import java.util.List;
 @Component
 public class AddProductService {
     @Autowired
-    private ProductDatabase database;
+    private ProductRepository database;
     @Autowired private AddProductValidator validator;
 
     public AddProductResponse execute(AddProductRequest request) {

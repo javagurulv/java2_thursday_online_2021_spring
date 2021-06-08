@@ -9,6 +9,7 @@ import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeRequestVal
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @Component
@@ -26,7 +27,8 @@ public class AddEmployeeService {
         }
 
         Employee employee = new Employee(request.getName(), request.getLastName(), request.getAge());
-        employeeRepository.saveEmployee(employee);
+        BigInteger id = employeeRepository.saveEmployeeAndReturnID(employee);
+        employee.setId(id.longValue());
         return new AddEmployeeResponse(employee);
     }
 }

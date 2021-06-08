@@ -5,13 +5,10 @@ import lv.javaguru.java2.hrsystem.core.requests.Paging;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesRequestValidator;
-
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 public class SearchEmployeeValidatorTest {
@@ -49,16 +46,6 @@ public class SearchEmployeeValidatorTest {
         assertEquals(errors.get(0).getMessage(), "Must not be empty!");
         assertEquals(errors.get(1).getField(), "title");
         assertEquals(errors.get(1).getMessage(), "Must not be empty!");
-    }
-
-    @Test
-    public void testInValidTitleEmptyName() {
-        SearchEmployeesRequest request = new SearchEmployeesRequest("Baa", "");
-        List<CoreError> exp = new ArrayList<>(){{
-            add(new CoreError("invalid title - " + request.getEmployeeTitle(), " Must be selected from the pre-defined set!"));
-        }};
-        List<CoreError> act = validator.validate(request);
-        assertThat(act).isEqualTo(exp);
     }
 
     @Test

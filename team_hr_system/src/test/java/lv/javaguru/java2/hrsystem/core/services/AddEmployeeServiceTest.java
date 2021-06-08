@@ -1,11 +1,11 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
 import lv.javaguru.java2.hrsystem.core.database.EmployeeRepository;
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddEmployeeResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.services.validators.AddEmployeeRequestValidator;
-import lv.javaguru.java2.hrsystem.matchers.EmployeeMatcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -13,10 +13,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.argThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AddEmployeeServiceTest {
@@ -48,10 +48,15 @@ public class AddEmployeeServiceTest {
     public void shouldInteractWithDBInCaseOfAllValidEntries() {
         AddEmployeeRequest request = new AddEmployeeRequest("Tom", "Smith", 28);
         Mockito.when(validator.validate(request)).thenReturn(List.of());
+
+        Mockito.when(employeeRepository.saveEmployeeAndReturnID(
+                new Employee(request.getName(), request.getLastName(), request.getAge()))).thenReturn(new BigInteger("4"));
+        /*Mockito.verify(employeeRepository).saveEmployee(argThat(
+                new EmployeeMatcher("Tom", "Smith", 28)));*/
         AddEmployeeResponse response = service.execute(request);
         assertThat(response.hasErrors()).isFalse();
-        Mockito.verify(employeeRepository).saveEmployee(argThat(
-                new EmployeeMatcher("Tom", "Smith", 28)));
+        System.out.println(response.getNewEmployee());
+        assertThat(response.getNewEmployee()).isEqualTo(new Employee(4L,"Tom", "Smith", 28));
     }
 
     @Test

@@ -3,7 +3,6 @@ package lv.javaguru.java2.wasterestarant.core.database;
 import lv.javaguru.java2.wasterestarant.core.domain.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -36,7 +35,7 @@ public class InMemoryDatabaseImpl implements Database {
 
     @Override
     public void save(User user) {
-        user.setUserId(nextClientId);
+        user.setId(nextClientId);
         nextClientId++;
         users.add(user);
     }
@@ -145,7 +144,7 @@ public class InMemoryDatabaseImpl implements Database {
     @Override
     public Optional<User> clientByID(Long clientID) {
         for (User user : users) {
-            if (user.getUserId() == clientID) {
+            if (user.getId() == clientID) {
                 return Optional.of(user);
             }
         }

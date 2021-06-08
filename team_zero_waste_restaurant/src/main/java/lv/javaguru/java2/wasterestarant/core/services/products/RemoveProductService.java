@@ -1,8 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.services.products;
 
 
-import lv.javaguru.java2.wasterestarant.core.database.Database;
-import lv.javaguru.java2.wasterestarant.core.database.Product.ProductDatabase;
+import lv.javaguru.java2.wasterestarant.core.database.Product.ProductRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.product.RemoveProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.product.RemoveProductResponse;
@@ -16,7 +15,7 @@ import java.util.List;
 public class RemoveProductService {
 
     @Autowired
-    private ProductDatabase database;
+    private ProductRepository database;
     @Autowired
     private RemoveProductValidator validator;
 
