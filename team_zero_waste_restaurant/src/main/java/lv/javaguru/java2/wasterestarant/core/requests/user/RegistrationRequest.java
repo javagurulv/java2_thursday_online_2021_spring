@@ -2,6 +2,8 @@ package lv.javaguru.java2.wasterestarant.core.requests.user;
 
 import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
 
+import static lv.javaguru.java2.wasterestarant.core.domain.UserRole.CLIENT;
+
 public class RegistrationRequest {
     private UserRole userRole;
     private String name;
@@ -18,7 +20,7 @@ public class RegistrationRequest {
     }
 
     public UserRole getUserRole() {
-        return userRole;
+        return CLIENT;
     }
 
     public String getName() {
@@ -36,4 +38,5 @@ public class RegistrationRequest {
     public String getPassword() {
         return password;
     }
+
 }

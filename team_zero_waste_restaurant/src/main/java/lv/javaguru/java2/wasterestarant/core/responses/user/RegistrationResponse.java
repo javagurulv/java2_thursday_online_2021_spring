@@ -17,7 +17,7 @@ public class RegistrationResponse extends CoreResponse {
         this.newUser = newUser;
     }
 
-    public User getNewBook() {
+    public User getNewUser() {
         return newUser;
     }
 }
