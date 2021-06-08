@@ -2,7 +2,6 @@ package lv.javaguru.java2.hardcore.core.database;
 
 
 import lv.javaguru.java2.hardcore.core.domain.Bet;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,7 @@ public class InMemoryBetDatabase implements BetDatabase {
 
     @Override
     public void addBet(Bet bet) {
-        bet.setBetId(nextId);
+        bet.setLotId(nextId);
         nextId++;
         bets.add(bet);
     }
@@ -29,7 +28,7 @@ public class InMemoryBetDatabase implements BetDatabase {
     @Override
     public boolean deleteBetById(Long id) {
         boolean isBetDeleted = false;
-        Optional<Bet> betToDeleteOpt = bets.stream().filter(bet -> bet.getBetId().equals(id)).findFirst();
+        Optional<Bet> betToDeleteOpt = bets.stream().filter(bet -> bet.getLotId().equals(id)).findFirst();
         if (betToDeleteOpt.isPresent()) {
             Bet betToRemove = betToDeleteOpt.get();
             isBetDeleted = bets.remove(betToRemove);

@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
+
 @Component
 public class AddUserService {
     @Autowired
@@ -26,7 +28,8 @@ public class AddUserService {
         } else {
             User user = new User(request.getName(), request.getPassword());
             userDatabase.addUser(user);
-            return new AddUserResponse(user);
+            Optional<User> userOpt = userDatabase.getUserByLogin(request.getName());
+            return new AddUserResponse(userOpt.get());
         }
     }
 }
