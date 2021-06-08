@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 //@Component
 public class InMemoryUserDatabase implements UserDatabase {
@@ -24,6 +25,10 @@ public class InMemoryUserDatabase implements UserDatabase {
     }
 
     @Override
+    public Optional<User> getUserByLogin(String name) {
+        return Optional.empty();
+    }
+
     public void logIn(User user) {
         if (users.contains(user)) {
             System.out.println("Welcome: " + user.getName());

@@ -1,12 +1,14 @@
 package lv.javaguru.java2.hardcore.core.database;
 
 import lv.javaguru.java2.hardcore.core.domain.Lot;
+import lv.javaguru.java2.hardcore.core.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class JdbcLotDatabaseImpl implements LotDatabase{
@@ -17,9 +19,9 @@ public class JdbcLotDatabaseImpl implements LotDatabase{
     @Override
     public void saveLot(Lot lot) {
         jdbcTemplate.update(
-                "INSERT INTO user_lots (name,start_price) "
-                        + "VALUES (?, ?)",
-                lot.getName(),lot.getStartPrice());
+                "INSERT INTO user_lots (name,start_price,user_id) "
+                        + "VALUES (?, ? ,?)",
+                lot.getName(),lot.getStartPrice(),lot.getUserID());
 
     }
     @Override
@@ -34,6 +36,7 @@ public class JdbcLotDatabaseImpl implements LotDatabase{
         String sql = "SELECT * FROM user_lots";
         return jdbcTemplate.query(sql,new LotRowMapper());
     }
+
 
     @Override
     public List<Lot> searchByName(String name) {
