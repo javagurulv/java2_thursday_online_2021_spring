@@ -63,6 +63,11 @@ public class JdbcUserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public List<User> findUserByNameAndPassword(String name, String password) {
+        return null;
+    }
+
+    @Override
     public List<UserRole> findUserByRole(String role) {
         return null;
 //        String sql = "SELECT * FROM user_list WHERE role = ?";
