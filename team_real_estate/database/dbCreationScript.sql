@@ -7,11 +7,11 @@ DEFAULT CHARACTER SET utf8 ;
 USE real_estate;
 
 CREATE TABLE IF NOT EXISTS `offer` (
-  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(200) NOT NULL,
   `category` VARCHAR(100) NOT NULL,
   `description` VARCHAR(1000) NOT NULL,
-  `price` DECIMAL(10,2) NOT NULL,
+  `price` DOUBLE NOT NULL,
   PRIMARY KEY (id)
 )
 ENGINE = InnoDB
@@ -19,7 +19,7 @@ AUTO_INCREMENT = 0;
 
 
 CREATE TABLE IF NOT EXISTS `registered_user` (
-  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(200) NOT NULL,
   `password` VARCHAR(200) NOT NULL,
   `email` VARCHAR(100),
@@ -30,9 +30,9 @@ AUTO_INCREMENT = 0;
 
 
 CREATE TABLE IF NOT EXISTS `user_offers` (
-  `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `registered_user_id` BIGINT NOT NULL,
-  `offer_id` BIGINT NOT NULL,
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `registered_user_id` INTEGER NOT NULL,
+  `offer_id` INTEGER NOT NULL,
   `offer_create_date` DATETIME NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (`registered_user_id`) REFERENCES `registered_user`(`id`),

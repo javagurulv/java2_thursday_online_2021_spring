@@ -40,9 +40,9 @@ public class OrmOfferRepositoryImpl implements OfferRepository {
 
     @Override
     public List<Offer> searchOffers(SearchOffersRequest request) {
-        String sql = "FROM Offer WHERE :type is null or type = :type " +
-                "AND :category is null or category = :category " +
-                "AND :price is null or price = :price";
+        String sql = "FROM Offer WHERE (:type is null or type = :type )" +
+                "AND (:category is null or category = :category )" +
+                "AND (:price is null or price = :price)";
 
        return sessionFactory.getCurrentSession()
                 .createQuery(sql, Offer.class)
