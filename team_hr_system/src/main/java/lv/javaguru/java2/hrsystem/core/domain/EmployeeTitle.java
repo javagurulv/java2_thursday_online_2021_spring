@@ -1,11 +1,28 @@
 package lv.javaguru.java2.hrsystem.core.domain;
 
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
-public class EmployeeTitle {
+@Entity
+@Table(name = "employee_titles")
+public class EmployeeTitle implements Serializable {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "employee_titles")
     private Long id;
+
+    @Column(name = "title", nullable = false)
     private String name;
+
+    @Column(name = "title_description")
     private String description;
+
+    @OneToMany(mappedBy = "title")
+    private Set<Employee> employees = new HashSet<>();
 
     public EmployeeTitle() {
     }
@@ -64,5 +81,14 @@ public class EmployeeTitle {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, description);
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeTitle{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

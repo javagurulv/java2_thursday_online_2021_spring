@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.EmployeeTitleRepository;
+import lv.javaguru.java2.hrsystem.core.database.ORMEmployeeTitleRepository;
 import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import lv.javaguru.java2.hrsystem.core.requests.GetAllTitlesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllTitlesResponse;
@@ -13,10 +13,11 @@ import java.util.List;
 public class GetAllTitlesService {
 
     @Autowired
-    private EmployeeTitleRepository employeeTitleRepository;
+  //  private EmployeeTitleRepository employeeTitleRepository;
+    private ORMEmployeeTitleRepository ormEmployeeTitleRepository;
 
     public GetAllTitlesResponse execute(GetAllTitlesRequest request) {
-        List<EmployeeTitle> titles = employeeTitleRepository.getAllUniqueTitles();
+        List<EmployeeTitle> titles = ormEmployeeTitleRepository.getAllUniqueTitles();
         return new GetAllTitlesResponse(titles);
     }
 }

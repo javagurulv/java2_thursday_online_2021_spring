@@ -22,6 +22,7 @@ public class EmployeeSkillRowMapper implements RowMapper<EmployeeSkill> {
         skill.setSkillId(rs.getLong("skill_id"));
         skill.setSkillName(rs.getString("skill_name"));
 
+        employeeSkill.setId(rs.getLong("id"));
         employeeSkill.setEmployee(employee);
         employeeSkill.setSkill(skill);
 

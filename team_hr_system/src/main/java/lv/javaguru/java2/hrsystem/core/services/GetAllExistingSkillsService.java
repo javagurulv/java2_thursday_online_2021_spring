@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.SkillRepository;
+import lv.javaguru.java2.hrsystem.core.database.ORMSkillRepository;
 import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import lv.javaguru.java2.hrsystem.core.requests.GetAllExistingSkillsRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllExistingSkillsResponse;
@@ -13,10 +13,11 @@ import java.util.List;
 public class GetAllExistingSkillsService {
 
     @Autowired
-    private SkillRepository skillRepository;
+   // private SkillRepository skillRepository;
+    private ORMSkillRepository ormSkillRepository;
 
     public GetAllExistingSkillsResponse execute(GetAllExistingSkillsRequest request) {
-        List<Skill> skills = skillRepository.getAllExistingSkills();
+        List<Skill> skills = ormSkillRepository.getAllExistingSkills();
         return new GetAllExistingSkillsResponse(skills);
     }
 }

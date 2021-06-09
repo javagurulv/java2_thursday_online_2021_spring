@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.order;
 
-import lv.javaguru.java2.wasterestarant.core.database.order.OrderDatabase;
+import lv.javaguru.java2.wasterestarant.core.database.order.OrderRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.order.GetAllOrdersRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.order.GetAllOrdersResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Order;
@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 public class GetAllOrdersService {
     @Autowired
-    private OrderDatabase database;
+    private OrderRepository database;
 
     public GetAllOrdersResponse execute(GetAllOrdersRequest request) {
         List<Order> orders = database.getAllOrders();
