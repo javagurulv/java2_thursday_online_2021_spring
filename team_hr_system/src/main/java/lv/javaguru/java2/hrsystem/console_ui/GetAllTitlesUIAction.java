@@ -22,8 +22,8 @@ public class GetAllTitlesUIAction implements UIAction {
         List<EmployeeTitle> employeeTitles = response.getEmployeeTitles();
         if (!employeeTitles.isEmpty()) {
             System.out.println("Employee titles:");
-            employeeTitles.forEach(eT -> System.out.println("title id: " + eT.getId() + " title: " +
-                    eT.getName() + " title description:" + eT.getDescription()));
+            employeeTitles.forEach(eT -> System.out.println("title id: " + eT.getId() + " | title: " +
+                    eT.getName() + " | title description: " + eT.getDescription()));
         }
         else {
             System.out.println("No titles added yet!");

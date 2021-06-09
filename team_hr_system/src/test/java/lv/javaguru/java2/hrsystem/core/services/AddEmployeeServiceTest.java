@@ -53,7 +53,6 @@ public class AddEmployeeServiceTest {
                 new Employee(request.getName(), request.getLastName(), request.getAge()))).thenReturn(1L);
         AddEmployeeResponse response = service.execute(request);
         assertThat(response.hasErrors()).isFalse();
-        System.out.println(response.getNewEmployee());
         assertThat(response.getNewEmployee()).isEqualTo(new Employee(1L,"Tom", "Smith", 28));
     }
 

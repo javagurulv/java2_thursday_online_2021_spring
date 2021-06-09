@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
 @Component
-public class AddEmployeeWithTitleUIAction implements UIAction{
+public class AddEmployeeWithTitleUIAction implements UIAction {
 
     @Autowired
     private AddEmployeeWithTitleService service;
@@ -35,8 +35,8 @@ public class AddEmployeeWithTitleUIAction implements UIAction{
             );
         } else {
             System.out.println("Employee added successfully!" + "\n" +
-                    "|" + response.getEmployee().getId() + " " + response.getEmployee().getName() + " " + response.getEmployee().getLastName()
-                    + " - " + response.getEmployee().getAge() + " - " + response.getEmployee().getTitle().getName() + "|" + "\n");
+                    "id: " + response.getEmployee().getId() + " | name: " + response.getEmployee().getName() + " | last name: " + response.getEmployee().getLastName()
+                    + " | age: " + response.getEmployee().getAge() + " | title: " + response.getEmployee().getTitle().getName() + "\n");
         }
     }
 

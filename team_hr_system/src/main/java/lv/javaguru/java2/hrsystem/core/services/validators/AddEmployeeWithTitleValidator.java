@@ -59,7 +59,7 @@ public class AddEmployeeWithTitleValidator {
     }
 
     private Optional<CoreError> validateTitleAdded(AddEmployeeWithTitleRequest request) {
-        if (!titleValidator.titleExists(new EmployeeTitle(request.getName()))) {
+        if (!titleValidator.titleExists(new EmployeeTitle(request.getTitle()))) {
             return Optional.of(new CoreError("this title", "is not added yet"));
         }
         return Optional.empty();

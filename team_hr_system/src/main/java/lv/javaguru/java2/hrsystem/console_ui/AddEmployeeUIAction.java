@@ -33,7 +33,8 @@ public class AddEmployeeUIAction implements UIAction {
             );
         } else {
             System.out.println("Employee added successfully!" + "\n" +
-                    response.getNewEmployee() + "\n");
+                    "id: " + response.getNewEmployee().getId() + " | name: " + response.getNewEmployee().getName() + " | last name: " + response.getNewEmployee().getLastName()
+                    + " | age: " + response.getNewEmployee().getAge() + "\n");
         }
     }
 
