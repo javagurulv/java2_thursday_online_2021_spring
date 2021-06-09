@@ -6,13 +6,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import lv.javaguru.java2.hardcore.core.database.BetDatabase;
+import lv.javaguru.java2.hardcore.core.database.BetRepository;
 import lv.javaguru.java2.hardcore.core.requests.bet.ShowAllBetsRequest;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ShowAllBetsServiceTest {
 
-	@Mock private BetDatabase betDatabase;
+	@Mock private BetRepository betRepository;
 
 	@InjectMocks
 	private ShowAllBetsService service;

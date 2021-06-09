@@ -6,7 +6,7 @@ import lv.javaguru.java2.hardcore.core.domain.User;
 import java.util.List;
 import java.util.Optional;
 
-public interface UserDatabase {
+public interface UserRepository {
 
     void addUser(User user);
 

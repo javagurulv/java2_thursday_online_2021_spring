@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 //@Component
-public class InMemoryBetDatabase implements BetDatabase {
+public class InMemoryBetRepositoryImpl implements BetRepository {
 
     private Long nextId = 1L;
     private List<Bet> bets = new ArrayList<>();

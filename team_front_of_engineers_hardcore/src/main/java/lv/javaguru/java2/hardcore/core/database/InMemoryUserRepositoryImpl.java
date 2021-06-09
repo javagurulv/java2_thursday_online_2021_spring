@@ -3,14 +3,13 @@ package lv.javaguru.java2.hardcore.core.database;
 
 
 import lv.javaguru.java2.hardcore.core.domain.User;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 //@Component
-public class InMemoryUserDatabase implements UserDatabase {
+public class InMemoryUserRepositoryImpl implements UserRepository {
 
     private Long nextId = 1L;
     private List<User> users = new ArrayList<>();

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
-@Component
-public class JdbcUserDatabaseImpl implements UserDatabase {
+//@Component
+public class JdbcUserRepositoryImpl implements UserRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;

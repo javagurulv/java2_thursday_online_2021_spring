@@ -1,12 +1,12 @@
 package lv.javaguru.java2.hardcore.core.services.user;
 
-import lv.javaguru.java2.hardcore.core.database.UserDatabase;
+import lv.javaguru.java2.hardcore.core.database.UserRepository;
 import lv.javaguru.java2.hardcore.core.domain.User;
 
 import java.util.List;
 import java.util.Optional;
 
-public class UserDatabaseMock implements UserDatabase {
+public class UserRepositoryMock implements UserRepository {
     @Override
     public void addUser(User user) {
 

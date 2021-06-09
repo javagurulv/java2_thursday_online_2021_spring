@@ -1,13 +1,22 @@
 package lv.javaguru.java2.hardcore.core.domain;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@Entity
+@Table(name="user_bets")
 public class Bet {
 
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name="bet", nullable = false)
     private BigDecimal bet;
+    @Column(name="lot_id", nullable = false)
     private Long lotId;
+    @Column(name="user_id", nullable = false)
     private Long userID;
 
     public Bet() {

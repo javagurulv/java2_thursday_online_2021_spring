@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Component
-public class JdbcLotDatabaseImpl implements LotDatabase{
+//@Component
+public class JdbcLotRepositoryImpl implements LotRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;

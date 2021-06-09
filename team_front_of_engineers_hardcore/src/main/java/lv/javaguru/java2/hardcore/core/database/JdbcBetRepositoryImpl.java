@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
-public class JdbcBetDatabaseImpl implements BetDatabase{
+//@Component
+public class JdbcBetRepositoryImpl implements BetRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;

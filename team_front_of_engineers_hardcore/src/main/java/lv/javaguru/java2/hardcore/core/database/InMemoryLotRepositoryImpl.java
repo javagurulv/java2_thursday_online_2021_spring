@@ -2,7 +2,6 @@ package lv.javaguru.java2.hardcore.core.database;
 
 
 import lv.javaguru.java2.hardcore.core.domain.Lot;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.Collectors;
 //@Component
-public class InMemoryLotDatabase implements LotDatabase {
+public class InMemoryLotRepositoryImpl implements LotRepository {
 
     private Long nextId = 1L;
     private List<Lot> lots = new ArrayList<>();

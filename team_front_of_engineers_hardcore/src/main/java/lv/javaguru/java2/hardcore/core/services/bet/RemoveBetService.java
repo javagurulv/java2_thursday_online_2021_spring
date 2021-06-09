@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hardcore.core.services.bet;
 
-import lv.javaguru.java2.hardcore.core.database.BetDatabase;
+import lv.javaguru.java2.hardcore.core.database.BetRepository;
 
 import lv.javaguru.java2.hardcore.core.requests.bet.RemoveBetRequest;
 import lv.javaguru.java2.hardcore.core.response.bet.RemoveBetResponse;
@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class RemoveBetService {
     @Autowired
-    private BetDatabase betDatabase;
+    private BetRepository betRepository;
     private RemoveBetValidator validator;
 
 
     public RemoveBetResponse execute(RemoveBetRequest request) {
-        boolean isRemoved = betDatabase.deleteBetById(request.getBetIdToRemove());
+        boolean isRemoved = betRepository.deleteBetById(request.getBetIdToRemove());
         return new RemoveBetResponse(isRemoved);
     }
 }

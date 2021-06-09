@@ -4,7 +4,7 @@ import lv.javaguru.java2.hardcore.core.domain.Bet;
 
 import java.util.List;
 
-public interface BetDatabase {
+public interface BetRepository {
 
     void addBet(Bet bet);
 

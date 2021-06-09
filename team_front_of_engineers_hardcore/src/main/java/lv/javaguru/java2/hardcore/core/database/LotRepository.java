@@ -5,7 +5,7 @@ import lv.javaguru.java2.hardcore.core.domain.Lot;
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface LotDatabase {
+public interface LotRepository {
 
     void saveLot(Lot lot);
 
