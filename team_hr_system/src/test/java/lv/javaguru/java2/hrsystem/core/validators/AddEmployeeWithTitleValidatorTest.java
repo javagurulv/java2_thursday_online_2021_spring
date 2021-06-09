@@ -12,7 +12,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.assertj.core.api.Assertions.*;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AddEmployeeWithTitleValidatorTest {
@@ -26,7 +28,7 @@ public class AddEmployeeWithTitleValidatorTest {
     @Test
     public void testValidTitle() {
         AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest("Aaa", "Bbb", 22, "QA_ENGINEER");
-        Mockito.when(titleValidator.titleExists(new EmployeeTitle(request.getName()))).thenReturn(true);
+        Mockito.when(titleValidator.titleExists(new EmployeeTitle(request.getTitle()))).thenReturn(true);
         assertThat(validator.validate(request).isEmpty()).isTrue();
     }
 
@@ -35,5 +37,12 @@ public class AddEmployeeWithTitleValidatorTest {
         AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest("Aaa", "Bbb", 22, "");
         assertThat(validator.validate(request))
                 .contains(new CoreError("employee title", "Must not be empty!"));
+    }
+
+    @Test
+    public void testNonExistingTitle() {
+        AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest("Aaa", "Bbb", 22, "Manager");
+        assertThat(validator.validate(request)).isEqualTo(List.of(
+                new CoreError("this title", "is not added yet")));
     }
 }

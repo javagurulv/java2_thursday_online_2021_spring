@@ -70,5 +70,6 @@ public class AddEmployeeWithTitleServiceTest {
         AddEmployeeWithTitleResponse response = service.execute(request);
         assertThat(response.hasErrors()).isTrue();
         assertThat(response.getErrors()).isEqualTo(List.of(new CoreError("this title", "is not added yet")));
+        Mockito.verifyNoInteractions(ormEmployeeRepository);
     }
 }
