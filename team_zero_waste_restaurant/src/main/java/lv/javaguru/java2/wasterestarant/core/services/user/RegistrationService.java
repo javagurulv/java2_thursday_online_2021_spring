@@ -29,7 +29,6 @@ public class RegistrationService {
                             request.getEmail(),
                             request.getPassword());
         repository.save(user);
-        System.out.println("You are registered! Welcome!");
         return new RegistrationResponse(user);
     }
 }

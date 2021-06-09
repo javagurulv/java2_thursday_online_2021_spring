@@ -71,6 +71,15 @@ public class OrmUserRepositoryImpl implements UserRepository{
     }
 
     @Override
+    public List<User> findUserByNameAndPassword(String name, String password) {
+        Query query = sessionFactory.getCurrentSession().createQuery(
+                "SELECT b FROM User b WHERE name = :name AND password = :password");
+        query.setParameter("name", name);
+        query.setParameter("password", password);
+        return query.getResultList();
+    }
+
+    @Override
     public List<UserRole> findUserByRole(String role) {
         Query query = sessionFactory.getCurrentSession().createQuery(
                 "SELECT b FROM User b WHERE role = :role");
