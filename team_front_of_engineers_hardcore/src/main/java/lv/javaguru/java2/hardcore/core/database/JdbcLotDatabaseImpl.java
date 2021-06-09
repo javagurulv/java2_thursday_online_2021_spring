@@ -1,14 +1,12 @@
 package lv.javaguru.java2.hardcore.core.database;
 
 import lv.javaguru.java2.hardcore.core.domain.Lot;
-import lv.javaguru.java2.hardcore.core.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class JdbcLotDatabaseImpl implements LotDatabase{
@@ -40,16 +38,23 @@ public class JdbcLotDatabaseImpl implements LotDatabase{
 
     @Override
     public List<Lot> searchByName(String name) {
-        return null;
+        String sql = "SELECT * FROM user_lots"+" WHERE name LIKE '%?%'";
+        Object[] args = new Object[]{name};
+        return jdbcTemplate.query(sql,args,new LotRowMapper());
     }
 
     @Override
     public List<Lot> searchByPrice(BigDecimal price) {
-        return null;
+        String sql = "SELECT * FROM user_lots"+" WHERE start_price LIKE '%?%'";
+        Object[] args = new Object[]{price};
+        return jdbcTemplate.query(sql,args,new LotRowMapper());
     }
 
     @Override
     public List<Lot> searchByNameAndPrice(String name, BigDecimal price) {
-        return null;
+        String sql = "SELECT * FROM user_lots WHERE"+
+                " name LIKE ? AND start_price LIKE ?";
+        Object[] args = new Object[] {name, price};
+        return jdbcTemplate.query(sql,args,new LotRowMapper());
     }
 }
