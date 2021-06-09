@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.EmployeeRepository;
+import lv.javaguru.java2.hrsystem.core.database.ORMEmployeeRepository;
 import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import lv.javaguru.java2.hrsystem.core.requests.Ordering;
@@ -27,7 +27,8 @@ public class SearchEmployeesService {
     private boolean pagingEnabled;
 
     @Autowired
-    private EmployeeRepository employeeRepository;
+    //private EmployeeRepository employeeRepository;
+    private ORMEmployeeRepository ormEmployeeRepository;
     @Autowired
     private SearchEmployeesRequestValidator validator;
 
@@ -50,13 +51,13 @@ public class SearchEmployeesService {
     public List<Employee> search(SearchEmployeesRequest request) {
         List<Employee> employees = null;
         if (request.isNameProvided() && !request.isTitleProvided()) {
-            employees = employeeRepository.getEmployeesByName(request.getName());
+            employees = ormEmployeeRepository.getEmployeesByName(request.getName());
         }
         if (request.isTitleProvided() && !request.isNameProvided()) {
-            employees = employeeRepository.getEmployeesByTitle(new EmployeeTitle(request.getEmployeeTitle()));
+            employees = ormEmployeeRepository.getEmployeesByTitle(new EmployeeTitle(request.getEmployeeTitle()));
         }
         if (request.isNameProvided() && request.isTitleProvided()) {
-            employees = employeeRepository.getEmployeesByTitleAndName(new EmployeeTitle(request.getEmployeeTitle()), request.getName());
+            employees = ormEmployeeRepository.getEmployeesByTitleAndName(new EmployeeTitle(request.getEmployeeTitle()), request.getName());
         }
         return employees;
     }

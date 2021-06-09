@@ -1,7 +1,9 @@
 package lv.javaguru.java2.hrsystem.core.services.validators;
 
+import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeWithTitleRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -11,12 +13,16 @@ import java.util.Optional;
 @Component
 public class AddEmployeeWithTitleValidator {
 
+    @Autowired
+    private TitleValidator titleValidator;
+
     public List<CoreError> validate(AddEmployeeWithTitleRequest request) {
         List<CoreError> errors = new ArrayList<>();
         validateName(request).ifPresent(errors::add);
         validateLastName(request).ifPresent(errors::add);
         validateTitle(request).ifPresent(errors::add);
         validateAge(request).ifPresent(errors::add);
+        validateTitleAdded(request).ifPresent(errors::add);
         return errors;
     }
 
@@ -38,9 +44,6 @@ public class AddEmployeeWithTitleValidator {
         if (isEmpty(request.getTitle())) {
             return Optional.of(new CoreError("employee title", "Must not be empty!"));
         }
-       /* else if (!isValidTitle(request.getTitle())) {
-            return Optional.of(new CoreError("invalid title - " + request.getTitle(), " Must be selected from the pre-defined set!"));
-        }*/
         return Optional.empty();
     }
 
@@ -48,21 +51,16 @@ public class AddEmployeeWithTitleValidator {
         return field == null || field.isEmpty();
     }
 
-  /*  private boolean isValidTitle(String title) {
-        EnumSet<EmployeeTitle> titles = EnumSet.allOf(EmployeeTitle.class);
-        boolean valid;
-        try {
-            valid = titles.contains(EmployeeTitle.valueOf(title));
-        }
-        catch (IllegalArgumentException e) {
-            valid = false;
-        }
-        return valid;
-    }*/
-
     private Optional<CoreError> validateAge(AddEmployeeWithTitleRequest request) {
         if (request.getAge() < 18) {
             return Optional.of(new CoreError("employee age", "Must not be less than 18!"));
+        }
+        return Optional.empty();
+    }
+
+    private Optional<CoreError> validateTitleAdded(AddEmployeeWithTitleRequest request) {
+        if (!titleValidator.titleExists(new EmployeeTitle(request.getName()))) {
+            return Optional.of(new CoreError("this title", "is not added yet"));
         }
         return Optional.empty();
     }

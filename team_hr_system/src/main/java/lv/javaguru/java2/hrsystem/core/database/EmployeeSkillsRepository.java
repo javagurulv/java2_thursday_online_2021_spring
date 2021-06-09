@@ -27,7 +27,7 @@ public class EmployeeSkillsRepository {
     }
 
     public List<EmployeeSkill> getAllEmplSkills() {
-        return jdbcTemplate.query("SELECT empl_id, first_name, last_name, skill_id, skill_name FROM employee_skills INNER JOIN skills ON employee_skills.skill_id=skills.id INNER JOIN employees ON employee_skills.empl_id = employees.id",
+        return jdbcTemplate.query("SELECT employee_skills.id, empl_id, first_name, last_name, skill_id, skill_name FROM employee_skills INNER JOIN skills ON employee_skills.skill_id=skills.id INNER JOIN employees ON employee_skills.empl_id = employees.id",
                 new EmployeeSkillRowMapper());
     }
 }
