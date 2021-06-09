@@ -1,10 +1,9 @@
 package lv.javaguru.java2.wasterestarant.core.services.order;
 
-import lv.javaguru.java2.wasterestarant.core.database.order.OrderDatabase;
+import lv.javaguru.java2.wasterestarant.core.database.order.OrderRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.order.GetAllOrdersRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.order.GetAllOrdersResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Order;
-import lv.javaguru.java2.wasterestarant.core.domain.OrderItem;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -14,7 +13,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -23,7 +21,7 @@ import static org.junit.Assert.*;
 public class GetAllOrdersServiceTest {
 
     @Mock
-    private OrderDatabase database;
+    private OrderRepository database;
     @InjectMocks
     GetAllOrdersService service;
 

@@ -5,7 +5,7 @@ import lv.javaguru.java2.wasterestarant.core.domain.Order;
 import java.util.Date;
 import java.util.List;
 
-public interface OrderDatabase {
+public interface OrderRepository {
 
     void save(Order order);
 
