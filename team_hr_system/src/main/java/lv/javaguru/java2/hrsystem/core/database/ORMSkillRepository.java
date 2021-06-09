@@ -24,4 +24,11 @@ public class ORMSkillRepository {
         return (Long) sessionFactory.getCurrentSession().createQuery("SELECT id FROM Skill s where skill_name = :skill_name")
                 .getResultList().get(0);
     }
+
+    //TO-DO
+   /* public Set<Skill> getAllEmployeeSkills(Employee employee) {
+        Query query = sessionFactory.getCurrentSession().createQuery(
+                "SELECT s FROM Skill s INNER JOIN "
+        )
+    }*/
 }

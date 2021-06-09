@@ -111,14 +111,27 @@ public class Employee {
         this.age = age;
     }
 
+    public void setTitle(EmployeeTitle title) {
+        this.title = title;
+    }
+
+    public Set<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Set<Skill> skills) {
+        this.skills = skills;
+    }
+
     @Override
     public String toString() {
-
-        return "Employee - " +
-                "id = " + id +
-                ", Name = '" + name + '\'' +
-                ", Last Name = '" + lastName + '\'' +
-                ", age = " + age;
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", title=" + title +
+                '}';
     }
 
     @Override

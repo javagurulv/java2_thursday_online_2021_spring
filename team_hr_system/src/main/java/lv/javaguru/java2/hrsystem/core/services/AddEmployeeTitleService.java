@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.EmployeeTitleRepository;
+import lv.javaguru.java2.hrsystem.core.database.ORMEmployeeTitleRepository;
 import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeTitleRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddEmployeeTitleResponse;
@@ -14,14 +14,14 @@ import java.util.List;
 @Component
 public class AddEmployeeTitleService {
 
-   // @Autowired
-   // private ORMEmployeeTitleRepository ormEmployeeTitleRepository;
+    @Autowired
+    private ORMEmployeeTitleRepository ormEmployeeTitleRepository;
 
     @Autowired
     private AddEmployeeTitleRequestValidator validator;
 
-    @Autowired
-    private EmployeeTitleRepository employeeTitleRepository;
+   // @Autowired
+   // private EmployeeTitleRepository employeeTitleRepository;
 
     public AddEmployeeTitleResponse execute(AddEmployeeTitleRequest request) {
         List<CoreError> errors = validator.validate(request);
@@ -29,10 +29,10 @@ public class AddEmployeeTitleService {
             return new AddEmployeeTitleResponse(errors);
         }
         EmployeeTitle employeeTitleToAdd = new EmployeeTitle(request.getTitle(), request.getDescription());
-        List<EmployeeTitle> employeeTitles = employeeTitleRepository.getAllUniqueTitles();
+        List<EmployeeTitle> employeeTitles = ormEmployeeTitleRepository.getAllUniqueTitles();
         boolean titleAdded = false;
         if (!alreadyAdded(employeeTitles, employeeTitleToAdd)) {
-            titleAdded = employeeTitleRepository.saveTitle(employeeTitleToAdd);
+            titleAdded = ormEmployeeTitleRepository.saveTitle(employeeTitleToAdd);
         }
         return new AddEmployeeTitleResponse(titleAdded);
     }

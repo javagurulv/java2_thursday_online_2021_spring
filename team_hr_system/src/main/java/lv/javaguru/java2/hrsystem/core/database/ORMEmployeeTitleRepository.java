@@ -16,7 +16,7 @@ public class ORMEmployeeTitleRepository {
     private SessionFactory sessionFactory;
 
     public boolean saveTitle(EmployeeTitle employeeTitle) {
-        return (boolean) sessionFactory.getCurrentSession().save(employeeTitle);
+        return (long) sessionFactory.getCurrentSession().save(employeeTitle) != 0L;
     }
 
     public List<EmployeeTitle> getAllUniqueTitles() {

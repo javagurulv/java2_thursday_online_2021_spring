@@ -1,13 +1,14 @@
 package lv.javaguru.java2.hrsystem.core.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name = "employee_titles")
-public class EmployeeTitle {
+public class EmployeeTitle implements Serializable {
 
     @Id
     @Column(name = "id")
@@ -80,5 +81,14 @@ public class EmployeeTitle {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, description);
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeTitle{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }
