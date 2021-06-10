@@ -4,7 +4,7 @@ import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
 
 import java.util.List;
 //AndrejsB
-public interface IngredientDatabase {
+public interface IngredientRepository {
 
     void save(Ingredient ingredient);
 

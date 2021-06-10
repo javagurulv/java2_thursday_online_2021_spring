@@ -3,12 +3,12 @@ package lv.javaguru.java2.wasterestarant.core.database.dish;
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
+
 
 import java.util.List;
 //AndrejsB
-@Component
-public class JdbcDishDatabase implements DishDatabase{
+//@Component
+public class JdbcDishRepository implements DishRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;

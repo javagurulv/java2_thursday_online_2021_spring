@@ -1,7 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.dish;
 
-import lv.javaguru.java2.wasterestarant.core.database.Database;
-import lv.javaguru.java2.wasterestarant.core.database.dish.DishDatabase;
+import lv.javaguru.java2.wasterestarant.core.database.dish.DishRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.SearchDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
@@ -27,7 +26,7 @@ import static org.mockito.ArgumentMatchers.any;
 @RunWith(MockitoJUnitRunner.class)
 public class SearchDishesServiceTest {
     @Mock
-    private DishDatabase database;
+    private DishRepository database;
     @Mock
     private SearchDishesRequestValidator validator;
     @InjectMocks

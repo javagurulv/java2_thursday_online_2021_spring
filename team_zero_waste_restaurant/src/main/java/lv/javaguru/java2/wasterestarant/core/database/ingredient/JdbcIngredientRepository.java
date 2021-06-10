@@ -3,12 +3,11 @@ package lv.javaguru.java2.wasterestarant.core.database.ingredient;
 import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 //AndrejsB
-@Component
-public class JdbcIngredientDatabase implements IngredientDatabase{
+//@Component
+public class JdbcIngredientRepository implements IngredientRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
