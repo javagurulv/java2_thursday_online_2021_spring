@@ -1,7 +1,7 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.EmployeeSkillsRepository;
-import lv.javaguru.java2.hrsystem.core.database.SkillRepository;
+import lv.javaguru.java2.hrsystem.core.database.jdbcrepos.EmployeeSkillsRepository;
+import lv.javaguru.java2.hrsystem.core.database.jdbcrepos.SkillRepository;
 import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.domain.EmployeeSkill;
 import lv.javaguru.java2.hrsystem.core.domain.Skill;

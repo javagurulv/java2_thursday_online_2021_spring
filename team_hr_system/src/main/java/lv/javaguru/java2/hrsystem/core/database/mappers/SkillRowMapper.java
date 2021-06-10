@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hrsystem.core.database;
+package lv.javaguru.java2.hrsystem.core.database.mappers;
 
 import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import org.springframework.jdbc.core.RowMapper;

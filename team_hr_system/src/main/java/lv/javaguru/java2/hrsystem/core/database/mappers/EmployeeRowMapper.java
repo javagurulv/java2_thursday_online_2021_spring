@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hrsystem.core.database;
+package lv.javaguru.java2.hrsystem.core.database.mappers;
 
 import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;

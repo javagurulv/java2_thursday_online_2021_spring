@@ -1,5 +1,6 @@
-package lv.javaguru.java2.hrsystem.core.database;
+package lv.javaguru.java2.hrsystem.core.database.jdbcrepos;
 
+import lv.javaguru.java2.hrsystem.core.database.mappers.SkillRowMapper;
 import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

@@ -1,5 +1,6 @@
-package lv.javaguru.java2.hrsystem.core.database;
+package lv.javaguru.java2.hrsystem.core.database.jdbcrepos;
 
+import lv.javaguru.java2.hrsystem.core.database.mappers.EmployeeRowMapper;
 import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import org.springframework.beans.factory.annotation.Autowired;
