@@ -10,7 +10,7 @@ public interface UserRepository {
 
     void addUser(User user);
 
-    Optional<User> getUserByLogin(String login);
+    Optional<User> getUserByLogin(String name);
 
     List<User> getAllUsers();
 
