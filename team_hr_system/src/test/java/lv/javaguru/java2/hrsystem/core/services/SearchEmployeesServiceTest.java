@@ -1,7 +1,8 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.EmployeeRepository;
+import lv.javaguru.java2.hrsystem.core.database.ORMEmployeeRepository;
 import lv.javaguru.java2.hrsystem.core.domain.Employee;
+import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import lv.javaguru.java2.hrsystem.core.requests.Ordering;
 import lv.javaguru.java2.hrsystem.core.requests.Paging;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
@@ -20,7 +21,6 @@ import org.springframework.test.util.ReflectionTestUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle.*;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 
@@ -28,7 +28,8 @@ import static org.mockito.ArgumentMatchers.any;
 public class SearchEmployeesServiceTest {
 
     @Mock
-    private EmployeeRepository employeeRepository;
+  //  private EmployeeRepository employeeRepository;
+    private ORMEmployeeRepository ormEmployeeRepository;
     @Mock
     private SearchEmployeesRequestValidator validator;
     @InjectMocks
@@ -55,7 +56,7 @@ public class SearchEmployeesServiceTest {
 
         Mockito.verify(validator).validate(request);
         Mockito.verify(validator).validate(any());
-        Mockito.verifyNoInteractions(employeeRepository);
+        Mockito.verifyNoInteractions(ormEmployeeRepository);
     }
 
     @Test
@@ -65,7 +66,7 @@ public class SearchEmployeesServiceTest {
 
         List<Employee> employees = new ArrayList<>();
         employees.add(new Employee("Name", "LastName"));
-        Mockito.when(employeeRepository.getEmployeesByName("Name")).thenReturn(employees);
+        Mockito.when(ormEmployeeRepository.getEmployeesByName("Name")).thenReturn(employees);
 
         SearchEmployeesResponse response = service.execute(request);
         assertFalse(response.hasErrors());
@@ -80,8 +81,8 @@ public class SearchEmployeesServiceTest {
         Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
 
         List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee("Name", "LastName", 34, BA));
-        Mockito.when(employeeRepository.getEmployeesByTitle(BA)).thenReturn(employees);
+        employees.add(new Employee("Name", "LastName", 34, new EmployeeTitle("BA")));
+        Mockito.when(ormEmployeeRepository.getEmployeesByTitle(new EmployeeTitle("BA"))).thenReturn(employees);
 
         SearchEmployeesResponse response = service.execute(request);
         assertFalse(response.hasErrors());
@@ -89,7 +90,7 @@ public class SearchEmployeesServiceTest {
         assertEquals(response.getEmployees().get(0).getName(), "Name");
         assertEquals(response.getEmployees().get(0).getLastName(), "LastName");
         assertEquals(response.getEmployees().get(0).getAge(), 34);
-        assertEquals(response.getEmployees().get(0).getTitle(), BA);
+        assertEquals(response.getEmployees().get(0).getTitle(), new EmployeeTitle("BA"));
     }
 
     @Test
@@ -98,8 +99,8 @@ public class SearchEmployeesServiceTest {
         Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
 
         List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee("Name", "LastName", 42, MANAGER));
-        Mockito.when(employeeRepository.getEmployeesByTitleAndName(MANAGER, "Name")).thenReturn(employees);
+        employees.add(new Employee("Name", "LastName", 42, new EmployeeTitle("MANAGER")));
+        Mockito.when(ormEmployeeRepository.getEmployeesByTitleAndName(new EmployeeTitle("MANAGER"), "Name")).thenReturn(employees);
 
         SearchEmployeesResponse response = service.execute(request);
         assertFalse(response.hasErrors());
@@ -107,7 +108,7 @@ public class SearchEmployeesServiceTest {
         assertEquals(response.getEmployees().get(0).getName(), "Name");
         assertEquals(response.getEmployees().get(0).getLastName(), "LastName");
         assertEquals(response.getEmployees().get(0).getAge(), 42);
-        assertEquals(response.getEmployees().get(0).getTitle(), MANAGER);
+        assertEquals(response.getEmployees().get(0).getTitle(), new EmployeeTitle("MANAGER"));
     }
 
     @Test
@@ -117,15 +118,15 @@ public class SearchEmployeesServiceTest {
         Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
 
         List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee("Name", "LastName", 34, BA));
-        employees.add(new Employee("Name", "LastName", 42, MANAGER));
-        Mockito.when(employeeRepository.getEmployeesByName("Name")).thenReturn(employees);
+        employees.add(new Employee("Name", "LastName", 34, new EmployeeTitle("BA")));
+        employees.add(new Employee("Name", "LastName", 42, new EmployeeTitle("MANAGER")));
+        Mockito.when(ormEmployeeRepository.getEmployeesByName("Name")).thenReturn(employees);
 
         SearchEmployeesResponse response = service.execute(request);
         assertFalse(response.hasErrors());
         assertEquals(response.getEmployees().size(), 2);
-        assertEquals(response.getEmployees().get(0).getTitle(), MANAGER);
-        assertEquals(response.getEmployees().get(1).getTitle(), BA);
+        assertEquals(response.getEmployees().get(0).getTitle(), new EmployeeTitle("MANAGER"));
+        assertEquals(response.getEmployees().get(1).getTitle(), new EmployeeTitle("BA"));
     }
 
     @Test
@@ -135,9 +136,9 @@ public class SearchEmployeesServiceTest {
         Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
 
         List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee("NameB", "LastName", 34, QA_ENGINEER));
-        employees.add(new Employee("NameA", "LastName", 42, QA_ENGINEER));
-        Mockito.when(employeeRepository.getEmployeesByTitle(QA_ENGINEER)).thenReturn(employees);
+        employees.add(new Employee("NameB", "LastName", 34, new EmployeeTitle("QA_ENGINEER")));
+        employees.add(new Employee("NameA", "LastName", 42, new EmployeeTitle("QA_ENGINEER")));
+        Mockito.when(ormEmployeeRepository.getEmployeesByTitle(new EmployeeTitle("QA_ENGINEER"))).thenReturn(employees);
 
         SearchEmployeesResponse response = service.execute(request);
         assertFalse(response.hasErrors());
@@ -153,17 +154,15 @@ public class SearchEmployeesServiceTest {
         Mockito.when(validator.validate(request)).thenReturn(new ArrayList<>());
 
         List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee("NameA", "LastName", 42, SALES_MANAGER));
-        employees.add(new Employee("NameB", "LastName", 34, SALES_MANAGER));
-        Mockito.when(employeeRepository.getEmployeesByTitle(SALES_MANAGER)).thenReturn(employees);
+        employees.add(new Employee("NameA", "LastName", 42, new EmployeeTitle("SALES_MANAGER")));
+        employees.add(new Employee("NameB", "LastName", 34, new EmployeeTitle("SALES_MANAGER")));
+        Mockito.when(ormEmployeeRepository.getEmployeesByTitle(new EmployeeTitle("SALES_MANAGER"))).thenReturn(employees);
 
         SearchEmployeesResponse response = service.execute(request);
         assertFalse(response.hasErrors());
         assertEquals(response.getEmployees().size(), 1);
         assertEquals(response.getEmployees().get(0).getName(), "NameB");
         assertEquals(response.getEmployees().get(0).getAge(), 34);
-        assertEquals(response.getEmployees().get(0).getTitle(), SALES_MANAGER);
+        assertEquals(response.getEmployees().get(0).getTitle(), new EmployeeTitle("SALES_MANAGER"));
     }
-
-
 }

@@ -1,7 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.products.validators;
 
-import lv.javaguru.java2.wasterestarant.core.database.Database;
-import lv.javaguru.java2.wasterestarant.core.database.Product.ProductDatabase;
+import lv.javaguru.java2.wasterestarant.core.database.Product.ProductRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.product.RemoveProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.product.RemoveProductResponse;
@@ -9,7 +8,6 @@ import lv.javaguru.java2.wasterestarant.core.services.products.RemoveProductServ
 import lv.javaguru.java2.wasterestarant.core.services.products.RemoveProductValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -28,7 +26,7 @@ import static org.mockito.ArgumentMatchers.any;
 public class RemoveProductServiceTest {
 
     @Mock
-    private ProductDatabase database;
+    private ProductRepository database;
     @Mock
     private RemoveProductValidator validator;
     @InjectMocks

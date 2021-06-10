@@ -1,28 +1,42 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+//@Entity
+@Table(name = "user_list")
 public class User {
-    private Long userId;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name="user_role", nullable = false)
     private UserRole role;
+
+    @Column(name="name", nullable = false)
     private String name;
+
+    @Column(name="surname", nullable = false)
     private String surname;
+
+    @Column(name="email", nullable = false)
     private String email;
+
+    @Column(name="password", nullable = false)
     private String password;
 
     public User() {
     }
 
-    public User(Long userId, String name, String surname, String email, String password) {
-        this.userId = userId;
+    public User(String name, String surname, String email, String password) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
     }
 
-    public User(Long clientID, UserRole role, String name, String surname, String email, String password) {
-        this.userId = clientID;
+    public User(UserRole role, String name, String surname, String email, String password) {
         this.role = role;
         this.name = name;
         this.surname = surname;
@@ -30,12 +44,17 @@ public class User {
         this.password = password;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public UserRole getRole() {

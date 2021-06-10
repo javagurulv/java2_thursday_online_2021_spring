@@ -1,11 +1,22 @@
 package lv.javaguru.java2.hardcore.core.domain;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+
+@Entity
+@Table(name="users")
 public class User {
-    private String name;
-    private String password;
+
+    @Id
+    @Column(name="user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+    @Column(name="name", nullable = false)
+    private String name;
+    @Column(name="password", nullable = false)
+    private String password;
+
 
     public User() {
     }

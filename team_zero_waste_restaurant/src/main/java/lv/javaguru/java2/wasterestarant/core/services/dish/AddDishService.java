@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.dish;
 
-import lv.javaguru.java2.wasterestarant.core.database.dish.DishDatabase;
+import lv.javaguru.java2.wasterestarant.core.database.dish.DishRepository;
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.AddDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
@@ -13,7 +13,7 @@ import java.util.List;
 public class AddDishService {
 
     @Autowired
-    private DishDatabase database;
+    private DishRepository database;
     @Autowired
     private AddDishValidator validator;
 

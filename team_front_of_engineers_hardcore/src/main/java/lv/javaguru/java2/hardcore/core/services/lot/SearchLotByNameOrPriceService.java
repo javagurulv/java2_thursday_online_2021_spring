@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hardcore.core.services.lot;
 
-import lv.javaguru.java2.hardcore.core.database.LotDatabase;
+import lv.javaguru.java2.hardcore.core.database.LotRepository;
 
 import lv.javaguru.java2.hardcore.core.domain.Lot;
 import lv.javaguru.java2.hardcore.core.requests.Ordering;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Component
 public class SearchLotByNameOrPriceService {
     @Autowired
-    private LotDatabase lotDatabase;
+    private LotRepository lotRepository;
     @Autowired
     private SearchLotByNameOrPriceRequestValidator validator;
 
@@ -66,13 +66,13 @@ public class SearchLotByNameOrPriceService {
     private List<Lot> search(SearchLotByNameOrPriceRequest request) {
         List<Lot> lots = new ArrayList<>();
         if (request.isNameProvided() && !request.isPriceProvided()) {
-            lots = lotDatabase.searchByName(request.getName());
+            lots = lotRepository.searchByName(request.getName());
         }
         if (!request.isNameProvided() && request.isPriceProvided()) {
-            lots = lotDatabase.searchByPrice(request.getPrice());
+            lots = lotRepository.searchByPrice(request.getPrice());
         }
         if (request.isNameProvided() && request.isPriceProvided()) {
-            lots = lotDatabase.searchByNameAndPrice(request.getName(), request.getPrice());
+            lots = lotRepository.searchByNameAndPrice(request.getName(), request.getPrice());
         }
         return lots;
     }

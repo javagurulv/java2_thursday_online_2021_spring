@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
 @Component
-public class AddEmployeeWithTitleUIAction implements UIAction{
+public class AddEmployeeWithTitleUIAction implements UIAction {
 
     @Autowired
     private AddEmployeeWithTitleService service;
@@ -24,25 +24,19 @@ public class AddEmployeeWithTitleUIAction implements UIAction{
         System.out.println("Employee last name: ");
         String secondName = scanner.nextLine();
         int age = getAge();
-        System.out.println("Employee title from the following: \n" +
-                "    DEVELOPER,\n" +
-                "    QA_ENGINEER,\n" +
-                "    BA,\n" +
-                "    MANAGER,\n" +
-                "    HR_MANAGER,\n" +
-                "    SALES_MANAGER");
+        System.out.println("Employee title: ");
         String title = scanner.nextLine();
-        AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest(firstName, secondName, age, title.toUpperCase());
+        AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest(firstName, secondName, age, title);
         AddEmployeeWithTitleResponse response = service.execute(request);
 
         if (response.hasErrors()) {
             response.getErrors().forEach(coreError ->
-                    System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage())
+                    System.out.println(coreError.getField() + " " + coreError.getMessage())
             );
         } else {
             System.out.println("Employee added successfully!" + "\n" +
-                    "|" + response.getEmployee().getName() + " " + response.getEmployee().getLastName()
-                    + " - " + response.getEmployee().getAge() + " - " + response.getEmployee().getTitle() + "|" + "\n");
+                    "id: " + response.getEmployee().getId() + " | name: " + response.getEmployee().getName() + " | last name: " + response.getEmployee().getLastName()
+                    + " | age: " + response.getEmployee().getAge() + " | title: " + response.getEmployee().getTitle().getName() + "\n");
         }
     }
 

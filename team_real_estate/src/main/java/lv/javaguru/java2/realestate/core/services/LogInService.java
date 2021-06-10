@@ -1,6 +1,6 @@
 package lv.javaguru.java2.realestate.core.services;
 
-import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.database.offer.UserRepository;
 import lv.javaguru.java2.realestate.core.domain.User;
 import lv.javaguru.java2.realestate.core.requests.LogInRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
@@ -14,7 +14,7 @@ import java.util.List;
 @Component
 public class LogInService {
     @Autowired
-    private Database database;
+    private UserRepository userRepository;
     @Autowired
     private LogInValidator validator;
 
@@ -26,7 +26,7 @@ public class LogInService {
         User user = new User(
                 logInRequest.getUsername(),
                 logInRequest.getPassword());
-        if (database.logIn(user)) {
+        if (userRepository.logIn(user)) {
             return new LogInResponse(user, true);
         } else {
             return new LogInResponse();

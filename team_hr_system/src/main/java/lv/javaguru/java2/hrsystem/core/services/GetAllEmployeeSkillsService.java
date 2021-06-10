@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.EmployeeSkillsRepository;
+import lv.javaguru.java2.hrsystem.core.database.jdbcrepos.EmployeeSkillsRepository;
 import lv.javaguru.java2.hrsystem.core.domain.EmployeeSkill;
 import lv.javaguru.java2.hrsystem.core.requests.GetAllEmployeeSkillsRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllEmployeeSkillsResponse;
@@ -11,6 +11,7 @@ import java.util.List;
 
 @Component
 public class GetAllEmployeeSkillsService {
+
     @Autowired
     private EmployeeSkillsRepository employeeSkillsRepository;
 

@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.order;
 
-import lv.javaguru.java2.wasterestarant.core.database.order.OrderDatabase;
+import lv.javaguru.java2.wasterestarant.core.database.order.OrderRepository;
 import lv.javaguru.java2.wasterestarant.core.domain.Order;
 import lv.javaguru.java2.wasterestarant.core.requests.order.SearchOrdersRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
@@ -8,14 +8,13 @@ import lv.javaguru.java2.wasterestarant.core.responses.order.SearchOrdersRespons
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class SearchOrdersService {
 
     @Autowired
-    private OrderDatabase database;
+    private OrderRepository database;
     @Autowired
     private SearchOrdersRequestValidator validator;
 

@@ -1,17 +1,39 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "dish")
 public class Dish {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long dishID;
+
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "description", nullable = false)
     private String description;
+
+    @Column(name = "type", nullable = false)
     private String type;
+
+    @Column(name = "weight", nullable = false)
     private double weight;
+
+    @Column(name = "price", nullable = false)
     private double price;
-    private List<Ingredient> ingredientList;
+
+    @Column(name = "isInActiveMenu")
     private boolean isInActiveMenu;
+
+
+    //private List<Ingredient> ingredientList;
+
 
     public Dish(String name) {
         this.name = name;
@@ -25,15 +47,15 @@ public class Dish {
         this.price = price;
     }
 
-    public Dish(String name, String description, String type,
-                double weight, double price, List<Ingredient> ingredientList) {
-        this.name = name;
-        this.description = description;
-        this.type = type;
-        this.weight = weight;
-        this.price = price;
-        this.ingredientList = ingredientList;
-    }
+//    public Dish(String name, String description, String type,
+//                double weight, double price, List<Ingredient> ingredientList) {
+//        this.name = name;
+//        this.description = description;
+//        this.type = type;
+//        this.weight = weight;
+//        this.price = price;
+//        this.ingredientList = ingredientList;
+//    }
 
     public Dish() {
     }
@@ -86,9 +108,9 @@ public class Dish {
         this.dishID = dishID;
     }
 
-    public List<Ingredient> getIngredientList() {
-        return ingredientList;
-    }
+//    public List<Ingredient> getIngredientList() {
+//        return ingredientList;
+//    }
 
     public boolean isInActiveMenu() {
         return isInActiveMenu;
@@ -103,12 +125,12 @@ public class Dish {
         if (this == o) return true;
         if (!(o instanceof Dish)) return false;
         Dish dish = (Dish) o;
-        return Double.compare(dish.getWeight(), getWeight()) == 0 && Double.compare(dish.getPrice(), getPrice()) == 0 && getName().equals(dish.getName()) && getDescription().equals(dish.getDescription()) && getType().equals(dish.getType()) && getIngredientList().equals(dish.getIngredientList());
+        return Double.compare(dish.getWeight(), getWeight()) == 0 && Double.compare(dish.getPrice(), getPrice()) == 0 && getName().equals(dish.getName()) && getDescription().equals(dish.getDescription()) && getType().equals(dish.getType());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getDescription(), getType(), getWeight(), getPrice(), getIngredientList());
+        return Objects.hash(getName(), getDescription(), getType(), getWeight(), getPrice());
     }
 
     @Override
@@ -120,7 +142,6 @@ public class Dish {
                 ", type='" + type + '\'' +
                 ", weight=" + weight +
                 ", price=" + price +
-                ", ingredientList=" + ingredientList +
                 '}';
     }
 

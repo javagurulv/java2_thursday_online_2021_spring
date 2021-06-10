@@ -30,7 +30,10 @@ public class AddLotUIAction implements UIAction {
             if (response.hasErrors()) {
                 response.getErrors().forEach(coreError -> System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
             } else {
-                System.out.println("Your lot was added to list: " + response.getNewLot());
+                System.out.println("Your lot was added to list: " + "LotName='" + response.getNewLot().getName() + '\'' +
+                        ", LotStartPrice=" + response.getNewLot().getStartPrice() +
+                        ", IdOfUserWhoMadeLot=" + response.getNewLot().getUserID()+
+                        '}');
             }
         }
         else {

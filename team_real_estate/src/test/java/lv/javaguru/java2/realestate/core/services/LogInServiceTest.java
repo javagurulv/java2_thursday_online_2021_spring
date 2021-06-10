@@ -1,6 +1,6 @@
 package lv.javaguru.java2.realestate.core.services;
 
-import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.database.offer.UserRepository;
 import lv.javaguru.java2.realestate.core.requests.LogInRequest;
 import lv.javaguru.java2.realestate.core.response.CoreError;
 import lv.javaguru.java2.realestate.core.response.LogInResponse;
@@ -25,7 +25,7 @@ import static org.mockito.ArgumentMatchers.argThat;
 public class LogInServiceTest {
 
     @Mock
-    private Database database;
+    private UserRepository database;
     @Mock
     private LogInValidator validator;
     @InjectMocks

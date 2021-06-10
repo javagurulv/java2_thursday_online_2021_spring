@@ -2,7 +2,7 @@
 
 import lv.javaguru.java2.hrsystem.DatabaseCleaner;
 import lv.javaguru.java2.hrsystem.config.HRSystemConfiguration;
-import lv.javaguru.java2.hrsystem.core.database.SkillRepository;
+import lv.javaguru.java2.hrsystem.core.database.jdbcrepos.SkillRepository;
 import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.domain.EmployeeSkill;
 import lv.javaguru.java2.hrsystem.core.domain.Skill;

@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.EmployeeRepository;
+import lv.javaguru.java2.hrsystem.core.database.ORMEmployeeRepository;
 import lv.javaguru.java2.hrsystem.core.requests.DeleteEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
 import lv.javaguru.java2.hrsystem.core.responses.DeleteEmployeeResponse;
@@ -14,7 +14,8 @@ import java.util.List;
 public class DeleteEmployeeService {
 
     @Autowired
-    private EmployeeRepository employeeRepository;
+   // private EmployeeRepository employeeRepository;
+    private ORMEmployeeRepository ormEmployeeRepository;
     @Autowired
     private DeleteEmployeeRequestValidator validator;
 
@@ -24,7 +25,8 @@ public class DeleteEmployeeService {
         if (!errors.isEmpty()) {
             return new DeleteEmployeeResponse(errors);
         }
-        boolean deleted = employeeRepository.deleteEmployee(deleteEmployeeRequest.getId());
+        //boolean deleted = employeeRepository.deleteEmployee(deleteEmployeeRequest.getId());
+        boolean deleted = ormEmployeeRepository.deleteEmployee(deleteEmployeeRequest.getId());
         return new DeleteEmployeeResponse(deleted);
     }
 }

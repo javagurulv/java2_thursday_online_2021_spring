@@ -1,6 +1,6 @@
 package lv.javaguru.java2.realestate.core.services;
 
-import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.database.user.OfferRepository;
 import lv.javaguru.java2.realestate.core.domain.Offer;
 import lv.javaguru.java2.realestate.core.requests.GetAllOffersRequest;
 import lv.javaguru.java2.realestate.core.response.GetAllOffersResponse;
@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class GetAllOffersServiceTest {
     @Mock
-    private Database database;
+    private OfferRepository database;
 
     @InjectMocks
     private GetAllOffersService service;

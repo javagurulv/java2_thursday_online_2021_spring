@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hardcore.core.services.bet;
 
-import lv.javaguru.java2.hardcore.core.database.BetDatabase;
+import lv.javaguru.java2.hardcore.core.database.BetRepository;
 
 import lv.javaguru.java2.hardcore.core.domain.Bet;
 import lv.javaguru.java2.hardcore.core.requests.bet.ShowAllBetsRequest;
@@ -12,10 +12,10 @@ import java.util.List;
 @Component
 public class ShowAllBetsService {
     @Autowired
-    private BetDatabase betDatabase;
+    private BetRepository betRepository;
 
     public ShowAllBetsResponse execute(ShowAllBetsRequest request) {
-        List<Bet> bets = betDatabase.getAllBets();
+        List<Bet> bets = betRepository.getAllBets();
         return new ShowAllBetsResponse(bets);
     }
 }

@@ -2,7 +2,7 @@ package lv.javaguru.java2.hardcore.core.services.user;
 
 
 import lv.javaguru.java2.hardcore.consoleUI.UserSession;
-import lv.javaguru.java2.hardcore.core.database.UserDatabase;
+import lv.javaguru.java2.hardcore.core.database.UserRepository;
 import lv.javaguru.java2.hardcore.core.domain.User;
 import lv.javaguru.java2.hardcore.core.requests.user.LoginRequest;
 import lv.javaguru.java2.hardcore.core.response.CoreError;
@@ -17,12 +17,11 @@ import java.util.Optional;
 @Component
 public class LoginService {
     @Autowired
-    private UserDatabase userDatabase;
+    private UserRepository userRepository;
     @Autowired
     private LoginValidator validator;
     @Autowired
     private UserSession userSession;
-
 
 
     public LoginResponse execute(LoginRequest request) {
@@ -30,23 +29,31 @@ public class LoginService {
         if (!errors.isEmpty()) {
             return new LoginResponse(errors);
         }
+        Optional<User> userOptional = userRepository.getUserByLogin(request.getName());
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            if (user.getPassword().equals(request.getPassword())) {
+                userSession.setUserID(user.getUserId());
+                userSession.setAuthorized(true);
+                System.out.println("Welcome "+ user.getName());
+                System.out.println(user);
+                return new LoginResponse(user);
+            } else {
+                CoreError error = new CoreError("Password", "Password is incorrect");
+                List<CoreError> err = new ArrayList<>();
+                err.add(error);
+                return new LoginResponse(err);
+            }
+        } else {
+            CoreError error = new CoreError("Username", "There's no such user in database");
+            List<CoreError> err = new ArrayList<>();
+            err.add(error);
+            return new LoginResponse(err);
 
-        Optional<User> userOpt = userDatabase.getUserByLogin(request.getName());
-        if (userOpt.isPresent()) {
-        	User user = userOpt.get();
+        }
 
-        	// password check
-
-			userSession.setUserID(user.getUserId());
-			userSession.setAuthorized(true);
-			return new LoginResponse(user);
-		} else {
-        	CoreError error = new CoreError("login", "User not found!");
-			List<CoreError> err = new ArrayList<>();
-			err.add(error);
-			return new LoginResponse(err);
-		}
     }
+
 
 }
 

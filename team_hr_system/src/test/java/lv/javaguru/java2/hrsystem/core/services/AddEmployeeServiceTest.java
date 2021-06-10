@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.EmployeeRepository;
+import lv.javaguru.java2.hrsystem.core.database.ORMEmployeeRepository;
 import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddEmployeeResponse;
@@ -13,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,7 +20,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(MockitoJUnitRunner.class)
 public class AddEmployeeServiceTest {
     @Mock
-    private EmployeeRepository employeeRepository;
+   // private EmployeeRepository employeeRepository;
+    private ORMEmployeeRepository ormEmployeeRepository;
 
     @Mock
     private AddEmployeeRequestValidator validator;
@@ -41,7 +41,7 @@ public class AddEmployeeServiceTest {
         assertThat(response.hasErrors()).isTrue();
         assertThat(response.getErrors().size() == 3).isTrue();
         assertThat(response.getErrors()).isEqualTo(expected);
-        Mockito.verifyNoInteractions(employeeRepository);
+        Mockito.verifyNoInteractions(ormEmployeeRepository);
     }
 
     @Test
@@ -49,14 +49,11 @@ public class AddEmployeeServiceTest {
         AddEmployeeRequest request = new AddEmployeeRequest("Tom", "Smith", 28);
         Mockito.when(validator.validate(request)).thenReturn(List.of());
 
-        Mockito.when(employeeRepository.saveEmployeeAndReturnID(
-                new Employee(request.getName(), request.getLastName(), request.getAge()))).thenReturn(new BigInteger("4"));
-        /*Mockito.verify(employeeRepository).saveEmployee(argThat(
-                new EmployeeMatcher("Tom", "Smith", 28)));*/
+        Mockito.when(ormEmployeeRepository.saveEmployee(
+                new Employee(request.getName(), request.getLastName(), request.getAge()))).thenReturn(1L);
         AddEmployeeResponse response = service.execute(request);
         assertThat(response.hasErrors()).isFalse();
-        System.out.println(response.getNewEmployee());
-        assertThat(response.getNewEmployee()).isEqualTo(new Employee(4L,"Tom", "Smith", 28));
+        assertThat(response.getNewEmployee()).isEqualTo(new Employee(1L,"Tom", "Smith", 28));
     }
 
     @Test
@@ -69,7 +66,7 @@ public class AddEmployeeServiceTest {
         assertThat(response.hasErrors()).isTrue();
         assertThat(response.getErrors().size() == 1).isTrue();
         assertThat(response.getErrors()).isEqualTo(expected);
-        Mockito.verifyNoInteractions(employeeRepository);
+        Mockito.verifyNoInteractions(ormEmployeeRepository);
     }
 
     @Test
@@ -82,6 +79,6 @@ public class AddEmployeeServiceTest {
         assertThat(response.hasErrors()).isTrue();
         assertThat(response.getErrors().size() == 1).isTrue();
         assertThat(response.getErrors()).isEqualTo(expected);
-        Mockito.verifyNoInteractions(employeeRepository);
+        Mockito.verifyNoInteractions(ormEmployeeRepository);
     }
 }

@@ -1,7 +1,7 @@
 package lv.javaguru.java2.hardcore.core.services.user;
 
 
-import lv.javaguru.java2.hardcore.core.database.UserDatabase;
+import lv.javaguru.java2.hardcore.core.database.UserRepository;
 
 import lv.javaguru.java2.hardcore.core.domain.User;
 import lv.javaguru.java2.hardcore.core.requests.user.AddUserRequest;
@@ -11,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
+
 @Component
 public class AddUserService {
     @Autowired
-    private UserDatabase userDatabase;
+    private UserRepository userRepository;
     @Autowired
     private AddUserValidator validator;
 
@@ -25,8 +27,9 @@ public class AddUserService {
             return new AddUserResponse(errors);
         } else {
             User user = new User(request.getName(), request.getPassword());
-            userDatabase.addUser(user);
-            return new AddUserResponse(user);
+            userRepository.addUser(user);
+            Optional<User> userOpt = userRepository.getUserByLogin(request.getName());
+            return new AddUserResponse(userOpt.get());
         }
     }
 }

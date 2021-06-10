@@ -1,15 +1,32 @@
 package lv.javaguru.java2.hrsystem.core.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "users")
 public class User implements Serializable {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "users")
     private Long id;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_role", columnDefinition = "enum", nullable = false)
     private UserRole userRole;
+
+    @Column(name = "first_name", nullable = false)
     private String firstName;
+
+    @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @Column(name = "email", nullable = false)
     private String email;
+
+    @Column(name = "password", nullable = false)
     private String password;
 
     public User() {

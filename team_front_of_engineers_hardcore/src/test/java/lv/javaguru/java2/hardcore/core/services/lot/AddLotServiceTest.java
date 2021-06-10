@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hardcore.core.services.lot;
 
-import lv.javaguru.java2.hardcore.core.database.LotDatabase;
+import lv.javaguru.java2.hardcore.core.database.LotRepository;
 import lv.javaguru.java2.hardcore.core.domain.Lot;
 import lv.javaguru.java2.hardcore.core.requests.lot.AddLotRequest;
 import lv.javaguru.java2.hardcore.core.response.CoreError;
@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class AddLotServiceTest {
 
-    @Mock private LotDatabase lotDatabase;
+    @Mock private LotRepository lotRepository;
     @Mock private Lot lot;
     @Mock private AddLotValidator lotValidator;
     @Mock private LoginService loginService;
@@ -51,6 +51,6 @@ public class AddLotServiceTest {
         Mockito.when(lotValidator.validate(request)).thenReturn(List.of());
         AddLotResponse response = service.execute(request);
         Lot lot = response.getNewLot();
-        Mockito.verify(lotDatabase).saveLot(lot);
+        Mockito.verify(lotRepository).saveLot(lot);
     }
 }

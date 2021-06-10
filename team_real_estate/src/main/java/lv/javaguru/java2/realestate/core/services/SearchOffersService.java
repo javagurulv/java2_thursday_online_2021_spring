@@ -1,6 +1,6 @@
 package lv.javaguru.java2.realestate.core.services;
 
-import lv.javaguru.java2.realestate.core.database.Database;
+import lv.javaguru.java2.realestate.core.database.user.OfferRepository;
 import lv.javaguru.java2.realestate.core.domain.Offer;
 import lv.javaguru.java2.realestate.core.requests.Ordering;
 import lv.javaguru.java2.realestate.core.requests.Paging;
@@ -27,7 +27,7 @@ public class SearchOffersService {
     private boolean pagingEnabled;
 
     @Autowired
-    private Database database;
+    private OfferRepository offerRepository;
     @Autowired
     private SearchOffersValidator validator;
 
@@ -36,7 +36,7 @@ public class SearchOffersService {
         List<Offer> offers = new ArrayList<>();
 
         if (errors.isEmpty()) {
-            offers = database.searchOffers(request);
+            offers = offerRepository.searchOffers(request);
             offers = order(offers, request.getOrdering());
             offers = paging(offers, request.getPaging());
         }

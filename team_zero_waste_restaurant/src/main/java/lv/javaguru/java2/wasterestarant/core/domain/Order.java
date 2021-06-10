@@ -1,15 +1,26 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+//@Entity
+@Table(name = "order_list")
 public class Order {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderID;
+
+    @Column(name = "client_id")
     private Long clientID;
+
+    @Column(name = "order_date")
     private Date orderDate;
-    private List<OrderItem> wishlist;
+
+    //private List<OrderItem> wishlist;
 
     public Order() {
 
@@ -20,10 +31,10 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public Order(long clientID, Date orderDate, List<OrderItem> wishlist) {
+    public Order(long clientID, Date orderDate/*, List<OrderItem> wishlist*/) {
         this.clientID = clientID;
         this.orderDate = orderDate;
-        this.wishlist = wishlist;
+        //this.wishlist = wishlist;
     }
 
     public Long getClientID() {
@@ -51,14 +62,14 @@ public class Order {
     }
 
 
-    public List<OrderItem> getWishlist() {
+  /*  public List<OrderItem> getWishlist() {
         return wishlist;
     }
 
     public void setWishlist(List<OrderItem> wishlist) {
         this.wishlist = wishlist;
     }
-
+*/
 
     @Override
     public String toString() {
