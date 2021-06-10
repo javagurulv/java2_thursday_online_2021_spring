@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class JdbcUserDatabaseImpl implements UserDatabase {
@@ -23,23 +24,11 @@ public class JdbcUserDatabaseImpl implements UserDatabase {
     }
 
     @Override
-    public void logIn(User user) {
-        String sql = "SELECT name, password FROM users WHERE " + "name = '" + user.getName() + "' AND " + "password = '" + user.getPassword() + "'";
-        User user1 = (User) jdbcTemplate.queryForObject(sql,new Object[]{user},User.class);
-//        String sql = "SELECT name FROM users WHERE name=?";
-//        String username = (String) jdbcTemplate.queryForObject(
-//                sql, new Object[] { user.getName()}, String.class);
-//        String sqlTwo = "SELECT password FROM users WHERE password=?";
-//        String password = (String) jdbcTemplate.queryForObject(
-//                sqlTwo, new Object[] { user.getPassword() }, String.class);
-
-//        if(user.getName().equals(username)&&user.getPassword().equals(password)){
-        if(user.equals(user1)){
-            System.out.println("Welcome: " + user.getName());
-        }else{
-            System.out.println("Username or password are incorrect,please try again");
-        }
-
+    public Optional<User> getUserByLogin(String login) {
+        String sql = "SELECT * FROM users WHERE name = ? ";
+		Object[] args = new Object[] {login};
+		User user = jdbcTemplate.queryForObject(sql, args, new UserRowMapper());
+		return Optional.ofNullable(user);
     }
 
     @Override

@@ -12,7 +12,7 @@ public class UserDatabaseMock implements UserDatabase {
     }
 
     @Override
-    public void logIn(User user) {
+    public void getUserByLogin(User user) {
 
     }
 

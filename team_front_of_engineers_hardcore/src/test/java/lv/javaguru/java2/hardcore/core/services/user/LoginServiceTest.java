@@ -47,7 +47,7 @@ public class LoginServiceTest {
         Mockito.when(validator.validate(request)).thenReturn(List.of());
         LoginResponse response = service.execute(request);
         User user = new User("test", "test");
-        Mockito.verify(userDatabase).logIn(user);
+        Mockito.verify(userDatabase).getUserByLogin(user);
         assertFalse(response.hasErrors());
 
 

@@ -24,7 +24,7 @@ public class InMemoryUserDatabase implements UserDatabase {
     }
 
     @Override
-    public void logIn(User user) {
+    public void getUserByLogin(User user) {
         if (users.contains(user)) {
             System.out.println("Welcome: " + user.getName());
             loggedInUsers.add(user);
