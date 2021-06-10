@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.dish;
 
-import lv.javaguru.java2.wasterestarant.core.database.dish.DishDatabase;
+import lv.javaguru.java2.wasterestarant.core.database.dish.DishRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.RemoveDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.RemoveDishResponse;
@@ -14,7 +14,7 @@ import java.util.List;
 public class RemoveDishService {
 
     @Autowired
-    private DishDatabase database;
+    private DishRepository database;
     @Autowired
     private RemoveDishValidator validator;
 

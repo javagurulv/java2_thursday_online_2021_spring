@@ -4,7 +4,7 @@ import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 
 import java.util.List;
 //AndrejsB
-public interface DishDatabase {
+public interface DishRepository {
 
     void save(Dish dish);
 
