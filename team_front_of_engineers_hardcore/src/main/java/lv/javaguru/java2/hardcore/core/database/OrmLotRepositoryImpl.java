@@ -18,6 +18,7 @@ public class OrmLotRepositoryImpl implements LotRepository{
 
     @Override
     public void saveLot(Lot lot) {
+        sessionFactory.getCurrentSession().save(lot);
 
     }
 
