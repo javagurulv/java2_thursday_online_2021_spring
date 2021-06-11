@@ -22,10 +22,11 @@ public class AddSkillUIAction implements UIAction {
         AddSkillResponse response = service.execute(request);
         if (response.hasErrors()) {
             response.getErrors().forEach(e -> System.out.println(e.getField() + " " + e.getMessage()));
+            //to-do: response display logic
         } else if (response.isEmployeeSkillAdded()) {
-            System.out.printf("Skill %s is added\n", skill);
+            System.out.printf("Skill %s is added to this employee and common skill list\n", skill);
         } else {
-            System.out.printf("Skill %s is already added for this employee\n", skill);
+            System.out.printf("Skill %s is added for this employee\n", skill);
         }
     }
 
@@ -49,7 +50,6 @@ public class AddSkillUIAction implements UIAction {
                 valid = false;
             }
         }
-        //scanner.close();
         return id;
     }
 

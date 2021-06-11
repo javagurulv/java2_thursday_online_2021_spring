@@ -2,6 +2,7 @@ package lv.javaguru.java2.hrsystem.core.database;
 
 import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
+import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Component
 @Transactional
@@ -57,5 +59,19 @@ public class ORMEmployeeRepository {
         query.setParameter("first_name", name);
         query.setParameter("employee_title", emplTitle);
         return query.getResultList();
+    }
+
+    public Employee getEmployeeById(Long id) {
+        return sessionFactory.getCurrentSession().get(Employee.class, id);
+    }
+
+    //add skill to existing employee
+    //update DB record for employee
+    public void saveEmployeeSkill(Employee employee, Skill skill) {
+        Set<Skill> skills = employee.getSkills();
+        Set<Employee> employees = skill.getEmployees();
+        skills.add(skill);
+        employees.add(employee);
+        sessionFactory.getCurrentSession().update(employee);
     }
 }
