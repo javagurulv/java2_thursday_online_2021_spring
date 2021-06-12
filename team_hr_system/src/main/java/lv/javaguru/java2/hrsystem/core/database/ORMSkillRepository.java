@@ -1,5 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.database;
 
+import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -30,5 +31,13 @@ public class ORMSkillRepository {
 
     public boolean saveSkill(Skill skill) {
         return (long) sessionFactory.getCurrentSession().save(skill) != 0L;
+    }
+
+    //to-do
+    public List<Employee> getEmployeesBySkill(Skill skill) {
+        Query query = sessionFactory.getCurrentSession().createQuery("SELECT e FROM Skill skill JOIN " +
+                "skill.getEmployees e WHERE skill.id = : id");
+        query.setParameter("id", skill.getSkillId());
+        return query.getResultList();
     }
 }
