@@ -10,11 +10,11 @@ public class User implements Serializable {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "users")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "users")
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_role", columnDefinition = "enum", nullable = false)
+    @Column(name = "user_role", nullable = false)
     private UserRole userRole;
 
     @Column(name = "first_name", nullable = false)
