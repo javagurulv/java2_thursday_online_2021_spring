@@ -13,13 +13,17 @@ public class SearchEmployeesBySkillResponse extends CoreResponse{
         this.employeeSet = employeeSet;
     }
 
-    public SearchEmployeesBySkillResponse(List<CoreError> errors, List<Employee> employees) {
+    public SearchEmployeesBySkillResponse(List<CoreError> errors, Set<Employee> employeeSet) {
         super(errors);
-        this.employees = employees;
+        this.employeeSet = employeeSet;
     }
 
     public List<Employee> getEmployees() {
         return employees;
+    }
+
+    public void setEmployeeSet(Set<Employee> employeeSet) {
+        this.employeeSet = employeeSet;
     }
 
     public Set<Employee> getEmployeeSet() {

@@ -72,7 +72,7 @@ public class ORMEmployeeRepository {
         Set<Employee> employees = skill.getEmployees();
         skills.add(skill);
         employees.add(employee);
-       // sessionFactory.getCurrentSession().save(skill);
+       // sessionFactory.getCurrentSession().update(skill);
         sessionFactory.getCurrentSession().update(employee);
     }
 }

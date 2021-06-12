@@ -45,19 +45,6 @@ public class AddSkillService {
         return new AddSkillResponse(added);
     }
 
-    /*private boolean containsEmplSkill(EmployeeSkill employeeSkill) {
-        return employeeSkillsRepository.getAllEmplSkills()
-                .stream()
-                .anyMatch(eSkill -> eSkill.getEmployee().getId().equals(employeeSkill.getEmployee().getId()) &&
-                        eSkill.getSkill().getSkillId().equals(employeeSkill.getSkill().getSkillId()));
-    }
-
-    private boolean containsSkill(Skill skill) {
-        return skillRepository.getAllExistingSkills()
-                .stream()
-                .anyMatch(sk -> sk.getSkillName().equals(skill.getSkillName()));
-    }*/
-
     private boolean containsSkillToAdd(Skill skill) {
         return ormSkillRepository.getAllExistingSkills()
                 .stream()

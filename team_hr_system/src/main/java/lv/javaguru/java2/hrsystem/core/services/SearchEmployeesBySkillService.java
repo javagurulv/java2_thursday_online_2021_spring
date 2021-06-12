@@ -20,25 +20,20 @@ import static java.util.stream.Collectors.toList;
 public class SearchEmployeesBySkillService {
 
     @Autowired
-   // private EmployeeSkillsRepository employeeSkillsRepository;
+    // private EmployeeSkillsRepository employeeSkillsRepository;
     private ORMSkillRepository ormSkillRepository;
 
     @Autowired
     private SearchEmployeesBySkillRequestValidator validator;
 
-    //TO-DO!!
     public SearchEmployeesBySkillResponse execute(SearchEmployeesBySkillRequest request) {
         List<CoreError> errors = validator.validate(request);
         if (!errors.isEmpty()) {
             return new SearchEmployeesBySkillResponse(errors, null);
         }
-        Skill skillToSearch = new Skill(request.getSkillName());
-        Long skillId = ormSkillRepository.getSkillIdByName(skillToSearch);
-        skillToSearch.setSkillId(skillId);
-        Set<Employee> employees = skillToSearch.getEmployees();
-       // List<EmployeeSkill> employeesWithSkill = employeeSkillsRepository.getEmplSkillsBySkillName(skillToSearch);
-       // List<Employee> result = mapToEmployees(employeesWithSkill);
-        return new SearchEmployeesBySkillResponse( employees);
+        Skill skill = ormSkillRepository.getSkillByName(request.getSkillName());
+        Set<Employee> employees = skill.getEmployees();
+        return new SearchEmployeesBySkillResponse(employees);
     }
 
     private List<Employee> mapToEmployees(List<EmployeeSkill> employeeSkills) {

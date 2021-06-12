@@ -22,19 +22,12 @@ public class SearchEmployeesBySkillUIAction implements UIAction {
         SearchEmployeesBySkillRequest request = new SearchEmployeesBySkillRequest(skill);
         SearchEmployeesBySkillResponse response = service.execute(request);
         if (response.hasErrors()) {
-            response.getErrors().forEach(e -> System.out.println("Error: " + e.getField() + " " +
+            response.getErrors().forEach(e -> System.out.println(e.getField() + " " +
                     e.getMessage()));
         }
-      /*  else if (!response.getEmployees().isEmpty()) {
-            response.getEmployees().forEach(e -> System.out.println("Skill: " + request.getSkillName() + " : " +
-                    "Employee: " + e.getId() + " " + e.getName() + " " + e.getLastName()));
-        }*/
         else if (!response.getEmployeeSet().isEmpty()) {
             response.getEmployeeSet().forEach(e -> System.out.println("Employee id:" + e.getId() + " name: " + e.getName()
             + " last name: " + e.getLastName()));
-        }
-        else {
-            System.out.println("No employees with this skill");
         }
     }
 
