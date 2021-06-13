@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.Query;
 import java.util.List;
 
 @Component
@@ -17,16 +18,23 @@ public class OrmBetRepositoryImpl implements BetRepository{
 
     @Override
     public void addBet(Bet bet) {
+        sessionFactory.getCurrentSession().save(bet);
 
     }
 
     @Override
     public boolean deleteBetById(Long id) {
-        return false;
+        Query query = sessionFactory.getCurrentSession().createQuery(
+                "delete Bet where id = :id");
+        query.setParameter("id", id);
+        int result = query.executeUpdate();
+        return result == 1;
     }
 
     @Override
     public List<Bet> getAllBets() {
-        return null;
+        return sessionFactory.getCurrentSession()
+                .createQuery("SELECT b FROM Bet b", Bet.class)
+                .getResultList();
     }
 }
