@@ -20,21 +20,30 @@ public class AddBetUIAction implements UIAction {
     @Override
     public void execute() {
         if(userSession.isAuthorized()){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter item id,from lot list: ");
-        Long betId = scanner.nextLong();
-        System.out.println("Enter your bet: ");
-        BigDecimal betPrice = scanner.nextBigDecimal();
-        AddBetRequest request = new AddBetRequest(betId, betPrice);
-        AddBetResponse response = addBetService.execute(request);
-        if (response.hasErrors()) {
-            response.getErrors().forEach(coreError -> System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
-        } else {
-            System.out.println("Your bet was: " + response.getNewBet());
-            System.out.println("Your bet was added to list.");
-        }}
+			processAuthorizedUser();
+		}
         else {
-            System.out.println("Please log in first!");
-        }
+			processUnAuthorizedUser();
+		}
     }
+
+	private void processUnAuthorizedUser() {
+		System.out.println("Please log in first!");
+	}
+
+	private void processAuthorizedUser() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter item id,from lot list: ");
+		Long betId = scanner.nextLong();
+		System.out.println("Enter your bet: ");
+		BigDecimal betPrice = scanner.nextBigDecimal();
+		AddBetRequest request = new AddBetRequest(betId, betPrice);
+		AddBetResponse response = addBetService.execute(request);
+		if (response.hasErrors()) {
+			response.getErrors().forEach(coreError -> System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
+		} else {
+			System.out.println("Your bet was: " + response.getNewBet());
+			System.out.println("Your bet was added to list.");
+		}
+	}
 }

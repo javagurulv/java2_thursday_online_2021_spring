@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.jdbcrepos.EmployeeSkillsRepository;
+import lv.javaguru.java2.hrsystem.core.database.ORMSkillRepository;
 import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.domain.EmployeeSkill;
 import lv.javaguru.java2.hrsystem.core.domain.Skill;
@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Set;
 
 import static java.util.stream.Collectors.toList;
 
@@ -19,21 +20,20 @@ import static java.util.stream.Collectors.toList;
 public class SearchEmployeesBySkillService {
 
     @Autowired
-    private EmployeeSkillsRepository employeeSkillsRepository;
+    // private EmployeeSkillsRepository employeeSkillsRepository;
+    private ORMSkillRepository ormSkillRepository;
 
     @Autowired
     private SearchEmployeesBySkillRequestValidator validator;
-
 
     public SearchEmployeesBySkillResponse execute(SearchEmployeesBySkillRequest request) {
         List<CoreError> errors = validator.validate(request);
         if (!errors.isEmpty()) {
             return new SearchEmployeesBySkillResponse(errors, null);
         }
-        Skill skillToSearch = new Skill(request.getSkillName());
-        List<EmployeeSkill> employeesWithSkill = employeeSkillsRepository.getEmplSkillsBySkillName(skillToSearch);
-        List<Employee> result = mapToEmployees(employeesWithSkill);
-        return new SearchEmployeesBySkillResponse(null, result);
+        Skill skill = ormSkillRepository.getSkillByName(request.getSkillName());
+        Set<Employee> employees = skill.getEmployees();
+        return new SearchEmployeesBySkillResponse(employees);
     }
 
     private List<Employee> mapToEmployees(List<EmployeeSkill> employeeSkills) {

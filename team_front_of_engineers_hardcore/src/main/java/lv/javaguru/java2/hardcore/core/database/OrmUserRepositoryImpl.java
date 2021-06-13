@@ -6,7 +6,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -23,12 +22,20 @@ public class OrmUserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public Optional<User> getUserByLogin(String name) {
+    public Optional<User> getUserByLogin(String name){
         Query query = sessionFactory.getCurrentSession().createQuery(
                 "SELECT b FROM User b WHERE name = :name");
         query.setParameter("name", name);
-        User user = (User) query.getResultList().get(0);
-        return Optional.ofNullable(user);
+        List<User> users = query.getResultList();
+        if(users.size()>1){
+            System.out.println("\nSystem found more than one unique account!");
+            return Optional.empty();
+        }else if(users.size() == 1){
+            return Optional.of(users.get(0));
+        }else{
+            System.out.println("\nNo such login in database!");
+            return Optional.empty();
+        }
     }
 
     @Override

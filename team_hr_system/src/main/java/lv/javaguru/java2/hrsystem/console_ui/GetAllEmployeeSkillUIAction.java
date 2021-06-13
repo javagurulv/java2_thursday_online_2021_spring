@@ -26,8 +26,12 @@ public class GetAllEmployeeSkillUIAction implements UIAction {
             for (Map.Entry<Employee, Set<Skill>> entry : employeeSkillsMap.entrySet()) {
                 System.out.println("Employee ID: " + entry.getKey().getId() + " | name: " + entry.getKey().getName() + " | last name: " + entry.getKey().getLastName());
                 Set<Skill> skills = entry.getValue();
-                for (Skill skill : skills) {
-                    System.out.println("Skill ID: " + skill.getSkillId() + " | " + skill.getSkillName());
+                if (!skills.isEmpty()) {
+                    for (Skill skill : skills) {
+                        System.out.println("Skill ID: " + skill.getSkillId() + " | " + skill.getSkillName());
+                    }
+                } else {
+                    System.out.println("No skills added yet for this employee");
                 }
                 System.out.println("----------------------");
             }

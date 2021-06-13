@@ -31,4 +31,11 @@ public class ORMSkillRepository {
     public boolean saveSkill(Skill skill) {
         return (long) sessionFactory.getCurrentSession().save(skill) != 0L;
     }
+
+    public Skill getSkillByName(String name) {
+        Query query = sessionFactory.getCurrentSession().createQuery("SELECT s FROM Skill s " +
+                "WHERE skillName =: skillName");
+        query.setParameter("skillName", name);
+        return  (Skill) query.getSingleResult();
+    }
 }

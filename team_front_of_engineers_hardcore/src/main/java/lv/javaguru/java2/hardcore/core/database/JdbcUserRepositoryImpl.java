@@ -30,6 +30,7 @@ public class JdbcUserRepositoryImpl implements UserRepository {
         Object[] args = new Object[] {login};
         User user = jdbcTemplate.queryForObject(sql,args,new UserRowMapper());
         return Optional.ofNullable(user);
+
     }
 
 
