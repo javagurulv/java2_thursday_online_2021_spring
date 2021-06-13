@@ -12,10 +12,11 @@ import java.util.Scanner;
 @Component
 public class AuthorizeUserUIAction implements UIAction {
 
-    @Autowired
-    private AuthorizeUserService authorizeUserService;
-    @Autowired
-    private MainMenu mainMenu;
+    @Autowired private AuthorizeUserService authorizeUserService;
+
+    @Autowired private HRManagerMenu hrManagerMenu;
+
+//    @Autowired private AdminMenu adminMenu;
 
 
     @Override
@@ -34,15 +35,18 @@ public class AuthorizeUserUIAction implements UIAction {
             response.getErrors().forEach(coreError ->
                     System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage())
             );
+
         } else if (!response.getAuthorization().isEmpty() &&
                 response.getAuthorization().get().getUserRole().equals(UserRole.ADMIN)){
             System.out.println("Hello " + response.getAuthorization().get().getFirstName() + "!");
 
-            mainMenu.run();
+//            adminMenu.run();
 
         } else if (!response.getAuthorization().isEmpty() &&
         response.getAuthorization().get().getUserRole().equals(UserRole.HR_MANAGE)){
             System.out.println("Hello " + response.getAuthorization().get().getFirstName() +"!");
+
+            hrManagerMenu.run();
 
         }
     }
