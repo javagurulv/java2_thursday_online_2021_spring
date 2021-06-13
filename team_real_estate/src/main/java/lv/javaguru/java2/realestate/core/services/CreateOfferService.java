@@ -24,16 +24,17 @@ public class CreateOfferService {
         if (!errors.isEmpty()) {
             return new CreateOfferResponse(errors);
         }
-
-        Offer offer = new Offer(
-                createOfferRequest.getOfferType(),
-                createOfferRequest.getOfferCategory(),
-                createOfferRequest.getDescription(),
-                createOfferRequest.getPrice());
-
-        offerRepository.createOffer(offer);
-
+		Offer offer = buildOffer(createOfferRequest);
+		offerRepository.createOffer(offer);
         return new CreateOfferResponse(offer);
     }
+
+	private Offer buildOffer(CreateOfferRequest createOfferRequest) {
+		return new Offer(
+				createOfferRequest.getOfferType(),
+				createOfferRequest.getOfferCategory(),
+				createOfferRequest.getDescription(),
+				createOfferRequest.getPrice());
+	}
 
 }
