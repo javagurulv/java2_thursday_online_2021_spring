@@ -3,26 +3,22 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-
+import java.util.*;
 
 @Component
 public class LoginMenu {
 
     private Map<Integer, UIAction> menuNumberToUIActionMap;
 
-    @Autowired
-    public LoginMenu(List<UIAction> uiActions) {
+    @Autowired public LoginMenu(List<UIAction> uiActions) {
         menuNumberToUIActionMap = new HashMap<>();
         menuNumberToUIActionMap.put(1, findUIAction(uiActions, RegisterUserUIAction.class));
         menuNumberToUIActionMap.put(2, findUIAction(uiActions, AuthorizeUserUIAction.class));
         menuNumberToUIActionMap.put(3, findUIAction(uiActions, GetAllUsersUIAction.class));
-        menuNumberToUIActionMap.put(4, findUIAction(uiActions, ExitUIAction.class));
+        menuNumberToUIActionMap.put(4, findUIAction(uiActions, DeleteUserUIAction.class));
+        menuNumberToUIActionMap.put(5, findUIAction(uiActions, UpdateUserRoleUIAction.class));
+        menuNumberToUIActionMap.put(6, findUIAction(uiActions, ExitUIAction.class));
     }
-
 
     private UIAction findUIAction(List<UIAction> uiActions, Class uiActionClass) {
         return uiActions.stream()
@@ -31,12 +27,10 @@ public class LoginMenu {
                 .get();
     }
 
-
     private void printMenu() {
         System.out.println("Select menu option: ");
         menuNumberToUIActionMap.forEach((key, value) -> System.out.println(key + " - " + value));
     }
-
 
     private int getUserOption() {
         System.out.printf("Enter 1 to %d menu option to execute:\n", menuNumberToUIActionMap.size());
@@ -44,11 +38,9 @@ public class LoginMenu {
         return Integer.parseInt(scanner.nextLine());
     }
 
-
     private boolean checkUserInput(int input) {
         return input > 0 && input <= menuNumberToUIActionMap.size();
     }
-
 
     private void performAction(int userOption) {
         UIAction uiAction = menuNumberToUIActionMap.get(userOption);
@@ -56,7 +48,6 @@ public class LoginMenu {
             uiAction.execute();
         }
     }
-
 
     public void run() {
         while (true) {
