@@ -14,7 +14,7 @@ public class GetAllUsersUIAction implements UIAction{
     @Override
     public void execute() {
         System.out.println("\n" + "Users list:");
-//        GetAllUsersRequest request = new GetAllUsersRequest();
+
         GetAllUsersResponse response = getAllUsersService.execute();
         if (response.hasUsers()) {
             response.getUsers().stream().map(user -> user.getId()
