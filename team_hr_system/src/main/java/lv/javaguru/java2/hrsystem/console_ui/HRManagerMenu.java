@@ -3,18 +3,14 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 @Component
-public class MainMenu {
+public class HRManagerMenu {
 
     private Map<Integer, UIAction> menuNumberToUIActionMap;
 
-    @Autowired
-    public MainMenu(List<UIAction> uiActions) {
+    @Autowired public HRManagerMenu(List<UIAction> uiActions) {
         menuNumberToUIActionMap = new HashMap<>();
         menuNumberToUIActionMap.put(1, findUIAction(uiActions, AddEmployeeUIAction.class));
         menuNumberToUIActionMap.put(2, findUIAction(uiActions, AddEmployeeWithTitleUIAction.class));
