@@ -2,9 +2,7 @@ package lv.javaguru.java2.hrsystem.core.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "employee_titles")
@@ -21,8 +19,8 @@ public class EmployeeTitle implements Serializable {
     @Column(name = "title_description")
     private String description;
 
-    @OneToMany(mappedBy = "title")
-    private Set<Employee> employees = new HashSet<>();
+    //@OneToMany(mappedBy = "title")
+    //private Set<Employee> employees = new HashSet<>();
 
     public EmployeeTitle() {
     }

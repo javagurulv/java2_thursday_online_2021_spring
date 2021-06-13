@@ -27,7 +27,8 @@ public class Employee {
     @JoinColumn(name = "employee_title", referencedColumnName = "title")
     private EmployeeTitle title;
 
-    @ManyToMany
+    //to-do: does not work without eager
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "employee_skills",
             joinColumns = @JoinColumn(name = "empl_id"),

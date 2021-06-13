@@ -29,31 +29,41 @@ public class LoginService {
         if (!errors.isEmpty()) {
             return new LoginResponse(errors);
         }
-        Optional<User> userOptional = userRepository.getUserByLogin(request.getName());
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            if (user.getPassword().equals(request.getPassword())) {
-                userSession.setUserID(user.getUserId());
-                userSession.setAuthorized(true);
-                System.out.println("Welcome "+ user.getName());
-                System.out.println(user);
-                return new LoginResponse(user);
-            } else {
-                CoreError error = new CoreError("Password", "Password is incorrect");
-                List<CoreError> err = new ArrayList<>();
-                err.add(error);
-                return new LoginResponse(err);
-            }
-        } else {
-            CoreError error = new CoreError("Username", "There's no such user in database");
-            List<CoreError> err = new ArrayList<>();
-            err.add(error);
-            return new LoginResponse(err);
-
-        }
-
+        return userRepository.getUserByLogin(request.getName())
+				.map(user -> checkUserCredentials(request, user))
+				.orElseGet(this::buildUserNotFoundResponse);
     }
 
+	private LoginResponse buildUserNotFoundResponse() {
+		CoreError error = new CoreError("Username", "There's no such user in database");
+		List<CoreError> err = new ArrayList<>();
+		err.add(error);
+		return new LoginResponse(err);
+	}
+
+	private LoginResponse checkUserCredentials(LoginRequest request,
+											   User user) {
+		if (user.getPassword().equals(request.getPassword())) {
+			return authorizeUserAndBuildSuccessResponse(user);
+		} else {
+			return buildIncorrectUserPasswordResponse();
+		}
+	}
+
+	private LoginResponse authorizeUserAndBuildSuccessResponse(User user) {
+		userSession.setUserID(user.getUserId());
+		userSession.setAuthorized(true);
+		System.out.println("Welcome "+ user.getName());
+		System.out.println(user);
+		return new LoginResponse(user);
+	}
+
+	private LoginResponse buildIncorrectUserPasswordResponse() {
+		CoreError error = new CoreError("Password", "Password is incorrect");
+		List<CoreError> err = new ArrayList<>();
+		err.add(error);
+		return new LoginResponse(err);
+	}
 
 }
 

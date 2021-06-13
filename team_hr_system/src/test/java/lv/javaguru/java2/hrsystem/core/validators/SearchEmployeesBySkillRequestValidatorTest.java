@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hrsystem.core.validators;
+/*package lv.javaguru.java2.hrsystem.core.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesBySkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
@@ -36,4 +36,4 @@ public class SearchEmployeesBySkillRequestValidatorTest {
         SearchEmployeesBySkillRequest request = new SearchEmployeesBySkillRequest("DevOps");
         assertThat(validator.validate(request).isEmpty()).isTrue();
     }
-}
+}*/

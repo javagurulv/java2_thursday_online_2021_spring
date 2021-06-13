@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.UserRepository;
+import lv.javaguru.java2.hrsystem.core.database.ORMUserRepository;
 import lv.javaguru.java2.hrsystem.core.domain.User;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllUsersResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +12,10 @@ import java.util.List;
 public class GetAllUsersService {
 
     @Autowired
-    private UserRepository userRepository;
+    private ORMUserRepository ormUserRepository;
 
     public GetAllUsersResponse execute() {
-        List<User> userList = userRepository.getAllUsers();
+        List<User> userList = ormUserRepository.getAllUsers();
         return new GetAllUsersResponse(userList);
     }
 }

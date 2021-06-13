@@ -17,7 +17,8 @@ public class Skill {
     @Column(name = "skill_name", nullable = false, unique = true)
     private String skillName;
 
-    @ManyToMany(mappedBy = "skills")
+    //to-do: does not work without eager
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "skills")
     private Set<Employee> employees = new HashSet<>();
 
     public Skill(String skillName) {

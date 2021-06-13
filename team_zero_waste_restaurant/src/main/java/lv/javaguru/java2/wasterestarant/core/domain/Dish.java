@@ -7,6 +7,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "dish")
 public class Dish {
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +32,7 @@ public class Dish {
     private boolean isInActiveMenu;
 
 
-    private List<Ingredient> ingredientList;
+    //private List<Ingredient> ingredientList;
 
 
     public Dish(String name) {
@@ -46,15 +47,15 @@ public class Dish {
         this.price = price;
     }
 
-    public Dish(String name, String description, String type,
-                double weight, double price, List<Ingredient> ingredientList) {
-        this.name = name;
-        this.description = description;
-        this.type = type;
-        this.weight = weight;
-        this.price = price;
-        this.ingredientList = ingredientList;
-    }
+//    public Dish(String name, String description, String type,
+//                double weight, double price, List<Ingredient> ingredientList) {
+//        this.name = name;
+//        this.description = description;
+//        this.type = type;
+//        this.weight = weight;
+//        this.price = price;
+//        this.ingredientList = ingredientList;
+//    }
 
     public Dish() {
     }
@@ -107,9 +108,9 @@ public class Dish {
         this.dishID = dishID;
     }
 
-    public List<Ingredient> getIngredientList() {
-        return ingredientList;
-    }
+//    public List<Ingredient> getIngredientList() {
+//        return ingredientList;
+//    }
 
     public boolean isInActiveMenu() {
         return isInActiveMenu;
@@ -124,12 +125,12 @@ public class Dish {
         if (this == o) return true;
         if (!(o instanceof Dish)) return false;
         Dish dish = (Dish) o;
-        return Double.compare(dish.getWeight(), getWeight()) == 0 && Double.compare(dish.getPrice(), getPrice()) == 0 && getName().equals(dish.getName()) && getDescription().equals(dish.getDescription()) && getType().equals(dish.getType()) && getIngredientList().equals(dish.getIngredientList());
+        return Double.compare(dish.getWeight(), getWeight()) == 0 && Double.compare(dish.getPrice(), getPrice()) == 0 && getName().equals(dish.getName()) && getDescription().equals(dish.getDescription()) && getType().equals(dish.getType());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getDescription(), getType(), getWeight(), getPrice(), getIngredientList());
+        return Objects.hash(getName(), getDescription(), getType(), getWeight(), getPrice());
     }
 
     @Override
@@ -141,7 +142,6 @@ public class Dish {
                 ", type='" + type + '\'' +
                 ", weight=" + weight +
                 ", price=" + price +
-                ", ingredientList=" + ingredientList +
                 '}';
     }
 

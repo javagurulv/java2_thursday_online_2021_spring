@@ -1,6 +1,6 @@
 package lv.javaguru.java2.hrsystem.core.services.validators;
 
-import lv.javaguru.java2.hrsystem.core.database.EmployeeRepository;
+import lv.javaguru.java2.hrsystem.core.database.jdbcrepos.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,9 +1,8 @@
 package lv.javaguru.java2.hrsystem.core.services;
 
-import lv.javaguru.java2.hrsystem.core.database.EmployeeSkillsRepository;
-import lv.javaguru.java2.hrsystem.core.database.SkillRepository;
+import lv.javaguru.java2.hrsystem.core.database.ORMEmployeeRepository;
+import lv.javaguru.java2.hrsystem.core.database.ORMSkillRepository;
 import lv.javaguru.java2.hrsystem.core.domain.Employee;
-import lv.javaguru.java2.hrsystem.core.domain.EmployeeSkill;
 import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import lv.javaguru.java2.hrsystem.core.requests.AddSkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddSkillResponse;
@@ -18,46 +17,37 @@ import java.util.List;
 public class AddSkillService {
 
     @Autowired
-    private EmployeeSkillsRepository employeeSkillsRepository;
+    // private EmployeeSkillsRepository employeeSkillsRepository;
+    private ORMEmployeeRepository ormEmployeeRepository;
 
     @Autowired
-    private SkillRepository skillRepository;
+    //private SkillRepository skillRepository;
+    private ORMSkillRepository ormSkillRepository;
 
     @Autowired
     private AddSkillRequestValidator validator;
 
+    //to-do: adjust response type
     public AddSkillResponse execute(AddSkillRequest request) {
         List<CoreError> errors = validator.validate(request);
         if (!errors.isEmpty()) {
             return new AddSkillResponse(errors);
         }
+        Employee employee = ormEmployeeRepository.getEmployeeById(request.getEmployeeId());
         Skill skillToAdd = new Skill(request.getSkillName());
-        if (!containsSkill(skillToAdd)) {
-            skillRepository.addSkillToSkills(skillToAdd);
+        boolean added = false;
+        if (!containsSkillToAdd(skillToAdd)) {
+            added = ormSkillRepository.saveSkill(skillToAdd);
         }
-        Long skillId = skillRepository.getSkillIdByName(skillToAdd.getSkillName());
+        Long skillId = ormSkillRepository.getSkillIdByName(skillToAdd);
         skillToAdd.setSkillId(skillId);
-        boolean added;
-        EmployeeSkill employeeSkillToAdd = new EmployeeSkill(new Employee(request.getEmployeeId()), skillToAdd);
-        if (!containsEmplSkill(employeeSkillToAdd)) {
-            added = employeeSkillsRepository.addEmplSkill(employeeSkillToAdd);
-        }
-        else {
-            added = false;
-        }
+        ormEmployeeRepository.saveEmployeeSkill(employee, skillToAdd);
         return new AddSkillResponse(added);
     }
 
-    private boolean containsEmplSkill(EmployeeSkill employeeSkill) {
-        return employeeSkillsRepository.getAllEmplSkills()
+    private boolean containsSkillToAdd(Skill skill) {
+        return ormSkillRepository.getAllExistingSkills()
                 .stream()
-                .anyMatch(eSkill -> eSkill.getEmployee().getId().equals(employeeSkill.getEmployee().getId()) &&
-                        eSkill.getSkill().getSkillId().equals(employeeSkill.getSkill().getSkillId()));
-    }
-
-    private boolean containsSkill(Skill skill) {
-        return skillRepository.getAllExistingSkills()
-                .stream()
-                .anyMatch(sk -> sk.getSkillName().equals(skill.getSkillName()));
+                .anyMatch(s -> s.getSkillName().equals(skill.getSkillName()));
     }
 }

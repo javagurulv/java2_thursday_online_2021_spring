@@ -40,7 +40,7 @@ public class SearchEmployeesUIAction implements UIAction {
 
         Paging paging = new Paging(pageNumber, pageSize);
 
-        SearchEmployeesRequest request = new SearchEmployeesRequest(title.toUpperCase(), name, ordering, paging);
+        SearchEmployeesRequest request = new SearchEmployeesRequest(title, name, ordering, paging);
         SearchEmployeesResponse response = service.execute(request);
 
         List<Employee> employees = response.getEmployees();
