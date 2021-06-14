@@ -10,12 +10,14 @@ import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 @Component
+@Transactional
 public class SearchIngredientService {
 
     @Value("${search.ordering.enabled}")

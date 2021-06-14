@@ -7,11 +7,13 @@ import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.product.RemoveProductResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 //AndrejsB
 @Component
+@Transactional
 public class RemoveProductService {
 
     @Autowired

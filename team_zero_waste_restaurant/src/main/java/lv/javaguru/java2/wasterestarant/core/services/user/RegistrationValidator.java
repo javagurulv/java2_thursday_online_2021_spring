@@ -13,18 +13,11 @@ public class RegistrationValidator {
     List<CoreError> errors = new ArrayList<>();
 
     public List<CoreError> validate(RegistrationRequest request) {
-        validateUserRole(request).ifPresent(errors::add);
         validateName(request).ifPresent(errors::add);
         validateSurname(request).ifPresent(errors::add);
         validateEmail(request).ifPresent(errors::add);
         validatePassword(request).ifPresent(errors::add);
         return errors;
-    }
-
-    private Optional<CoreError> validateUserRole(RegistrationRequest request) {
-        return (request.getUserRole() == null)
-                ? Optional.of(new CoreError("User role", "Must not be empty"))
-                : Optional.empty();
     }
 
     private Optional<CoreError> validateName(RegistrationRequest request) {

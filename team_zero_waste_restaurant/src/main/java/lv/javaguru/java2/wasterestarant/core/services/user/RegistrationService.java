@@ -2,6 +2,7 @@ package lv.javaguru.java2.wasterestarant.core.services.user;
 
 import lv.javaguru.java2.wasterestarant.core.database.user.UserRepository;
 import lv.javaguru.java2.wasterestarant.core.domain.User;
+import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
 import lv.javaguru.java2.wasterestarant.core.requests.user.RegistrationRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.user.RegistrationResponse;
@@ -10,8 +11,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+import static lv.javaguru.java2.wasterestarant.core.domain.UserRole.CLIENT;
+
 @Component
 public class RegistrationService {
+    public static final UserRole userRole = CLIENT;
+
     @Autowired
     private UserRepository repository;
     @Autowired
@@ -23,7 +28,7 @@ public class RegistrationService {
             return new RegistrationResponse(errors);
         }
 
-        User user = new User(request.getUserRole(),
+        User user = new User(userRole,
                             request.getName(),
                             request.getSurname(),
                             request.getEmail(),

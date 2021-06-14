@@ -6,11 +6,13 @@ import lv.javaguru.java2.wasterestarant.core.responses.GetRestaurantMenuResponse
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 //Nataliya
 @Component
+@Transactional
 public class GetRestaurantMenuService {
     @Autowired
     private Database database;

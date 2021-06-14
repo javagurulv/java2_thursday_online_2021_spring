@@ -7,11 +7,13 @@ import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.user.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Transactional
 public class LoginService {
     @Autowired
     private UserRepository repository;
@@ -31,7 +33,7 @@ public class LoginService {
     private List<User> isUserRegistered(LoginRequest request){
         List<User> users = new ArrayList<>();
         if(request.isNameProvided() && request.isPasswordProvided()){
-            repository.findUserByNameAndPassword(request.getName(), request.getPassword());
+            repository.findUserByNameAndPassword(request.getEmail(), request.getPassword());
         }
         return users;
     }

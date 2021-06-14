@@ -10,14 +10,15 @@ import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//Elena
 @Component
+@Transactional
 public class SearchDishesService {
 
     @Value("${search.ordering.enabled}")

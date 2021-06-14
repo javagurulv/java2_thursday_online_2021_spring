@@ -6,10 +6,12 @@ import lv.javaguru.java2.wasterestarant.core.responses.dish.GetAllDishesResponse
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-//Elena
+
 @Component
+@Transactional
 public class GetAllDishesService {
 
     @Autowired

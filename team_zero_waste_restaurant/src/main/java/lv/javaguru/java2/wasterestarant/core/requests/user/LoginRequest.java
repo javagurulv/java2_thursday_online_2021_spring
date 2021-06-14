@@ -1,16 +1,16 @@
 package lv.javaguru.java2.wasterestarant.core.requests.user;
 
 public class LoginRequest {
-    private String name;
+    private String email;
     private String password;
 
-    public LoginRequest(String name, String password) {
-        this.name = name;
+    public LoginRequest(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getEmail() {
+        return email;
     }
 
     public String getPassword() {
@@ -18,10 +18,10 @@ public class LoginRequest {
     }
 
     public boolean isNameProvided() {
-        return this.name != null && !this.name.isEmpty();
+        return this.email != null && !this.email.isEmpty();
     }
 
     public boolean isPasswordProvided() {
-        return this.name != null && !this.name.isEmpty();
+        return this.password != null && !this.password.isEmpty();
     }
 }

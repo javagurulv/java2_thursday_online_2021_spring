@@ -14,7 +14,6 @@ import static lv.javaguru.java2.wasterestarant.core.domain.UserRole.CLIENT;
 
 @Component
 public class RegistrationUIAction implements UIAction {
-    public static final UserRole userRole = CLIENT;
     @Autowired
     private RegistrationService registrationService;
 
@@ -30,7 +29,7 @@ public class RegistrationUIAction implements UIAction {
         System.out.println("Enter your password: ");
         String password = scanner.nextLine();
 
-        RegistrationRequest request = new RegistrationRequest(userRole, name, surname, email, password);
+        RegistrationRequest request = new RegistrationRequest(name, surname, email, password);
         RegistrationResponse response = registrationService.execute(request);
 
         if (response.hasErrors()) {
