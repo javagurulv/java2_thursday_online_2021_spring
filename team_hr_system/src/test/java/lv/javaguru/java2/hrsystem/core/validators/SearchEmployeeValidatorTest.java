@@ -4,7 +4,7 @@ import lv.javaguru.java2.hrsystem.core.requests.Ordering;
 import lv.javaguru.java2.hrsystem.core.requests.Paging;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesRequestValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.employee.SearchEmployeesRequestValidator;
 import org.junit.Test;
 
 import java.util.List;

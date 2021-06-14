@@ -2,7 +2,7 @@
 
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesBySkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.services.validators.SearchEmployeesBySkillRequestValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.employee.SearchEmployeesBySkillRequestValidator;
 import org.junit.Test;
 
 import java.util.ArrayList;

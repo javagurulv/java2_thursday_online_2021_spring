@@ -5,6 +5,7 @@ import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import lv.javaguru.java2.hrsystem.core.requests.GetAllEmployeeSkillsRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllEmployeeSkillsResponse;
+import lv.javaguru.java2.hrsystem.core.services.skill.GetAllEmployeeSkillsService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

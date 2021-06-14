@@ -4,7 +4,7 @@ import lv.javaguru.java2.hrsystem.core.requests.Ordering;
 import lv.javaguru.java2.hrsystem.core.requests.Paging;
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesResponse;
-import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesService;
+import lv.javaguru.java2.hrsystem.core.services.employee.SearchEmployeesService;
 import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

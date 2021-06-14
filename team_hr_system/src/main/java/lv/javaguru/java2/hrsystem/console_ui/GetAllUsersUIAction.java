@@ -1,7 +1,7 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
 import lv.javaguru.java2.hrsystem.core.responses.GetAllUsersResponse;
-import lv.javaguru.java2.hrsystem.core.services.GetAllUsersService;
+import lv.javaguru.java2.hrsystem.core.services.user.GetAllUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

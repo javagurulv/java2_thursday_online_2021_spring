@@ -2,7 +2,7 @@ package lv.javaguru.java2.hrsystem.console_ui;
 
 import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AuthorizeUserResponse;
-import lv.javaguru.java2.hrsystem.core.services.AuthorizeUserService;
+import lv.javaguru.java2.hrsystem.core.services.user.AuthorizeUserService;
 import lv.javaguru.java2.hrsystem.core.domain.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

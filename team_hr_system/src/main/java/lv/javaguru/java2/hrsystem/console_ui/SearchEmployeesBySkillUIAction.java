@@ -2,7 +2,7 @@ package lv.javaguru.java2.hrsystem.console_ui;
 
 import lv.javaguru.java2.hrsystem.core.requests.SearchEmployeesBySkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.SearchEmployeesBySkillResponse;
-import lv.javaguru.java2.hrsystem.core.services.SearchEmployeesBySkillService;
+import lv.javaguru.java2.hrsystem.core.services.employee.SearchEmployeesBySkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,8 +26,8 @@ public class SearchEmployeesBySkillUIAction implements UIAction {
                     e.getMessage()));
         }
         else if (!response.getEmployeeSet().isEmpty()) {
-            response.getEmployeeSet().forEach(e -> System.out.println("Employee id:" + e.getId() + " name: " + e.getName()
-            + " last name: " + e.getLastName()));
+            response.getEmployeeSet().forEach(e -> System.out.println("Employee id :" + e.getId() + " | name: " + e.getName()
+            + " | last name: " + e.getLastName()));
         }
     }
 

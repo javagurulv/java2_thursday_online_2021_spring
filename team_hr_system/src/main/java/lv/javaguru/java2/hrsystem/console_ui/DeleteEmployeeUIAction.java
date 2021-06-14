@@ -2,7 +2,7 @@ package lv.javaguru.java2.hrsystem.console_ui;
 
 import lv.javaguru.java2.hrsystem.core.requests.DeleteEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.DeleteEmployeeResponse;
-import lv.javaguru.java2.hrsystem.core.services.DeleteEmployeeService;
+import lv.javaguru.java2.hrsystem.core.services.employee.DeleteEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

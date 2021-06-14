@@ -7,9 +7,9 @@
 //import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
 //import lv.javaguru.java2.hrsystem.core.requests.RegisterUserRequest;
 //import lv.javaguru.java2.hrsystem.core.responses.GetAllUsersResponse;
-//import lv.javaguru.java2.hrsystem.core.services.AuthorizeUserService;
-//import lv.javaguru.java2.hrsystem.core.services.GetAllUsersService;
-//import lv.javaguru.java2.hrsystem.core.services.RegisterUserService;
+//import lv.javaguru.java2.hrsystem.core.services.user.AuthorizeUserService;
+//import lv.javaguru.java2.hrsystem.core.services.user.GetAllUsersService;
+//import lv.javaguru.java2.hrsystem.core.services.user.RegisterUserService;
 //import org.junit.Before;
 //import org.junit.Test;
 //import org.springframework.context.ApplicationContext;

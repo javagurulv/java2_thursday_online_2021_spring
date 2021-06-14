@@ -2,7 +2,7 @@ package lv.javaguru.java2.hrsystem.core.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.services.validators.AuthorizeUserValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.user.AuthorizeUserValidator;
 import org.junit.Test;
 
 import java.util.List;

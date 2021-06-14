@@ -4,7 +4,7 @@ import lv.javaguru.java2.hrsystem.core.domain.Employee;
 import lv.javaguru.java2.hrsystem.core.domain.Skill;
 import lv.javaguru.java2.hrsystem.core.requests.GetAllEmployeeSkillsRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllEmployeeSkillsResponse;
-import lv.javaguru.java2.hrsystem.core.services.GetAllEmployeeSkillsService;
+import lv.javaguru.java2.hrsystem.core.services.skill.GetAllEmployeeSkillsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

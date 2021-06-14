@@ -2,7 +2,7 @@ package lv.javaguru.java2.hrsystem.console_ui;
 
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeTitleRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddEmployeeTitleResponse;
-import lv.javaguru.java2.hrsystem.core.services.AddEmployeeTitleService;
+import lv.javaguru.java2.hrsystem.core.services.title.AddEmployeeTitleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

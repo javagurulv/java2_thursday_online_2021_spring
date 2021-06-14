@@ -2,7 +2,7 @@ package lv.javaguru.java2.hrsystem.core.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.DeleteEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.services.validators.DeleteEmployeeRequestValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.employee.DeleteEmployeeRequestValidator;
 import org.junit.Test;
 
 import java.util.List;

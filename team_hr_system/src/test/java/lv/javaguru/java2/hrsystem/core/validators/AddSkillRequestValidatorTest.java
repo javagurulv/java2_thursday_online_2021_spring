@@ -2,8 +2,8 @@ package lv.javaguru.java2.hrsystem.core.validators;
 
 import lv.javaguru.java2.hrsystem.core.requests.AddSkillRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.services.validators.AddSkillRequestValidator;
-import lv.javaguru.java2.hrsystem.core.services.validators.EmployeeValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.skill.AddSkillRequestValidator;
+import lv.javaguru.java2.hrsystem.core.services.validators.employee.EmployeeValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

@@ -3,7 +3,7 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import lv.javaguru.java2.hrsystem.core.domain.UserRole;
 import lv.javaguru.java2.hrsystem.core.requests.UpdateUserRoleRequest;
 import lv.javaguru.java2.hrsystem.core.responses.UpdateUserRoleResponse;
-import lv.javaguru.java2.hrsystem.core.services.UpdateUserRoleService;
+import lv.javaguru.java2.hrsystem.core.services.user.UpdateUserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -3,7 +3,7 @@ package lv.javaguru.java2.hrsystem.console_ui;
 import lv.javaguru.java2.hrsystem.core.domain.EmployeeTitle;
 import lv.javaguru.java2.hrsystem.core.requests.GetAllTitlesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllTitlesResponse;
-import lv.javaguru.java2.hrsystem.core.services.GetAllTitlesService;
+import lv.javaguru.java2.hrsystem.core.services.title.GetAllTitlesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
