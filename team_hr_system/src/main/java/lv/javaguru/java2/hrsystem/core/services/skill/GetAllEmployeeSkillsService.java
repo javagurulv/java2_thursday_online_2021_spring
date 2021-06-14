@@ -26,8 +26,6 @@ public class GetAllEmployeeSkillsService {
         for (Employee employee : employees) {
             employeeSkillsMap.put(employee, employee.getSkills());
         }
-        //List<EmployeeSkill> employeeSkills = employeeSkillsRepository.getAllEmplSkills();
-        //return new GetAllEmployeeSkillsResponse(employeeSkills);
         return new GetAllEmployeeSkillsResponse(employeeSkillsMap);
     }
 }

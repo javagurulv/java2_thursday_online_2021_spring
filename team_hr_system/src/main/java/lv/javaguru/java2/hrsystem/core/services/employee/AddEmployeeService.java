@@ -28,8 +28,6 @@ public class AddEmployeeService {
         }
 
         Employee employee = new Employee(request.getName(), request.getLastName(), request.getAge());
-        // BigInteger id = employeeRepository.saveEmployeeAndReturnID(employee);
-        // employee.setId(id.longValue());
         Long id = ormEmployeeRepository.saveEmployee(employee);
         employee.setId(id);
         return new AddEmployeeResponse(employee);

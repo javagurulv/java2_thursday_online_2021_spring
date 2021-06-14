@@ -25,7 +25,6 @@ public class DeleteEmployeeService {
         if (!errors.isEmpty()) {
             return new DeleteEmployeeResponse(errors);
         }
-        //boolean deleted = employeeRepository.deleteEmployee(deleteEmployeeRequest.getId());
         boolean deleted = ormEmployeeRepository.deleteEmployee(deleteEmployeeRequest.getId());
         return new DeleteEmployeeResponse(deleted);
     }
