@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.core.services.acceptancetests;
+package lv.javaguru.java2.wasterestarant.acceptancetests;
 
 import lv.javaguru.java2.wasterestarant.DatabaseCleaner;
 import lv.javaguru.java2.wasterestarant.config.RestaurantApplicationConfiguration;

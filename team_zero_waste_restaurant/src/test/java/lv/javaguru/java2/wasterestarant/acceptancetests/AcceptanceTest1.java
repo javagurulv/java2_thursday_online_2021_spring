@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.core.services.acceptancetests;
+package lv.javaguru.java2.wasterestarant.acceptancetests;
 
 import lv.javaguru.java2.wasterestarant.config.RestaurantApplicationConfiguration;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
@@ -15,7 +15,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import static org.junit.Assert.assertEquals;
 
-//Elena
 public class AcceptanceTest1 {
 
     private ApplicationContext applicationContext;

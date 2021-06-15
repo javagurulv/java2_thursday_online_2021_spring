@@ -1,19 +1,4 @@
-package lv.javaguru.java2.wasterestarant.core.services.acceptancetests;
-
-import lv.javaguru.java2.wasterestarant.DatabaseCleaner;
-import lv.javaguru.java2.wasterestarant.config.RestaurantApplicationConfiguration;
-import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
-import lv.javaguru.java2.wasterestarant.core.requests.Paging;
-import lv.javaguru.java2.wasterestarant.core.requests.ingredient.AddDishIngredientRequest;
-import lv.javaguru.java2.wasterestarant.core.requests.ingredient.SearchIngredientRequest;
-import lv.javaguru.java2.wasterestarant.core.responses.ingredient.SearchIngredientResponse;
-import lv.javaguru.java2.wasterestarant.core.services.ingredient.AddDishIngredientService;
-import lv.javaguru.java2.wasterestarant.core.services.ingredient.SearchIngredientService;
-import lv.javaguru.java2.wasterestarant.dependency_injection.DIApplicationContextBuilder;
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+package lv.javaguru.java2.wasterestarant.acceptancetests;
 
 import static org.junit.Assert.assertEquals;
 

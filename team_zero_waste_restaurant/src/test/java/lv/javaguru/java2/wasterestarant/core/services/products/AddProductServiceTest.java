@@ -4,7 +4,6 @@ import lv.javaguru.java2.wasterestarant.core.database.Database;
 import lv.javaguru.java2.wasterestarant.core.requests.product.AddProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.product.AddProductResponse;
-import matchers.ProductMatcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -21,7 +20,6 @@ import static org.mockito.ArgumentMatchers.any;
 
 
 import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.argThat;
 
 //AndrejsB
 @RunWith(MockitoJUnitRunner.class)

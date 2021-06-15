@@ -1,4 +1,4 @@
-package matchers;
+package lv.javaguru.java2.wasterestarant.matchers;
 
 import lv.javaguru.java2.wasterestarant.core.domain.Product;
 import org.mockito.ArgumentMatcher;
