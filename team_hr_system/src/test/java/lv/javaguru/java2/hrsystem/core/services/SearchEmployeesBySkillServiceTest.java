@@ -19,6 +19,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.List;
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -54,5 +55,13 @@ public class SearchEmployeesBySkillServiceTest {
         SearchEmployeesBySkillResponse response = service.execute(request);
         assertThat(response.getEmployeeSet()).isEqualTo(Set.of(new Employee
                 (1L, "Aaa", "Bbb", 22, new EmployeeTitle("dev"))));
+    }
+
+    @Test
+    public void testNotYetAddedSkill() {
+        SearchEmployeesBySkillRequest request = new SearchEmployeesBySkillRequest("Java");
+        Mockito.when(requestValidator.validate(request)).thenReturn(List.of(new CoreError("this skill", "is not added yet!")));
+        SearchEmployeesBySkillResponse response = service.execute(request);
+        assertThat(response.getErrors()).isEqualTo(List.of(new CoreError("this skill", "is not added yet!")));
     }
 }
