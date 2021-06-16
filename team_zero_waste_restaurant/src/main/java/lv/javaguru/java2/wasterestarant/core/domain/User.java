@@ -21,9 +21,6 @@ public class User {
     @Column(name = "surname", nullable = false)
     private String surname;
 
-    @Column(name = "personal_code", nullable = false)
-    private String personal_code;
-
     @Column(name = "email", nullable = false)
     private String email;
 
@@ -40,11 +37,10 @@ public class User {
         this.password = password;
     }
 
-    public User(UserRole role, String name, String surname,String personal_code, String email, String password) {
+    public User(UserRole role, String name, String surname, String email, String password) {
         this.role = role;
         this.name = name;
         this.surname = surname;
-        this.personal_code = personal_code;
         this.email = email;
         this.password = password;
     }
@@ -86,14 +82,6 @@ public class User {
         this.surname = surname;
     }
 
-    public String getPersonal_code() {
-        return personal_code;
-    }
-
-    public void setPersonal_code(String personal_code) {
-        this.personal_code = personal_code;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -110,20 +98,12 @@ public class User {
         this.password = password;
     }
 
-    /*@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return role == user.role && name.equals(user.name) && Objects.equals(surname, user.surname) && email.equals(user.email);
-    }*/
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return role == user.role && name.equals(user.name) && surname.equals(user.surname) && personal_code.equals(user.personal_code) && email.equals(user.email);
+        return role == user.role && name.equals(user.name) && Objects.equals(surname, user.surname) && email.equals(user.email);
     }
 
     @Override

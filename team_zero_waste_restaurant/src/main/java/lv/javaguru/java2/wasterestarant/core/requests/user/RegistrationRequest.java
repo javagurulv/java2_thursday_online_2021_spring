@@ -1,7 +1,5 @@
 package lv.javaguru.java2.wasterestarant.core.requests.user;
 
-import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
-
 public class RegistrationRequest {
     private String name;
     private String surname;

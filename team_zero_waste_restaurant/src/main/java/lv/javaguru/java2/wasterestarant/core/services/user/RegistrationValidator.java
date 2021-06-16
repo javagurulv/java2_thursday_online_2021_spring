@@ -1,7 +1,9 @@
 package lv.javaguru.java2.wasterestarant.core.services.user;
 
+import lv.javaguru.java2.wasterestarant.core.database.user.UserRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.user.RegistrationRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.SQLIntegrityConstraintViolationException;
@@ -11,12 +13,15 @@ import java.util.Optional;
 
 @Component
 public class RegistrationValidator {
+    @Autowired
+    private UserRepository repository;
+
     List<CoreError> errors = new ArrayList<>();
 
     public List<CoreError> validate(RegistrationRequest request) {
         validateName(request).ifPresent(errors::add);
         validateSurname(request).ifPresent(errors::add);
-        validatePersonal_Code(request).ifPresent(errors::add);
+        //validatePersonal_Code(request).ifPresent(errors::add);
         validateEmail(request).ifPresent(errors::add);
         validatePassword(request).ifPresent(errors::add);
         return errors;
@@ -34,28 +39,29 @@ public class RegistrationValidator {
                 : Optional.empty();
     }
 
-    private Optional<CoreError> validatePersonal_Code(RegistrationRequest request) {
-
-        if (request.getPersonal_code() == null || request.getPersonal_code().isEmpty()) {
-                return Optional.of(new CoreError("Personal code", "Must not be empty")); }
-        else if(request.getPersonal_code().length() < 12) {
-            return Optional.of(new CoreError("Personal code", "Must be 12 characters long"));
-        }
-        else if(request.getPersonal_code().length() > 12) {
-            return Optional.of(new CoreError("Personal code", "Must be 12 characters long"));
-        }
-        else if(!request.getPersonal_code().contains("-")) {
-            return Optional.of(new CoreError("Personal code", "Must contain '-' "));
-        }
-
-                return Optional.empty();
-    }
+//    private Optional<CoreError> validatePersonal_Code(RegistrationRequest request) {
+//
+//        if (request.getPersonal_code() == null || request.getPersonal_code().isEmpty()) {
+//            return Optional.of(new CoreError("Personal code", "Must not be empty"));
+//        } else if (request.getPersonal_code().length() < 12) {
+//            return Optional.of(new CoreError("Personal code", "Must be 12 characters long"));
+//        } else if (request.getPersonal_code().length() > 12) {
+//            return Optional.of(new CoreError("Personal code", "Must be 12 characters long"));
+//        } else if (!request.getPersonal_code().contains("-")) {
+//            return Optional.of(new CoreError("Personal code", "Must contain '-' "));
+//        } else if (!repository.findUserByEmail(request.getEmail()).isEmpty()) {
+//            return Optional.of(new CoreError("E-mail","User with e-mail " + request.getEmail() + "already exists!"));
+//        }
+//        return Optional.empty();
+//    }
 
     private Optional<CoreError> validateEmail(RegistrationRequest request) {
         if (request.getEmail() == null || request.getEmail().isEmpty()) {
             return Optional.of(new CoreError("Email", "Must not be empty"));
         } else if (!request.getEmail().contains("@")) {
             return Optional.of(new CoreError("Email", "Email must contain @ symbol"));
+        } else if (!repository.findUserByEmail(request.getEmail()).isEmpty()) {
+            return Optional.of(new CoreError("E-mail","User with e-mail " + request.getEmail() + "already exists!"));
         }
         return Optional.empty();
     }
