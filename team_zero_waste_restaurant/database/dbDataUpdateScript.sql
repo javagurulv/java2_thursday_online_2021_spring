@@ -55,3 +55,9 @@ ADD FOREIGN KEY (user_role) REFERENCES user_role (id);
 
 ALTER TABLE dish
 ADD COLUMN isInActiveMenu BIT DEFAULT 1;
+
+ALTER TABLE user_list
+ADD COLUMN personal_code VARCHAR(12) NOT NULL UNIQUE;
+
+
+CREATE INDEX idx_user_list_name_surname_personal_code on user_list (name, surname, personal_code);

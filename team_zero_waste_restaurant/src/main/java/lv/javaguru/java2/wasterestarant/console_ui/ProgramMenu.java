@@ -47,7 +47,9 @@ public class ProgramMenu {
         menuNumberToUIActionMap.put(12, findUIActions(uiActions, GetAllOrdersUIAction.class));
         menuNumberToUIActionMap.put(13, findUIActions(uiActions,GetRestaurantMenuUIAction.class));
         menuNumberToUIActionMap.put(14, findUIActions(uiActions, CreateNewOrderUIAction.class));
-        menuNumberToUIActionMap.put(15, findUIActions(uiActions,ExitUIAction.class));
+        menuNumberToUIActionMap.put(15, findUIActions(uiActions,RegistrationUIAction.class));
+        menuNumberToUIActionMap.put(16, findUIActions(uiActions,LoginUIAction.class));
+        menuNumberToUIActionMap.put(17, findUIActions(uiActions, ExitUIAction.class));
 
 
     }
@@ -82,7 +84,9 @@ public class ProgramMenu {
         System.out.println("12. Show all orders in the list");
         System.out.println("13. Show full restaurant menu list");
         System.out.println("14. Create new order");
-        System.out.println("15. Exit");
+        System.out.println("15. Register");
+        System.out.println("16. Log In");
+        System.out.println("17. Exit");
         System.out.println();
     }
 
