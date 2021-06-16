@@ -1,0 +1,31 @@
+.aboutUsTXT {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Effra-Medium, Arial, Geneva, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bolder;
+  font-size: 70px;
+  color: #e2e2e2;
+}
+
+h1 {
+  text-align: center;
+  clear: both;
+  color: #262637;
+  font-size: 30px;
+  font: normal normal effra, Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  clear: both;
+  color: #262637;
+  font-size: 24px;
+  font: normal normal effra, Arial, sans-serif;
+}
+
+p {
+  text-align: center;
+}

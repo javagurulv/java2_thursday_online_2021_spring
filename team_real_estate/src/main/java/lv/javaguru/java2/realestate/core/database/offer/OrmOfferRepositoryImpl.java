@@ -1,6 +1,5 @@
 package lv.javaguru.java2.realestate.core.database.offer;
 
-import lv.javaguru.java2.realestate.core.database.user.OfferRepository;
 import lv.javaguru.java2.realestate.core.domain.Offer;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
 import org.hibernate.SessionFactory;

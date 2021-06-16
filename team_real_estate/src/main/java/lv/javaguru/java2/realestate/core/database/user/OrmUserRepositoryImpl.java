@@ -1,6 +1,5 @@
 package lv.javaguru.java2.realestate.core.database.user;
 
-import lv.javaguru.java2.realestate.core.database.offer.UserRepository;
 import lv.javaguru.java2.realestate.core.domain.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

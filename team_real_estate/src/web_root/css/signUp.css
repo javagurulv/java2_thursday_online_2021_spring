@@ -1,0 +1,25 @@
+.signUpTXT {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Effra-Medium, Arial, Geneva, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bolder;
+  font-size: 70px;
+  color: #e2e2e2;
+}
+
+.bottomPageBody {
+  height: 500px;
+  width: auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding-right: 45px;
+}

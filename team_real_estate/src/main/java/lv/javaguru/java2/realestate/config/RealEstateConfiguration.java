@@ -3,6 +3,9 @@ package lv.javaguru.java2.realestate.config;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +20,8 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Properties;
 
+@SpringBootApplication
+@EnableAutoConfiguration(exclude = { HibernateJpaAutoConfiguration.class })
 @Configuration
 @ComponentScan(basePackages = "lv.javaguru.java2.realestate")
 @PropertySource(value = "classpath:application.properties")

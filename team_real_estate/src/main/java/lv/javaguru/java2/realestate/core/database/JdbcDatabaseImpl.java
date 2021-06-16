@@ -1,13 +1,12 @@
 package lv.javaguru.java2.realestate.core.database;
 
-import lv.javaguru.java2.realestate.core.database.offer.UserRepository;
-import lv.javaguru.java2.realestate.core.database.user.OfferRepository;
+import lv.javaguru.java2.realestate.core.database.user.UserRepository;
+import lv.javaguru.java2.realestate.core.database.offer.OfferRepository;
 import lv.javaguru.java2.realestate.core.domain.Offer;
 import lv.javaguru.java2.realestate.core.domain.User;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;

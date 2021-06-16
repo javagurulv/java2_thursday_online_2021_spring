@@ -1,4 +1,4 @@
-package lv.javaguru.java2.realestate.core.database.offer;
+package lv.javaguru.java2.realestate.core.database.user;
 
 import lv.javaguru.java2.realestate.core.domain.User;
 
