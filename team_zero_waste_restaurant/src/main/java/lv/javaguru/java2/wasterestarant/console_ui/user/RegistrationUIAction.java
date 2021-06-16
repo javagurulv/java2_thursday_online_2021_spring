@@ -24,12 +24,14 @@ public class RegistrationUIAction implements UIAction {
         String name = scanner.nextLine();
         System.out.println("Enter your surname: ");
         String surname = scanner.nextLine();
+        System.out.println("Enter your personal code: ");
+        String personal_code = scanner.nextLine();
         System.out.println("Enter your e-mail: ");
         String email = scanner.nextLine();
         System.out.println("Enter your password: ");
         String password = scanner.nextLine();
 
-        RegistrationRequest request = new RegistrationRequest(name, surname, email, password);
+        RegistrationRequest request = new RegistrationRequest(name, surname,personal_code, email, password);
         RegistrationResponse response = registrationService.execute(request);
 
         if (response.hasErrors()) {

@@ -4,6 +4,7 @@ import lv.javaguru.java2.wasterestarant.core.requests.user.RegistrationRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import org.springframework.stereotype.Component;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +16,7 @@ public class RegistrationValidator {
     public List<CoreError> validate(RegistrationRequest request) {
         validateName(request).ifPresent(errors::add);
         validateSurname(request).ifPresent(errors::add);
+        validatePersonal_Code(request).ifPresent(errors::add);
         validateEmail(request).ifPresent(errors::add);
         validatePassword(request).ifPresent(errors::add);
         return errors;
@@ -30,6 +32,23 @@ public class RegistrationValidator {
         return (request.getSurname() == null || request.getSurname().isEmpty())
                 ? Optional.of(new CoreError("Surname", "Must not be empty"))
                 : Optional.empty();
+    }
+
+    private Optional<CoreError> validatePersonal_Code(RegistrationRequest request) {
+
+        if (request.getPersonal_code() == null || request.getPersonal_code().isEmpty()) {
+                return Optional.of(new CoreError("Personal code", "Must not be empty")); }
+        else if(request.getPersonal_code().length() < 12) {
+            return Optional.of(new CoreError("Personal code", "Must be 12 characters long"));
+        }
+        else if(request.getPersonal_code().length() > 12) {
+            return Optional.of(new CoreError("Personal code", "Must be 12 characters long"));
+        }
+        else if(!request.getPersonal_code().contains("-")) {
+            return Optional.of(new CoreError("Personal code", "Must contain '-' "));
+        }
+
+                return Optional.empty();
     }
 
     private Optional<CoreError> validateEmail(RegistrationRequest request) {
