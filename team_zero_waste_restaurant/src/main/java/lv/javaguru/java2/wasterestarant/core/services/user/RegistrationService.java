@@ -31,7 +31,6 @@ public class RegistrationService {
         User user = new User(userRole,
                             request.getName(),
                             request.getSurname(),
-                            request.getPersonal_code(),
                             request.getEmail(),
                             request.getPassword());
         repository.save(user);
