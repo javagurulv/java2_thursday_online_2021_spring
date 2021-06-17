@@ -75,6 +75,9 @@ public class SearchIngredientService {
         if (request.isIngredientNameProvided()) {
             ingredients = database.findIngredientByName(request.getIngredientName());
         }
+        if (request.isDishIdProvided()) {
+            ingredients = database.findIngredientByDishId(request.getDishId());
+        }
         return ingredients;
     }
 

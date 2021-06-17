@@ -1,11 +1,13 @@
 package lv.javaguru.java2.wasterestarant.core.requests.ingredient;
 
+import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 
 public class SearchIngredientRequest {
 
     private String ingredientName;
+    private Long dishId;
     private Ordering ordering;
     private Paging paging;
 
@@ -19,6 +21,13 @@ public class SearchIngredientRequest {
         this.ordering = ordering;
     }
 
+    public SearchIngredientRequest(String ingredientName, Long dishId, Ordering ordering, Paging paging) {
+        this.ingredientName = ingredientName;
+        this.dishId = dishId;
+        this.ordering = ordering;
+        this.paging = paging;
+    }
+
     public SearchIngredientRequest(String ingredientName, Paging paging) {
         this.ingredientName = ingredientName;
         this.paging = paging;
@@ -28,6 +37,10 @@ public class SearchIngredientRequest {
         this.ingredientName = ingredientName;
         this.ordering = ordering;
         this.paging = paging;
+    }
+
+    public Long getDishId() {
+        return dishId;
     }
 
     public String getIngredientName() {
@@ -44,6 +57,10 @@ public class SearchIngredientRequest {
 
     public boolean isIngredientNameProvided(){
         return this.ingredientName != null && !this.ingredientName.isEmpty();
+    }
+
+    public boolean isDishIdProvided(){
+        return this.dishId != null;
     }
 
 }

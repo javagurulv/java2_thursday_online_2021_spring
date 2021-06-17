@@ -33,8 +33,8 @@ public class SearchIngredientValidator {
 
     private List<CoreError> validateSearchFields(SearchIngredientRequest request) {
         List<CoreError> errors = new ArrayList<>();
-        if (isEmpty(request.getIngredientName())) {
-            errors.add(new CoreError("Ingredient Name", "Must not be empty"));
+        if (isEmpty(request.getIngredientName()) && request.getDishId() == 0) {
+            errors.add(new CoreError("One of the search fields", "Must not be empty"));
         }
         return errors;
     }

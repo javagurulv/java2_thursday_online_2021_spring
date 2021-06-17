@@ -2,17 +2,25 @@ package lv.javaguru.java2.wasterestarant.console_ui.dish;
 
 
 import lv.javaguru.java2.wasterestarant.console_ui.UIAction;
+import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.AddDishRequest;
+import lv.javaguru.java2.wasterestarant.core.requests.dish.GetAllDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.AddDishIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.AddDishResponse;
 
+import lv.javaguru.java2.wasterestarant.core.responses.dish.GetAllDishesResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.AddDishIngredientResponse;
 import lv.javaguru.java2.wasterestarant.core.services.dish.AddDishService;
+import lv.javaguru.java2.wasterestarant.core.services.dish.GetAllDishesService;
 import lv.javaguru.java2.wasterestarant.core.services.ingredient.AddDishIngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
 @Component
 public class AddDishUIAction implements UIAction {
 
@@ -20,6 +28,8 @@ public class AddDishUIAction implements UIAction {
     private AddDishService addDishService;
     @Autowired
     private AddDishIngredientService addDishIngredientService;
+    @Autowired
+    private GetAllDishesService service;
 
     @Override
     public void execute() {
@@ -46,43 +56,38 @@ public class AddDishUIAction implements UIAction {
             System.out.println("New dish id : " + response.getNewDish().getDishID());
             System.out.println("Your dish has been added to the list");
         }
-
-        System.out.println("Enter ingredient: ");
-        String ingredient = scanner.nextLine();
-        System.out.println("Enter quantity: ");
-        Double ingredientQuantity = getDouble(scanner);
-
-        AddDishIngredientRequest requestDI = new AddDishIngredientRequest(ingredient, ingredientQuantity);
-        AddDishIngredientResponse responseDI = addDishIngredientService.execute(requestDI);
-
         boolean isRunning = true;
-
         while (isRunning) {
-
-            System.out.println("Ingredient has been added to ingredient dish list");
-            System.out.println("Enter \"stop\" to stop adding ingredients");
+            System.out.println("Want to enter ingredients?: \"Y or STOP\" ");
             String exit = scanner.nextLine();
             if (exit.equalsIgnoreCase("stop")) break;
-            else{ execute();}
-        }
+            else {
+                System.out.println("Enter ingredient name: ");
+                String ingredient = scanner.nextLine();
+                System.out.println("Enter quantity: ");
+                Double ingredientQuantity = getDouble(scanner);
+                System.out.println("Enter last added dish ID for this ingredient: ");
+                Long dishIngredientID = scanner.nextLong();
+                System.out.println("Ingredient has been added to ingredient dish list" + "\n");
+                System.out.println("Enter \"STOP\" to stop adding ingredients" + "\n");
 
-        if (responseDI.hasErrors()) {
-            responseDI.getErrors().forEach(coreError ->
-                    System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
-        } else {
-            System.out.println("Your ingredient has been added to the list");
-
+                AddDishIngredientRequest requestDI = new AddDishIngredientRequest(ingredient, ingredientQuantity, dishIngredientID);
+                AddDishIngredientResponse responseDI = addDishIngredientService.execute(requestDI);
+                if (responseDI.hasErrors()) {
+                    responseDI.getErrors().forEach(coreError ->
+                            System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
+                } else {
+                    System.out.println("Your ingredient has been added to the list");
+                }
+            }
         }
     }
 
     private Double getDouble(Scanner scanner) {
-        try{
-           return Double.parseDouble(scanner.nextLine());
-        }
-        catch(Exception e){
+        try {
+            return Double.parseDouble(scanner.nextLine());
+        } catch (Exception e) {
             return null;
         }
     }
-
-
 }

@@ -1,5 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.database.ingredient;
 
+import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,5 +27,10 @@ public class JdbcIngredientRepository implements IngredientRepository {
         String sql = "SELECT * FROM ingredient WHERE name = ?";
         Object[] args = new Object[] {name};
         return jdbcTemplate.query(sql, args, new IngredientRowMapper());
+    }
+
+    @Override
+    public List<Ingredient> findIngredientByDishId(Long dishId) {
+        return null;
     }
 }
