@@ -57,3 +57,11 @@ ALTER TABLE dish
 ADD COLUMN isInActiveMenu BIT DEFAULT 1;
 
 CREATE INDEX idx_user_list_name_surname_email on user_list (name, surname, email);
+
+ALTER TABLE ingredient ADD COLUMN dishId BIGINT not null;
+
+CREATE TABLE IF NOT EXISTS dish_ingredients AS
+
+    SELECT dish.name AS restaurant_dish, ingredient.name, ingredient.quantity
+    FROM ingredient
+             JOIN dish on ingredient.dishId = dish.id;

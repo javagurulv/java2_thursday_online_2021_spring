@@ -1,12 +1,12 @@
 package lv.javaguru.java2.wasterestarant.console_ui.ingredient;
 
 import lv.javaguru.java2.wasterestarant.console_ui.UIAction;
-import lv.javaguru.java2.wasterestarant.core.requests.ingredient.SearchIngredientRequest;
+import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
+import lv.javaguru.java2.wasterestarant.core.requests.ingredient.SearchIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.SearchIngredientResponse;
 import lv.javaguru.java2.wasterestarant.core.services.ingredient.SearchIngredientService;
-import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,12 +25,15 @@ public class SearchIngredientUiAction implements UIAction {
         System.out.println("Enter Ingredient Name: ");
         String ingredientName = scanner.nextLine();
 
+        System.out.println("Enter the dishID, which ingredients you need: ");
+        Long dishID = scanner.nextLong();
+
         System.out.println("Order by name or quantity? (Enter \"N\" for name or \"Q\" for quantity)");
+        String orderBy1 = scanner.nextLine();
         String orderBy = scanner.nextLine();
         System.out.println("Order in ascending or descending direction? (Enter \"A\" for ascending or \"D\" for Descending)");
         String orderDirection = scanner.nextLine();
         Ordering ordering = new Ordering(orderBy, orderDirection);
-
         System.out.println("Enter pageNumber: ");
         Integer pageNumber = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter pageSize: ");
@@ -38,7 +41,7 @@ public class SearchIngredientUiAction implements UIAction {
         Paging paging = new Paging(pageNumber, pageSize);
 
 
-        SearchIngredientRequest request = new SearchIngredientRequest(ingredientName, ordering, paging);
+        SearchIngredientRequest request = new SearchIngredientRequest(ingredientName, dishID, ordering, paging);
         SearchIngredientResponse response = searchIngredientService.execute(request);
 
         if (response.hasErrors()) {
@@ -54,7 +57,7 @@ public class SearchIngredientUiAction implements UIAction {
     }
 
     private void printIngredients(List<Ingredient> printList, int i) {
-        System.out.println((i + 1) + ". "  + printList.get(i).getIngredient() + ", quantity - " + printList.get(i).getQuantity() );
+        System.out.println((i + 1) + ". " + printList.get(i).getIngredient() + ", quantity - " + printList.get(i).getQuantity());
     }
 
 }

@@ -1,5 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
+import com.sun.xml.fastinfoset.algorithm.DoubleEncodingAlgorithm;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +19,36 @@ public class Ingredient {
     @Column(name = "quantity")
     private Double quantity;
 
-//    public Ingredient(String ingredient, Double quantity, Product product) {
+    @Column(name = "DishId", insertable = false, updatable = false)
+    private Long dishIngredientID;
+
+    @ManyToOne
+    @JoinColumn(name = "DishId", nullable = false)
+    private Dish dish;
+
+
+    public Ingredient(long ingredientID, String ingredient, Double quantity, Long dishIngredientID) {
+        this.ingredientID = ingredientID;
+        this.ingredient = ingredient;
+        this.quantity = quantity;
+        this.dishIngredientID = dishIngredientID;
+    }
+
+    public Ingredient(String ingredient, Double quantity, Long dishIngredientID) {
+        this.ingredient = ingredient;
+        this.quantity = quantity;
+        this.dishIngredientID = dishIngredientID;
+    }
+
+    public Long getDishIngredientID() {
+        return dishIngredientID;
+    }
+
+    public void setDishIngredientID(Long dishIngredientID) {
+        this.dishIngredientID = dishIngredientID;
+    }
+
+    //    public Ingredient(String ingredient, Double quantity, Product product) {
 //        this.ingredient = ingredient;
 //        this.quantity = quantity;
 //        this.product = product;
@@ -31,7 +62,7 @@ public class Ingredient {
 
     }
 
-    public long getIngredientID() {
+    public Long getIngredientID() {
         return ingredientID;
     }
 
@@ -58,4 +89,13 @@ public class Ingredient {
     public Double getQuantity(){
         return quantity;
     }
+
+    public Dish getDish() {
+        return dish;
+    }
+
+    public void setDish(Dish dish) {
+        this.dish = dish;
+    }
+
 }
