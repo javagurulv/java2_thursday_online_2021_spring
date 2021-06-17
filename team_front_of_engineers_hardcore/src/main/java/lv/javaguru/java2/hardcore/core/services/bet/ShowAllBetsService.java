@@ -7,9 +7,11 @@ import lv.javaguru.java2.hardcore.core.requests.bet.ShowAllBetsRequest;
 import lv.javaguru.java2.hardcore.core.response.bet.ShowAllBetsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Component
+@Transactional
 public class ShowAllBetsService {
     @Autowired
     private BetRepository betRepository;

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import lv.javaguru.java2.hardcore.core.requests.bet.GetAllBetsForLotByLotIdRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +29,8 @@ public class ProgramMenu {
         menuNumberToUIActionMap.put(8, findUIAction(uiActions, RemoveLotUIAction.class));
         menuNumberToUIActionMap.put(9, findUIAction(uiActions, RemoveBetUIAction.class));
         menuNumberToUIActionMap.put(10, findUIAction(uiActions, SearchLotByNameOrPriceUIAction.class));
+        menuNumberToUIActionMap.put(11, findUIAction(uiActions, GetAllBetsForLotByLotIdUIAction.class));
+        menuNumberToUIActionMap.put(12, findUIAction(uiActions, GetHighestBetForLotByLotIdUIAction.class));
         menuNumberToUIActionMap.put(0, findUIAction(uiActions, ExitUiAction.class));
     }
 
@@ -50,6 +53,8 @@ public class ProgramMenu {
         System.out.println("8. Remove lot from the list");
         System.out.println("9. Remove bet from the list");
         System.out.println("10. Search lot by name");
+        System.out.println("11. Show all bets for one lot");
+        System.out.println("12. Show highest bet for lot with ID...");
         System.out.println("0. Exit");
         System.out.println();
     }

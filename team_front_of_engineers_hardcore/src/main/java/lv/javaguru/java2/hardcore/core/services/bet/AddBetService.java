@@ -9,9 +9,11 @@ import lv.javaguru.java2.hardcore.core.response.CoreError;
 import lv.javaguru.java2.hardcore.core.response.bet.AddBetResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Component
+@Transactional
 public class AddBetService {
     @Autowired
     private BetRepository betRepository;

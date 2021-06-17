@@ -6,11 +6,14 @@ import lv.javaguru.java2.hardcore.core.requests.bet.RemoveBetRequest;
 import lv.javaguru.java2.hardcore.core.response.bet.RemoveBetResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
+@Transactional
 public class RemoveBetService {
     @Autowired
     private BetRepository betRepository;
+    @Autowired
     private RemoveBetValidator validator;
 
 

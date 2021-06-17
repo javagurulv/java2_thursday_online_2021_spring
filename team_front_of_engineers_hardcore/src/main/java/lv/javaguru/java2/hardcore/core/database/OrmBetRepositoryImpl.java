@@ -7,11 +7,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Component
 @Transactional
-public class OrmBetRepositoryImpl implements BetRepository{
+public class OrmBetRepositoryImpl implements BetRepository, BetGetter {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -36,5 +37,13 @@ public class OrmBetRepositoryImpl implements BetRepository{
         return sessionFactory.getCurrentSession()
                 .createQuery("SELECT b FROM Bet b", Bet.class)
                 .getResultList();
+    }
+
+    @Override
+    public List<Bet> getBetListByLotId (Long id){
+        Query query = sessionFactory.getCurrentSession().createQuery(
+                "select b FROM Bet b where lot_id = :id");
+        query.setParameter("id", id);
+        return query.getResultList();
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GetAllLotsUIAction implements UIAction {
+
     @Autowired
     private GetAllLotsService getAllLotsService;
 

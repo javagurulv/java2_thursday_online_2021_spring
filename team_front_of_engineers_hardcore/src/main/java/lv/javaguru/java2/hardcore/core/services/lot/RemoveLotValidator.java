@@ -4,11 +4,13 @@ package lv.javaguru.java2.hardcore.core.services.lot;
 import lv.javaguru.java2.hardcore.core.requests.lot.RemoveLotRequest;
 import lv.javaguru.java2.hardcore.core.response.CoreError;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @Component
+@Transactional
 public class RemoveLotValidator {
 
 

@@ -8,9 +8,11 @@ import lv.javaguru.java2.hardcore.core.requests.user.ShowAllUserRequest;
 import lv.javaguru.java2.hardcore.core.response.user.ShowAllUsersResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Component
+@Transactional
 public class ShowAllUsersService {
     @Autowired
     private UserRepository userRepository;
