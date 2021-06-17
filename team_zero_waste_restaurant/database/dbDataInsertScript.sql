@@ -26,19 +26,6 @@ VALUES('ham', 3, 4.24, '2021-07-01');
 
 
 
-INSERT INTO ingredient(product_id, name, quantity)
-VALUES(1001, 'flour', 100);
-
-INSERT INTO ingredient(product_id, name, quantity)
-VALUES(1002, 'olive oil', 100);
-
-INSERT INTO ingredient(product_id, name, quantity)
-VALUES(1003, 'tomatoes', 100);
-
-INSERT INTO ingredient(product_id, name, quantity)
-VALUES(1004, 'ham', 100);
-
-
 
 INSERT INTO client_list(name)
 VALUE('John Doe');
@@ -51,7 +38,6 @@ VALUE('Nataliya Petrova');
 
 INSERT INTO client_list(name)
 VALUE('Sarah Jones');
-
 
 
 
@@ -80,3 +66,22 @@ VALUES(1003, '2021-07-01', 1004);
 
 INSERT INTO order_list(client_id, order_date, order_item_id)
 VALUES(1004, '2021-07-01', 1002);
+
+INSERT INTO  dish(id, name, description, type, weight, price)
+VALUES (1010, 'PASTA CARBONARA', 'pasta with egg and pepper', 'PASTA', 300, 10.99);
+
+
+INSERT INTO ingredient(name, quantity, dishId)
+VALUES('ham', 30, 1010);
+
+INSERT INTO ingredient(name, quantity, dishId)
+VALUES('cheese', 30, 1010);
+
+INSERT INTO ingredient(name, quantity, dishId)
+VALUES('fusilli', 120, 1010);
+
+INSERT INTO ingredient(name, quantity, dishId)
+VALUES('oil', 10, 1010);
+
+INSERT INTO ingredient(name, quantity, dishId)
+VALUES('tomato', 100, 1010);
