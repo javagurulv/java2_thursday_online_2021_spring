@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.integrationtests;
 
-import lv.javaguru.java2.wasterestarant.config.RestaurantApplicationConfiguration;
+import lv.javaguru.java2.wasterestarant.config.SpringCoreConfiguration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {RestaurantApplicationConfiguration.class})
+@ContextConfiguration(classes = {SpringCoreConfiguration.class})
 public class SpringContextTest {
 
     @Autowired
