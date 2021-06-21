@@ -31,9 +31,9 @@ public class Dish {
     @Column(name = "isInActiveMenu")
     private boolean isInActiveMenu;
 
-    @OneToMany
-    @JoinColumn(name = "id")
-    private List <Ingredient> ingredientList;
+//    @OneToMany
+//    @JoinColumn(name = "id")
+//    private List <Ingredient> ingredientList;
 
 
     public Dish(String name) {
@@ -109,13 +109,13 @@ public class Dish {
         this.dishID = dishID;
     }
 
-    public List<Ingredient> getIngredientList() {
-        return ingredientList;
-    }
-
-    public void setIngredientList(List<Ingredient> ingredientList) {
-        this.ingredientList = ingredientList;
-    }
+//    public List<Ingredient> getIngredientList() {
+//        return ingredientList;
+//    }
+//
+//    public void setIngredientList(List<Ingredient> ingredientList) {
+//        this.ingredientList = ingredientList;
+//    }
 
     public boolean isInActiveMenu() {
         return isInActiveMenu;

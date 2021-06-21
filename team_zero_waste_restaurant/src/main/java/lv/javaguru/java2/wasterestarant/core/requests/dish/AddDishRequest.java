@@ -21,6 +21,18 @@ public class AddDishRequest {
         this.price = price;
     }
 
+    public AddDishRequest() {
+
+    }
+
+    public long getDishID() {
+        return dishID;
+    }
+
+    public void setDishID(long dishID) {
+        this.dishID = dishID;
+    }
+
     public String getName() {
         return name;
     }
@@ -39,5 +51,25 @@ public class AddDishRequest {
 
     public Double getPrice() {
         return price;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }
