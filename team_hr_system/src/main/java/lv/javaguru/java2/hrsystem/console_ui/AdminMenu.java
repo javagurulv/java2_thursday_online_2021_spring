@@ -1,31 +1,33 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.*;
 
+//не работает
 //@Component
 public class AdminMenu {
 
     private Map<Integer, UIAction> menuNumberToUIActionMap;
 
-    //employee and user
-//    @Autowired public AdminMenu(List<UIAction> uiActions) {
-//        menuNumberToUIActionMap = new HashMap<>();
-//        menuNumberToUIActionMap.put(1, findUIAction(uiActions, GetAllUsersUIAction.class));
-//        menuNumberToUIActionMap.put(2, findUIAction(uiActions, DeleteUserUIAction.class));
-//        menuNumberToUIActionMap.put(3, findUIAction(uiActions, UpdateUserRoleUIAction.class));
-//        menuNumberToUIActionMap.put(4, findUIAction(uiActions, AddEmployeeUIAction.class));
-//        menuNumberToUIActionMap.put(5, findUIAction(uiActions, AddEmployeeWithTitleUIAction.class));
-//        menuNumberToUIActionMap.put(6, findUIAction(uiActions, AddEmployeeTitleUIAction.class));
-//        menuNumberToUIActionMap.put(7, findUIAction(uiActions, GetAllTitlesUIAction.class));
-//        menuNumberToUIActionMap.put(8, findUIAction(uiActions, DeleteEmployeeUIAction.class));
-//        menuNumberToUIActionMap.put(9, findUIAction(uiActions, GetAllEmployeesUIAction.class));
-//        menuNumberToUIActionMap.put(10, findUIAction(uiActions, SearchEmployeesUIAction.class));
-//        menuNumberToUIActionMap.put(11, findUIAction(uiActions, AddSkillUIAction.class));
-//        menuNumberToUIActionMap.put(12, findUIAction(uiActions, GetAllEmployeeSkillUIAction.class));
-//        menuNumberToUIActionMap.put(13, findUIAction(uiActions, SearchEmployeesBySkillUIAction.class));
-//        menuNumberToUIActionMap.put(14, findUIAction(uiActions, GetAllExistingSkillUIAction.class));
-//        menuNumberToUIActionMap.put(15, findUIAction(uiActions, ExitUIAction.class));
-//    }
+    @Autowired public AdminMenu(List<UIAction> uiActions) {
+        menuNumberToUIActionMap = new HashMap<>();
+        menuNumberToUIActionMap.put(1, findUIAction(uiActions, GetAllUsersUIAction.class));
+        menuNumberToUIActionMap.put(2, findUIAction(uiActions, DeleteUserUIAction.class));
+        menuNumberToUIActionMap.put(3, findUIAction(uiActions, UpdateUserRoleUIAction.class));
+        menuNumberToUIActionMap.put(4, findUIAction(uiActions, AddEmployeeUIAction.class));
+        menuNumberToUIActionMap.put(5, findUIAction(uiActions, AddEmployeeWithTitleUIAction.class));
+        menuNumberToUIActionMap.put(6, findUIAction(uiActions, AddEmployeeTitleUIAction.class));
+        menuNumberToUIActionMap.put(7, findUIAction(uiActions, GetAllTitlesUIAction.class));
+        menuNumberToUIActionMap.put(8, findUIAction(uiActions, DeleteEmployeeUIAction.class));
+        menuNumberToUIActionMap.put(9, findUIAction(uiActions, GetAllEmployeesUIAction.class));
+        menuNumberToUIActionMap.put(10, findUIAction(uiActions, SearchEmployeesUIAction.class));
+        menuNumberToUIActionMap.put(11, findUIAction(uiActions, AddSkillUIAction.class));
+        menuNumberToUIActionMap.put(12, findUIAction(uiActions, GetAllEmployeeSkillUIAction.class));
+        menuNumberToUIActionMap.put(13, findUIAction(uiActions, SearchEmployeesBySkillUIAction.class));
+        menuNumberToUIActionMap.put(14, findUIAction(uiActions, GetAllExistingSkillUIAction.class));
+        menuNumberToUIActionMap.put(15, findUIAction(uiActions, ExitUIAction.class));
+    }
 
     private UIAction findUIAction(List<UIAction> uiActions, Class uiActionClass) {
         return uiActions.stream()

@@ -10,14 +10,12 @@ public class LoginMenu {
 
     private Map<Integer, UIAction> menuNumberToUIActionMap;
 
-    @Autowired public LoginMenu(List<UIAction> uiActions) {
+    @Autowired
+    public LoginMenu(List<UIAction> uiActions) {
         menuNumberToUIActionMap = new HashMap<>();
         menuNumberToUIActionMap.put(1, findUIAction(uiActions, RegisterUserUIAction.class));
         menuNumberToUIActionMap.put(2, findUIAction(uiActions, AuthorizeUserUIAction.class));
-        menuNumberToUIActionMap.put(3, findUIAction(uiActions, GetAllUsersUIAction.class));
-        menuNumberToUIActionMap.put(4, findUIAction(uiActions, DeleteUserUIAction.class));
-        menuNumberToUIActionMap.put(5, findUIAction(uiActions, UpdateUserRoleUIAction.class));
-        menuNumberToUIActionMap.put(6, findUIAction(uiActions, ExitUIAction.class));
+        menuNumberToUIActionMap.put(3, findUIAction(uiActions, ExitUIAction.class));
     }
 
     private UIAction findUIAction(List<UIAction> uiActions, Class uiActionClass) {
