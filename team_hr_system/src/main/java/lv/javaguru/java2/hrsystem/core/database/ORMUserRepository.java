@@ -16,21 +16,6 @@ public class ORMUserRepository {
 
     @Autowired private SessionFactory sessionFactory;
 
-    public void registerUser(User user) {
-        sessionFactory.getCurrentSession().save(user);
-    }
-
-    public Optional<User> authorizeUser(String email, String password) {
-        Query query = sessionFactory
-                .getCurrentSession()
-                .createQuery("SELECT u FROM User u WHERE email = :email and password = :password");
-        query.setParameter("email", email);
-        query.setParameter("password", password);
-        query.getResultList();
-
-        return query.getResultList().stream().findFirst();
-    }
-
     public List<User> getAllUsers() {
         return sessionFactory
                 .getCurrentSession()
