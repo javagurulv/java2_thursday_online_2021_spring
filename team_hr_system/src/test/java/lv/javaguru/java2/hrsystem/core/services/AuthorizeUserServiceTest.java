@@ -4,7 +4,7 @@ import lv.javaguru.java2.hrsystem.core.database.jdbcrepos.UserRepository;
 import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AuthorizeUserResponse;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
-import lv.javaguru.java2.hrsystem.core.services.user.AuthorizeUserService;
+import lv.javaguru.java2.hrsystem.core.services.authorization.AuthorizeUserService;
 import lv.javaguru.java2.hrsystem.core.services.validators.user.AuthorizeUserValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
