@@ -1,6 +1,6 @@
-package lv.javaguru.java2.hrsystem.core.services.user;
+package lv.javaguru.java2.hrsystem.core.services.authorization;
 
-import lv.javaguru.java2.hrsystem.core.database.ORMUserRepository;
+import lv.javaguru.java2.hrsystem.core.database.ORMAuthorizationRepository;
 import lv.javaguru.java2.hrsystem.core.domain.User;
 import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AuthorizeUserResponse;
@@ -16,7 +16,7 @@ import java.util.Optional;
 public class AuthorizeUserService {
 
     @Autowired
-    private ORMUserRepository ormUserRepository;
+    private ORMAuthorizationRepository ormAuthorizationRepository;
     @Autowired
     private AuthorizeUserValidator validator;
 
@@ -28,7 +28,8 @@ public class AuthorizeUserService {
         if (!errors.isEmpty()) {
             return new AuthorizeUserResponse(errors);
         }
-        Optional <User> authorization = ormUserRepository.authorizeUser(request.getEmail(), request.getPassword());
+        Optional <User> authorization = ormAuthorizationRepository.
+                authorizeUser(request.getEmail(), request.getPassword());
 
         return new AuthorizeUserResponse(authorization);
 

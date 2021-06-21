@@ -1,6 +1,6 @@
-package lv.javaguru.java2.hrsystem.core.services.user;
+package lv.javaguru.java2.hrsystem.core.services.authorization;
 
-import lv.javaguru.java2.hrsystem.core.database.ORMUserRepository;
+import lv.javaguru.java2.hrsystem.core.database.ORMAuthorizationRepository;
 import lv.javaguru.java2.hrsystem.core.domain.User;
 import lv.javaguru.java2.hrsystem.core.requests.RegisterUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.CoreError;
@@ -15,7 +15,7 @@ import java.util.List;
 public class RegisterUserService {
 
     @Autowired
-    private ORMUserRepository ormUserRepository;
+    private ORMAuthorizationRepository ormAuthorizationRepository;
 
     @Autowired
     private RegisterUserValidator validator;
@@ -34,7 +34,7 @@ public class RegisterUserService {
                 registrationRequest.getEmail(),
                 registrationRequest.getPassword());
 
-        ormUserRepository.registerUser(user);
+        ormAuthorizationRepository.registerUser(user);
 
         return new RegisterUserResponse(user);
 
