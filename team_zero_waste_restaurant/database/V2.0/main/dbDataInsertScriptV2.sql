@@ -1,3 +1,7 @@
+INSERT INTO users(user_role, firstName, secondName, email, password)
+VALUES ('Admin', 'Admin', 'Admin', 'admin@admin.lv', 'admin');
+
+
 INSERT INTO  dish(name, description, type, weight, price)
 VALUES ('PIZZA 4FORMAGGIO', 'pizza with 4 cheeses', 'PIZZA', 350, 7.99);
 
@@ -24,3 +28,11 @@ VALUES('tomatoes', 5, 0.9, '2021-06-01');
 INSERT INTO product(name, quantity, price, expiryDate)
 VALUES('ham', 3, 4.24, '2021-07-01');
 
+INSERT INTO product(name, quantity, price, expiryDate)
+VALUES('cheese', 10, 5.00, '2021-07-01');
+
+INSERT INTO product(name, quantity, price, expiryDate)
+VALUES('pineapple', 10, 0.5, '2021-07-01');
+
+INSERT INTO product(name, quantity, price, expiryDate)
+VALUES('egg', 10, 0.5, '2021-07-01');

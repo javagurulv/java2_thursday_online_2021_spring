@@ -1,9 +1,9 @@
 package lv.javaguru.java2.wasterestarant.core.database.user;
 
 import lv.javaguru.java2.wasterestarant.core.domain.User;
-import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserRepository {
 
@@ -21,9 +21,9 @@ public interface UserRepository {
 
     List<User> findUserByEmail(String email);
 
-    List<User> findUserByNameAndPassword(String name, String password);
+    Optional<User> findUserByEmailAndPassword(String email, String password);
 
-    List<UserRole> findUserByRole(String role);
+    List<User> findUserByRole(String role);
 
 
 }

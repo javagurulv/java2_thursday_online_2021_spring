@@ -38,7 +38,7 @@ class JdbcDatabaseImpl implements Database {
         jdbcTemplate.update(
                 "INSERT INTO client_list(name)"
                         + "VALUES (?)",
-                user.getFirstName()
+                user.getName()
         );
     }
 
