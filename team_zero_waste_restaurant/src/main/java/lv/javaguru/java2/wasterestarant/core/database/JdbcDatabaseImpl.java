@@ -1,13 +1,11 @@
 package lv.javaguru.java2.wasterestarant.core.database;
 
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
-import lv.javaguru.java2.wasterestarant.core.domain.Order;
 import lv.javaguru.java2.wasterestarant.core.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +38,7 @@ class JdbcDatabaseImpl implements Database {
         jdbcTemplate.update(
                 "INSERT INTO client_list(name)"
                         + "VALUES (?)",
-                user.getName()
+                user.getFirstName()
         );
     }
 

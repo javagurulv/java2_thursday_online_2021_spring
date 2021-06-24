@@ -6,7 +6,6 @@ import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,13 +26,13 @@ public class RegistrationValidator {
     }
 
     private Optional<CoreError> validateName(RegistrationRequest request) {
-        return (request.getName() == null || request.getName().isEmpty())
+        return (request.getFirstName() == null || request.getFirstName().isEmpty())
                 ? Optional.of(new CoreError("Name", "Must not be empty"))
                 : Optional.empty();
     }
 
     private Optional<CoreError> validateSurname(RegistrationRequest request) {
-        return (request.getSurname() == null || request.getSurname().isEmpty())
+        return (request.getSecondName() == null || request.getSecondName().isEmpty())
                 ? Optional.of(new CoreError("Surname", "Must not be empty"))
                 : Optional.empty();
     }

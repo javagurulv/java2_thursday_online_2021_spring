@@ -15,11 +15,11 @@ public class User {
     @Column(name = "user_role", insertable = false, updatable = false)
     private UserRole userRole;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "firstName", nullable = false)
+    private String firstName;
 
-    @Column(name = "surname", nullable = false)
-    private String surname;
+    @Column(name = "secondName", nullable = false)
+    private String secondName;
 
     @Column(name = "email", nullable = false)
     private String email;
@@ -30,17 +30,17 @@ public class User {
     public User() {
     }
 
-    public User(String name, String surname, String email, String password) {
-        this.name = name;
-        this.surname = surname;
+    public User(String firstName, String secondName, String email, String password) {
+        this.firstName = firstName;
+        this.secondName = secondName;
         this.email = email;
         this.password = password;
     }
 
-    public User(UserRole userRole, String name, String surname, String email, String password) {
+    public User(UserRole userRole, String firstName, String secondName, String email, String password) {
         this.userRole = userRole;
-        this.name = name;
-        this.surname = surname;
+        this.firstName = firstName;
+        this.secondName = secondName;
         this.email = email;
         this.password = password;
     }
@@ -58,20 +58,20 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
     public String getEmail() {
@@ -103,11 +103,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return name.equals(user.name) && surname.equals(user.surname) && email.equals(user.email) && password.equals(user.password);
+        return firstName.equals(user.firstName) && secondName.equals(user.secondName) && email.equals(user.email) && password.equals(user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, email, password);
+        return Objects.hash(firstName, secondName, email, password);
     }
 }

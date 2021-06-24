@@ -4,7 +4,6 @@ import lv.javaguru.java2.wasterestarant.core.domain.User;
 import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class JdbcUserRepositoryImpl implements UserRepository {
     public void save(User user) {
         jdbcTemplate.update("INSERT INTO user_list(name, surname, email, password)"
                         + "VALUES (?, ?, ?, ?)",
-                user.getName(), user.getSurname(), user.getEmail(), user.getPassword()
+                user.getFirstName(), user.getSecondName(), user.getEmail(), user.getPassword()
         );
     }
 

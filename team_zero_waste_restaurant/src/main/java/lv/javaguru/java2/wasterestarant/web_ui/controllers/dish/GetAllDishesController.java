@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.web_ui.controllers;
+package lv.javaguru.java2.wasterestarant.web_ui.controllers.dish;
 
 import lv.javaguru.java2.wasterestarant.core.requests.dish.GetAllDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.GetAllDishesResponse;

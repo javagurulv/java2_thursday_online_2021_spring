@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.web_ui.controllers;
+package lv.javaguru.java2.wasterestarant.web_ui.controllers.product;
 
 import lv.javaguru.java2.wasterestarant.core.requests.product.GetAllProductsRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.product.GetAllProductsResponse;
