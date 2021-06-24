@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 @Transactional
@@ -23,18 +22,16 @@ public class LoginService {
     public LoginResponse execute(LoginRequest request) {
         List<CoreError> errors = validator.validate(request);
         if (!errors.isEmpty()) {
-            return new LoginResponse(null, errors);
+            return new LoginResponse(errors);
         }
-        Optional <User> checkedUser = checkUserInDatabase(request);
-
-        return new LoginResponse(checkedUser, null);
-    }
-
-    private Optional <User> checkUserInDatabase(LoginRequest request){
-        if(request.isNameProvided() && request.isPasswordProvided()){
-            return repository.findUserByEmailAndPassword(request.getEmail(), request.getPassword());
+        User user = new User(
+                request.getEmail(),
+                request.getPassword());
+        if (repository.isUserRegistered(user)) {
+            return new LoginResponse(user, true);
+        } else {
+            return new LoginResponse();
         }
-        return Optional.empty();
     }
 
 }

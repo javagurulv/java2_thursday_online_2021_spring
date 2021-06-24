@@ -43,7 +43,7 @@ public class RegistrationValidator {
             return Optional.of(new CoreError("E-mail", "Must not be empty"));
         } else if (!request.getEmail().contains("@")) {
             return Optional.of(new CoreError("E-mail", "Must contain @ symbol"));
-        } else if (!repository.findUserByEmail(request.getEmail()).isEmpty()) {
+        } else if (repository.findUserByEmail(request.getEmail()).size() < 1) {
             return Optional.of(new CoreError("E-mail", request.getEmail() + " is already taken!"));
         }
         return Optional.empty();

@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional
-public class OrmUserRepositoryImpl implements UserRepository{
+public class OrmUserRepositoryImpl implements UserRepository {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -71,13 +71,24 @@ public class OrmUserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public Optional<User> findUserByEmailAndPassword(String email, String password) {
+    public List<User> findUserByEmailAndPassword(String email, String password) {
         Query query = sessionFactory.getCurrentSession().createQuery(
                 "SELECT u FROM Users u WHERE email = :email AND password = :password");
         query.setParameter("email", email);
         query.setParameter("password", password);
         query.getResultList();
-        return query.getResultList().stream().findFirst();
+        return query.getResultList();
+    }
+
+    @Override
+    public boolean isUserRegistered(User user) {
+        List<User> checkedUsers = sessionFactory.getCurrentSession()
+                .createQuery("SELECT u FROM Users u WHERE email = :email AND password = :password", User.class)
+                .setParameter("email", user.getEmail())
+                .setParameter("password", user.getPassword())
+                .getResultList();
+
+        return checkedUsers.size() == 1;
     }
 
     @Override

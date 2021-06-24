@@ -5,17 +5,29 @@ import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreResponse;
 
 import java.util.List;
-import java.util.Optional;
 
 public class LoginResponse extends CoreResponse {
-    Optional<User> user;
+    private User user;
+    private boolean isLoggedIn = false;
 
-    public LoginResponse(Optional <User> user, List<CoreError> errors) {
+    public LoginResponse(List<CoreError> errors) {
         super(errors);
-        this.user = user;
     }
 
-    public Optional<User> getUser() {
+    public LoginResponse() {
+
+    }
+
+    public LoginResponse(User user, boolean isLoggedIn) {
+        this.user = user;
+        this.isLoggedIn = isLoggedIn;
+    }
+
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public User getUser() {
         return user;
     }
 }
