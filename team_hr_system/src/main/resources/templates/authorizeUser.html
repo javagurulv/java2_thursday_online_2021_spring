@@ -11,30 +11,36 @@
 <body>
 
 <h3>Authorization</h3>
+<fieldset>
+    <legend>Enter the data</legend>>
+    <table>
+        <tr>
+            <td><label for="login">Enter email: </label></td>
+            <td>Enter password:</td>
+        </tr>
 
-<table>
-    <tr>
-        <td>Email:</td>
-        <td>Password:</td>
-    </tr>
+        <tr>
+            <form action="/authorizeUser" autocomplete="off" th:object="${request}" method="post">
 
-    <tr>
-        <form action="/authorizeUser" th:object="${request}" method="post">
-            <td><input type="text" th:field="${request.email}"/></td>
-            <td><input type="text" th:field="${request.password}"/></td>
+                <td><input type="email" autofocus id="login" name="login"
+                       placeholder="user@gmail.com" autocomplete="on" th:field="${request.email}"/></td>
 
-            <td>
-                <input type="submit" value="Login"/>
-                <input type="reset" value="Clear"/>
-            </td>
-        </form>
-    </tr>
-</table>
+                <td><input type="password" id="password" name="password" required
+                       placeholder="*********" th:field="${request.password}"/></td>
+
+                <td>
+                    <input type="submit" value="Login"/>
+                    <input type="reset" value="Clear"/>
+                </td>
+            </form>
+        </tr>
+    </table>
+</fieldset>
 
 <td th:if="${errors != null}">
     <tr th:each="error : ${errors}">
-        <td th:text="${error.field}" />
-        <td th:text="${error.message}" />
+        <td th:text="${error.field}"></td>
+        <td th:text="${error.message}"></td>
     </tr>
 </td>
 
