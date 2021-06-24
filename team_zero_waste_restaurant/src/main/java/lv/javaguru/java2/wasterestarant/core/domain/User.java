@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user_list")
+@Table(name = "users")
 public class User {
     @Id
     @Column(name = "id")
@@ -12,8 +12,8 @@ public class User {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_role", nullable = false)
-    private UserRole role;
+    @Column(name = "user_role", insertable = false, updatable = false)
+    private UserRole userRole;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -37,8 +37,8 @@ public class User {
         this.password = password;
     }
 
-    public User(UserRole role, String name, String surname, String email, String password) {
-        this.role = role;
+    public User(UserRole userRole, String name, String surname, String email, String password) {
+        this.userRole = userRole;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -56,14 +56,6 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public UserRole getRole() {
-        return role;
-    }
-
-    public void setRole(UserRole role) {
-        this.role = role;
     }
 
     public String getName() {
@@ -98,16 +90,24 @@ public class User {
         this.password = password;
     }
 
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return role == user.role && name.equals(user.name) && Objects.equals(surname, user.surname) && email.equals(user.email);
+        return name.equals(user.name) && surname.equals(user.surname) && email.equals(user.email) && password.equals(user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(role, name, surname, email);
+        return Objects.hash(name, surname, email, password);
     }
 }

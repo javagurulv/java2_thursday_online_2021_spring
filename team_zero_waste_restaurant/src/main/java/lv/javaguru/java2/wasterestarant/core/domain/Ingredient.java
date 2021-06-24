@@ -19,11 +19,11 @@ public class Ingredient {
     @Column(name = "quantity")
     private Double quantity;
 
-    @Column(name = "DishId", insertable = false, updatable = false)
+    @Column(name = "dish_id", insertable = false, updatable = false)
     private Long dishIngredientID;
 
     @ManyToOne
-    @JoinColumn(name = "DishId", nullable = false)
+    @JoinColumn(name = "dish_id", nullable = false)
     private Dish dish;
 
 
