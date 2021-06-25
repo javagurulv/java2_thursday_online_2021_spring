@@ -1,4 +1,4 @@
-INSERT INTO users(user_role, firstName, secondName, email, password)
+INSERT INTO users(user_role, name, surname, email, password)
 VALUES ('Admin', 'Admin', 'Admin', 'admin@admin.lv', 'admin');
 
 
@@ -36,3 +36,11 @@ VALUES('pineapple', 10, 0.5, '2021-07-01');
 
 INSERT INTO product(name, quantity, price, expiryDate)
 VALUES('egg', 10, 0.5, '2021-07-01');
+
+
+INSERT INTO ingredient(dish_id, name, quantity)
+VALUES(1, 'cheddar', 30),
+(1, 'mozzarella', 30),
+(1, 'dutch cheese classical', 30),
+(1, 'parmesan', 30),
+(1, 'flour', 100);
