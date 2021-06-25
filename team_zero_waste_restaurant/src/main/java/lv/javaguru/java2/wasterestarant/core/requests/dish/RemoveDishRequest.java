@@ -2,13 +2,16 @@ package lv.javaguru.java2.wasterestarant.core.requests.dish;
 // AndrejsB
 public class RemoveDishRequest {
 
-    private String dishNameToRemove;
+    private String name;
 
-    public RemoveDishRequest(String dishNameToRemove) {
-        this.dishNameToRemove = dishNameToRemove;
+    public RemoveDishRequest(String name) {
+        this.name = name;
     }
 
-    public String getDishNameToRemove() {
-        return dishNameToRemove;
+    public RemoveDishRequest() {
+    }
+
+    public String name() {
+        return name;
     }
 }

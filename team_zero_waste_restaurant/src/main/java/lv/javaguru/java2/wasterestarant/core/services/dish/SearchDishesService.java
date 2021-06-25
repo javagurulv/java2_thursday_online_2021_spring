@@ -98,15 +98,15 @@ public class SearchDishesService {
         return dishes;
     }
 
-    private List<Dish> paging(List<Dish> books, Paging paging) {
+    private List<Dish> paging(List<Dish> dishes, Paging paging) {
         if (pagingEnabled && (paging != null)) {
             int skip = (paging.getPageNumber() - 1) * paging.getPageSize();
-            return books.stream()
+            return dishes.stream()
                     .skip(skip)
                     .limit(paging.getPageSize())
                     .collect(Collectors.toList());
         } else {
-            return books;
+            return dishes;
         }
     }
 }
