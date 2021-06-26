@@ -1,7 +1,7 @@
 package lv.javaguru.java2.wasterestarant.acceptancetests;
 
 import lv.javaguru.java2.wasterestarant.DatabaseCleaner;
-import lv.javaguru.java2.wasterestarant.config.RestaurantApplicationConfiguration;
+import lv.javaguru.java2.wasterestarant.config.SpringCoreConfiguration;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.product.AddProductRequest;
@@ -26,7 +26,7 @@ public class AcceptanceTest2 {
 
     @Before
     public void setup() {
-        applicationContext = new AnnotationConfigApplicationContext(RestaurantApplicationConfiguration.class);
+        applicationContext = new AnnotationConfigApplicationContext(SpringCoreConfiguration.class);
         getDatabaseCleaner().clean();
     }
 

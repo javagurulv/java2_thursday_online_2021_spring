@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = "lv.javaguru.java2.wasterestarant")
 @PropertySource(value = "classpath:application.properties")
 @EnableTransactionManagement
-public class RestaurantApplicationConfiguration {
+public class SpringCoreConfiguration {
 
     @Value("${jdbc.url}")
     private String jdbcUrl;

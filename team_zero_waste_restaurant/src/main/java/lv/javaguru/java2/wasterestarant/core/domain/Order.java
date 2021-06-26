@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "order_list")
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -14,13 +14,15 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderID;
 
-    @Column(name = "client_id")
+    @Column(name = "user_id")
     private Long clientID;
+
+    @Column(name = "order_item_id")
+    private Long orderItemId;
 
     @Column(name = "order_date")
     private Date orderDate;
 
-    //private List<OrderItem> wishlist;
 
     public Order() {
 

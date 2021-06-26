@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Zero Waste Restaurant demo project">
+    <meta name="author" content="The DreamTeam">
+    <title>Zero Waste Restaurant</title>
+</head>
+<body>
+<h3> Show all products </h3>
+
+<table>
+    <tr>
+        <td>ID:</td>
+        <td>Name:</td>
+        <td>Quantity:</td>
+        <td>Price:</td>
+        <td>Expiry Date:</td>
+    </tr>
+
+    <td th:if="${Products != null}">
+        <tr th:each="product : ${Products}">
+            <td th:text="${product.id}"/>
+            <td th:text="${product.name}"/>
+            <td th:text="${product.quantity}"/>
+            <td th:text="${product.price}"/>
+            <td th:text="${product.expiryDate}"/>
+
+        </tr>
+    </td>
+
+</table>
+
+<form action="/" method="get">
+    <input type="submit" value="Go to main page" name="Submit"/>
+</form>
+
+</body>
+</html>

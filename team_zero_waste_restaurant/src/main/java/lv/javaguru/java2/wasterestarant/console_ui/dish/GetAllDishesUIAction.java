@@ -32,7 +32,8 @@ public class GetAllDishesUIAction implements UIAction {
                 ", " + printList.get(i).getDescription() +
                 ", " + printList.get(i).getType() +
                 ", price - " + printList.get(i).getPrice() + " \u0024, " +
-                "weight - " + printList.get(i).getWeight() + " grams.");
+                "weight - " + printList.get(i).getWeight() + " grams " +
+                "with " + printList.get(i).getDishID() + " ID");
     }
 
 }

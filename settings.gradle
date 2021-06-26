@@ -31,6 +31,8 @@ include 'teacher:lesson_11_orm_introduction'
 
 include 'teacher:lesson_12_orm_relations'
 
+include 'teacher:lesson_13_spring_web'
+
 include 'team_zero_waste_restaurant'
 include 'team_real_estate'
 include 'team_hr_system'

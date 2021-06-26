@@ -1,9 +1,9 @@
 package lv.javaguru.java2.hrsystem.console_ui;
 
+import lv.javaguru.java2.hrsystem.core.domain.UserRole;
 import lv.javaguru.java2.hrsystem.core.requests.AuthorizeUserRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AuthorizeUserResponse;
-import lv.javaguru.java2.hrsystem.core.services.user.AuthorizeUserService;
-import lv.javaguru.java2.hrsystem.core.domain.UserRole;
+import lv.javaguru.java2.hrsystem.core.services.authorization.AuthorizeUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,10 +14,12 @@ public class AuthorizeUserUIAction implements UIAction {
 
     @Autowired private AuthorizeUserService authorizeUserService;
 
+    //не хочет работать
+    //private AdminMenu adminMenu;
+
+    @Autowired private UserAdminMenu userAdminMenu;
+
     @Autowired private HRManagerMenu hrManagerMenu;
-
-//    @Autowired private AdminMenu adminMenu;
-
 
     @Override
     public void execute() {
@@ -40,7 +42,7 @@ public class AuthorizeUserUIAction implements UIAction {
                 response.getAuthorization().get().getUserRole().equals(UserRole.ADMIN)){
             System.out.println("Hello " + response.getAuthorization().get().getFirstName() + "!");
 
-//            adminMenu.run();
+            userAdminMenu.run();
 
         } else if (!response.getAuthorization().isEmpty() &&
         response.getAuthorization().get().getUserRole().equals(UserRole.HR_MANAGE)){
