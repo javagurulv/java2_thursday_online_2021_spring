@@ -9,10 +9,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import lv.javaguru.java2.hardcore.config.LotListConfiguration;
+import lv.javaguru.java2.hardcore.config.SpringCoreConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {LotListConfiguration.class})
+@ContextConfiguration(classes = {SpringCoreConfiguration.class})
 public class SpringContextTest {
 
     @Autowired

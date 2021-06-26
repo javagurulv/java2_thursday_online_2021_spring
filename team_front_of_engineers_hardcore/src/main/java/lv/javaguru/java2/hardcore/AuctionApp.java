@@ -1,18 +1,19 @@
 package lv.javaguru.java2.hardcore;
 
-import lv.javaguru.java2.hardcore.config.LotListConfiguration;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
+import lv.javaguru.java2.hardcore.web_ui.config.SpringWebConfiguration;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import org.springframework.context.ConfigurableApplicationContext;
 import lv.javaguru.java2.hardcore.consoleUI.ProgramMenu;
 
 
 
-
+@SpringBootApplication(exclude = HibernateJpaAutoConfiguration.class)
 public class AuctionApp {
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = createApplicationContext();
+        ConfigurableApplicationContext applicationContext = SpringApplication.run(SpringWebConfiguration.class);
 
         ProgramMenu programMenu = applicationContext.getBean(ProgramMenu.class);
         while (true) {
@@ -20,10 +21,6 @@ public class AuctionApp {
             int menuNumber = programMenu.getMenuNumberFromUser();
             programMenu.executeSelectedMenuItem(menuNumber);
         }
-    }
-
-    private static ApplicationContext createApplicationContext() {
-        return new AnnotationConfigApplicationContext(LotListConfiguration.class);
     }
 
 
