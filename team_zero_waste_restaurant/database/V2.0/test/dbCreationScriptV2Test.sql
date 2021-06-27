@@ -89,11 +89,23 @@ CREATE TABLE IF NOT EXISTS dish_ingredients AS
     FROM ingredient
              JOIN dish on ingredient.dish_id = dish.id;
 
+CREATE TABLE IF NOT EXISTS order_order_items
+(
+    id             BIGINT       NOT NULL AUTO_INCREMENT,
+	order_id  	   BIGINT       NOT NULL,
+    order_item_id	BIGINT      NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (order_id) REFERENCES orders (id),
+    FOREIGN KEY (order_item_id) REFERENCES order_item (id)
+)
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 1;
 
 CREATE UNIQUE INDEX idx_dish_name_type on dish (name, type);
 CREATE UNIQUE INDEX idx_product_name on product (name);
 CREATE UNIQUE INDEX idx_ingredient_name on ingredient (name);
 CREATE UNIQUE INDEX idx_user_email_password on users (email, password);
+CREATE UNIQUE INDEX idx_order_date on orders (order_date);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

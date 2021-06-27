@@ -3,7 +3,7 @@ package lv.javaguru.java2.wasterestarant.core.domain;
 import javax.persistence.*;
 import java.util.Objects;
 
-//@Entity
+@Entity
 @Table(name = "order_order_items")
 public class OrderOrderItem {
 
