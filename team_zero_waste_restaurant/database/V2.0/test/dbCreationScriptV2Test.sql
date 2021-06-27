@@ -2,8 +2,8 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=1;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=1;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `zero_waste_test` DEFAULT CHARACTER SET utf8;
-USE `zero_waste_test`;
+CREATE SCHEMA IF NOT EXISTS `zero_waste` DEFAULT CHARACTER SET utf8;
+USE `zero_waste`;
 
 CREATE TABLE IF NOT EXISTS dish
 (
@@ -47,25 +47,11 @@ CREATE TABLE IF NOT EXISTS ingredient
 (
     id            BIGINT        NOT NULL AUTO_INCREMENT,
     user_role     VARCHAR(20)   NOT NULL,
-    name     VARCHAR(100)  NOT NULL,
-    surname    VARCHAR(100)  NOT NULL,
+    name          VARCHAR(100)  NOT NULL,
+    surname       VARCHAR(100)  NOT NULL,
     email         VARCHAR(100)  NOT NULL,
     password      VARCHAR(100)  NOT NULL,
     PRIMARY KEY (id)
-)
-    ENGINE = InnoDB
-    AUTO_INCREMENT = 1;
-
-
-CREATE TABLE IF NOT EXISTS order_item
-(
-    id          BIGINT       NOT NULL AUTO_INCREMENT,
-	user_id  	BIGINT       NOT NULL,
-    dish_id   	BIGINT       NOT NULL,
-    quantity    TINYINT		 NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (dish_id) REFERENCES dish (id)
 )
     ENGINE = InnoDB
     AUTO_INCREMENT = 1;
@@ -75,11 +61,23 @@ CREATE TABLE IF NOT EXISTS orders
 (
     id             BIGINT       NOT NULL AUTO_INCREMENT,
 	user_id  	   BIGINT       NOT NULL,
-	order_item_id  BIGINT       NOT NULL,
     order_date	   DATE         NOT NULL, /*YYYY-MM-DD*/
     PRIMARY KEY (id),
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (order_item_id) REFERENCES order_item (id)
+    FOREIGN KEY (user_id) REFERENCES users (id)
+)
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 1;
+
+
+CREATE TABLE IF NOT EXISTS order_item
+(
+    id          BIGINT       NOT NULL AUTO_INCREMENT,
+	order_id  	BIGINT       NOT NULL,
+    dish_id   	BIGINT       NOT NULL,
+    quantity    INT			 NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (order_id) REFERENCES orders (id),
+    FOREIGN KEY (dish_id) REFERENCES dish (id)
 )
     ENGINE = InnoDB
     AUTO_INCREMENT = 1;
