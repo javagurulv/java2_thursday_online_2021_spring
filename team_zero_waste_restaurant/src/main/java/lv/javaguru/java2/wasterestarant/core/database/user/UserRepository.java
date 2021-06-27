@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.database.user;
 
 import lv.javaguru.java2.wasterestarant.core.domain.User;
+import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
 
 import java.util.List;
 
@@ -20,9 +21,13 @@ public interface UserRepository {
 
     List<User> findUserByEmail(String email);
 
-    boolean changeUserPassword (String email);
+    boolean changeUserPassword(String email);
+
+    boolean changeUserRole(UserRole userRole, String email);
 
     boolean isUserRegistered(User user);
+
+    boolean hasUserRightsToChangeRole(User user);
 
     List<User> findUserByRole(String role);
 

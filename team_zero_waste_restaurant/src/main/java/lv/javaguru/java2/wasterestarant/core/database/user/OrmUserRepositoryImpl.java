@@ -3,6 +3,7 @@ package lv.javaguru.java2.wasterestarant.core.database.user;
 import java.util.List;
 
 import lv.javaguru.java2.wasterestarant.core.domain.User;
+import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,13 +79,31 @@ public class OrmUserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public boolean changeUserRole(UserRole userRole, String email) {
+        Query query = sessionFactory.getCurrentSession()
+                .createQuery("UPDATE Users SET user_role = :user_role WHERE email = :email")
+                .setParameter("user_role", userRole);
+        return query.executeUpdate() == 1;
+    }
+
+    @Override
     public boolean isUserRegistered(User user) {
         List<User> checkedUsers = sessionFactory.getCurrentSession()
                 .createQuery("SELECT u FROM Users u WHERE email = :email AND password = :password", User.class)
                 .setParameter("email", user.getEmail())
                 .setParameter("password", user.getPassword())
                 .getResultList();
+        return checkedUsers.size() == 1;
+    }
 
+    @Override
+    public boolean hasUserRightsToChangeRole(User user) {
+        List<User> checkedUsers = sessionFactory.getCurrentSession()
+                .createQuery("SELECT u FROM Users u WHERE user_role = :user_role AND email = :email AND password = :password", User.class)
+                .setParameter("user_role", user.getUserRole())
+                .setParameter("email", user.getEmail())
+                .setParameter("password", user.getPassword())
+                .getResultList();
         return checkedUsers.size() == 1;
     }
 
