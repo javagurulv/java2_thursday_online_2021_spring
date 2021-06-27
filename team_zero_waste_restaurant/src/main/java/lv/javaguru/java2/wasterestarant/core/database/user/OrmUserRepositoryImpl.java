@@ -1,7 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.database.user;
 
 import java.util.List;
-import java.util.Optional;
 
 import lv.javaguru.java2.wasterestarant.core.domain.User;
 import org.hibernate.SessionFactory;
@@ -71,13 +70,11 @@ public class OrmUserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<User> findUserByEmailAndPassword(String email, String password) {
-        Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT u FROM Users u WHERE email = :email AND password = :password");
-        query.setParameter("email", email);
-        query.setParameter("password", password);
-        query.getResultList();
-        return query.getResultList();
+    public boolean changeUserPassword(String email) {
+        Query query = sessionFactory.getCurrentSession()
+                .createQuery("UPDATE Users SET password = :password WHERE email = :email")
+                .setParameter("email", email);
+        return query.executeUpdate() == 1;
     }
 
     @Override

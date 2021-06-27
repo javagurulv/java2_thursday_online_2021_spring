@@ -1,12 +1,12 @@
 package lv.javaguru.java2.wasterestarant.core.requests.user;
 
-public class PasswordChangeRequest {
+public class ChangePasswordRequest {
     private String email;
 
-    public PasswordChangeRequest() {
+    public ChangePasswordRequest() {
     }
 
-    public PasswordChangeRequest(String email) {
+    public ChangePasswordRequest(String email) {
         this.email = email;
     }
 

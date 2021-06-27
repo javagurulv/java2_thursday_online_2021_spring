@@ -9,6 +9,9 @@ public class LoginRequest {
         this.password = password;
     }
 
+    public LoginRequest() {
+    }
+
     public String getEmail() {
         return email;
     }
@@ -17,11 +20,4 @@ public class LoginRequest {
         return password;
     }
 
-    public boolean isNameProvided() {
-        return this.email != null && !this.email.isEmpty();
-    }
-
-    public boolean isPasswordProvided() {
-        return this.password != null && !this.password.isEmpty();
-    }
 }

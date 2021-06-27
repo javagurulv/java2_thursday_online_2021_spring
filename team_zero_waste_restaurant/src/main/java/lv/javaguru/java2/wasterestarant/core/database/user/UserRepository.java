@@ -20,7 +20,7 @@ public interface UserRepository {
 
     List<User> findUserByEmail(String email);
 
-    List<User> findUserByEmailAndPassword(String email, String password);
+    boolean changeUserPassword (String email);
 
     boolean isUserRegistered(User user);
 
