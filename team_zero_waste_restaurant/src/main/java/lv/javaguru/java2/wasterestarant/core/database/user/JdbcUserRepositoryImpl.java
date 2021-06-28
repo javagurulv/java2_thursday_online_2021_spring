@@ -63,12 +63,22 @@ public class JdbcUserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<User> findUserByEmailAndPassword(String name, String password) {
-        return null;
+    public boolean changeUserPassword(String email) {
+        return false;
     }
 
     @Override
-    public boolean isUserRegistered(User user) {
+    public boolean changeUserRole(UserRole userRole, String email) {
+        return false;
+    }
+
+    @Override
+    public boolean isUserRegistered(String email, String password) {
+        return false;
+    }
+
+    @Override
+    public boolean hasUserRightsToChangeRole(User user) {
         return false;
     }
 

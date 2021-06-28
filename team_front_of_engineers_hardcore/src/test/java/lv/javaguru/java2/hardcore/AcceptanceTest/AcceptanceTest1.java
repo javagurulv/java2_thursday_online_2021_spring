@@ -1,7 +1,7 @@
 package lv.javaguru.java2.hardcore.AcceptanceTest;
 
 
-import lv.javaguru.java2.hardcore.config.LotListConfiguration;
+import lv.javaguru.java2.hardcore.config.SpringCoreConfiguration;
 import lv.javaguru.java2.hardcore.core.requests.lot.AddLotRequest;
 import lv.javaguru.java2.hardcore.core.requests.lot.GetAllLotsRequest;
 import lv.javaguru.java2.hardcore.core.response.lot.GetAllLotsResponse;
@@ -23,7 +23,7 @@ private ApplicationContext appContext;
 
     @Before
     public void setup(){
-        appContext = new AnnotationConfigApplicationContext(LotListConfiguration.class);
+        appContext = new AnnotationConfigApplicationContext(SpringCoreConfiguration.class);
     }
 
     @Test

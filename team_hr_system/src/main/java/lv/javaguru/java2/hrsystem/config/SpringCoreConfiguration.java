@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hardcore.config;
+package lv.javaguru.java2.hrsystem.config;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
@@ -18,10 +18,10 @@ import java.io.IOException;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = "lv.javaguru.java2.hardcore")
+@ComponentScan(basePackages = "lv.javaguru.java2.hrsystem")
 @PropertySource(value = "classpath:application.properties")
 @EnableTransactionManagement
-public class LotListConfiguration {
+public class SpringCoreConfiguration {
 
     @Value("${jdbc.url}")
     private String jdbcUrl;
@@ -74,6 +74,7 @@ public class LotListConfiguration {
         sessionFactoryBean.afterPropertiesSet();
         return sessionFactoryBean.getObject();
     }
+
     @Bean
     public PlatformTransactionManager transactionManager(SessionFactory sessionFactory) {
         return new HibernateTransactionManager(sessionFactory);

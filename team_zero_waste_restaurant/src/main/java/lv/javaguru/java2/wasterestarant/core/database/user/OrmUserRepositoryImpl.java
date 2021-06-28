@@ -1,9 +1,9 @@
 package lv.javaguru.java2.wasterestarant.core.database.user;
 
 import java.util.List;
-import java.util.Optional;
 
 import lv.javaguru.java2.wasterestarant.core.domain.User;
+import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,23 +71,39 @@ public class OrmUserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<User> findUserByEmailAndPassword(String email, String password) {
-        Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT u FROM Users u WHERE email = :email AND password = :password");
-        query.setParameter("email", email);
-        query.setParameter("password", password);
-        query.getResultList();
-        return query.getResultList();
+    public boolean changeUserPassword(String email) {
+        Query query = sessionFactory.getCurrentSession()
+                .createQuery("UPDATE Users SET password = :password WHERE email = :email")
+                .setParameter("email", email);
+        return query.executeUpdate() == 1;
     }
 
     @Override
-    public boolean isUserRegistered(User user) {
+    public boolean changeUserRole(UserRole userRole, String email) {
+        Query query = sessionFactory.getCurrentSession()
+                .createQuery("UPDATE Users SET user_role = :user_role WHERE email = :email")
+                .setParameter("user_role", userRole);
+        return query.executeUpdate() == 1;
+    }
+
+    @Override
+    public boolean isUserRegistered(String email, String password) {
         List<User> checkedUsers = sessionFactory.getCurrentSession()
                 .createQuery("SELECT u FROM Users u WHERE email = :email AND password = :password", User.class)
+                .setParameter("email", email)
+                .setParameter("password", password)
+                .getResultList();
+        return checkedUsers.size() == 1;
+    }
+
+    @Override
+    public boolean hasUserRightsToChangeRole(User user) {
+        List<User> checkedUsers = sessionFactory.getCurrentSession()
+                .createQuery("SELECT u FROM Users u WHERE user_role = :user_role AND email = :email AND password = :password", User.class)
+                .setParameter("user_role", user.getUserRole())
                 .setParameter("email", user.getEmail())
                 .setParameter("password", user.getPassword())
                 .getResultList();
-
         return checkedUsers.size() == 1;
     }
 

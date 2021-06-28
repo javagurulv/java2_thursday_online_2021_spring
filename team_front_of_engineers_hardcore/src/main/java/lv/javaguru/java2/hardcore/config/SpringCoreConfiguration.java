@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hrsystem.config;
+package lv.javaguru.java2.hardcore.config;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
@@ -18,10 +18,10 @@ import java.io.IOException;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = "lv.javaguru.java2.hrsystem")
+@ComponentScan(basePackages = "lv.javaguru.java2.hardcore")
 @PropertySource(value = "classpath:application.properties")
 @EnableTransactionManagement
-public class HRSystemConfiguration {
+public class SpringCoreConfiguration {
 
     @Value("${jdbc.url}")
     private String jdbcUrl;
@@ -74,7 +74,6 @@ public class HRSystemConfiguration {
         sessionFactoryBean.afterPropertiesSet();
         return sessionFactoryBean.getObject();
     }
-
     @Bean
     public PlatformTransactionManager transactionManager(SessionFactory sessionFactory) {
         return new HibernateTransactionManager(sessionFactory);

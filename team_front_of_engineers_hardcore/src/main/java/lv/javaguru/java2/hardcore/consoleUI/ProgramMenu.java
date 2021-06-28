@@ -52,7 +52,7 @@ public class ProgramMenu {
         System.out.println("7. Show all users from User list");
         System.out.println("8. Remove lot from the list");
         System.out.println("9. Remove bet from the list");
-        System.out.println("10. Search lot by name");
+        System.out.println("10. Search lot by name and price");
         System.out.println("11. Show all bets for one lot");
         System.out.println("12. Show highest bet for lot with ID...");
         System.out.println("0. Exit");

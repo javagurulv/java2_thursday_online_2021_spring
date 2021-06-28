@@ -45,7 +45,7 @@ public class AuthorizeUserUIAction implements UIAction {
             userAdminMenu.run();
 
         } else if (!response.getAuthorization().isEmpty() &&
-        response.getAuthorization().get().getUserRole().equals(UserRole.HR_MANAGE)){
+        response.getAuthorization().get().getUserRole().equals(UserRole.HR_MANAGER)){
             System.out.println("Hello " + response.getAuthorization().get().getFirstName() +"!");
 
             hrManagerMenu.run();
