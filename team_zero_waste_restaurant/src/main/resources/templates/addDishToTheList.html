@@ -6,6 +6,7 @@
     <meta name="description" content="Zero Waste Restaurant demo project">
     <meta name="author" content="The DreamTeam">
     <title>Zero Waste Restaurant</title>
+    <link rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -34,9 +35,6 @@
     </tr>
 </table>
 
-    <tr>
-
-    </tr>
 <td th:if="${errors != null}">
     <tr th:each="error : ${errors}">
         <td th:text="${error.field}"/>

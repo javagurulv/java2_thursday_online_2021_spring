@@ -21,7 +21,7 @@ import java.util.Properties;
 @ComponentScan(basePackages = "lv.javaguru.java2.hardcore")
 @PropertySource(value = "classpath:application.properties")
 @EnableTransactionManagement
-public class LotListConfiguration {
+public class SpringCoreConfiguration {
 
     @Value("${jdbc.url}")
     private String jdbcUrl;

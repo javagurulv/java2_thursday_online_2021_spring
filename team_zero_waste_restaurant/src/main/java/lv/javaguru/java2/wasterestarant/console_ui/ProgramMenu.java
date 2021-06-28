@@ -13,6 +13,8 @@ import lv.javaguru.java2.wasterestarant.console_ui.product.AddProductUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.GetAllProductsUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.RemoveProductUiAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.SearchProductUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.user.ChangePasswordUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.user.ChangeUserRoleUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.user.LoginUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.user.RegistrationUIAction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,10 +47,10 @@ public class ProgramMenu {
         menuNumberToUIActionMap.put(10, findUIActions(uiActions, GetAllDishesUIAction.class));
         menuNumberToUIActionMap.put(11, findUIActions(uiActions, GetAllProductsUIAction.class));
         menuNumberToUIActionMap.put(12, findUIActions(uiActions, GetAllOrdersUIAction.class));
-        menuNumberToUIActionMap.put(13, findUIActions(uiActions,GetRestaurantMenuUIAction.class));
+        menuNumberToUIActionMap.put(13, findUIActions(uiActions, GetRestaurantMenuUIAction.class));
         menuNumberToUIActionMap.put(14, findUIActions(uiActions, CreateNewOrderUIAction.class));
-        menuNumberToUIActionMap.put(15, findUIActions(uiActions,RegistrationUIAction.class));
-        menuNumberToUIActionMap.put(16, findUIActions(uiActions,LoginUIAction.class));
+        menuNumberToUIActionMap.put(15, findUIActions(uiActions, ChangePasswordUIAction.class));
+        menuNumberToUIActionMap.put(16, findUIActions(uiActions, ChangeUserRoleUIAction.class));
         menuNumberToUIActionMap.put(17, findUIActions(uiActions, ExitUIAction.class));
 
 
@@ -84,8 +86,8 @@ public class ProgramMenu {
         System.out.println("12. Show all orders in the list");
         System.out.println("13. Show full restaurant menu list");
         System.out.println("14. Create new order");
-        System.out.println("15. Register");
-        System.out.println("16. Log In");
+        System.out.println("15. Change password");
+        System.out.println("16. Change user role");
         System.out.println("17. Exit");
         System.out.println();
     }

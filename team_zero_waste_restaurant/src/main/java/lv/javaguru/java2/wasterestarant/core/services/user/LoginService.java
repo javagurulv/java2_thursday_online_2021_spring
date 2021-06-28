@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -23,19 +22,12 @@ public class LoginService {
     public LoginResponse execute(LoginRequest request) {
         List<CoreError> errors = validator.validate(request);
         if (!errors.isEmpty()) {
-            return new LoginResponse(null, errors);
+            return new LoginResponse(errors);
         }
-        List<User> users = isUserRegistered(request);
-
-        return new LoginResponse(users, null);
-    }
-
-    private List<User> isUserRegistered(LoginRequest request){
-        List<User> users = new ArrayList<>();
-        if(request.isNameProvided() && request.isPasswordProvided()){
-            repository.findUserByNameAndPassword(request.getEmail(), request.getPassword());
-        }
-        return users;
+        User user = new User(
+                request.getEmail(),
+                request.getPassword());
+            return new LoginResponse(user, true);
     }
 
 }

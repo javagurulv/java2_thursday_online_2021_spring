@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Zero Waste Restaurant demo project">
+    <meta name="author" content="The DreamTeam">
+    <title>Zero Waste Restaurant</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+</head>
+<body>
+<h3>Search dish</h3>
+
+<table>
+    <tr>
+        <td>Dish name:</td>
+        <td>Dish type:</td>
+        <td>Dish price:</td>
+    </tr>
+    <tr>
+        <form action="/searchDishes" th:object="${request}" method="post">
+            <td><input type="text" th:field="${request.name}"/></td>
+            <td><input type="text" th:field="${request.type}"/></td>
+            <td><input type="number" th:field="${request.price}"/></td>
+            <td><input type="submit" value="Add Book"/>
+                <input type="reset" value="Clear"/></td>
+        </form>
+    </tr>
+</table>
+<td th:if="${errors != null}">
+    <tr th:each="error : ${errors}">
+        <td th:text="${error.field}"/>
+        <td th:text="${error.message}"/>
+    </tr>
+</td>
+
+<td th:if="${dishes != null}">
+    <tr th:each="dish : ${dishes}">
+        <td th:text="${dish.name}"/>
+        <td th:text="${dish.description}"/>
+        <td th:text="${dish.type}"/>
+        <td th:text="${dish.weight}"/>
+        <td th:text="${dish.price}"/>
+        <td th:text="${dish.dishID}"/>
+
+    </tr>
+</td>
+
+<form action="/" method="get">
+    <input type="submit" value="Go to main page" name="Submit"/>
+</form>
+
+</body>
+</html>

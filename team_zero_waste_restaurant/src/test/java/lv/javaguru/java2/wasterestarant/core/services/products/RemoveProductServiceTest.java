@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.core.services.products.validators;
+package lv.javaguru.java2.wasterestarant.core.services.products;
 
 import lv.javaguru.java2.wasterestarant.core.database.Product.ProductRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.product.RemoveProductRequest;

@@ -21,9 +21,15 @@ public interface UserRepository {
 
     List<User> findUserByEmail(String email);
 
-    List<User> findUserByNameAndPassword(String name, String password);
+    boolean changeUserPassword(String email);
 
-    List<UserRole> findUserByRole(String role);
+    boolean changeUserRole(UserRole userRole, String email);
+
+    boolean isUserRegistered(String email, String password);
+
+    boolean hasUserRightsToChangeRole(User user);
+
+    List<User> findUserByRole(String role);
 
 
 }

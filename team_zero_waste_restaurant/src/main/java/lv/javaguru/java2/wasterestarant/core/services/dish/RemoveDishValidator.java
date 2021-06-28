@@ -20,8 +20,8 @@ public class RemoveDishValidator {
     }
 
     private Optional<CoreError> validateNameToRemove(RemoveDishRequest request){
-        return (request.getDishNameToRemove() == null || request.getDishNameToRemove().isEmpty())
-                ? Optional.of(new CoreError("nameToRemove", "Must not be empty"))
+        return (request.name() == null || request.name().length() == 0)
+                ? Optional.of(new CoreError("name", "Must not be empty"))
                 : Optional.empty();
     }
 }

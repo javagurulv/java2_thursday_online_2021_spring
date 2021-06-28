@@ -6,7 +6,6 @@ import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,41 +20,43 @@ public class RegistrationValidator {
     public List<CoreError> validate(RegistrationRequest request) {
         validateName(request).ifPresent(errors::add);
         validateSurname(request).ifPresent(errors::add);
-        validateEmail(request).ifPresent(errors::add);
-        validatePassword(request).ifPresent(errors::add);
+        errors.addAll(validateEmail(request));
+        errors.addAll(validatePassword(request));
         return errors;
     }
 
     private Optional<CoreError> validateName(RegistrationRequest request) {
-        return (request.getName() == null || request.getName().isEmpty())
+        return (request.getFirstName() == null || request.getFirstName().isEmpty())
                 ? Optional.of(new CoreError("Name", "Must not be empty"))
                 : Optional.empty();
     }
 
     private Optional<CoreError> validateSurname(RegistrationRequest request) {
-        return (request.getSurname() == null || request.getSurname().isEmpty())
+        return (request.getSecondName() == null || request.getSecondName().isEmpty())
                 ? Optional.of(new CoreError("Surname", "Must not be empty"))
                 : Optional.empty();
     }
 
 
-    private Optional<CoreError> validateEmail(RegistrationRequest request) {
+    private List<CoreError> validateEmail(RegistrationRequest request) {
+        List<CoreError> errors = new ArrayList<>();
         if (request.getEmail() == null || request.getEmail().isEmpty()) {
-            return Optional.of(new CoreError("E-mail", "Must not be empty"));
-        } else if (!request.getEmail().contains("@")) {
-            return Optional.of(new CoreError("E-mail", "Must contain @ symbol"));
-        } else if (!repository.findUserByEmail(request.getEmail()).isEmpty()) {
-            return Optional.of(new CoreError("E-mail", request.getEmail() + " is already taken!"));
+            errors.add(new CoreError("E-mail", "Must not be empty"));
+        } if (!request.getEmail().contains("@")) {
+            errors.add(new CoreError("E-mail", "Must contain @ symbol"));
+        } if (repository.findUserByEmail(request.getEmail()).size() < 1) {
+            errors.add(new CoreError("E-mail", request.getEmail() + " is already taken!"));
         }
-        return Optional.empty();
+        return errors;
     }
 
-    private Optional<CoreError> validatePassword(RegistrationRequest request) {
+    private List<CoreError> validatePassword(RegistrationRequest request) {
+        List<CoreError> errors = new ArrayList<>();
         if (request.getPassword() == null || request.getPassword().isEmpty()) {
-            return Optional.of(new CoreError("Password", "Must not be empty"));
-        } else if (request.getPassword().length() < 6) {
-            return Optional.of(new CoreError("Password", "Password must be longer then 5 symbols"));
+            errors.add(new CoreError("Password", "Must not be empty"));
+        } if (request.getPassword().length() < 6) {
+            errors.add(new CoreError("Password", "Password must be longer then 5 symbols"));
         }
-        return Optional.empty();
+        return errors;
     }
 }

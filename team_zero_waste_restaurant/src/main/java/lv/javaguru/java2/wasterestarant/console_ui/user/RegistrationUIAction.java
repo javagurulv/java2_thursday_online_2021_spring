@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-import static lv.javaguru.java2.wasterestarant.core.domain.UserRole.CLIENT;
-
 @Component
 public class RegistrationUIAction implements UIAction {
     @Autowired
