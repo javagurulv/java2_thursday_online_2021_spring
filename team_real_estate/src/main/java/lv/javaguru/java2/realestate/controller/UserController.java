@@ -1,5 +1,7 @@
 package lv.javaguru.java2.realestate.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lv.javaguru.java2.realestate.core.database.offer.OfferRepository;
 import lv.javaguru.java2.realestate.core.database.user.UserRepository;
 import lv.javaguru.java2.realestate.core.domain.Offer;
@@ -7,8 +9,11 @@ import lv.javaguru.java2.realestate.core.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 public class UserController {
 
@@ -16,8 +21,13 @@ public class UserController {
     @Autowired private OfferRepository offerRepository;
 
     @GetMapping("/get_all_offers")
-    List<Offer> offerList(){
-        return offerRepository.getAllOffers();
+    public @ResponseBody List<Offer> offerList(){
+        return  offerRepository.getAllOffers();
+    }
+
+    @GetMapping("/get_test")
+    public @ResponseBody Offer offer () throws JsonProcessingException {
+        return offerRepository.getAllOffers().get(1);
     }
 
 
