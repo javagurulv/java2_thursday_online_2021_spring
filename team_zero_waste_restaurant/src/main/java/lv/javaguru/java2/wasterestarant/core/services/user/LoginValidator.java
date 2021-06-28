@@ -42,7 +42,7 @@ public class LoginValidator {
 
     private Optional<CoreError> validateUserRegistration(LoginRequest request){
         return !(repository.isUserRegistered(request.getEmail(), request.getPassword()))
-                ? Optional.of(new CoreError("Email and Password", "User is not registered!"))
+                ? Optional.of(new CoreError("Email and Password", "User is not found!"))
                 : Optional.empty();
     }
 }
