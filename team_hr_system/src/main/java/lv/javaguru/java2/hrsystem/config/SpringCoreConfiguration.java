@@ -21,7 +21,7 @@ import java.util.Properties;
 @ComponentScan(basePackages = "lv.javaguru.java2.hrsystem")
 @PropertySource(value = "classpath:application.properties")
 @EnableTransactionManagement
-public class HRSystemConfiguration {
+public class SpringCoreConfiguration {
 
     @Value("${jdbc.url}")
     private String jdbcUrl;

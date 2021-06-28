@@ -5,7 +5,7 @@ import java.io.Serializable;
 public enum UserRole implements Serializable {
 
     ADMIN("Admin"),
-    HR_MANAGE("HR Manager");
+    HR_MANAGER("HR Manager");
 
     private String role;
 
