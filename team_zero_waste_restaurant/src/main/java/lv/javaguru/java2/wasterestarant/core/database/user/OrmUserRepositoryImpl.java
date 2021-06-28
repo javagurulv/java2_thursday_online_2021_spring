@@ -87,11 +87,11 @@ public class OrmUserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public boolean isUserRegistered(User user) {
+    public boolean isUserRegistered(String email, String password) {
         List<User> checkedUsers = sessionFactory.getCurrentSession()
                 .createQuery("SELECT u FROM Users u WHERE email = :email AND password = :password", User.class)
-                .setParameter("email", user.getEmail())
-                .setParameter("password", user.getPassword())
+                .setParameter("email", email)
+                .setParameter("password", password)
                 .getResultList();
         return checkedUsers.size() == 1;
     }

@@ -73,7 +73,7 @@ public class JdbcUserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public boolean isUserRegistered(User user) {
+    public boolean isUserRegistered(String email, String password) {
         return false;
     }
 

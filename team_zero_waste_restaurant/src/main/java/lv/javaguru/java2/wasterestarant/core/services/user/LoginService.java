@@ -27,11 +27,7 @@ public class LoginService {
         User user = new User(
                 request.getEmail(),
                 request.getPassword());
-        if (repository.isUserRegistered(user)) {
             return new LoginResponse(user, true);
-        } else {
-            return new LoginResponse();
-        }
     }
 
 }
