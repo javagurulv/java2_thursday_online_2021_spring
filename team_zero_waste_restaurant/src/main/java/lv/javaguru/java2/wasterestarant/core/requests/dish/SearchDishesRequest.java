@@ -40,6 +40,10 @@ public class SearchDishesRequest {
         this.paging = paging;
     }
 
+    public SearchDishesRequest() {
+
+    }
+
     public boolean isNameProvided() {
         return this.name != null && !this.name.isEmpty();
     }
