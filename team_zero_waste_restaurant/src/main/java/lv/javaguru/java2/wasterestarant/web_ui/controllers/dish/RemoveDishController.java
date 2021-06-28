@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.web_ui.controllers;
+package lv.javaguru.java2.wasterestarant.web_ui.controllers.dish;
 
 import lv.javaguru.java2.wasterestarant.core.requests.dish.RemoveDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.RemoveDishResponse;
@@ -19,7 +19,7 @@ public class RemoveDishController {
     @GetMapping(value = "/removeDishFromTheList")
     public String showRemovedDishPage(ModelMap modelMap) {
         modelMap.addAttribute("request", new RemoveDishRequest());
-        return "removeDishFromTheList";
+        return "/removeDishFromTheList";
     }
 
     @PostMapping(value = "/removeDishFromTheList")
