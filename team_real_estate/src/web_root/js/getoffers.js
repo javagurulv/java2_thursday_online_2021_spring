@@ -8,7 +8,6 @@ ourRequest.open('GET','http://localhost:8090/get_all_offers')
 ourRequest.onload = function() {
   var ourData = JSON.parse(ourRequest.responseText);
   renderHTML(ourData);
-  console.log(ourData[0])
 };
 ourRequest.send();
 });

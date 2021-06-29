@@ -1,5 +1,8 @@
 package lv.javaguru.java2.realestate.core.requests;
 
+import lombok.Getter;
+
+@Getter
 public class SearchOffersRequest {
     private final String offerType;
     private final String offerCategory;
@@ -34,25 +37,5 @@ public class SearchOffersRequest {
         this.price = price;
         this.ordering = ordering;
         this.paging = paging;
-    }
-
-    public String getOfferType() {
-        return offerType;
-    }
-
-    public String getOfferCategory() {
-        return offerCategory;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public Ordering getOrdering() {
-        return ordering;
-    }
-
-    public Paging getPaging() {
-        return paging;
     }
 }

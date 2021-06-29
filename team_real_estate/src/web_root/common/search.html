@@ -1,10 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="../css/mainPageGeneral.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="../css/homePageButtonStyle.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="../css/signUp.css" type="text/css" />
+
+    <meta charset="utf-8" />
+
+    <title>Vinik Real Estate - Search</title>
+    <meta name="description" content="The HTML5 Herald" />
+    <meta name="author" content="SitePoint" />
   </head>
-  <body></body>
+
+  <body>
+    <div class="topButtonBlock">
+      <div class="logoBlock">
+        <div class="logoImgContainer">
+          <a href="../index.html"
+            ><img
+              src="../imgs/e46a5eff772d46358e8b81b69e255787.png"
+              alt="Company Logo"
+            />
+          </a>
+        </div>
+      </div>
+
+      <div class="buttonBlock">
+        <a href="../common/search.html" class="button">Buy</a>
+        <a href="../common/search.html" class="button">Sell</a>
+        <a href="../common/aboutus.html" class="button">About Us</a>
+        <a href="../common/signup.html" class="button">Sign Up</a>
+        <a href="../common/login.html" class="button">Log In</a>
+      </div>
+    </div>
+
+    <div class="midPageBody">
+      <div class="panoramicImgContainer">
+        <img src="../imgs/panorama-2646143_1920.jpg" alt="Panoramic image" />
+        <div class="signUpTXT">Search</div>
+      </div>
+    </div>
+
+    <div class="bottomPageBody">
+      <h2>Search by : </h2>
+
+      <div class="signUpFields">
+
+        <form >
+          <label for="offerType">Offer type</label>
+          <br />
+          <input type="text" id="offerType" name="offerType" value=""/>
+          <br />
+
+          <label for="offerCategory">Offer category</label>
+          <br />
+          <input type="text" id="offerCategory" name="offerCategory" value=""/>
+          <br />
+
+          <label for="offerPrice">Offer price</label>
+          <br />
+          <input type="text" id="offerPrice" name="offerPrice" value=""/>
+          <br />
+
+          <button id="searchBTN">Search offers</button>
+        </form>
+
+        <div class="offerList" id="offer-info"></div>
+
+    </div>
+    <script src="../js/searchoffers.js"></script>
+  </body>
 </html>

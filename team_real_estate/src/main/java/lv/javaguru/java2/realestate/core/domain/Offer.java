@@ -1,8 +1,15 @@
 package lv.javaguru.java2.realestate.core.domain;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Objects;
 
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "offer")
 public class Offer {
@@ -23,55 +30,11 @@ public class Offer {
     @Column(name = "price", nullable = false)
     private Double price;
 
-    public Offer() {
-    }
-
     public Offer(String offerType, String offerCategory, String description, Double price) {
         this.offerType = offerType;
         this.offerCategory = offerCategory;
         this.description = description;
         this.price = price;
-    }
-
-
-    public String getOfferType() {
-        return offerType;
-    }
-
-    public void setOfferType(String offerType) {
-        this.offerType = offerType;
-    }
-
-    public String getOfferCategory() {
-        return offerCategory;
-    }
-
-    public void setOfferCategory(String offerCategory) {
-        this.offerCategory = offerCategory;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     @Override
