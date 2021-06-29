@@ -40,6 +40,10 @@ public class SearchProductRequest {
         this.paging = paging;
     }
 
+    public SearchProductRequest() {
+
+    }
+
     public String getNameToSearch() {
         return nameToSearch;
     }
@@ -54,5 +58,9 @@ public class SearchProductRequest {
 
     public boolean isNameProvided() {
         return this.nameToSearch != null && !this.nameToSearch.isEmpty();
+    }
+
+    public void setNameToSearch(String nameToSearch) {
+        this.nameToSearch = nameToSearch;
     }
 }
