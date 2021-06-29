@@ -20,8 +20,11 @@ public class RegistrationValidator {
     public List<CoreError> validate(RegistrationRequest request) {
         validateName(request).ifPresent(errors::add);
         validateSurname(request).ifPresent(errors::add);
-        errors.addAll(validateEmail(request));
-        errors.addAll(validatePassword(request));
+        validateEmail(request).ifPresent(errors::add);
+        validatePassword(request).ifPresent(errors::add);
+        if(errors.isEmpty()) {
+            validateRegistration(request).ifPresent(errors::add);
+        }
         return errors;
     }
 
@@ -37,26 +40,28 @@ public class RegistrationValidator {
                 : Optional.empty();
     }
 
-
-    private List<CoreError> validateEmail(RegistrationRequest request) {
-        List<CoreError> errors = new ArrayList<>();
+    private Optional<CoreError> validateEmail(RegistrationRequest request) {
         if (request.getEmail() == null || request.getEmail().isEmpty()) {
-            errors.add(new CoreError("E-mail", "Must not be empty"));
-        } if (!request.getEmail().contains("@")) {
-            errors.add(new CoreError("E-mail", "Must contain @ symbol"));
-        } if (repository.isEmailRegistered(request.getEmail())) {
-            errors.add(new CoreError("E-mail", request.getEmail() + " is already taken!"));
+            return Optional.of(new CoreError("E-mail", "Must not be empty"));
+        } else if (!request.getEmail().contains("@")) {
+            return Optional.of(new CoreError("E-mail", "Must contain @ symbol"));
         }
-        return errors;
+        return Optional.empty();
     }
 
-    private List<CoreError> validatePassword(RegistrationRequest request) {
-        List<CoreError> errors = new ArrayList<>();
-        if (request.getPassword() == null || request.getPassword().isEmpty()) {
-            errors.add(new CoreError("Password", "Must not be empty"));
-        } if (request.getPassword().length() < 5) {
-            errors.add(new CoreError("Password", "Must be at least 5 symbols"));
+    private Optional<CoreError> validateRegistration(RegistrationRequest request) {
+        if (repository.isEmailRegistered(request.getEmail())) {
+            return Optional.of(new CoreError("E-mail", request.getEmail() + " is already taken!"));
         }
-        return errors;
+        return Optional.empty();
+    }
+
+    private Optional<CoreError> validatePassword(RegistrationRequest request) {
+        if (request.getPassword() == null || request.getPassword().isEmpty()) {
+            return Optional.of(new CoreError("Password", "Must not be empty"));
+        } else if (request.getPassword().length() < 5) {
+            return Optional.of(new CoreError("Password", "Must be at least 5 symbols"));
+        }
+        return Optional.empty();
     }
 }

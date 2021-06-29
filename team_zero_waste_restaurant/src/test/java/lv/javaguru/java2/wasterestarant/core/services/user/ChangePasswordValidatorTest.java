@@ -22,37 +22,37 @@ public class ChangePasswordValidatorTest {
     private ChangePasswordValidator validator;
 
     @Test
-    public void shouldReturnErrorsIfEmailIsEmpty() {
+    public void shouldReturnErrorIfEmailIsEmpty() {
         ChangePasswordRequest request = new ChangePasswordRequest("");
         List<CoreError> errors = validator.validate(request);
-        assertEquals(errors.size(), 3);
+        assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "E-mail");
         assertEquals(errors.get(0).getMessage(), "Must not be empty");
-        assertEquals(errors.get(1).getField(), "E-mail");
-        assertEquals(errors.get(1).getMessage(), "Must contain @ symbol");
-        assertEquals(errors.get(2).getField(), "E-mail");
-        assertEquals(errors.get(2).getMessage(), " is not found!");
     }
 
     @Test
-    public void shouldReturnErrorIfEmailIsNotCorrectlyFilledIn1() {
+    public void shouldReturnErrorIfEmailDoNotContainSymbol() {
         ChangePasswordRequest request = new ChangePasswordRequest("admin");
-        when(repository.isEmailRegistered("admin")).thenReturn(false);
         List<CoreError> errors = validator.validate(request);
-        assertEquals(errors.size(), 2);
+        assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "E-mail");
         assertEquals(errors.get(0).getMessage(), "Must contain @ symbol");
-        assertEquals(errors.get(1).getField(), "E-mail");
-        assertEquals(errors.get(1).getMessage(), "admin is not found!");
     }
 
     @Test
-    public void shouldReturnErrorIfEmailIsNotCorrectlyFilledIn2() {
+    public void shouldReturnErrorIfEmailIsNotFound() {
         ChangePasswordRequest request = new ChangePasswordRequest("admin@admin.lv");
-        when(repository.isEmailRegistered("admin@admin.lv")).thenReturn(false);
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "E-mail");
         assertEquals(errors.get(0).getMessage(), "admin@admin.lv is not found!");
+    }
+
+    @Test
+    public void shouldReturnEmptyErrorList() {
+        ChangePasswordRequest request = new ChangePasswordRequest("admin@admin.lv");
+        when(repository.isEmailRegistered("admin@admin.lv")).thenReturn(true);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 0);
     }
 }

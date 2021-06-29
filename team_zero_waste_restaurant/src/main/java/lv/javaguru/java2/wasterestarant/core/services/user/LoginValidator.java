@@ -18,20 +18,21 @@ public class LoginValidator {
     List<CoreError> errors = new ArrayList<>();
 
     public List<CoreError> validate(LoginRequest request) {
-        errors.addAll(validateEmail(request));
+        validateEmail(request).ifPresent(errors::add);
         validatePassword(request).ifPresent(errors::add);
-        validateUserRegistration(request).ifPresent(errors::add);
+        if(errors.isEmpty()) {
+            validateUserRegistration(request).ifPresent(errors::add);
+        }
         return errors;
     }
 
-    private List<CoreError> validateEmail(LoginRequest request) {
-        List<CoreError> errors = new ArrayList<>();
+    private Optional<CoreError> validateEmail(LoginRequest request) {
         if (request.getEmail() == null || request.getEmail().isEmpty()) {
-            errors.add(new CoreError("Email", "Must not be empty"));
-        } if (!request.getEmail().contains("@")) {
-            errors.add(new CoreError("Email", "Email must contain @ symbol"));
+            return Optional.of(new CoreError("Email", "Must not be empty"));
+        }else if (!request.getEmail().contains("@")) {
+            return Optional.of(new CoreError("Email", "Email must contain @ symbol"));
         }
-        return errors;
+        return Optional.empty();
     }
 
     private Optional<CoreError> validatePassword(LoginRequest request) {

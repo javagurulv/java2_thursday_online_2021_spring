@@ -18,18 +18,25 @@ public class ChangePasswordValidator {
     List<CoreError> errors = new ArrayList<>();
 
     public List<CoreError> validate(ChangePasswordRequest request) {
-        errors.addAll(validateEmail(request));
-        return errors;
-    }
-    private List<CoreError> validateEmail(ChangePasswordRequest request) {
-        List<CoreError> errors = new ArrayList<>();
-        if (request.getEmail() == null || request.getEmail().isEmpty()) {
-            errors.add(new CoreError("E-mail", "Must not be empty"));
-        } if (!request.getEmail().contains("@")) {
-            errors.add(new CoreError("E-mail", "Must contain @ symbol"));
-        } if (!repository.isEmailRegistered(request.getEmail())) {
-            errors.add(new CoreError("E-mail", request.getEmail() + " is not found!"));
+        validateEmail(request).ifPresent(errors::add);
+        if(errors.isEmpty()){
+            validateRegistration(request).ifPresent(errors::add);
         }
         return errors;
+    }
+    private Optional<CoreError> validateEmail(ChangePasswordRequest request) {
+        if (request.getEmail() == null || request.getEmail().isEmpty()) {
+            return Optional.of(new CoreError("E-mail", "Must not be empty"));
+        } else if (!request.getEmail().contains("@")) {
+            return Optional.of(new CoreError("E-mail", "Must contain @ symbol"));
+        }
+        return Optional.empty();
+    }
+
+    private Optional<CoreError> validateRegistration(ChangePasswordRequest request) {
+        if (!repository.isEmailRegistered(request.getEmail())) {
+            return Optional.of(new CoreError("E-mail", request.getEmail() + " is not found!"));
+        }
+        return Optional.empty();
     }
 }
