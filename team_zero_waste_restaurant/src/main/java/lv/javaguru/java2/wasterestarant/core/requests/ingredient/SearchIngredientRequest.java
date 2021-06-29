@@ -1,6 +1,5 @@
 package lv.javaguru.java2.wasterestarant.core.requests.ingredient;
 
-import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 
@@ -37,6 +36,10 @@ public class SearchIngredientRequest {
         this.ingredientName = ingredientName;
         this.ordering = ordering;
         this.paging = paging;
+    }
+
+    public SearchIngredientRequest() {
+
     }
 
     public Long getDishId() {
