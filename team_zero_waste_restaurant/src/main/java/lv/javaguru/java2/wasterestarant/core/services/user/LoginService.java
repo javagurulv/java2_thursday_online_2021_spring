@@ -24,10 +24,12 @@ public class LoginService {
         if (!errors.isEmpty()) {
             return new LoginResponse(errors);
         }
-        User user = new User(
-                request.getEmail(),
-                request.getPassword());
-            return new LoginResponse(user, true);
+        User loginUser = repository.findUserByEmailAndPassword(request.getEmail(), request.getPassword());
+        if (loginUser == null) {
+            errors.add(new CoreError("E-mail and Password", "User not found"));
+            return new LoginResponse(errors);
+        } else {
+            return new LoginResponse();
+        }
     }
-
 }

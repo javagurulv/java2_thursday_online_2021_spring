@@ -4,6 +4,7 @@ import lv.javaguru.java2.wasterestarant.core.domain.User;
 import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserRepository {
 
@@ -26,6 +27,8 @@ public interface UserRepository {
     boolean changeUserRole(UserRole userRole, String email);
 
     boolean isUserRegistered(String email, String password);
+
+    User findUserByEmailAndPassword (String email, String password);
 
     boolean isEmailRegistered(String email);
 

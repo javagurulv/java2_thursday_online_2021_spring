@@ -78,6 +78,12 @@ public class JdbcUserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public User findUserByEmailAndPassword(String email, String password) {
+        return null;
+    }
+
+
+    @Override
     public boolean isEmailRegistered(String email) {
         return false;
     }

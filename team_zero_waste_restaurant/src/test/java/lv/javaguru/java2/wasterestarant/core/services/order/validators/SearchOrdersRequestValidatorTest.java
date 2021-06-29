@@ -1,7 +1,8 @@
-package lv.javaguru.java2.wasterestarant.core.services.order;
+package lv.javaguru.java2.wasterestarant.core.services.order.validators;
 
 import lv.javaguru.java2.wasterestarant.core.requests.order.SearchOrdersRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.core.services.order.SearchOrdersRequestValidator;
 import org.junit.Test;
 import java.util.List;
 

@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.database.user;
 
 import java.util.List;
+import java.util.Optional;
 
 import lv.javaguru.java2.wasterestarant.core.domain.User;
 import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
@@ -94,6 +95,16 @@ public class OrmUserRepositoryImpl implements UserRepository {
                 .setParameter("password", password)
                 .getResultList();
         return checkedUsers.size() == 1;
+    }
+
+    @Override
+    public User findUserByEmailAndPassword(String email, String password) {
+        Query query = sessionFactory
+                .getCurrentSession()
+                .createQuery("SELECT u FROM Users u WHERE email = :email and password = :password");
+        query.setParameter("email", email);
+        query.setParameter("password", password);
+        return (User) query.getSingleResult();
     }
 
     @Override

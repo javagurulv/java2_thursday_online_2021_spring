@@ -34,9 +34,9 @@ public class ChangeUserRoleValidator {
 
     private Optional<CoreError> validateEmail(ChangeUserRoleRequest request) {
         if (request.getEmail() == null || request.getEmail().isEmpty()) {
-            return Optional.of(new CoreError("Email", "Must not be empty"));
+            return Optional.of(new CoreError("E-mail", "Must not be empty"));
         } else if (!request.getEmail().contains("@")) {
-            return Optional.of(new CoreError("Email", "Email must contain @ symbol"));
+            return Optional.of(new CoreError("E-mail", "Must contain @ symbol"));
         }
         return Optional.empty();
     }

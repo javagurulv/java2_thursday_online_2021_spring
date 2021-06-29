@@ -1,8 +1,9 @@
-package lv.javaguru.java2.wasterestarant.core.services.user;
+package lv.javaguru.java2.wasterestarant.core.services.user.validators;
 
 import lv.javaguru.java2.wasterestarant.core.database.user.UserRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.user.LoginRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.core.services.user.LoginValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -71,7 +72,7 @@ public class LoginValidatorTest {
     @Test
     public void shouldReturnEmptyErrorList() {
         LoginRequest request = new LoginRequest("admin@admin.lv", "admin");
-        when(repository.isUserRegistered("admin@admin.lv", "admin")).thenReturn(true);
+        when(repository.isUserRegistered(request.getEmail(), request.getPassword())).thenReturn(true);
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 0);
     }

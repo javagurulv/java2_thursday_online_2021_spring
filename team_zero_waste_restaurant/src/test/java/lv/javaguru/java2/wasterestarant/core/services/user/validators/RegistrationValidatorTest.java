@@ -1,9 +1,10 @@
-package lv.javaguru.java2.wasterestarant.core.services.user;
+package lv.javaguru.java2.wasterestarant.core.services.user.validators;
 
 import lv.javaguru.java2.wasterestarant.core.database.user.UserRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.user.LoginRequest;
 import lv.javaguru.java2.wasterestarant.core.requests.user.RegistrationRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
+import lv.javaguru.java2.wasterestarant.core.services.user.RegistrationValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -89,7 +90,7 @@ public class RegistrationValidatorTest {
     @Test
     public void shouldReturnErrorIfEmailIsAlreadyTaken() {
         RegistrationRequest request = new RegistrationRequest("admin", "admin", "admin@admin.lv", "admin");
-        when(repository.isEmailRegistered("admin@admin.lv")).thenReturn(true);
+        when(repository.isEmailRegistered(request.getEmail())).thenReturn(true);
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "E-mail");
