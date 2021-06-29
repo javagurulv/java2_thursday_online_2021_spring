@@ -1,7 +1,7 @@
 package lv.javaguru.java2.realestate.core.database;
 
-import lv.javaguru.java2.realestate.core.database.user.UserRepository;
 import lv.javaguru.java2.realestate.core.database.offer.OfferRepository;
+import lv.javaguru.java2.realestate.core.database.user.UserRepository;
 import lv.javaguru.java2.realestate.core.domain.Offer;
 import lv.javaguru.java2.realestate.core.domain.User;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;

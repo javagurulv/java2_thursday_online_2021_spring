@@ -1,5 +1,8 @@
 package lv.javaguru.java2.realestate.core.requests;
 
+import lombok.Getter;
+
+@Getter
 public class Paging {
 
     private final Integer pageNumber;
@@ -8,13 +11,5 @@ public class Paging {
     public Paging(Integer pageNumber, Integer pageSize) {
         this.pageNumber = pageNumber;
         this.pageSize = pageSize;
-    }
-
-    public Integer getPageNumber() {
-        return pageNumber;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
     }
 }

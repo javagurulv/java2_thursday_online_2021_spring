@@ -1,5 +1,8 @@
 package lv.javaguru.java2.realestate.core.requests;
 
+import lombok.Getter;
+
+@Getter
 public class CreateOfferRequest {
 
     private final String offerType;
@@ -14,19 +17,5 @@ public class CreateOfferRequest {
         this.price = price;
     }
 
-    public String getOfferType() {
-        return offerType;
-    }
 
-    public String getOfferCategory() {
-        return offerCategory;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
 }

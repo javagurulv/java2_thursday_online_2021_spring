@@ -28,10 +28,10 @@ public class SearchOffersUIAction implements ConsoleUI {
         String stringPrice = scanner.nextLine();
         Double price = 0.00;
 
-        if(type.equals("")){
+        if (type.equals("")) {
             type = null;
         }
-        if(category.equals("")){
+        if (category.equals("")) {
             category = null;
         }
         if (!"".equals(stringPrice)) {

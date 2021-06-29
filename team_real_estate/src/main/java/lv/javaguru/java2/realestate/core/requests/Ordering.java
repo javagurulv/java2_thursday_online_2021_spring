@@ -1,5 +1,8 @@
 package lv.javaguru.java2.realestate.core.requests;
 
+import lombok.Getter;
+
+@Getter
 public class Ordering {
 
     private final String orderBy;
@@ -8,13 +11,5 @@ public class Ordering {
     public Ordering(String orderBy, String orderDirection) {
         this.orderBy = orderBy;
         this.orderDirection = orderDirection;
-    }
-
-    public String getOrderBy() {
-        return orderBy;
-    }
-
-    public String getOrderDirection() {
-        return orderDirection;
     }
 }

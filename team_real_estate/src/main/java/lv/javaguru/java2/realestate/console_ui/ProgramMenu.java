@@ -9,25 +9,25 @@ import java.util.Map;
 import java.util.Scanner;
 
 @Component
- public class ProgramMenu {
+public class ProgramMenu {
 
     private Map<Integer, ConsoleUI> menuNumberToActionMap;
 
     @Autowired
-    public ProgramMenu(List<ConsoleUI> consoleUIS){
+    public ProgramMenu(List<ConsoleUI> consoleUIS) {
         menuNumberToActionMap = new HashMap();
-        menuNumberToActionMap.put(0, findUIAction(consoleUIS ,ExitUIAction.class));
-        menuNumberToActionMap.put(1, findUIAction(consoleUIS ,CreateUserUIAction.class));
-        menuNumberToActionMap.put(2, findUIAction(consoleUIS ,LogInUIAction.class));
-        menuNumberToActionMap.put(3, findUIAction(consoleUIS ,CreateOfferUIAction.class));
-        menuNumberToActionMap.put(4, findUIAction(consoleUIS ,GetAllOffersUIAction.class));
-        menuNumberToActionMap.put(5, findUIAction(consoleUIS ,DeleteOfferUIAction.class));
-        menuNumberToActionMap.put(6, findUIAction(consoleUIS ,DeleteUserUIAction.class));
-        menuNumberToActionMap.put(7, findUIAction(consoleUIS ,SearchOffersUIAction.class));
+        menuNumberToActionMap.put(0, findUIAction(consoleUIS, ExitUIAction.class));
+        menuNumberToActionMap.put(1, findUIAction(consoleUIS, CreateUserUIAction.class));
+        menuNumberToActionMap.put(2, findUIAction(consoleUIS, LogInUIAction.class));
+        menuNumberToActionMap.put(3, findUIAction(consoleUIS, CreateOfferUIAction.class));
+        menuNumberToActionMap.put(4, findUIAction(consoleUIS, GetAllOffersUIAction.class));
+        menuNumberToActionMap.put(5, findUIAction(consoleUIS, DeleteOfferUIAction.class));
+        menuNumberToActionMap.put(6, findUIAction(consoleUIS, DeleteUserUIAction.class));
+        menuNumberToActionMap.put(7, findUIAction(consoleUIS, SearchOffersUIAction.class));
 
     }
 
-    private ConsoleUI findUIAction(List<ConsoleUI> consoleUIS, Class consoleUIClass){
+    private ConsoleUI findUIAction(List<ConsoleUI> consoleUIS, Class consoleUIClass) {
         return consoleUIS.stream()
                 .filter(consoleUI -> consoleUI.getClass().equals(consoleUIClass))
                 .findFirst()

@@ -12,27 +12,29 @@ import java.util.List;
 @RestController
 public class OfferController {
 
-    @Autowired private OfferRepository offerRepository;
+    @Autowired
+    private OfferRepository offerRepository;
 
     @GetMapping("/get_all_offers")
     public @ResponseBody
-    List<Offer> getAllOffers(){
-        return  offerRepository.getAllOffers();
+    List<Offer> getAllOffers() {
+        return offerRepository.getAllOffers();
     }
 
     @GetMapping("/search_offers")
     public @ResponseBody
-    List<Offer> searchOffers(@RequestBody SearchOffersRequest searchOffersRequest){
-        return  offerRepository.searchOffers(searchOffersRequest);
+    List<Offer> searchOffers(@RequestBody SearchOffersRequest searchOffersRequest) {
+        return offerRepository.searchOffers(searchOffersRequest);
     }
 
     @PostMapping("/create_offer")
-    public void createOffer(@RequestBody Offer newOffer){
+    public void createOffer(@RequestBody Offer newOffer) {
         offerRepository.createOffer(newOffer);
     }
 
     @DeleteMapping("/delete_offer")
-    public @ResponseBody boolean deleteOffer(@RequestBody int id){
+    public @ResponseBody
+    boolean deleteOffer(@RequestBody int id) {
         return offerRepository.deleteOfferByID(id);
     }
 

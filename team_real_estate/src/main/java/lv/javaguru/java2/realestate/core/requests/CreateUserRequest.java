@@ -1,5 +1,8 @@
 package lv.javaguru.java2.realestate.core.requests;
 
+import lombok.Getter;
+
+@Getter
 public class CreateUserRequest {
 
     private final String username;
@@ -8,13 +11,5 @@ public class CreateUserRequest {
     public CreateUserRequest(String username, String password) {
         this.username = username;
         this.password = password;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
     }
 }

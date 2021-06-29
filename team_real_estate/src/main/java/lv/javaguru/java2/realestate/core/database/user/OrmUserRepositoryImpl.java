@@ -37,8 +37,8 @@ public class OrmUserRepositoryImpl implements UserRepository {
         Query query = sessionFactory.getCurrentSession()
                 .createQuery("DELETE User " +
                         "WHERE username = :username AND password = :password");
-        query.setParameter("username",user.getUsername());
-        query.setParameter("password",user.getPassword());
+        query.setParameter("username", user.getUsername());
+        query.setParameter("password", user.getPassword());
         int result = query.executeUpdate();
         return result == 1;
     }

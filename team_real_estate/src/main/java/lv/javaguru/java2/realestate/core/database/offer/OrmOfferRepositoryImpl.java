@@ -27,7 +27,7 @@ public class OrmOfferRepositoryImpl implements OfferRepository {
     public boolean deleteOfferByID(int id) {
         Query query = sessionFactory.getCurrentSession()
                 .createQuery("DELETE Offer WHERE id = :id");
-        query.setParameter("id",id);
+        query.setParameter("id", id);
         int result = query.executeUpdate();
         return result == 1;
     }
@@ -43,11 +43,11 @@ public class OrmOfferRepositoryImpl implements OfferRepository {
                 "AND (:category is null or category = :category )" +
                 "AND (:price is null or price = :price)";
 
-       return sessionFactory.getCurrentSession()
+        return sessionFactory.getCurrentSession()
                 .createQuery(sql, Offer.class)
-                .setParameter("type",request.getOfferType())
-                .setParameter("category",request.getOfferCategory())
-                .setParameter("price",request.getPrice()).getResultList();
+                .setParameter("type", request.getOfferType())
+                .setParameter("category", request.getOfferCategory())
+                .setParameter("price", request.getPrice()).getResultList();
 
     }
 }
