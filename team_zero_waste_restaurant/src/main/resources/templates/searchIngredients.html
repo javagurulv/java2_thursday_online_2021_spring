@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Zero Waste Restaurant demo project">
+    <meta name="author" content="The DreamTeam">
+    <title>Zero Waste Restaurant</title>
+    <link href="../css/styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h3>Search ingredient</h3>
+
+<table>
+    <tr>
+        <td>Ingredient name:</td>
+        <td>Ingredient id:</td>
+    </tr>
+    <tr>
+        <form action="/searchIngredients" th:object="${request}" method="post">
+            <td><input type="text" th:field="${request.ingredientName}"/></td>
+            <td><input type="number" th:field="${request.dishId}"/></td>
+            <td><input type="submit" value="Search ingredient"/>
+                <input type="reset" value="Clear"/></td>
+        </form>
+    </tr>
+</table>
+<td th:if="${errors != null}">
+    <tr th:each="error : ${errors}">
+        <td th:text="${error.field}"/>
+        <td th:text="${error.message}"/>
+    </tr>
+</td>
+
+<td th:if="${ingredients != null}">
+    <tr th:each="ingredient : ${ingredients}">
+        <td th:text="${ingredient.name}"/>
+        <td th:text="${ingredient.dishID}"/>
+
+    </tr>
+</td>
+
+<form action="/" method="get">
+    <input type="submit" value="Go to main page" name="Submit"/>
+</form>
+</body>
+</html>
