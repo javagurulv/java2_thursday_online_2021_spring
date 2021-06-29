@@ -12,6 +12,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RegistrationValidatorTest {
@@ -39,10 +40,52 @@ public class RegistrationValidatorTest {
     }
 
     @Test
-    public void shouldReturnErrorsIfEmailIsNotCorrectlyFilledIn() {
+    public void shouldReturnErrorsIfEmailIsEmpty() {
+        RegistrationRequest request = new RegistrationRequest("admin", "admin", "", "admin");
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 2);
+        assertEquals(errors.get(0).getField(), "E-mail");
+        assertEquals(errors.get(0).getMessage(), "Must not be empty");
+        assertEquals(errors.get(1).getField(), "E-mail");
+        assertEquals(errors.get(1).getMessage(), "Must contain @ symbol");
     }
 
     @Test
-    public void shouldReturnErrorsIfPasswordIsNotCorrectlyFilledIn() {
+    public void shouldReturnErrorIfEmailIsNotCorrectlyFilledIn() {
+        RegistrationRequest request = new RegistrationRequest("admin", "admin", "admin", "admin");
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "E-mail");
+        assertEquals(errors.get(0).getMessage(), "Must contain @ symbol");
+    }
+
+    @Test
+    public void shouldReturnErrorIfEmailIsAlreadyTaken() {
+        RegistrationRequest request = new RegistrationRequest("admin", "admin", "admin@admin.lv", "admin");
+        when(repository.isEmailRegistered("admin@admin.lv")).thenReturn(true);
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "E-mail");
+        assertEquals(errors.get(0).getMessage(), "admin@admin.lv is already taken!");
+    }
+
+    @Test
+    public void shouldReturnErrorIfPasswordIsEmptyAndShort() {
+        RegistrationRequest request = new RegistrationRequest("admin", "admin", "admin@admin.lv", "");
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 2);
+        assertEquals(errors.get(0).getField(), "Password");
+        assertEquals(errors.get(0).getMessage(), "Must not be empty");
+        assertEquals(errors.get(1).getField(), "Password");
+        assertEquals(errors.get(1).getMessage(), "Must be at least 5 symbols");
+    }
+
+    @Test
+    public void shouldReturnErrorIfPasswordIsShort() {
+        RegistrationRequest request = new RegistrationRequest("admin", "admin", "admin@admin.lv", "adm");
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "Password");
+        assertEquals(errors.get(0).getMessage(), "Must be at least 5 symbols");
     }
 }

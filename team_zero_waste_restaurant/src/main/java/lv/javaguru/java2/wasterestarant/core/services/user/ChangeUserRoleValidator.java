@@ -1,10 +1,8 @@
 package lv.javaguru.java2.wasterestarant.core.services.user;
 
-import lv.javaguru.java2.wasterestarant.core.database.user.UserRepository;
 import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
 import lv.javaguru.java2.wasterestarant.core.requests.user.ChangeUserRoleRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

@@ -18,17 +18,18 @@ public class ChangePasswordValidator {
     List<CoreError> errors = new ArrayList<>();
 
     public List<CoreError> validate(ChangePasswordRequest request) {
-        validateEmail(request).ifPresent(errors::add);
+        errors.addAll(validateEmail(request));
         return errors;
     }
-    private Optional<CoreError> validateEmail(ChangePasswordRequest request) {
+    private List<CoreError> validateEmail(ChangePasswordRequest request) {
+        List<CoreError> errors = new ArrayList<>();
         if (request.getEmail() == null || request.getEmail().isEmpty()) {
-            return Optional.of(new CoreError("E-mail", "Must not be empty"));
-        } else if (!request.getEmail().contains("@")) {
-            return Optional.of(new CoreError("E-mail", "Must contain @ symbol"));
-        } else if (repository.findUserByEmail(request.getEmail()).size() < 1) {
-            return Optional.of(new CoreError("User with e-mail", request.getEmail() + " is not found!"));
+            errors.add(new CoreError("E-mail", "Must not be empty"));
+        } if (!request.getEmail().contains("@")) {
+            errors.add(new CoreError("E-mail", "Must contain @ symbol"));
+        } if (!repository.isEmailRegistered(request.getEmail())) {
+            errors.add(new CoreError("E-mail", request.getEmail() + " is not found!"));
         }
-        return Optional.empty();
+        return errors;
     }
 }

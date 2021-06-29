@@ -27,6 +27,8 @@ public interface UserRepository {
 
     boolean isUserRegistered(String email, String password);
 
+    boolean isEmailRegistered(String email);
+
     boolean hasUserRightsToChangeRole(User user);
 
     List<User> findUserByRole(String role);

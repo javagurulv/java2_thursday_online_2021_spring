@@ -44,7 +44,7 @@ public class RegistrationValidator {
             errors.add(new CoreError("E-mail", "Must not be empty"));
         } if (!request.getEmail().contains("@")) {
             errors.add(new CoreError("E-mail", "Must contain @ symbol"));
-        } if (repository.findUserByEmail(request.getEmail()).size() >= 1) {
+        } if (repository.isEmailRegistered(request.getEmail())) {
             errors.add(new CoreError("E-mail", request.getEmail() + " is already taken!"));
         }
         return errors;
@@ -55,7 +55,7 @@ public class RegistrationValidator {
         if (request.getPassword() == null || request.getPassword().isEmpty()) {
             errors.add(new CoreError("Password", "Must not be empty"));
         } if (request.getPassword().length() < 5) {
-            errors.add(new CoreError("Password", "Password must be longer then 4 symbols"));
+            errors.add(new CoreError("Password", "Must be at least 5 symbols"));
         }
         return errors;
     }
