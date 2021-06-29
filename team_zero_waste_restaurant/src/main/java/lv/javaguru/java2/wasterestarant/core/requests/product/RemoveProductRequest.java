@@ -8,7 +8,15 @@ public class RemoveProductRequest {
         this.productNameToRemove = productNameToRemove;
     }
 
+    public RemoveProductRequest() {
+
+    }
+
     public String getProductNameToRemove() {
         return productNameToRemove;
+    }
+
+    public void setProductNameToRemove(String productNameToRemove) {
+        this.productNameToRemove = productNameToRemove;
     }
 }

@@ -28,7 +28,7 @@ public class AddProductController {
         AddProductResponse response = addProductService.execute(productRequest);
         if (response.hasErrors()) {
             modelMap.addAttribute("errors", response.getErrors());
-            return "addProduct";
+            return "/addProduct";
         } else {
             return "redirect:/";
         }
