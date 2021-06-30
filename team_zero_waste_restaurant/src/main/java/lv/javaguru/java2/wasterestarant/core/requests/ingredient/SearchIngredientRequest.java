@@ -38,6 +38,22 @@ public class SearchIngredientRequest {
         this.paging = paging;
     }
 
+    public void setIngredientName(String ingredientName) {
+        this.ingredientName = ingredientName;
+    }
+
+    public void setDishId(Long dishId) {
+        this.dishId = dishId;
+    }
+
+    public void setOrdering(Ordering ordering) {
+        this.ordering = ordering;
+    }
+
+    public void setPaging(Paging paging) {
+        this.paging = paging;
+    }
+
     public SearchIngredientRequest() {
 
     }

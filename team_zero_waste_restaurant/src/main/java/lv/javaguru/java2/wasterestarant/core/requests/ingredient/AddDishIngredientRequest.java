@@ -21,4 +21,16 @@ public class AddDishIngredientRequest {
     public Long getIngredientID() {
         return ingredientID;
     }
+
+    public void setIngredient(String ingredient) {
+        this.ingredient = ingredient;
+    }
+
+    public void setQuantity(Double quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setIngredientID(Long ingredientID) {
+        this.ingredientID = ingredientID;
+    }
 }

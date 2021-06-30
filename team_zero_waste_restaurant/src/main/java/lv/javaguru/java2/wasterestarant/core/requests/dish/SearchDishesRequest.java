@@ -12,6 +12,15 @@ public class SearchDishesRequest {
     private Ordering ordering;
     private Paging paging;
 
+    public SearchDishesRequest(String name, String type) {
+        this.name = name;
+        this.type = type;
+    }
+
+    public SearchDishesRequest(String name) {
+        this.name = name;
+    }
+
     public SearchDishesRequest(String name, String type, Double price) {
         this.name = name;
         this.type = type;
@@ -41,7 +50,6 @@ public class SearchDishesRequest {
     }
 
     public SearchDishesRequest() {
-
     }
 
     public boolean isNameProvided() {
@@ -74,5 +82,25 @@ public class SearchDishesRequest {
 
     public Paging getPaging() {
         return paging;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public void setOrdering(Ordering ordering) {
+        this.ordering = ordering;
+    }
+
+    public void setPaging(Paging paging) {
+        this.paging = paging;
     }
 }

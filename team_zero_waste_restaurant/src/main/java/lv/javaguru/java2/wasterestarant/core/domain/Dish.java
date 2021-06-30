@@ -117,6 +117,17 @@ public class Dish {
 //        this.ingredientList = ingredientList;
 //    }
 
+    public Dish(String name, String type) {
+        this.name = name;
+        this.type = type;
+    }
+
+    public Dish(String name, String type, double price) {
+        this.name = name;
+        this.type = type;
+        this.price = price;
+    }
+
     public boolean isInActiveMenu() {
         return isInActiveMenu;
     }
