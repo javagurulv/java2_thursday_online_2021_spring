@@ -5,6 +5,7 @@
     <meta name="description" content="Zero Waste Restaurant demo project">
     <meta name="author" content="The DreamTeam">
     <title>Zero Waste Restaurant</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="../css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -13,12 +14,11 @@
 <table>
     <tr>
         <td>Ingredient name:</td>
-        <td>Ingredient id:</td>
+
     </tr>
     <tr>
         <form action="/searchIngredients" th:object="${request}" method="post">
-            <td><input type="text" th:field="${request.ingredientName}"/></td>
-            <td><input type="number" th:field="${request.dishId}"/></td>
+            <td><input type="text" th:field="${request.name}"/></td>
             <td><input type="submit" value="Search ingredient"/>
                 <input type="reset" value="Clear"/></td>
         </form>
@@ -33,8 +33,10 @@
 
 <td th:if="${ingredients != null}">
     <tr th:each="ingredient : ${ingredients}">
+        <td>Ingredient name:</td>
         <td th:text="${ingredient.name}"/>
-        <td th:text="${ingredient.dishID}"/>
+        <td>Ingredient id:</td>
+        <td th:text="${ingredient.dishIngredientID}"/>
 
     </tr>
 </td>

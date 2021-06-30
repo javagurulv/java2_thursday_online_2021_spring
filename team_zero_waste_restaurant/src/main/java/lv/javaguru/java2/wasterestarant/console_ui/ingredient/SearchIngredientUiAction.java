@@ -57,7 +57,7 @@ public class SearchIngredientUiAction implements UIAction {
     }
 
     private void printIngredients(List<Ingredient> printList, int i) {
-        System.out.println((i + 1) + ". " + printList.get(i).getIngredient() + ", quantity - " + printList.get(i).getQuantity());
+        System.out.println((i + 1) + ". " + printList.get(i).getName() + ", quantity - " + printList.get(i).getQuantity());
     }
 
 }

@@ -5,45 +5,45 @@ import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 
 public class SearchIngredientRequest {
 
-    private String ingredientName;
-    private Long dishId;
+    private String name;
+    private Long dishIngredientID;
     private Ordering ordering;
     private Paging paging;
 
 
-    public SearchIngredientRequest(String ingredientName) {
-        this.ingredientName = ingredientName;
+    public SearchIngredientRequest(String name) {
+        this.name = name;
     }
 
-    public SearchIngredientRequest(String ingredientName, Ordering ordering) {
-        this.ingredientName = ingredientName;
+    public SearchIngredientRequest(String name, Ordering ordering) {
+        this.name = name;
         this.ordering = ordering;
     }
 
-    public SearchIngredientRequest(String ingredientName, Long dishId, Ordering ordering, Paging paging) {
-        this.ingredientName = ingredientName;
-        this.dishId = dishId;
-        this.ordering = ordering;
-        this.paging = paging;
-    }
-
-    public SearchIngredientRequest(String ingredientName, Paging paging) {
-        this.ingredientName = ingredientName;
-        this.paging = paging;
-    }
-
-    public SearchIngredientRequest(String ingredientName, Ordering ordering, Paging paging) {
-        this.ingredientName = ingredientName;
+    public SearchIngredientRequest(String name, Long dishIngredientID, Ordering ordering, Paging paging) {
+        this.name = name;
+        this.dishIngredientID = dishIngredientID;
         this.ordering = ordering;
         this.paging = paging;
     }
 
-    public void setIngredientName(String ingredientName) {
-        this.ingredientName = ingredientName;
+    public SearchIngredientRequest(String name, Paging paging) {
+        this.name = name;
+        this.paging = paging;
     }
 
-    public void setDishId(Long dishId) {
-        this.dishId = dishId;
+    public SearchIngredientRequest(String name, Ordering ordering, Paging paging) {
+        this.name = name;
+        this.ordering = ordering;
+        this.paging = paging;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDishIngredientID(Long dishIngredientID) {
+        this.dishIngredientID = dishIngredientID;
     }
 
     public void setOrdering(Ordering ordering) {
@@ -58,12 +58,12 @@ public class SearchIngredientRequest {
 
     }
 
-    public Long getDishId() {
-        return dishId;
+    public Long getDishIngredientID() {
+        return dishIngredientID;
     }
 
-    public String getIngredientName() {
-        return ingredientName;
+    public String getName() {
+        return name;
     }
 
     public Ordering getOrdering() {
@@ -75,11 +75,11 @@ public class SearchIngredientRequest {
     }
 
     public boolean isIngredientNameProvided(){
-        return this.ingredientName != null && !this.ingredientName.isEmpty();
+        return this.name != null && !this.name.isEmpty();
     }
 
     public boolean isDishIdProvided(){
-        return this.dishId != null;
+        return this.dishIngredientID != null;
     }
 
 }

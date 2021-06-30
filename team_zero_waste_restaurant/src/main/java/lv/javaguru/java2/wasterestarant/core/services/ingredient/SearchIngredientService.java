@@ -46,7 +46,7 @@ public class SearchIngredientService {
     private List<Ingredient> order(List<Ingredient> ingredients, Ordering ordering) {
         if (orderingEnabled && (ordering != null)) {
             Comparator<Ingredient> comparator = ordering.getOrderBy().equals("N")
-                    ? Comparator.comparing(Ingredient::getIngredient)
+                    ? Comparator.comparing(Ingredient::getName)
                     : Comparator.comparing(Ingredient::getQuantity);
             if (ordering.getOrderDirection().equals("D")) {
                 comparator = comparator.reversed();
@@ -73,10 +73,10 @@ public class SearchIngredientService {
     private List<Ingredient> search(SearchIngredientRequest request) {
         List<Ingredient> ingredients = new ArrayList<>();
         if (request.isIngredientNameProvided()) {
-            ingredients = database.findIngredientByName(request.getIngredientName());
+            ingredients = database.findIngredientByName(request.getName());
         }
         if (request.isDishIdProvided()) {
-            ingredients = database.findIngredientByDishId(request.getDishId());
+            ingredients = database.findIngredientByDishId(request.getDishIngredientID());
         }
         return ingredients;
     }
