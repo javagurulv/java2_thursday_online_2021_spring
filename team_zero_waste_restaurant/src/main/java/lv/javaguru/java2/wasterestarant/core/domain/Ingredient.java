@@ -1,7 +1,5 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
-import com.sun.xml.fastinfoset.algorithm.DoubleEncodingAlgorithm;
-
 import javax.persistence.*;
 
 @Entity
@@ -14,7 +12,7 @@ public class Ingredient {
     private long ingredientID;
 
     @Column(name = "name")
-    private String ingredient;
+    private String name;
 
     @Column(name = "quantity")
     private Double quantity;
@@ -27,15 +25,15 @@ public class Ingredient {
     private Dish dish;
 
 
-    public Ingredient(long ingredientID, String ingredient, Double quantity, Long dishIngredientID) {
+    public Ingredient(long ingredientID, String name, Double quantity, Long dishIngredientID) {
         this.ingredientID = ingredientID;
-        this.ingredient = ingredient;
+        this.name = name;
         this.quantity = quantity;
         this.dishIngredientID = dishIngredientID;
     }
 
-    public Ingredient(String ingredient, Double quantity, Long dishIngredientID) {
-        this.ingredient = ingredient;
+    public Ingredient(String name, Double quantity, Long dishIngredientID) {
+        this.name = name;
         this.quantity = quantity;
         this.dishIngredientID = dishIngredientID;
     }
@@ -53,8 +51,8 @@ public class Ingredient {
 //        this.quantity = quantity;
 //        this.product = product;
 //    }
-    public Ingredient(String ingredient, Double quantity) {
-        this.ingredient = ingredient;
+    public Ingredient(String name, Double quantity) {
+        this.name = name;
         this.quantity = quantity;
     }
 
@@ -74,16 +72,16 @@ public class Ingredient {
 //        this.product = product;
 //    }
 
-    public void setIngredient(String ingredient) {
-        this.ingredient = ingredient;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 
-    public String getIngredient(){
-        return ingredient;
+    public String getName(){
+        return name;
     }
 
     public Double getQuantity(){

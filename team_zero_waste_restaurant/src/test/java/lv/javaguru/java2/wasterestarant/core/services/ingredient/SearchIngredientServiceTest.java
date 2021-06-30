@@ -67,7 +67,7 @@ public class SearchIngredientServiceTest {
         SearchIngredientResponse response = service.execute(request);
         assertFalse(response.hasErrors());
         assertEquals(response.getIngredients().size(), 1);
-        assertEquals(response.getIngredients().get(0).getIngredient(), "Ingredient");
+        assertEquals(response.getIngredients().get(0).getName(), "Ingredient");
     }
 
     @Test
@@ -122,7 +122,7 @@ public class SearchIngredientServiceTest {
         SearchIngredientResponse response = service.execute(request);
         assertFalse(response.hasErrors());
         assertEquals(response.getIngredients().size(), 1);
-        assertEquals(response.getIngredients().get(0).getIngredient(), "Ingredient");
+        assertEquals(response.getIngredients().get(0).getName(), "Ingredient");
         assertEquals(response.getIngredients().get(0).getQuantity(), 0.6, 0.001);
     }
 
@@ -140,7 +140,7 @@ public class SearchIngredientServiceTest {
         SearchIngredientResponse response = service.execute(request);
         assertFalse(response.hasErrors());
         assertEquals(response.getIngredients().size(), 1);
-        assertEquals(response.getIngredients().get(0).getIngredient(), "Ingredient");
+        assertEquals(response.getIngredients().get(0).getName(), "Ingredient");
         assertEquals(response.getIngredients().get(0).getQuantity(), 0.7, 0.001);
     }
 
