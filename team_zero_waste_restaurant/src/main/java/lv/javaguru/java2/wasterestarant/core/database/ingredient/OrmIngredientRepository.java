@@ -23,7 +23,7 @@ public class OrmIngredientRepository implements IngredientRepository{
     @Override
     public List<Ingredient> findIngredientByName(String name) {
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT i WHERE name = :name");
+                "SELECT i FROM Ingredient i WHERE name = :name");
         query.setParameter("name", name);
         return query.getResultList();
     }
@@ -31,7 +31,7 @@ public class OrmIngredientRepository implements IngredientRepository{
     @Override
     public List<Ingredient> findIngredientByDishId(Long dishId) {
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT i FROM Ingredient" +
+                "SELECT i FROM Ingredient i" +
                         "WHERE dishId =  :dishId");
         query.setParameter("dishId", dishId);
         return query.getResultList();

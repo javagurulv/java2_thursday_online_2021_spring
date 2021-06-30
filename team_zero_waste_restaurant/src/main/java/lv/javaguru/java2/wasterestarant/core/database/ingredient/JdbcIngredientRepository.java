@@ -1,6 +1,5 @@
 package lv.javaguru.java2.wasterestarant.core.database.ingredient;
 
-import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,7 +18,7 @@ public class JdbcIngredientRepository implements IngredientRepository {
         jdbcTemplate.update(
                 "INSERT INTO ingredient(name, quantity)"
                         + "VALUES(?, ?)",
-               ingredient.getIngredient(), ingredient.getQuantity()
+               ingredient.getName(), ingredient.getQuantity()
         );
     }
     @Override
