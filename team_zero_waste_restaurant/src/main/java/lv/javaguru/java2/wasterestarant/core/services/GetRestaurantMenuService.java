@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-//Nataliya
 @Component
 @Transactional
 public class GetRestaurantMenuService {

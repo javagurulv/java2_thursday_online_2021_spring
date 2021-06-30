@@ -2,7 +2,6 @@ package lv.javaguru.java2.wasterestarant.core.services.user;
 
 import lv.javaguru.java2.wasterestarant.core.database.user.UserRepository;
 import lv.javaguru.java2.wasterestarant.core.domain.User;
-import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
 import lv.javaguru.java2.wasterestarant.core.requests.user.RegistrationRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.user.RegistrationResponse;
@@ -15,8 +14,6 @@ import static lv.javaguru.java2.wasterestarant.core.domain.UserRole.CLIENT;
 
 @Component
 public class RegistrationService {
-    public static final UserRole userRole = CLIENT;
-
     @Autowired
     private UserRepository repository;
     @Autowired
@@ -27,10 +24,9 @@ public class RegistrationService {
         if (!errors.isEmpty()) {
             return new RegistrationResponse(errors);
         }
-
-        User user = new User(userRole,
-                            request.getFirstName(),
-                            request.getSecondName(),
+        User user = new User(CLIENT,
+                            request.getName(),
+                            request.getSurname(),
                             request.getEmail(),
                             request.getPassword());
         repository.save(user);

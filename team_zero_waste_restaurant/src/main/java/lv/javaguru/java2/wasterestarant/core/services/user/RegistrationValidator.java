@@ -29,13 +29,13 @@ public class RegistrationValidator {
     }
 
     private Optional<CoreError> validateName(RegistrationRequest request) {
-        return (request.getFirstName() == null || request.getFirstName().isEmpty())
+        return (request.getName() == null || request.getSurname().isEmpty())
                 ? Optional.of(new CoreError("Name", "Must not be empty"))
                 : Optional.empty();
     }
 
     private Optional<CoreError> validateSurname(RegistrationRequest request) {
-        return (request.getSecondName() == null || request.getSecondName().isEmpty())
+        return (request.getName() == null || request.getSurname().isEmpty())
                 ? Optional.of(new CoreError("Surname", "Must not be empty"))
                 : Optional.empty();
     }

@@ -4,7 +4,6 @@ import lv.javaguru.java2.wasterestarant.core.domain.User;
 import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserRepository {
 

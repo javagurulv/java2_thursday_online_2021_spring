@@ -15,7 +15,6 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-//Elena
 @RunWith(MockitoJUnitRunner.class)
 public class GetRestaurantMenuServiceTest {
     @Mock

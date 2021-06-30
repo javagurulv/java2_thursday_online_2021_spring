@@ -49,7 +49,7 @@ public class LoginServiceTest {
     }
 
     @Test
-    public void shouldNotLoginUserNotFound()  {
+    public void shouldNotLoginBecauseUserNotFound()  {
         LoginRequest request = new LoginRequest("admin@admin.lv", "admin");
         when(repository.findUserByEmailAndPassword(request.getEmail(), request.getPassword())).thenReturn(null);
         LoginResponse response = service.execute(request);
