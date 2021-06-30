@@ -1,8 +1,11 @@
 package lv.javaguru.java2.hardcore.core.requests.user;
 
 public class LoginRequest {
-    private final String name;
-    private final String password;
+    private String name;
+    private String password;
+
+    public LoginRequest() {
+    }
 
     public LoginRequest(String name, String password) {
         this.name = name;
@@ -15,5 +18,13 @@ public class LoginRequest {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

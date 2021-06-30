@@ -9,7 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ShowAllLotsController {
+public class showAllLotsController {
 
     @Autowired private GetAllLotsService getAllLotsService;
 
