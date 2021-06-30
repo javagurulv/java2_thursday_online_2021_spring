@@ -1,9 +1,11 @@
 package lv.javaguru.java2.realestate.core.response;
 
+import lombok.Getter;
 import lv.javaguru.java2.realestate.core.domain.User;
 
 import java.util.List;
 
+@Getter
 public class LogInResponse extends CoreResponse {
     private User user;
     private boolean isLoggedIn = false;
@@ -25,7 +27,4 @@ public class LogInResponse extends CoreResponse {
         return isLoggedIn;
     }
 
-    public User getUser() {
-        return user;
-    }
 }

@@ -11,7 +11,7 @@
 
     <meta charset="utf-8" />
 
-    <title>Vinik Real Estate - About us</title>
+    <title>Vinik Real Estate - Sign Up</title>
     <meta name="description" content="The HTML5 Herald" />
     <meta name="author" content="SitePoint" />
   </head>
@@ -34,6 +34,7 @@
         <a href="../common/search.html" class="button">Sell</a>
         <a href="../common/aboutus.html" class="button">About Us</a>
         <a href="../common/signup.html" class="button">Sign Up</a>
+        <a href="../common/login.html" class="button">Log In</a>
       </div>
     </div>
 
@@ -48,23 +49,21 @@
       <h2>Fill the from below</h2>
 
       <div class="signUpFields">
-        <form>
+
+        <form >
           <label for="username">Enter desired username:</label>
           <br />
-          <input type="text" id="username" name="username" />
+          <input type="text" id="username" name="username" value=""/>
           <br />
 
           <label for="password">Enter desired password</label>
           <br />
-          <input type="password" id="password" name="password" />
+          <input type="password" id="password" name="password" value=""/>
           <br />
-
-          <button class="signupButton">Sign up</button>
+          <button id = "signupBTN">Sign Up</button>
         </form>
-      </div>
+
     </div>
-    <! -- testing Get method in script-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="../js/signup.js"></script>
+    <script src = "../js/register.js"></script>
   </body>
 </html>

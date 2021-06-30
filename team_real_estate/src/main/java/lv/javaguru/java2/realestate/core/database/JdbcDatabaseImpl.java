@@ -1,7 +1,7 @@
 package lv.javaguru.java2.realestate.core.database;
 
-import lv.javaguru.java2.realestate.core.database.user.UserRepository;
 import lv.javaguru.java2.realestate.core.database.offer.OfferRepository;
+import lv.javaguru.java2.realestate.core.database.user.UserRepository;
 import lv.javaguru.java2.realestate.core.domain.Offer;
 import lv.javaguru.java2.realestate.core.domain.User;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
@@ -79,7 +79,7 @@ public class JdbcDatabaseImpl implements UserRepository, OfferRepository {
 
         for (Integer integer : userOffersList) {
             deleteOfferByID(integer);
-       }
+        }
 
         String sql = "DELETE FROM registered_user WHERE username =? AND password = ?";
         Object[] args = new Object[]{
@@ -95,17 +95,17 @@ public class JdbcDatabaseImpl implements UserRepository, OfferRepository {
     public List<Offer> searchOffers(SearchOffersRequest request) {
         List<String> strings = new ArrayList<>();
 
-        if(!"".equals(request.getOfferType())){
-            strings.add("type = '"+request.getOfferType()+"'");
+        if (!"".equals(request.getOfferType())) {
+            strings.add("type = '" + request.getOfferType() + "'");
         }
-        if(!"".equals(request.getOfferCategory())){
-            strings.add("category = '"+request.getOfferCategory()+"'");
+        if (!"".equals(request.getOfferCategory())) {
+            strings.add("category = '" + request.getOfferCategory() + "'");
         }
-        if(0.0 != (request.getPrice())){
-            strings.add("price = '"+request.getPrice()+"'");
+        if (0.0 != (request.getPrice())) {
+            strings.add("price = '" + request.getPrice() + "'");
         }
 
-        String sql = "SELECT * FROM offer WHERE "+ String.join(" AND ", strings);
+        String sql = "SELECT * FROM offer WHERE " + String.join(" AND ", strings);
 
         return jdbcTemplate.query(sql, new OfferRowMapper());
     }

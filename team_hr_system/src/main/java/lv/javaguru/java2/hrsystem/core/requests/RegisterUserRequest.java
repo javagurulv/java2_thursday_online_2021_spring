@@ -10,6 +10,9 @@ public class RegisterUserRequest {
     private String email;
     private String password;
 
+    public RegisterUserRequest() {
+    }
+
     public RegisterUserRequest(UserRole userRole, String firstName, String secondName, String email, String password) {
         this.userRole = userRole;
         this.firstName = firstName;
@@ -36,5 +39,25 @@ public class RegisterUserRequest {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

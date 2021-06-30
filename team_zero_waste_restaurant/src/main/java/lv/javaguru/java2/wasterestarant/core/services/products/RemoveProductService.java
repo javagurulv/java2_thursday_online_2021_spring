@@ -5,6 +5,7 @@ import lv.javaguru.java2.wasterestarant.core.database.Product.ProductRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.product.RemoveProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.product.RemoveProductResponse;
+import lv.javaguru.java2.wasterestarant.core.services.products.validators.RemoveProductValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

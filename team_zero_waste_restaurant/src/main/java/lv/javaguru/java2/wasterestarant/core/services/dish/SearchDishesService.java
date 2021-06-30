@@ -7,6 +7,7 @@ import lv.javaguru.java2.wasterestarant.core.requests.dish.SearchDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.SearchDishesResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
+import lv.javaguru.java2.wasterestarant.core.services.dish.validators.SearchDishesRequestValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

@@ -5,6 +5,7 @@ import lv.javaguru.java2.wasterestarant.core.domain.User;
 import lv.javaguru.java2.wasterestarant.core.requests.user.LoginRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.user.LoginResponse;
+import lv.javaguru.java2.wasterestarant.core.services.user.validators.LoginValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,14 +25,12 @@ public class LoginService {
         if (!errors.isEmpty()) {
             return new LoginResponse(errors);
         }
-        User user = new User(
-                request.getEmail(),
-                request.getPassword());
-        if (repository.isUserRegistered(user)) {
-            return new LoginResponse(user, true);
+        User loginUser = repository.findUserByEmailAndPassword(request.getEmail(), request.getPassword());
+        if (loginUser == null) {
+            errors.add(new CoreError("E-mail and Password", "User not found"));
+            return new LoginResponse(errors);
         } else {
             return new LoginResponse();
         }
     }
-
 }

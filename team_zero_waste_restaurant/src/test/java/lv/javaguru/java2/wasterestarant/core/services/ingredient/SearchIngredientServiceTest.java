@@ -8,6 +8,7 @@ import lv.javaguru.java2.wasterestarant.core.requests.ingredient.SearchIngredien
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.SearchIngredientResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
+import lv.javaguru.java2.wasterestarant.core.services.ingredient.validators.SearchIngredientValidator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -67,7 +68,7 @@ public class SearchIngredientServiceTest {
         SearchIngredientResponse response = service.execute(request);
         assertFalse(response.hasErrors());
         assertEquals(response.getIngredients().size(), 1);
-        assertEquals(response.getIngredients().get(0).getIngredient(), "Ingredient");
+        assertEquals(response.getIngredients().get(0).getName(), "Ingredient");
     }
 
     @Test
@@ -122,7 +123,7 @@ public class SearchIngredientServiceTest {
         SearchIngredientResponse response = service.execute(request);
         assertFalse(response.hasErrors());
         assertEquals(response.getIngredients().size(), 1);
-        assertEquals(response.getIngredients().get(0).getIngredient(), "Ingredient");
+        assertEquals(response.getIngredients().get(0).getName(), "Ingredient");
         assertEquals(response.getIngredients().get(0).getQuantity(), 0.6, 0.001);
     }
 
@@ -140,7 +141,7 @@ public class SearchIngredientServiceTest {
         SearchIngredientResponse response = service.execute(request);
         assertFalse(response.hasErrors());
         assertEquals(response.getIngredients().size(), 1);
-        assertEquals(response.getIngredients().get(0).getIngredient(), "Ingredient");
+        assertEquals(response.getIngredients().get(0).getName(), "Ingredient");
         assertEquals(response.getIngredients().get(0).getQuantity(), 0.7, 0.001);
     }
 

@@ -19,7 +19,7 @@ public class AddDishController {
     @GetMapping(value = "/addDishToTheList")
     public String showAddDishPage(ModelMap modelMap) {
         modelMap.addAttribute("request", new AddDishRequest());
-        return "addDishToTheList";
+        return "/addDishToTheList";
     }
 
     @PostMapping("/addDishToTheList")
@@ -28,7 +28,7 @@ public class AddDishController {
         AddDishResponse response = addDishService.execute(request);
         if (response.hasErrors()) {
             modelMap.addAttribute("errors", response.getErrors());
-            return "addDishToTheList";
+            return "/addDishToTheList";
         } else {
             return "redirect:/";
         }

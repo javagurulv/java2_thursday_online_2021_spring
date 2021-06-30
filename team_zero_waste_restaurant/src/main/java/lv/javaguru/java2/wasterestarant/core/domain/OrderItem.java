@@ -1,22 +1,31 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-//@Entity
+@Entity
 @Table(name = "order_item")
 public class OrderItem {
 
-    private String dishName;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long orderItemID;
+
+    @Column(name = "order_id")
+    private Long orderID;
+
+    @Column(name = "dish_id")
     private Long dishID;
+
+    @Column(name = "quantity")
     private int quantity;
 
     public OrderItem() {
     }
 
-    public OrderItem(String name, int quantity) {
-        this.dishName = name;
-        this.dishID = getDishID();
+    public OrderItem(Long orderID, Long dishID, int quantity) {
+        this.orderID = orderID;
+        this.dishID = dishID;
         this.quantity = quantity;
     }
 
@@ -28,12 +37,12 @@ public class OrderItem {
         this.dishID = dishID;
     }
 
-    public String getDishName() {
-        return dishName;
+    public Long getOrderID() {
+        return orderID;
     }
 
-    public void setDishName(String name) {
-        this.dishName = name;
+    public void setOrderID(Long orderID) {
+        this.orderID = orderID;
     }
 
     public int getQuantity() {
@@ -47,7 +56,8 @@ public class OrderItem {
     @Override
     public String toString() {
         return "OrderItem{" +
-                ", name='" + dishName + '\'' +
+                ", orderID='" + orderID + '\'' +
+                ", dishID='" + dishID + '\'' +
                 ", quantity=" + quantity +
                 '}';
     }

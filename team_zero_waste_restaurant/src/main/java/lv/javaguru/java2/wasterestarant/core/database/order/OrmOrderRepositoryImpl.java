@@ -37,7 +37,6 @@ public class OrmOrderRepositoryImpl implements OrderRepository {
         return sessionFactory.getCurrentSession()
                 .createQuery("SELECT b FROM Order b", Order.class)
                 .getResultList();
-
     }
 
     @Override
@@ -54,7 +53,6 @@ public class OrmOrderRepositoryImpl implements OrderRepository {
                 "SELECT b FROM Order b WHERE order_date = :order_date");
         query.setParameter("order_date", orderDate);
         return query.getResultList();
-
     }
 
     @Override

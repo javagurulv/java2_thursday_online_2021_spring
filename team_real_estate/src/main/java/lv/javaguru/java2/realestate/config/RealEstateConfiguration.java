@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 @SpringBootApplication
-@EnableAutoConfiguration(exclude = { HibernateJpaAutoConfiguration.class })
+@EnableAutoConfiguration(exclude = {HibernateJpaAutoConfiguration.class})
 @Configuration
 @ComponentScan(basePackages = "lv.javaguru.java2.realestate")
 @PropertySource(value = "classpath:application.properties")
@@ -49,6 +49,7 @@ public class RealEstateConfiguration {
         dataSource.setPassword(password);
         return dataSource;
     }
+
     @Bean
     public JdbcTemplate jdbcTemplate(DataSource dataSource) {
         return new JdbcTemplate(dataSource);

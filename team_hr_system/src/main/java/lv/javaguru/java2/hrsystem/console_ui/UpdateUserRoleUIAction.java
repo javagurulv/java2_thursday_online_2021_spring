@@ -16,7 +16,7 @@ public class UpdateUserRoleUIAction implements UIAction{
 
     private Map<Integer, UserRole> userRoleMap = new HashMap<>() {{
         put(1, UserRole.ADMIN);
-        put(2, UserRole.HR_MANAGE);}};
+        put(2, UserRole.HR_MANAGER);}};
 
     @Override
     public void execute() {

@@ -1,27 +1,27 @@
 package lv.javaguru.java2.wasterestarant.core.requests.user;
 
 public class RegistrationRequest {
-    private String firstName;
-    private String secondName;
+    private String name;
+    private String surname;
     private String email;
     private String password;
 
     public RegistrationRequest() {
     }
 
-    public RegistrationRequest(String firstName, String secondName, String email, String password) {
-        this.firstName = firstName;
-        this.secondName = secondName;
+    public RegistrationRequest(String name, String surname, String email, String password) {
+        this.name = name;
+        this.surname = surname;
         this.email = email;
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getSurname() {
+        return surname;
     }
 
     public String getEmail() {
@@ -32,12 +32,12 @@ public class RegistrationRequest {
         return password;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public void setEmail(String email) {

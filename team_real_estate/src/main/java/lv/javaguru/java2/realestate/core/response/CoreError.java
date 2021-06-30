@@ -1,5 +1,8 @@
 package lv.javaguru.java2.realestate.core.response;
 
+import lombok.Getter;
+
+@Getter
 public class CoreError {
 
     private final String field;
@@ -10,11 +13,4 @@ public class CoreError {
         this.message = message;
     }
 
-    public String getField() {
-        return field;
-    }
-
-    public String getMessage() {
-        return message;
-    }
 }

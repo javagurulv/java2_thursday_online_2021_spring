@@ -2,7 +2,6 @@ package lv.javaguru.java2.wasterestarant.core.services.products.validators;
 
 import lv.javaguru.java2.wasterestarant.core.requests.product.AddProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
-import lv.javaguru.java2.wasterestarant.core.services.products.AddProductValidator;
 import org.junit.Test;
 
 import java.text.ParseException;

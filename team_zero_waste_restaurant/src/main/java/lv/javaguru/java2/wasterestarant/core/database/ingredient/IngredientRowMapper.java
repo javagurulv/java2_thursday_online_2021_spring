@@ -11,7 +11,7 @@ public class IngredientRowMapper implements RowMapper<Ingredient> {
     @Override
     public Ingredient mapRow(ResultSet rs, int rowNum) throws SQLException {
         Ingredient ingredient = new Ingredient();
-        ingredient.setIngredient(rs.getString("name"));
+        ingredient.setName(rs.getString("name"));
         ingredient.setQuantity(rs.getDouble("quantity"));
         return null;
     }

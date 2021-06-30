@@ -1,0 +1,28 @@
+h1 {
+  text-align: center;
+  font-size: 2em;
+  color: #2d8100;
+  margin-bottom: .3em;
+  text-decoration: underline;
+}
+body {
+  background-color: #8ec63f; /*the_logo_color*/
+}
+
+table {
+  margin: .3em;
+  width: 290px;
+  border: 1px solid #949494;
+  background-color: #d2d2a7;
+}
+
+th {
+  padding: .2em;
+}
+
+td {
+  padding-left: .5em;
+  padding-right: .5em;
+  border: 1px solid #949494;
+  background-color: #d2d2a7;
+}

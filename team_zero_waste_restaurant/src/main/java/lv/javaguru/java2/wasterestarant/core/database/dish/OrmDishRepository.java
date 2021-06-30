@@ -40,7 +40,7 @@ public class OrmDishRepository implements DishRepository {
     @Override
     public List<Dish> findDishByName(String name) {
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT d FROM Dish WHERE name = :name");
+                "SELECT d FROM Dish d WHERE name = :name");
         query.setParameter("name", name);
         return query.getResultList();
     }
@@ -48,7 +48,7 @@ public class OrmDishRepository implements DishRepository {
     @Override
     public List<Dish> findDishByType(String type) {
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT d FROM Dish WHERE type = :type");
+                "SELECT d FROM Dish d WHERE type = :type");
         query.setParameter("type", type);
         return query.getResultList();
     }
@@ -56,7 +56,7 @@ public class OrmDishRepository implements DishRepository {
     @Override
     public List<Dish> findDishByPrice(Double price) {
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT d FROM Dish WHERE price = :price");
+                "SELECT d FROM Dish d WHERE price = :price");
         query.setParameter("price", price);
         return query.getResultList();
     }
@@ -64,7 +64,7 @@ public class OrmDishRepository implements DishRepository {
     @Override
     public List<Dish> findDishByNameAndType(String name, String type) {
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT d FROM Dish WHERE name = :name AND type = :type");
+                "SELECT d FROM Dish d WHERE name = :name AND type = :type");
         query.setParameter("name", name);
         query.setParameter("type", type);
         return query.getResultList();
@@ -73,7 +73,7 @@ public class OrmDishRepository implements DishRepository {
     @Override
     public List<Dish> findDishByNameAndPrice(String name, Double price) {
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT d FROM Dish WHERE name = :name AND price = :price");
+                "SELECT d FROM Dish d WHERE name = :name AND price = :price");
         query.setParameter("name", name);
         query.setParameter("price", price);
         return query.getResultList();
@@ -82,7 +82,7 @@ public class OrmDishRepository implements DishRepository {
     @Override
     public List<Dish> findDishByTypeAndPrice(String type, Double price) {
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT d FROM Dish WHERE type = :type AND price = :price");
+                "SELECT d FROM Dish d WHERE type = :type AND price = :price");
         query.setParameter("type", type);
         query.setParameter("price", price);
         return query.getResultList();
@@ -91,7 +91,7 @@ public class OrmDishRepository implements DishRepository {
     @Override
     public List<Dish> findDishByNameAndTypeAndPrice(String name, String type, Double price) {
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT d FROM Dish WHERE name = :name AND type = :type AND price = :price");
+                "SELECT d FROM Dish d WHERE name = :name AND type = :type AND price = :price");
         query.setParameter("name", name);
         query.setParameter("type", type);
         query.setParameter("price", price);
