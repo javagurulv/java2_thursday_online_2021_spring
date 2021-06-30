@@ -14,6 +14,9 @@ public class GetAllLotsResponse extends CoreResponse {
         this.getAllLots = getAllLots;
     }
 
+    public GetAllLotsResponse() {
+    }
+
     public List<Lot> getGetAllLots() {
 
         return getAllLots;

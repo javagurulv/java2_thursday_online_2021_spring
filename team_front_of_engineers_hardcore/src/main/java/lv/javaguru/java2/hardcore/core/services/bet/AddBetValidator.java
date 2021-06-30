@@ -21,13 +21,13 @@ public class AddBetValidator {
 
     private Optional<CoreError> validateName(AddBetRequest request) {
         return (request.getId() == null)
-                ? Optional.of(new CoreError("Lot name", "Must not be empty"))
+                ? Optional.of(new CoreError("Lot ID", "Must not be empty"))
                 : Optional.empty();
     }
 
     private Optional<CoreError> validatePrice(AddBetRequest request) {
         return (request.getBet() == null || request.getBet().equals(BigDecimal.ZERO))
-                ? Optional.of(new CoreError("Lot price", "Must not be empty or equal to zero"))
+                ? Optional.of(new CoreError("Bet", "Must not be empty or equal to zero"))
                 : Optional.empty();
     }
 }

@@ -7,6 +7,9 @@ public class AddBetRequest {
     private Long id;
     private BigDecimal bet;
 
+    public AddBetRequest() {
+    }
+
     public AddBetRequest(Long id, BigDecimal bet) {
         this.id = id;
         this.bet = bet;
@@ -18,5 +21,13 @@ public class AddBetRequest {
 
     public BigDecimal getBet() {
         return bet;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setBet(BigDecimal bet) {
+        this.bet = bet;
     }
 }
