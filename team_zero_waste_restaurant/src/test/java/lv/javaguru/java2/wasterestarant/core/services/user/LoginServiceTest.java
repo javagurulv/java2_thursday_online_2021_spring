@@ -5,6 +5,7 @@ import lv.javaguru.java2.wasterestarant.core.domain.User;
 import lv.javaguru.java2.wasterestarant.core.requests.user.LoginRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.user.LoginResponse;
+import lv.javaguru.java2.wasterestarant.core.services.user.validators.LoginValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

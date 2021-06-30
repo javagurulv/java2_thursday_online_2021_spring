@@ -2,7 +2,6 @@ package lv.javaguru.java2.wasterestarant.core.services.order.validators;
 
 import lv.javaguru.java2.wasterestarant.core.requests.order.CreateNewOrderRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
-import lv.javaguru.java2.wasterestarant.core.services.order.CreateNewOrderValidator;
 import org.junit.Test;
 
 import java.text.ParseException;

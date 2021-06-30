@@ -7,6 +7,7 @@ import lv.javaguru.java2.wasterestarant.core.requests.product.SearchProductReque
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.product.SearchProductResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Product;
+import lv.javaguru.java2.wasterestarant.core.services.products.validators.SearchProductServiceValidator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

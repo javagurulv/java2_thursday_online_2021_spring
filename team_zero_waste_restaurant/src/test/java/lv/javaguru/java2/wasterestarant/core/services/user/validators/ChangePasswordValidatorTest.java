@@ -3,7 +3,6 @@ package lv.javaguru.java2.wasterestarant.core.services.user.validators;
 import lv.javaguru.java2.wasterestarant.core.database.user.UserRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.user.ChangePasswordRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
-import lv.javaguru.java2.wasterestarant.core.services.user.ChangePasswordValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

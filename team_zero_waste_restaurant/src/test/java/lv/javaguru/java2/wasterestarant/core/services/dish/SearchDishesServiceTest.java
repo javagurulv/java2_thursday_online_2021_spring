@@ -7,6 +7,7 @@ import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.SearchDishesResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
+import lv.javaguru.java2.wasterestarant.core.services.dish.validators.SearchDishesRequestValidator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

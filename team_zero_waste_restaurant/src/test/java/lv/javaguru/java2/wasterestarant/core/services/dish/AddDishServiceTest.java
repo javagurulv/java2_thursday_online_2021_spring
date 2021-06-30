@@ -4,6 +4,7 @@ import lv.javaguru.java2.wasterestarant.core.database.dish.DishRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.AddDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.AddDishResponse;
+import lv.javaguru.java2.wasterestarant.core.services.dish.validators.AddDishValidator;
 import lv.javaguru.java2.wasterestarant.matchers.DishMatcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -2,11 +2,10 @@ package lv.javaguru.java2.wasterestarant.core.services.user;
 
 import lv.javaguru.java2.wasterestarant.core.database.user.UserRepository;
 import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
-import lv.javaguru.java2.wasterestarant.core.requests.user.ChangePasswordRequest;
 import lv.javaguru.java2.wasterestarant.core.requests.user.ChangeUserRoleRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
-import lv.javaguru.java2.wasterestarant.core.responses.user.ChangePasswordResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.user.ChangeUserRoleResponse;
+import lv.javaguru.java2.wasterestarant.core.services.user.validators.ChangeUserRoleValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

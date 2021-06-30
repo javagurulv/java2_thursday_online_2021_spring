@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.core.services.ingredient;
+package lv.javaguru.java2.wasterestarant.core.services.ingredient.validators;
 
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.AddDishIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;

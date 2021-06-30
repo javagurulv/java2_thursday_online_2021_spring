@@ -8,6 +8,7 @@ import lv.javaguru.java2.wasterestarant.core.requests.ingredient.SearchIngredien
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.SearchIngredientResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
+import lv.javaguru.java2.wasterestarant.core.services.ingredient.validators.SearchIngredientValidator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

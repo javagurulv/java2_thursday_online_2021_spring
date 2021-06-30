@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.core.services.dish;
+package lv.javaguru.java2.wasterestarant.core.services.dish.validators;
 
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
