@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="HR System demo project">
-    <meta name="author" content="HRSystemTeam">
-<!--    <link rel="stylesheet" type="text/css" href="css/index.css">-->
-    <style>
-    @font-face {
+@font-face {
     font-family: 'PT_Serif';
     src: url(fonts/PT_Serif/PTSerif-Regular.ttf);
     font-weight: normal;
@@ -40,9 +31,17 @@
     background-color: #f5f5f5;
     }
 
-    header {
+    h1 {
+    padding: 1em 2em 1em 2em;
+    margin: 1em 15em 3em 18em;
+    display:inline-block;
+    box-sizing: border-box;
+    }
+
+    table {
     padding: 0.35em 1.2em;
-    margin: 1em 40em 3em 35em;
+    border: 0.1em;
+    margin: 0.1em 5em 0.1em 5em;
     }
 
     .button {
@@ -50,11 +49,13 @@
 
     padding: 0.35em 1.2em;
     border: 0.1em solid #1e90ff;
-    margin: 0.5em 25em 0.5em 25em;
+    margin: 0.1em 1em 0.1em 1em;
     border-radius: 5px;
     box-sizing: border-box;
+    width: 7em;
+    height: 5em;
 
-    font-size: x-large;
+    font-size: large;
     text-decoration: none;
     font-weight: 300;
     color: #000000;
@@ -62,29 +63,6 @@
     }
 
     footer {
-    margin: 350px 10px 10px 1000px;
+    margin: 200px 10px 10px 1000px;
     color: #708090;
     }
-    </style>
-
-    <title>HR System</title>
-
-</head>
-
-<body>
-
-<header>
-    <h1>HR System</h1>
-</header>
-
-<div><a href="/signIn" class="button">Sign-in</a></div>
-<div><a href="/signUp" class="button">Sign-up</a></div>
-
-<footer>
-    <p>Team_HR_System © 2021 |
-        <a href="https://javaguru.lv/">JavaGuru</a> |
-        <a href="https://moodle.jrr.by/">moodle.jrr.by</a></p>
-</footer>
-
-</body>
-</html>

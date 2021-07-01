@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="HR System demo project">
+    <meta name="author" content="TeamJavaGuru">
+    <!--    <link rel="stylesheet" type="text/css" href="css/signUp.css">-->
+    <title>HR System</title>
+
+    <style>
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-BoldItalic.ttf);
+    font-weight: bold;
+    font-style: italic;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Italic.ttf);
+    font-weight: normal;
+    font-style: italic;
+    }
+
+    body {
+    font-family: PT_Serif;
+    background-color: #f5f5f5;
+    }
+
+    input[type="text"]:invalid, input[type="email"]:invalid, input[type="password"]:invalid {
+    border: 1px solid red;
+    }
+
+    input[type="text"]:valid, input[type="email"]:valid, input[type="password"]:valid {
+    border: 1px solid green;
+    }
+
+    table{
+    background-color: #fff;
+    border-radius: 5px;
+
+    margin: 20px 500px 20px 500px;
+    padding: 0.1em;
+    box-sizing: padding-box;
+    border:0.1em solid #fff;
+
+    width: 350px;
+    height: 300px;
+    }
+
+    h1 {
+    margin: 40px 500px 10px 500px;
+    }
+
+    table tr td{
+    font-size: x-large;
+    }
+
+    table tr td input{
+    font-size: xx-large;
+    }
+
+    table tr td select{
+    font-size: xx-large;
+    }
+
+    .button input{
+    display:inline-block;
+
+    padding: 0.5em;
+    border: 0.5em solid #fff;
+    margin: 1em;
+    box-sizing: border-box;
+
+    font-size: x-large;
+    border-radius: 1em;
+    background: #4682b4;
+    color: #fffafa;
+    }
+
+    footer {
+    margin: 250px 10px 10px 1000px;
+    color: #708090;
+    }
+    </style>
+
+</head>
+
+<body>
+
+<h1>Sign-in</h1>
+
+<table>
+
+    <form action="/signIn" autocomplete="off" th:object="${request}" method="post">
+
+        <tr><td>Email </br><input type="email" required autofocus id="login" name="login"
+                                       placeholder="user@gmail.com" autocomplete="on" th:field="${request.email}"/></td></tr>
+
+        <tr><td>Password </br><input type="password" id="password" name="password" required
+                                          placeholder="*********" th:field="${request.password}"/></td></tr>
+
+        <td class="button">
+            <input type="submit" value="Sing-in"/>
+            <input type="reset" value="Clear"/>
+        </td>
+    </form>
+</table>
+
+<td th:if="${errors != null}">
+    <tr th:each="error : ${errors}">
+        <td th:text="${error.field}"></td>
+        <td th:text="${error.message}"></td>
+    </tr>
+</td>
+
+<footer>
+    <p>Team_HR_System © 2021 |
+        <a href="https://javaguru.lv/">JavaGuru</a> |
+        <a href="https://moodle.jrr.by/">moodle.jrr.by</a></p>
+</footer>
+
+</body>
+
+</html>

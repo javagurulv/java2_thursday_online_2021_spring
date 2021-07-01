@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="HR System demo project">
+    <meta name="author" content="HRSystemTeam">
+    <title>HR System</title>
+    <style>
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-BoldItalic.ttf);
+    font-weight: bold;
+    font-style: italic;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Italic.ttf);
+    font-weight: normal;
+    font-style: italic;
+    }
+
+    body {
+    font-family: PT_Serif;
+    background-color: #f5f5f5;
+    }
+
+    h1 {
+    padding: 1em 2em 1em 2em;
+    margin: 1em 15em 3em 18em;
+    display:inline-block;
+    box-sizing: border-box;
+    }
+
+    table {
+    padding: 0.35em 1.2em;
+    border: 0.1em;
+    margin: 0.1em 5em 0.1em 5em;
+    }
+
+    .button {
+    display:inline-block;
+
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #1e90ff;
+    margin: 0.1em 1em 0.1em 1em;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 7em;
+    height: 5em;
+
+    font-size: large;
+    text-decoration: none;
+    font-weight: 300;
+    color: #000000;
+    text-align: center;
+    }
+
+    footer {
+    margin: 200px 10px 10px 1000px;
+    color: #708090;
+    }
+    </style>
+</head>
+
+<body>
+<h1>HR Manager</h1>
+<table>
+    <tr>
+        <td><div><a href="/AddEmployeeUIAction" class="button">Add employee</a></div></td>
+        <td><div><a href="/AddEmployeeWithTitleUIAction" class="button">Add employee with title</a></div></td>
+        <td><div><a href="/AddEmployeeTitleUIAction" class="button">Add employee title</a></div></td>
+        <td><div><a href="/GetAllTitlesUIAction" class="button">Get all titles</a></div></td>
+        <td><div><a href="/DeleteEmployeeUIAction" class="button">Delete employee</a></div></td>
+        <td><div><a href="/GetAllEmployeesUIAction" class="button">Get all employees</a></div></td>
+    </tr>
+
+    <tr>
+        <td><div><a href="/SearchEmployeesUIAction" class="button">Search employees</a></div></td>
+        <td><div><a href="/AddSkillUIAction" class="button">Add skill</a></div></td>
+        <td><div><a href="/GetAllEmployeeSkillUIAction" class="button">Get all employee skill</a></div></td>
+        <td><div><a href="/SearchEmployeesBySkillUIAction" class="button">Search employees by skill</a></div></td>
+        <td><div><a href="/GetAllExistingSkillUIAction" class="button">Get ll existing skill</a></div></td>
+    </tr>
+
+</table>
+<footer>
+    <p>Team_HR_System © 2021 |
+        <a href="https://javaguru.lv/">JavaGuru</a> |
+        <a href="https://moodle.jrr.by/">moodle.jrr.by</a></p>
+</footer>
+
+</body>
+</html>
