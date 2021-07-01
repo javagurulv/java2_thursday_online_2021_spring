@@ -38,6 +38,14 @@ public class OrmDishRepository implements DishRepository {
     }
 
     @Override
+    public List<Dish> getAllDishesInActiveMenu(boolean isInActiveMenu) {
+        Query query = sessionFactory.getCurrentSession()
+                .createQuery("SELECT d from Dish d WHERE isInActiveMenu = :isInActiveMenu");
+        query.setParameter("isInActiveMenu", isInActiveMenu);
+        return query.getResultList();
+    }
+
+    @Override
     public List<Dish> findDishByName(String name) {
         Query query = sessionFactory.getCurrentSession().createQuery(
                 "SELECT d FROM Dish d WHERE name = :name");

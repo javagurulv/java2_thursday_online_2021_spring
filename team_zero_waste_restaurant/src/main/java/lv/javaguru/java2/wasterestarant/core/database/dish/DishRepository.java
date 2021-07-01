@@ -12,6 +12,8 @@ public interface DishRepository {
 
     List<Dish> getAllDishes();
 
+    List<Dish> getAllDishesInActiveMenu(boolean isInActiveMenu);
+
     List<Dish> findDishByName(String name);
 
     List<Dish> findDishByType(String type);
