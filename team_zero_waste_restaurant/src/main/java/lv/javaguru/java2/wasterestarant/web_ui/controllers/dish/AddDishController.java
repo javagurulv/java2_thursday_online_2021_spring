@@ -26,11 +26,10 @@ public class AddDishController {
     public String processAddDishRequest(@ModelAttribute(value = "request") AddDishRequest request,
                                         ModelMap modelMap) {
         AddDishResponse response = addDishService.execute(request);
+        System.out.println(response.getNewDish().getDishID());
         if (response.hasErrors()) {
             modelMap.addAttribute("errors", response.getErrors());
-            return "/addDishToTheList";
-        } else {
-            return "redirect:/";
         }
+        return "/addDishToTheList";
     }
 }
