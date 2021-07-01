@@ -44,3 +44,22 @@ VALUES(1, 'cheddar', 30),
 (1, 'dutch cheese classical', 30),
 (1, 'parmesan', 30),
 (1, 'flour', 100);
+
+INSERT INTO ingredient(dish_id, name, quantity)
+VALUES(2, 'pineapple', 50),
+(2, 'mozzarella', 40),
+(2, 'oil', 10),
+(2, 'ham', 50),
+(2, 'flour', 100);
+
+INSERT INTO ingredient(dish_id, name, quantity)
+VALUES(3, 'tomato sauce', 50),
+(3, 'mozzarella', 40),
+(3, 'oil', 10),
+(3, 'flour', 100);
+
+INSERT INTO ingredient(dish_id, name, quantity)
+VALUES(4, 'pasta spaghetti', 80),
+(4, 'egg', 55),
+(4, 'oil', 10),
+(4, 'pepper', 4);
