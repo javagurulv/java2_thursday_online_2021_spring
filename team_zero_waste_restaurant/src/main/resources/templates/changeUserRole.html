@@ -18,6 +18,7 @@
   </tr>
   <tr>
     <form action="/changeUserRole" th:object="${request}" method="post">
+      <td><input type="text" th:field="${request.userRole}"/></td>
       <td><input type="text" th:field="${request.email}"/></td>
       <td>
         <input type="submit" value="Change"/>
