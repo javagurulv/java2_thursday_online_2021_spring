@@ -21,4 +21,12 @@ public class ChangeUserRoleRequest {
     public String getEmail() {
         return email;
     }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
