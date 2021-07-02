@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="HR System demo project">
-    <meta name="author" content="HRSystemTeam">
-<!--    <link rel="stylesheet" type="text/css" href="css/index.css">-->
-    <style>
-    @font-face {
+ @font-face {
     font-family: 'PT_Serif';
     src: url(fonts/PT_Serif/PTSerif-Regular.ttf);
     font-weight: normal;
@@ -65,26 +56,3 @@
     margin: 350px 10px 10px 1000px;
     color: #708090;
     }
-    </style>
-
-    <title>HR System</title>
-
-</head>
-
-<body>
-
-<header>
-    <h1>HR System</h1>
-</header>
-
-<div><a href="/signIn" class="button">Sign-in</a></div>
-<div><a href="/signUp" class="button">Sign-up</a></div>
-
-<footer>
-    <p>Team_HR_System © 2021 |
-        <a href="https://javaguru.lv/">JavaGuru</a> |
-        <a href="https://moodle.jrr.by/">moodle.jrr.by</a></p>
-</footer>
-
-</body>
-</html>

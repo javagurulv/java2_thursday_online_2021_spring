@@ -11,26 +11,25 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class RegisterUserController {
+public class SignUpController {
 
     @Autowired RegisterUserService registerUserService;
 
-    @GetMapping(value = "/registerUser")
-    public String registerUser(ModelMap modelMap) {
+    @GetMapping(value = "/signUp")
+    public String signUpPage(ModelMap modelMap) {
         modelMap.addAttribute("request", new RegisterUserRequest());
-        return "registerUser";
+        return "signUp";
     }
 
-    @PostMapping("/registerUser")
-    public String processRegisterUserRequest(@ModelAttribute(value = "request")
-                                                         RegisterUserRequest registerUserRequest, ModelMap modelMap) {
-        RegisterUserResponse registerUserResponse = registerUserService.execute(registerUserRequest);
-        if(registerUserResponse.hasErrors()){
-            modelMap.addAttribute("errors", registerUserResponse.getErrors());
-            return "registerUser";
+    @PostMapping("/signUp")
+    public String processSignUpRequest(@ModelAttribute(value = "request")
+                                                         RegisterUserRequest request, ModelMap modelMap) {
+        RegisterUserResponse response = registerUserService.execute(request);
+        if(response.hasErrors()){
+            modelMap.addAttribute("errors", response.getErrors());
+            return "signUp";
         } else {
             return "redirect:/";
         }
     }
-
 }
