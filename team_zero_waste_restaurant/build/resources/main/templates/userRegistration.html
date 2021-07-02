@@ -20,8 +20,8 @@
     </tr>
     <tr>
         <form action="/userRegistration" th:object="${request}" method="post">
-            <td><input type="text" th:field="${request.firstName}"/></td>
-            <td><input type="text" th:field="${request.secondName}"/></td>
+            <td><input type="text" th:field="${request.name}"/></td>
+            <td><input type="text" th:field="${request.surname}"/></td>
             <td><input type="text" th:field="${request.email}"/></td>
             <td><input type="text" th:field="${request.password}"/></td>
             <td>
