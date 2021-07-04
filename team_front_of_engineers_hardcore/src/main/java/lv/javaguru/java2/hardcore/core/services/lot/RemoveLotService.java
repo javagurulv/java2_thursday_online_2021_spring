@@ -18,7 +18,7 @@ public class RemoveLotService {
 
     public RemoveLotResponse execute(RemoveLotRequest request) {
 
-        boolean isRemoved = lotRepository.deleteLotById(request.getLotIdToRemove());
+        boolean isRemoved = lotRepository.deleteLotById(request.getId());
 
         return new RemoveLotResponse(isRemoved);
 

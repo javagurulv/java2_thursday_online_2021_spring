@@ -26,12 +26,12 @@ public class RemoveLotUIAction implements UIAction {
         if (response.hasErrors()) {
             response.getErrors().forEach(coreError -> System.out.println("Error: " + coreError.getField() + " " + coreError.getMessage()));
         } else {
-            System.out.println("Lot with id :" + request.getLotIdToRemove() + " removing status is: " + response.isRemoved());
+            System.out.println("Lot with id :" + request.getId() + " removing status is: " + response.isRemoved());
         }
         if (!response.isRemoved()) {
             System.out.println("Such ID doesn't exist,please try again");
         } else {
-            System.out.println("Lot with id: " + request.getLotIdToRemove() + " was removed,please check list for changes");
+            System.out.println("Lot with id: " + request.getId() + " was removed,please check list for changes");
         }
 
     }

@@ -21,7 +21,7 @@ public class RemoveLotValidator {
     }
 
     public Optional<CoreError> validateId(RemoveLotRequest request) {
-        return (request.getLotIdToRemove() == null)
+        return (request.getId() == null)
                 ? Optional.of(new CoreError("Lot id", "Must not be null"))
                 : Optional.empty();
     }

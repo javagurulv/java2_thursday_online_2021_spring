@@ -21,4 +21,6 @@ public class RemoveLotResponse extends CoreResponse {
     public boolean isRemoved() {
         return isRemoved;
     }
+
+
 }

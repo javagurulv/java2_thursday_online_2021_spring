@@ -4,11 +4,19 @@ public class RemoveLotRequest {
 
     private Long id;
 
+    public RemoveLotRequest() {
+    }
+
     public RemoveLotRequest(Long id) {
         this.id = id;
     }
 
-    public Long getLotIdToRemove() {
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
         return id;
     }
 }
