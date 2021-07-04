@@ -26,7 +26,7 @@ public class RemoveDishService {
         if(!errors.isEmpty()){
             return new RemoveDishResponse(errors);
         }
-        boolean isDishDeleted = database.deleteDishByName(request.name());
+        boolean isDishDeleted = database.deleteDishByName(request.getName());
         return new RemoveDishResponse(isDishDeleted);
     }
 }

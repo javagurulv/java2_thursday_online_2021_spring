@@ -1,7 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.services.products;
 
 
-import lv.javaguru.java2.wasterestarant.core.database.Product.ProductRepository;
+import lv.javaguru.java2.wasterestarant.core.database.product.ProductRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.product.RemoveProductRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.product.RemoveProductResponse;

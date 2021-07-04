@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services.products;
 
-import lv.javaguru.java2.wasterestarant.core.database.Product.ProductRepository;
+import lv.javaguru.java2.wasterestarant.core.database.product.ProductRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.product.SearchProductRequest;

@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services;
 
-import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.database.dish.DishRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.GetRestaurantMenuRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.GetRestaurantMenuResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
@@ -14,10 +14,10 @@ import java.util.List;
 @Transactional
 public class GetRestaurantMenuService {
     @Autowired
-    private Database database;
+    private DishRepository database;
 
     public GetRestaurantMenuResponse execute(GetRestaurantMenuRequest request) {
-        List<Dish> restaurantMenu = database.getRestaurantMenu();
+        List<Dish> restaurantMenu = database.getAllDishesInActiveMenu(request.isInActiveMenu());
         return new GetRestaurantMenuResponse(restaurantMenu);
     }
 }

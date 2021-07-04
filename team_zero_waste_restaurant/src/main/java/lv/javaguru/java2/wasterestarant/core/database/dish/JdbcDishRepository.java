@@ -35,6 +35,11 @@ public class JdbcDishRepository implements DishRepository {
     }
 
     @Override
+    public List<Dish> getAllDishesInActiveMenu(boolean isInActiveMenu) {
+        return null;
+    }
+
+    @Override
     public List<Dish> findDishByName(String name) {
         String sql = "SELECT * FROM dish WHERE name = ?";
         Object[] args = new Object[] {name};

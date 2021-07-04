@@ -1,8 +1,8 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
 public enum UserRole  {
-    ADMIN("Admin"),
-    CLIENT("Client");
+    ADMIN("ADMIN"),
+    CLIENT("CLIENT");
 
     private String role;
 

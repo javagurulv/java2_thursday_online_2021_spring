@@ -1,10 +1,7 @@
 package lv.javaguru.java2.wasterestarant.web_ui.controllers.user;
 
-import lv.javaguru.java2.wasterestarant.core.requests.user.ChangePasswordRequest;
 import lv.javaguru.java2.wasterestarant.core.requests.user.ChangeUserRoleRequest;
-import lv.javaguru.java2.wasterestarant.core.responses.user.ChangePasswordResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.user.ChangeUserRoleResponse;
-import lv.javaguru.java2.wasterestarant.core.services.user.ChangePasswordService;
 import lv.javaguru.java2.wasterestarant.core.services.user.ChangeUserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

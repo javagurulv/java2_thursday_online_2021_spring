@@ -1,0 +1,58 @@
+ @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-BoldItalic.ttf);
+    font-weight: bold;
+    font-style: italic;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Italic.ttf);
+    font-weight: normal;
+    font-style: italic;
+    }
+
+    body {
+    font-family: PT_Serif;
+    background-color: #f5f5f5;
+    }
+
+    header {
+    padding: 0.35em 1.2em;
+    margin: 1em 40em 3em 35em;
+    }
+
+    .button {
+    display:inline-block;
+
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #1e90ff;
+    margin: 0.5em 25em 0.5em 25em;
+    border-radius: 5px;
+    box-sizing: border-box;
+
+    font-size: x-large;
+    text-decoration: none;
+    font-weight: 300;
+    color: #000000;
+    text-align: center;
+    }
+
+    footer {
+    margin: 350px 10px 10px 1000px;
+    color: #708090;
+    }
