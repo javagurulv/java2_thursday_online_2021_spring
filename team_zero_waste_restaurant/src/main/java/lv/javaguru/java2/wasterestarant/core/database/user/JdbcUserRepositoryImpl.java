@@ -63,7 +63,7 @@ public class JdbcUserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public boolean changeUserPassword(String email) {
+    public boolean changeUserPassword(String password, String email) {
         return false;
     }
 
@@ -85,11 +85,6 @@ public class JdbcUserRepositoryImpl implements UserRepository {
 
     @Override
     public boolean isEmailRegistered(String email) {
-        return false;
-    }
-
-    @Override
-    public boolean hasUserRightsToChangeRole(User user) {
         return false;
     }
 

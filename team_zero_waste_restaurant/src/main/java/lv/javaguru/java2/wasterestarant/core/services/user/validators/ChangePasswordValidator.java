@@ -2,6 +2,8 @@ package lv.javaguru.java2.wasterestarant.core.services.user.validators;
 
 import lv.javaguru.java2.wasterestarant.core.database.user.UserRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.user.ChangePasswordRequest;
+import lv.javaguru.java2.wasterestarant.core.requests.user.LoginRequest;
+import lv.javaguru.java2.wasterestarant.core.requests.user.RegistrationRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,11 +21,19 @@ public class ChangePasswordValidator {
 
     public List<CoreError> validate(ChangePasswordRequest request) {
         validateEmail(request).ifPresent(errors::add);
-        if(errors.isEmpty()){
+        validatePassword(request).ifPresent(errors::add);
+        if (errors.isEmpty()) {
             validateRegistration(request).ifPresent(errors::add);
         }
         return errors;
     }
+
+    private Optional<CoreError> validatePassword(ChangePasswordRequest request) {
+        return (request.getPassword() == null || request.getPassword().isEmpty())
+                ? Optional.of(new CoreError("Password", "Must not be empty"))
+                : Optional.empty();
+    }
+
     private Optional<CoreError> validateEmail(ChangePasswordRequest request) {
         if (request.getEmail() == null || request.getEmail().isEmpty()) {
             return Optional.of(new CoreError("E-mail", "Must not be empty"));
@@ -34,9 +44,8 @@ public class ChangePasswordValidator {
     }
 
     private Optional<CoreError> validateRegistration(ChangePasswordRequest request) {
-        if (!repository.isEmailRegistered(request.getEmail())) {
-            return Optional.of(new CoreError("E-mail", request.getEmail() + " is not found!"));
-        }
-        return Optional.empty();
+        return (!repository.isEmailRegistered(request.getEmail()))
+                ? Optional.of(new CoreError("E-mail", request.getEmail() + " is not found!"))
+                : Optional.empty();
     }
 }
