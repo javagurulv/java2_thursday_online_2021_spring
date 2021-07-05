@@ -110,7 +110,7 @@
     <form action="/signIn" autocomplete="off" th:object="${request}" method="post">
 
         <tr><td>Email </br><input type="email" required autofocus id="login" name="login"
-                                       placeholder="user@gmail.com" autocomplete="on" th:field="${request.email}"/></td></tr>
+                                       placeholder="user@gmail.com"  th:field="${request.email}"/></td></tr>
 
         <tr><td>Password </br><input type="password" id="password" name="password" required
                                           placeholder="*********" th:field="${request.password}"/></td></tr>
