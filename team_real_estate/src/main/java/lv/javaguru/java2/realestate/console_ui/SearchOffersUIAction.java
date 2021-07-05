@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@Component
+// @Component
 public class SearchOffersUIAction implements ConsoleUI {
-    @Autowired
+    // @Autowired
     private SearchOffersService searchOffersService;
 
     @Override
@@ -50,7 +50,7 @@ public class SearchOffersUIAction implements ConsoleUI {
         Integer pageSize = Integer.parseInt(scanner.nextLine());
         Paging paging = new Paging(pageNumber, pageSize);
 
-        SearchOffersRequest request = new SearchOffersRequest(type, category, price, ordering, paging);
+        SearchOffersRequest request = new SearchOffersRequest(type, category, price);
         SearchOffersResponse response = searchOffersService.execute(request);
 
         if (response.hasErrors()) {

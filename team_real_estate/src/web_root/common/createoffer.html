@@ -11,7 +11,7 @@
 
     <meta charset="utf-8" />
 
-    <title>Vinik Real Estate - User</title>
+    <title>Vinik Real Estate - Create Offer</title>
     <meta name="description" content="The HTML5 Herald" />
     <meta name="author" content="SitePoint" />
   </head>
@@ -41,32 +41,39 @@
     <div class="midPageBody">
       <div class="panoramicImgContainer">
         <img src="../imgs/panorama-2646143_1920.jpg" alt="Panoramic image" />
-        <div class="TXT">Welcome Back</div>
+        <div class="TXT">Create offer</div>
       </div>
     </div>
 
     <div class="bottomPageBody">
-      <div class="userInfo">
-        <h2>User info :</h2>
-        <button class="btn" id="btn">get info</button>
-        <button class="deletebtn" id="deletebtn">Delete account</button>
-        <div class="user-info" id="user-info"></div>
-      </div>
-      <div class="userOffers">
-        <h2>User offers :</h2>
-        <input
-          type="text"
-          id="offerid"
-          name="offerid"
-          value=""
-          placeholder="Enter offer ID"
-        />
-        <button class="deleteoffer" id="deleteoffer">Delete offer</button>
-        <div class="user-offers" id="user-offers"></div>
-      </div>
+      <h2>Enter offer details : </h2>
+
+      <div class="signUpFields">
+
+        <form >
+          <label for="offerType">Offer type</label>
+          <br />
+          <input type="text" id="offerType" name="offerType" value=""/>
+          <br />
+
+          <label for="offerCategory">Offer category</label>
+          <br />
+          <input type="text" id="offerCategory" name="offerCategory" value=""/>
+          <br />
+
+          <label for="offerCategory">Offer description</label>
+          <br />
+          <input type="text" id="offerDescription" name="offerDescription" value=""/>
+          <br />
+
+          <label for="offerPrice">Offer price</label>
+          <br />
+          <input type="text" id="offerPrice" name="offerPrice" value=""/>
+          <br />
+        </form>
+         <button id="createBTN">Create offer</button>
+         <div class ="create-errors" id = "create-errors"></div>
     </div>
-    <script type="module" src="../js/userJS/getuserinfo.js"></script>
-    <script type="module" src="../js/userJS/deleteuser.js"></script>
-    <script src="../js/offerJS/deleteoffer.js"></script>
+    <script src="../js/offerJS/createoffer.js"></script>
   </body>
 </html>

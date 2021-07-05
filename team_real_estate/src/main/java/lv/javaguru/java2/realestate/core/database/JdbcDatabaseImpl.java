@@ -7,6 +7,7 @@ import lv.javaguru.java2.realestate.core.domain.User;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.lang.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,5 +109,11 @@ public class JdbcDatabaseImpl implements UserRepository, OfferRepository {
         String sql = "SELECT * FROM offer WHERE " + String.join(" AND ", strings);
 
         return jdbcTemplate.query(sql, new OfferRowMapper());
+    }
+
+    @Nullable
+    @Override
+    public User getUser(User user) {
+        return null;
     }
 }

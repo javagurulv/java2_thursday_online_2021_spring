@@ -5,6 +5,7 @@ import lv.javaguru.java2.realestate.core.database.user.UserRepository;
 import lv.javaguru.java2.realestate.core.domain.Offer;
 import lv.javaguru.java2.realestate.core.domain.User;
 import lv.javaguru.java2.realestate.core.requests.SearchOffersRequest;
+import org.springframework.lang.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,5 +83,10 @@ public class InMemoryDatabaseImpl implements UserRepository, OfferRepository {
         return offers.stream()
                 .filter(offerTypePredicate.and(offerCategoryPredicate.and(offerPricePredicate)))
                 .collect(Collectors.toList());
+    }
+    @Nullable
+    @Override
+    public User getUser(User user) {
+        return null;
     }
 }

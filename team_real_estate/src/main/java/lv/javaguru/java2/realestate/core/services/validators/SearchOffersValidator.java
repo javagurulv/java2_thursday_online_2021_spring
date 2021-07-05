@@ -15,7 +15,7 @@ public class SearchOffersValidator {
 
     public List<CoreError> validate(SearchOffersRequest request) {
         List<CoreError> errors = new ArrayList<>(validateSearchFields(request));
-
+/*
         if (request.getOrdering() != null) {
             validateOrderBy(request.getOrdering()).ifPresent(errors::add);
             validateOrderDirection(request.getOrdering()).ifPresent(errors::add);
@@ -27,7 +27,8 @@ public class SearchOffersValidator {
             validatePageSize(request.getPaging()).ifPresent(errors::add);
             validateMandatoryPageNumber(request.getPaging()).ifPresent(errors::add);
             validateMandatoryPageSize(request.getPaging()).ifPresent(errors::add);
-        }
+            }
+      */
         return errors;
     }
 

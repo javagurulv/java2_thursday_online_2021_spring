@@ -1,9 +1,11 @@
 package lv.javaguru.java2.realestate.core.response;
 
+import lombok.Getter;
 import lv.javaguru.java2.realestate.core.domain.Offer;
 
 import java.util.List;
 
+@Getter
 public class CreateOfferResponse extends CoreResponse {
 
     private Offer offer;
@@ -14,9 +16,5 @@ public class CreateOfferResponse extends CoreResponse {
 
     public CreateOfferResponse(Offer offer) {
         this.offer = offer;
-    }
-
-    public Offer getOffer() {
-        return offer;
     }
 }
