@@ -5,9 +5,24 @@ public class AddEmployeeRequest {
     private String lastName;
     private int age;
 
+    public AddEmployeeRequest() {
+    }
+
     public AddEmployeeRequest(String name, String lastName, int age) {
         this.name = name;
         this.lastName = lastName;
+        this.age = age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAge(int age) {
         this.age = age;
     }
 

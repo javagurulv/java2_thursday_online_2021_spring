@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="HR System demo project">
+    <meta name="author" content="HRSystemTeam">
+    <title>HR System</title>
+
+</head>
+
+<body>
+<h1>Add employee</h1>
+
+<table>
+
+    <tr>
+        <form action="/AddEmployee" th:object="${request}" method="post">
+
+            <label for="fname">First name:</label><br>
+            <input type="text" placeholder="enter first name" id="fname" name="fname" th:field="${request.name}"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" placeholder="enter last name" id="lname" name="lname" th:field="${request.lastName}"><br>
+            <label for="age">Age:</label><br>
+            <input type="text" placeholder="enter age > 18" id="age" name="age" th:field="${request.age}"><br>
+
+            <td>
+                <input type="submit" value="Add employee"/>
+                <input type="reset" value="Clear"/>
+            </td>
+        </form>
+    </tr>
+</table>
+
+<form action="/adminPage" method="get">
+    <input type="submit" value="Go to the admin page" name="Submit"/>
+</form>
+
+<td th:if="${errors != null}">
+    <tr th:each="error : ${errors}">
+        <td th:text="${error.field}"></td>
+        <td th:text="${error.message}"></td><br>
+    </tr>
+</td>
+
+</body>
+</html>
