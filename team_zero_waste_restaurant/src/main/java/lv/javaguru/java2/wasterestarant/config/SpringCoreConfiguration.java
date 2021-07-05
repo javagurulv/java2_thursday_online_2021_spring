@@ -26,7 +26,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableTransactionManagement
 public class SpringCoreConfiguration implements WebMvcConfigurer {
 
-
     
     @Value("${jdbc.url}")
     private String jdbcUrl;
