@@ -27,12 +27,12 @@ import java.util.Scanner;
 
 //AndrejsB and Andris
 @Component
-public class ProgramMenu {
+public class AdminProgramMenu {
 
     private Map<Integer, UIAction> menuNumberToUIActionMap;
 
     @Autowired
-    public ProgramMenu(List<UIAction> uiActions) {
+    public AdminProgramMenu(List<UIAction> uiActions) {
         menuNumberToUIActionMap = new HashMap<>();
         menuNumberToUIActionMap.put(1, findUIActions(uiActions, RegistrationUIAction.class));
         menuNumberToUIActionMap.put(2, findUIActions(uiActions, LoginUIAction.class));
@@ -52,8 +52,6 @@ public class ProgramMenu {
         menuNumberToUIActionMap.put(15, findUIActions(uiActions, ChangePasswordUIAction.class));
         menuNumberToUIActionMap.put(16, findUIActions(uiActions, ChangeUserRoleUIAction.class));
         menuNumberToUIActionMap.put(17, findUIActions(uiActions, ExitUIAction.class));
-
-
     }
 
     private UIAction findUIActions(List<UIAction> uiActions, Class uiActionClass){
@@ -63,7 +61,7 @@ public class ProgramMenu {
                 .get();
     }
 
-    public int getMenuNumberFromUser() {
+    public int getMenuNumberFromAdmin() {
         System.out.println("Enter menu item number to execute:");
         Scanner scanner = new Scanner(System.in);
         return Integer.parseInt(scanner.nextLine());
