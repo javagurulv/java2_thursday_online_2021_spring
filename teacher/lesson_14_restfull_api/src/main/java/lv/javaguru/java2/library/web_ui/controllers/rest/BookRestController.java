@@ -8,19 +8,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lv.javaguru.java2.library.core.requests.AddBookRequest;
 import lv.javaguru.java2.library.core.requests.DeleteBookRequest;
 import lv.javaguru.java2.library.core.requests.GetBookRequest;
+import lv.javaguru.java2.library.core.requests.SearchBooksRequest;
 import lv.javaguru.java2.library.core.requests.UpdateBookRequest;
 import lv.javaguru.java2.library.core.responses.AddBookResponse;
 import lv.javaguru.java2.library.core.responses.DeleteBookResponse;
 import lv.javaguru.java2.library.core.responses.GetBookResponse;
+import lv.javaguru.java2.library.core.responses.SearchBooksResponse;
 import lv.javaguru.java2.library.core.responses.UpdateBookResponse;
 import lv.javaguru.java2.library.core.services.AddBookService;
 import lv.javaguru.java2.library.core.services.DeleteBookService;
 import lv.javaguru.java2.library.core.services.GetBookService;
+import lv.javaguru.java2.library.core.services.SearchBooksService;
 import lv.javaguru.java2.library.core.services.UpdateBookService;
 
 @RestController
@@ -31,6 +35,21 @@ public class BookRestController {
 	@Autowired private AddBookService addBookService;
 	@Autowired private UpdateBookService updateBookService;
 	@Autowired private DeleteBookService deleteBookService;
+	@Autowired private SearchBooksService searchBookService;
+
+	@PostMapping(path = "/search",
+				 consumes = "application/json",
+			     produces = "application/json")
+	public SearchBooksResponse searchBooksPost(@RequestBody SearchBooksRequest request) {
+		return searchBookService.execute(request);
+	}
+
+	@GetMapping(path = "/search", produces = "application/json")
+	public SearchBooksResponse searchBooksGet(@RequestParam String title,
+											  @RequestParam String author) {
+		SearchBooksRequest request = new SearchBooksRequest(title, author);
+		return searchBookService.execute(request);
+	}
 
 	@GetMapping(path = "/{id}", produces = "application/json")
 	public GetBookResponse getBook(@PathVariable Long id) {
