@@ -11,25 +11,21 @@
 </head>
 
 <body>
-<h3> Add new dish</h3>
+<h3> Add dish ingredients</h3>
 
 <table>
     <tr>
         <td>Name:</td>
-        <td>Description:</td>
-        <td>Type:</td>
-        <td>Weight:</td>
-        <td>Price:</td>
+        <td>Quantity:</td>
+        <td>Dish_ID:</td>
     </tr>
     <tr>
-        <form action="/addDishToTheList" th:object="${request}" method="post">
-            <td><input type="text" th:field="${request.name}"/></td>
-            <td><input type="text" th:field="${request.description}"/></td>
-            <td><input type="text" th:field="${request.type}"/></td>
-            <td><input type="text" th:field="${request.weight}"/></td>
-            <td><input type="text" th:field="${request.price}"/></td>
+        <form action="/addIngredient" th:object="${requestIngredient}" method="post">
+            <td><input type="text" th:field="${requestIngredient.ingredient}"/></td>
+            <td><input type="text" th:field="${requestIngredient.quantity}"/></td>
+            <td><input type="text" th:field="${requestIngredient.ingredientID}"/></td>
             <td>
-                <input type="submit" value="Add Dish"/>
+                <input type="submit" value="Add ingredient"/>
                 <input type="reset" value="Clear"/>
             </td>
         </form>
@@ -47,6 +43,5 @@
 <form action="/" method="get">
     <input type="submit" value="Go to main page" name="Submit"/>
 </form>
-
 </body>
 </html>

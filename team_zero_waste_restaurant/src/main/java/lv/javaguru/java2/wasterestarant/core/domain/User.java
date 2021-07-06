@@ -12,7 +12,7 @@ public class User {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "userRole", nullable = false)
+    @Column(name = "user_Role", nullable = false)
     private UserRole userRole;
 
     @Column(name = "name", nullable = false)

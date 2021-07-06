@@ -1,6 +1,7 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ingredient")
@@ -17,12 +18,8 @@ public class Ingredient {
     @Column(name = "quantity")
     private Double quantity;
 
-    @Column(name = "dish_id", insertable = false, updatable = false)
+    @Column(name = "dish_id")
     private Long dishIngredientID;
-
-    @ManyToOne
-    @JoinColumn(name = "dish_id", nullable = false)
-    private Dish dish;
 
 
     public Ingredient(long ingredientID, String name, Double quantity, Long dishIngredientID) {
@@ -80,20 +77,13 @@ public class Ingredient {
         this.quantity = quantity;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public Double getQuantity(){
+    public Double getQuantity() {
         return quantity;
     }
 
-    public Dish getDish() {
-        return dish;
-    }
-
-    public void setDish(Dish dish) {
-        this.dish = dish;
-    }
 
 }

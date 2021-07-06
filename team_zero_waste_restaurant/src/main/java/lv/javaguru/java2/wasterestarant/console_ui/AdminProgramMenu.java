@@ -37,7 +37,6 @@ public class AdminProgramMenu {
         menuNumberToUIActionMap.put(1, findUIActions(uiActions, RegistrationUIAction.class));
         menuNumberToUIActionMap.put(2, findUIActions(uiActions, LoginUIAction.class));
         menuNumberToUIActionMap.put(3, findUIActions(uiActions, AddDishUIAction.class));
-        //menuNumberToUIActionMap.put(3, findUIActions(uiActions, AddDishIngredientUiAction.class)); //todo implement this correctly
         menuNumberToUIActionMap.put(4, findUIActions(uiActions, AddProductUIAction.class));
         menuNumberToUIActionMap.put(5, findUIActions(uiActions, RemoveProductUiAction.class));
         menuNumberToUIActionMap.put(6, findUIActions(uiActions, RemoveDishUIAction.class));

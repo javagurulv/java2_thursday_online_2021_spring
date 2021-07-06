@@ -1,8 +1,11 @@
 package lv.javaguru.java2.wasterestarant.web_ui.controllers.dish;
 
 import lv.javaguru.java2.wasterestarant.core.requests.dish.AddDishRequest;
+import lv.javaguru.java2.wasterestarant.core.requests.ingredient.AddDishIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.AddDishResponse;
+import lv.javaguru.java2.wasterestarant.core.responses.ingredient.AddDishIngredientResponse;
 import lv.javaguru.java2.wasterestarant.core.services.dish.AddDishService;
+import lv.javaguru.java2.wasterestarant.core.services.ingredient.AddDishIngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,11 +19,13 @@ public class AddDishController {
     @Autowired
     private AddDishService addDishService;
 
+
     @GetMapping(value = "/addDishToTheList")
     public String showAddDishPage(ModelMap modelMap) {
         modelMap.addAttribute("request", new AddDishRequest());
         return "/addDishToTheList";
     }
+
 
     @PostMapping("/addDishToTheList")
     public String processAddDishRequest(@ModelAttribute(value = "request") AddDishRequest request,
@@ -32,4 +37,5 @@ public class AddDishController {
         }
         return "/addDishToTheList";
     }
+
 }

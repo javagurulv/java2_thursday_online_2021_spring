@@ -1,5 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.database.ingredient;
 
+import lv.javaguru.java2.wasterestarant.core.domain.DishIngredient;
 import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -16,9 +17,9 @@ public class JdbcIngredientRepository implements IngredientRepository {
     public void save(Ingredient ingredient) {
 
         jdbcTemplate.update(
-                "INSERT INTO ingredient(name, quantity)"
-                        + "VALUES(?, ?)",
-               ingredient.getName(), ingredient.getQuantity()
+                "INSERT INTO ingredient(dishIngredientID, name, quantity)"
+                        + "VALUES(?, ?, ?)",
+               ingredient.getDishIngredientID(), ingredient.getName(), ingredient.getQuantity()
         );
     }
     @Override
@@ -29,7 +30,7 @@ public class JdbcIngredientRepository implements IngredientRepository {
     }
 
     @Override
-    public List<Ingredient> findIngredientByDishId(Long dishId) {
+    public List<DishIngredient> findIngredientByDishId(Long dishId) {
         return null;
     }
 }

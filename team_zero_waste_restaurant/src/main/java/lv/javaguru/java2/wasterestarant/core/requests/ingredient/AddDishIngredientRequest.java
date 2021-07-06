@@ -10,6 +10,10 @@ public class AddDishIngredientRequest {
         this.ingredientID = ingredientID;
     }
 
+    public AddDishIngredientRequest() {
+
+    }
+
     public String getIngredient() {
     return ingredient;
     }
