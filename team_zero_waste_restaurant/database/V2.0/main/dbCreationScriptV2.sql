@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS order_item
     AUTO_INCREMENT = 1;
 
 
-CREATE TABLE IF NOT EXISTS dish_ingredients
+CREATE TABLE IF NOT EXISTS dish_ingredient
 (id             BIGINT       NOT NULL AUTO_INCREMENT,
 PRIMARY KEY (id))
 

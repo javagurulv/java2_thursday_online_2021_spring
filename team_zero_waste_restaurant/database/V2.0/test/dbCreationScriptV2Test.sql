@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS order_item
     AUTO_INCREMENT = 1;
 
 
-CREATE TABLE IF NOT EXISTS dish_ingredients AS
+CREATE TABLE IF NOT EXISTS dish_ingredient AS
 
     SELECT dish.name AS restaurant_dish, ingredient.name, ingredient.quantity
     FROM ingredient
