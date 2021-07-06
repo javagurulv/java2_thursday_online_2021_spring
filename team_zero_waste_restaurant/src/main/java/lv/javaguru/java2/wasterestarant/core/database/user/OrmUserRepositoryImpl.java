@@ -35,7 +35,7 @@ public class OrmUserRepositoryImpl implements UserRepository {
     @Override
     public List<User> getAllUsers() {
         return sessionFactory.getCurrentSession()
-                .createQuery("SELECT u FROM User u", User.class)
+                .createQuery("SELECT u FROM User", User.class)
                 .getResultList();
     }
 
@@ -72,25 +72,29 @@ public class OrmUserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public boolean changeUserPassword(String email) {
+    public boolean changeUserPassword(String password, String email) {
         Query query = sessionFactory.getCurrentSession()
-                .createQuery("UPDATE User SET password = :password WHERE email = :email")
-                .setParameter("email", email);
-        return query.executeUpdate() == 1;
+                .createQuery("UPDATE User AS u SET u.password = :password WHERE u.email = :email");
+        query.setParameter("password", password);
+        query.setParameter("email", email);
+        int result = query.executeUpdate();
+        return result == 1;
     }
 
     @Override
     public boolean changeUserRole(UserRole userRole, String email) {
         Query query = sessionFactory.getCurrentSession()
-                .createQuery("UPDATE User SET user_role = :user_role WHERE email = :email")
-                .setParameter("user_role", userRole);
-        return query.executeUpdate() == 1;
+                .createQuery("UPDATE User AS u SET u.userRole = :userRole WHERE u.email = :email");
+        query.setParameter("userRole", userRole);
+        query.setParameter("email", email);
+        int result = query.executeUpdate();
+        return result == 1;
     }
 
     @Override
     public boolean isUserRegistered(String email, String password) {
         List<User> checkedUsers = sessionFactory.getCurrentSession()
-                .createQuery("SELECT u FROM User u WHERE email = :email AND password = :password", User.class)
+                .createQuery("SELECT u FROM User u WHERE u.email = :email AND u.password = :password", User.class)
                 .setParameter("email", email)
                 .setParameter("password", password)
                 .getResultList();
@@ -112,17 +116,6 @@ public class OrmUserRepositoryImpl implements UserRepository {
         List<User> checkedUsers = sessionFactory.getCurrentSession()
                 .createQuery("SELECT u FROM User u WHERE email = :email", User.class)
                 .setParameter("email", email)
-                .getResultList();
-        return checkedUsers.size() == 1;
-    }
-
-    @Override
-    public boolean hasUserRightsToChangeRole(User user) {
-        List<User> checkedUsers = sessionFactory.getCurrentSession()
-                .createQuery("SELECT u FROM User u WHERE user_role = :user_role AND email = :email AND password = :password", User.class)
-                .setParameter("user_role", user.getUserRole())
-                .setParameter("email", user.getEmail())
-                .setParameter("password", user.getPassword())
                 .getResultList();
         return checkedUsers.size() == 1;
     }

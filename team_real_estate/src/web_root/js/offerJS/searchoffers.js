@@ -9,7 +9,7 @@ btn.addEventListener("click", function(){
 
   var ourRequest = new XMLHttpRequest();
 
-ourRequest.open('GET','http://localhost:8090/search_offers');
+ourRequest.open('POST','http://localhost:8090/search_offers');
 ourRequest.setRequestHeader("Content-Type", "application/json");
 
 ourRequest.onload = function() {
@@ -28,11 +28,16 @@ function renderHTML(data){
   var htmlStringBeforeEnd = "beforeend";
   var htmlString2 = "";
 
+  if(JSON.stringify(data).includes("Must not be empty")){
+    htmlString2 = "<p>"+JSON.stringify(data)+"</p>";
+  } else {
+
   for(i = 0; i < data.length; i++){
     htmlString2 += "<p> offer type = " + data[i].offerType+
     ", offer category = "+ data[i].offerCategory +
     ", description  = "+ data[i].description +
     ", price = "+data[i].price +"</p>";
   }
+}
 offerContainer.insertAdjacentHTML(htmlStringBeforeEnd, htmlString2);
 }

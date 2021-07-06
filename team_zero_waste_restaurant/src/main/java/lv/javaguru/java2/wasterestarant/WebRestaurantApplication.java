@@ -1,6 +1,8 @@
 package lv.javaguru.java2.wasterestarant;
 
-import lv.javaguru.java2.wasterestarant.console_ui.ProgramMenu;
+import lv.javaguru.java2.wasterestarant.console_ui.AdminProgramMenu;
+import lv.javaguru.java2.wasterestarant.console_ui.ClientProgramMenu;
+import lv.javaguru.java2.wasterestarant.console_ui.StartMenu;
 import lv.javaguru.java2.wasterestarant.web_ui.config.SpringWebConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,12 +14,13 @@ public class WebRestaurantApplication {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(SpringWebConfiguration.class);
-
-        ProgramMenu programMenu = context.getBean(ProgramMenu.class);
+        StartMenu startMenu = context.getBean(StartMenu.class);
+        AdminProgramMenu adminProgramMenu = context.getBean(AdminProgramMenu.class);
+        ClientProgramMenu clientProgramMenu = context.getBean(ClientProgramMenu.class);
         while (true) {
-            programMenu.printProgramMenu();
-            int menuNumber = programMenu.getMenuNumberFromUser();
-            programMenu.executeSelectedMenuItem(menuNumber);
+            adminProgramMenu.printProgramMenu();
+            int menuNumber = adminProgramMenu.getMenuNumberFromAdmin();
+            adminProgramMenu.executeSelectedMenuItem(menuNumber);
         }
     }
 

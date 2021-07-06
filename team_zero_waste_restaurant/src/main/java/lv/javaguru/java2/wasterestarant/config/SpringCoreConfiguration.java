@@ -26,10 +26,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableTransactionManagement
 public class SpringCoreConfiguration implements WebMvcConfigurer {
 
-    @Override
-    public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(new StringToEnumConverter());
-    }
     
     @Value("${jdbc.url}")
     private String jdbcUrl;

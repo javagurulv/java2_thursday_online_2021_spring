@@ -31,7 +31,7 @@
 
       <div class="buttonBlock">
         <a href="../common/search.html" class="button">Buy</a>
-        <a href="../common/search.html" class="button">Sell</a>
+        <a href="../common/createoffer.html" class="button">Sell</a>
         <a href="../common/aboutus.html" class="button">About Us</a>
         <a href="../common/signup.html" class="button">Sign Up</a>
         <a href="../common/login.html" class="button">Log In</a>
@@ -41,7 +41,7 @@
     <div class="midPageBody">
       <div class="panoramicImgContainer">
         <img src="../imgs/panorama-2646143_1920.jpg" alt="Panoramic image" />
-        <div class="signUpTXT">Search</div>
+        <div class="TXT">Search</div>
       </div>
     </div>
 
@@ -65,13 +65,15 @@
           <br />
           <input type="text" id="offerPrice" name="offerPrice" value=""/>
           <br />
-
-          <button id="searchBTN">Search offers</button>
         </form>
-
-        <div class="offerList" id="offer-info"></div>
+         <button id="searchBTN">Search offers</button>
+         <div class="foundOffers" id = "foundOffers">
+           <h2>Found offers:</h2>
+           <div class="offerList" id="offer-info"></div>
+         </div>
+        
 
     </div>
-    <script src="../js/searchoffers.js"></script>
+    <script src="../js/offerJS/searchoffers.js"></script>
   </body>
 </html>

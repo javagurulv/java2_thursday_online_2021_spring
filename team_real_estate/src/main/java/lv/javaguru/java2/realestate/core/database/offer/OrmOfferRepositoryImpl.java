@@ -47,7 +47,8 @@ public class OrmOfferRepositoryImpl implements OfferRepository {
                 .createQuery(sql, Offer.class)
                 .setParameter("type", request.getOfferType())
                 .setParameter("category", request.getOfferCategory())
-                .setParameter("price", request.getPrice()).getResultList();
+                .setParameter("price", request.getPrice())
+                .getResultList();
 
     }
 }

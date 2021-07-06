@@ -37,14 +37,13 @@ public class SearchOffersService {
 
         if (errors.isEmpty()) {
             offers = offerRepository.searchOffers(request);
-            offers = order(offers, request.getOrdering());
-            offers = paging(offers, request.getPaging());
+            /* offers = order(offers, request.getOrdering());
+            offers = paging(offers, request.getPaging()); */
         }
-
         return new SearchOffersResponse(errors, offers);
     }
 
-    private List<Offer> order(List<Offer> offers, Ordering ordering) {
+   /* private List<Offer> order(List<Offer> offers, Ordering ordering) {
         if (orderingEnabled && ordering != null) {
             Comparator<Offer> comparator = getComparator(ordering.getOrderBy());
 
@@ -80,5 +79,5 @@ public class SearchOffersService {
         } else {
             return books;
         }
-    }
+    } */
 }

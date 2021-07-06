@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-@Component
+//@Component
 public class ProgramMenu {
 
     private Map<Integer, ConsoleUI> menuNumberToActionMap;
 
-    @Autowired
+   // @Autowired
     public ProgramMenu(List<ConsoleUI> consoleUIS) {
         menuNumberToActionMap = new HashMap();
         menuNumberToActionMap.put(0, findUIAction(consoleUIS, ExitUIAction.class));

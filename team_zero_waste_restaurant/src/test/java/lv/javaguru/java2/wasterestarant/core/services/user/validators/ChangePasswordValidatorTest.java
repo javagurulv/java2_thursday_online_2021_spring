@@ -23,7 +23,7 @@ public class ChangePasswordValidatorTest {
 
     @Test
     public void shouldReturnErrorIfEmailIsEmpty() {
-        ChangePasswordRequest request = new ChangePasswordRequest("");
+        ChangePasswordRequest request = new ChangePasswordRequest("admina", "");
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "E-mail");
@@ -31,8 +31,17 @@ public class ChangePasswordValidatorTest {
     }
 
     @Test
+    public void shouldReturnErrorIfPasswordIsEmpty() {
+        ChangePasswordRequest request = new ChangePasswordRequest("", "admin@admin.lv");
+        List<CoreError> errors = validator.validate(request);
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "Password");
+        assertEquals(errors.get(0).getMessage(), "Must not be empty");
+    }
+
+    @Test
     public void shouldReturnErrorIfEmailDoNotContainSymbol() {
-        ChangePasswordRequest request = new ChangePasswordRequest("admin");
+        ChangePasswordRequest request = new ChangePasswordRequest("admina","admin");
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "E-mail");
@@ -41,7 +50,7 @@ public class ChangePasswordValidatorTest {
 
     @Test
     public void shouldReturnErrorIfEmailIsNotFound() {
-        ChangePasswordRequest request = new ChangePasswordRequest("admin@admin.lv");
+        ChangePasswordRequest request = new ChangePasswordRequest("admina","admin@admin.lv");
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "E-mail");
@@ -50,7 +59,7 @@ public class ChangePasswordValidatorTest {
 
     @Test
     public void shouldReturnEmptyErrorList() {
-        ChangePasswordRequest request = new ChangePasswordRequest("admin@admin.lv");
+        ChangePasswordRequest request = new ChangePasswordRequest("admina","admin@admin.lv");
         when(repository.isEmailRegistered(request.getEmail())).thenReturn(true);
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 0);

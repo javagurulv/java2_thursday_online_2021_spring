@@ -1,5 +1,5 @@
 INSERT INTO users(user_role, name, surname, email, password)
-VALUES ('Admin', 'Admin', 'Admin', 'admin@admin.lv', 'admin');
+VALUES ('ADMIN', 'Admin', 'Admin', 'admin@admin.lv', 'admin');
 
 
 INSERT INTO  dish(name, description, type, weight, price)
