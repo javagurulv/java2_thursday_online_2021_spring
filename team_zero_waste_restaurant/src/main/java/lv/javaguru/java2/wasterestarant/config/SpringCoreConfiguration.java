@@ -24,7 +24,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @ComponentScan(basePackages = "lv.javaguru.java2.wasterestarant")
 @PropertySource(value = "classpath:application.properties")
 @EnableTransactionManagement
-public class SpringCoreConfiguration implements WebMvcConfigurer {
+public class SpringCoreConfiguration {
 
     
     @Value("${jdbc.url}")
