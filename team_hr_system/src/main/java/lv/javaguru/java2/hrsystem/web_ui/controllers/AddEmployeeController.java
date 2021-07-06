@@ -1,5 +1,6 @@
 package lv.javaguru.java2.hrsystem.web_ui.controllers;
 
+import lv.javaguru.java2.hrsystem.core.domain.UserRole;
 import lv.javaguru.java2.hrsystem.core.requests.AddEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.AddEmployeeResponse;
 import lv.javaguru.java2.hrsystem.core.services.employee.AddEmployeeService;
@@ -9,6 +10,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class AddEmployeeController {
@@ -23,13 +26,21 @@ public class AddEmployeeController {
     }
 
     @PostMapping("/AddEmployee")
-    public String processAddEmployeeRequest(@ModelAttribute(value = "request") AddEmployeeRequest request, ModelMap modelMap) {
+    public String processAddEmployeeRequest(@ModelAttribute(value = "request")
+                                                        AddEmployeeRequest request, ModelMap modelMap, HttpSession session) {
         AddEmployeeResponse response = addEmployeeService.execute(request);
+
         if (response.hasErrors()) {
             modelMap.addAttribute("errors", response.getErrors());
             return "AddEmployee";
         } else {
-            return "adminPage";
+
+            if(session.getAttribute("userRole").equals(UserRole.ADMIN)){
+                return "adminPage";
+            } else {
+                return "hrManagerPage";
+            }
+
         }
     }
 }
