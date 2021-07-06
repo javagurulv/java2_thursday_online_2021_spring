@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.config;
+package lv.javaguru.java2.wasterestarant.web_ui.config;
 
 import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
 import org.springframework.core.convert.converter.Converter;

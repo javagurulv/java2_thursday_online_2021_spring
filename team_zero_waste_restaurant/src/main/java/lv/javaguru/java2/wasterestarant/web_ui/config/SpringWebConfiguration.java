@@ -1,7 +1,6 @@
 package lv.javaguru.java2.wasterestarant.web_ui.config;
 
 
-import lv.javaguru.java2.wasterestarant.config.StringToEnumConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
