@@ -3,6 +3,8 @@ package lv.javaguru.java2.wasterestarant.core.database.dish;
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 
 import java.util.List;
+import java.util.Optional;
+
 //AndrejsB
 public interface DishRepository {
 
@@ -13,6 +15,8 @@ public interface DishRepository {
     List<Dish> getAllDishes();
 
     List<Dish> getAllDishesInActiveMenu(boolean isInActiveMenu);
+
+    Optional<Dish> getById(Long id);
 
     List<Dish> findDishByName(String name);
 
