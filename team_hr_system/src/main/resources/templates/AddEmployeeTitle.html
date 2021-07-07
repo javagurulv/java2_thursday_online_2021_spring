@@ -10,25 +10,21 @@
 </head>
 
 <body>
-<h1>Add employee</h1>
+<h1>Add employee title</h1>
 
 <table>
-
     <tr>
-        <form action="/AddEmployee" th:object="${request}" method="post">
+        <form action="/AddEmployeeTitle" th:object="${request}" method="post">
 
-            <label for="fname">First name:</label><br>
-            <input type="text" placeholder="enter first name" id="fname" name="fname" th:field="${request.name}"><br>
+            <label for="title">Employee title:</label><br>
+            <input type="text" placeholder="enter title" id="title" name="title" th:field="${request.title}"><br>
             <br>
-            <label for="lname">Last name:</label><br>
-            <input type="text" placeholder="enter last name" id="lname" name="lname" th:field="${request.lastName}"><br>
-            <br>
-            <label for="age">Age:</label><br>
-            <input type="text" placeholder="enter age > 18" id="age" name="age" th:field="${request.age}"><br>
+            <label for="description">Title description:</label><br>
+            <input type="text" placeholder="enter title description" id="description" name="description" th:field="${request.description}"><br>
             <br>
 
             <td>
-                <input type="submit" value="Add employee"/>
+                <input type="submit" value="Add employee title"/>
                 <input type="reset" value="Clear"/>
             </td>
         </form>

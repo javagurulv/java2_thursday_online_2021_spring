@@ -10,7 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class GetAllEmployees {
+public class GetAllEmployeesController {
 
     @Autowired
     private GetAllEmployeesService getAllEmployeesService;
