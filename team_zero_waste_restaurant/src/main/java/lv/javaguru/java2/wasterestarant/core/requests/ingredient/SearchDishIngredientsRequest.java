@@ -24,6 +24,10 @@ public class SearchDishIngredientsRequest {
     public SearchDishIngredientsRequest() {
     }
 
+    public SearchDishIngredientsRequest(String name) {
+        this.name = name;
+    }
+
     public SearchDishIngredientsRequest(Long dishIngredientID) {
         this.dishIngredientID = dishIngredientID;
     }
