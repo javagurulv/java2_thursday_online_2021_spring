@@ -1,8 +1,11 @@
 package lv.javaguru.java2.wasterestarant.web_ui.controllers.rest;
 
 
+import lv.javaguru.java2.wasterestarant.core.requests.GetRestaurantMenuRequest;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.*;
+import lv.javaguru.java2.wasterestarant.core.responses.GetRestaurantMenuResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.*;
+import lv.javaguru.java2.wasterestarant.core.services.GetRestaurantMenuService;
 import lv.javaguru.java2.wasterestarant.core.services.dish.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +28,9 @@ public class DishRestController {
 
     @Autowired
     private SearchDishesService searchDishesService;
+
+    @Autowired
+    private GetRestaurantMenuService getRestaurantMenuService;
 
 
     @GetMapping(path = "/{id}", produces = "application/json")
@@ -58,5 +64,11 @@ public class DishRestController {
     public GetAllDishesResponse response(){
         GetAllDishesRequest request = new GetAllDishesRequest();
         return getAllDishesService.execute(request);
+    }
+
+    @GetMapping(path = "/showMenu", produces = "application/json")
+    public GetRestaurantMenuResponse getRestaurantMenu(){
+        GetRestaurantMenuRequest request = new GetRestaurantMenuRequest();
+        return getRestaurantMenuService.execute(request);
     }
 }
