@@ -25,21 +25,24 @@
 </head>
 
 <body>
-<h1>All employees</h1>
+<header>
+    <h1>All Users</h1>
+</header>
 
 <table style="width:50%">
+
     <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Age</th>
-        <th>Title</th>
+        <th>Id</th>
+        <th>Role</th>
+        <th>Name</th>
+        <th>Surname</th>
     </tr>
 
-        <tr th:if="${employees != null}" th:each="employee : ${employees}">
-            <td th:text="${employee.name}"/>
-            <td th:text="${employee.lastName}"/>
-            <td th:text="${employee.age}"/>
-            <td th:text="${employee.title}"/>
+        <tr th:if="${users != null}" th:each="user : ${users}">
+            <td th:text="${user.id}"/>
+            <td th:text="${user.userRole}"/>
+            <td th:text="${user.firstName}"/>
+            <td th:text="${user.lastName}"/>
         </tr>
 
 </table>

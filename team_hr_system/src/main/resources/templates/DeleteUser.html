@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="HR System demo project">
+    <meta name="author" content="TeamJavaGuru">
+    <!--    <link rel="stylesheet" type="text/css" href="css/signUp.css">-->
+    <title>HR System</title>
+</head>
+<body>
+
+<table>
+
+    <form action="/DeleteUser" autocomplete="off" th:object="${request}" method="post">
+
+        <tr><td>Id </br><input placeholder="user_id" required autofocus th:field="${request.id}"/></td></tr>
+
+        <td class="button">
+            <input type="submit" value="Delete"/>
+            <input type="reset" value="Clear"/>
+            <input type="button" onclick="history.back();" value="Back"/>
+        </td>
+    </form>
+</table>
+
+<td th:if="${errors != null}">
+    <tr th:each="error : ${errors}">
+        <td th:text="${error.field}"></td>
+        <td th:text="${error.message}"></td>
+    </tr>
+</td>
+
+</body>
+</html>
