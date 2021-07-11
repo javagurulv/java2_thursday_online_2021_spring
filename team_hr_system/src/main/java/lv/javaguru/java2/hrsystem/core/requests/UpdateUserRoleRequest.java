@@ -6,6 +6,9 @@ public class UpdateUserRoleRequest {
     private Long id;
     private UserRole userRole;
 
+    public UpdateUserRoleRequest() {
+    }
+
     public UpdateUserRoleRequest(Long id, UserRole userRole) {
         this.id = id;
         this.userRole = userRole;
