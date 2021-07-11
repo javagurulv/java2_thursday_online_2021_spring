@@ -14,9 +14,7 @@ public class WebRestaurantApplication {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(SpringWebConfiguration.class);
-        //StartMenu startMenu = context.getBean(StartMenu.class);
         AdminProgramMenu adminProgramMenu = context.getBean(AdminProgramMenu.class);
-        //ClientProgramMenu clientProgramMenu = context.getBean(ClientProgramMenu.class);
         while (true) {
             adminProgramMenu.printProgramMenu();
             int menuNumber = adminProgramMenu.getMenuNumberFromAdmin();
