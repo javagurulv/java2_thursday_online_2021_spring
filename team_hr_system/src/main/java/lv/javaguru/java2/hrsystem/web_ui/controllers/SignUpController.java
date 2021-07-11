@@ -22,9 +22,11 @@ public class SignUpController {
     }
 
     @PostMapping("/signUp")
-    public String processSignUpRequest(@ModelAttribute(value = "request")
-                                                         RegisterUserRequest request, ModelMap modelMap) {
+    public String processSignUpRequest(@ModelAttribute(value = "request") RegisterUserRequest request,
+                                       ModelMap modelMap) {
+
         RegisterUserResponse response = registerUserService.execute(request);
+
         if(response.hasErrors()){
             modelMap.addAttribute("errors", response.getErrors());
             return "signUp";

@@ -25,8 +25,10 @@ public class SignInController {
     }
 
     @PostMapping("/signIn")
-    public String processSignInRequest(@ModelAttribute(value = "request")
-                                                          AuthorizeUserRequest request, ModelMap modelMap, HttpSession session) {
+    public String processSignInRequest(@ModelAttribute(value = "request") AuthorizeUserRequest request,
+                                       ModelMap modelMap,
+                                       HttpSession session) {
+
         AuthorizeUserResponse response = authorizeUserService.execute(request);
 
         if(response.hasErrors()){
