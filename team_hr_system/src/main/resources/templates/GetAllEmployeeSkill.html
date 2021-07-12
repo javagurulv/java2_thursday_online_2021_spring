@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="HR System demo project">
+    <meta name="author" content="HRSystemTeam">
+    <title>HR System</title>
+
+    <style>
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: separate;
+    }
+
+    th, td {
+    padding: 5px;
+    }
+
+    th {
+    text-align: left;
+    }
+
+
+    </style>
+
+</head>
+
+<body>
+<h1>All employee skills</h1>
+
+<table style="width:50%">
+    <tr>
+        <th>Employee</th>
+        <th>Skills</th>
+    </tr>
+
+    <tr th:each="entry, num : ${employeeSetMap}">
+        <td th:text="${num.index + 1}">1</td>
+        <td th:text="${entry.key.name} + ' ' + ${entry.key.lastName}">keyvalue</td>
+        <td>
+            <table>
+                <tr th:each="skill : ${entry.value}">
+                    <td th:text="${skill.skillName}"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+</table>
+
+<br>
+<form action="/adminPage" method="get">
+    <input type="button" onclick="history.back();" value="Back"/>
+</form>
+
+</body>
+</html>
