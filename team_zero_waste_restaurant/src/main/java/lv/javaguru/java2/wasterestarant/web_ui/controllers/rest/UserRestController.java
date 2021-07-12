@@ -29,22 +29,22 @@ public class UserRestController {
     public RegistrationResponse registrationResponse(@RequestBody RegistrationRequest request){
         return registrationService.execute(request);
     }
-
-//    @PutMapping(path = "/",
+//
+//    @PutMapping(path = "/changeUserRole",
 //            consumes = "application/json",
 //            produces = "application/json")
 //    public ChangeUserRoleResponse changeUserRole(@RequestBody ChangeUserRoleRequest request){
 //        return changeUserRoleService.execute(request);
 //    }
 //
-//    @PutMapping(path = "/",
+//    @PutMapping(path = "/changePassword",
 //            consumes = "application/json",
 //            produces = "application/json")
 //    public ChangePasswordResponse changePassword (@RequestBody ChangePasswordRequest request){
 //        return changePasswordService.execute(request);
 //    }
 //
-//    @GetMapping(path = "/userLogin", produces = "application/json")
+//    @PostMapping(path = "/userLogin", consumes = "application/json", produces = "application/json")
 //    public LoginResponse login (@RequestParam String email, @RequestParam String password){
 //        LoginRequest request = new LoginRequest(email, password);
 //        return loginService.execute(request);
