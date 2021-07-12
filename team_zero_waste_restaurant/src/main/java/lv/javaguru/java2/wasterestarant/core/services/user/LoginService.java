@@ -30,7 +30,7 @@ public class LoginService {
             errors.add(new CoreError("E-mail and Password", "User not found"));
             return new LoginResponse(errors);
         } else {
-            return new LoginResponse();
+            return new LoginResponse(loginUser);
         }
     }
 }
