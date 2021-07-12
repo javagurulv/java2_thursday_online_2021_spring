@@ -33,12 +33,10 @@
     <th>Description</th>
   </tr>
 
-  <td th:if="${employeeTitles != null}">
-    <tr th:each="employeeTitle : ${employeeTitles}">
-      <td th:text="${employeeTitle.name}"/>
-      <td th:text="${employeeTitle.description}"/>
-    </tr>
-  </td>
+  <tr th:if="${employeeTitles != null}" th:each="employeeTitle : ${employeeTitles}">
+    <td th:text="${employeeTitle.name}"/>
+    <td th:text="${employeeTitle.description}"/>
+  </tr>
 
 </table>
 <br>

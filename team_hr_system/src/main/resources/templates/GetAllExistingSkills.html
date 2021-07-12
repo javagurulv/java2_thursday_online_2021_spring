@@ -33,12 +33,12 @@
     <th>Skill name</th>
   </tr>
 
-  <td th:if="${allExistingSkills != null}">
+  <tr th:if="${allExistingSkills != null}">
     <tr th:each="skills : ${allExistingSkills}">
       <td th:text="${skills.skillId}"/>
       <td th:text="${skills.skillName}"/>
     </tr>
-  </td>
+  </tr>
 
 </table>
 <br>
