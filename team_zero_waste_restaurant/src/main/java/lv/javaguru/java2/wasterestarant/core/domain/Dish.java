@@ -1,7 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.domain;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
