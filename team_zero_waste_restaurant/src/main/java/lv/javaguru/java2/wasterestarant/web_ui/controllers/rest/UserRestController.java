@@ -47,8 +47,7 @@ public class UserRestController {
     @PostMapping(path = "/userLogin",
             consumes = "application/json",
             produces = "application/json")
-    public LoginResponse login (@RequestParam String email, @RequestParam String password){
-        LoginRequest request = new LoginRequest(email, password);
+    public LoginResponse login (@RequestBody LoginRequest request){
         return loginService.execute(request);
     }
 
