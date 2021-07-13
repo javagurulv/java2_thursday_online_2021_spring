@@ -6,10 +6,12 @@ import lv.javaguru.java2.hrsystem.core.requests.GetAllEmployeesRequest;
 import lv.javaguru.java2.hrsystem.core.responses.GetAllEmployeesResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Component
+@Transactional
 public class GetAllEmployeesService {
 
     @Autowired

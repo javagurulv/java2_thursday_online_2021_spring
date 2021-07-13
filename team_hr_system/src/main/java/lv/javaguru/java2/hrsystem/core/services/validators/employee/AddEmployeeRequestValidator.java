@@ -26,7 +26,7 @@ public class AddEmployeeRequestValidator {
     }
 
     private Optional<CoreError> validateLastName(AddEmployeeRequest request) {
-        return (request.getName() == null || request.getName().isEmpty())
+        return (request.getLastName() == null || request.getLastName().isEmpty())
                 ? Optional.of(new CoreError("last name", "Must not be empty!"))
                 : Optional.empty();
     }

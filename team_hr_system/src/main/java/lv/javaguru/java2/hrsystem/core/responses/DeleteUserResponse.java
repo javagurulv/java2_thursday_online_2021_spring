@@ -7,7 +7,6 @@ public class DeleteUserResponse extends CoreResponse{
     private boolean removed;
 
     public DeleteUserResponse(boolean removed) {
-
         this.removed = removed;
     }
 
@@ -17,9 +16,5 @@ public class DeleteUserResponse extends CoreResponse{
 
     public boolean isRemoved() {
         return removed;
-    }
-
-    public void setRemoved(boolean removed) {
-        this.removed = removed;
     }
 }

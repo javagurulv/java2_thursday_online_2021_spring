@@ -50,36 +50,39 @@
     border: 1px solid green;
     }
 
-    table{
+    table {
     background-color: #fff;
     border-radius: 5px;
 
-    margin: 20px 500px 20px 500px;
+    margin-left: 35%;
     padding: 0.1em;
     box-sizing: padding-box;
     border:0.1em solid #fff;
 
-    width: 350px;
-    height: 300px;
+    width: 20px;
     }
 
-    h1 {
-    margin: 40px 500px 10px 500px;
+    header {
+    padding: 10px;
+    width: 15%;
+    border: 1px;
+    font-size: 20px;
+    margin-left: 35%;
     }
 
-    table tr td{
+    table tr td {
     font-size: x-large;
     }
 
-    table tr td input{
+    table tr td input {
     font-size: xx-large;
     }
 
-    table tr td select{
+    table tr td select {
     font-size: xx-large;
     }
 
-    .button input{
+    .button input {
     display:inline-block;
 
     padding: 0.5em;
@@ -94,7 +97,8 @@
     }
 
     footer {
-    margin: 250px 10px 10px 1000px;
+    margin-top: 15%;
+    margin-left: 70%;
     color: #708090;
     }
     </style>
@@ -103,20 +107,22 @@
 
 <body>
 
-<h1>Sign-in</h1>
+<header>
+    <h1>Sign-in</h1>
+</header>
 
 <table>
 
     <form action="/signIn" autocomplete="off" th:object="${request}" method="post">
 
         <tr><td>Email </br><input type="email" required autofocus id="login" name="login"
-                                       placeholder="user@gmail.com" autocomplete="on" th:field="${request.email}"/></td></tr>
+                                       placeholder="user@gmail.com"  th:field="${request.email}"/></td></tr>
 
         <tr><td>Password </br><input type="password" id="password" name="password" required
                                           placeholder="*********" th:field="${request.password}"/></td></tr>
 
         <td class="button">
-            <input type="submit" value="Sing-in"/>
+            <input type="submit" value="Sign-in"/>
             <input type="reset" value="Clear"/>
         </td>
     </form>

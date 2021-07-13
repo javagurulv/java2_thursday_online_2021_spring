@@ -28,14 +28,14 @@ public class ChangePasswordServiceTest {
 
     @Test
     public void shouldChangePassword()  {
-        ChangePasswordRequest request = new ChangePasswordRequest("admin@admin.lv");
+        ChangePasswordRequest request = new ChangePasswordRequest("admina","admin@admin.lv");
         ChangePasswordResponse response = service.execute(request);
         assertFalse(response.hasErrors());
     }
 
     @Test
     public void shouldNotChangePassword()  {
-        ChangePasswordRequest request = new ChangePasswordRequest("admin@admin.lv");
+        ChangePasswordRequest request = new ChangePasswordRequest("admina","admin@admin.lv");
         List<CoreError> errors = new ArrayList<>(List.of(new CoreError("E-mail", "Must not be empty")));
         when(validator.validate(request)).thenReturn(errors);
         ChangePasswordResponse response = service.execute(request);

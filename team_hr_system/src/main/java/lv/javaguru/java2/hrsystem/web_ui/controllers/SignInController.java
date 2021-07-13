@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class SignInController {
 
@@ -23,8 +25,10 @@ public class SignInController {
     }
 
     @PostMapping("/signIn")
-    public String processSignInRequest(@ModelAttribute(value = "request")
-                                                          AuthorizeUserRequest request, ModelMap modelMap) {
+    public String processSignInRequest(@ModelAttribute(value = "request") AuthorizeUserRequest request,
+                                       ModelMap modelMap,
+                                       HttpSession session) {
+
         AuthorizeUserResponse response = authorizeUserService.execute(request);
 
         if(response.hasErrors()){
@@ -34,13 +38,15 @@ public class SignInController {
 
         } else {
 
-            if (response.getAuthorization().isPresent()
-                    && response.getAuthorization().get().getUserRole().equals(UserRole.ADMIN)) {
+            if (response.getAuthorization().get().getUserRole().equals(UserRole.ADMIN)) {
+
+                session.setAttribute("userRole", response.getAuthorization().get().getUserRole());
 
                 return "adminPage";
 
-            } else if (response.getAuthorization().isPresent()
-                    && response.getAuthorization().get().getUserRole().equals(UserRole.HR_MANAGER)) {
+            } else if (response.getAuthorization().get().getUserRole().equals(UserRole.HR_MANAGER)) {
+
+                session.setAttribute("userRole", response.getAuthorization().get().getUserRole());
 
                 return "hrManagerPage";
 

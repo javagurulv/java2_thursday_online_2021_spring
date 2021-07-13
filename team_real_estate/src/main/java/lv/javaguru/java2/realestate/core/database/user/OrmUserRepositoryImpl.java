@@ -42,4 +42,16 @@ public class OrmUserRepositoryImpl implements UserRepository {
         int result = query.executeUpdate();
         return result == 1;
     }
+
+    @Override
+    public User getUser(User user) {
+        List<User> userAtGivenCredentials = sessionFactory.getCurrentSession()
+                .createQuery("SELECT u FROM User u " +
+                        "WHERE username = :username AND password = :password", User.class)
+                .setParameter("username", user.getUsername())
+                .setParameter("password", user.getPassword())
+                .getResultList();
+
+        return userAtGivenCredentials.get(0);
+    }
 }

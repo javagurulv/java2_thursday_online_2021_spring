@@ -24,6 +24,6 @@ public class ChangePasswordService {
         if (!errors.isEmpty()) {
             return new ChangePasswordResponse(errors);
         }
-        return new ChangePasswordResponse(repository.changeUserPassword(request.getEmail()));
+        return new ChangePasswordResponse(repository.changeUserPassword(request.getPassword(), request.getEmail()));
     }
 }

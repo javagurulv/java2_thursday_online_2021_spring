@@ -6,6 +6,9 @@ public class AddEmployeeWithTitleRequest {
     private int age;
     private String title;
 
+    public AddEmployeeWithTitleRequest() {
+    }
+
     public AddEmployeeWithTitleRequest(String name, String lastName, int age, String title) {
         this.name = name;
         this.lastName = lastName;
@@ -27,5 +30,21 @@ public class AddEmployeeWithTitleRequest {
 
     public int getAge() {
         return age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

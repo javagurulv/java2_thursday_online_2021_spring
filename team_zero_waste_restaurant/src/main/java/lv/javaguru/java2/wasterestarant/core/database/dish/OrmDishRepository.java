@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @Transactional
@@ -43,6 +44,16 @@ public class OrmDishRepository implements DishRepository {
                 .createQuery("SELECT d from Dish d WHERE isInActiveMenu = :isInActiveMenu");
         query.setParameter("isInActiveMenu", isInActiveMenu);
         return query.getResultList();
+    }
+
+    @Override
+    public Optional<Dish> getById(Long id) {
+        Dish dish = sessionFactory.getCurrentSession().get(Dish.class, id);
+        if(dish == null) {
+            return Optional.empty();
+        }else{
+            return Optional.of(dish);
+        }
     }
 
     @Override

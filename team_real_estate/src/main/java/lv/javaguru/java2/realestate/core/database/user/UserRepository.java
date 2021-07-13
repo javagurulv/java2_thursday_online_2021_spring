@@ -9,4 +9,6 @@ public interface UserRepository {
     boolean logIn(User user);
 
     boolean deleteUser(User user);
+
+    User getUser(User user);
 }

@@ -21,7 +21,7 @@ public interface UserRepository {
 
     List<User> findUserByEmail(String email);
 
-    boolean changeUserPassword(String email);
+    boolean changeUserPassword(String password, String email);
 
     boolean changeUserRole(UserRole userRole, String email);
 
@@ -30,8 +30,6 @@ public interface UserRepository {
     User findUserByEmailAndPassword (String email, String password);
 
     boolean isEmailRegistered(String email);
-
-    boolean hasUserRightsToChangeRole(User user);
 
     List<User> findUserByRole(String role);
 

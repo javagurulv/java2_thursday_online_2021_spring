@@ -9,6 +9,9 @@ public class AddEmployeeTitleRequest {
         this.description = description;
     }
 
+    public AddEmployeeTitleRequest() {
+    }
+
     public String getTitle() {
         return title;
     }
@@ -24,4 +27,5 @@ public class AddEmployeeTitleRequest {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="HR System demo project">
+  <meta name="author" content="HRSystemTeam">
+  <title>HR System</title>
+
+  <style>
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: separate;
+    }
+
+    th, td {
+    padding: 5px;
+    }
+
+    th {
+    text-align: left;
+    }
+    </style>
+
+</head>
+
+<body>
+<h1>All existing skills</h1>
+
+<table style="width:50%">
+  <tr>
+    <th>Skill id</th>
+    <th>Skill name</th>
+  </tr>
+
+  <tr th:if="${allExistingSkills != null}">
+    <tr th:each="skills : ${allExistingSkills}">
+      <td th:text="${skills.skillId}"/>
+      <td th:text="${skills.skillName}"/>
+    </tr>
+  </tr>
+
+</table>
+<br>
+<form action="/adminPage" method="get">
+  <input type="submit" value="Go to the admin page" name="Submit"/>
+</form>
+
+</body>
+</html>

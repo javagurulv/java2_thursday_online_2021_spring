@@ -83,10 +83,6 @@ public class EmployeeTitle implements Serializable {
 
     @Override
     public String toString() {
-        return "EmployeeTitle{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return name;
     }
 }

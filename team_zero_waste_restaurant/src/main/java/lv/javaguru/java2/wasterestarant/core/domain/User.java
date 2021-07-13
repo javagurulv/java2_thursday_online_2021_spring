@@ -12,7 +12,7 @@ public class User {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_role", insertable = false, updatable = false)
+    @Column(name = "user_Role", nullable = false)
     private UserRole userRole;
 
     @Column(name = "name", nullable = false)
@@ -30,22 +30,10 @@ public class User {
     public User() {
     }
 
-    public User(String name, String surname, String email, String password) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.password = password;
-    }
-
     public User(UserRole userRole, String name, String surname, String email, String password) {
         this.userRole = userRole;
         this.name = name;
         this.surname = surname;
-        this.email = email;
-        this.password = password;
-    }
-
-    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }

@@ -26,7 +26,7 @@ public class AddDishIngredientService {
             return new AddDishIngredientResponse(errors);
         }
 
-        Ingredient ingredient = new Ingredient(request.getIngredient(), request.getQuantity());
+        Ingredient ingredient = new Ingredient(request.getIngredient(), request.getQuantity(), request.getIngredientID());
         database.save(ingredient);
         System.out.println("New Ingredient was added to the ingredient list.");
 

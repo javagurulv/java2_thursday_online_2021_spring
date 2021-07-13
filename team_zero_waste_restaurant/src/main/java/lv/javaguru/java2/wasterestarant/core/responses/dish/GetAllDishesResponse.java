@@ -16,4 +16,8 @@ public class GetAllDishesResponse extends CoreResponse {
     public List<Dish> getDishes() {
         return dishes;
     }
+
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
+    }
 }

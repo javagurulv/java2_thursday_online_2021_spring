@@ -1,13 +1,23 @@
 package lv.javaguru.java2.wasterestarant.core.requests.user;
 
 public class ChangePasswordRequest {
+    private String password;
     private String email;
 
     public ChangePasswordRequest() {
     }
 
-    public ChangePasswordRequest(String email) {
+    public ChangePasswordRequest(String password, String email) {
+        this.password = password;
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -17,5 +27,4 @@ public class ChangePasswordRequest {
     public void setEmail(String email) {
         this.email = email;
     }
-
 }

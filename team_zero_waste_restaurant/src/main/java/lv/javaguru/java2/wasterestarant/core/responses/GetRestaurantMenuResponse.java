@@ -8,6 +8,11 @@ public class GetRestaurantMenuResponse extends CoreResponse {
 
     private List<Dish> restaurantMenu;
 
+    public GetRestaurantMenuResponse(List<CoreError> errors, List<Dish> restaurantMenu) {
+        super(errors);
+        this.restaurantMenu = restaurantMenu;
+    }
+
     public GetRestaurantMenuResponse(List<Dish> restaurantMenu) {
         this.restaurantMenu = restaurantMenu;
     }

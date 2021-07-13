@@ -31,7 +31,7 @@
 
       <div class="buttonBlock">
         <a href="../common/search.html" class="button">Buy</a>
-        <a href="../common/search.html" class="button">Sell</a>
+        <a href="../common/createoffer.html" class="button">Sell</a>
         <a href="../common/aboutus.html" class="button">About Us</a>
         <a href="../common/signup.html" class="button">Sign Up</a>
         <a href="../common/login.html" class="button">Log In</a>
@@ -41,13 +41,32 @@
     <div class="midPageBody">
       <div class="panoramicImgContainer">
         <img src="../imgs/panorama-2646143_1920.jpg" alt="Panoramic image" />
-        <div class="userinfoTXT">Welcome Back</div>
+        <div class="TXT">Welcome Back</div>
       </div>
     </div>
 
     <div class="bottomPageBody">
-      <h2>User info:</h2>
+      <div class="userInfo">
+        <h2>User info :</h2>
+        <button class="btn" id="btn">get info</button>
+        <button class="deletebtn" id="deletebtn">Delete account</button>
+        <div class="user-info" id="user-info"></div>
+      </div>
+      <div class="userOffers">
+        <h2>User offers :</h2>
+        <input
+          type="text"
+          id="offerid"
+          name="offerid"
+          value=""
+          placeholder="Enter offer ID"
+        />
+        <button class="deleteoffer" id="deleteoffer">Delete offer</button>
+        <div class="user-offers" id="user-offers"></div>
+      </div>
     </div>
-    <script src=""></script>
+    <script type="module" src="../js/userJS/getuserinfo.js"></script>
+    <script type="module" src="../js/userJS/deleteuser.js"></script>
+    <script src="../js/offerJS/deleteoffer.js"></script>
   </body>
 </html>

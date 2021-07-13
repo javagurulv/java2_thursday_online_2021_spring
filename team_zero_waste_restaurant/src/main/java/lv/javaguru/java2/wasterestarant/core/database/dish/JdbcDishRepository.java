@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 
 import java.util.List;
+import java.util.Optional;
+
 //AndrejsB
 //@Component
 public class JdbcDishRepository implements DishRepository {
@@ -37,6 +39,11 @@ public class JdbcDishRepository implements DishRepository {
     @Override
     public List<Dish> getAllDishesInActiveMenu(boolean isInActiveMenu) {
         return null;
+    }
+
+    @Override
+    public Optional<Dish> getById(Long id) {
+        return Optional.empty();
     }
 
     @Override

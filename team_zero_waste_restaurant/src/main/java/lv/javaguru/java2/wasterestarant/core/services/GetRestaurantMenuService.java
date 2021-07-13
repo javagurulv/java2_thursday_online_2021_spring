@@ -14,10 +14,10 @@ import java.util.List;
 @Transactional
 public class GetRestaurantMenuService {
     @Autowired
-    private DishRepository database;
+    private DishRepository repository;
 
     public GetRestaurantMenuResponse execute(GetRestaurantMenuRequest request) {
-        List<Dish> restaurantMenu = database.getAllDishesInActiveMenu(request.isInActiveMenu());
+        List<Dish> restaurantMenu = repository.getAllDishesInActiveMenu(request.isInActiveMenu());
         return new GetRestaurantMenuResponse(restaurantMenu);
     }
 }

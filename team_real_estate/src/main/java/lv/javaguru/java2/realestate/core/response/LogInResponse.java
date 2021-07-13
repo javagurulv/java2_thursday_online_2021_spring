@@ -1,10 +1,12 @@
 package lv.javaguru.java2.realestate.core.response;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lv.javaguru.java2.realestate.core.domain.User;
 
 import java.util.List;
 
+@NoArgsConstructor
 @Getter
 public class LogInResponse extends CoreResponse {
     private User user;
@@ -12,10 +14,6 @@ public class LogInResponse extends CoreResponse {
 
     public LogInResponse(List<CoreError> errors) {
         super(errors);
-    }
-
-    public LogInResponse() {
-
     }
 
     public LogInResponse(User user, boolean isLoggedIn) {

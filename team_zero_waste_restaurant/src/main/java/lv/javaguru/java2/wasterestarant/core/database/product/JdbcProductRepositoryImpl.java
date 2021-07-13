@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
+import java.util.Optional;
 
 //@Component
 public class JdbcProductRepositoryImpl implements ProductRepository {
@@ -39,5 +40,10 @@ public class JdbcProductRepositoryImpl implements ProductRepository {
         String sql = "SELECT * FROM product WHERE name = ?";
         Object[] args = new Object[] {name};
         return jdbcTemplate.query(sql, args, new ProductRowMapper());
+    }
+
+    @Override
+    public Optional<Product> getProductById(Long id) {
+        return Optional.empty();
     }
 }
