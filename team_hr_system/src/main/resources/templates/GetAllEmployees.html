@@ -29,6 +29,7 @@
 
 <table style="width:50%">
     <tr>
+        <th>Id</th>
         <th>First name</th>
         <th>Last name</th>
         <th>Age</th>
@@ -36,6 +37,7 @@
     </tr>
 
         <tr th:if="${employees != null}" th:each="employee : ${employees}">
+            <td th:text="${employee.id}"/>
             <td th:text="${employee.name}"/>
             <td th:text="${employee.lastName}"/>
             <td th:text="${employee.age}"/>
