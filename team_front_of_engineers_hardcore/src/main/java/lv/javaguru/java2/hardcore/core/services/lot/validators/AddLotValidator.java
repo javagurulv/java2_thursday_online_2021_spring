@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hardcore.core.services.lot;
+package lv.javaguru.java2.hardcore.core.services.lot.validators;
 
 
 import lv.javaguru.java2.hardcore.core.requests.lot.AddLotRequest;

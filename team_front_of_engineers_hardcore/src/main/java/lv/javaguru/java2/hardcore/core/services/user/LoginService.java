@@ -7,13 +7,13 @@ import lv.javaguru.java2.hardcore.core.domain.User;
 import lv.javaguru.java2.hardcore.core.requests.user.LoginRequest;
 import lv.javaguru.java2.hardcore.core.response.CoreError;
 import lv.javaguru.java2.hardcore.core.response.user.LoginResponse;
+import lv.javaguru.java2.hardcore.core.services.user.validators.LoginValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 @Transactional

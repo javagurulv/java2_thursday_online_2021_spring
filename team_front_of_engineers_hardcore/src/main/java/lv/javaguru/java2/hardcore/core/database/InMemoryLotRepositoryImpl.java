@@ -56,4 +56,9 @@ public class InMemoryLotRepositoryImpl implements LotRepository {
                 .collect(Collectors.toList());
 
     }
+
+    @Override
+    public Optional<Lot> getById(Long id) {
+        return Optional.empty();
+    }
 }

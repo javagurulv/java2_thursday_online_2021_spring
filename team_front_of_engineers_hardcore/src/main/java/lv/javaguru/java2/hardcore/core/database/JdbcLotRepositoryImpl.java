@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 //@Component
 public class JdbcLotRepositoryImpl implements LotRepository {
@@ -56,5 +57,10 @@ public class JdbcLotRepositoryImpl implements LotRepository {
                 " name LIKE ? AND start_price LIKE ?";
         Object[] args = new Object[] {name, price};
         return jdbcTemplate.query(sql,args,new LotRowMapper());
+    }
+
+    @Override
+    public Optional<Lot> getById(Long id) {
+        return Optional.empty();
     }
 }

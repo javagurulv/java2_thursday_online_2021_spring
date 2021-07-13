@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.Query;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @Transactional
@@ -62,5 +63,15 @@ public class OrmLotRepositoryImpl implements LotRepository{
         query.setParameter("name", name);
         query.setParameter("price", price);
         return query.getResultList();
+    }
+
+    @Override
+    public Optional<Lot> getById(Long id) {
+        Lot lot = sessionFactory.getCurrentSession().get(Lot.class, id);
+        if(lot == null){
+            return Optional.empty();
+        } else {
+            return Optional.of(lot);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hardcore.core.services.bet;
+package lv.javaguru.java2.hardcore.core.services.bet.validators;
 
 
 

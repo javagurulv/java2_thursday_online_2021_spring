@@ -3,6 +3,7 @@ package lv.javaguru.java2.hardcore.core.services.user;
 import lv.javaguru.java2.hardcore.core.database.UserRepository;
 import lv.javaguru.java2.hardcore.core.requests.user.AddUserRequest;
 import lv.javaguru.java2.hardcore.core.response.user.AddUserResponse;
+import lv.javaguru.java2.hardcore.core.services.user.validators.AddUserValidator;
 import org.junit.Before;
 import org.junit.Test;
 

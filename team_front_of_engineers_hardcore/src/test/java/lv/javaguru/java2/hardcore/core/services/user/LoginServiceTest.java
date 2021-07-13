@@ -5,6 +5,7 @@ import lv.javaguru.java2.hardcore.core.domain.User;
 import lv.javaguru.java2.hardcore.core.requests.user.LoginRequest;
 import lv.javaguru.java2.hardcore.core.response.CoreError;
 import lv.javaguru.java2.hardcore.core.response.user.LoginResponse;
+import lv.javaguru.java2.hardcore.core.services.user.validators.LoginValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

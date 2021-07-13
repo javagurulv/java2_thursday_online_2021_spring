@@ -5,6 +5,7 @@ import lv.javaguru.java2.hardcore.core.domain.Lot;
 import lv.javaguru.java2.hardcore.core.requests.lot.AddLotRequest;
 import lv.javaguru.java2.hardcore.core.response.CoreError;
 import lv.javaguru.java2.hardcore.core.response.lot.AddLotResponse;
+import lv.javaguru.java2.hardcore.core.services.lot.validators.AddLotValidator;
 import lv.javaguru.java2.hardcore.core.services.user.LoginService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -4,6 +4,7 @@ import lv.javaguru.java2.hardcore.core.domain.Lot;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 public interface LotRepository {
 
@@ -18,5 +19,7 @@ public interface LotRepository {
     List<Lot> searchByPrice(BigDecimal price);
 
     List<Lot> searchByNameAndPrice(String name, BigDecimal price);
+
+    Optional<Lot> getById(Long id);
 
 }

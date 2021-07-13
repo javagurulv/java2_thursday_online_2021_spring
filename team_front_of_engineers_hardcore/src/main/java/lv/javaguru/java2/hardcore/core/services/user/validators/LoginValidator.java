@@ -1,4 +1,4 @@
-package lv.javaguru.java2.hardcore.core.services.user;
+package lv.javaguru.java2.hardcore.core.services.user.validators;
 
 
 import lv.javaguru.java2.hardcore.core.requests.user.LoginRequest;

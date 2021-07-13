@@ -7,6 +7,7 @@ import lv.javaguru.java2.hardcore.core.domain.User;
 import lv.javaguru.java2.hardcore.core.requests.user.AddUserRequest;
 import lv.javaguru.java2.hardcore.core.response.CoreError;
 import lv.javaguru.java2.hardcore.core.response.user.AddUserResponse;
+import lv.javaguru.java2.hardcore.core.services.user.validators.AddUserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

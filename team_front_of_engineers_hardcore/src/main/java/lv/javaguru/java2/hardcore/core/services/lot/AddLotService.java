@@ -6,6 +6,7 @@ import lv.javaguru.java2.hardcore.core.database.LotRepository;
 import lv.javaguru.java2.hardcore.core.requests.lot.AddLotRequest;
 import lv.javaguru.java2.hardcore.core.response.lot.AddLotResponse;
 import lv.javaguru.java2.hardcore.core.response.CoreError;
+import lv.javaguru.java2.hardcore.core.services.lot.validators.AddLotValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
