@@ -1,12 +1,15 @@
 package lv.javaguru.java2.hrsystem.core.requests;
 
 public class SearchEmployeesRequest {
-    private final String employeeTitle;
-    private final String name;
+    private String employeeTitle;
+    private String name;
 
     private Ordering ordering;
 
     private Paging paging;
+
+    public SearchEmployeesRequest() {
+    }
 
     public SearchEmployeesRequest(String employeeTitle, String name) {
         this.employeeTitle = employeeTitle;
@@ -54,5 +57,21 @@ public class SearchEmployeesRequest {
 
     public boolean isNameProvided() {
         return name != null && !name.isEmpty();
+    }
+
+    public void setEmployeeTitle(String employeeTitle) {
+        this.employeeTitle = employeeTitle;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setOrdering(Ordering ordering) {
+        this.ordering = ordering;
+    }
+
+    public void setPaging(Paging paging) {
+        this.paging = paging;
     }
 }

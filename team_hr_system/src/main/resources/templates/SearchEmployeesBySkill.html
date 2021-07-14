@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="HR System demo project">
+    <meta name="author" content="HRSystemTeam">
+    <title>HR System</title>
+
+</head>
+
+<body>
+<h1>Search Employees</h1>
+
+<table>
+
+    <tr>
+        <form action="/SearchEmployeesBySkill" th:object="${request}" method="post">
+
+            <label for="skillName">Employee skill:</label><br>
+            <input type="text" placeholder="enter skill name" id="skillName" name="skillName" th:field="${request.skillName}"><br>
+            <br>
+
+            <td>
+                <input type="submit" value="Search Employees By Skill"/>
+                <input type="reset" value="Clear"/>
+            </td>
+        </form>
+    </tr>
+</table>
+<br>
+
+
+<td th:if="${errors != null}">
+    <tr th:each="error : ${errors}">
+        <td th:text="${error.field}"></td>
+        <td th:text="${error.message}"></td><br>
+    </tr>
+</td>
+
+
+<table style="width:50%">
+    <tr>
+        <th>Employee ID</th>
+        <th>Employee: First name, Last name</th>
+    </tr>
+
+    <td th:if="${employees != null}">
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.id}"/>
+            <td th:text="${employee.name}+ ' ' +${employee.lastName}"/>
+        </tr>
+    </td>
+
+</table>
+
+<br>
+<form action="/adminPage" method="get">
+    <input type="submit" value="Go to the admin page" name="Submit"/>
+</form>
+
+</body>
+</html>

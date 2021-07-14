@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +28,6 @@ public class SearchEmployeesService {
     private boolean pagingEnabled;
 
     @Autowired
-    //private EmployeeRepository employeeRepository;
     private ORMEmployeeRepository ormEmployeeRepository;
     @Autowired
     private SearchEmployeesRequestValidator validator;
@@ -49,7 +49,7 @@ public class SearchEmployeesService {
     }
 
     public List<Employee> search(SearchEmployeesRequest request) {
-        List<Employee> employees = null;
+        List<Employee> employees = new ArrayList<>();
         if (request.isNameProvided() && !request.isTitleProvided()) {
             employees = ormEmployeeRepository.getEmployeesByName(request.getName());
         }
