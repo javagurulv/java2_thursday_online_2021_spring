@@ -15,17 +15,14 @@
 <table>
 
     <tr>
-        <form action="/SearchEmployees" th:object="${request}" method="post">
+        <form action="/SearchEmployeesBySkill" th:object="${request}" method="post">
 
-            <label for="emplTitle">Employee title:</label><br>
-            <input type="text" placeholder="enter employee title" id="emplTitle" name="emplTitle" th:field="${request.employeeTitle}"><br>
-            <br>
-            <label for="fname">Employee name:</label><br>
-            <input type="text" placeholder="enter name" id="fname" name="fname" th:field="${request.name}"><br>
+            <label for="skillName">Employee skill:</label><br>
+            <input type="text" placeholder="enter skill name" id="skillName" name="skillName" th:field="${request.skillName}"><br>
             <br>
 
             <td>
-                <input type="submit" value="Search Employees"/>
+                <input type="submit" value="Search Employees By Skill"/>
                 <input type="reset" value="Clear"/>
             </td>
         </form>
@@ -44,18 +41,14 @@
 
 <table style="width:50%">
     <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Age</th>
-        <th>Title</th>
+        <th>Employee ID</th>
+        <th>Employee: First name, Last name</th>
     </tr>
 
     <td th:if="${employees != null}">
         <tr th:each="employee : ${employees}">
-            <td th:text="${employee.name}"/>
-            <td th:text="${employee.lastName}"/>
-            <td th:text="${employee.age}"/>
-            <td th:text="${employee.title}"/>
+            <td th:text="${employee.id}"/>
+            <td th:text="${employee.name}+ ' ' +${employee.lastName}"/>
         </tr>
     </td>
 
