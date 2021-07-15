@@ -35,6 +35,10 @@ include 'teacher:lesson_13_spring_web'
 
 include 'teacher:lesson_14_restfull_api'
 
+include 'teacher:lesson_15_jpa_repositories'
+
+include 'teacher:lesson_16_liquibase'
+
 include 'team_zero_waste_restaurant'
 include 'team_real_estate'
 include 'team_hr_system'
