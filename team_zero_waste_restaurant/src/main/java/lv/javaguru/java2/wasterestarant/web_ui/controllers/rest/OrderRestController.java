@@ -48,7 +48,7 @@ public class OrderRestController {
             return createNewOrderService.execute(request);
         }
 
-        @GetMapping(path = "/getAllProducts", produces = "application/json")
+        @GetMapping(path = "/getAllOrders", produces = "application/json")
         public GetAllOrdersResponse response(){
             GetAllOrdersRequest request = new GetAllOrdersRequest();
             return getAllOrdersService.execute(request);
