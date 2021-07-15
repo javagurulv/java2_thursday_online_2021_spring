@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Zero Waste Restaurant demo project">
+  <meta name="author" content="The DreamTeam">
+  <title>Zero Waste Restaurant</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" type="text/css">
+</head>
+<body>
+<h3> Restaurant menu </h3>
+
+<table>
+  <tr>
+    <td>Name:</td>
+    <td>Description:</td>
+    <td>Type:</td>
+    <td>Weight:</td>
+    <td>Price:</td>
+  </tr>
+
+  <td th:if="${dishes != null}">
+    <tr th:each="dish : ${dishes}">
+      <td th:text="${dish.name}"/>
+      <td th:text="${dish.description}"/>
+      <td th:text="${dish.type}"/>
+      <td th:text="${dish.weight}"/>
+      <td th:text="${dish.price}"/>
+    </tr>
+  </td>
+
+</table>
+
+<form action="/" method="get">
+  <input type="submit" value="Go to main page" name="Submit"/>
+</form>
+
+</body>
+</html>
