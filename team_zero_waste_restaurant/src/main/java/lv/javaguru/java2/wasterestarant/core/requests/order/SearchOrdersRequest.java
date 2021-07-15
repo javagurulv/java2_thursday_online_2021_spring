@@ -7,6 +7,9 @@ public class SearchOrdersRequest {
     private Long clientID;
     private Date orderDate;
 
+    public SearchOrdersRequest() {
+    }
+
     public SearchOrdersRequest(Long clientID) {
         this.clientID = clientID;
     }

@@ -55,9 +55,9 @@ public class OrderRestController {
         }
 
 
-        @GetMapping(path = "/search/{id, date}", produces = "application/json")
-        public SearchOrdersResponse searchOrdersResponse (@PathVariable Long id, Date date) {
-            SearchOrdersRequest request = new SearchOrdersRequest(id, date);
+        @GetMapping(path = "/search/{clientID, orderDate}", produces = "application/json")
+        public SearchOrdersResponse searchOrdersResponse (@PathVariable Long clientID, Date orderDate) {
+            SearchOrdersRequest request = new SearchOrdersRequest(clientID, orderDate);
             return searchOrdersService.execute(request);
         }
 
