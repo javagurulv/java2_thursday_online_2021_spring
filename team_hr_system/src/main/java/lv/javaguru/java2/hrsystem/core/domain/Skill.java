@@ -1,5 +1,8 @@
 package lv.javaguru.java2.hrsystem.core.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -54,6 +57,7 @@ public class Skill {
         this.skillName = skillName;
     }
 
+    @JsonIgnore
     public Set<Employee> getEmployees() {
         return employees;
     }
