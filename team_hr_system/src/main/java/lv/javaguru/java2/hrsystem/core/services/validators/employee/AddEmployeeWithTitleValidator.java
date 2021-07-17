@@ -42,8 +42,8 @@ public class AddEmployeeWithTitleValidator {
     }
 
     private Optional<CoreError> validateTitle(AddEmployeeWithTitleRequest request) {
-        if (isEmpty(request.getTitle())) {
-            return Optional.of(new CoreError("employee title", "Must not be empty!"));
+        if (request.getTitle() != null && request.getTitle().equals("")) {
+            return Optional.of(new CoreError("employee title", "Must not be whitespace!"));
         }
         return Optional.empty();
     }
@@ -60,7 +60,10 @@ public class AddEmployeeWithTitleValidator {
     }
 
     private Optional<CoreError> validateTitleAdded(AddEmployeeWithTitleRequest request) {
-        if (!titleValidator.titleExists(new EmployeeTitle(request.getTitle()))) {
+        if (request.getTitle() == null) {
+            return Optional.empty();
+        }
+        if (validateTitle(request).isEmpty() && !titleValidator.titleExists(new EmployeeTitle(request.getTitle()))) {
             return Optional.of(new CoreError("this title", "is not added yet"));
         }
         return Optional.empty();

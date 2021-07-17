@@ -36,7 +36,7 @@ public class AddEmployeeWithTitleValidatorTest {
     public void testEmptyTitle() {
         AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest("Aaa", "Bbb", 22, "");
         assertThat(validator.validate(request))
-                .contains(new CoreError("employee title", "Must not be empty!"));
+                .contains(new CoreError("employee title", "Must not be whitespace!"));
     }
 
     @Test

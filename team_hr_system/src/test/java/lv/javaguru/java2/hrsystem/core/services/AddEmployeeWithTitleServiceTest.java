@@ -54,11 +54,11 @@ public class AddEmployeeWithTitleServiceTest {
     public void addWithEmptyTitle() {
         AddEmployeeWithTitleRequest request = new AddEmployeeWithTitleRequest("Aaa", "Bbb", 25, "");
         Mockito.lenient().when(validator.validate(request)).thenReturn(List.of(
-                new CoreError("employee title", "Must not be empty!")));
+                new CoreError("employee title", "Must not be whitespace!")));
         AddEmployeeWithTitleResponse response = service.execute(request);
         assertThat(response.hasErrors()).isTrue();
         assertThat(response.getErrors()).isEqualTo(List.of(
-                new CoreError("employee title", "Must not be empty!")));
+                new CoreError("employee title", "Must not be whitespace!")));
         Mockito.verifyNoInteractions(ormEmployeeRepository);
     }
 
