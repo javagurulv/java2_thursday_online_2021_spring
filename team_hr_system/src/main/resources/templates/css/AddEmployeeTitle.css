@@ -1,4 +1,4 @@
-@font-face {
+ @font-face {
     font-family: 'PT_Serif';
     src: url(fonts/PT_Serif/PTSerif-Regular.ttf);
     font-weight: normal;
@@ -31,14 +31,6 @@
     background-color: #f5f5f5;
     }
 
-    input[type="text"]:invalid, input[type="email"]:invalid, input[type="password"]:invalid {
-    border: 1px solid red;
-    }
-
-    input[type="text"]:valid, input[type="email"]:valid, input[type="password"]:valid {
-    border: 1px solid green;
-    }
-
     table {
     background-color: #fff;
     border-radius: 5px;
@@ -60,7 +52,7 @@
     }
 
     table tr td {
-    font-size: large;
+    font-size: x-large;
     }
 
     table tr td input {
@@ -72,22 +64,15 @@
     }
 
     .button input {
-
     display:inline-block;
 
     padding: 0.5em;
-    border: 0.5em solid #fff;
-    margin: 1em;
+    border: 0.3em solid #fff;
+    margin-top: 1em;
     box-sizing: border-box;
 
     font-size: x-large;
     border-radius: 1em;
     background: #4682b4;
     color: #fffafa;
-    }
-
-    footer {
-    margin-top: 5%;
-    margin-left: 70%;
-    color: #708090;
     }
