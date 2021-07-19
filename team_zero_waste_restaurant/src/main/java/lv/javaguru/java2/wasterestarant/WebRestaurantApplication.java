@@ -1,8 +1,6 @@
 package lv.javaguru.java2.wasterestarant;
 
 import lv.javaguru.java2.wasterestarant.console_ui.AdminProgramMenu;
-import lv.javaguru.java2.wasterestarant.console_ui.ClientProgramMenu;
-import lv.javaguru.java2.wasterestarant.console_ui.StartMenu;
 import lv.javaguru.java2.wasterestarant.web_ui.config.SpringWebConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
