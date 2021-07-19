@@ -12,7 +12,7 @@
 
 <table class="w3-table-all">
     <tr>
-        <td>Product name:</td>
+        <td>Product name to search:</td>
     </tr>
     <tr>
         <form action="/searchProducts" th:object="${request}" method="post">
@@ -31,10 +31,19 @@
 
 <td th:if="${products != null}">
     <tr th:each="product : ${products}">
+        <td>Id:</td>
         <td th:text="${product.id}"/>
+        <br/>
+        <td>Name:</td>
         <td th:text="${product.name}"/>
+        <br/>
+        <td>Quantity:</td>
         <td th:text="${product.quantity}"/>
+        <br/>
+        <td>Price:</td>
         <td th:text="${product.price}"/>
+        <br/>
+        <td>Expiry Date:</td>
         <td th:text="${product.expiryDate}"/>
     </tr>
 </td>
