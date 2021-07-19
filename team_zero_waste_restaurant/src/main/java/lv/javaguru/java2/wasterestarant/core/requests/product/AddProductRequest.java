@@ -10,7 +10,16 @@ public class AddProductRequest {
     private Double price;
     private Date date;
 
+
+
     public AddProductRequest(String name, Double quantity, Double price, Date date){
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.date = date;
+    }
+
+    public AddProductRequest(Long id,String name, Double quantity, Double price, Date date){
         this.name = name;
         this.quantity = quantity;
         this.price = price;
