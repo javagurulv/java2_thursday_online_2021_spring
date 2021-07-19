@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 //@Component
 public class JdbcOrderRepository implements OrderRepository {
@@ -56,6 +57,11 @@ public class JdbcOrderRepository implements OrderRepository {
         String sql = "SELECT * FROM dish WHERE client_ID = ? AND order_date = ?";
         Object[] args = new Object[] {clientID, orderDate};
         return jdbcTemplate.query(sql, args, new OrderRowMapper());
+    }
+
+    @Override
+    public Optional<Order> getById(Long id) {
+        return Optional.empty();
     }
 
 }

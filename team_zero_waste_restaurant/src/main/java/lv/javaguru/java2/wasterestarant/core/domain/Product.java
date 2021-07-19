@@ -36,6 +36,13 @@ public class Product {
         this.expiryDate = expiryDate;
     }
 
+    public Product(Long id, String name, Double quantity, Double price, Date expiryDate) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.expiryDate = expiryDate;
+    }
+
     public Product() {
     }
 

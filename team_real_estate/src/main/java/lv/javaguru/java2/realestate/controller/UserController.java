@@ -46,6 +46,7 @@ public class UserController {
 
             for(int i = 0; i< response.getErrors().size(); i++){
                 errors.append(response.getErrors().get(i).getField());
+                errors.append(" ");
                 errors.append(response.getErrors().get(i).getMessage());
             }
 
@@ -65,6 +66,7 @@ public class UserController {
 
             for(int i = 0; i< response.getErrors().size(); i++){
                 errors.append(response.getErrors().get(i).getField());
+                errors.append(" ");
                 errors.append(response.getErrors().get(i).getMessage());
             }
             return errors.toString();
@@ -84,6 +86,7 @@ public class UserController {
             StringBuilder errors = new StringBuilder();
             for(int i = 0; i< response.getErrors().size(); i++){
                 errors.append(response.getErrors().get(i).getField());
+                errors.append(" ");
                 errors.append(response.getErrors().get(i).getMessage());
             }
             return errors.toString();

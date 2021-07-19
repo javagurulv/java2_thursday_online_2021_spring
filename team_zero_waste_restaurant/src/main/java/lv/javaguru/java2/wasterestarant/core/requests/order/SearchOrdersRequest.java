@@ -7,6 +7,17 @@ public class SearchOrdersRequest {
     private Long clientID;
     private Date orderDate;
 
+    public SearchOrdersRequest() {
+    }
+
+    public SearchOrdersRequest(Long clientID) {
+        this.clientID = clientID;
+    }
+
+    public SearchOrdersRequest(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+
     public SearchOrdersRequest(Long clientID, Date orderDate) {
         this.clientID = clientID;
         this.orderDate = orderDate;
@@ -28,4 +39,11 @@ public class SearchOrdersRequest {
         return this.orderDate != null;
     }
 
+    public void setClientID(Long clientID) {
+        this.clientID = clientID;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
 }

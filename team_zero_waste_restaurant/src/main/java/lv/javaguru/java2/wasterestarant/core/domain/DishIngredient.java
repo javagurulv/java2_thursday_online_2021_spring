@@ -9,26 +9,68 @@ import java.util.List;
 public class DishIngredient {
 
     @Id
-    @Column(name = "id", insertable = false, updatable = false)
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name="restaurant_dish")
     private String name;
 
-//    @ManyToOne
-//    @JoinColumn(name="id", nullable = false)
-//    private Dish dish;
+    @Column(name="dish_id")
+    private Long dish_id;
 
     @ManyToOne
-    @JoinColumn(name = "dish_id", nullable = false)
-    private Ingredient ingredient;
+    @JoinColumn(name="id", nullable = false, insertable = false, updatable = false)
+    private Dish dish;
+
+    @ManyToOne
+    @JoinColumn(name = "dish_id", nullable = false, insertable = false, updatable = false)
+    private Ingredient ingredients;
+
+    public Ingredient getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Ingredient ingredients) {
+        this.ingredients = ingredients;
+    }
+//    @OneToMany
+//    @JoinColumn(name = "dish_id", nullable = false, insertable = false, updatable = false)
+//    private List<Ingredient> ingredients;
+//
+//    public List<Ingredient> getIngredients() {
+//        return ingredients;
+//    }
+//
+//    public void setIngredients(List<Ingredient> ingredients) {
+//        this.ingredients = ingredients;
+//    }
 
     @Column(name="ingredient", nullable = false)
     private String ingredientName;
 
     @Column(name="quantity", nullable = false)
     private Double quantity;
+
+    public Long getDish_id() {
+        return dish_id;
+    }
+
+    public void setDish_id(Long dish_id) {
+        this.dish_id = dish_id;
+    }
+
+    public DishIngredient(Long dish_id) {
+        this.dish_id = dish_id;
+    }
+
+    public Dish getDish() {
+        return dish;
+    }
+
+    public void setDish(Dish dish) {
+        this.dish = dish;
+    }
 
     public long getId() {
         return id;
@@ -73,19 +115,9 @@ public class DishIngredient {
     public DishIngredient() {
     }
 
-    public DishIngredient(Ingredient ingredient) {
-        this.ingredient = ingredient;
-    }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Ingredient getIngredient() {
-        return ingredient;
-    }
-
-    public void setIngredient(Ingredient ingredient) {
-        this.ingredient = ingredient;
-    }
 }

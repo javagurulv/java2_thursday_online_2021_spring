@@ -9,7 +9,9 @@ class RealEstateApplication {
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(RealEstateConfiguration.class);
         application.run(args);
-  /*      ApplicationContext applicationContext = createApplicationContext();
+
+  /*   //Console app setup
+       ApplicationContext applicationContext = createApplicationContext();
        ProgramMenu programMenu = applicationContext.getBean(ProgramMenu.class);
         while (true) {
             programMenu.run();

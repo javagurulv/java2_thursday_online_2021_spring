@@ -15,10 +15,10 @@ public class GetAllOrdersController {
     private GetAllOrdersService getAllOrdersService;
 
     @GetMapping(value = "/getAllOrders")
-    public String getAllDishes(ModelMap modelMap) {
+    public String getAllOrders(ModelMap modelMap) {
         GetAllOrdersResponse response = getAllOrdersService.execute(new GetAllOrdersRequest());
 
-        modelMap.addAttribute("orders", response.getOrders());
+        modelMap.addAttribute("Orders", response.getOrders());
         return "/getAllOrders";
     }
 

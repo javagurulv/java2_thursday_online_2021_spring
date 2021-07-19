@@ -10,7 +10,7 @@ public class Dish {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long dishID;
+    private Long dishID;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -100,11 +100,11 @@ public class Dish {
         this.price = price;
     }
 
-    public long getDishID() {
+    public Long getDishID() {
         return dishID;
     }
 
-    public void setDishID(long dishID) {
+    public void setDishID(Long dishID) {
         this.dishID = dishID;
     }
 

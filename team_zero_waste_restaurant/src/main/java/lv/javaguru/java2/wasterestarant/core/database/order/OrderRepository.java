@@ -4,6 +4,7 @@ import lv.javaguru.java2.wasterestarant.core.domain.Order;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public interface OrderRepository {
 
@@ -18,5 +19,7 @@ public interface OrderRepository {
     List<Order> searchOrderByDate(Date orderDate);
 
     List<Order> searchOrderByClientIDAndDate(Long clientID, Date orderDate);
+
+    public Optional<Order> getById(Long id);
 
 }

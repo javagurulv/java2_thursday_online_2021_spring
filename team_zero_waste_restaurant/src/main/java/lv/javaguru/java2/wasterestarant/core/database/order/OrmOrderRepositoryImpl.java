@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @Transactional
@@ -58,10 +59,20 @@ public class OrmOrderRepositoryImpl implements OrderRepository {
     @Override
     public List<Order> searchOrderByClientIDAndDate(Long clientID, Date orderDate) {
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT b FROM Order b WHERE order_date = :order_date AND client_id = :client_id");
+                "SELECT b FROM Order b WHERE order_date = :order_date AND user_id = :user_id");
         query.setParameter("order_date", orderDate);
-        query.setParameter("client_id", clientID);
+        query.setParameter("user_id", clientID);
         return query.getResultList();
-
     }
+
+    @Override
+    public Optional<Order> getById(Long id) {
+        Order order = sessionFactory.getCurrentSession().get(Order.class, id);
+        if (order == null) {
+            return Optional.empty();
+        } else {
+            return Optional.of(order);
+        }
+    }
+
 }

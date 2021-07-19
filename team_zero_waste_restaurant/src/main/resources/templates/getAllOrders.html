@@ -6,11 +6,12 @@
   <meta name="description" content="Zero Waste Restaurant demo project">
   <meta name="author" content="The DreamTeam">
   <title>Zero Waste Restaurant</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-<h3> Show all orders </h3>
+<div class="w3-panel w3-card-4 w3-green"><p>Show all orders</p></div>
 
-<table>
+<table class="w3-table-all">
   <tr>
     <td>ID:</td>
     <td>Client ID:</td>
@@ -19,9 +20,9 @@
 
   <td th:if="${Orders != null}">
     <tr th:each="order : ${Orders}">
-      <td th:text="${order.id}"/>
+      <td th:text="${order.orderID}"/>
       <td th:text="${order.clientID}"/>
-      <td th:text="${order.date}"/>
+      <td th:text="${order.orderDate}"/>
     </tr>
   </td>
 

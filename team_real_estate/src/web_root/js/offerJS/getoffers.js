@@ -17,10 +17,11 @@ function renderHTML(data){
   var htmlString2 = "";
 
   for(i = 0; i < data.length; i++){
-    htmlString2 += "<p> offer type = " + data[i].offerType+
-    ", offer category = "+ data[i].offerCategory +
-    ", description  = "+ data[i].description +
-    ", price = "+data[i].price +"</p>";
+    htmlString2 += 
+    "<table> <tr> <td> "+ data[i].offerType +"</td>"+
+    "<td> "+ data[i].offerCategory  +"</td>"+
+    "<td> "+ data[i].description    +"</td>"+
+    "<td> "+ data[i].price          +"</td> </tr> </table>";
   }
 offerContainer.insertAdjacentHTML(htmlStringBeforeEnd, htmlString2);
 }

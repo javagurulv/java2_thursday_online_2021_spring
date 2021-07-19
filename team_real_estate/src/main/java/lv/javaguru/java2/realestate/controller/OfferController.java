@@ -64,6 +64,7 @@ public class OfferController {
 
             for(int i = 0; i< response.getErrors().size(); i++){
                 errors.append(response.getErrors().get(i).getField());
+                errors.append(" ");
                 errors.append(response.getErrors().get(i).getMessage());
             }
 
@@ -88,6 +89,7 @@ public class OfferController {
 
             for(int i = 0; i< response.getErrors().size(); i++){
                 errors.append(response.getErrors().get(i).getField());
+                errors.append(" ");
                 errors.append(response.getErrors().get(i).getMessage());
             }
 

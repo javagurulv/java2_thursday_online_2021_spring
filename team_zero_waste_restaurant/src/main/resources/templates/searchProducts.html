@@ -5,14 +5,14 @@
     <meta name="description" content="Zero Waste Restaurant demo project">
     <meta name="author" content="The DreamTeam">
     <title>Zero Waste Restaurant</title>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-<h3>Search Product</h3>
+<div class="w3-panel w3-card-4 w3-orange"><p>Search products</p></div>
 
-<table>
+<table class="w3-table-all">
     <tr>
-        <td>Product name:</td>
+        <td>Product name to search:</td>
     </tr>
     <tr>
         <form action="/searchProducts" th:object="${request}" method="post">
@@ -31,10 +31,19 @@
 
 <td th:if="${products != null}">
     <tr th:each="product : ${products}">
+        <td>Id:</td>
         <td th:text="${product.id}"/>
+        <br/>
+        <td>Name:</td>
         <td th:text="${product.name}"/>
+        <br/>
+        <td>Quantity:</td>
         <td th:text="${product.quantity}"/>
+        <br/>
+        <td>Price:</td>
         <td th:text="${product.price}"/>
+        <br/>
+        <td>Expiry Date:</td>
         <td th:text="${product.expiryDate}"/>
     </tr>
 </td>
