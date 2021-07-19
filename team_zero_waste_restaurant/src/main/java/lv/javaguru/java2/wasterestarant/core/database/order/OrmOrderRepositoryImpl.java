@@ -59,9 +59,9 @@ public class OrmOrderRepositoryImpl implements OrderRepository {
     @Override
     public List<Order> searchOrderByClientIDAndDate(Long clientID, Date orderDate) {
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT b FROM Order b WHERE order_date = :order_date AND client_id = :client_id");
+                "SELECT b FROM Order b WHERE order_date = :order_date AND user_id = :user_id");
         query.setParameter("order_date", orderDate);
-        query.setParameter("client_id", clientID);
+        query.setParameter("user_id", clientID);
         return query.getResultList();
     }
 

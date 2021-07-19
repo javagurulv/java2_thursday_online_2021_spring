@@ -39,4 +39,11 @@ public class SearchOrdersRequest {
         return this.orderDate != null;
     }
 
+    public void setClientID(Long clientID) {
+        this.clientID = clientID;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
 }
