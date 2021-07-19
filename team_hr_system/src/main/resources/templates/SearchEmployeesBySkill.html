@@ -4,32 +4,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="HR System demo project">
-    <meta name="author" content="HRSystemTeam">
+    <meta name="author" content="TeamJavaGuru">
+    <!--    <link rel="stylesheet" type="text/css" href="css/SearchEmployeesBySkill.css">-->
     <title>HR System</title>
+
+    <style>
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-BoldItalic.ttf);
+    font-weight: bold;
+    font-style: italic;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Italic.ttf);
+    font-weight: normal;
+    font-style: italic;
+    }
+
+    body {
+    font-family: PT_Serif;
+    background-color: #f5f5f5;
+    }
+
+    header {
+    padding: 10px;
+    width: 25%;
+    border: 1px;
+    font-size: 20px;
+    margin-left: 35%;
+    }
+
+    .mainTable {
+    background-color: #fff;
+    border-radius: 5px;
+
+    margin-left: 35%;
+    padding: 0.1em;
+    box-sizing: padding-box;
+    border:0.1em solid #fff;
+
+    width: 20px;
+    }
+
+    .searchTable {
+    background-color: #fff;
+    border-radius: 5px;
+
+    margin-left: 25%;
+    margin-top: 5%;
+    padding: 0.1em;
+    box-sizing: padding-box;
+    border:0.1em solid #fff;
+
+    width: 50%;
+    }
+
+    table tr td {
+    font-size: x-large;
+    }
+
+    .searchTable td tr td {
+    font-size: large;
+    }
+
+    table tr td input {
+    font-size: xx-large;
+    }
+
+    .button input {
+    display:inline-block;
+
+    padding: 0.5em;
+    border: 0.5em solid #fff;
+    margin: 0.5em;
+    box-sizing: border-box;
+
+    font-size: x-large;
+    border-radius: 1em;
+    background: #4682b4;
+    color: #fffafa;
+    }
+    </style>
 
 </head>
 
 <body>
-<h1>Search Employees</h1>
 
-<table>
+<header>
+    <h1>Search employees by skill</h1>
+</header>
 
-    <tr>
-        <form action="/SearchEmployeesBySkill" th:object="${request}" method="post">
+<table class="mainTable">
 
-            <label for="skillName">Employee skill:</label><br>
-            <input type="text" placeholder="enter skill name" id="skillName" name="skillName" th:field="${request.skillName}"><br>
-            <br>
+    <form action="/SearchEmployeesBySkill" th:object="${request}" method="post">
 
-            <td>
-                <input type="submit" value="Search Employees By Skill"/>
-                <input type="reset" value="Clear"/>
-            </td>
+
+        <tr><td>Employee skill</br><input placeholder="enter skill name" autofocus
+                                           required
+                                           id="skillName"
+                                           name="skillName"
+                                           th:field="${request.skillName}"/>
+        </td></tr>
+
+        <td class="button">
+            <input type="submit" value="Search employees by skill"/>
+        </td>
+
         </form>
     </tr>
 </table>
-<br>
-
 
 <td th:if="${errors != null}">
     <tr th:each="error : ${errors}">
@@ -39,25 +138,28 @@
 </td>
 
 
-<table style="width:50%">
+<table class="searchTable">
+
     <tr>
-        <th>Employee ID</th>
-        <th>Employee: First name, Last name</th>
+        <td>Employee ID</td>
+        <td>First name</td>
+        <td>Last name</td>
     </tr>
 
     <td th:if="${employees != null}">
         <tr th:each="employee : ${employees}">
             <td th:text="${employee.id}"/>
-            <td th:text="${employee.name}+ ' ' +${employee.lastName}"/>
+            <td th:text="${employee.name}"/>
+            <td th:text="${employee.lastName}"/>
         </tr>
+    </td>
+
+    <td class="button">
+        <input type="button" onclick="history.back();" value="Back"/>
     </td>
 
 </table>
 
-<br>
-<form action="/adminPage" method="get">
-    <input type="submit" value="Go to the admin page" name="Submit"/>
-</form>
 
 </body>
 </html>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="HR System demo project">
     <meta name="author" content="TeamJavaGuru">
+    <!--    <link rel="stylesheet" type="text/css" href="css/signUp.css">-->
     <title>HR System</title>
     <style>
     @font-face {
@@ -86,7 +87,8 @@
 
     padding: 0.5em;
     border: 0.5em solid #fff;
-    margin: 1em;
+    margin-top: 1em;
+    margin-left: 9%;
     box-sizing: border-box;
 
     font-size: x-large;
@@ -122,17 +124,29 @@
             <option value="HR_MANAGER">HR_MANAGER</option>
         </td></tr>
 
-        <tr><td>Name </br><input type="text" required placeholder="your name" th:field="${request.firstName}"/></td></tr>
+        <tr><td>Name </br><input type="text"
+                                 required
+                                 placeholder="your name"
+                                 th:field="${request.firstName}"/></td></tr>
 
-        <tr><td>Surname </br><input type="text" required placeholder="your surname" th:field="${request.secondName}"/></td></tr>
+        <tr><td>Surname </br><input type="text"
+                                    required
+                                    placeholder="your surname"
+                                    th:field="${request.secondName}"/></td></tr>
 
-        <tr><td>Email </br><input type="email" required placeholder="user@gmail.com" th:field="${request.email}"/></td></tr>
+        <tr><td>Email </br><input type="email"
+                                  required
+                                  placeholder="user@gmail.com"
+                                  th:field="${request.email}"/></td></tr>
 
-        <tr><td>Password </br><input type="password" required placeholder="*********" th:field="${request.password}"/></td></tr>
+        <tr><td>Password </br><input type="password"
+                                     required
+                                     placeholder="*********"
+                                     th:field="${request.password}"/></td></tr>
 
         <td class="button">
             <input type="submit" value="Sign-up"/>
-            <input type="reset" value="Clear"/>
+            <input type="button" onclick="history.back();" value="Back"/>
         </td>
     </form>
 </table>

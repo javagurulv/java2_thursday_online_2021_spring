@@ -4,38 +4,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="description" content="HR System demo project">
-  <meta name="author" content="HRSystemTeam">
+  <meta name="author" content="TeamJavaGuru">
+  <!--    <link rel="stylesheet" type="text/css" href="css/AddSkill.css">-->
   <title>HR System</title>
+  <style>
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-BoldItalic.ttf);
+    font-weight: bold;
+    font-style: italic;
+    }
+
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Italic.ttf);
+    font-weight: normal;
+    font-style: italic;
+    }
+
+    body {
+    font-family: PT_Serif;
+    background-color: #f5f5f5;
+    }
+
+    table {
+    background-color: #fff;
+    border-radius: 5px;
+
+    margin-left: 35%;
+    padding: 0.1em;
+    box-sizing: padding-box;
+    border:0.1em solid #fff;
+
+    width: 20px;
+    }
+
+    header {
+    padding: 10px;
+    width: 20%;
+    border: 1px;
+    font-size: 20px;
+    margin-left: 35%;
+    }
+
+    table tr td {
+    font-size: x-large;
+    }
+
+    table tr td input {
+    font-size: xx-large;
+    }
+
+    table tr td select {
+    font-size: xx-large;
+    }
+
+    .button input {
+    display:inline-block;
+
+    padding: 0.5em;
+    border: 0.5em solid #fff;
+    margin-top: 1em;
+    margin-left: 8%;
+    box-sizing: border-box;
+
+    font-size: x-large;
+    border-radius: 1em;
+    background: #4682b4;
+    color: #fffafa;
+    }
+    </style>
 
 </head>
 
 <body>
-<h1>Add skill for employee</h1>
+
+<header>
+  <h1>Add skill for employee</h1>
+</header>
 
 <table>
 
-  <tr>
     <form action="/AddSkill" th:object="${request}" method="post">
 
-      <label for="empId">Employee ID:</label><br>
-      <input type="text" placeholder="enter employee ID" id="empId" name="empId" th:field="${request.employeeId}"><br>
-      <br>
-      <label for="skillName">Skill:</label><br>
-      <input type="text" placeholder="enter skill" id="skillName" name="skillName" th:field="${request.skillName}"><br>
-      <br>
+      <tr><td>Employee ID</br><input type="text" placeholder="enter employee ID" autofocus
+                                id="empId"
+                                name="empId"
+                                th:field="${request.employeeId}"/></td></tr>
 
-      <td>
+      <tr><td>Skill</br><input type="text" placeholder="enter skill"
+                                     id="skillName"
+                                     name="skillName"
+                                     th:field="${request.skillName}"/></td></tr>
+
+      <td class="button">
         <input type="submit" value="Add skill"/>
-        <input type="reset" value="Clear"/>
+        <input type="button" onclick="history.back();" value="Back"/>
       </td>
-    </form>
-  </tr>
-</table>
-<br>
 
-<form action="/adminPage" method="get">
-  <input type="button" onclick="history.back();" value="Back"/>
-</form>
+    </form>
+</table>
 
 <td th:if="${errors != null}">
   <tr th:each="error : ${errors}">

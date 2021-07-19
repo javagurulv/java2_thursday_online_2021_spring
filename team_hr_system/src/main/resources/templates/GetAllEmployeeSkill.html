@@ -4,41 +4,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="HR System demo project">
-    <meta name="author" content="HRSystemTeam">
+    <meta name="author" content="TeamJavaGuru">
+    <!--    <link rel="stylesheet" type="text/css" href="css/GetAllEmployeeSkill.css">-->
     <title>HR System</title>
-
     <style>
-    table, th, td {
-    border: 1px solid black;
-    border-collapse: separate;
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
     }
 
-    th, td {
-    padding: 5px;
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
     }
 
-    th {
-    text-align: left;
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-BoldItalic.ttf);
+    font-weight: bold;
+    font-style: italic;
     }
 
+    @font-face {
+    font-family: 'PT_Serif';
+    src: url(fonts/PT_Serif/PTSerif-Italic.ttf);
+    font-weight: normal;
+    font-style: italic;
+    }
 
+    body {
+    font-family: PT_Serif;
+    background-color: #f5f5f5;
+    }
+
+    header {
+    padding: 10px;
+    width: 25%;
+    border: 1px;
+    font-size: 20px;
+    margin-left: 35%;
+    }
+
+    .mainTable {
+    background-color: #fff;
+    border-radius: 5px;
+
+    margin-left: 35%;
+    padding: 0.1em;
+    box-sizing: padding-box;
+    border:0.1em solid #fff;
+
+    width: 20px;
+    }
+
+    table {
+    background-color: #fff;
+    border-radius: 5px;
+
+    margin-left: 25%;
+    margin-top: 5%;
+    padding: 0.1em;
+    box-sizing: padding-box;
+    border:0.1em solid #fff;
+
+    width: 50%;
+    }
+
+    table tr td {
+    font-size: x-large;
+    }
+
+    .searchTable td tr td {
+    font-size: large;
+    }
+
+    table tr td input {
+    font-size: xx-large;
+    }
+
+    .button input {
+    display:inline-block;
+
+    padding: 0.5em;
+    border: 0.5em solid #fff;
+    margin: 0.5em;
+    margin-left: 10%;
+    box-sizing: border-box;
+
+    font-size: x-large;
+    border-radius: 1em;
+    background: #4682b4;
+    color: #fffafa;
+    }
     </style>
 
 </head>
 
 <body>
-<h1>All employee skills</h1>
 
-<table style="width:50%">
+<header>
+    <h1>All employee skills</h1>
+</header>
+
+<table>
     <tr>
-        <th>Employee ID</th>
-        <th>Employee: First name, Last name</th>
-        <th>Skills</th>
+        <td>Employee ID</td>
+        <td>First name</td>
+        <td>Last name</td>
+        <td>Skills</td>
     </tr>
 
     <tr th:each="entry, num : ${employeeSetMap}">
         <td th:text="${entry.key.id}">1</td>
-        <td th:text="${entry.key.name} + ' ' + ${entry.key.lastName}">keyvalue</td>
+        <td th:text="${entry.key.name}">key</td>
+        <td th:text="${entry.key.lastName}">value</td>
         <td>
             <table>
                 <tr th:each="skill : ${entry.value}">
@@ -48,12 +131,11 @@
         </td>
     </tr>
 
-</table>
+    <td class="button">
+        <input type="button" onclick="history.back();" value="Back"/>
+    </td>
 
-<br>
-<form action="/adminPage" method="get">
-    <input type="button" onclick="history.back();" value="Back"/>
-</form>
+</table>
 
 </body>
 </html>
