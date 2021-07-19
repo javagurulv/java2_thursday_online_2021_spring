@@ -28,29 +28,22 @@
         <td th:text="${error.message}"/>
     </tr>
 </td>
-<!--<tr>-->
-<!--    <td>Product Id:</td>-->
-<!--    <td>Product Name:</td>-->
-<!--    <td>Product Quantity:</td>-->
-<!--    <td>Product Price:</td>-->
-<!--    <td>Product Expiry Date:</td>-->
-<!--</tr>-->
 
 <td th:if="${products != null}">
     <tr th:each="product : ${products}">
-        <td>Product Id:</td>
+        <td>Id:</td>
         <td th:text="${product.id}"/>
         <br/>
-        <td>Product Name:</td>
+        <td>Name:</td>
         <td th:text="${product.name}"/>
         <br/>
-        <td>Product Quantity:</td>
+        <td>Quantity:</td>
         <td th:text="${product.quantity}"/>
         <br/>
-        <td>Product Price:</td>
+        <td>Price:</td>
         <td th:text="${product.price}"/>
         <br/>
-        <td>Product Expiry Date:</td>
+        <td>Expiry Date:</td>
         <td th:text="${product.expiryDate}"/>
     </tr>
 </td>
