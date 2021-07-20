@@ -12,7 +12,7 @@ public class OrderRowMapper implements RowMapper<Order> {
     public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
         Order order = new Order();
         order.setOrderID(rs.getLong("id"));
-        order.setClientID(rs.getLong("client_id"));
+        order.setClientID(rs.getLong("user_id"));
         order.setOrderDate(rs.getDate("order_date"));
         return order;
     }
