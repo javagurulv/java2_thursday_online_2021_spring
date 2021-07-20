@@ -43,8 +43,8 @@ public class OrmOrderRepositoryImpl implements OrderRepository {
     @Override
     public List<Order> searchOrdersByClientID(Long clientID) {
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT b FROM Order b WHERE client_id = :client_id");
-        query.setParameter("client_id", clientID);
+                "SELECT b FROM Order b WHERE user_id = :user_id");
+        query.setParameter("user_id", clientID);
         return query.getResultList();
     }
 
