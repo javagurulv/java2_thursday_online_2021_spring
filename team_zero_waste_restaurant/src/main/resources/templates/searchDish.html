@@ -33,7 +33,15 @@
         <td th:text="${error.message}"/>
     </tr>
 </td>
-
+<table class="w3-table-all">
+    <tr>
+        <td>Name:</td>
+        <td>Description:</td>
+        <td>Type:</td>
+        <td>Weight:</td>
+        <td>Price:</td>
+        <td>ID:</td>
+    </tr>
 <td th:if="${dishes != null}">
     <tr th:each="dish : ${dishes}">
         <td th:text="${dish.name}"/>
@@ -45,6 +53,7 @@
 
     </tr>
 </td>
+    </table>
 
 <form action="/" method="get">
     <input type="submit" value="Go to main page" name="Submit"/>

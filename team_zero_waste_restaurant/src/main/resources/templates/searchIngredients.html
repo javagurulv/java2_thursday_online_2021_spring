@@ -31,15 +31,20 @@
     </tr>
 </td>
 
-<td th:if="${ingredients != null}">
-    <tr th:each="ingredient : ${ingredients}">
-        <td>Ingredient name:</td>
-        <td th:text="${ingredient.name}"/>
-        <td>Ingredient id:</td>
-        <td th:text="${ingredient.dishIngredientID}"/>
+<table class="w3-table-all">
+
+    <td>Ingredient name:</td>
+    <td>Ingredient id:</td>
 
     </tr>
-</td>
+    </td>
+    <td th:if="${ingredients != null}">
+        <tr th:each="ingredient : ${ingredients}">
+            <td th:text="${ingredient.name}"/>
+            <td th:text="${ingredient.dishIngredientID}"/>
+        </tr>
+    </td>
+</table>
 
 <form action="/" method="get">
     <input type="submit" value="Go to main page" name="Submit"/>
