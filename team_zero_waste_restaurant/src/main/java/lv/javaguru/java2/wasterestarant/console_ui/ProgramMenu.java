@@ -27,12 +27,12 @@ import java.util.Scanner;
 
 //AndrejsB and Andris
 @Component
-public class AdminProgramMenu {
+public class ProgramMenu {
 
     private Map<Integer, UIAction> menuNumberToUIActionMap;
 
     @Autowired
-    public AdminProgramMenu(List<UIAction> uiActions) {
+    public ProgramMenu(List<UIAction> uiActions) {
         menuNumberToUIActionMap = new HashMap<>();
         menuNumberToUIActionMap.put(1, findUIActions(uiActions, RegistrationUIAction.class));
         menuNumberToUIActionMap.put(2, findUIActions(uiActions, LoginUIAction.class));
