@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -27,7 +28,13 @@ public class SearchOrdersService {
             return new SearchOrdersResponse(null, errors);
         }
 
-        List<Order> orders = null;
+        List<Order> orders = search(request);
+        return new SearchOrdersResponse(orders, null);
+    }
+
+    private List<Order> search(SearchOrdersRequest request) {
+
+        List<Order> orders = new ArrayList<>();
         if (request.isClientIDProvided() && !request.isOrderDateProvided()) {
             orders = database.searchOrdersByClientID(request.getClientID());
         }
@@ -38,7 +45,6 @@ public class SearchOrdersService {
             orders = database.searchOrderByClientIDAndDate(request.getClientID(), request.getOrderDate());
         }
 
-        return new SearchOrdersResponse(orders, null);
+        return orders;
     }
-
 }

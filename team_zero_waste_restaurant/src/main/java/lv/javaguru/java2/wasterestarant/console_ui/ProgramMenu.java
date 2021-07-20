@@ -9,6 +9,7 @@ import lv.javaguru.java2.wasterestarant.console_ui.dish.SearchDishesUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.ingredient.SearchIngredientUiAction;
 import lv.javaguru.java2.wasterestarant.console_ui.order.CreateNewOrderUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.order.GetAllOrdersUIAction;
+import lv.javaguru.java2.wasterestarant.console_ui.order.SearchOrdersUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.AddProductUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.GetAllProductsUIAction;
 import lv.javaguru.java2.wasterestarant.console_ui.product.RemoveProductUiAction;
@@ -51,6 +52,7 @@ public class ProgramMenu {
         menuNumberToUIActionMap.put(15, findUIActions(uiActions, ChangePasswordUIAction.class));
         menuNumberToUIActionMap.put(16, findUIActions(uiActions, ChangeUserRoleUIAction.class));
         menuNumberToUIActionMap.put(17, findUIActions(uiActions, ExitUIAction.class));
+        menuNumberToUIActionMap.put(18, findUIActions(uiActions, SearchOrdersUIAction.class));
     }
 
     private UIAction findUIActions(List<UIAction> uiActions, Class uiActionClass){
@@ -86,6 +88,7 @@ public class ProgramMenu {
         System.out.println("15. Change password");
         System.out.println("16. Change user role");
         System.out.println("17. Exit");
+        System.out.println("18. Search Orders");
         System.out.println();
     }
 

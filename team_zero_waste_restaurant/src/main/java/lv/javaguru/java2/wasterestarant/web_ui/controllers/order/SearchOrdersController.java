@@ -28,6 +28,7 @@ public class SearchOrdersController {
         SearchOrdersResponse response = service.execute(request);
         if (response.hasErrors()) {
             modelMap.addAttribute("errors", response.getErrors());
+            return "/searchOrders";
         } else {
             modelMap.addAttribute("orders", response.getOrders());
         }
