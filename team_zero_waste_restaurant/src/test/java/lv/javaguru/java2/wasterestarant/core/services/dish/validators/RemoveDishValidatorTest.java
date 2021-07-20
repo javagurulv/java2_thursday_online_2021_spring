@@ -1,6 +1,5 @@
 package lv.javaguru.java2.wasterestarant.core.services.dish.validators;
 
-
 import lv.javaguru.java2.wasterestarant.core.requests.dish.RemoveDishRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import org.junit.Test;
@@ -18,7 +17,7 @@ public class RemoveDishValidatorTest {
         RemoveDishRequest request = new RemoveDishRequest(null);
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
-        assertEquals(errors.get(0).getField(), "nameToRemove");
+        assertEquals(errors.get(0).getField(), "name");
         assertEquals(errors.get(0).getMessage(), "Must not be empty");
     }
 

@@ -22,7 +22,6 @@ public class SearchIngredientValidatorTest {
         assertEquals(errors.size(), 0);
     }
 
-
     @Test
     public void shouldReturnErrorWhenSearchFieldsAreEmpty() {
         SearchIngredientRequest request = new SearchIngredientRequest(null);

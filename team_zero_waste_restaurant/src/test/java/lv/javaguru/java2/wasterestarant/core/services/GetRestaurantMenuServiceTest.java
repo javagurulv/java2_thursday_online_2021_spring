@@ -1,6 +1,6 @@
 package lv.javaguru.java2.wasterestarant.core.services;
 
-import lv.javaguru.java2.wasterestarant.core.database.Database;
+import lv.javaguru.java2.wasterestarant.core.database.dish.DishRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.GetRestaurantMenuRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.GetRestaurantMenuResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
@@ -18,16 +18,16 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class GetRestaurantMenuServiceTest {
     @Mock
-    private Database database;
+    DishRepository repository;
     @InjectMocks
     GetRestaurantMenuService service;
 
     @Test
-    public void shouldReturnAllDishesInMenu() {
-        GetRestaurantMenuRequest request = new GetRestaurantMenuRequest();
-        Dish dish1 = new Dish("Margherita", "Margherita", "Pizza", 0.2, 4.99);
-        Dish dish2 = new Dish("Marinara", "Marinara", "Pizza", 0.2, 6.99);
-        Mockito.when(database.getRestaurantMenu())
+    public void shouldReturnAllDishes() {
+        GetRestaurantMenuRequest request = new GetRestaurantMenuRequest(true);
+        Dish dish1 = new Dish("Margherita", "Margherita", "Pizza", 0.2, 4.99, true);
+        Dish dish2 = new Dish("Marinara", "Marinara", "Pizza", 0.2, 6.99, true);
+        Mockito.when(repository.getAllDishesInActiveMenu(true))
                 .thenReturn(List.of(dish1, dish2));
         GetRestaurantMenuResponse response = service.execute(request);
         assertEquals(response.getRestaurantMenu().size(), 2);

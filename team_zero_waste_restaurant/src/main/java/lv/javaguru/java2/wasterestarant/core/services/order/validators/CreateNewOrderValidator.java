@@ -21,13 +21,13 @@ public class CreateNewOrderValidator {
 
     private Optional<CoreError> validateClientID(CreateNewOrderRequest request) {
         return (request.getClientID() == null)
-                ? Optional.of(new CoreError("clientID", "Must not be empty"))
+                ? Optional.of(new CoreError("Client ID", "Must not be empty"))
                 : Optional.empty();
     }
 
     private Optional<CoreError> validateDate(CreateNewOrderRequest request) {
         return (request.getOrderDate() == null)
-                ? Optional.of(new CoreError("orderDate", "Must not be empty"))
+                ? Optional.of(new CoreError("Date", "Must not be empty"))
                 : Optional.empty();
     }
 

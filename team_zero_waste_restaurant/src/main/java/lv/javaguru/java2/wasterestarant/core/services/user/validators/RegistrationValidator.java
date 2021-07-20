@@ -29,7 +29,7 @@ public class RegistrationValidator {
     }
 
     private Optional<CoreError> validateName(RegistrationRequest request) {
-        return (request.getName() == null || request.getSurname().isEmpty())
+        return (request.getName() == null || request.getName().isEmpty())
                 ? Optional.of(new CoreError("Name", "Must not be empty"))
                 : Optional.empty();
     }

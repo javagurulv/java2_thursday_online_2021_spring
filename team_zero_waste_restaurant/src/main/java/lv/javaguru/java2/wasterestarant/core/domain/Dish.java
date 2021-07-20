@@ -47,7 +47,16 @@ public class Dish {
         this.price = price;
     }
 
-//    public Dish(String name, String description, String type,
+    public Dish(String name, String description, String type, double weight, double price, boolean isInActiveMenu) {
+        this.name = name;
+        this.description = description;
+        this.type = type;
+        this.weight = weight;
+        this.price = price;
+        this.isInActiveMenu = isInActiveMenu;
+    }
+
+    //    public Dish(String name, String description, String type,
 //                double weight, double price, List<Ingredient> ingredientList) {
 //        this.name = name;
 //        this.description = description;
