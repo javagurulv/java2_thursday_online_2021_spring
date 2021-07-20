@@ -32,6 +32,7 @@
   </tr>
 </td>
 
+<table class="w3-table-all">
 <td th:if="${orders != null}">
   <tr th:each="order : ${orders}">
     <td th:text="${order.orderID}"/>
@@ -39,6 +40,7 @@
     <td th:text="${order.orderDate}"/>
   </tr>
 </td>
+</table>
 
 <form action="/" method="get">
   <input type="submit" value="Go to main page" name="Submit"/>
