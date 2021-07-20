@@ -46,13 +46,13 @@ public class SearchProductUIAction implements UIAction {
             System.out.println("__________Product list__________");
             List<Product> printList = response.getProducts();
             for (int i = 0; i < printList.size(); i++) {
-                printDishWithFields(printList, i);
+                printProductWithFields(printList, i);
             }
             System.out.println("_____________end_____________");
         }
     }
 
-    private void printDishWithFields(List<Product> printList, int i) {
+    private void printProductWithFields(List<Product> printList, int i) {
         System.out.println((i + 1) + ". " + printList.get(i).getName() + ", quantity - "
                 + printList.get(i).getQuantity() + ", price - " + printList.get(i).getPrice()
                 + " \u0024, " + " with expiry date - " + printList.get(i).getExpiryDate());
