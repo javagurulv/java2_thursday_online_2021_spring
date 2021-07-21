@@ -2,6 +2,7 @@ package lv.javaguru.java2.wasterestarant.core.database.ingredient;
 
 import lv.javaguru.java2.wasterestarant.core.domain.DishIngredient;
 import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
+import nonapi.io.github.classgraph.json.JSONUtils;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,12 @@ public class OrmIngredientRepository implements IngredientRepository{
     }
 
     @Override
-    public List<DishIngredient> findIngredientByDishId(Long dishId) {
+    public List<DishIngredient> findIngredientByDishId(Long dish_id) {
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "SELECT i FROM Ingredient i JOIN Dish d ON i.dish_id = d.id" +
-                        "WHERE dish_id =  :dishId");
-        query.setParameter("dish_id", dishId);
+                "SELECT i FROM Ingredient i JOIN Dish d ON i.dishIngredientID = d.id" +
+                        " WHERE dish_id =  :dish_id");
+        query.setParameter("dish_id", dish_id);
         return query.getResultList();
     }
+
 }
