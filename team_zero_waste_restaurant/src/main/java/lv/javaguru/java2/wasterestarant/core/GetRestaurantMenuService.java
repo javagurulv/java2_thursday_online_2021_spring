@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.core.services;
+package lv.javaguru.java2.wasterestarant.core;
 
 import lv.javaguru.java2.wasterestarant.core.database.dish.DishRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.GetRestaurantMenuRequest;

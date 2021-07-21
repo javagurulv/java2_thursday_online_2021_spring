@@ -1,13 +1,13 @@
 package lv.javaguru.java2.wasterestarant.core.services.dish;
 
 import lv.javaguru.java2.wasterestarant.core.database.dish.DishRepository;
+import lv.javaguru.java2.wasterestarant.core.services.dish.validators.SearchDishesRequestValidator;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.SearchDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.SearchDishesResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Dish;
-import lv.javaguru.java2.wasterestarant.core.services.dish.validators.SearchDishesRequestValidator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

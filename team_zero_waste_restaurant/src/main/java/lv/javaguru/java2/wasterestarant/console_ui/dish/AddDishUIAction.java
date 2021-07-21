@@ -2,13 +2,10 @@ package lv.javaguru.java2.wasterestarant.console_ui.dish;
 
 
 import lv.javaguru.java2.wasterestarant.console_ui.UIAction;
-import lv.javaguru.java2.wasterestarant.core.domain.Dish;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.AddDishRequest;
-import lv.javaguru.java2.wasterestarant.core.requests.dish.GetAllDishesRequest;
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.AddDishIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.AddDishResponse;
 
-import lv.javaguru.java2.wasterestarant.core.responses.dish.GetAllDishesResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.AddDishIngredientResponse;
 import lv.javaguru.java2.wasterestarant.core.services.dish.AddDishService;
 import lv.javaguru.java2.wasterestarant.core.services.dish.GetAllDishesService;
@@ -16,9 +13,6 @@ import lv.javaguru.java2.wasterestarant.core.services.ingredient.AddDishIngredie
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 @Component

@@ -1,13 +1,13 @@
 package lv.javaguru.java2.wasterestarant.core.services.ingredient;
 
 import lv.javaguru.java2.wasterestarant.core.database.ingredient.IngredientRepository;
+import lv.javaguru.java2.wasterestarant.core.services.ingredient.validators.SearchIngredientValidator;
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.SearchIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.SearchIngredientResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
-import lv.javaguru.java2.wasterestarant.core.services.ingredient.validators.SearchIngredientValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

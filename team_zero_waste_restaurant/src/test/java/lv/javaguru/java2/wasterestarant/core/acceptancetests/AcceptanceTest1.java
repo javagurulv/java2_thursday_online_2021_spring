@@ -1,5 +1,6 @@
-package lv.javaguru.java2.wasterestarant.acceptancetests;
+package lv.javaguru.java2.wasterestarant.core.acceptancetests;
 
+import lv.javaguru.java2.wasterestarant.core.DatabaseCleaner;
 import lv.javaguru.java2.wasterestarant.config.SpringCoreConfiguration;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
@@ -22,6 +23,7 @@ public class AcceptanceTest1 {
     @Before
     public void setup() {
         applicationContext = new AnnotationConfigApplicationContext(SpringCoreConfiguration.class);
+        getDatabaseCleaner().clean();
     }
 
     @Test
@@ -80,6 +82,9 @@ public class AcceptanceTest1 {
         assertEquals(response.getDishes().size(), 1);
         assertEquals(response.getDishes().get(0).getName(), "abc1");
         assertEquals(response.getDishes().get(0).getDescription(), "Margherita");
+    }
+    private DatabaseCleaner getDatabaseCleaner() {
+        return applicationContext.getBean(DatabaseCleaner.class);
     }
 
     private AddDishService getAddDishService() {

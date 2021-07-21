@@ -1,12 +1,12 @@
 package lv.javaguru.java2.wasterestarant.web_ui.controllers.rest;
 
 
+import lv.javaguru.java2.wasterestarant.core.services.dish.*;
 import lv.javaguru.java2.wasterestarant.core.requests.GetRestaurantMenuRequest;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.*;
 import lv.javaguru.java2.wasterestarant.core.responses.GetRestaurantMenuResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.*;
-import lv.javaguru.java2.wasterestarant.core.services.GetRestaurantMenuService;
-import lv.javaguru.java2.wasterestarant.core.services.dish.*;
+import lv.javaguru.java2.wasterestarant.core.GetRestaurantMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,7 +1,6 @@
 package lv.javaguru.java2.wasterestarant.console_ui.user;
 
 import lv.javaguru.java2.wasterestarant.console_ui.UIAction;
-import lv.javaguru.java2.wasterestarant.core.domain.UserRole;
 import lv.javaguru.java2.wasterestarant.core.requests.user.RegistrationRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.user.RegistrationResponse;
 import lv.javaguru.java2.wasterestarant.core.services.user.RegistrationService;

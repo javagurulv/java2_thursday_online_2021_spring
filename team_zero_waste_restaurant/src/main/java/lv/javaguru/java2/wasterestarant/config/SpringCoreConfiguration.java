@@ -12,21 +12,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.format.FormatterRegistry;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@ComponentScan(basePackages = "lv.javaguru.java2.wasterestarant")
+@ComponentScan(basePackages = "lv.javaguru.java2.wasterestarant.core")
 @PropertySource(value = "classpath:application.properties")
 @EnableTransactionManagement
 public class SpringCoreConfiguration {
 
-    
     @Value("${jdbc.url}")
     private String jdbcUrl;
 

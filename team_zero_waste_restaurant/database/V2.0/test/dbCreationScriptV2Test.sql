@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS ingredient
     CREATE TABLE IF NOT EXISTS users
 (
     id            BIGINT        NOT NULL AUTO_INCREMENT,
-    user_role     VARCHAR(20)   DEFAULT 'CLIENT' NOT NULL,
+    user_Role     VARCHAR(20)   DEFAULT 'CLIENT' NOT NULL,
     name          VARCHAR(100)  NOT NULL,
     surname       VARCHAR(100)  NOT NULL,
     email         VARCHAR(100)  NOT NULL,
@@ -83,11 +83,14 @@ CREATE TABLE IF NOT EXISTS order_item
     AUTO_INCREMENT = 1;
 
 
-CREATE TABLE IF NOT EXISTS dish_ingredient AS
+CREATE TABLE IF NOT EXISTS dish_ingredients
+(id             BIGINT       NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (id))
 
-    SELECT dish.name AS restaurant_dish, ingredient.name, ingredient.quantity
-    FROM ingredient
-             JOIN dish on ingredient.dish_id = dish.id;
+AS
+SELECT dish.name AS restaurant_dish, dish_id, ingredient.name AS ingredient, ingredient.quantity
+FROM ingredient
+         JOIN dish on ingredient.dish_id = dish.id;
 
 CREATE TABLE IF NOT EXISTS order_order_items
 (
@@ -103,7 +106,7 @@ CREATE TABLE IF NOT EXISTS order_order_items
 
 CREATE UNIQUE INDEX idx_dish_name_type on dish (name, type);
 CREATE UNIQUE INDEX idx_product_name on product (name);
-CREATE UNIQUE INDEX idx_ingredient_name on ingredient (name);
+CREATE INDEX idx_ingredient_name on ingredient (name);
 CREATE UNIQUE INDEX idx_user_email_password on users (email, password);
 CREATE UNIQUE INDEX idx_order_date on orders (order_date);
 

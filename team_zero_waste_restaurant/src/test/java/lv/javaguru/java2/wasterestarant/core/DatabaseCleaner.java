@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant;
+package lv.javaguru.java2.wasterestarant.core;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +22,14 @@ public class DatabaseCleaner {
 
     private List<String> getTableNames() {
         List<String> tableNames = new ArrayList<>();
-        tableNames.add("client_list");
         tableNames.add("dish");
-        tableNames.add("ingredient");
-        tableNames.add("order_item");
-        tableNames.add("order_list");
         tableNames.add("product");
+        tableNames.add("ingredient");
+        tableNames.add("users");
+        tableNames.add("orders");
+        tableNames.add("order_item");
+        tableNames.add("dish_ingredients");
+        tableNames.add("order_order_items");
         return tableNames;
     }
 

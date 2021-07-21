@@ -1,4 +1,4 @@
-package lv.javaguru.java2.wasterestarant.integrationtests;
+package lv.javaguru.java2.wasterestarant.core.integrationtests;
 
 import lv.javaguru.java2.wasterestarant.config.SpringCoreConfiguration;
 import org.junit.Test;

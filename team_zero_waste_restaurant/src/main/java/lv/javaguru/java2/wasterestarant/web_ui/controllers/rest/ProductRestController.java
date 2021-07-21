@@ -1,8 +1,8 @@
 package lv.javaguru.java2.wasterestarant.web_ui.controllers.rest;
 
+import lv.javaguru.java2.wasterestarant.core.services.products.*;
 import lv.javaguru.java2.wasterestarant.core.requests.product.*;
 import lv.javaguru.java2.wasterestarant.core.responses.product.*;
-import lv.javaguru.java2.wasterestarant.core.services.products.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

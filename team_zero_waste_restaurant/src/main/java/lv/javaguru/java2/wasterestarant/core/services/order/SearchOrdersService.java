@@ -2,10 +2,10 @@ package lv.javaguru.java2.wasterestarant.core.services.order;
 
 import lv.javaguru.java2.wasterestarant.core.database.order.OrderRepository;
 import lv.javaguru.java2.wasterestarant.core.domain.Order;
+import lv.javaguru.java2.wasterestarant.core.services.order.validators.SearchOrdersRequestValidator;
 import lv.javaguru.java2.wasterestarant.core.requests.order.SearchOrdersRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.order.SearchOrdersResponse;
-import lv.javaguru.java2.wasterestarant.core.services.order.validators.SearchOrdersRequestValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

@@ -20,7 +20,7 @@ public class CreateNewOrderValidatorTest {
                 new SimpleDateFormat("dd/MM/yyyy").parse("11/05/2021"));
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
-        assertEquals(errors.get(0).getField(), "clientID");
+        assertEquals(errors.get(0).getField(), "Client ID");
         assertEquals(errors.get(0).getMessage(), "Must not be empty");
     }
 
@@ -30,7 +30,7 @@ public class CreateNewOrderValidatorTest {
                 null);
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
-        assertEquals(errors.get(0).getField(), "orderDate");
+        assertEquals(errors.get(0).getField(), "Date");
         assertEquals(errors.get(0).getMessage(), "Must not be empty");
     }
 

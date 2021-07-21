@@ -2,8 +2,6 @@ package lv.javaguru.java2.wasterestarant.core.services.user.validators;
 
 import lv.javaguru.java2.wasterestarant.core.database.user.UserRepository;
 import lv.javaguru.java2.wasterestarant.core.requests.user.ChangePasswordRequest;
-import lv.javaguru.java2.wasterestarant.core.requests.user.LoginRequest;
-import lv.javaguru.java2.wasterestarant.core.requests.user.RegistrationRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

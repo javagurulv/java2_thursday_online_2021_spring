@@ -1,6 +1,6 @@
-package lv.javaguru.java2.wasterestarant.acceptancetests;
+package lv.javaguru.java2.wasterestarant.core.acceptancetests;
 
-import lv.javaguru.java2.wasterestarant.DatabaseCleaner;
+import lv.javaguru.java2.wasterestarant.core.DatabaseCleaner;
 import lv.javaguru.java2.wasterestarant.config.SpringCoreConfiguration;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;

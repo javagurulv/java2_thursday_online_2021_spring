@@ -1,11 +1,11 @@
 package lv.javaguru.java2.wasterestarant.core.services.ingredient;
 
 import lv.javaguru.java2.wasterestarant.core.database.ingredient.IngredientRepository;
+import lv.javaguru.java2.wasterestarant.core.services.ingredient.validators.AddDishIngredientValidator;
 import lv.javaguru.java2.wasterestarant.core.requests.ingredient.AddDishIngredientRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.ingredient.AddDishIngredientResponse;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
-import lv.javaguru.java2.wasterestarant.core.services.ingredient.validators.AddDishIngredientValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

@@ -2,10 +2,10 @@ package lv.javaguru.java2.wasterestarant.core.services.dish;
 
 
 import lv.javaguru.java2.wasterestarant.core.database.dish.DishRepository;
+import lv.javaguru.java2.wasterestarant.core.services.dish.validators.GetDishByIdValidator;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.GetDishByIdRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.dish.GetDishByIdResponse;
-import lv.javaguru.java2.wasterestarant.core.services.dish.validators.GetDishByIdValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
