@@ -28,12 +28,12 @@ public class AcceptanceTest1 {
 
     @Test
     public void searchDishes() {
-        AddDishRequest request1 = new AddDishRequest("Margherita", "Margherita", "Pizza", 0.2, 4.99);
-        getAddDishService().execute(request1);
-        AddDishRequest request2 = new AddDishRequest("Marinara", "Marinara", "Pizza", 0.2, 4.99);
-        getAddDishService().execute(request2);
-        SearchDishesRequest request3 = new SearchDishesRequest(null, "Pizza", 4.99);
-        SearchDishesResponse response = getSearchDishesService().execute(request3);
+        AddDishRequest addRequest1 = new AddDishRequest("Margherita", "Margherita", "Pizza", 0.2, 4.5);
+        getAddDishService().execute(addRequest1);
+        AddDishRequest addRequest2 = new AddDishRequest("Marinara", "Marinara", "Pizza", 0.2, 4.5);
+        getAddDishService().execute(addRequest2);
+        SearchDishesRequest searchRequest = new SearchDishesRequest("", "", 4.5);
+        SearchDishesResponse response = getSearchDishesService().execute(searchRequest);
         assertEquals(response.getDishes().size(), 2);
         assertEquals(response.getDishes().get(0).getName(), "Margherita");
         assertEquals(response.getDishes().get(0).getType(), "Pizza");
@@ -62,7 +62,7 @@ public class AcceptanceTest1 {
         AddDishRequest request2 = new AddDishRequest("abc2", "Marinara", "Pizza", 0.2, 4.99);
         getAddDishService().execute(request2);
         Ordering ordering = new Ordering("name", "ASCENDING");
-        SearchDishesRequest request3 = new SearchDishesRequest(null, null, 4.99, ordering);
+        SearchDishesRequest request3 = new SearchDishesRequest(null, "Pizza", null, ordering);
         SearchDishesResponse response = getSearchDishesService().execute(request3);
         assertEquals(response.getDishes().size(), 2);
         assertEquals(response.getDishes().get(0).getName(), "abc1");
@@ -77,12 +77,13 @@ public class AcceptanceTest1 {
         getAddDishService().execute(request2);
         Ordering ordering = new Ordering("name", "ASCENDING");
         Paging paging = new Paging(1, 1);
-        SearchDishesRequest request3 = new SearchDishesRequest(null, null, 4.99, ordering, paging);
+        SearchDishesRequest request3 = new SearchDishesRequest(null, "Pizza", null, ordering, paging);
         SearchDishesResponse response = getSearchDishesService().execute(request3);
         assertEquals(response.getDishes().size(), 1);
         assertEquals(response.getDishes().get(0).getName(), "abc1");
         assertEquals(response.getDishes().get(0).getDescription(), "Margherita");
     }
+
     private DatabaseCleaner getDatabaseCleaner() {
         return applicationContext.getBean(DatabaseCleaner.class);
     }

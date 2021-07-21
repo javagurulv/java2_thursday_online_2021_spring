@@ -3,7 +3,6 @@ package lv.javaguru.java2.wasterestarant.core.requests.dish;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 
-//Elena
 public class SearchDishesRequest {
     private String name;
     private String type;
@@ -61,7 +60,7 @@ public class SearchDishesRequest {
     }
 
     public boolean isPriceProvided() {
-        return this.price != null && this.price > 0.0;
+        return this.price != null && this.price > 0;
     }
 
     public String getName() {

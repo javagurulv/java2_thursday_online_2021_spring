@@ -3,6 +3,7 @@ package lv.javaguru.java2.wasterestarant.core.services.dish.validators;
 import lv.javaguru.java2.wasterestarant.core.requests.Ordering;
 import lv.javaguru.java2.wasterestarant.core.requests.Paging;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.SearchDishesRequest;
+import lv.javaguru.java2.wasterestarant.core.requests.user.RegistrationRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-//Elena
 @Component
 public class SearchDishesRequestValidator {
     public List<CoreError> validate(SearchDishesRequest request) {
@@ -65,9 +65,7 @@ public class SearchDishesRequestValidator {
         if (isEmptyString(request.getName()) &&
                 isEmptyString(request.getType()) &&
                 isEmptyDouble(request.getPrice())) {
-            errors.add(new CoreError("name", "Must not be empty!"));
-            errors.add(new CoreError("type", "Must not be empty!"));
-            errors.add(new CoreError("price", "Must not be empty!"));
+            errors.add(new CoreError("One of the fields", "Must not be empty!"));
         }
         return errors;
     }
@@ -103,6 +101,6 @@ public class SearchDishesRequestValidator {
     }
 
     private boolean isEmptyDouble(Double dbl){
-        return dbl == null || dbl < 0;
+        return dbl == null || dbl <= 0.00;
     }
 }
