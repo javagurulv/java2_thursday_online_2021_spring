@@ -7,7 +7,7 @@ import lv.javaguru.java2.wasterestarant.core.requests.product.SearchProductReque
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import lv.javaguru.java2.wasterestarant.core.responses.product.SearchProductResponse;
 import lv.javaguru.java2.wasterestarant.core.domain.Product;
-import lv.javaguru.java2.wasterestarant.core.services.products.validators.SearchProductServiceValidator;
+import lv.javaguru.java2.wasterestarant.core.services.products.validators.SearchProductValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -30,7 +30,7 @@ public class SearchProductService {
     @Autowired
     private ProductRepository database;
     @Autowired
-    private SearchProductServiceValidator validator;
+    private SearchProductValidator validator;
 
     public SearchProductResponse execute(SearchProductRequest request) {
         List<CoreError> errors = validator.validate(request);

@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.*;
-//Elena
+
 public class SearchDishesRequestValidatorTest {
 
     SearchDishesRequestValidator validator = new SearchDishesRequestValidator();
@@ -60,13 +60,9 @@ public class SearchDishesRequestValidatorTest {
     public void shouldReturnErrorWhenSearchFieldsAreEmpty() {
         SearchDishesRequest request = new SearchDishesRequest(null, null, null);
         List<CoreError> errors = validator.validate(request);
-        assertEquals(3, errors.size());
-        assertEquals(errors.get(0).getField(), "name");
+        assertEquals(1, errors.size());
+        assertEquals(errors.get(0).getField(), "One of the fields");
         assertEquals(errors.get(0).getMessage(), "Must not be empty!");
-        assertEquals(errors.get(1).getField(), "type");
-        assertEquals(errors.get(1).getMessage(), "Must not be empty!");
-        assertEquals(errors.get(2).getField(), "price");
-        assertEquals(errors.get(2).getMessage(), "Must not be empty!");
     }
 
     @Test

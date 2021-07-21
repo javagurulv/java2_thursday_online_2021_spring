@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-//AndrejsB
 @Component
-public class SearchProductServiceValidator {
+public class SearchProductValidator {
 
     public List<CoreError> validate(SearchProductRequest request) {
         List<CoreError> errors = new ArrayList<>();
@@ -35,7 +34,7 @@ public class SearchProductServiceValidator {
     private List<CoreError> validateSearchFields(SearchProductRequest request) {
         List<CoreError> errors = new ArrayList<>();
         if (isEmpty(request.getNameToSearch())) {
-            errors.add(new CoreError("name to search", "Must not be empty!"));
+            errors.add(new CoreError("name", "Must not be empty!"));
         }
         return errors;
     }

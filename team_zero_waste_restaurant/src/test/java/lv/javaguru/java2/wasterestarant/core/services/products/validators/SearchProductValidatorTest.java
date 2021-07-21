@@ -9,10 +9,10 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.*;
-//AndrejsB
-public class SearchProductServiceValidatorTest {
 
-    SearchProductServiceValidator validator = new SearchProductServiceValidator();
+public class SearchProductValidatorTest {
+
+    SearchProductValidator validator = new SearchProductValidator();
 
     @Test
     public void shouldNotReturnErrorWhileSearchingWithName(){
@@ -26,7 +26,7 @@ public class SearchProductServiceValidatorTest {
         SearchProductRequest request = new SearchProductRequest(null);
         List<CoreError> errors = validator.validate(request);
         assertEquals(1, errors.size());
-        assertEquals(errors.get(0).getField(), "name to search");
+        assertEquals(errors.get(0).getField(), "name");
         assertEquals(errors.get(0).getMessage(), "Must not be empty!");
     }
 

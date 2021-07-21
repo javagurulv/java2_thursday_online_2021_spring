@@ -18,7 +18,6 @@ public class SearchOrdersRequestValidatorTest {
         assertEquals(errors.size(), 0);
     }
 
-
     @Test
     public void shouldReturnErrorWhenSearchFieldsAreEmpty() {
         SearchOrdersRequest request = new SearchOrdersRequest(null, null);
