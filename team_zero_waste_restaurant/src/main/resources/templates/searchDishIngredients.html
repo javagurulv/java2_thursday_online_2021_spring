@@ -18,7 +18,7 @@
     </tr>
     <tr>
         <form action="/searchDishIngredients" th:object="${request}" method="post">
-            <td><input type="text" th:field="${request.dishId}"/></td>
+            <td><input type="text" th:field="${request.dishIngredientID}"/></td>
             <td><input type="submit" value="Search ingredients"/>
                 <input type="reset" value="Clear"/></td>
         </form>
@@ -37,10 +37,10 @@
 
     </tr>
 </td>
-    <td th:if="${ingredients != null}">
-        <tr th:each="ingredient : ${ingredients}">
-    <td th:text="${ingredient.name}"/>
-    <td th:text="${ingredient.dishIngredientID}"/>
+    <td th:if="${dishIngredients != null}">
+        <tr th:each="ingredient : ${dishIngredients}">
+    <td th:text="${ingredient.ingredientName}"/>
+    <td th:text="${ingredient.id}"/>
         </tr>
     </td>
 </table>
