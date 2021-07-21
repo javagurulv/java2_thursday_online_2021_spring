@@ -31,7 +31,7 @@ public class RemoveProductController {
             modelMap.addAttribute("errors", response.getErrors());
             return "/removeProductFromTheList";
         } else {
-            return "redirect:/";
+            return "/removeProductFromTheList";
         }
     }
 }

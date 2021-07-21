@@ -30,7 +30,7 @@ public class CreateNewOrderController {
             modelMap.addAttribute("errors", response.getErrors());
             return "createNewOrder";
         } else {
-            return "redirect:/";
+            return "/createNewOrder";
         }
     }
 

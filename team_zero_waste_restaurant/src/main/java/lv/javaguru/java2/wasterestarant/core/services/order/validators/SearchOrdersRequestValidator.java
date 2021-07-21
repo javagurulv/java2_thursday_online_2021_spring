@@ -19,8 +19,8 @@ public class SearchOrdersRequestValidator {
     private List<CoreError> validateSearchFields(SearchOrdersRequest request) {
         List<CoreError> errors = new ArrayList<>();
         if (request.getClientID() == null && request.getOrderDate() == null) {
-            errors.add(new CoreError("Client ID", "Must not be empty!"));
-            errors.add(new CoreError("Order date", "Must not be empty!"));
+            errors.add(new CoreError("User ID", "Must not be empty!"));
+            //errors.add(new CoreError("Order date", "Must not be empty!"));
         }
         return errors;
     }

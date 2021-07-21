@@ -29,7 +29,7 @@ public class ChangePasswordController {
             modelMap.addAttribute("errors", response.getErrors());
             return "changePassword";
         } else {
-            return "redirect:/";
+            return "/changePassword";
         }
     }
 }

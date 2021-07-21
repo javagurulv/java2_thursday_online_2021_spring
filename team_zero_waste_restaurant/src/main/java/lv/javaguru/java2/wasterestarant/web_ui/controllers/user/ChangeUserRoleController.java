@@ -29,7 +29,7 @@ public class ChangeUserRoleController {
             modelMap.addAttribute("errors", response.getErrors());
             return "changeUserRole";
         } else {
-            return "redirect:/";
+            return "/changeUserRole";
         }
     }
 }
