@@ -30,7 +30,7 @@ public class RemoveDishController {
             modelMap.addAttribute("errors", response.getErrors());
             return "/removeDishFromTheList";
         } else {
-            return "redirect:/";
+            return "/removeDishFromTheList";
         }
     }
 }

@@ -13,13 +13,13 @@
 
 <table class="w3-table-all">
   <tr>
-    <td>Client ID:</td>
-    <td>Order date:</td>
+    <td>User ID:</td>
+<!--    <td>Order date:</td>-->
   </tr>
   <tr>
     <form action="/searchOrders" th:object="${request}" method="post">
       <td><input type="text" th:field="${request.clientID}"/></td>
-      <td><input type="text" th:field="${request.orderDate}"/></td>
+<!--      <td><input type="text" th:field="${request.orderDate}"/></td>-->
       <td><input type="submit" value="Search orders"/>
         <input type="reset" value="Clear"/></td>
     </form>
@@ -33,6 +33,11 @@
 </td>
 
 <table class="w3-table-all">
+  <tr>
+    <td>Order ID:</td>
+    <td>User ID:</td>
+    <td>Order date:</td>
+  </tr>
 <td th:if="${orders != null}">
   <tr th:each="order : ${orders}">
     <td th:text="${order.orderID}"/>
@@ -42,8 +47,8 @@
 </td>
 </table>
 
-<form action="/" method="get">
-  <input type="submit" value="Go to main page" name="Submit"/>
+<form>
+  <input type="submit" value="Go back" name="Submit" onclick="history.back()"/>
 </form>
 
 </body>

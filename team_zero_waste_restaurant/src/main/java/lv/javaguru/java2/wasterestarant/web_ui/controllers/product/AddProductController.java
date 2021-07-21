@@ -30,7 +30,7 @@ public class AddProductController {
             modelMap.addAttribute("errors", response.getErrors());
             return "/addProduct";
         } else {
-            return "redirect:/";
+            return "/addProduct";
         }
     }
 

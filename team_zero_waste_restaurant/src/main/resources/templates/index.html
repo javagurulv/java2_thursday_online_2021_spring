@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Zero Waste Restaurant demo project">
     <meta name="author" content="The DreamTeam">
     <title>Zero Waste Restaurant</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 </head>
+
 <body>
+<div class="w3-panel w3-card-4 w3-green"><p>Login</p></div>
 
-<div class="w3-container w3-green w3-section w3-round-small">
-        <p>ZERO WASTE RESTAURANT</p>
-        <p>...made by the dream team...</p>
+<table class="w3-table-all">
+    <tr>
+        <td>email:</td>
+        <td>password:</td>
+    </tr>
+    <tr>
+        <form action="/" th:object="${request}" method="post">
+            <td><input type="text" th:field="${request.email}"/></td>
+            <td><input type="text" th:field="${request.password}"/></td>
+            <td>
+                <input type="submit" value="Login"/>
+                <input type="reset" value="Clear"/>
+            </td>
+        </form>
+    </tr>
+</table>
+<a href="/userRegistration">Register</a> <br>
 
-</div>
+<tr>
 
-        <h2> Program menu </h2>
-
-        <a href="/userRegistration">1. Registration</a> <br>
-        <a href="/userLogin">2. User login</a> <br>
-        <a href="/addDishToTheList">3. Add new dish</a> <br>
-        <a href="/addIngredient">4. Add dish ingredients</a> <br>
-        <a href="/addProduct">5. Add new product</a> <br>
-        <a href="/removeProductFromTheList">6. Remove product</a> <br>
-        <a href="/removeDishFromTheList">7. Remove dish</a> <br>
-        <a href="/searchDishes">8. Search dishes</a> <br>
-        <a href="/searchProducts">9. Search products</a> <br>
-        <a href="/searchIngredients">10. Search ingredients</a> <br>
-        <a href="/searchDishIngredients">11. Search dish ingredients</a> <br> <!-- in progress-->
-        <a href="/searchOrders">12. Search orders</a> <br> <!-- in progress-->
-        <a href="/getAllDishes">13. Show all dishes</a> <br>
-        <a href="/getAllProducts">14. Show all products</a> <br>
-        <a href="/getAllOrders">15. Show all orders</a> <br>
-        <a href="/getRestaurantMenu">16. Show restaurant menu</a> <br>
-        <a href="/createNewOrder">17. Create new order</a> <br>
-        <a href="/changePassword">18. Change password</a> <br>
-        <a href="/changeUserRole">19. Change user role</a> <br>
-        <a href="/exit">20. Exit</a> <br>
-
-
-
+</tr>
+<td th:if="${errors != null}">
+    <tr th:each="error : ${errors}">
+        <td th:text="${error.field}"/>
+        <td th:text="${error.message}"/>
+    </tr>
+</td>
 </body>
 </html>
