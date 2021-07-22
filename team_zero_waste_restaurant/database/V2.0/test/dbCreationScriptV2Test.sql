@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS dish
     type           VARCHAR(100) NOT NULL,
     weight         FLOAT        NOT NULL,
     price          FLOAT        NOT NULL,
-    isInActiveMenu BIT DEFAULT  1,
+    isInActiveMenu BIT DEFAULT  0,
     PRIMARY KEY (id)
 )
     ENGINE = InnoDB
