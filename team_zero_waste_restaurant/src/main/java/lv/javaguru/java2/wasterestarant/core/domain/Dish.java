@@ -45,6 +45,7 @@ public class Dish {
         this.type = type;
         this.weight = weight;
         this.price = price;
+        this.isInActiveMenu = true;
     }
 
     public Dish(String name, String description, String type, double weight, double price, boolean isInActiveMenu) {
