@@ -1,6 +1,5 @@
 package lv.javaguru.java2.wasterestarant.core.services.dish.validators;
 
-
 import lv.javaguru.java2.wasterestarant.core.requests.dish.GetDishByIdRequest;
 import lv.javaguru.java2.wasterestarant.core.responses.CoreError;
 import org.springframework.stereotype.Component;

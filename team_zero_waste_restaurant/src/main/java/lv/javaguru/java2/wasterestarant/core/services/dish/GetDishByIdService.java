@@ -1,6 +1,5 @@
 package lv.javaguru.java2.wasterestarant.core.services.dish;
 
-
 import lv.javaguru.java2.wasterestarant.core.database.dish.DishRepository;
 import lv.javaguru.java2.wasterestarant.core.services.dish.validators.GetDishByIdValidator;
 import lv.javaguru.java2.wasterestarant.core.requests.dish.GetDishByIdRequest;

@@ -22,11 +22,11 @@ public class SearchOrdersRequestValidatorTest {
     public void shouldReturnErrorWhenSearchFieldsAreEmpty() {
         SearchOrdersRequest request = new SearchOrdersRequest(null, null);
         List<CoreError> errors = validator.validate(request);
-        assertEquals(errors.size(), 2);
-        assertEquals(errors.get(0).getField(), "Client ID");
+        assertEquals(errors.size(), 1);
+        assertEquals(errors.get(0).getField(), "User ID");
         assertEquals(errors.get(0).getMessage(), "Must not be empty!");
-        assertEquals(errors.get(1).getField(), "Order date");
-        assertEquals(errors.get(1).getMessage(), "Must not be empty!");
+//        assertEquals(errors.get(1).getField(), "Order date");
+//        assertEquals(errors.get(1).getMessage(), "Must not be empty!");
     }
 
 }
