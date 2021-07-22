@@ -2,7 +2,6 @@ package lv.javaguru.java2.wasterestarant.core.database.ingredient;
 
 import lv.javaguru.java2.wasterestarant.core.domain.DishIngredient;
 import lv.javaguru.java2.wasterestarant.core.domain.Ingredient;
-import nonapi.io.github.classgraph.json.JSONUtils;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
