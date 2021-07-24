@@ -26,8 +26,10 @@ public class AddEmployeeController {
     }
 
     @PostMapping("/AddEmployee")
-    public String processAddEmployeeRequest(@ModelAttribute(value = "request")
-                                                        AddEmployeeRequest request, ModelMap modelMap, HttpSession session) {
+    public String processAddEmployeeRequest(@ModelAttribute(value = "request") AddEmployeeRequest request,
+                                            ModelMap modelMap,
+                                            HttpSession session) {
+
         AddEmployeeResponse response = addEmployeeService.execute(request);
 
         if (response.hasErrors()) {
@@ -40,7 +42,6 @@ public class AddEmployeeController {
             } else {
                 return "hrManagerPage";
             }
-
         }
     }
 }

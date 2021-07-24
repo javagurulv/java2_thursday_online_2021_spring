@@ -1,5 +1,6 @@
 package lv.javaguru.java2.hrsystem.web_ui.controllers;
 
+import lv.javaguru.java2.hrsystem.core.domain.UserRole;
 import lv.javaguru.java2.hrsystem.core.requests.DeleteEmployeeRequest;
 import lv.javaguru.java2.hrsystem.core.responses.DeleteEmployeeResponse;
 import lv.javaguru.java2.hrsystem.core.services.employee.DeleteEmployeeService;
@@ -9,6 +10,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class DeleteEmployeeController {
@@ -25,14 +28,20 @@ public class DeleteEmployeeController {
 
 
     @PostMapping("/DeleteEmployee")
-    public String processDeleteEmployeeRequest(@ModelAttribute(value = "request") DeleteEmployeeRequest request, ModelMap modelMap) {
+    public String processDeleteEmployeeRequest(@ModelAttribute(value = "request") DeleteEmployeeRequest request,
+                                               ModelMap modelMap,
+                                               HttpSession session) {
         DeleteEmployeeResponse response = deleteEmployeeService.execute(request);
         if (response.hasErrors()) {
             modelMap.addAttribute("errors", response.getErrors());
             return "DeleteEmployee";
         } else {
-            return "adminPage";
+
+            if (session.getAttribute("userRole").equals(UserRole.ADMIN)) {
+                return "adminPage";
+            } else {
+                return "hrManagerPage";
+            }
         }
     }
-
 }
