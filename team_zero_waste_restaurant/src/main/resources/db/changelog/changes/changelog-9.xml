@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+
+    <changeSet author="andrewB" id="1_create_foreign_key_table_ingredient">
+        <addForeignKeyConstraint  baseColumnNames="dish_id"
+                                  baseTableName="ingredient"
+                                  constraintName="fk_ingredient_dish_id"
+                                  referencedColumnNames="id"
+                                  referencedTableName="dish"
+        />
+        <rollback>
+            <dropForeignKeyConstraint baseTableName="ingredient"
+                                      constraintName="fk_ingredient_dish_id"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet author="andrewB" id="1_create_foreign_key_table_order_item">
+        <addForeignKeyConstraint  baseColumnNames="order_id"
+                                  baseTableName="order_item"
+                                  constraintName="fk_order_item_order_id"
+                                  referencedColumnNames="id"
+                                  referencedTableName="orders"
+        />
+        <rollback>
+            <dropForeignKeyConstraint baseTableName="order_item"
+                                      constraintName="fk_order_item_order_id"/>
+        </rollback>
+    </changeSet>
+    <changeSet author="andrewB" id="2_create_foreign_key_table_order_item">
+        <addForeignKeyConstraint  baseColumnNames="dish_id"
+                                  baseTableName="order_item"
+                                  constraintName="fk_order_item_dish_id"
+                                  referencedColumnNames="id"
+                                  referencedTableName="dish"
+        />
+        <rollback>
+            <dropForeignKeyConstraint baseTableName="order_item"
+                                      constraintName="fk_order_item_dish_id"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet author="andrewB" id="1_create_foreign_key_table_order_order_items">
+        <addForeignKeyConstraint  baseColumnNames="order_id"
+                                  baseTableName="order_order_items"
+                                  constraintName="fk_order_order_items_order_id"
+                                  referencedColumnNames="id"
+                                  referencedTableName="orders"
+        />
+        <rollback>
+            <dropForeignKeyConstraint baseTableName="order_order_items"
+                                      constraintName="fk_order_order_items_order_id"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet author="andrewB" id="2_create_foreign_key_table_order_order_items">
+        <addForeignKeyConstraint  baseColumnNames="order_item_id"
+                                  baseTableName="order_order_items"
+                                  constraintName="fk_order_order_items_order_item_id"
+                                  referencedColumnNames="id"
+                                  referencedTableName="order_item"
+        />
+        <rollback>
+            <dropForeignKeyConstraint baseTableName="order_order_items"
+                                      constraintName="fk_order_order_items_order_item_id"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet author="andrewB" id="1_create_foreign_key_table_orders_user_id">
+        <addForeignKeyConstraint  baseColumnNames="user_id"
+                                  baseTableName="orders"
+                                  constraintName="fk_orders_user_id"
+                                  referencedColumnNames="id"
+                                  referencedTableName="users"
+        />
+        <rollback>
+            <dropForeignKeyConstraint baseTableName="orders"
+                                      constraintName="fk_orders_user_id"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+
+    <changeSet author="andrewB" id="1_create_table_dish">
+        <createTable schemaName="zero_waste_liqui"
+                     tableName="dish">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(300)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(300)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="weight" type="float">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="float">
+                <constraints nullable="false"/>
+            </column>
+            <column name="isInActiveMenu" type="bit">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable schemaName="zero_waste_liqui"
+                       tableName="dish"
+                       cascadeConstraints="true"/>
+        </rollback>
+    </changeSet>
+    <changeSet author="andrewB" id="1_create_table_dish_idx">
+        <createIndex indexName="idx_dish_name_type" schemaName="zero_waste_liqui" tableName="dish" unique="true">
+            <column descending="false" name="name"/>
+            <column descending="false" name="type"/>
+        </createIndex>
+        <rollback>
+            <dropIndex schemaName="zero_waste_liqui"
+                       tableName="dish"
+                       indexName="idx_dish_name_type"
+            />
+        </rollback>
+    </changeSet>
+    <changeSet  author="andrewB"  id="1_addDefaultValue_dish">
+        <addDefaultValue  columnName="isInActiveMenu"
+                          defaultValueBoolean="false"
+                          schemaName="zero_waste_liqui"
+                          tableName="dish"/>
+    </changeSet>
+</databaseChangeLog>

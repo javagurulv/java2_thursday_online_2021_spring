@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Properties;
 
+import liquibase.integration.spring.SpringLiquibase;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,6 +36,15 @@ public class SpringCoreConfiguration {
 
     @Value("${database.user.password}")
     private String userPassword;
+
+    @Bean
+    public SpringLiquibase springLiquibase(DataSource dataSource) {
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setChangeLog("classpath:/db/changelog/changelog-master.xml");
+        liquibase.setShouldRun(true);
+        liquibase.setDataSource(dataSource);
+        return liquibase;
+    }
 
     @Bean
     public DataSource dataSource() {
